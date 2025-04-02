@@ -5,12 +5,6 @@
       "controller": "CHome",
       "action": "display"
     },
-    "home2": {
-      "metodo": "GET",
-      "uri": "/DigitalPlot/",
-      "controller": "CHome",
-      "action": "display"
-    },
     "logs": {
       "metodo": "GET",
       "uri": "/logs",

@@ -14,3 +14,15 @@
 [2025-04-02 18:37:55] # Rotta trovata! {"method":"GET","path":"\/DigitalPlot\/","controller":"CHome","action":"display"}
 [2025-04-02 18:37:55] # Caricamento del controller -> CHome
 [2025-04-02 18:37:55] # Display -> home.tpl
+
+[2025-04-02 18:39:41] # Ip degl client -> 127.0.0.1
+[2025-04-02 18:39:41] # Risolvo la rotta -> Method=GET, URI=/DigitalPlot/
+[2025-04-02 18:39:41] # Rotta trovata! {"method":"GET","path":"\/DigitalPlot\/","controller":"CHome","action":"display"}
+[2025-04-02 18:39:41] # Caricamento del controller -> CHome
+[2025-04-02 18:39:41] # Display -> home.tpl
+
+[2025-04-02 18:39:59] # Ip degl client -> 127.0.0.1
+[2025-04-02 18:39:59] # Risolvo la rotta -> Method=GET, URI=/DigitalPlot/
+[2025-04-02 18:39:59] # Rotta trovata! {"method":"GET","path":"\/DigitalPlot\/","controller":"CHome","action":"display"}
+[2025-04-02 18:39:59] # Caricamento del controller -> CHome
+[2025-04-02 18:39:59] # Display -> home.tpl
