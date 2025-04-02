@@ -1,0 +1,26 @@
+{
+    "home": {
+      "metodo": "GET",
+      "uri": "/",
+      "controller": "CHome",
+      "action": "display"
+    },
+    "logs": {
+      "metodo": "GET",
+      "uri": "/logs",
+      "controller": "CLogs",
+      "action": "display"
+    },
+    "prodotti": {
+      "metodo": "GET",
+      "uri": "/prodotti",
+      "controller": "CProdotti",
+      "action": "display"
+    },
+    "area_utente": {
+      "metodo": "GET",
+      "uri": "/area_utente",
+      "controller": "CAreaUtente",
+      "action": "display"
+    }
+}

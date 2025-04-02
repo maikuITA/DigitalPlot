@@ -1,0 +1,312 @@
+/* Reset di base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  body {
+    font-family: 'Manrope', Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  /* Barra superiore unificata */
+  .top-bar {
+    background-color: #333; /* colore di sfondo scuro */
+    color: #fff;           /* testo in bianco */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* per adattare su più righe se lo spazio orizzontale non basta */
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #48B5E0; /* blu non troppo acceso */
+    margin-right: 20px;
+  }
+  
+  /* Sezioni a sinistra e a destra della top-bar */
+  .left-section,
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .left-section {
+    gap: 20px; /* spaziatura fra logo e nav */
+  }
+  
+  /* Menu principale */
+  .main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  .main-nav a:hover {
+    color: #48B5E0;
+  }
+  
+  /* Link rapidi in alto a destra (Supporto, Messaggi, ecc.) */
+  .top-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 0.9rem;
+  }
+  
+  .top-menu a:hover {
+    color: #48B5E0;
+  }
+  
+  /* Box ricerca */
+  .search-box {
+    position: relative;
+    margin-left: 15px; /* un po' di spazio rispetto ai link rapidi */
+  }
+  
+  .search-box input {
+    padding: 5px 30px 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .search-box button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0 8px;
+    color: #333; /* colore dell'icona di ricerca */
+  }
+  
+  /* Contenuto principale */
+  .main-content {
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+  }
+  
+  .box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+  }
+
+  .box-login {
+    width: 80%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 50px;
+    padding: 30px;
+  }
+  
+  .box h2 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .box p {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .progress-bar-container {
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 10px;
+    margin: 10px 0;
+  }
+  
+  .progress-bar {
+    background-color: #4caf50;
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  
+  /* Esempio di riempimento delle barre */
+  .progress-bar.spazio {
+    width: 0.5%; /* 0.5% di esempio */
+  }
+  .progress-bar.traffico {
+    width: 0%; /* 0% di esempio */
+  }
+  
+  .box .info {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .link {
+    color: #48B5E0; /* blu non troppo acceso */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Bottone di backup */
+  .backup-button {
+    background-color: #48B5E0; /* blu non troppo acceso */
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .backup-button:hover {
+    background-color: #48B5E0; /* hover: blu leggermente più scuro */
+  }
+
+  input {
+    padding: 5px 5px;
+    box-sizing: border-box;
+  }
+
+  input::placeholder, select {
+    color: #48B5E0;
+  }
+
+  /* Stile degli input di testo e password */
+  input[type="text"],
+  input[type="password"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+  }
+
+  /* Stile dell'input di tipo submit */
+  input[type="submit"] {
+    background-color: #48B5E0;
+    font-size: large;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Stile dell'input di tipo submit al passaggio del mouse */
+  input[type="submit"]:hover {
+    background-color: #48B5E0;
+  }
+
+  /* Stile degli input con focus */
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #48B5E0;
+    outline: none; /* Rimuove l'outline predefinito del browser */
+    box-shadow: 0 0 5px #48B5E0; /* Aggiunge un'ombra leggera */
+  }
+
+  /* Stile degli input non validi */
+  input[type="text"]:invalid,
+  input[type="password"]:invalid {
+    border-color: red;
+  }
+
+  .lgn {
+    width: 100%;
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    padding: 7px;
+    font-size: 15px;
+  }
+
+  .lgn:hover {
+    background-color: #ddd;
+  }
+
+  .regs {
+    color:  #48B5E0;
+  }
+
+  .gg, .mm {
+    margin-bottom: 5px;
+  }
+
+  .gg, .mm, .aa {
+    width: 100%;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .form-conf {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .form-group {
+    flex: 1;           /* Occupa lo stesso spazio disponibile */
+    min-width: 200px;  /* Impedisce che diventi troppo stretto su schermi piccoli */
+    margin-right: 40px;
+  }
+  
+  .form-group:last-child {
+    margin-right: 0;
+  }
+
+  label {
+    font-size: 15px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  /* Responsività per schermi più piccoli */
+  @media (max-width: 768px) {
+    .main-content {
+      grid-template-columns: 1fr;
+    }
+  
+    .top-bar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .left-section,
+    .right-section {
+      margin-top: 10px;
+    }
+  }
