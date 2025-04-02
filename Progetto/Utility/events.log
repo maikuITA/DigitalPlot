@@ -1,27 +1,16 @@
+[2025-04-02 18:37:30] # Ip degl client -> 127.0.0.1
+[2025-04-02 18:37:30] # Risolvo la rotta -> Method=GET, URI=/DigitalPlot/
+[2025-04-02 18:37:30] # Rotta non trovata -> Method=GET, URI=/DigitalPlot/
+[2025-04-02 18:37:30] # Rotta non trovata -> /DigitalPlot/
 
-[2025-03-22 18:06:39] # Risolvo la rotta -> Method=GET, URI=/provasmarty/
-[2025-03-22 18:06:39] # Rotta non trovata -> Method=GET, URI=/provasmarty/
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/","controller":"CHome","action":"showHomepage"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/logs","controller":"CLogs","action":"continousLogs"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/prodotti","controller":"CProdotti","action":"showProdotti"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/location\/{id}","controller":"CLocation","action":"showLocationDetail"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/login","controller":"CUser","action":"showLoginPage"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/owner\/login","controller":"COwner","action":"showLoginPage"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/user\/login","controller":"CUser","action":"login"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/user\/logout","controller":"CUser","action":"logout"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/user\/register","controller":"CUser","action":"register"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/eventhub\/api\/user\/profile","controller":"CUser","action":"getProfile"}
-[2025-03-22 18:06:39] # Defined route: {"method":"PUT","path":"\/eventhub\/api\/user\/profile","controller":"CUser","action":"updateProfile"}
-[2025-03-22 18:06:39] # Defined route: {"method":"DELETE","path":"\/eventhub\/api\/user","controller":"CUser","action":"deleteUser"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/user\/photo","controller":"CUser","action":"addProfilePhoto"}
-[2025-03-22 18:06:39] # Defined route: {"method":"DELETE","path":"\/eventhub\/api\/user\/photo","controller":"CUser","action":"deleteProfilePhoto"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/owner\/login","controller":"COwner","action":"login"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/owner\/logout","controller":"COwner","action":"logout"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/owner\/register","controller":"COwner","action":"register"}
-[2025-03-22 18:06:39] # Defined route: {"method":"GET","path":"\/eventhub\/api\/owner\/profile","controller":"COwner","action":"getProfile"}
-[2025-03-22 18:06:39] # Defined route: {"method":"PUT","path":"\/eventhub\/api\/owner\/profile","controller":"COwner","action":"updateProfile"}
-[2025-03-22 18:06:39] # Defined route: {"method":"DELETE","path":"\/eventhub\/api\/owner","controller":"COwner","action":"deleteAccount"}
-[2025-03-22 18:06:39] # Defined route: {"method":"POST","path":"\/eventhub\/api\/owner\/photo","controller":"COwner","action":"addProfilePhoto"}
-[2025-03-22 18:06:39] # Defined route: {"method":"DELETE","path":"\/eventhub\/api\/owner\/photo","controller":"COwner","action":"deleteProfilePhoto"}
-[2025-03-22 18:06:39] # Rotta non trovata -> /provasmarty/
-[2025-03-22 18:06:39] # $response === null
+[2025-04-02 18:37:40] # Ip degl client -> 127.0.0.1
+[2025-04-02 18:37:40] # Risolvo la rotta -> Method=GET, URI=/DigitalPlot/
+[2025-04-02 18:37:40] # Rotta trovata! {"method":"GET","path":"\/DigitalPlot\/","controller":"CHome","action":"display"}
+[2025-04-02 18:37:40] # Caricamento del controller -> CHome
+[2025-04-02 18:37:40] # Display -> home.tpl
+
+[2025-04-02 18:37:55] # Ip degl client -> 127.0.0.1
+[2025-04-02 18:37:55] # Risolvo la rotta -> Method=GET, URI=/DigitalPlot/
+[2025-04-02 18:37:55] # Rotta trovata! {"method":"GET","path":"\/DigitalPlot\/","controller":"CHome","action":"display"}
+[2025-04-02 18:37:55] # Caricamento del controller -> CHome
+[2025-04-02 18:37:55] # Display -> home.tpl

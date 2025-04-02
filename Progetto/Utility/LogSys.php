@@ -6,7 +6,7 @@ class LogSys {
 
     public static function toLog(string $tolog) : void {
         // Nome del file di log
-        $logs = 'Progetto/Utility/events.log';
+        $logs = __DIR__ . '/events.log';
     
         // Messaggio di log da scrivere
         $timestamp = "[" . date('Y-m-d H:i:s') . "]";
@@ -25,7 +25,8 @@ class LogSys {
             }
             fclose($file); // Infine chiudo il file di log
         } else {
-            echo 'Errore nell\'apertura del file di log.';
+            echo 'Errore nell\'apertura del file di log. <br>';
+            echo 'PERCORSO: ' . $logs . '<br>';
         }
     }
 
