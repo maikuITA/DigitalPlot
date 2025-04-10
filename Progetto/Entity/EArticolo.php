@@ -3,6 +3,7 @@
 namespace Entity;
 
 class EArticolo{
+    
     private int $id;
     private string $titolo = "";
     private string $descrizione;
