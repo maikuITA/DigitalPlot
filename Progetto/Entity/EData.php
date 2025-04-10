@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-class Data{
+class EData{
 
     private string $giorno;
     private string $mese;

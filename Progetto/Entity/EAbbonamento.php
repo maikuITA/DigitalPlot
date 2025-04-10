@@ -16,15 +16,15 @@ class EAbbonamento{  // codice tipo periodo importo
     }
 
     // Set methods
-    public function setCodice($codice)
+    public function setCodice(string $codice)
     {
         $this->codice = $codice;
     }
-    public function setTipo($tipo)
+    public function setTipo(string $tipo)
     {
         $this->tipo = $tipo;
     }
-    public function setPeriodo($periodo)
+    public function setPeriodo(string $periodo)
     {
         $this->periodo = $periodo;
     }

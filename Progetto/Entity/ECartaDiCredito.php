@@ -6,9 +6,9 @@ class ECartaDiCredito{
     public int $numeroCarta;
     public string $nome;
     public string $cognome;
-    public string $dataScadenza;
+    public EData $dataScadenza;
 
-    public function __construct(int $numeroCarta, string $nome,string $cognome, string $dataScadenza) {
+    public function __construct(int $numeroCarta, string $nome,string $cognome, EData $dataScadenza) {
         $this->numeroCarta = $numeroCarta;
         $this->nome = $nome;
         $this->cognome = $cognome;
@@ -16,22 +16,22 @@ class ECartaDiCredito{
     }
 
     // Set methods
-    public function setNumeroCarta($numeroCarta)
+    public function setNumeroCarta(int $numeroCarta)
     {
         $this->numeroCarta = $numeroCarta;
     }
 
-    public function setNome($nome)
+    public function setNome(string $nome)
     {
         $this->nome = $nome;
     }
 
-    public function setCognome($cognome)
+    public function setCognome(string $cognome)
     {
         $this->cognome = $cognome;
     }
 
-    public function setDataScadenza($dataScadenza)
+    public function setDataScadenza(EData $dataScadenza)
     {
         $this->dataScadenza = $dataScadenza;
     }
