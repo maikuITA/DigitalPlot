@@ -3,19 +3,19 @@
 namespace Entity;
 
 class EAcquisto{
-    private string $codice;
+    private int $codice;
     private EData $dataAcquisto;
     private float $subTotale;
 
 
-    public function __construct(string $codice, EData $dataAcquisto, float $subTotale) {
+    public function __construct(int $codice, EData $dataAcquisto, float $subTotale) {
         $this->codice = $codice;
         $this->dataAcquisto = $dataAcquisto;
         $this->subTotale = $subTotale;
     }
 
     // Set methods
-    public function setCodice(string $codice)
+    public function setCodice(int $codice)
     {
         $this->codice = $codice;
     }
