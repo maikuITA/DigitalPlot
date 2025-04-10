@@ -13,6 +13,7 @@ class EData{
         $this->setMese($mese);
         $this->setAnno($anno);
     }
+    //Metodi set e get
     public function setGiorno(string $giorno) {
         $this->giorno = $giorno;
     }

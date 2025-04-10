@@ -32,7 +32,7 @@ class EUser {
         $this->setBiografia($biografia);
     }
 
-
+    //Metodi set e get
     public function setId(int $id) {
         $this->id = $id;
     }
