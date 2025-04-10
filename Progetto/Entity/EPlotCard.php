@@ -15,10 +15,8 @@ class EPlotCard{
     public function addPunti(int $punti): void {
         $this->punti += $punti;
     }
-
-    
     //Metodo per sottrarre punti
-    public function subPunti(int $punti) {
+    public function subPunti(int $punti) : void{
         if ($this->punti - $punti >= 0) {
             $this->punti -= $punti;
         } else {
@@ -29,7 +27,7 @@ class EPlotCard{
 
 
     //Metodi set e get
-    public function setId(int $id) {
+    public function setId(int $id) : void{
         $this->id = $id;
     }
     public function getId(): int {
