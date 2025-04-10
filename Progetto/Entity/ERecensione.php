@@ -13,6 +13,8 @@ class ERecensione{
         $this->valutazione = $valutazione;
         $this->commento = $commento;
     }
+
+    //Metodi set e get
     public function setId(int $id) {
         $this->id = $id;
     }

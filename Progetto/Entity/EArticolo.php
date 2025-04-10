@@ -19,6 +19,8 @@ class EArticolo{
         $this->categoria = $categoria;
     }
 
+    //Metodi set e get
+
     public function setId(int $id) {
         $this->id = $id;
     }
@@ -57,6 +59,34 @@ class EArticolo{
 
     public function getCategoria(): string {
         return $this->categoria;
+    }
+
+    //Gestione delle recensioni
+
+    public function addRecensione(ERecensione $recensione): void {
+        array_push($this->recensioni, $recensione);
+    }
+    public function getRecensioni(): array {
+        return $this->recensioni;
+    }
+    public function getRecensioneById(int $id): ?ERecensione {
+        foreach ($this->recensioni as $recensione) {
+            if ($recensione->getId() === $id) {
+                return $recensione;
+            }
+        }
+        return null;
+    }
+    public function removeRecensione(int $id): void {
+        foreach ($this->recensioni as $key => $recensione) {
+            if ($recensione->getId() === $id) {
+                unset($this->recensioni[$key]);
+                break;
+            }
+        }
+    }
+    public function getRecensioneCount(): int {
+        return count($this->recensioni);
     }
 }
 ?>

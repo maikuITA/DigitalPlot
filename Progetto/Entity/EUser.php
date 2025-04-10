@@ -42,5 +42,4 @@ class EUser {
         return $this->status;
     }
 }
-
 ?>
