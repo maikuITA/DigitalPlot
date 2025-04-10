@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-class CartaDiCredito{
+class ECartaDiCredito{
     public int $numeroCarta;
     public string $nome;
     public string $cognome;
