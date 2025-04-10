@@ -21,6 +21,17 @@ class EArticolo{
     }
 
     //Metodi set e get
+    
+    public function getMediaValutazione(): float {
+        $somma = 0;
+        $count = 0;
+        foreach ($this->recensioni as $recensione) {
+            $somma += $recensione->getValutazione();
+            $count++;
+        }
+        return $count > 0 ? $somma / $count : 0;
+    }
+
 
     public function setId(int $id) {
         $this->id = $id;
