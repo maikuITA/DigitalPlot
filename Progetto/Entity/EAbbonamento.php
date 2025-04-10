@@ -6,7 +6,14 @@ class EAbbonamento{  // codice tipo periodo importo
     public string $codice;
     public string $tipo; 
     public string $periodo; 
-    public float $importo;  
+    public float $importo;
+    
+    public function __construct(int $codice, string $tipo,string $periodo, string $importo) {
+        $this->codice = $codice;
+        $this->tipo = $tipo;
+        $this->periodo = $periodo;
+        $this->importo = $importo;
+    }
 
     // Set methods
     public function setCodice($codice)

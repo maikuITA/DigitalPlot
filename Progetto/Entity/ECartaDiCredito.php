@@ -8,6 +8,12 @@ class ECartaDiCredito{
     public string $cognome;
     public string $dataScadenza;
 
+    public function __construct(int $numeroCarta, string $nome,string $cognome, string $dataScadenza) {
+        $this->numeroCarta = $numeroCarta;
+        $this->nome = $nome;
+        $this->cognome = $cognome;
+        $this->dataScadenza = $dataScadenza;
+    }
 
     // Set methods
     public function setNumeroCarta($numeroCarta)
