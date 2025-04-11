@@ -1,6 +1,6 @@
 {
     "require": {
         "smarty/smarty": "^5.4",
-        "doctrine/orm": "^2.15"
+        "doctrine/orm": "^2.20"
     }
 }
