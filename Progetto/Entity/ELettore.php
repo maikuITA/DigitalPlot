@@ -3,9 +3,10 @@
 namespace Entity;
 
 class ELettore extends EAbbonato{
-    private int $numFollowing = 0;
     
-    public function __construct(int $id, string $username, string $password, string $email, string $nome, string $cognome, string $dataNascita) {
-        parent::__construct($id, $username, $password, $email, $nome, $cognome, $dataNascita);
+    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {
+        parent::__construct($username, $password, $nome, $cognome, $dataNascita, $luogoNascita, $email, $telefono, $plotCard, $biografia, $followers, $following);
+        
+
     }
 }

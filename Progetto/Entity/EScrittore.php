@@ -9,8 +9,13 @@ class EScrittore extends EAbbonato{
     private $articoli = [];
     private float $valutazione;
 
-    public function __construct(int $id, string $username, string $password, string $email, string $nome, string $cognome, string $dataNascita) {
-        parent::__construct($id, $username, $password, $email, $nome, $cognome, $dataNascita);
+    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = [], $articoli = []) {
+        parent::__construct($username, $password, $nome, $cognome, $dataNascita, $luogoNascita, $email, $telefono, $plotCard, $biografia, $followers, $following);
+        $this-> numFollowers = count($followers);
+        $this-> numFollowing = count($following);
+        $this-> numeroArticoli = count($articoli);
+        $this-> articoli = $articoli;
+        $this->valutazione = $this->aggiornaValutazione($articoli);
     }
 
     public function addArticolo(EArticolo $articolo): void{

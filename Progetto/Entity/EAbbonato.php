@@ -6,8 +6,11 @@ class EAbbonato extends EUser{
     private $followers = [];
     private $following = [];
     
-    public function __constructor(int $id, string $username, string $password, string $email, string $nome, string $cognome, string $dataNascita) {
-        parent::__construct($id, $username, $password, $email, $nome, $cognome, $dataNascita);
+    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {
+        parent::__construct($username, $password, $nome, $cognome, $dataNascita, $luogoNascita, $email, $telefono, $plotCard, $biografia);
+        $this->followers = $followers;
+        $this->following = $following;
+
     }
 
     // followers
@@ -82,7 +85,7 @@ class EAbbonato extends EUser{
 
     // following
 
-    public function setFollowing(EAbbonato $following): void{
+    public function addFollowing(EAbbonato $following): void{
         array_push($this->following, $following);
     }
     public function getFollowing(): array{
