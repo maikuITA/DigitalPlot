@@ -23,7 +23,13 @@ class ERecensione{
      */
     private string $commento;
 
+    /** 
+     * @ORM\Column(type="integer") 
+     */
     private int $idUtente;
+    /** 
+     * @ORM\Column(type="integer") 
+     */
     private int $idArticolo;
 
     public function __construct(int $id, int $valutazione, string $commento, int $idUtente, int $idArticolo) {
