@@ -1,9 +1,8 @@
 <?php 
-
+namespace Entity;
 // DA VEDERE, non ha senso una tabella con una sola tupla!
 use Doctrine\ORM\Mapping as ORM;
 
-namespace Entity;
 
 /**
  * @ORM\Entity

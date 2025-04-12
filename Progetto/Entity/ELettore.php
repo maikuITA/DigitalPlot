@@ -1,8 +1,8 @@
 <?php
-
+namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-namespace Entity;
+
 
 /*dato che l'ereditarietà non viene gestita da Doctrine in maniera automatica specifichiamo il risultato della ereditarietà tramite la seconda dicitura. Con table per class 
 la classe Lettore e Abbonato rappresentano due tabelle distinte e in Lettore compaiono gli stessi campi di Abbonato pù quelli propri

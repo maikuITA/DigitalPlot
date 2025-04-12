@@ -1,8 +1,8 @@
 <?php 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-namespace Entity;
 
 /**
  * @ORM\Entity
@@ -56,7 +56,7 @@ class EUser {
      */
     private EPlotCard $plotCard;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="text") 
      */
     private string $biografia;
 

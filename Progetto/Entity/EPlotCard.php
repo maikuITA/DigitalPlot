@@ -1,8 +1,7 @@
 <?php
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
-namespace Entity;
 
 /**
  * @ORM\Entity

@@ -1,8 +1,6 @@
 <?php
-
-use Doctrine\ORM\Mapping as ORM;
-
 namespace Entity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
@@ -25,10 +23,15 @@ class ERecensione{
      */
     private string $commento;
 
-    public function __construct(int $id, int $valutazione, string $commento) {
+    private int $idUtente;
+    private int $idArticolo;
+
+    public function __construct(int $id, int $valutazione, string $commento, int $idUtente, int $idArticolo) {
         $this->id = $id;
         $this->valutazione = $valutazione;
         $this->commento = $commento;
+        $this->idUtente = $idUtente;
+        $this->idArticolo = $idArticolo;
     }
 
     //Metodi set e get

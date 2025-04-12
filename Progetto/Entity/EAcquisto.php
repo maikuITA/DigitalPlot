@@ -1,8 +1,8 @@
 <?php
-
+namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-namespace Entity;
+
 
 /**
  * @ORM\Entity
@@ -35,8 +35,11 @@ class EAcquisto{
     private float $subTotale;
 
 
-    public function __construct(int $codice, EData $dataAcquisto, EAbbonamento $abbonamento, ESconto $sconto = new ESconto( "", 0)) {
+    public function __construct(int $codice, EData $dataAcquisto, EAbbonamento $abbonamento, ESconto $sconto = null) {
         $this->codice = $codice;
+        if ($sconto == null) {
+            $sconto = new ESconto("Nessuno", 0);
+        }
         $this->dataAcquisto = $dataAcquisto;
         $this->abbonamento = $abbonamento;
         $this->sconto = $sconto;
