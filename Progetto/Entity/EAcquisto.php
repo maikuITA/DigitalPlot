@@ -1,12 +1,37 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Abbonati")
+ */
+
 class EAcquisto{
+    /** 
+     * @ORM\id            
+     * @ORM\GeneratedValue(strategy="IDENTITY")  
+     * @ORM\Column(type="integer") 
+    */
     private int $codice;
+    // con object il campo è di tipo blob
+    /** 
+     * @ORM\Column(type="object") 
+    */
     private EData $dataAcquisto;
+    /** 
+     * @ORM\Column(type="object") 
+    */
     private EAbbonamento $abbonamento;
-    private ESconto $sconto;    
+    /** 
+     * @ORM\Column(type="object") 
+    */
+    private ESconto $sconto;
+    /** 
+     * @ORM\Column(type="float") 
+    */    
     private float $subTotale;
 
 

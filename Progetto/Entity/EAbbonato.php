@@ -1,9 +1,24 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("TABLE_PER_CLASS")
+ * @ORM\Table(name="Abbonati")
+ */
+
 class EAbbonato extends EUser{
+    // consigliato rispetto al tipo array, serializzazione tramite json e non php
+    /**  
+     * @ORM\Column(type="json") 
+    */
     private $followers = [];
+    /**  
+     * @ORM\Column(type="json") 
+    */
     private $following = [];
     
     public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {

@@ -1,14 +1,40 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Articoli")
+ */
 class EArticolo{
 
+    /** 
+     * @ORM\id            
+     * @ORM\GeneratedValue  
+     * @ORM\Column(type="integer") 
+     */
     private int $id;
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $titolo = "";
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $descrizione;
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $genere;
-    private string $categoria;  
+    /** 
+     * @ORM\Column(type="string") 
+     */
+    private string $categoria;
+    /** 
+     * @ORM\Column(type="json") 
+     */  
     private $recensioni = [];
 
 

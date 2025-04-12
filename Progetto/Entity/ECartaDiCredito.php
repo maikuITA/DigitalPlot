@@ -1,11 +1,30 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="CarteDiCredito")
+ */
 class ECartaDiCredito{
+    /** 
+     * @ORM\id             
+     * @ORM\Column(type="integer") 
+     */
     public int $numeroCarta;
+    /**         
+     * @ORM\Column(type="string") 
+    */
     public string $nome;
+    /**         
+     * @ORM\Column(type="string") 
+    */
     public string $cognome;
+    /**         
+     * @ORM\Column(type="object") 
+    */
     public EData $dataScadenza;
 
     public function __construct(int $numeroCarta, string $nome,string $cognome, EData $dataScadenza) {

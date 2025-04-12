@@ -1,12 +1,34 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;  
 
+/**
+ * @ORM\Entity
+ * @ORM\InheritanceType("TABLE_PER_CLASS")
+ * @ORM\Table(name="Scrittori")
+ */
 class EScrittore extends EAbbonato{
+    /** 
+     * @ORM\Column(type="integer") 
+     */
     private int $numFollowers = 0;
+    /** 
+     * @ORM\Column(type="integer") 
+     */
     private int $numFollowing = 0;
+    /** 
+     * @ORM\Column(type="integer") 
+     */
     private int $numeroArticoli;
+    /** 
+     * @ORM\Column(type="json") 
+     */
     private $articoli = [];
+    /** 
+     * @ORM\Column(type="float") 
+     */
     private float $valutazione;
 
     public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = [], $articoli = []) {

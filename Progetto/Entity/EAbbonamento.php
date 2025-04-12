@@ -1,11 +1,33 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Abbonamenti")
+ */
 class EAbbonamento{  // codice tipo periodo importo
+
+    // definisco il campo come chiave primaria con la prima @ORM\Id, mentre la seconda permette di far generare il valore del campo dal sistema (si può specificare la strategia di generazione)
+    /** 
+     * @ORM\id            
+     * @ORM\GeneratedValue  
+     * @ORM\Column(type="string") 
+     */
     public string $codice;
+    /** 
+     * @ORM\Column(type="string") 
+     */
     public string $tipo; 
-    public string $periodo; 
+    /** 
+     * @ORM\Column(type="string") 
+     */
+    public string $periodo;
+    /** 
+     * @ORM\Column(type="float") 
+     */ 
     public float $importo;
     
     public function __construct(int $codice, string $tipo,string $periodo, string $importo) {

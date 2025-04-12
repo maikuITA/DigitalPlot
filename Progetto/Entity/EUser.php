@@ -1,21 +1,63 @@
 <?php 
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Utenti")
+ */
 class EUser {
-    private ?int $id = null;
+    /** 
+     * @ORM\id            
+     * @ORM\GeneratedValue(strategy="IDENTITY")  
+     * @ORM\Column(type="integer") 
+     */
+    private int $id;
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $username;
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $password;
+    /** 
+     * @ORM\Column(type="boolean") 
+     */
     private bool $status = true;
-
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $nome;
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $cognome;
+    /** 
+     * @ORM\Column(type="object") 
+     */
     private EData $dataNascita;
-    private string $luogoNascita;                                           
-    private string $email;  
+    /** 
+     * @ORM\Column(type="string") 
+     */
+    private string $luogoNascita;
+    /** 
+     * @ORM\Column(type="string") 
+     */                                           
+    private string $email;
+    /** 
+     * @ORM\Column(type="string") 
+     */  
     private string $telefono;
+    /** 
+     * @ORM\Column(type="object") 
+     */
     private EPlotCard $plotCard;
-
+    /** 
+     * @ORM\Column(type="string") 
+     */
     private string $biografia;
 
 

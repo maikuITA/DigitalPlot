@@ -1,11 +1,31 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Date")
+ */
 class EData{
-
+    /** 
+     * @ORM\id
+     * @ORM\GeneratedValue(strategy="IDENTITY")             
+     * @ORM\Column(type="integer") 
+     */
+    private int $id = 0;
+    /**            
+     * @ORM\Column(type="string") 
+     */
     private string $giorno;
+    /**            
+     * @ORM\Column(type="string") 
+     */
     private string $mese;
+    /**            
+     * @ORM\Column(type="string") 
+     */
     private string $anno;
     
     public function __construct(string $giorno, string $mese, string $anno) {
@@ -16,6 +36,9 @@ class EData{
     //Metodi set e get
     public function setGiorno(string $giorno) {
         $this->giorno = $giorno;
+    }
+    public function getId(): int {
+        return $this->id;
     }
     public function getGiorno(): string {
         return $this->giorno;

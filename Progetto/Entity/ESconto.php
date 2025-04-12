@@ -1,9 +1,23 @@
 <?php
 
+use Doctrine\ORM\Mapping as ORM;
+
 namespace Entity;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="Sconti")
+ */
 class ESconto{
+    /** 
+     * @ORM\id            
+     * @ORM\GeneratedValue  
+     * @ORM\Column(type="string") 
+     */
     private string $codice;
+    /** 
+     * @ORM\Column(type="integer") 
+     */
     private int $importo;
 
 
