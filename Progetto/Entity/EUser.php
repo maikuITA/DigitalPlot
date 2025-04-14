@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
+ * @ORM\InheritanceType("JOINED")
+ * @DiscriminatorColumn(name="tipo", type="string")
+ * @DiscriminatorMap({"abbonato" = "Abbonato", "lettore" = "Lettore", "scrittore" = "Scrittore", "progettista" = "Progettista"})  // definisco i tipi di utenti
  * @ORM\Table(name="Utente")
  */
 class EUser {
