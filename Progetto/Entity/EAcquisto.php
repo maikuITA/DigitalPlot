@@ -21,7 +21,7 @@ class EAcquisto{
     */
     private EData $dataAcquisto;
     /** 
-     * @ORM\ManyToOne(targetEntity="Acquisto", inversedBy= "acquisti")
+     * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
      * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
     */
     private EAbbonamento $abbonamento;

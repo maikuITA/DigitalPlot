@@ -23,7 +23,7 @@ class ECartaDiCredito{
     */
     public string $cognome;
     /**         
-     * @ORM\Column(type="object") 
+     * @ORM\Column(type="datetime") 
     */
     public EData $dataScadenza;
 

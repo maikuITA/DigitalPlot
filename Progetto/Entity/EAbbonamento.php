@@ -31,7 +31,7 @@ class EAbbonamento{  // codice tipo periodo importo
      */ 
     private float $importo;
     /** 
-     * @ORM\OneToMany(targetEntity="Abbonamento", mappedBy="abbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="abbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $acquisti = []; // array di acquisti associati all'abbonamento
     

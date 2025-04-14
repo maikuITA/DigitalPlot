@@ -24,8 +24,8 @@ class EScrittore extends EAbbonato{
      */
     private int $numeroArticoli;
     /** 
-     * @ORM\Column(type="json") 
-     */
+     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="id_articolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */ 
     private $articoli = [];
     /** 
      * @ORM\Column(type="float") 
@@ -34,10 +34,10 @@ class EScrittore extends EAbbonato{
 
     public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = [], $articoli = []) {
         parent::__construct($username, $password, $nome, $cognome, $dataNascita, $luogoNascita, $email, $telefono, $plotCard, $biografia, $followers, $following);
-        $this-> numFollowers = count($followers);
-        $this-> numFollowing = count($following);
-        $this-> numeroArticoli = count($articoli);
-        $this-> articoli = $articoli;
+        $this->numFollowers = count($followers);
+        $this->numFollowing = count($following);
+        $this->numeroArticoli = count($articoli);
+        $this->articoli = $articoli;
         $this->valutazione = $this->aggiornaValutazione($articoli);
     }
 

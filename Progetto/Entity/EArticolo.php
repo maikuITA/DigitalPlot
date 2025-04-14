@@ -33,9 +33,14 @@ class EArticolo{
      */
     private string $categoria;
     /** 
-     * @ORM\Column(type="json") 
-     */  
+     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="id_recensione", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */ 
     private $recensioni = [];
+    /** 
+     * @ORM\ManyToOne(targetEntity="Scrittore", inversedBy= "articoli")
+     * @ORM\JoinColumn(name = "fk_scrittore", referencedColumnName = "id_user", nullable=false) // definizione chiave esterna
+    */
+    private $idScrittore;
 
 
     public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria) {

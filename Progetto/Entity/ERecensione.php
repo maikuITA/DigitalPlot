@@ -28,8 +28,9 @@ class ERecensione{
      */
     private int $idUtente;
     /** 
-     * @ORM\Column(type="integer") 
-     */
+     * @ORM\ManyToOne(targetEntity="Recensione", inversedBy= "recensioni")
+     * @ORM\JoinColumn(name = "fk_articolo", referencedColumnName = "id_articolo", nullable=false) // definizione chiave esterna
+    */
     private int $idArticolo;
 
     public function __construct(int $id, int $valutazione, string $commento, int $idUtente, int $idArticolo) {
