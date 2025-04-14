@@ -2,36 +2,43 @@ Doctrine
 
 14 Apr 2025
 
-* Aggiungere un campo id ad ogni entitò (numerico autoincrementale tranne che per codiceSconto) e rinominarlo id_nomeClasse
+* Aggiungere un campo id ad ogni entità (numerico autoincrementale tranne che per codiceSconto) e rinominarlo id_nomeClasse
 
 * Gestire le relazioni uno a molti; scenario iniziale:
-Abbiamo due classi che hanno una relazione uno a molti es Articolo e Recensione. Un articolo ha più recensioni e una particolare recensione appartiene ad uno specifico articolo; abbiamo ora due punti di vista:
-1. Oggetti: un oggetto articolo contiene un array cn tutte le sue recensioni
-2. Database: le due tabelle sono legate tramite reazione, realizzata tramite chiave esterna all'interno della tabella Recensione
+Abbiamo due classi che hanno una relazione uno a molti es Articolo e Recensione. 
+Un articolo ha più recensioni e una particolare recensione appartiene ad uno specifico articolo; abbiamo ora due punti di vista:
+1. Oggetti: un oggetto articolo contiene un array con tutte le sue recensioni
+2. Database: le due tabelle sono legate tramite relazione, realizzata con chiave esterna all'interno della tabella Recensione
 
 Come possiamo mappare queste due realtà opposte?
 
 utilizzando i seguenti tag:
 
-	In EAbbonamento.php
+	In EAbbonamento.php (entità dalla parte "1")
     /** 
-     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="abbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="abbonamento", cascade={"persist", "remove"})  
+     // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $acquisti = [];
 
-    In EAcquisto.php
+    In EAcquisto.php (entità dalla parte del "molti")
     /** 
      * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
-     * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
+     * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) 
+    // definizione chiave esterna
     */
     private EAbbonamento $abbonamento;
     
-In queto modo Doctrine creerà la relazione uno a molti nel database, da notare che la presenza della "chiave esterna" in EAcquisto.php genera una sorta di ridondanza nelle informazioni, ma questo è necessario per poter generare il database.
+In queto modo Doctrine creerà la relazione uno a molti nel database, da notare che la presenza della "chiave esterna" in EAcquisto.php 
+genera una sorta di ridondanza delle informazioni, ma questo è necessario per poter generare il database
+dato che non è possibile implementare come campo di una tabella un array di oggetti
 
-* Ripetiamo questo procedimento per tutte le classi che presentano relazioni uno a molti (RICORDA: non si possono mappare le relazioni molti a molti)
+* Ripetiamo questo procedimento per tutte le classi che presentano relazioni uno a molti (RICORDA: 
+non si possono mappare le relazioni molti a molti)
 
-Ore 22:10
-
-Mi sono accorto che l'implementazione della classe Acquisto è errata, l'UML dice che questa classe ha relazione uno a molti con: Sconto, Abbonamento e Carta di Credito; ma il modo in cui noi lo abbiamo implementato è differente.
-Noi utilizziamo un istanza di ogni classe precedentemente elencata in Acquisto, e non va bene. La relazione molti a molti vuole un array nelle altre classi e le "chiavi esterne" in Acquisto.
-In questo modo però i metodi che abbiamo implementato non funzionano, dato che non aremmo più oggetti in Acquisto, per poter fare lo stesso dobbiamo appoggiarci al database.
+Mi sono accorto che l'implementazione della classe Acquisto è errata, l'UML dice che questa classe ha relazione uno a molti con: 
+Sconto, Abbonamento e Carta di Credito; ma il modo in cui noi lo abbiamo implementato è differente.
+Noi utilizziamo un istanza della classe sconto e della classe abbonamento in Acquisto, e non va bene. 
+La relazione uno a molti vuole un array nelle altre classi e le "chiavi esterne" in Acquisto.
+In questo modo però i metodi che abbiamo implementato non funzionano, dato che non avremmo più oggetti in Acquisto, 
+per poter fare lo stesso dobbiamo appoggiarci al database.
