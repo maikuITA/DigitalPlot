@@ -13,16 +13,16 @@ class EAbbonamento{  // codice tipo periodo importo
     // definisco il campo come chiave primaria con la prima @ORM\Id, mentre la seconda permette di far generare il valore del campo dal sistema (si può specificare la strategia di generazione)
     /** 
      * @ORM\id            
-     * @ORM\GeneratedValue  
-     * @ORM\Column(type="string") 
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(type="integer") 
      */
-    public string $codice;
+    public int $codice;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100) 
      */
     public string $tipo; 
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100) 
      */
     public string $periodo;
     /** 
@@ -38,7 +38,7 @@ class EAbbonamento{  // codice tipo periodo importo
     }
 
     // Set methods
-    public function setCodice(string $codice)
+    public function setCodice(int $codice)
     {
         $this->codice = $codice;
     }

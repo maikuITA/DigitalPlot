@@ -16,13 +16,14 @@ class EAcquisto{
      * @ORM\Column(type="integer") 
     */
     private int $codice;
+
     // con object il campo è di tipo blob
     /** 
-     * @ORM\Column(type="object") 
+     * @ORM\Column(type="datetime") 
     */
     private EData $dataAcquisto;
     /** 
-     * @ORM\Column(type="object") 
+     * @ORM\Column(type="")
     */
     private EAbbonamento $abbonamento;
     /** 
