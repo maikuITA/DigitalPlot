@@ -24,7 +24,7 @@ class EScrittore extends EAbbonato{
      */
     private int $numeroArticoli;
     /** 
-     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="id_articolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="idScrittore", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */ 
     private $articoli = [];
     /** 
@@ -67,6 +67,9 @@ class EScrittore extends EAbbonato{
         }
         $valutazione = $media / count($articoli);
         return $valutazione;
+    }
+    public function getValutazione(): float{
+        return $this->valutazione;
     }
 }
 

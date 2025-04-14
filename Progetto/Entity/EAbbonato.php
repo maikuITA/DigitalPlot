@@ -20,6 +20,11 @@ class EAbbonato extends EUser{
      * @ORM\Column(type="json") 
     */
     private $following = [];
+
+    /** 
+     * @ORM\OneToMany(targetEntity="Recensione", mappedBy="idAbbonato", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */ 
+    private $recensioni = [];
     
     public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {
         parent::__construct($username, $password, $nome, $cognome, $dataNascita, $luogoNascita, $email, $telefono, $plotCard, $biografia);
@@ -111,5 +116,31 @@ class EAbbonato extends EUser{
         return count($this->following);
     }
 
+    // gestione recensioni
+    public function addRecensione(ERecensione $recensione): void {
+        array_push($this->recensioni, $recensione);
+    }
+    public function getRecensioni(): array {
+        return $this->recensioni;
+    }
+    public function getRecensioneById(int $id): ?ERecensione {
+        foreach ($this->recensioni as $recensione) {
+            if ($recensione->getId() === $id) {
+                return $recensione;
+            }
+        }
+        return null;
+    }
+    public function removeRecensione(int $id): void {
+        foreach ($this->recensioni as $key => $recensione) {
+            if ($recensione->getId() === $id) {
+                unset($this->recensioni[$key]);
+                break;
+            }
+        }
+    }
+    public function getRecensioneCount(): int {
+        return count($this->recensioni);
+    }
 
 }

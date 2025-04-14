@@ -15,13 +15,13 @@ utilizzando i seguenti tag:
 
 	In EAbbonamento.php
     /** 
-     * @ORM\OneToMany(targetEntity="Abbonamento", mappedBy="abbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="abbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $acquisti = [];
 
     In EAcquisto.php
     /** 
-     * @ORM\ManyToOne(targetEntity="Acquisto", inversedBy= "acquisti")
+     * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
      * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
     */
     private EAbbonamento $abbonamento;
@@ -30,4 +30,3 @@ In queto modo Doctrine creerà la relazione uno a molti nel database, da notare 
 
 * Ripetiamo questo procedimento per tutte le classi che presentano relazioni uno a molti (RICORDA: non si possono mappare le relazioni molti a molti)
 
-NOTE: le date non le mettiamo nel database, bisogna fare 

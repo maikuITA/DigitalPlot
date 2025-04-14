@@ -33,7 +33,7 @@ class EArticolo{
      */
     private string $categoria;
     /** 
-     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="id_recensione", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     * @ORM\OneToMany(targetEntity="Recensione", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */ 
     private $recensioni = [];
     /** 
@@ -42,19 +42,20 @@ class EArticolo{
     */
     private int $idScrittore;
     /** 
-     * @ORM\ManyToOne(targetEntity="Lettura", inversedBy= "idArticolo")
-     * @ORM\JoinColumn(name = "fk_lettura", referencedColumnName = "id_lettura", nullable=false) // definizione chiave esterna
+     * @ORM\OneToMany(targetEntity="Lettura", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $letture = [];
 
 
-    public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria) {
+    public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria, int $idScrittore, array $letture = [], array $recensioni = []) {
         $this->id = $id;
         $this->titolo = $titolo;
         $this->descrizione = $descrizione;
         $this->genere = $genere;
         $this->categoria = $categoria;
-        $this->letture = [];
+        $this->letture = $letture;
+        $this->idScrittore = $idScrittore;
+        $this->recensioni = $recensioni;
     }
 
     //Metodi set e get
@@ -109,6 +110,12 @@ class EArticolo{
     public function getCategoria(): string {
         return $this->categoria;
     }
+    public function setIdScrittore(int $idScrittore) {
+        $this->idScrittore = $idScrittore;
+    }
+    public function getIdScrittore(): int {
+        return $this->idScrittore;
+    }
 
     //Gestione delle recensioni
 
@@ -136,6 +143,32 @@ class EArticolo{
     }
     public function getRecensioneCount(): int {
         return count($this->recensioni);
+    }
+    //Gestione delle letture
+    public function addLettura(ELettura $lettura): void {
+        array_push($this->letture, $lettura);
+    }
+    public function getLetture(): array {
+        return $this->letture;
+    }
+    public function getLetturaById(int $id): ?ELettura {
+        foreach ($this->letture as $lettura) {
+            if ($lettura->getId() === $id) {
+                return $lettura;
+            }
+        }
+        return null;
+    }
+    public function removeLettura(int $id): void {
+        foreach ($this->letture as $key => $lettura) {
+            if ($lettura->getId() === $id) {
+                unset($this->letture[$key]);
+                break;
+            }
+        }
+    }
+    public function getLetturaCount(): int {
+        return count($this->letture);
     }
 }
 ?>

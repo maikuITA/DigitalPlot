@@ -21,12 +21,15 @@ class ELettura{
     */
     private int $idUser;
     /** 
-     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="letture", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     * @ORM\ManyToOne(targetEntity="Articolo", inversedBy= "letture")
+     * @ORM\JoinColumn(name = "fk_articolo", referencedColumnName = "id_articolo", nullable=false) // definizione chiave esterna
     */
     private int $idArticolo;
 
-    public function __construct(int $codice) {
+    public function __construct(int $codice, int $idUser = 0, int $idArticolo = 0) {
         $this->codice = $codice;
+        $this->idUser = $idUser;
+        $this->idArticolo = $idArticolo;
     }
 
     // Set methods
@@ -34,8 +37,22 @@ class ELettura{
     {
         $this->codice = $codice;
     }
+    public function setIdUser(int $idUser)
+    {
+        $this->idUser = $idUser;
+    }
+    public function setIdArticolo(int $idArticolo)
+    {
+        $this->idArticolo = $idArticolo;
+    }
     // Get methods
     public function getCodice(){
         return $this->codice;
+    }
+    public function getIdUser(){
+        return $this->idUser;
+    }
+    public function getIdArticolo(){
+        return $this->idArticolo;
     }
 }

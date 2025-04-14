@@ -159,5 +159,30 @@ class EUser {
     public function getBiografia(): string {
         return $this->biografia;
     }
+    // Metodi per le letture
+    public function addLettura(ELettura $lettura): void {
+        $this->letture[] = $lettura;
+    }
+    public function getLetture(): array {
+        return $this->letture;
+    }
+    public function removeLettura(ELettura $lettura): void {
+        foreach ($this->letture as $key => $value) {
+            if ($value->getCodice() === $lettura->getCodice()) {
+                unset($this->letture[$key]);
+            }
+        }
+    }
+    public function getLetturaById( int $id): ?ELettura {
+        foreach ($this->letture as $lettura) {
+            if ($lettura->getCodice() === $id) {
+                return $lettura;
+            }
+        }
+        return null;
+    }
+    public function getLetturaCount(): int {
+        return count($this->letture);
+    }
 }
 ?>
