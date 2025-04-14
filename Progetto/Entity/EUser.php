@@ -52,10 +52,6 @@ class EUser {
      */  
     private string $telefono;
     /** 
-     * @ORM\Column(type="object") 
-     */
-    private EPlotCard $plotCard;
-    /** 
      * @ORM\Column(type="text") 
      */
     private string $biografia;
@@ -63,9 +59,13 @@ class EUser {
      * @ORM\OneToMany(targetEntity="Lettura", mappedBy="id_utente", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $letture = [];
+    /** 
+     * @ORM\OneToMany(targetEntity="PlotCard", mappedBy="idUser", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+     */
+    private $PlotCard = [];
 
 
-    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "") {
+    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = []) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setNome($nome);
@@ -74,9 +74,9 @@ class EUser {
         $this->setLuogoNascita($luogoNascita);
         $this->setEmail($email);
         $this->setTelefono($telefono);
-        $this->setPlotCard($plotCard);
         $this->setBiografia($biografia);
-        $this->letture = [];
+        $this->letture = $letture;
+        $this->PlotCard = $PlotCard; 
     }
     
 
@@ -147,12 +147,6 @@ class EUser {
     public function getTelefono(): string {
         return $this->telefono;
     }
-    public function setPlotCard(EPlotCard $plotCard): void {
-        $this->plotCard = $plotCard;
-    }
-    public function getPlotCard(): EPlotCard {
-        return $this->plotCard;
-    }
     public function setBiografia(string $biografia): void {
         $this->biografia = $biografia;
     }
@@ -184,5 +178,17 @@ class EUser {
     public function getLetturaCount(): int {
         return count($this->letture);
     }
+
+    // Metodi per le PlotCard
+    public function addPlotCard(EPlotCard $plotCard): void {
+        $this->PlotCard[0] = $plotCard;
+    }
+    public function getPlotCard(): EPlotCard {
+        return $this->PlotCard[0];
+    }
+    public function removePlotCard(): void {
+        array_shift($this->PlotCard);
+    }
 }
+
 ?>

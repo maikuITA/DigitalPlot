@@ -19,10 +19,16 @@ class EPlotCard{
      * @ORM\Column(type="integer") 
      */
     private int $punti;
+    /** 
+     * @ORM\ManyToOne(targetEntity="Utente", inversedBy= "PlotCard")
+     * @ORM\JoinColumn(name = "fk_utente", referencedColumnName = "id_utente", nullable=false) // definizione chiave esterna
+     */
+    private int $idUser;
 
-    public function __construct(int $id, int $punti) {
+    public function __construct(int $id, int $punti, int $idUser = 0) {
         $this->setId($id);
         $this->setPunti($punti);
+        $this->idUser = $idUser;
     }
     //Metodo per aggiungere punti
     public function addPunti(int $punti): void {
@@ -51,6 +57,12 @@ class EPlotCard{
     }
     public function getPunti(): int {
         return $this->punti;
+    }
+    public function setIdUser(int $idUser) {
+        $this->idUser = $idUser;
+    }
+    public function getIdUser(): int {
+        return $this->idUser;
     }
 }
 
