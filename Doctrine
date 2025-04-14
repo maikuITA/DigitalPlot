@@ -1,0 +1,33 @@
+Doctrine
+
+14 Apr 2025
+
+* Aggiungere un campo id ad ogni entitò (numerico autoincrementale tranne che per codiceSconto) e rinominarlo id_nomeClasse
+
+* Gestire le relazioni uno a molti; scenario iniziale:
+Abbiamo due classi che hanno una relazione uno a molti es Articolo e Recensione. Un articolo ha più recensioni e una particolare recensione appartiene ad uno specifico articolo; abbiamo ora due punti di vista:
+1. Oggetti: un oggetto articolo contiene un array cn tutte le sue recensioni
+2. Database: le due tabelle sono legate tramite reazione, realizzata tramite chiave esterna all'interno della tabella Recensione
+
+Come possiamo mappare queste due realtà opposte?
+
+utilizzando i seguenti tag:
+
+	In EAbbonamento.php
+    /** 
+     * @ORM\OneToMany(targetEntity="Abbonamento", mappedBy="abbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */
+    private $acquisti = [];
+
+    In EAcquisto.php
+    /** 
+     * @ORM\ManyToOne(targetEntity="Acquisto", inversedBy= "acquisti")
+     * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
+    */
+    private EAbbonamento $abbonamento;
+    
+In queto modo Doctrine creerà la relazione uno a molti nel database, da notare che la presenza della "chiave esterna" in EAcquisto.php genera una sorta di ridondanza nelle informazioni, ma questo è necessario per poter generare il database.
+
+* Ripetiamo questo procedimento per tutte le classi che presentano relazioni uno a molti (RICORDA: non si possono mappare le relazioni molti a molti)
+
+NOTE: le date non le mettiamo nel database, bisogna fare 
