@@ -36,12 +36,12 @@ class EAbbonamento{  // codice tipo periodo importo
     private $acquisti = []; // array di acquisti associati all'abbonamento
     
     
-    public function __construct(int $codice, string $tipo,string $periodo, string $importo) {
+    public function __construct(int $codice, string $tipo,string $periodo, string $importo, array $acquisti = []) {
         $this->codice = $codice;
         $this->tipo = $tipo;
         $this->periodo = $periodo;
         $this->importo = $importo;
-        $this->acquisti = []; // inizializza l'array di acquisti
+        $this->acquisti = $acquisti; // inizializza l'array di acquisti
     }
 
     // Set methods
