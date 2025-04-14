@@ -42,3 +42,9 @@ Noi utilizziamo un istanza della classe sconto e della classe abbonamento in Acq
 La relazione uno a molti vuole un array nelle altre classi e le "chiavi esterne" in Acquisto.
 In questo modo però i metodi che abbiamo implementato non funzionano, dato che non avremmo più oggetti in Acquisto, 
 per poter fare lo stesso dobbiamo appoggiarci al database.
+
+
+DA fare
+- specificare la lenght delle stringhe
+- creare la molti a molti di abbonato (followers e following)
+- gestione delle date 
