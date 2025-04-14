@@ -2,8 +2,6 @@
 namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="CarteDiCredito")
@@ -26,12 +24,17 @@ class ECartaDiCredito{
      * @ORM\Column(type="datetime") 
     */
     public EData $dataScadenza;
+    /** 
+     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="numCartaDiCredito", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */
+    private $acquisti = [];
 
-    public function __construct(int $numeroCarta, string $nome,string $cognome, EData $dataScadenza) {
+    public function __construct(int $numeroCarta, string $nome,string $cognome, EData $dataScadenza, array $acquisti = []) {
         $this->numeroCarta = $numeroCarta;
         $this->nome = $nome;
         $this->cognome = $cognome;
         $this->dataScadenza = $dataScadenza;
+        $this->acquisti = $acquisti; // inizializza l'array di acquisti
     }
 
     // Set methods
@@ -70,6 +73,28 @@ class ECartaDiCredito{
 
     public function getDataScadenza(){
         return $this->dataScadenza;
+    }
+     //Acquisti
+     public function getAcquisti(){
+        return $this->acquisti;
+    }
+    public function addAcquisto(EAcquisto $acquisto){
+        $this->acquisti[] = $acquisto;
+    }
+    public function removeAcquisto(EAcquisto $acquisto){
+        $key = array_search($acquisto, $this->acquisti);
+        if ($key !== false) {
+            unset($this->acquisti[$key]);
+        }
+    }
+    public function getAcquistiCount(){
+        return count($this->acquisti);
+    }
+    public function getAcquistoById(int $index){
+        if (array_key_exists($index, $this->acquisti)) {
+            return $this->acquisti[$index];
+        }
+        return null;
     }
 
 }

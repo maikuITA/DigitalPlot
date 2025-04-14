@@ -10,12 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 class EAcquisto{
-
-    /*
-    * Ci sono delle modifiche sostanziali da fare, il motivo è spiegato nel file Doctrine.txt dalla riga 33
-    * in pratica bisogna togliere gli oggetti EAbbonamento e ESconto e mettere i loro id
-    * per questo bisgna modificare anche il costruttore e i metodi set e get
-    */
     
     /** 
      * @ORM\id            
@@ -33,20 +27,27 @@ class EAcquisto{
     */
     private int $idAbbonamento;
     /** 
-     * @ORM\Column(type="object") 
+     * @ORM\ManyToOne(targetEntity="Sconto", inversedBy= "acquisti")
+     * @ORM\JoinColumn(name = "fk_sconto", referencedColumnName = "cod_sconto", nullable=false) // definizione chiave esterna
     */
     private int $codSconto;
+     /** 
+     * @ORM\ManyToOne(targetEntity="CartaDiCredito", inversedBy= "acquisti")
+     * @ORM\JoinColumn(name = "fk_carta", referencedColumnName = "numCarta", nullable=false) // definizione chiave esterna
+    */
+    private int $numCartaDiCredito;
     /** 
      * @ORM\Column(name = "sub_totale", type="float") 
     */    
     private float $subTotale;
 
 
-    public function __construct(int $codice, EData $dataAcquisto, int $idAbbonamento, int $codSconto = 0) {
+    public function __construct(int $codice, EData $dataAcquisto, int $idAbbonamento, int $codSconto = 0, int $carta = 0) {
         $this->codice = $codice;
         $this->idAbbonamento = $idAbbonamento;
         $this->dataAcquisto = $dataAcquisto;
         $this->codSconto = $codSconto;
+        $this->numCartaDiCredito = $carta;
         $this->subTotale = $this->calcolaSubTotale($this->idAbbonamento, $this->codSconto);
     }
     
@@ -68,6 +69,11 @@ class EAcquisto{
         $this->codSconto = $codSconto;
     }
     
+    public function setCarta(int $carta)
+    {
+        $this->numCartaDiCredito = $carta;
+    }
+    
     // Get methods
     public function getCodice(){
         return $this->codice;
@@ -83,6 +89,9 @@ class EAcquisto{
     }
     public function getCodSconto(){
         return $this->codSconto;
+    }
+    public function getCarta(){
+        return $this->numCartaDiCredito;
     }
 
 
