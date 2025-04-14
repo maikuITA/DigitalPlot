@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Date")
+ * @ORM\Table(name="Data")
  */
 class EData{
     /** 
      * @ORM\id
      * @ORM\GeneratedValue(strategy="IDENTITY")             
-     * @ORM\Column(type="integer") 
+     * @ORM\Column(name="id_data", type="integer") 
      */
     private int $id = 0;
     /**            

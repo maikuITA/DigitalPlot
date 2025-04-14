@@ -7,13 +7,16 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  * @ORM\InheritanceType("TABLE_PER_CLASS")
- * @ORM\Table(name="Abbonati")
+ * @ORM\Table(name="Abbonato")
  */
 
 class EAbbonato extends EUser{
     // consigliato rispetto al tipo array, serializzazione tramite json e non php
     /**  
-     * @ORM\Column(type="json") 
+    * @ORM\Column(name = "followers")
+    * @ORM\ManyToOne(targetEntity="User")
+    * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ 
     */
     private $followers = [];
     /**  

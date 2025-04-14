@@ -4,14 +4,14 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Recensioni")
+ * @ORM\Table(name="Recensione")
  */
 class ERecensione{
 
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(type="integer") 
+     * @ORM\Column(name="id_recensione", type="integer") 
      */
     private int $id;
     /** 

@@ -5,14 +5,14 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="PlotCards")
+ * @ORM\Table(name="PlotCard")
  */
 class EPlotCard{
 
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(type="integer") 
+     * @ORM\Column(name="id_card", type="integer") 
      */
     private int $id;
     /**  

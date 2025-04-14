@@ -10,7 +10,7 @@ la classe Lettore e Abbonato rappresentano due tabelle distinte e in Lettore com
 /**
  * @ORM\Entity
  * @ORM\InheritanceType("TABLE_PER_CLASS")
- * @ORM\Table(name="Lettori")
+ * @ORM\Table(name="Lettore")
  */
 class ELettore extends EAbbonato{
     

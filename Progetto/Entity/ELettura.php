@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Letture")
+ * @ORM\Table(name="Lettura")
  */
 class ELettura{
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(type="integer") 
+     * @ORM\Column(name="id_lettura", type="integer") 
      */
     private int $codice;
 

@@ -6,14 +6,14 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="Abbonati")
+ * @ORM\Table(name="Acquisto")
  */
 
 class EAcquisto{
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(type="integer") 
+     * @ORM\Column(name = "id_acquisto", type="integer") 
     */
     private int $codice;
 
