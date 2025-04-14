@@ -12,11 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 class EAbbonato extends EUser{
     // consigliato rispetto al tipo array, serializzazione tramite json e non php
-    /**  
-    * @ORM\Column(name = "followers")
-    * @ORM\ManyToOne(targetEntity="User")
-    * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * @ORM\ 
+    /** 
+     * @ORM\Column(type="json") 
     */
     private $followers = [];
     /**  

@@ -12,7 +12,7 @@ class EUser {
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name="id_user", type="integer") 
+     * @ORM\Column(name="id_utente", type="integer") 
      */
     private int $id;
     /** 
@@ -59,6 +59,10 @@ class EUser {
      * @ORM\Column(type="text") 
      */
     private string $biografia;
+    /** 
+     * @ORM\OneToMany(targetEntity="Lettura", mappedBy="id_utente", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */
+    private $letture = [];
 
 
     public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "") {
@@ -72,7 +76,9 @@ class EUser {
         $this->setTelefono($telefono);
         $this->setPlotCard($plotCard);
         $this->setBiografia($biografia);
+        $this->letture = [];
     }
+    
 
     //Metodi set e get
     public function setId(int $id) {

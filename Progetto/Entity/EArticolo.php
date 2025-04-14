@@ -40,7 +40,12 @@ class EArticolo{
      * @ORM\ManyToOne(targetEntity="Scrittore", inversedBy= "articoli")
      * @ORM\JoinColumn(name = "fk_scrittore", referencedColumnName = "id_user", nullable=false) // definizione chiave esterna
     */
-    private $idScrittore;
+    private int $idScrittore;
+    /** 
+     * @ORM\ManyToOne(targetEntity="Lettura", inversedBy= "idArticolo")
+     * @ORM\JoinColumn(name = "fk_lettura", referencedColumnName = "id_lettura", nullable=false) // definizione chiave esterna
+    */
+    private $letture = [];
 
 
     public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria) {
@@ -49,6 +54,7 @@ class EArticolo{
         $this->descrizione = $descrizione;
         $this->genere = $genere;
         $this->categoria = $categoria;
+        $this->letture = [];
     }
 
     //Metodi set e get
