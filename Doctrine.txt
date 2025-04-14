@@ -30,3 +30,8 @@ In queto modo Doctrine creerà la relazione uno a molti nel database, da notare 
 
 * Ripetiamo questo procedimento per tutte le classi che presentano relazioni uno a molti (RICORDA: non si possono mappare le relazioni molti a molti)
 
+Ore 22:10
+
+Mi sono accorto che l'implementazione della classe Acquisto è errata, l'UML dice che questa classe ha relazione uno a molti con: Sconto, Abbonamento e Carta di Credito; ma il modo in cui noi lo abbiamo implementato è differente.
+Noi utilizziamo un istanza di ogni classe precedentemente elencata in Acquisto, e non va bene. La relazione molti a molti vuole un array nelle altre classi e le "chiavi esterne" in Acquisto.
+In questo modo però i metodi che abbiamo implementato non funzionano, dato che non aremmo più oggetti in Acquisto, per poter fare lo stesso dobbiamo appoggiarci al database.

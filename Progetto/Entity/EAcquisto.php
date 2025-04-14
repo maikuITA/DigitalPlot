@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 class EAcquisto{
+
+    /*
+    * Ci sono delle modifiche sostanziali da fare, il motivo è spiegato nel file Doctrine.txt dalla riga 33
+    * in pratica bisogna togliere gli oggetti EAbbonamento e ESconto e mettere i loro id
+    * per questo bisgna modificare anche il costruttore e i metodi set e get
+    */
+    
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
@@ -24,26 +31,23 @@ class EAcquisto{
      * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
      * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
     */
-    private EAbbonamento $abbonamento;
+    private int $idAbbonamento;
     /** 
      * @ORM\Column(type="object") 
     */
-    private ESconto $sconto;
+    private int $codSconto;
     /** 
-     * @ORM\Column(type="float") 
+     * @ORM\Column(name = "sub_totale", type="float") 
     */    
     private float $subTotale;
 
 
-    public function __construct(int $codice, EData $dataAcquisto, EAbbonamento $abbonamento, ESconto $sconto = null) {
+    public function __construct(int $codice, EData $dataAcquisto, int $idAbbonamento, int $codSconto = 0) {
         $this->codice = $codice;
-        if ($sconto == null) {
-            $sconto = new ESconto("Nessuno", 0);
-        }
+        $this->idAbbonamento = $idAbbonamento;
         $this->dataAcquisto = $dataAcquisto;
-        $this->abbonamento = $abbonamento;
-        $this->sconto = $sconto;
-        $this->subTotale = $abbonamento->getImporto() - $sconto->getImporto();
+        $this->codSconto = $codSconto;
+        $this->subTotale = $this->calcolaSubTotale($this->idAbbonamento, $this->codSconto);
     }
     
     // Set methods
@@ -55,14 +59,15 @@ class EAcquisto{
     {
         $this->dataAcquisto = $dataAcquisto;
     }
-    public function setAbbonamento(EAbbonamento $abbonamento)
+    public function setIdAbbonamento(int $idAbbonamento)
     {
-        $this->abbonamento = $abbonamento;
+        $this->idAbbonamento = $idAbbonamento;
     }
-    public function setSconto(ESconto $sconto)
+    public function setCodSconto(int $codSconto)
     {
-        $this->sconto = $sconto;
+        $this->codSconto = $codSconto;
     }
+    
     // Get methods
     public function getCodice(){
         return $this->codice;
@@ -73,11 +78,19 @@ class EAcquisto{
     public function getSubTotale(){
         return $this->subTotale;
     }
-    public function getAbbonamento(){
-        return $this->abbonamento;
+    public function getIdAbbonamento(){
+        return $this->idAbbonamento;
     }
-    public function getSconto(){
-        return $this->sconto;
+    public function getCodSconto(){
+        return $this->codSconto;
     }
 
+
+    public function calcolaSubTotale(int $idAbbonamento, int $codSconto = 0): float
+    {
+        // Qui dovresti implementare la logica per calcolare il sub totale
+        // in base all'id dell'abbonamento e al codice dello sconto.
+        // Per ora restituiamo un valore di esempio.
+        return 100.0; // esempio di sub totale
+    }
 }
