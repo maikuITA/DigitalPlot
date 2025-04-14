@@ -13,17 +13,16 @@ class EAcquisto{
     /** 
      * @ORM\id            
      * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name = "id_acquisto", type="integer") 
+     * @ORM\Column(name ="id_acquisto", type="integer") 
     */
     private int $codice;
-
-    // con object il campo è di tipo blob
     /** 
      * @ORM\Column(type="datetime") 
     */
     private EData $dataAcquisto;
     /** 
-     * @ORM\Column(type="")
+     * @ORM\ManyToOne(targetEntity="Acquisto", inversedBy= "acquisti")
+     * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
     */
     private EAbbonamento $abbonamento;
     /** 
