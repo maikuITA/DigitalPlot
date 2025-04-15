@@ -39,6 +39,10 @@ class ComposerStaticInitff10447d7323b4340562ee43425720d7
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'E' => 
+        array (
+            'Entity\\' => 7,
+        ),
         'D' => 
         array (
             'Doctrine\\Persistence\\' => 21,
@@ -114,6 +118,10 @@ class ComposerStaticInitff10447d7323b4340562ee43425720d7
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Entity\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Progetto/Entity',
         ),
         'Doctrine\\Persistence\\' => 
         array (

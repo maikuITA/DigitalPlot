@@ -5,5 +5,10 @@
         "doctrine/dbal": "^3.9",
         "symfony/cache": "^7.2"
 
+    },
+    "autoload": {
+        "psr-4": {
+            "Entity\\": "Progetto/Entity/"
+        }
     }
 }
