@@ -43,8 +43,15 @@ La relazione uno a molti vuole un array nelle altre classi e le "chiavi esterne"
 In questo modo però i metodi che abbiamo implementato non funzionano, dato che non avremmo più oggetti in Acquisto, 
 per poter fare lo stesso dobbiamo appoggiarci al database.
 
-
-DA fare
-- specificare la lenght delle stringhe
-- creare la molti a molti di abbonato (followers e following)
-- gestione delle date 
+Come usare un ORM tool
+1. scaricare composer
+2. scaricare doctrine (almeno versione 3.3) con composer require doctrine
+3. scaricare symfony (almeno la 7.2) con composer require symfony
+NOTA verificare che siano presenti le classi symfony/cache
+NOTA 2, verificare che nel file composer.json siano presenti doctrine e symfony (in tepria è necessario che ci sia anche l'autoloader)
+4. fare un comando strano (nella cartella del progetto) per generare i file necessari
+5. creare i file config.php e doctrine.php (prendere come esempio quelli usati nel progetto)
+6. creare le classi entità e mapparle con i tag #[ORM\....]
+7. dalla cartella del progetto eseguire il comando 
+php bin/doctrine.php orm:schema-tool:create
+NB il percorso di cotrine.php potrebbe essere diverso (dipende dal progetto)
