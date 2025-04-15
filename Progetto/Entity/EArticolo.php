@@ -19,19 +19,19 @@ class EArticolo{
      */
     private int $id;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100) 
      */
     private string $titolo = "";
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100) 
      */
     private string $descrizione;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100) 
      */
     private string $genere;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100) 
      */
     private string $categoria;
     /** 
