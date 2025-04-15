@@ -1,12 +1,12 @@
 <?php
 
-use Doctrine\ORM\Tools\Setup;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\ORMSetup;
 use Doctrine\ORM\EntityManager;
 
 require_once "vendor/autoload.php";
 
 // Impostazioni del database
-$isDevMode = true; // Imposta a false in produzione
 $conn = [
     'dbname' => 'DigitalPlot',
     'user' => 'root',
@@ -16,7 +16,9 @@ $conn = [
 ];
 
 // Configurazione di Doctrine
-$config = Setup::createAnnotationMetadataConfiguration([__DIR__ . "/src"], $isDevMode);
+$config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/Progetto/Entity/"], isDevMode: true);
+
+$connessione = DriverManager::getConnection($conn, $config);
 
 // Creazione dell'EntityManager
-$entityManager = EntityManager::create($conn, $config);
+$entityManager = new EntityManager($connessione, $config);

@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\InheritanceType("TABLE_PER_CLASS")
  * @ORM\Table(name="Scrittore")
  */
 class EScrittore extends EAbbonato{
