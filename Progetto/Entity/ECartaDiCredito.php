@@ -21,7 +21,7 @@ class ECartaDiCredito{
     #[ORM\Column(type: "date")]
     public DateTime $dataScadenza;
     
-    #[ORM\OneToMany(targetEntity: "Acquisto", mappedBy: "numCartaDiCredito", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EAcquisto", mappedBy: "numCartaDiCredito", cascade: ["persist", "remove"])]
     private $acquisti = [];
 
     public function __construct(int $numeroCarta, string $nome,string $cognome, string $dataScadenza, array $acquisti = []) {

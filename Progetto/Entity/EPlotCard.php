@@ -3,10 +3,8 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="PlotCard")
- */
+#[ORM\Entity]
+#[ORM\Table(name:"PlotCard")]
 class EPlotCard{
 
     #[ORM\Id]            
@@ -15,7 +13,7 @@ class EPlotCard{
     private int $id;
     #[ORM\Column(type: "integer")] 
     private int $punti;
-    #[ORM\ManyToOne(targetEntity: "Utente", inversedBy: "PlotCard")]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "PlotCard")]
     #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
     private int $idUser;
 

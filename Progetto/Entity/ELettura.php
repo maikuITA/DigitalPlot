@@ -12,10 +12,10 @@ class ELettura{
     #[ORM\GeneratedValue(strategy:"IDENTITY")]  
     #[ORM\Column(name:"id_lettura", type:"integer")]
     private int $codice;
-    #[ORM\ManyToOne(targetEntity:"Utente", inversedBy: "letture")]
+    #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "letture")]
     #[ORM\JoinColumn(name : "fk_utente" , referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
     private int $idUser;
-    #[ORM\ManyToOne(targetEntity: "Articolo", inversedBy: "letture")]
+    #[ORM\ManyToOne(targetEntity: "EArticolo", inversedBy: "letture")]
     #[ORM\JoinColumn(name : "fk_articolo", referencedColumnName : "id_articolo", nullable: false)] // definizione chiave esterna
     private int $idArticolo;
 

@@ -4,7 +4,7 @@ namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table("Sconto")]
+#[ORM\Table(name:"Sconto")]
 
 class ESconto{
     
@@ -16,7 +16,7 @@ class ESconto{
     #[ORM\Column(type: "integer")]
     private int $importo;
     
-    #[ORM\OneToMany(targetEntity: "Acquisto", mappedBy: "codSconto", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EAcquisto", mappedBy: "codSconto", cascade: ["persist", "remove"])]
     private $acquisti = [];
 
 

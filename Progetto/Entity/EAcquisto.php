@@ -5,7 +5,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table(name: "Acquisto")]
+#[ORM\Table("Acquisto")]
 class EAcquisto{
     
     #[ORM\Id]
@@ -16,16 +16,17 @@ class EAcquisto{
     #[ORM\Column(name: "data_acquisto", type: "date")]
     private DateTime $dataAcquisto;
     
-    #[ORM\ManyToOne(targetEntity: "Abbonamento", inversedBy: "acquisti")]
-    #[ORM\JoinColumn(name: "fk_abbonamento", referencedColumnName: "id_abbonamento", nullable: false)] // definizione chiave esterna
-    private int $idAbbonamento;
     
-    #[ORM\ManyToOne(targetEntity: "Sconto", inversedBy: "acquisti")]
+    #[ORM\ManyToOne(targetEntity: "ESconto", inversedBy: "acquisti")]
     #[ORM\JoinColumn(name: "fk_sconto", referencedColumnName: "cod_sconto", nullable: false)] // definizione chiave esterna
     private int $codSconto;
+
+    #[ORM\ManyToOne(targetEntity: "EAbbonamento", inversedBy: "acquisti")]
+    #[ORM\JoinColumn(name: "fk_abbonamento", referencedColumnName: "id_abbonamento", nullable: false)] // definizione chiave esterna
+    private int $idAbbonamento;
      
-    #[ORM\ManyToOne(targetEntity: "CartaDiCredito", inversedBy: "acquisti")]
-    #[ORM\JoinColumn(name: "fk_carta", referencedColumnName: "numCarta", nullable: false)] // definizione chiave esterna
+    #[ORM\ManyToOne(targetEntity: "ECartaDiCredito", inversedBy: "acquisti")]
+    #[ORM\JoinColumn(name: "fk_carta", referencedColumnName: "numeroCarta", nullable: false)] // definizione chiave esterna
     private int $numCartaDiCredito;
      
     #[ORM\Column(name: "sub_totale", type: "float")]

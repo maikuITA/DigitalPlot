@@ -10,13 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 class ESeguire{
     
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: "Abbonato", inversedBy: "followers")]
+    #[ORM\ManyToOne(targetEntity: "EAbbonato", inversedBy: "followers")]
     #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
     private $follower;
     
 
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: "Abbonato", inversedBy: "following")]
+    #[ORM\ManyToOne(targetEntity: "EAbbonato", inversedBy: "following")]
     #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
     private $following;
 

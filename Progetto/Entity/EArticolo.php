@@ -31,18 +31,18 @@ class EArticolo{
     #[ORM\Column(name:"data_pubblicazione",type: "date")]
     private DateTime $dataPubblicazione;
     
-    #[ORM\OneToMany(targetEntity: "Recensione", mappedBy: "idArticolo", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "ERecensione", mappedBy: "idArticolo", cascade: ["persist", "remove"])]
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $recensioni = [];
     
-    #[ORM\ManyToOne(targetEntity: "Scrittore", inversedBy: "articoli")]
+    #[ORM\ManyToOne(targetEntity: "EScrittore", inversedBy: "articoli")]
     #[ORM\JoinColumn(name: "fk_scrittore", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private int $idScrittore;
     /** 
      * @ORM\OneToMany(targetEntity="Lettura", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
-    #[ORM\ManyToMany(targetEntity: "Lettura", inversedBy: "articoli")]
+    #[ORM\OneToMany(targetEntity: "ELettura", mappedBy: "articoli", cascade: ["persist", "remove"])]
     private $letture = [];
 
 

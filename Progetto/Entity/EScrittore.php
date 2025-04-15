@@ -19,7 +19,7 @@ class EScrittore extends EAbbonato{
     private int $numeroArticoli;
     
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    #[ORM\OneToMany(targetEntity: "Articolo", mappedBy: "idScrittore", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EArticolo", mappedBy: "idScrittore", cascade: ["persist", "remove"])]
     private $articoli = [];
     
     #[ORM\Column(type: "float")]
