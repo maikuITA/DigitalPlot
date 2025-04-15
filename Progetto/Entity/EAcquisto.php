@@ -18,7 +18,7 @@ class EAcquisto{
     
     
     #[ORM\ManyToOne(targetEntity: "ESconto", inversedBy: "acquisti")]
-    #[ORM\JoinColumn(name: "fk_sconto", referencedColumnName: "cod_sconto", nullable: false)] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_sconto", referencedColumnName: "cod_sconto", nullable: true)] // definizione chiave esterna
     private int $codSconto;
 
     #[ORM\ManyToOne(targetEntity: "EAbbonamento", inversedBy: "acquisti")]
