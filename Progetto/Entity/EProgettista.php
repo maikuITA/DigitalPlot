@@ -4,10 +4,9 @@ namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Progettista")
- */
+
+#[ORM\Entity]
+#[ORM\Table(name: "Progettista")]
 class EProgettista extends EUser{
 
 

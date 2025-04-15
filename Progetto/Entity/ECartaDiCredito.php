@@ -4,31 +4,24 @@ namespace Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="CarteDiCredito")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "CarteDiCredito")]
 class ECartaDiCredito{
-    /** 
-     * @ORM\id             
-     * @ORM\Column(type="integer") 
-     */
+    
+    #[ORM\Id]
+    #[ORM\Column( type: "integer")]
     public int $numeroCarta;
-    /**         
-     * @ORM\Column(type="string", length=100) 
-    */
+    
+    #[ORM\Column(type: "string", length: 100)]
     public string $nome;
-    /**         
-     * @ORM\Column(type="string", length=100) 
-    */
+    
+    #[ORM\Column(type: "string", length: 100)]
     public string $cognome;
-    /**         
-     * @ORM\Column(type="date") 
-    */
+    
+    #[ORM\Column(type: "date")]
     public DateTime $dataScadenza;
-    /** 
-     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="numCartaDiCredito", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */
+    
+    #[ORM\OneToMany(targetEntity: "Acquisto", mappedBy: "numCartaDiCredito", cascade: ["persist", "remove"])]
     private $acquisti = [];
 
     public function __construct(int $numeroCarta, string $nome,string $cognome, string $dataScadenza, array $acquisti = []) {

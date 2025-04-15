@@ -20,5 +20,5 @@ $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/Pro
 
 $connessione = DriverManager::getConnection($conn, $config);
 
-// Creazione dell'EntityManager
+// Creazione dell'EntityManager rappresentativo delle classi di foundation
 $entityManager = new EntityManager($connessione, $config);

@@ -3,24 +3,20 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Sconto")
- */
+#[ORM\Entity]
+#[ORM\Table("Sconto")]
+
 class ESconto{
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue  
-     * @ORM\Column(name = "cod_sconto",type="string", length=100) 
-     */
+    
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(name: "cod_sconto", type: "string", length: 100)]
     private string $codice;
-    /** 
-     * @ORM\Column(type="integer") 
-     */
+    
+    #[ORM\Column(type: "integer")]
     private int $importo;
-    /** 
-     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="codSconto", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */
+    
+    #[ORM\OneToMany(targetEntity: "Acquisto", mappedBy: "codSconto", cascade: ["persist", "remove"])]
     private $acquisti = [];
 
 

@@ -4,43 +4,31 @@ namespace Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
-
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="Acquisto")
- */
-
+#[ORM\Entity]
+#[ORM\Table(name: "Acquisto")]
 class EAcquisto{
     
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name ="id_acquisto", type="integer") 
-    */
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
+    #[ORM\Column(name: "id_acquisto", type: "integer")]
     private int $codice;
-    /** 
-     * @ORM\Column(type="date") 
-    */
+    
+    #[ORM\Column(name: "data_acquisto", type: "date")]
     private DateTime $dataAcquisto;
-    /** 
-     * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
-     * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
-    */
+    
+    #[ORM\ManyToOne(targetEntity: "Abbonamento", inversedBy: "acquisti")]
+    #[ORM\JoinColumn(name: "fk_abbonamento", referencedColumnName: "id_abbonamento", nullable: false)] // definizione chiave esterna
     private int $idAbbonamento;
-    /** 
-     * @ORM\ManyToOne(targetEntity="Sconto", inversedBy= "acquisti")
-     * @ORM\JoinColumn(name = "fk_sconto", referencedColumnName = "cod_sconto", nullable=false) // definizione chiave esterna
-    */
+    
+    #[ORM\ManyToOne(targetEntity: "Sconto", inversedBy: "acquisti")]
+    #[ORM\JoinColumn(name: "fk_sconto", referencedColumnName: "cod_sconto", nullable: false)] // definizione chiave esterna
     private int $codSconto;
-     /** 
-     * @ORM\ManyToOne(targetEntity="CartaDiCredito", inversedBy= "acquisti")
-     * @ORM\JoinColumn(name = "fk_carta", referencedColumnName = "numCarta", nullable=false) // definizione chiave esterna
-    */
+     
+    #[ORM\ManyToOne(targetEntity: "CartaDiCredito", inversedBy: "acquisti")]
+    #[ORM\JoinColumn(name: "fk_carta", referencedColumnName: "numCarta", nullable: false)] // definizione chiave esterna
     private int $numCartaDiCredito;
-    /** 
-     * @ORM\Column(name = "sub_totale", type="float") 
-    */    
+     
+    #[ORM\Column(name: "sub_totale", type: "float")]
     private float $subTotale;
 
 
@@ -84,7 +72,8 @@ class EAcquisto{
         return $this->dataAcquisto;
     }
     public function getSubTotale(): float{
-        return $this->calcolaSubTotale($this->idAbbonamento, $this->codSconto);
+        $this->subTotale = $this->calcolaSubTotale($this->idAbbonamento, $this->codSconto);
+        return $this->subTotale;
     }
     public function getIdAbbonamento(): int{
         return $this->idAbbonamento;

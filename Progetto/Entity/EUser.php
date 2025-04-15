@@ -3,69 +3,56 @@ namespace Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
 
 
-/**
- * @ORM\Entity
- * @ORM\InheritanceType("JOINED")
- * @DiscriminatorColumn(name="tipo", type="string")
- * @DiscriminatorMap({"abbonato" = "EAbbonato", "lettore" = "ELettore", "scrittore" = "EScrittore", "progettista" = "EProgettista"})  // definisco i tipi di utenti
- * @ORM\Table(name="Utente")
- */
+#[ORM\Entity]
+#[ORM\InheritanceType("JOINED")]
+#[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
+#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore", "progettista" => "EProgettista"])]  // definisco i tipi di utenti
+#[ORM\Table(name: "Utente")]
 class EUser {
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name="id_utente", type="integer") 
-     */
+    
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy:"IDENTITY")]
+    #[ORM\Column(name:"id_utente", type:"integer")]
     private int $id;
-    /** 
-     * @ORM\Column(type="string", nullable=false, unique=true) 
-     */
+   
+    #[ORM\Column(type:"string",nullable:false,unique:true)]
     private string $username;
-    /** 
-     * @ORM\Column(type="string", nullable=false) 
-     */
+    
+    #[ORM\Column(type:"string", nullable:false)]
     private string $password;
-    /** 
-     * @ORM\Column(type="boolean") 
-     */
+    
+    #[ORM\Column(type:"boolean")]
     private bool $status = true;
-    /** 
-     * @ORM\Column(type="string",length=100, nullable=false) 
-     */
+    
+    #[ORM\Column(type:"string",length:100, nullable:false) ]
     private string $nome;
-    /** 
-     * @ORM\Column(type="string", length=100, nullable=false) 
-     */
+    
+    #[ORM\Column(type:"string", length:100, nullable:false)]
     private string $cognome;
-    /** 
-     * @ORM\Column(type="date", nullable=false) 
-     */
+    
+    #[ORM\Column(type:"date", nullable:false) ]
     private DateTime $dataNascita;
-    /** 
-     * @ORM\Column(type="string", length=100, nullable=false) 
-     */
+    
+    #[ORM\Column(type:"string", length:100, nullable:false)]
     private string $luogoNascita;
-    /** 
-     * @ORM\Column(type="string", length=100, nullable=false) 
-     */                                           
+      
+    #[ORM\Column(type:"string", length:100, nullable:false) ]                                        
     private string $email;
-    /** 
-     * @ORM\Column(type="string", length=20, nullable=false) 
-     */  
+    
+    #[ORM\Column(type:"string", length:20, nullable:false)]
     private string $telefono;
-    /** 
-     * @ORM\Column(type="text") 
-     */
+    
+    #[ORM\Column(type:"text")]
     private string $biografia;
-    /** 
-     * @ORM\OneToMany(targetEntity="Lettura", mappedBy="id_utente", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */
+    
+    #[ORM\OneToMany(targetEntity:"Lettura", mappedBy:"id_utente", cascade:["persist", "remove"]) ]
     private $letture = [];
-    /** 
-     * @ORM\OneToMany(targetEntity="PlotCard", mappedBy="idUser", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-     */
+    
+    #[ORM\OneToMany(targetEntity:"PlotCard", mappedBy:"idUser", cascade:["persist", "remove"])]
     private $PlotCard = [];
 
 
@@ -93,7 +80,7 @@ class EUser {
         return $this->id;
     }
 
-    public function setUsername(int $username) {
+    public function setUsername(string $username) {
         $this->username = $username;
     }
 

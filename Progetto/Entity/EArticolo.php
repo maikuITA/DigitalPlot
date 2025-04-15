@@ -6,51 +6,43 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Articolo")
- */
+
+#[ORM\Entity]
+#[ORM\Table(name: "Articolo")]
 class EArticolo{
 
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name = "id_articolo", type="integer") 
-     */
+    #[ORM\Id]   
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
+    #[ORM\Column(name: "id_articolo", type: "integer")]
     private int $id;
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    
+    #[ORM\Column(type: "string", length: 100)]
     private string $titolo = "";
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    
+    #[ORM\Column(type: "text")]
     private string $descrizione;
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    
+    #[ORM\Column(name: "genere", type: "string", length: 100)]
     private string $genere;
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    
+    #[ORM\Column(name: "categoria", type: "string", length: 100)]
     private string $categoria;
-    /** 
-     * @ORM\Column(name= "data_pubblicazione", type="date")
-     */
-
+    
+    #[ORM\Column(name:"data_pubblicazione",type: "date")]
     private DateTime $dataPubblicazione;
-    /** 
-     * @ORM\OneToMany(targetEntity="Recensione", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */ 
+    
+    #[ORM\OneToMany(targetEntity: "Recensione", mappedBy: "idArticolo", cascade: ["persist", "remove"])]
+    // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $recensioni = [];
-    /** 
-     * @ORM\ManyToOne(targetEntity="Scrittore", inversedBy= "articoli")
-     * @ORM\JoinColumn(name = "fk_scrittore", referencedColumnName = "id_user", nullable=false) // definizione chiave esterna
-    */
+    
+    #[ORM\ManyToOne(targetEntity: "Scrittore", inversedBy: "articoli")]
+    #[ORM\JoinColumn(name: "fk_scrittore", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
+    // definisco il nome del campo dell'altra tabella che è chiave esterna
     private int $idScrittore;
     /** 
      * @ORM\OneToMany(targetEntity="Lettura", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
+    #[ORM\ManyToMany(targetEntity: "Lettura", inversedBy: "articoli")]
     private $letture = [];
 
 

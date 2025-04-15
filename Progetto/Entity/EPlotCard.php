@@ -9,20 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class EPlotCard{
 
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name="id_card", type="integer") 
-     */
+    #[ORM\Id]            
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]  
+    #[ORM\Column(name: "id_card", type: "integer")] 
     private int $id;
-    /**  
-     * @ORM\Column(type="integer") 
-     */
+    #[ORM\Column(type: "integer")] 
     private int $punti;
-    /** 
-     * @ORM\ManyToOne(targetEntity="Utente", inversedBy= "PlotCard")
-     * @ORM\JoinColumn(name = "fk_utente", referencedColumnName = "id_utente", nullable=false) // definizione chiave esterna
-     */
+    #[ORM\ManyToOne(targetEntity: "Utente", inversedBy: "PlotCard")]
+    #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
     private int $idUser;
 
     public function __construct(int $id, int $punti, int $idUser = 0) {

@@ -4,24 +4,20 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;  
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Seguire")
- */
+
+#[ORM\Entity]
+#[ORM\Table(name: "Seguire")]
 class ESeguire{
     
-    /** 
-     * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Abbonato", inversedBy= "followers")
-     * @ORM\JoinColumn(name = "fk_follower", referencedColumnName = "id_utente", nullable=false) // definizione chiave esterna
-    */
+    #[ORM\Id]
+    #[ORM\ManyToOne(targetEntity: "Abbonato", inversedBy: "followers")]
+    #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
     private $follower;
     
-    /** 
-     * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="Abbonato", inversedBy= "following")
-     * @ORM\JoinColumn(name = "fk_following", referencedColumnName = "id_utente", nullable=false) // definizione chiave esterna
-    */
+
+    #[ORM\Id]
+    #[ORM\ManyToOne(targetEntity: "Abbonato", inversedBy: "following")]
+    #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
     private $following;
 
 

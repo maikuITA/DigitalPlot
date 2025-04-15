@@ -3,30 +3,26 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Scrittore")
- */
+
+#[ORM\Entity]
+#[ORM\Table(name: "Scrittore")]
 class EScrittore extends EAbbonato{
-    /** 
-     * @ORM\Column(type="integer") 
-     */
+    
+    
+    #[ORM\Column(type: "integer")]
     private int $numFollowers = 0;
-    /** 
-     * @ORM\Column(type="integer") 
-     */
+    
+    #[ORM\Column(type: "integer")]
     private int $numFollowing = 0;
-    /** 
-     * @ORM\Column(type="integer") 
-     */
+   
+    #[ORM\Column(type: "integer")]
     private int $numeroArticoli;
-    /** 
-     * @ORM\OneToMany(targetEntity="Articolo", mappedBy="idScrittore", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */ 
+    
+    // definisco il nome del campo dell'altra tabella che è chiave esterna
+    #[ORM\OneToMany(targetEntity: "Articolo", mappedBy: "idScrittore", cascade: ["persist", "remove"])]
     private $articoli = [];
-    /** 
-     * @ORM\Column(type="float") 
-     */
+    
+    #[ORM\Column(type: "float")]
     private float $valutazione;
 
     public function __construct(string $username, string $password, string $nome, string $cognome, string $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = [], $articoli = []) {
@@ -67,6 +63,24 @@ class EScrittore extends EAbbonato{
     }
     public function getValutazione(): float{
         return $this->valutazione;
+    }
+    public function setValutazione(float $valutazione): void{
+        $this->valutazione = $valutazione;
+    }
+    public function getNumFollowers(): int{
+        return $this->numFollowers;
+    }
+    public function setNumFollowers(int $numFollowers): void{
+        $this->numFollowers = $numFollowers;
+    }
+    public function getNumFollowing(): int{
+        return $this->numFollowing;
+    }
+    public function setNumFollowing(int $numFollowing): void{
+        $this->numFollowing = $numFollowing;
+    }
+    public function getNumeroArticoli(): int{
+        return $this->numeroArticoli;
     }
 }
 

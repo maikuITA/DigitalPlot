@@ -4,26 +4,19 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Lettura")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "Lettura")]
+
 class ELettura{
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name="id_lettura", type="integer") 
-     */
+    #[ORM\Id]           
+    #[ORM\GeneratedValue(strategy:"IDENTITY")]  
+    #[ORM\Column(name:"id_lettura", type:"integer")]
     private int $codice;
-    /** 
-     * @ORM\ManyToOne(targetEntity="Utente", inversedBy= "letture")
-     * @ORM\JoinColumn(name = "fk_utente, referencedColumnName = "id_utente", nullable=false) // definizione chiave esterna
-    */
+    #[ORM\ManyToOne(targetEntity:"Utente", inversedBy: "letture")]
+    #[ORM\JoinColumn(name : "fk_utente" , referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
     private int $idUser;
-    /** 
-     * @ORM\ManyToOne(targetEntity="Articolo", inversedBy= "letture")
-     * @ORM\JoinColumn(name = "fk_articolo", referencedColumnName = "id_articolo", nullable=false) // definizione chiave esterna
-    */
+    #[ORM\ManyToOne(targetEntity: "Articolo", inversedBy: "letture")]
+    #[ORM\JoinColumn(name : "fk_articolo", referencedColumnName : "id_articolo", nullable: false)] // definizione chiave esterna
     private int $idArticolo;
 
     public function __construct(int $codice, int $idUser = 0, int $idArticolo = 0) {

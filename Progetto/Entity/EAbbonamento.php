@@ -2,37 +2,26 @@
 namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="Abbonamento")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "Abbonamento")]
 class EAbbonamento{  // codice tipo periodo importo
 
     // definisco il campo come chiave primaria con la prima @ORM\Id, mentre la seconda permette di far generare il valore del campo dal sistema (si può specificare la strategia di generazione)
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue  
-     * @ORM\Column(name="id_abbonamento",type="string") 
-     */
-
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]
+    #[ORM\Column(name: "id_abbonamento", type: "integer")]
     public int $codice;
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    
+    #[ORM\Column(type: "string", length: 100)]
     private string $tipo; 
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    
+    #[ORM\Column(type: "string", length: 100)]
     private string $periodo;
-    /** 
-     * @ORM\Column(type="float") 
-     */ 
+   
+    #[ORM\Column(type: "float")]
     private float $importo;
-    /** 
-     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="idAbbonamento", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */
+    
+    #[ORM\OneToMany(targetEntity: "Acquisto", mappedBy: "idAbbonamento", cascade: ["persist", "remove"])]  // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $acquisti = []; // array di acquisti associati all'abbonamento
     
     

@@ -4,41 +4,27 @@ namespace Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Recensione")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "Recensione")]
 class ERecensione{
 
-    /** 
-     * @ORM\id            
-     * @ORM\GeneratedValue(strategy="IDENTITY")  
-     * @ORM\Column(name="id_recensione", type="integer") 
-     */
+    #[ORM\Id]        
+    #[ORM\GeneratedValue(strategy: "IDENTITY")]  
+    #[ORM\Column(name: "id_recensione", type: "integer")] 
     private int $id;
-    /** 
-     * @ORM\Column(type="integer") 
-     */
+    #[ORM\Column(type: "integer")] 
     private int $valutazione;
-    /** 
-     * @ORM\Column(type="string", length=100) 
-     */
+    #[ORM\Column(type: "string", length: 100)] 
     private string $commento;
 
-    /**
-     * @ORM\Column(name="data_pubblicazione", type= "date")
-     */
+    #[ORM\Column(name: "data_pubblicazione", type: "date")]
     private DateTime $dataPubblicazione;
 
-    /** 
-     * @ORM\ManyToOne(targetEntity="Abbonato", inversedBy= "recensioni")
-     * @ORM\JoinColumn(name = "fk_abbonato", referencedColumnName = "id_user", nullable=false) // definizione chiave esterna
-    */
+    #[ORM\ManyToOne(targetEntity: "Abbonato", inversedBy: "recensioni")]
+    #[ORM\JoinColumn(name: "fk_abbonato", referencedColumnName: "id_user", nullable: false)] // definizione chiave esterna
     private int $idAbbonato;
-    /** 
-     * @ORM\ManyToOne(targetEntity="Articolo", inversedBy= "recensioni")
-     * @ORM\JoinColumn(name = "fk_articolo", referencedColumnName = "id_articolo", nullable=false) // definizione chiave esterna
-    */
+    #[ORM\ManyToOne(targetEntity: "Articolo", inversedBy: "recensioni")]
+    #[ORM\JoinColumn(name: "fk_articolo", referencedColumnName: "id_articolo", nullable: false)] // definizione chiave esterna
     private int $idArticolo;
 
     public function __construct(int $id, int $valutazione, string $commento,string $dataPubblicazione, int $idAbbonato = 0, int $idArticolo = 0) {

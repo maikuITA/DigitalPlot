@@ -4,24 +4,20 @@ namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="Abbonato")
- */
+
+#[ORM\Entity]
+#[ORM\Table(name: "Abbonato")]
 class EAbbonato extends EUser{
     // consigliato rispetto al tipo array, serializzazione tramite json e non php
-    /** 
-     * @ORM\OneToMany(targetEntity="Seguire", mappedBy="follower", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */
+    
+    // definisco il nome del campo dell'altra tabella che è chiave esterna
+    #[ORM\OneToMany(targetEntity: "Seguire", mappedBy: "follower", cascade: ["persist", "remove"])]
     private $followers = [];
-    /** 
-     * @ORM\OneToMany(targetEntity="Seguire", mappedBy="following", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */
+    
+    #[ORM\OneToMany(targetEntity: "Seguire", mappedBy: "following", cascade: ["persist", "remove"])]
     private $following = [];
 
-    /** 
-     * @ORM\OneToMany(targetEntity="Recensione", mappedBy="idAbbonato", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    */ 
+    #[ORM\OneToMany(targetEntity: "Recensione", mappedBy: "idAbbonato", cascade: ["persist", "remove"])]
     private $recensioni = [];
     
     public function __construct(string $username, string $password, string $nome, string $cognome, string $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {
