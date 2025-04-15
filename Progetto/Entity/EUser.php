@@ -3,7 +3,7 @@ namespace Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Smarty\Data;
+
 
 /**
  * @ORM\Entity
