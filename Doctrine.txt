@@ -54,6 +54,18 @@ NOTA 2, verificare che nel file composer.json siano presenti doctrine e symfony 
 6. creare le classi entità e mapparle con i tag #[ORM\....]
 
 NOTA sui tipi di tag:
+
+#[ORM\Entity] -> definisce la tabella
+#[ORM\Table(name: "Utente")] -> da il nome alla tabella
+
+Tag per realizzare le generalizzarioni (da mettere solo nella classe padre)
+#[ORM\InheritanceType("JOINED")] -> Metodologia con cui risolvere l'ereditarietà
+#[ORM\DiscriminatorColumn(name: "tipo", type: "string")] -> aggiunta del campo tipo
+#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore", "progettista" => "EProgettista"])]  -> definisco i valori del campo tipo "valore" => "nome_classe"
+NB per usarli bisogna importare: 
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+
 #[ORM\Id] -> il campo è chiave primaria, per fare una chiave doppia basta mettere due volte lo stesso tag
 #[ORM\GeneratedValue(strategy: "IDENTITY")] -> il campo è autogenerato, con identity va da 1 in poi
 #[ORM\Column(name: "id_abbonamento", type: "integer")] -> definizione standard della colonna
