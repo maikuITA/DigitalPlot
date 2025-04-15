@@ -41,12 +41,13 @@ class ERecensione{
     */
     private int $idArticolo;
 
-    public function __construct(int $id, int $valutazione, string $commento, int $idAbbonato = 0, int $idArticolo = 0) {
+    public function __construct(int $id, int $valutazione, string $commento,string $dataPubblicazione, int $idAbbonato = 0, int $idArticolo = 0) {
         $this->id = $id;
         $this->valutazione = $valutazione;
         $this->commento = $commento;
         $this->idAbbonato = $$idAbbonato;
         $this->idArticolo = $idArticolo;
+        $this->dataPubblicazione = new DateTime($dataPubblicazione);
     }
 
     //Metodi set e get
@@ -79,6 +80,13 @@ class ERecensione{
     }
     public function getIdArticolo(): int {
         return $this->idArticolo;
+    }
+
+    public function getDataPubblicazione(): DateTime {
+        return $this->dataPubblicazione;
+    }
+    public function setDataPubblicazione(string $dataPubblicazione) {
+        $this->dataPubblicazione = new DateTime($dataPubblicazione);
     }
 }
 
