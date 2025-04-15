@@ -1,5 +1,7 @@
 <?php
+
 namespace Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -12,11 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
 class EAbbonato extends EUser{
     // consigliato rispetto al tipo array, serializzazione tramite json e non php
     /** 
-     * @ORM\Column(type="json") 
+     * @ORM\OneToMany(targetEntity="Seguire", mappedBy="follower", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $followers = [];
-    /**  
-     * @ORM\Column(type="json") 
+    /** 
+     * @ORM\OneToMany(targetEntity="Seguire", mappedBy="following", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
     private $following = [];
 
@@ -25,7 +27,7 @@ class EAbbonato extends EUser{
     */ 
     private $recensioni = [];
     
-    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {
+    public function __construct(string $username, string $password, string $nome, string $cognome, string $dataNascita, string $luogoNascita, string $email, string $telefono, EPlotCard $plotCard, string $biografia = "", $followers = [], $following = []) {
         parent::__construct($username, $password, $nome, $cognome, $dataNascita, $luogoNascita, $email, $telefono, $plotCard, $biografia);
         $this->followers = $followers;
         $this->following = $following;
