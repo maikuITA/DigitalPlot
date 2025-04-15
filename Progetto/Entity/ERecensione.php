@@ -1,5 +1,7 @@
 <?php
 namespace Entity;
+
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,11 @@ class ERecensione{
      * @ORM\Column(type="string") 
      */
     private string $commento;
+
+    /**
+     * @ORM\Column(name="data_pubblicazione", type= "date")
+     */
+    private DateTime $dataPubblicazione;
 
     /** 
      * @ORM\ManyToOne(targetEntity="Abbonato", inversedBy= "recensioni")

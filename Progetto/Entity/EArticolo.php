@@ -1,5 +1,7 @@
 <?php
 namespace Entity;
+
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -33,6 +35,11 @@ class EArticolo{
      */
     private string $categoria;
     /** 
+     * @ORM\Column(name= "data_pubblicazione", type="date")
+     */
+
+    private DateTime $dataPubblicazione;
+    /** 
      * @ORM\OneToMany(targetEntity="Recensione", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */ 
     private $recensioni = [];
@@ -47,12 +54,13 @@ class EArticolo{
     private $letture = [];
 
 
-    public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria, int $idScrittore, array $letture = [], array $recensioni = []) {
+    public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria, string $dataPubblicazione, int $idScrittore, array $letture = [], array $recensioni = []) {
         $this->id = $id;
         $this->titolo = $titolo;
         $this->descrizione = $descrizione;
         $this->genere = $genere;
         $this->categoria = $categoria;
+        $this->dataPubblicazione = new DateTime($dataPubblicazione);
         $this->letture = $letture;
         $this->idScrittore = $idScrittore;
         $this->recensioni = $recensioni;
@@ -115,6 +123,12 @@ class EArticolo{
     }
     public function getIdScrittore(): int {
         return $this->idScrittore;
+    }
+    public function setDataPubblicazione(string $dataPubblicazione){
+        $this->dataPubblicazione = new DateTime($dataPubblicazione);
+    }
+    public function getDataPubblicazione(): DateTime{
+        return $this->dataPubblicazione;
     }
 
     //Gestione delle recensioni

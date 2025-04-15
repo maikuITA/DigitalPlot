@@ -1,5 +1,7 @@
 <?php
 namespace Entity;
+
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -18,9 +20,9 @@ class EAcquisto{
     */
     private int $codice;
     /** 
-     * @ORM\Column(type="datetime") 
+     * @ORM\Column(type="date") 
     */
-    private EData $dataAcquisto;
+    private DateTime $dataAcquisto;
     /** 
      * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
      * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) // definizione chiave esterna
@@ -42,10 +44,10 @@ class EAcquisto{
     private float $subTotale;
 
 
-    public function __construct(int $codice, EData $dataAcquisto, int $idAbbonamento, int $codSconto = 0, int $carta = 0) {
+    public function __construct(int $codice, string $dataAcquisto, int $idAbbonamento, int $codSconto = 0, int $carta = 0) {
         $this->codice = $codice;
         $this->idAbbonamento = $idAbbonamento;
-        $this->dataAcquisto = $dataAcquisto;
+        $this->dataAcquisto = new DateTime($dataAcquisto);
         $this->codSconto = $codSconto;
         $this->numCartaDiCredito = $carta;
         $this->subTotale = $this->calcolaSubTotale($this->idAbbonamento, $this->codSconto);
@@ -56,9 +58,9 @@ class EAcquisto{
     {
         $this->codice = $codice;
     }
-    public function setDataAcquisto(EData $dataAcquisto)
+    public function setDataAcquisto(string $dataAcquisto)
     {
-        $this->dataAcquisto = $dataAcquisto;
+        $this->dataAcquisto = new DateTime($dataAcquisto);
     }
     public function setIdAbbonamento(int $idAbbonamento)
     {
@@ -75,22 +77,22 @@ class EAcquisto{
     }
     
     // Get methods
-    public function getCodice(){
+    public function getCodice(): int{
         return $this->codice;
     }
-    public function getDataAcquisto(){
+    public function getDataAcquisto(): DateTime{
         return $this->dataAcquisto;
     }
-    public function getSubTotale(){
-        return $this->subTotale;
+    public function getSubTotale(): float{
+        return $this->calcolaSubTotale($this->idAbbonamento, $this->codSconto);
     }
-    public function getIdAbbonamento(){
+    public function getIdAbbonamento(): int{
         return $this->idAbbonamento;
     }
-    public function getCodSconto(){
+    public function getCodSconto(): string{
         return $this->codSconto;
     }
-    public function getCarta(){
+    public function getCarta(): int{
         return $this->numCartaDiCredito;
     }
 

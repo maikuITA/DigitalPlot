@@ -1,8 +1,9 @@
 <?php 
 namespace Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-
+use Smarty\Data;
 
 /**
  * @ORM\Entity
@@ -19,11 +20,11 @@ class EUser {
      */
     private int $id;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", nullable=false, unique=true) 
      */
     private string $username;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", nullable=false) 
      */
     private string $password;
     /** 
@@ -31,27 +32,27 @@ class EUser {
      */
     private bool $status = true;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string",length=100, nullable=false) 
      */
     private string $nome;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100, nullable=false) 
      */
     private string $cognome;
     /** 
-     * @ORM\Column(type="object") 
+     * @ORM\Column(type="date", nullable=false) 
      */
-    private EData $dataNascita;
+    private DateTime $dataNascita;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100, nullable=false) 
      */
     private string $luogoNascita;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=100, nullable=false) 
      */                                           
     private string $email;
     /** 
-     * @ORM\Column(type="string") 
+     * @ORM\Column(type="string", length=20, nullable=false) 
      */  
     private string $telefono;
     /** 
@@ -68,7 +69,7 @@ class EUser {
     private $PlotCard = [];
 
 
-    public function __construct(string $username, string $password, string $nome, string $cognome, EData $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = []) {
+    public function __construct(string $username, string $password, string $nome, string $cognome, string $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = []) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setNome($nome);
@@ -126,10 +127,10 @@ class EUser {
     public function getCognome(): string {
         return $this->cognome;
     }
-    public function setDataNascita(EData $dataNascita): void {
-        $this->dataNascita = $dataNascita;
+    public function setDataNascita(string $dataNascita): void {
+        $this->dataNascita = new DateTime($dataNascita);
     }
-    public function getDataNascita(): EData {
+    public function getDataNascita(): DateTime {
         return $this->dataNascita;
     }
     public function setLuogoNascita(string $luogoNascita): void {
