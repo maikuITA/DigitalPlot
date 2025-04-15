@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="Abbonato")
  */
-
 class EAbbonato extends EUser{
     // consigliato rispetto al tipo array, serializzazione tramite json e non php
     /** 
