@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\DiscriminatorMap;
 #[ORM\Entity]
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
-#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore", "progettista" => "EProgettista"])]  // definisco i tipi di utenti
+#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore"])]  // definisco i tipi di utenti
 #[ORM\Table(name: "Utente")]
 class EUser {
     
@@ -25,8 +25,8 @@ class EUser {
     #[ORM\Column(type:"string", nullable:false)]
     private string $password;
     
-    #[ORM\Column(type:"boolean")]
-    private bool $status = true;
+    #[ORM\Column(name:"admin",type:"boolean")]
+    private bool $admin = true;
     
     #[ORM\Column(type:"string",length:100, nullable:false) ]
     private string $nome;
@@ -56,7 +56,7 @@ class EUser {
     private $PlotCard = [];
 
 
-    public function __construct(string $username, string $password, string $nome, string $cognome, string $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = []) {
+    public function __construct(string $username, string $password,string $nome, string $cognome,bool $admin = false ,string $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = []) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setNome($nome);
@@ -66,6 +66,7 @@ class EUser {
         $this->setEmail($email);
         $this->setTelefono($telefono);
         $this->setBiografia($biografia);
+        $this->setAdmin($admin);
         $this->letture = $letture;
         $this->PlotCard = $PlotCard; 
     }
@@ -96,11 +97,11 @@ class EUser {
         return $this->password;
     }    
 
-    public function getStatus(): bool {
-        return $this->status;
+    public function getAdmin(): bool {
+        return $this->admin;
     }
-    public function setStatus(bool $status): void {
-        $this->status = $status;
+    public function setAdmin(bool $admin): void {
+        $this->admin = $admin;
     }
     public function setNome(string $nome): void {
         $this->nome = $nome;

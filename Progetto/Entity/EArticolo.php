@@ -21,6 +21,9 @@ class EArticolo{
     
     #[ORM\Column(type: "text")]
     private string $descrizione;
+
+    #[ORM\Column(name: "stato", type: "string", length: 100)]
+    private string $stato;
     
     #[ORM\Column(name: "genere", type: "string", length: 100)]
     private string $genere;
@@ -46,10 +49,11 @@ class EArticolo{
     private $letture = [];
 
 
-    public function __construct(int $id, string $titolo,string $descrizione, string $genere, string $categoria, string $dataPubblicazione, int $idScrittore, array $letture = [], array $recensioni = []) {
+    public function __construct(int $id, string $titolo,string $descrizione,string $stato = "da approvare", string $genere, string $categoria, string $dataPubblicazione, int $idScrittore, array $letture = [], array $recensioni = []) {
         $this->id = $id;
         $this->titolo = $titolo;
         $this->descrizione = $descrizione;
+        $this->stato = $stato;
         $this->genere = $genere;
         $this->categoria = $categoria;
         $this->dataPubblicazione = new DateTime($dataPubblicazione);
@@ -121,6 +125,12 @@ class EArticolo{
     }
     public function getDataPubblicazione(): DateTime{
         return $this->dataPubblicazione;
+    }
+    public function setStato(string $stato) {
+        $this->stato = $stato;
+    }
+    public function getStato(): string {
+        return $this->stato;
     }
 
     //Gestione delle recensioni

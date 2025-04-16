@@ -87,7 +87,8 @@ Relazione uno a molti, si crea con un doppio tag (i tag vanno nelle due classi c
 
 7. dalla cartella del progetto eseguire il comando 
 php bin/doctrine.php orm:schema-tool:create
-NB il percorso di cotrine.php potrebbe essere diverso (dipende dal progetto)
+NB il percorso di doctrine.php potrebbe essere diverso (dipende dal progetto)
+NB quando si chiede di caricare un oggetto carica solo quello e non dati scaturiti da sue relazioni (es, carica solo lo scrittore e non l'elenco dei suoi articoli; le query devo essere specifiche)
 
 
 NOTE di Andrea: 
