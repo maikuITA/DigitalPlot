@@ -1,0 +1,191 @@
+/* ********************************
+Colori presi dalla palette del logo + colori utili
+******************************** */
+:root {
+    --black-haze: #f0f1f1;
+    --rajah: #f5ba6d;
+    --rajah_hover: #d4a25f; 
+    --rajah_more: #e09e47; 
+    --ebony-clay: #252a3b;
+    --storm-gray: #777984;
+    --soya-bean: #6d5e4e;
+    --regent-gray: #8c949b;
+    --trout: #50515d;
+    --abbey: #545c63;
+    --mikado: #312313;
+    --manatee: #8c94a4;
+    --cream: #ffead3;
+    --header: #fff6ec;
+}
+
+/* ********************************
+attributi globali
+******************************** */
+* {
+    font-family: "Work Sans", sans-serif;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    font-weight: 450;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    color: black;
+    background-color: white;
+}
+
+body.dark-mode {
+    color: white;
+    background-color: black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    color: black;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header.dark-mode {
+    border-bottom: 2px inset white;
+    color: white;
+    background-color: black;
+    border-bottom: 2px inset white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container, .ricerca, .filters, .article, .side, .loginbox {
+    background-color: white;
+    border-radius: 1px;
+}
+
+.find {
+    background-color: transparent;
+    border: none;
+    padding: 6px 12px 6px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* ********************************
+<div> che contiene .digilogo, .ldigilogo e .nav
+******************************** */
+.logo {
+    width: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ldigilogo {
+    font-size: 1.5em;
+    margin-right: 30px;
+}
+
+.digilogo {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.digilogo:hover {
+    cursor: pointer;
+}
+
+/* ********************************
+navbar
+******************************** */
+.nav {
+    padding: 12px;
+}
+
+/* ********************************
+<div> che contiene .theme, .find e .accedi
+******************************** */
+.actions, .logo {
+    display: flex;
+    align-items: center;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    padding: 6px 12px 6px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* ********************************
+emoji
+******************************** */
+.fi-ts-lightbulb-on, .fi-ts-issue-loupe {
+    font-size: x-large;
+    color: black;
+}
+
+.fi-ts-lightbulb-on.dark-mode, .fi-ts-issue-loupe.dark-mode {
+    font-size: x-large;
+    color: white;
+}
+
+.fi-ts-lightbulb-on, .fi-ts-issue-loupe, .accedi, .nav {
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+}
+
+.fi-ts-lightbulb-on:hover, .fi-ts-issue-loupe:hover, .nav:hover {
+    color: var(--rajah);
+}
+
+.actions button img {
+    height: 20px; /* Regola l'altezza delle icone */
+    margin-right: 5px;
+}
+
+.actions button.profile {
+    background-color: #999; /* Colore grigio del pulsante del profilo */
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ********************************
+"bottone" di accesso
+******************************** */
+.accedi {
+    font-size: medium;
+    width: auto;
+    height: auto;
+    background-color: var(--rajah);
+    border: 10px solid var(--rajah);
+    border-radius: 7px;
+    padding: 0px 4px;
+    margin-left: 10px;
+}
+
+.accedi:hover {
+    border: 10px solid var(--ebony-clay);
+    background-color: var(--ebony-clay);
+    color: white;
+    cursor: pointer;
+}

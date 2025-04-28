@@ -1,0 +1,294 @@
+/* ********************************
+<div> che contiene .container
+******************************** */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 1250px;
+    margin: 10px auto;
+}
+
+/* ********************************
+label for .container
+******************************** */
+.abbonamento {
+    color: var(--ebony-clay);
+    font-size: x-large;
+    font-weight: 600;
+    margin-left: 40px;
+}
+
+.abbonamento.dark-mode {
+    color: white;
+}
+
+/* ********************************
+<div> che contiene .article
+******************************** */
+.container {
+    margin-top: 40px;
+    border-radius: 1px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 1250px;
+    width: 50%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;  
+    padding: 20px;
+}
+
+.side {
+    margin-top: 40px;
+    border-radius: 1px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    max-width: 250px;
+    width: 100%;
+    height: 300px; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ********************************
+<div> che contiene .genere, .corpo e .linked (e l'emoji)
+******************************** */
+.inp {
+    font-size: medium;
+    width: auto;
+    height: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.inp:focus {
+    background-color: var(--rajah);
+}
+
+.fi-ts-arrow-small-down {
+    font-size: medium;  
+}
+
+select {
+    font-size: medium;
+    width: 130px;
+    background-color: var(--rajah);
+    border: 5px solid var(--rajah);
+    border-radius: 7px;
+    margin-left: 30px;
+    height: 35px;
+}
+
+select:hover {
+    background-color: var(--ebony-clay);
+    border-color: var(--ebony-clay);
+    color: white;
+}
+
+option {
+    background-color: #f1f1f1;
+    border-radius: 7px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    text-align: center;
+    width: 150px;
+    color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.okay {
+    font-size: medium;
+    width: 50px;
+    height: 39px;
+    background-color: var(--rajah);
+    border: 10px solid var(--rajah);
+    border-radius: 60px;
+    margin-left: 20px;
+}
+
+.okay:hover {
+    cursor: pointer;
+    border: 10px solid var(--ebony-clay);
+    background-color: var(--ebony-clay);
+    color: white;
+}
+
+/* ********************************
+<div> che contiene .genere, .corpo e .linked (e l'emoji)
+******************************** */
+.article {
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    background-color: var(--header);
+    border-radius: 1px;
+    padding: 10px 20px;
+    margin: 5px;
+    max-width: 280px;
+}
+
+.corpo, .linked {
+    font-size: medium;
+}
+
+.corpo {
+    text-align: left;
+    color: rgb(20, 20, 20);
+}
+
+.genere.dark-mode, .corpo.dark-mode, .linked.dark-mode {
+    color: white;
+}
+
+.tipoPiano {
+    display: block;
+    background-image: linear-gradient(45deg, var(--storm-gray), var(--rajah), var(--storm-gray));
+    border-radius: 6px;
+    padding: 5px;
+    justify-content: space-around;
+}
+
+.genere, .piano {
+    color: var(--ebony-clay);
+    font-weight: bold;
+}
+
+.genere {
+    font-size: large;
+}
+
+.piano {
+    font-size: small;
+}
+
+.linked, .fi-ts-padlock-check {
+    cursor: pointer;
+}
+
+.linked {
+    color: var(--ebony-clay);
+    font-weight: 600;
+    font-size: large;
+    padding: 2px;
+    border: 1px solid var(--rajah);
+    background-color: var(--rajah);
+    border-radius: 10px;position: relative;
+    bottom: 5px;
+}
+
+.linked:hover {
+    background-color: var(--ebony-clay);
+    border-color: var(--ebony-clay);
+    color: white;
+}
+
+.fi-ts-padlock-check {
+    color: var(--ebony-clay);
+    font-weight: 900;
+}
+
+.lblAbb {
+    display: block;
+    text-align: left;
+    font-size: medium;
+    color: rgb(59, 59, 59);
+}
+
+.lblAbb, .corpo {
+    font-weight: 550;
+}
+
+hr {
+    color:rgb(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.caratt {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    max-height: fit-content;
+}
+
+.sub, .art, .totale {
+    display: block;
+}
+
+.sub {
+    font-size: larger;
+    color: var(--ebony-clay);
+    text-align: left;
+    width: 100%;
+    font-weight: 600;
+}
+
+.art {
+    margin-top: 10px;
+    color: black;
+    font-size: medium;
+}
+
+.totale {
+    color: black;
+    font-size: large;
+    position: relative;
+    top: 10px;
+}
+
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.subtotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: min-content;
+}
+
+.conferma {
+    background-color: red;
+    border-radius: 15px;
+    border: 5px solid red;
+}
+
+.payment-icon {
+    display: block;
+    width: 74px;
+    height: 46px;
+    border-radius: 6px;
+    margin: 0px;
+    border: 2.5px solid rgb(0, 0, 0);
+}
+
+.apple-icon {
+    width: 78px;
+    height: 50px;
+    border: 0px solid black;
+    border-radius: 6px;
+}
+
+.apple-icon:hover {
+    cursor: pointer;
+    border: 0.1px solid var(--rajah);
+}
+
+.payment-icon:hover  {
+    cursor: pointer;
+    border-color: var(--rajah);
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    max-width: 300px;
+    max-height: 50px;
+}

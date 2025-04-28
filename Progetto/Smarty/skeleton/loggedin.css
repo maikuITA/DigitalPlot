@@ -1,0 +1,94 @@
+/* ********************************
+<div> che contiene .container
+******************************** */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 20px auto;
+}
+
+.pfp {
+    background-color: var(--storm-gray);
+    background-color: var(--storm-gray);
+    border: 6px solid var(--storm-gray);
+    border-radius: 60px;
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    font-size: large;
+}
+
+.pfp:hover {
+    cursor: pointer;
+}
+
+/* ********************************
+label for .container
+******************************** */
+.Lcontainer {
+    position:relative;
+    top: 35px;
+    color: var(--ebony-clay);
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.Lcontainer.dark-mode {
+    color: white;
+}
+
+/* ********************************
+<div> che contiene .article
+******************************** */
+.container {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 1px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+/* ********************************
+<div> che contiene .genere, .corpo e .linked (e l'emoji)
+******************************** */
+.article {
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    border-radius: 1px;
+    padding: 10px 20px;
+    margin: 5px;
+    max-width: 280px;
+}
+
+.genere, .corpo, .linked {
+    font-size: medium;
+}
+
+.genere.dark-mode, .corpo.dark-mode, .linked.dark-mode {
+    color: white;
+}
+
+.genere {
+    color: var(--ebony-clay);
+    font-weight: bold;
+}
+
+.linked, .fi-ts-padlock-check {
+    color: var(--rajah_more);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.linked:hover, .fi-ts-padlock-check:hover {
+    color: var(--manatee);
+}
