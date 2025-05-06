@@ -38,10 +38,6 @@ label for .container
     font-weight: 600;
 }
 
-.Lcontainer.dark-mode {
-    color: white;
-}
-
 /* ********************************
 <div> che contiene .article
 ******************************** */
@@ -72,10 +68,6 @@ label for .container
 
 .genere, .corpo, .linked {
     font-size: medium;
-}
-
-.genere.dark-mode, .corpo.dark-mode, .linked.dark-mode {
-    color: white;
 }
 
 .genere {

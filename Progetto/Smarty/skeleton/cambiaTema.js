@@ -2,14 +2,13 @@ console.log("[!] Sono nello script.");
 
 const body = document.body;
 const header = document.querySelector('header');
-const cambiaTema = document.getElementById('cambiaTema');
 const logo = document.querySelector('.digilogo');
 const bottoneTema = document.querySelector('.fi-ts-lightbulb-on');
 const bottoneCerca = document.querySelector('.fi-ts-issue-loupe');
 const labelContainer = document.querySelector('Lcontainer');
 
 let isDarkMode = 0;
-cambiaTema.addEventListener('click', () => {
+function cambiaTema() {
     body.classList.toggle('dark-mode');
     header.classList.toggle('dark-mode');
     bottoneTema.classList.toggle('dark-mode');
@@ -22,4 +21,4 @@ cambiaTema.addEventListener('click', () => {
         logo.src = 'digitalplot.png';
         isDarkMode = 0;
     }
-});
+}
