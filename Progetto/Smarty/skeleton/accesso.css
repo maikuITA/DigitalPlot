@@ -61,14 +61,15 @@ label {
     font-size: large;
     color: var(--ebony-clay);
     background-color: var(--rajah);
-    border: 5px solid var(--rajah);
-    border-radius: 30px;
+    border: 6px solid var(--rajah);
+    border-radius: 5px;
     font-weight: 500;
 }
 
 .lgn:hover, .regis:hover {
-    border-color: var(--manatee);
-    background-color: var(--manatee);
+    border-color: var(--ebony-clay);
+    background-color: var(--ebony-clay);
+    color: white;
     cursor: pointer;
 }
 
@@ -87,7 +88,7 @@ label {
     height: auto;
     background-color: var(--rajah);
     border: 7px solid var(--rajah);
-    border-radius: 7px;
+    border-radius: 6px;
     padding: 0px 4px;
     margin-left: 10px;
 }

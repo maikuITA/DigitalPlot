@@ -178,7 +178,7 @@ emoji
     height: auto;
     background-color: var(--rajah);
     border: 10px solid var(--rajah);
-    border-radius: 7px;
+    border-radius: 5px;
     padding: 0px 4px;
     margin-left: 10px;
 }
@@ -188,4 +188,5 @@ emoji
     background-color: var(--ebony-clay);
     color: white;
     cursor: pointer;
+    transform: scale(1.02);
 }
