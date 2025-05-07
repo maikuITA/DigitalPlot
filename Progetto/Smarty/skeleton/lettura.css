@@ -47,7 +47,7 @@
     background-color:var(--rajah)
 }
     
-.art,.sub{
+.sub{
     display:block
 }
 
@@ -62,7 +62,7 @@
 .art{
     margin-top:10px;
     color:#000;
-    font-size:medium
+    font-size: large
 }
 
 .items{
@@ -150,4 +150,42 @@
     text-align: center;
     width: 100%;
     font-weight: 600;
+}
+
+.follow-btn {
+    margin-left: 10px;
+    font-size: medium;
+    width: auto;
+    height: auto;
+    background-color: var(--rajah);
+    border: 8px solid var(--rajah);
+    border-radius: 7px;
+    padding: 0px 4px;
+    margin-left: 10px;
+}
+
+.follow-btn:hover {
+    border-color: var(--ebony-clay);
+    background-color: var(--ebony-clay);
+    color: white;
+    cursor: pointer;
+}
+
+table {
+    margin-top: 10px;
+}
+
+.inp {
+    font-size: medium;
+    width: auto;
+    max-width: 160px;
+    height: 25px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.inp:focus {
+    background-color: var(--rajah);
 }
