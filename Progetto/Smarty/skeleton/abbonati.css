@@ -167,6 +167,46 @@ label for .container
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;  
     padding: 20px;
+    animation-name: sfumatura;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes sfumatura {
+    0% { 
+        background-image: linear-gradient(0deg, var(--rajah), var(--rajah_hover));
+    }
+    10% { 
+        background-image: linear-gradient(40deg, var(--rajah), var(--rajah_hover));
+    }
+    20% { 
+        background-image: linear-gradient(80deg, var(--rajah), var(--rajah_hover));
+    }
+    30% { 
+        background-image: linear-gradient(120deg, var(--rajah), var(--rajah_hover));
+    }
+    40% { 
+        background-image: linear-gradient(160deg, var(--rajah), var(--rajah_hover));
+    }
+    50% { 
+        background-image: linear-gradient(200deg, var(--rajah), var(--rajah_hover));
+    }
+    60% { 
+        background-image: linear-gradient(240deg, var(--rajah), var(--rajah_hover));
+    }
+    70% { 
+        background-image: linear-gradient(280deg, var(--rajah), var(--rajah_hover));
+    }
+    80% { 
+        background-image: linear-gradient(320deg, var(--rajah), var(--rajah_hover));
+    }
+    90% { 
+        background-image: linear-gradient(360deg, var(--rajah), var(--rajah_hover));
+    }
+    100% { 
+        background-image: linear-gradient(360deg, var(--rajah), var(--rajah_hover));
+    }
 }
 
 /* ********************************
@@ -273,9 +313,31 @@ option {
     font-size: large;
 }
 
-.piano {
+.piano, .pianoPRO {
     font-size: small;
 }
+
+.pianoPRO {
+    color: var(--ebony-clay);
+    font-weight: 600;
+    animation-name: pianopro;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes pianopro {
+    0% { 
+        font-size: small;
+    }
+    50% { 
+        font-size: medium;
+    }
+    100% { 
+        font-size: small;
+    }
+}
+
 
 .linked, .fi-ts-padlock-check {
     cursor: pointer;
