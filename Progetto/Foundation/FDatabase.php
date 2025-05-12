@@ -5,7 +5,6 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\ORMSetup;
 
-require_once __DIR__."/../Utility/config.php";
 require_once __DIR__."/../../vendor/autoload.php";
 
 class FDatabase{
@@ -14,9 +13,8 @@ class FDatabase{
     private ?EntityManager $entityManager;
 
     private function __construct() {
-        global $conn;
-        // Configurazione di Doctrine
-        $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/Progetto/Entity/"], isDevMode: true);
+        $conn = require_once __DIR__."/../Utility/config.php";          // Configurazione di Doctrine
+        $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/../Entity/"], isDevMode: true);
 
         $connessione = DriverManager::getConnection($conn, $config);
 
