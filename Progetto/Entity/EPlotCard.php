@@ -17,8 +17,7 @@ class EPlotCard{
     #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
     private int $idUser;
 
-    public function __construct(int $id, int $punti, int $idUser = 0) {
-        $this->setId($id);
+    public function __construct(int $punti, int $idUser = 0) {
         $this->setPunti($punti);
         $this->idUser = $idUser;
     }

@@ -49,8 +49,7 @@ class EArticolo{
     private $letture = [];
 
 
-    public function __construct(int $id, string $titolo,string $descrizione,string $stato = "da approvare", string $genere, string $categoria, string $dataPubblicazione, int $idScrittore, array $letture = [], array $recensioni = []) {
-        $this->id = $id;
+    public function __construct(string $titolo,string $descrizione,string $stato = "da approvare", string $genere, string $categoria, string $dataPubblicazione, int $idScrittore, array $letture = [], array $recensioni = []) {
         $this->titolo = $titolo;
         $this->descrizione = $descrizione;
         $this->stato = $stato;

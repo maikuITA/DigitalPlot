@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
 class ESconto{
     
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column(name: "cod_sconto", type: "string", length: 100)]
     private string $codice;
     

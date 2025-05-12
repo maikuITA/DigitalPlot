@@ -33,8 +33,8 @@ class EAcquisto{
     private float $subTotale;
 
 
-    public function __construct(int $codice, string $dataAcquisto, int $idAbbonamento, int $codSconto = 0, int $carta = 0) {
-        $this->codice = $codice;
+    public function __construct( string $dataAcquisto, int $idAbbonamento, int $codSconto = 0, int $carta = 0) {
+
         $this->idAbbonamento = $idAbbonamento;
         $this->dataAcquisto = new DateTime($dataAcquisto);
         $this->codSconto = $codSconto;

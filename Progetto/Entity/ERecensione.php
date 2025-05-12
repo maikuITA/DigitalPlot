@@ -27,8 +27,8 @@ class ERecensione{
     #[ORM\JoinColumn(name: "fk_articolo", referencedColumnName: "id_articolo", nullable: false)] // definizione chiave esterna
     private int $idArticolo;
 
-    public function __construct(int $id, int $valutazione, string $commento,string $dataPubblicazione, int $idAbbonato = 0, int $idArticolo = 0) {
-        $this->id = $id;
+    public function __construct(int $valutazione, string $commento,string $dataPubblicazione, int $idAbbonato = 0, int $idArticolo = 0) {
+
         $this->valutazione = $valutazione;
         $this->commento = $commento;
         $this->idAbbonato = $$idAbbonato;

@@ -19,8 +19,7 @@ class ELettura{
     #[ORM\JoinColumn(name : "fk_articolo", referencedColumnName : "id_articolo", nullable: false)] // definizione chiave esterna
     private int $idArticolo;
 
-    public function __construct(int $codice, int $idUser = 0, int $idArticolo = 0) {
-        $this->codice = $codice;
+    public function __construct(int $idUser = 0, int $idArticolo = 0) {
         $this->idUser = $idUser;
         $this->idArticolo = $idArticolo;
     }

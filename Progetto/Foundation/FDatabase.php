@@ -1,47 +1,52 @@
-<?php 
+<?php
 
 namespace Foundation;
+use Doctrine\ORM\EntityManager;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\ORMSetup;
 
-use PDO;
-use PDOException;
-use Utility\LogSys;
+require_once "../Utility/config.php";
+require_once "../../vendor/autoload.php";
 
-class FDatabase {
-    private static ?FDatabase $instance = null;
-    private ?PDO $pdo;
+class FDatabase{
+    
+    private static ?FDatabase $istance = null;
+    private ?EntityManager $entityManager;
 
     private function __construct() {
-        $conf = FDatabase::readDBInfo();
-        try {
-            LogSys::toLog("CONESSIONE AL DATABASE EFFETTUATA");
-            $this->pdo = new PDO("mysql:host={$conf['host']};dbname={$conf['dbname']}", $conf['user'], $conf['pass']);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            LogSys::toLog("ERRORE NELLA CONNESSIONE AL DATABASE");
-            $this->pdo = null;
+        global $conn;
+        // Configurazione di Doctrine
+        $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/Progetto/Entity/"], isDevMode: true);
+
+        $connessione = DriverManager::getConnection($conn, $config);
+
+        // Creazione dell'EntityManager rappresentativo delle classi di foundation
+        $this->entityManager = new EntityManager($connessione, $config);
+    }
+
+    /**
+     * @return FDatabase
+     */
+    // Singleton per ottenere l'istanza di FDatabase
+    public static function getInstance() {
+        if (self::$istance === null) {
+            self::$istance = new FDatabase();
         }
+        return self::$istance;
     }
-
-    public static function getInstance(): FDatabase {
-        if (self::$instance === null) {
-            self::$instance = new FDatabase();
-        }
-        return self::$instance;
+    /**
+     * @return EntityManager
+     */
+    // Restituisce l'EntityManager, che gestisce le entità nel database
+    public function getEntityManager() : EntityManager {
+        return $this->entityManager;
     }
-
-    public function getPDO(): PDO {
-        return $this->pdo;
-    }
-    
-    public function closeDbConnection(): void {
-        self::$instance = null;
-    }
-
-    private static function readDBInfo(): array  {
-        $jsonString = file_get_contents('Progetto/Utility/json/database.json');
-        $jsonData = json_decode($jsonString, true);
-        return array($jsonData["host"], $jsonData["user"], $jsonData["pass"], $jsonData["dbname"]);
+    /**
+     * Chiude la connessione al database
+     */
+    public function closeConnection() {
+        $this->entityManager->close();
+        $this->entityManager = null;
     }
 }
 

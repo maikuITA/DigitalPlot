@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\DiscriminatorMap;
 #[ORM\Entity]
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
-#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore"])]  // definisco i tipi di utenti
+#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore", "utente" => "EUser"])]  // definisco i tipi di utenti
 #[ORM\Table(name: "Utente")]
 class EUser {
     
