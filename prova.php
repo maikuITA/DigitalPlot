@@ -1,8 +1,7 @@
 <?php
 
-    require_once 'Progetto/autoload.php';
-    use Foundation\FDatabase;
-    use Entity\EUser;
+    require_once 'Progetto\autoload.php';
+
 
     $u = new EUser("mario", "pippo", "mario", "pippo", false ,"01-03-2004", "roma", "pippo@p", "09990", "pippo");
    

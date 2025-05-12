@@ -1,39 +1,35 @@
 <?php
+// Autoloading delle classi
 
-function my_autoloader($className) {
+function myautoload($class_name){
+    $class1 = __DIR__ . "\\" . "Entity\\" . $class_name . ".php";  // percorsi
+    $class2 =  __DIR__ . "\\" . "Foundation\\" . $class_name . ".php";
+    $class3 = __DIR__ . "\\" . "Controller\\" . $class_name . ".php";
+    $class4 = __DIR__ . "\\" . "View\\" . $class_name . ".php";
+    $class5 = __DIR__ . "\\" . "Utility\\" . $class_name . ".php";
+    $class6 = __DIR__ . "\\" . $class_name . ".php";
 
-    //if ($className == 'CGestioneMobile') include_once( 'Controller/'. $className . '.php' );
-    //elseif ($className == 'VGestioneMobile') include_once( 'View/'. $className . '.php' );
-    //else {
+    if ( file_exists( $class1 )){
+        include $class1;
+    } elseif ( file_exists( $class2 )){
+        include $class2;
+    } elseif ( file_exists( $class3 )){
+        include $class3;
+    } elseif ( file_exists( $class4 )){
+        include $class4;
+    } elseif ( file_exists( $class5 )){
+        include $class5;
+    } elseif ( file_exists( $class6 )){
+        include $class6;    
+    } else {
+        echo "error";
+        return false;
+    }
+
+    return true;
     
-    //echo "className: " . $className;
-    $arr = explode("\\", $className);
-    //print_r($arr);
-    
-    $firstLetter = $className[0];
-    switch ($firstLetter) {
-        case 'C':
-            include_once( 'Controller/'. $arr[1] . '.php' );
-            break;
-
-        case 'E':
-            include_once( 'Entity/'. $arr[1] . '.php' );
-            break;
-
-        case 'F':
-            include_once( 'Foundation/'. $arr[1] . '.php' );
-            break;
-
-        case 'V':
-            include_once( 'View/'. $arr[1] . '.php' );
-            break;
-
-        case 'U':
-            include_once( 'Utility/'. $arr[1] . '.php' );
-            break;    
-  }
 }
+spl_autoload_register("myautoload");
 
-spl_autoload_register('my_autoloader');
 
 ?>
