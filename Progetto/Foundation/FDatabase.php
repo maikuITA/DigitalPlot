@@ -5,8 +5,8 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\ORMSetup;
 
-require_once "../Utility/config.php";
-require_once "../../vendor/autoload.php";
+require_once __DIR__."/../Utility/config.php";
+require_once __DIR__."/../../vendor/autoload.php";
 
 class FDatabase{
     
