@@ -1,29 +1,27 @@
 <?php
-function myautoload($class_name){
-    $class_name = str_replace("\\", DIRECTORY_SEPARATOR, $class_name); // Gestione namespace
-    $class1 = __DIR__ . DIRECTORY_SEPARATOR . "Entity" . DIRECTORY_SEPARATOR . $class_name . ".php";
-    $class2 = __DIR__ . DIRECTORY_SEPARATOR . "Foundation" . DIRECTORY_SEPARATOR . $class_name . ".php";
-    $class3 = __DIR__ . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . $class_name . ".php";
-    $class4 = __DIR__ . DIRECTORY_SEPARATOR . "View" . DIRECTORY_SEPARATOR . $class_name . ".php";
-    $class5 = __DIR__ . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . $class_name . ".php";
-    $class6 = __DIR__ . DIRECTORY_SEPARATOR . $class_name . ".php";
 
-    if (file_exists($class1)) {
-        include $class1;
-    } elseif (file_exists($class2)) {
-        include $class2;
-    } elseif (file_exists($class3)) {
-        include $class3;
-    } elseif (file_exists($class4)) {
-        include $class4;
-    } elseif (file_exists($class5)) {
-        include $class5;
-    } elseif (file_exists($class6)) {
-        include $class6;    
-    } else {
-        echo "error: file not found for class $class_name";
-        return false;
+spl_autoload_register(function ($class_name) {
+    // Sostituisce i namespace con i separatori di directory
+    $class_name = str_replace("\\", DIRECTORY_SEPARATOR, $class_name);
+
+    // Definizione dei percorsi dei package
+    $directories = [
+        __DIR__ . DIRECTORY_SEPARATOR . "Entity",
+        __DIR__ . DIRECTORY_SEPARATOR . "Foundation",
+        __DIR__ . DIRECTORY_SEPARATOR . "Controller",
+        __DIR__ . DIRECTORY_SEPARATOR . "Utility",
+        __DIR__ . DIRECTORY_SEPARATOR . "View"
+    ];
+
+    // Cerca la classe in ciascun package
+    foreach ($directories as $directory) {
+        $file = $directory . DIRECTORY_SEPARATOR . $class_name . ".php";
+        if (file_exists($file)) {
+            include $file;
+            return;
+        }
     }
 
-    return true;
-}
+    // Messaggio di errore se il file non viene trovato
+    echo "Error: file not found for class $class_name";
+});

@@ -1,6 +1,6 @@
 <?php
 
-namespace Foundation;
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\ORMSetup;
