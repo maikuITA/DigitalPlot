@@ -1,0 +1,99 @@
+Doctrine
+
+14 Apr 2025
+
+* Aggiungere un campo id ad ogni entità (numerico autoincrementale tranne che per codiceSconto) e rinominarlo id_nomeClasse
+
+* Gestire le relazioni uno a molti; scenario iniziale:
+Abbiamo due classi che hanno una relazione uno a molti es Articolo e Recensione. 
+Un articolo ha più recensioni e una particolare recensione appartiene ad uno specifico articolo; abbiamo ora due punti di vista:
+1. Oggetti: un oggetto articolo contiene un array con tutte le sue recensioni
+2. Database: le due tabelle sono legate tramite relazione, realizzata con chiave esterna all'interno della tabella Recensione
+
+Come possiamo mappare queste due realtà opposte?
+
+utilizzando i seguenti tag:
+
+	In EAbbonamento.php (entità dalla parte "1")
+    /** 
+     * @ORM\OneToMany(targetEntity="Acquisto", mappedBy="abbonamento", cascade={"persist", "remove"})  
+     // definisco il nome del campo dell'altra tabella che è chiave esterna
+    */
+    private $acquisti = [];
+
+    In EAcquisto.php (entità dalla parte del "molti")
+    /** 
+     * @ORM\ManyToOne(targetEntity="Abbonamento", inversedBy= "acquisti")
+     * @ORM\JoinColumn(name = "fk_abbonamento", referencedColumnName = "id_abbonamento", nullable=false) 
+    // definizione chiave esterna
+    */
+    private EAbbonamento $abbonamento;
+    
+In queto modo Doctrine creerà la relazione uno a molti nel database, da notare che la presenza della "chiave esterna" in EAcquisto.php 
+genera una sorta di ridondanza delle informazioni, ma questo è necessario per poter generare il database
+dato che non è possibile implementare come campo di una tabella un array di oggetti
+
+* Ripetiamo questo procedimento per tutte le classi che presentano relazioni uno a molti (RICORDA: 
+non si possono mappare le relazioni molti a molti)
+
+Mi sono accorto che l'implementazione della classe Acquisto è errata, l'UML dice che questa classe ha relazione uno a molti con: 
+Sconto, Abbonamento e Carta di Credito; ma il modo in cui noi lo abbiamo implementato è differente.
+Noi utilizziamo un istanza della classe sconto e della classe abbonamento in Acquisto, e non va bene. 
+La relazione uno a molti vuole un array nelle altre classi e le "chiavi esterne" in Acquisto.
+In questo modo però i metodi che abbiamo implementato non funzionano, dato che non avremmo più oggetti in Acquisto, 
+per poter fare lo stesso dobbiamo appoggiarci al database.
+
+Come usare un ORM tool
+1. scaricare composer
+2. scaricare doctrine (almeno versione 3.3) con composer require doctrine
+3. scaricare symfony (almeno la 7.2) con composer require symfony
+NOTA verificare che siano presenti le classi symfony/cache
+NOTA 2, verificare che nel file composer.json siano presenti doctrine e symfony (in teoria è necessario che ci sia anche l'autoloader, una volta aggiunto eseguire il comando composer dump-autoload)
+4. fare un comando strano (nella cartella del progetto) per generare i file necessari
+5. creare i file config.php e doctrine.php (prendere come esempio quelli usati nel progetto)
+6. creare le classi entità e mapparle con i tag #[ORM\....]
+
+NOTA sui tipi di tag:
+
+#[ORM\Entity] -> definisce la tabella
+#[ORM\Table(name: "Utente")] -> da il nome alla tabella
+
+Tag per realizzare le generalizzarioni (da mettere solo nella classe padre)
+#[ORM\InheritanceType("JOINED")] -> Metodologia con cui risolvere l'ereditarietà
+#[ORM\DiscriminatorColumn(name: "tipo", type: "string")] -> aggiunta del campo tipo
+#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore", "progettista" => "EProgettista"])]  -> definisco i valori del campo tipo "valore" => "nome_classe"
+NB per usarli bisogna importare: 
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+
+#[ORM\Id] -> il campo è chiave primaria, per fare una chiave doppia basta mettere due volte lo stesso tag
+#[ORM\GeneratedValue(strategy: "IDENTITY")] -> il campo è autogenerato, con identity va da 1 in poi
+#[ORM\Column(name: "id_abbonamento", type: "integer")] -> definizione standard della colonna
+
+Relazione uno a molti, si crea con un doppio tag (i tag vanno nelle due classi che devi mettere in join)
+
+#[ORM\OneToMany(targetEntity: "EAcquisto", mappedBy: "idAbbonamento", cascade: ["persist", "remove"])] 
+-> tagetEntity: nome della classe che dobbiamo mettere in relazione
+-> mappedBy: nome dell'attributo in quella classe che funge da chiave estrna
+-> cascade: come gestire gli update e i remove
+
+#[ORM\ManyToOne(targetEntity: "EAbbonamento", inversedBy: "acquisti")] 
+-> inversedBy: nome dell'attributo (solitamente array) che si trova in EAbbonamento
+#[ORM\JoinColumn(name: "fk_abbonamento", referencedColumnName: "id_abbonamento", nullable: false)] 
+-> name: nome della colonna nel db
+-> referencedColumnName: nome della chiave primaria di EAbbonamento (nel db)
+-> nullable: specifica se il campo può essere nullo 
+
+
+7. dalla cartella del progetto eseguire il comando 
+php bin/doctrine.php orm:schema-tool:create
+NB il percorso di doctrine.php potrebbe essere diverso (dipende dal progetto)
+NB quando si chiede di caricare un oggetto carica solo quello e non dati scaturiti da sue relazioni (es, carica solo lo scrittore e non l'elenco dei suoi articoli; le query devo essere specifiche)
+
+
+NOTE di Andrea: 
+alcune chiavi esterne possono essere nulle, dato che non è detto che ci sia la relazione (es non è detto che in un acquisto sia stato utilizzato un codice sconto);
+-> ho messo nullable: true nella relazione acquisto-sconto
+
+In tutte le altre relazioni non c'è bisogno di fare questa operazione
+

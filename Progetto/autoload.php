@@ -1,39 +1,27 @@
 <?php
 
-function my_autoloader($className) {
+spl_autoload_register(function ($class_name) {
+    // Sostituisce i namespace con i separatori di directory
+    $class_name = str_replace("\\", DIRECTORY_SEPARATOR, $class_name);
 
-    //if ($className == 'CGestioneMobile') include_once( 'Controller/'. $className . '.php' );
-    //elseif ($className == 'VGestioneMobile') include_once( 'View/'. $className . '.php' );
-    //else {
-    
-    //echo "className: " . $className;
-    $arr = explode("\\", $className);
-    //print_r($arr);
-    
-    $firstLetter = $className[0];
-    switch ($firstLetter) {
-        case 'C':
-            include_once( 'Controller/'. $arr[1] . '.php' );
-            break;
+    // Definizione dei percorsi dei package
+    $directories = [
+        __DIR__ . DIRECTORY_SEPARATOR . "Entity",
+        __DIR__ . DIRECTORY_SEPARATOR . "Foundation",
+        __DIR__ . DIRECTORY_SEPARATOR . "Controller",
+        __DIR__ . DIRECTORY_SEPARATOR . "Utility",
+        __DIR__ . DIRECTORY_SEPARATOR . "View"
+    ];
 
-        case 'E':
-            include_once( 'Entity/'. $arr[1] . '.php' );
-            break;
+    // Cerca la classe in ciascun package
+    foreach ($directories as $directory) {
+        $file = $directory . DIRECTORY_SEPARATOR . $class_name . ".php";
+        if (file_exists($file)) {
+            include $file;
+            return;
+        }
+    }
 
-        case 'F':
-            include_once( 'Foundation/'. $arr[1] . '.php' );
-            break;
-
-        case 'V':
-            include_once( 'View/'. $arr[1] . '.php' );
-            break;
-
-        case 'U':
-            include_once( 'Utility/'. $arr[1] . '.php' );
-            break;    
-  }
-}
-
-spl_autoload_register('my_autoloader');
-
-?>
+    // Messaggio di errore se il file non viene trovato
+    echo "Error: file not found for class $class_name";
+});
