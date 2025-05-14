@@ -1,8 +1,8 @@
 <?php
 
 
-require_once (__DIR__ . "/../../vendor/autoload.php");
-require_once (__DIR__ . "/config.php");
+require_once (__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php");
+require_once (__DIR__ . DIRECTORY_SEPARATOR . "config.php");
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\DriverManager;

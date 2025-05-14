@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'Progetto/autoload.php';
+    require_once ("Progetto" . DIRECTORY_SEPARATOR . "autoload.php");
 
 
     $u = new EUser("paperino", "pippo", "mario", "pippo", false ,"2004-03-25", "roma", "pippo@p", "09990", "pippo");
