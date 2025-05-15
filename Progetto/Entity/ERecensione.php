@@ -20,12 +20,12 @@ class ERecensione{
 
     #[ORM\ManyToOne(targetEntity: "EAbbonato", inversedBy: "recensioni")]
     #[ORM\JoinColumn(name: "fk_abbonato", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
-    private int $idAbbonato;
+    private EAbbonato $idAbbonato;
     #[ORM\ManyToOne(targetEntity: "EArticolo", inversedBy: "recensioni")]
     #[ORM\JoinColumn(name: "fk_articolo", referencedColumnName: "id_articolo", nullable: false)] // definizione chiave esterna
-    private int $idArticolo;
+    private EArticolo $idArticolo;
 
-    public function __construct(int $valutazione, string $commento,string $dataPubblicazione, int $idAbbonato = 0, int $idArticolo = 0) {
+    public function __construct(int $valutazione, string $commento, string $dataPubblicazione, EAbbonato $idAbbonato , EArticolo $idArticolo ) {
 
         $this->valutazione = $valutazione;
         $this->commento = $commento;
@@ -53,16 +53,16 @@ class ERecensione{
     public function getCommento(): string {
         return $this->commento;
     }
-    public function setIdUtente(int $idAbbonato) {
+    public function setIdUtente(EAbbonato $idAbbonato) {
         $this->idAbbonato = $idAbbonato;
     }
-    public function getIdAbbonato(): int {
+    public function getIdAbbonato(): EAbbonato {
         return $this->idAbbonato;
     }
-    public function setIdArticolo(int $idArticolo) {
+    public function setIdArticolo(EArticolo $idArticolo) {
         $this->idArticolo = $idArticolo;
     }
-    public function getIdArticolo(): int {
+    public function getIdArticolo(): EArticolo {
         return $this->idArticolo;
     }
 
