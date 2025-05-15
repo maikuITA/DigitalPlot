@@ -36,7 +36,7 @@ class EArticolo{
     #[ORM\ManyToOne(targetEntity: "EScrittore", inversedBy: "articoli")]
     #[ORM\JoinColumn(name: "fk_scrittore", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private int $idScrittore;
+    private EScrittore $idScrittore;
     /** 
      * @ORM\OneToMany(targetEntity="Lettura", mappedBy="idArticolo", cascade={"persist", "remove"})  // definisco il nome del campo dell'altra tabella che è chiave esterna
     */
@@ -44,7 +44,7 @@ class EArticolo{
     private $letture = [];
 
 
-    public function __construct(string $titolo,string $descrizione,string $stato = "da approvare", string $genere, string $categoria, string $dataPubblicazione, int $idScrittore, array $letture = [], array $recensioni = []) {
+    public function __construct(string $titolo,string $descrizione,string $stato = "da approvare", string $genere, string $categoria, string $dataPubblicazione, EScrittore $idScrittore, array $letture = [], array $recensioni = []) {
         $this->titolo = $titolo;
         $this->descrizione = $descrizione;
         $this->stato = $stato;
@@ -108,10 +108,10 @@ class EArticolo{
     public function getCategoria(): string {
         return $this->categoria;
     }
-    public function setIdScrittore(int $idScrittore) {
+    public function setIdScrittore(EScrittore $idScrittore) {
         $this->idScrittore = $idScrittore;
     }
-    public function getIdScrittore(): int {
+    public function getIdScrittore(): EScrittore {
         return $this->idScrittore;
     }
     public function setDataPubblicazione(string $dataPubblicazione){
