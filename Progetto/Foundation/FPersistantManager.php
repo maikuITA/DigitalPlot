@@ -1,15 +1,15 @@
 <?php
 
-class PersistentManager {
+class FPersistantManager {
 
     private static $instance;
 
     private function __construct() {
     }
 
-    public static function getInstance(): PersistentManager {
+    public static function getInstance(): FPersistantManager {
         if (self::$instance === null) {
-            self::$instance = new PersistentManager();
+            self::$instance = new FPersistantManager();
         }
         return self::$instance;
     }
@@ -23,7 +23,7 @@ class PersistentManager {
      * @throws Exception
      */
     public function saveInBd(object $entity): bool {
-        return FEntityManager::getInstance()->saveObject($entity);
+        return FEntityManager::getInstance()->saveObj($entity);
     }
     /**
      * Delete an object in the database

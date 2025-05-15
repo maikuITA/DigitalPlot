@@ -1,12 +1,10 @@
 <?php
 
-    require_once ("Progetto" . DIRECTORY_SEPARATOR . "autoload.php");
-
-
-    $u = new EUser("paperino", "pippo", "mario", "pippo", false ,"2004-03-25", "roma", "pippo@p", "09990", "pippo");
-
-    $db = FDatabase::getInstance();
-    $em = $db->getEntityManager();
-    $em->persist($u);
-    $em->flush();
+    require_once (__DIR__ . DIRECTORY_SEPARATOR . "Progetto" . DIRECTORY_SEPARATOR . "autoload.php");
+    $plot = null;
+    $u = new EUser(username:"c",password: "CAZZETTO", nome:"LUDOV", cognome: "cuci", admin:false , dataNascita: "2004-02-06", luogoNascita: "avezzano", email: "pippo@p", telefono: "423563524131", biografia: "regreregergreg");
+    $u->setId(1);
+    FPersistantManager::getInstance()->saveInBd($u);
+    $u2 = FPersistantManager::getInstance()->retriveObjById(EUser::class, 8);
+    echo $u2->__toString();
 ?>
