@@ -17,7 +17,7 @@ class FPersistantManager {
     // ========== Gestione CRUD ==========
 
     /**
-     * Save an object in the database
+     * Save an object in the database or update it if it already exists
      * @param object $entity
      * @return bool
      * @throws Exception

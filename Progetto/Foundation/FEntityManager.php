@@ -176,7 +176,7 @@ class FEntityManager {
 
     //------------Saving and Deleting Methods--------------
     /**
-     * save one object in the db (persistance of Entity)
+     * save one object in the db (persistance of Entity) or update it
      * @param object $obj
      * @return boolean
      * @throws Exception
@@ -212,7 +212,6 @@ class FEntityManager {
             return false;
         }
     }
-
 }
 
 ?>

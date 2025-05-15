@@ -15,9 +15,9 @@ class EPlotCard{
     private int $punti;
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "PlotCard")]
     #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
-    private int $idUser;
+    private EUser $idUser;
 
-    public function __construct(int $punti, int $idUser = 0) {
+    public function __construct(int $punti, EUser $idUser ) {
         $this->setPunti($punti);
         $this->idUser = $idUser;
     }
@@ -49,11 +49,15 @@ class EPlotCard{
     public function getPunti(): int {
         return $this->punti;
     }
-    public function setIdUser(int $idUser) {
+    public function setIdUser(EUser $idUser) {
         $this->idUser = $idUser;
     }
-    public function getIdUser(): int {
+    public function getIdUser(): EUser {
         return $this->idUser;
+    }
+
+    public function __toString(): string {
+        return "Punti: " . $this->punti . ", ID Utente: " . $this->idUser;
     }
 }
 
