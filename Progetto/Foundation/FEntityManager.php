@@ -29,7 +29,7 @@ class FEntityManager {
      * @param mixed $id
      * @throws Exception
      */
-    public static function giveMeObjById( string $className, $id) : ?object {
+    public static function retriveObjById( string $className, $id) : ?object {
         try{
             $obj = self::$entityManager->find($className, $id);
             return $obj;

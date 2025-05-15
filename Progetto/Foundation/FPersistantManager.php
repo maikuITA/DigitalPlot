@@ -1,45 +1,56 @@
 <?php
 
-use Doctrine\ORM\EntityManager;
-
 class PersistentManager {
 
-    private ?FDatabase $db;
-    private ?EntityManager $em;
+    private static $instance;
 
-    public function __construct() {
-        $this->db = FDatabase::getInstance();
-        $this->em = $this->db->getEntityManager();
+    private function __construct() {
+    }
+
+    public static function getInstance(): PersistentManager {
+        if (self::$instance === null) {
+            self::$instance = new PersistentManager();
+        }
+        return self::$instance;
     }
 
     // ========== Gestione CRUD ==========
 
-    public function saveInBd(object $entity): void {
-        $this->em->persist($entity);
-        $this->em->flush();
+    /**
+     * Save an object in the database
+     * @param object $entity
+     * @return bool
+     * @throws Exception
+     */
+    public function saveInBd(object $entity): bool {
+        return FEntityManager::getInstance()->saveObject($entity);
+    }
+    /**
+     * Delete an object in the database
+     * @param object $entity
+     * @return bool
+     * @throws Exception
+     */
+    public function delete(object $entity): bool {
+        return FEntityManager::getInstance()->deleteObj($entity);
     }
 
-    public function delete(object $entity): void {
-        $this->em->remove($entity);
+    /**
+     * Retrive an object by its id
+     * @param string $className
+     * @param mixed $id
+     * @return object || null
+     * @throws Exception
+     */
+    public function retriveObjById(string $className, $id): ?object {
+        return FEntityManager::getInstance()->retriveObjById($className, $id);
     }
 
-    public function clear(): void {
-        $this->em->clear();
+    public function retriveUserOnUsername(string $username): ?object {
+        return FEntityManager::getInstance()->retriveObjByAttribute(EUser::class, 'username', $username);
     }
 
-    //utilizzato per l'update di un oggetto già presente nel database
-    public function flush(): void {
-        $this->em->flush();
-    }
-
-    public function find(string $entityClass, mixed $id): ?object {
-        return $this->em->find($entityClass, $id);
-    }
-    // INUTILE CON IL NOSTRO APPROCCIO, molto utile per fare query su una singola tabella
-    public function getRepository(string $entityClass) {
-        return $this->em->getRepository($entityClass);
-    }
-
+    /*
     // ========== Query DQL personalizzate ==========
 
     public function runDqlQuery(string $dql, array $params = []): array {
@@ -69,6 +80,7 @@ class PersistentManager {
     public function detach(object $entity): void {
         $this->em->detach($entity);
     }
+    */
 
 }
 ?>
