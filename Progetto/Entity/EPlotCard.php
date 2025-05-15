@@ -14,7 +14,7 @@ class EPlotCard{
     #[ORM\Column(type: "integer")] 
     private int $punti;
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "PlotCard")]
-    #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
+    #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false, unique: true)] // definizione chiave esterna
     private EUser $idUser;
 
     public function __construct(int $punti, EUser $idUser ) {

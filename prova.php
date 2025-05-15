@@ -7,10 +7,10 @@
     //$plot = new EPlotCard(10,0);
     //$u->addPlotCard($plot);
     //FPersistantManager::getInstance()->saveInBd($u);
-    $u2 = FPersistantManager::getInstance()->retriveObjById(EUser::class, 9);
-    $plot = new EPlotCard(10,$u2);
-    $u2->addPlotCard( $plot );
-    FPersistantManager::getInstance()->saveInBd( $plot);
+    $u2 = FPersistantManager::getInstance()->retriveObjById(EUser::class, 8);
+    $plot = new EPlotCard(113,$u2);
+    FPersistantManager::getInstance()->saveInBd($plot);
+    echo $u2->getPlotCard()->getPunti();
 
     
 ?>
