@@ -5,6 +5,9 @@ require_once 'StartSmarty.php';
 
 use Controller\CRunner;
 
+// Provo ad istallare il database
+InstallerDb::install();
+
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
