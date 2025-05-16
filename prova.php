@@ -12,6 +12,6 @@
     //FPersistantManager::getInstance()->saveInBd($plot);
     //echo $u2->getPlotCard()->getPunti();
 
-    
+    //ciao ludo
     
 ?>
