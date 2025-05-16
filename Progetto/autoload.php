@@ -8,7 +8,8 @@ spl_autoload_register(function ($class_name) {
         __DIR__ . DIRECTORY_SEPARATOR . "Foundation",
         __DIR__ . DIRECTORY_SEPARATOR . "Controller",
         __DIR__ . DIRECTORY_SEPARATOR . "Utility",
-        __DIR__ . DIRECTORY_SEPARATOR . "View"
+        __DIR__ . DIRECTORY_SEPARATOR . "View",
+        __DIR__ . DIRECTORY_SEPARATOR . "Install",
     ];
 
     // Cerca la classe in ciascun package
