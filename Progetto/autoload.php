@@ -1,8 +1,6 @@
 <?php
 
 spl_autoload_register(function ($class_name) {
-    // Sostituisce i namespace con i separatori di directory
-    $class_name = str_replace("\\", DIRECTORY_SEPARATOR, $class_name);
 
     // Definizione dei percorsi dei package
     $directories = [
@@ -10,7 +8,8 @@ spl_autoload_register(function ($class_name) {
         __DIR__ . DIRECTORY_SEPARATOR . "Foundation",
         __DIR__ . DIRECTORY_SEPARATOR . "Controller",
         __DIR__ . DIRECTORY_SEPARATOR . "Utility",
-        __DIR__ . DIRECTORY_SEPARATOR . "View"
+        __DIR__ . DIRECTORY_SEPARATOR . "View",
+        __DIR__ . DIRECTORY_SEPARATOR . "Install",
     ];
 
     // Cerca la classe in ciascun package

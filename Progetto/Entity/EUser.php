@@ -54,7 +54,7 @@ class EUser {
     private $PlotCard = [];
 
 
-    public function __construct(string $username, string $password,string $nome, string $cognome,bool $admin = false ,string $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = []) {
+    public function __construct(string $username, string $password,string $nome, string $cognome,bool $admin = false ,string $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = [] ) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setNome($nome);
@@ -66,7 +66,7 @@ class EUser {
         $this->setBiografia($biografia);
         $this->setAdmin($admin);
         $this->letture = $letture;
-        $this->PlotCard = $PlotCard; 
+        $this->PlotCard = $PlotCard;
     }
     
 
@@ -179,6 +179,19 @@ class EUser {
     public function removePlotCard(): void {
         array_shift($this->PlotCard);
     }
+    public function __toString()
+    {
+        return "ID: " . $this->getId() . "\n" .
+               "Username: " . $this->getUsername() . "\n" .
+               "Nome: " . $this->getNome() . "\n" .
+               "Cognome: " . $this->getCognome() . "\n" .
+               "Data di Nascita: " . $this->getDataNascita()->format('Y-m-d') . "\n" .
+               "Luogo di Nascita: " . $this->getLuogoNascita() . "\n" .
+               "Email: " . $this->getEmail() . "\n" .
+               "Telefono: " . $this->getTelefono() . "\n" .
+               "Biografia: " . $this->getBiografia() . "\n";
+    }
 }
+
 
 ?>

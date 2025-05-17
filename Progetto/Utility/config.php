@@ -1,12 +1,6 @@
 <?php
-
-// Impostazioni del database
-return [
-    'dbname' => 'DigitalPlot',
-    'user' => 'root',
-    'password' => 'pippo',
-    'host' => 'localhost',
-    'driver' => 'pdo_mysql',
-];
-
-?>
+//Database connection settings
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASS', 'pippo');
+define('DB_NAME', 'DigitalPlot');

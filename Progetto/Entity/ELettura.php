@@ -14,12 +14,12 @@ class ELettura{
     private int $codice;
     #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "letture")]
     #[ORM\JoinColumn(name : "fk_utente" , referencedColumnName : "id_utente", nullable:false)] // definizione chiave esterna
-    private int $idUser;
+    private EUser $idUser;
     #[ORM\ManyToOne(targetEntity: "EArticolo", inversedBy: "letture")]
     #[ORM\JoinColumn(name : "fk_articolo", referencedColumnName : "id_articolo", nullable: false)] // definizione chiave esterna
-    private int $idArticolo;
+    private EArticolo $idArticolo;
 
-    public function __construct(int $idUser = 0, int $idArticolo = 0) {
+    public function __construct(EUser $idUser, EArticolo $idArticolo ) {
         $this->idUser = $idUser;
         $this->idArticolo = $idArticolo;
     }
@@ -29,11 +29,11 @@ class ELettura{
     {
         $this->codice = $codice;
     }
-    public function setIdUser(int $idUser)
+    public function setIdUser(EUser $idUser)
     {
         $this->idUser = $idUser;
     }
-    public function setIdArticolo(int $idArticolo)
+    public function setIdArticolo(EArticolo $idArticolo)
     {
         $this->idArticolo = $idArticolo;
     }
@@ -41,10 +41,10 @@ class ELettura{
     public function getCodice(){
         return $this->codice;
     }
-    public function getIdUser(){
+    public function getIdUser(): EUser{
         return $this->idUser;
     }
-    public function getIdArticolo(){
+    public function getIdArticolo(): EArticolo{
         return $this->idArticolo;
     }
 }
