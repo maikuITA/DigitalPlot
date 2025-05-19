@@ -83,6 +83,7 @@ Relazione uno a molti, si crea con un doppio tag (i tag vanno nelle due classi c
 -> name: nome della colonna nel db
 -> referencedColumnName: nome della chiave primaria di EAbbonamento (nel db)
 -> nullable: specifica se il campo può essere nullo 
+
 ---------------------------------------------------------------------------
 
 7. dalla cartella del progetto eseguire il comando 
