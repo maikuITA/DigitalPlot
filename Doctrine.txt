@@ -97,3 +97,40 @@ alcune chiavi esterne possono essere nulle, dato che non è detto che ci sia la 
 
 In tutte le altre relazioni non c'è bisogno di fare questa operazione
 
+Come inizializzare un progetto che utilizza Doctrine e Smarty
+
+1. -------------Avere PHP-----------------
+Assicurati di avere già installato PHP.
+
+2. ---------Installare composer-----------
+installa composer (MAC/Linux) con i seguenti comandi
+
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
+    sudo mv composer.phar /usr/local/bin/composer
+
+l'ultimo comando serve per spostarlo in una cartella di sistema. (su MAC è nascosta di default)
+Varifica che funzioni con 
+
+    composer --version
+
+3. ----------Creazione Progetto-----------
+Spostati/crea la cartella del progetto.
+
+4. --------Utilizzo di composer-----------
+Eseguire il comando
+
+    composer init
+
+per inizializzare composer, tieni conto che potrebbe chiederti info aggiuntive che puoi skippare con enter
+Installa Doctrine e Smarty
+
+    composer require doctrine/orm
+    composer require doctrine/dbal
+    composer require smarty/smarty
+
+in alternativa, puoi aggiornare il file composer.json con i pacchetti che vuoi aggiungere.
+Per poter apportare le modifice effettuate bisogna eseguire il comando
+
+    composer update
