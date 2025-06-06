@@ -1,76 +1,52 @@
-/* ********************************
-<div> che contiene .container
-******************************** */
-.main-content {
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 450;
+    font-style: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: fit-content;
-    margin: 20px auto;
-}
-
-/* ********************************
-label for .container
-******************************** */
-.Lcontainer {
-    position:relative;
-    top: 35px;
-    color: var(--ebony-clay);
-    font-size: xx-large;
-    font-weight: 600;
-}
-
-/* ********************************
-<div> che contiene .article
-******************************** */
-.container {
-    margin-top: 40px;
-    padding: 30px;
-    border-radius: 1px;
-    border: 1px solid rgb(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 900px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    padding: 20px;
-}
-
-/* ********************************
-<div> che contiene .genere, .corpo e .linked (e l'emoji)
-******************************** */
-.article {
-    border: 1px solid rgb(0, 0, 0, 0.2);
-    border-radius: 1px;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
-    margin: 5px;
-    max-width: 280px;
+    border: 1px solid rgb(0, 0, 0, 0.1);
+    color: black;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.genere, .corpo, .linked {
-    font-size: medium;
+nav {
+    display: flex;
+    gap: 20px;
 }
 
-.genere {
-    color: var(--ebony-clay);
-    font-weight: bold;
+.card {
+    max-width: 300px;
 }
 
-.linked, .fi-ts-padlock-check {
-    cursor: pointer;
+.container {
+    /* background-color: aliceblue; */
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.linked:hover {
-    color: var(--manatee);
+.left {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
 }
 
-.linked {
-    color: var(--rajah_more);
-    font-weight: 600;
-}
-
-.fi-ts-padlock-check {
-    color: var(--ebony-clay);
-    font-weight: 900;
+.subtitle {
+    margin-top: 5px;
+    text-align: justify;
 }
