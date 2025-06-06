@@ -76,6 +76,16 @@ class CRunner { // Definisce la classe CRunner, il controller principale dell'ap
         (new VError())->showMessage($errorCode, $message); // Crea un'istanza di VError e visualizza il messaggio di errore.
     }
 
+    // Method to redirect to HTTPS if not already using it.
+    public static function redirectToHttps(): void {
+        if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off'){
+            $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+            header('Http/1.1 301 Moved Permanently'); 
+            header('Location: ' . $location);
+            exit;
+        }
+    }
+
 }
 
 ?>

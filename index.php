@@ -14,6 +14,7 @@ InstallerDb::install();
 
 // Avvio il runner (FrontController)
 $runner = new CRunner();
+$runner->redirectToHttps();
 $runner->run();
 
 ?>

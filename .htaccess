@@ -1,0 +1,9 @@
+# Redirect any URL that doesn't match an existing file to "index.php"
+
+# line 4: start the rewrite engine
+RewriteEngine on 
+
+# the rewrite rule at line 9 is subject to the following condition: 
+# if the requested file does not exist, redirects to the script "index.php"
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* index.php
