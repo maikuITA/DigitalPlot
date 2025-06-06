@@ -46,6 +46,10 @@ nav {
     align-items: center;
 }
 
+.center {
+    margin-right: 60px;
+}
+
 .subtitle {
     margin-top: 5px;
     text-align: justify;

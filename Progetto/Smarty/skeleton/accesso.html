@@ -1,48 +1,95 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalPlot-Accesso</title>
-    <link rel="stylesheet" href="global.css">
+    <title>DigitalPlot-Home</title>
+    <link rel="stylesheet" href="bulma/bulma.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="accesso.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img id="digilogo" class="digilogo" src="digitalplot.png">
-            <a class="ldigilogo">DigitalPlot</a>
-            <a class="nav" href="index.html">Home</a>
-            <a class="nav" href="abbonati.html">Abbonati</a>
-            <a class="nav" href="pagamento.html">Pagamento</a>
+    <header id="header">
+        <div class="left">
+            <a href="#" class="button">Home</a>
+            <a href="#" class="button">Abbonati</a>
+		</div>
+        <div class="center">
+            <div>
+                <a href="#" class="title is-1">Digital</a>
+                <a href="#" class="title is-1 has-text-warning">Plot</a>
+            </div>
         </div>
-        <div class="actions">
-            <button class="theme" id="theme-toggle">
-                <i class="fi-ts-lightbulb-on"></i>
-            </button>
-            <a class="find" href="ricerca.html">
-                <i class="fi-ts-issue-loupe"></i>
-            </a>
-            <a class="accedi" href="accesso.html">Accedi</a>
-        </div>
+		<div class="right">
+            <a href="#" class="button is-warning">Accesso</a>
+		</div>
     </header>
-    <div class="main-content">
-        <div name="loginbox" class="loginbox">
-            <a class="lLogin">Accedi</a><br><br>
-            <form class="fLogin">
-                <label for="username">Nome utente</label>
-                <input class="inp" type="text" id="username" name="username" placeholder="Username" value=""><br><br>
-                <label for="password">Password</label>
-                <input class="inp" type="password" id="password" name="password" placeholder="Password" value=""><br><br>
-                <input type="submit" value="Login" class="lgn">
-            </form>
-            <br><br>
-            <a class="nuovo">Non hai un account?</a><a class="regis" href="registrazione.html">Registrati</a>
+    <div class="body-container">
+        <div class="content">
+            <div class="tabs is-centered is-medium">
+                <ul>
+                    <li class="is-active"><a onclick="showLogin()"><i class="fa fa-key fa-fw"></i>Login</a></li>
+                    <li><a onclick="showRegis()"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Registrazione</a></li>
+                </ul>
+            </div>
+            <div class="container">
+                <form action="" method="post" class="form" id="login-form">
+                    <label class="title is-3" for="login-form">Accedi al tuo account</label>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
+                            <span class="icon is-small is-left has-text-warning">
+                            <i class="fas fa-envelope"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="password" placeholder="Inserisci la tua password" name="email" required>
+                            <span class="icon is-small is-left has-text-warning">
+                            <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-warning is-fullwidth">Accedi</button>
+                        </div>
+                    </div>
+                </form>
+                <form action="" method="post" class="form" id="regis-form">
+                    <label class="title is-3" for="login-form">Crea il tuo account</label>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
+                            <span class="icon is-small is-left has-text-warning">
+                            <i class="fas fa-envelope"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="password" placeholder="Inserisci la tua password" name="email" required>
+                            <span class="icon is-small is-left has-text-warning">
+                            <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <button type="submit" class="button is-warning is-fullwidth">Accedi</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+    </div>
 </body>
 </html>
+<script src="accesso.js"></script>
