@@ -1,0 +1,28 @@
+.body-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    flex-direction: row;
+    justify-content: center;
+    margin: 30px; 
+    gap: 5px;
+}
+
+.card.text {
+    max-width: 300px;
+}
+
+.container {
+    margin-top: 20px;
+    display: block;
+    align-items: center;
+}
+
+.container > a {
+    display: block;
+    text-align: center;
+}
+
+.subtitle {
+    width: 100%;
+    text-align: justify;
+}
