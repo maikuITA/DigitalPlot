@@ -5,12 +5,18 @@ console.log("regis form", regis);
 regis.style.display = 'none'; // Hide registration form by default
 const stile = login.style.display;
 
-console.log("porco dio");
+const log = document.getElementById("log");
+const reg = document.getElementById("reg");
+console.log("show login", log, reg);
 
 function showLogin() {
     if (login && regis) {
         login.style.display = stile;
         regis.style.display = 'none';
+        if (log && reg) {
+            log.classList.add("is-active");
+            reg.classList.remove("is-active");
+        }
     }
 }
 
@@ -18,5 +24,9 @@ function showRegis() {
     if (login && regis) {
         regis.style.display = stile;
         login.style.display = 'none';
+        if (log && reg) {
+            log.classList.remove("is-active");
+            reg.classList.add("is-active");
+        }
     }
 }

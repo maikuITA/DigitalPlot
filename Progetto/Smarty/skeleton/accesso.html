@@ -34,8 +34,8 @@
         <div class="content">
             <div class="tabs is-centered is-medium">
                 <ul>
-                    <li class="is-active"><a onclick="showLogin()"><i class="fa fa-key fa-fw"></i>Login</a></li>
-                    <li><a onclick="showRegis()"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Registrazione</a></li>
+                    <li id="log" class="is-active"><a onclick="showLogin()"><i class="fa fa-key fa-fw"></i>Login</a></li>
+                    <li id="reg"><a onclick="showRegis()"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Registrazione</a></li>
                 </ul>
             </div>
             <div class="container">
@@ -67,6 +67,22 @@
                     <label class="title is-3" for="login-form">Crea il tuo account</label>
                     <div class="field">
                         <p class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Nome" name="nome" required>
+                            <span class="icon is-small is-left has-text-warning">
+                            <i class="fa fa-user-circle"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Cognome" name="cognome" required>
+                            <span class="icon is-small is-left has-text-warning">
+                            <i class="fa fa-user-circle"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
                             <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
                             <span class="icon is-small is-left has-text-warning">
                             <i class="fas fa-envelope"></i>
@@ -83,7 +99,7 @@
                     </div>
                     <div class="field">
                         <div class="control">
-                            <button type="submit" class="button is-warning is-fullwidth">Accedi</button>
+                            <button type="submit" class="button is-warning is-fullwidth">Registrati</button>
                         </div>
                     </div>
                 </form>
