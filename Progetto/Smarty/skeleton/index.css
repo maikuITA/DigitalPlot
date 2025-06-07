@@ -44,6 +44,7 @@ nav {
     flex-direction: row;
     gap: 5px;
     align-items: center;
+    width: 200px;
 }
 
 .center {
@@ -53,4 +54,5 @@ nav {
 .subtitle {
     margin-top: 5px;
     text-align: justify;
+    width: 200px;
 }
