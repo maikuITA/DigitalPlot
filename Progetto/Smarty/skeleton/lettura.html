@@ -1,90 +1,79 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalPlot-Lettura</title>
-    <link rel="stylesheet" href="global.css">
+    <title>DigitalPlot-Home</title>
+    <link rel="stylesheet" href="bulma/bulma.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="lettura.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img id="digilogo" class="digilogo" src="digitalplot.png">
-            <a class="ldigilogo">DigitalPlot</a>
-            <a class="nav" href="index.html">Home</a>
-            <a class="nav" href="abbonati.html">Abbonati</a>
-            <a class="nav" href="pagamento.html">Pagamento</a>
+    <header id="header">
+        <div class="left">
+            <a href="index.html" class="button">Home</a>
+            <a href="abbonati.html" class="button">Abbonati</a>
+		</div>
+        <div class="center">
+            <div>
+                <a href="#" class="title is-1">Digital</a>
+                <a href="#" class="title is-1 has-text-warning">Plot</a>
+            </div>
         </div>
-        <div class="actions">
-            <button class="theme" id="cambiaTema">
-                <i class="fi-ts-lightbulb-on"></i>
-            </button>
-            <a class="find" href="ricerca.html">
-                <i class="fi-ts-issue-loupe"></i>
-            </a>
-            <a class="accedi" href="accesso.html">Accedi</a>
-        </div>
+		<div class="right">
+            <a href="accesso.html" class="button is-warning">Accedi</a>
+		</div>
     </header>
-    <div class="main-content">
-        <div class="container">
-            <a class="title">Titolo articolo</a>
-            <a class="text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque congue leo in metus dictum dignissim. Vivamus mollis ut metus id convallis. Etiam eleifend elit et nulla posuere, in pharetra risus placerat. Vivamus gravida vestibulum neque, ut feugiat leo blandit ultricies. Duis rhoncus, felis eu consectetur tempus, justo orci ultrices diam, at venenatis ipsum justo id est. Quisque ac tincidunt velit. Fusce in fringilla ligula. Morbi rutrum diam in tristique dictum. Sed rutrum mi vitae sapien euismod finibus. Vivamus dictum, tortor ut tristique consequat, metus erat commodo diam, eget pretium mi metus et tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec scelerisque enim non ligula euismod tempor. Integer vel efficitur nisi, eget placerat diam. Donec et sem a odio auctor pharetra ut a urna. Morbi vestibulum magna eget sapien imperdiet, a mollis nulla placerat. Donec faucibus mauris diam, nec hendrerit purus facilisis vel. Duis tellus eros, malesuada quis sagittis non, ultrices quis tortor. Aenean dignissim scelerisque eros. Vivamus egestas sapien lorem, ut viverra ex viverra eget. Pellentesque eu erat et elit aliquet scelerisque. Sed eget erat in ante consectetur placerat. Proin dapibus arcu ac erat maximus, eu molestie eros dictum. Donec eget ligula turpis. Nam faucibus sed sem sed mattis. Nulla facilisi. Fusce pellentesque lobortis quam et porta. Fusce et turpis aliquam, malesuada metus quis, ornare purus. Nam semper, leo non blandit hendrerit, augue sem facilisis lectus, sit amet dictum massa mi sit amet leo. Sed nisl turpis, pharetra sit amet tellus at, blandit pretium odio.  </a>
+    <div class="body-container">
+        <div class="card text">
+            <div class="card-content">
+                <div class="content">
+                    <p class="title">Lorem ipsum dolor sit amet</p>
+                    <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
+                </div>
+            </div>
         </div>
-        <div class="side">
-            <div class="items">
-                <div class="grp">
-                    <a class="sub">Autore</a>
-                    <table>
-                        <tr>
-                            <td><a class="art">Mario Rossi</a></td>
-                            <td><a class="follow-btn">Segui</a></td>
-                        </tr>
-                    </table>
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                <img
+                    src="https://bulma.io/assets/images/placeholders/1280x960.png"
+                    alt="Placeholder image"
+                />
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+                <div class="media-left">
+                    <figure class="image is-48x48">
+                    <img
+                        src="https://bulma.io/assets/images/placeholders/96x96.png"
+                        alt="Placeholder image"
+                    />
+                    </figure>
                 </div>
-                <div class="grp">
-                    <a class="sub">Data</a>
-                    <table>
-                        <tr>
-                            <td>
-                                <a class="art">01/01/1981</a>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="media-content">
+                    <p class="title is-4">John Smith</p>
+                    <p class="subtitle is-6">@johnsmith</p>
                 </div>
-                <div class="grp">
-                    <a class="sub">Valutazione</a>
-                    <table>
-                        <tr>
-                            <td>
-                                <a class="art">3.5/5 &#x2B50</a>
-                            </td>
-                            <td>
-                                <a class="follow-btn">Valuta</a>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
-                <div class="grp">
-                    <a class="sub">Scrivi un commento</a>
-                    <table>
-                        <tr>
-                            <td>
-                                <a class="art"><input type="text" class="inp" placeholder="Commenta"></a>
-                            </td>
-                            <td>
-                                <a class="follow-btn">Invia</a>
-                            </td>
-                        </tr>
-                    </table>
+
+                <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
+                iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
+                <a href="#">#responsive</a>
+                <br />
+                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+<script src="accesso.js"></script>
