@@ -30,3 +30,19 @@ function showRegis() {
         }
     }
 }
+
+function loading(id) {
+    console.log(id);
+    const input = document.getElementById(id);
+    if (input) {
+        input.classList.add("is-loading");
+    }
+}
+
+function notloading(id) {
+    console.log(id);
+    const input = document.getElementById(id);
+    if (input) {
+        input.classList.remove("is-loading");
+    }
+}

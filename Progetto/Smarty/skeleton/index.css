@@ -3,6 +3,8 @@
     font-optical-sizing: auto;
     font-weight: 450;
     font-style: normal;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
 }
 
 a {

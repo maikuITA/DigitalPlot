@@ -42,12 +42,12 @@
                 <form action="" method="post" class="form" id="login-form">
                     <label class="title is-3" for="login-form">Accedi al tuo account</label>
                     <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
+                        <div class="control has-icons-left" id="email">
+                            <input class="input" onkeypress="loading('email')" onfocusout="notloading('email')" type="email" placeholder="Inserisci la tua email" name="email"required>
                             <span class="icon is-small is-left has-text-warning">
                             <i class="fas fa-envelope"></i>
                             </span>
-                        </p>
+                        </div>
                     </div>
                     <div class="field">
                         <p class="control has-icons-left">
