@@ -2,22 +2,27 @@
     margin-top: 50px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    width: 100%;
 }
 
-.body-container > .body-left > .card {
+.body-container > .card {
     width: 100%;
-    max-width: 700px;
+    max-width: 1000px;
     height: fit-content;
-    max-height: 500px;
+    max-height: 600px;
 }
 
 .body-container > .body-left > .card > .section > .control > .button {
     margin-top: 20px;
 }
 
-.control {
-    max-width: 150px;
+.control, .control > button {
+    max-width: 350px;
+}
+
+.control > input {
+    max-width: 200px;
 }
 
 .subtitle {
