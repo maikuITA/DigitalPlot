@@ -50,8 +50,9 @@ label {
 
 ul {
     margin: 0px;
+    margin-left: 0px;
 }
 
-*.is-active, *.is-active > i {
-    color: hsl(48, 100%, 67%);
+.content ul {
+  margin-inline-start: 0em;
 }
