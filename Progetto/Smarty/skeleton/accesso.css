@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
 }
 
 .container {
     width: 100%;
+    max-width: 800px;
     height: auto;
     padding: 30px;
     display: flex;
@@ -38,6 +40,16 @@
 label {
     display: block;
     text-align: center;
+}
+
+.tabs {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul {
+    margin: 0px;
 }
 
 *.is-active, *.is-active > i {
