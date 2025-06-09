@@ -1,3 +1,9 @@
+.absolute-right {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;;
+}
+
 .body-container {
     margin-top: 50px;
     display: flex;
@@ -12,8 +18,44 @@
     max-height: 500px;
 }
 
+.body-container > .body-left > .card.cart {
+    width: 100%;
+    height: min-content;
+    max-height: 300px;
+}
+
+.body-container > .body-left > .card.cart > .card-content {
+    width: inherit;
+    height: inherit;
+}
+
+.body-container > .body-left > .card > .section > .control > .button {
+    margin-top: 20px;
+}
+
+.fatturazione {
+    margin-top: 50px;
+    width: 100%;
+    display: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+    transition: transform 2s, display 1.5s linear;
+}
+
+.fatturazione > .card {
+    width: 100%;
+    max-width: 1000px;
+    height: fit-content;
+    max-height: 500px;
+    padding: 20px;
+}
+
+.fatturazione > .card > .field{
+    width: 70%;
+    max-width: 300px;
+}
+
 .subtitle {
-    margin-top: 15px;
     width: 100%;
     text-align: justify;
 }

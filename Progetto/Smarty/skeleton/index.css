@@ -12,6 +12,11 @@ a {
     text-decoration: none;
 }
 
+body {
+    height: auto;
+    max-height: max-content;
+}
+
 header {
     display: flex;
     justify-content: space-between;
@@ -22,7 +27,7 @@ header {
     background-color: white;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 101;
 }
 
 nav {

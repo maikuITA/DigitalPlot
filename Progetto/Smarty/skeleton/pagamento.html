@@ -27,40 +27,102 @@
             </div>
         </div>
 		<div class="right">
-            <a href="index.html" class="button is-warning">Home</a>
+            <a href="index.html" class="button is-danger">Annulla</a>
 		</div>
     </header>
     <div class="body-container">
         <div class="body-left">
             <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title subtitle">
+                        <span class="icon is-medium is-left">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </span>
+                        Scegli il metodo di pagamento
+                    </p>
+                </header>
                 <section class="section">
-                    <a class="title">
-                        <span class="icon is-medium is-left"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
-                        Scegli il tuo metodo di pagamento
-                    </a>
-                    <br>
                     <p class="subtitle">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
                     </p>
                     <div class="field">
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="payment" value="credit-card" checked>
-                                Carta di credito
+                                <input type="radio" name="payment" id="paypal" value="paypal" onclick="togglePaymentMethod()" checked>
+                                PayPal
                             </label>
                         </div>
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="payment" value="paypal">
-                                PayPal
+                                <input type="radio" name="payment" id="card" value="credit-card" onclick="togglePaymentMethod()">
+                                Carta di credito
                             </label>
                         </div>
+                    </div>
+                    <div class="control" id="paypal-submit">
+                        <button class="button is-link">Vai al pagamento</button>
+                    </div>
                 </section>
             </div>
+            <div class="fatturazione" id="fatturazione">
+                <div class="card">
+                    <div class="field is-grouped">
+                        <p class="control has-icons-left">
+                            <input class="input is-rounded" type="text" placeholder="Nome" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                        <p class="control has-icons-left">
+                            <input class="input is-rounded" type="text" placeholder="Cognome" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                    </div>           
+                    <div class="field is-grouped">
+                        <p class="control has-icons-left">
+                            <input class="input is-rounded" type="text" placeholder="Indirizzo" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                        <p class="control has-icons-left">
+                            <input class="input is-rounded" type="text" placeholder="Numero civico" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field has-addons has-addons-centered">
+                        <p class="control">
+                            <span class="select is-rounded">
+                            <select>
+                                <option>+39</option>
+                                <option>+1</option>
+                                <option>+10</option>
+                            </select>
+                            </span>
+                        </p>
+                        <p class="control has-icons-left">
+                            <input class="input is-rounded" type="text" placeholder="Numero di telefono" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card">
+        <div class="absolute-right">
+            <div class="card cart">
             <header class="card-header">
-                <p class="card-header-title"><span class="icon is-small is-left"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>Subtotale</p>
+                <p class="card-header-title">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    </span>
+                    Subtotale
+                </p>
             </header>
             <div class="card-content">
                 <div class="content">
@@ -73,3 +135,4 @@
     </div>
 </body>
 </html>
+<script src="pagamento.js"></script>
