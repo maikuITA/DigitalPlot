@@ -17,8 +17,13 @@
     margin-top: 20px;
 }
 
-.control, .control > button {
-    max-width: 350px;
+.control {
+    max-width: 450px;
+}
+
+.control > button {
+    width: 100%;
+    max-width: 450px;
 }
 
 .control > input {
