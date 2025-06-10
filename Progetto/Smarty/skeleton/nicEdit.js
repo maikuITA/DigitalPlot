@@ -11,7 +11,7 @@ var bkExtend=function(){var A=arguments;if(A.length==1){A=[this,A[0]]}for(var B 
 
 var nicEditorConfig = bkClass.extend({
 	buttons : {
-		'bold' : {name : __('Click to Bold'), command : 'Bold', tags : ['B','STRONG'], css : {'font-weight' : 'bold'}, key : 'b'},
+		'bold' : {name : __('Click to Bold'), command : 'Bold', tags : ['B','STRONG'], css : {'font-weight' : '800'}, key : 'b'},
 		'italic' : {name : __('Click to Italic'), command : 'Italic', tags : ['EM','I'], css : {'font-style' : 'italic'}, key : 'i'},
 		'underline' : {name : __('Click to Underline'), command : 'Underline', tags : ['U'], css : {'text-decoration' : 'underline'}, key : 'u'},
 		'left' : {name : __('Left Align'), command : 'justifyleft', noActive : true},
