@@ -10,14 +10,15 @@ Before starting, be sure to have:
 + PHP (at least version 8.*)
 + a web server like Apache
 + a relational DBMS like mariadb
-+ Composer  
++ Composer 
+
 After downloading the repository on your personal device 
 
 ## 1. Installing the dependecies 
 
 Open the terminal on the DIGITALPLOT folder and type the command
 <pre>
-```bash
+```
 composer install
 ```
 </pre>
