@@ -37,10 +37,14 @@ Be sure to set your host, database name, username, and password.
 
 Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx), and access the application via your browser.
 
+---
+
 ## 📝 Notes
 
 This project is for academic purposes and not intended for production use.
 Contributions and feedback are welcome.
+
+---
 
 ## 👨‍💻 Author
 
