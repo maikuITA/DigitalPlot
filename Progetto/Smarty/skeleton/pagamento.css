@@ -33,8 +33,17 @@
     margin-top: 20px;
 }
 
+.confirm {
+    width: 100%;
+}
+
+.confirm > .button {
+    width: 100%;
+    max-width: 250px;
+}
+
 .fatturazione {
-    margin-top: 50px;
+    margin-top: 10px;
     width: 100%;
     display: none;
     flex-direction: row;
@@ -50,9 +59,14 @@
     padding: 20px;
 }
 
-.fatturazione > .card > .field{
+.fatturazione > .card > .field {
     width: 70%;
     max-width: 300px;
+}
+
+.field > .civico {
+    width: 100%;
+    max-width: 120px;
 }
 
 .subtitle {
