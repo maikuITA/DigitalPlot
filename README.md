@@ -48,6 +48,6 @@ Contributions and feedback are welcome.
 
 ## 👨‍💻 Author
 
-Andrea – Engineering student
-Ludovica – Engineering student
+Andrea – Engineering student <br>
+Ludovica – Engineering student <br>
 Giulio – Engineering student
