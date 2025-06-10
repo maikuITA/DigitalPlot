@@ -18,7 +18,7 @@ function getEntityManager(): EntityManager{
             'user' => DB_USER,
             'password' => DB_PASS,
             'host' => DB_HOST,
-            'driver' => 'pdo_mysql',
+            'driver' => DRIVER
         ];
         // Configurazione di Doctrine
         $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/../Entity/"], isDevMode: true);

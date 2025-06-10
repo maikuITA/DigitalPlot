@@ -1,29 +1,49 @@
 # DigitalPlot
 
-## the perfect site for every readers
+## The perfect site for every reader
 
-This is a web app that was designed for an university project. With this application you can write and read articales published by others users.
+**DigitalPlot** is a web application developed for a university project. It allows users to write and read articles published by other users in a simple and accessible way.
 
-# Installation Guide
+---
 
-Before starting, be sure to have:
-+ PHP (at least version 8.*)
-+ a web server like Apache
-+ a relational DBMS like mariadb
-+ Composer 
+## 🚀 Installation Guide
 
-After downloading the repository on your personal device 
+Before starting, make sure you have the following installed:
 
-## 1. Installing the dependecies 
+- PHP (version 8.x or higher)
+- A web server (e.g. Apache)
+- A relational DBMS (e.g. MariaDB)
+- Composer
 
-Open the terminal on the DIGITALPLOT folder and type the command
-<pre>
-```
+After downloading the repository to your device, follow these steps:
+
+### 1. Install dependencies
+
+Open your terminal in the `DIGITALPLOT` folder and run:
+
+```bash
 composer install
 ```
-</pre>
+### 2. Configure database
 
+Edit the database settings in the following file:
+```
+DIGITALPLOT/Progetto/Utility/config.php
+```
 
-Progetto per un esame universitario.
-Nome del sito: Digital Plot
-Obiettivo: vorremmo realizzare un sito che offra supporto a lettori e scrittori di riviste, giornali, fumetti e molto altro, affermati o meno.
+Be sure to set your host, database name, username, and password.
+
+### 3. Enjoy our application
+
+Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx), and access the application via your browser.
+
+## 📝 Notes
+
+This project is for academic purposes and not intended for production use.
+Contributions and feedback are welcome.
+
+## 👨‍💻 Author
+
+Andrea – Engineering student
+Ludovica – Engineering student
+Giulio – Engineering student
