@@ -39,3 +39,8 @@
 span {
     margin-right: 5px;
 }
+
+textarea {
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
