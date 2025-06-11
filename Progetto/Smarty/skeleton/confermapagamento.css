@@ -9,7 +9,7 @@
 
 .body-container > .card {
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     height: 100%;
     max-height: inherit;
     display: flex;
