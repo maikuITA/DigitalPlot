@@ -64,9 +64,9 @@ nav {
 }
 
 .subtitle {
-    margin-top: 5px;
+    margin-top: 10px;
     text-align: justify;
-    width: 200px;
+    width: 100%;
 }
 
 .column {
@@ -85,4 +85,9 @@ nav {
 .column.is-one-quarter.right {
     justify-content: right;
     align-items: right;
+}
+
+.card-content > .title {
+    width: 100%;
+    text-align: center;
 }
