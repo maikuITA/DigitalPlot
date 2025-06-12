@@ -22,6 +22,12 @@
   }
 }
 
+@media screen and (max-width: 1023px) {
+  .navbar-dropdown {
+    display: none;
+  }
+}
+
 .navbar-dropdown.is-active {
     display: block;
 }
@@ -45,4 +51,18 @@
 
 .navbar-item, .navbar-link {
     text-align: center;
+}
+
+.minilogo {
+    display: flex;
+    width: min-content;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.minilogo > a {
+    font-size: medium;
+    margin: 0px;
+    padding: 0px;
 }
