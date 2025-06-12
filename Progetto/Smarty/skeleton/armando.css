@@ -26,8 +26,23 @@
     display: block;
 }
 
-.navbar.has-shadow, .navbar-item.has-dropdown.is-hoverable, .navbar-link.is-arrowless.is-fullwidth, #text {
+.navbar.has-shadow, .navbar-item.has-dropdown.is-hoverable {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     max-width: 149px;
     width: 100%;
+    text-align: center;
+}
+
+.navbar-link.is-arrowless.is-fullwidth {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 149px;
+    width: 100%;
+}
+
+.navbar-item, .navbar-link {
     text-align: center;
 }
