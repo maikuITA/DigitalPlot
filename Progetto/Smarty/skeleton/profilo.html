@@ -32,25 +32,55 @@
     </header>
     <div class="body-container">
         <div class="card">
-            <div class="container">
-                <table class="table is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Email</th>
-                            <th>Abbonamento</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Mario</td>
-                            <td>Rossi</td>
-                            <td>mariorossi@rossi.it</td>
-                            <td>Lettore</td>
-                        </tr>
-                    </tbody>
+            <div class="columns">
+                <div class="column is-one-fifth">
+                    <figure class="image is-128x128">
+                        <img src="favicon.ico" alt="Avatar">
+                    </figure>
+                </div>
+                <div class="column is-two-fifth">
+                    <a class="title">NomeUtente</a>
+                </div>
+                <div class="column is-two-fifth">
+                    <a class="subtitle">tipoAbbonamento</a>
+                </div>
             </div>
+        </div>
+        <div class="card">
+            <table class="table is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Nome articolo</th>
+                        <th>Stato</th>
+                        <th>Data pubblicazione</th>
+                        <th>Genere</th>
+                        <td>Azione</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NomeArticolo</td>
+                        <td>Status</td>
+                        <td>01/01/1970</td>
+                        <td>Genere</td>
+                        <td><a class="has-text-link">Modifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>NomeArticolo</td>
+                        <td>Status</td>
+                        <td>01/01/1970</td>
+                        <td>Genere</td>
+                        <td><a class="has-text-link">Modifica</a></td>
+                    </tr>
+                    <tr>
+                        <td>NomeArticolo</td>
+                        <td>Status</td>
+                        <td>01/01/1970</td>
+                        <td>Genere</td>
+                        <td><a class="has-text-link">Modifica</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </body>
