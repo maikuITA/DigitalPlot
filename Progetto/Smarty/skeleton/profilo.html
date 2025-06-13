@@ -33,16 +33,23 @@
     <div class="body-container">
         <div class="card">
             <div class="container">
-                <h1>Profilo Utente</h1>
-                <div class="profile-info">
-                    <p><strong>Nome:</strong> {$user.name}</p>
-                    <p><strong>Email:</strong> {$user.email}</p>
-                    <p><strong>Registrato il:</strong> {$user.registration_date}</p>
-                </div>
-                <div class="profile-actions">
-                    <a href="/edit-profile" class="button button-primary">Modifica Profilo</a>
-                    <a href="/logout" class="button button-secondary">Esci</a>
-                </div>
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cognome</th>
+                            <th>Email</th>
+                            <th>Abbonamento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mario</td>
+                            <td>Rossi</td>
+                            <td>mariorossi@rossi.it</td>
+                            <td>Lettore</td>
+                        </tr>
+                    </tbody>
             </div>
         </div>
     </div>
