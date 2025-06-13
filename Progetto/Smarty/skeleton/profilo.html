@@ -15,7 +15,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header class="header columns">
+    <header class="header columns" id="profile">
         <div class="column is-one-quarter left">
             <a href="index.html" class="button is-rounded">Home</a>
             <a href="abbonati.html" class="button is-rounded">Abbonati</a>
@@ -73,7 +73,7 @@
         </div>
     </div>
     <div class="body-container">
-        <div class="card" id="profile">
+        <div class="card">
             <div class="columns">
                 <div class="column is-one-fifth">
                     <figure class="image is-128x128">
@@ -113,7 +113,7 @@
                 <tbody>
                     <tr>
                         <td>NomeArticolo</td>
-                        <td>Status</td>
+                        <td>Pubblico</td>
                         <td>01/01/1970</td>
                         <td>Genere</td>
                         <td><a class="has-text-link">Modifica</a></td>
@@ -121,7 +121,7 @@
                     </tr>
                     <tr>
                         <td>NomeArticolo</td>
-                        <td>Status</td>
+                        <td>Attesa di approvazione</td>
                         <td>01/01/1970</td>
                         <td>Genere</td>
                         <td><a class="has-text-link">Modifica</a></td>
@@ -129,74 +129,10 @@
                     </tr>
                     <tr>
                         <td>NomeArticolo</td>
-                        <td>Status</td>
+                        <td>Disabilitato</td>
                         <td>01/01/1970</td>
                         <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
+                        <td><a class="has-text-warning" disabled>Modifica</a></td>
                         <td><a class="has-text-danger">Elimina</a></td>
                     </tr>
                 </tbody>
@@ -208,77 +144,33 @@
                 <thead>
                     <tr>
                         <th>Nome articolo</th>
-                        <th>Stato</th>
                         <th>Data pubblicazione</th>
+                        <th>Tipo</th>
                         <th>Genere</th>
+                        <th>Leggi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>NomeArticolo</td>
-                        <td>Status</td>
                         <td>01/01/1970</td>
+                        <td>Tipo</td>
                         <td>Genere</td>
+                        <td><a class="has-text-link">Leggi</a></td>
                     </tr>
                     <tr>
                         <td>NomeArticolo</td>
-                        <td>Status</td>
                         <td>01/01/1970</td>
+                        <td>Tipo</td>
                         <td>Genere</td>
+                        <td><a class="has-text-link">Leggi</a></td>
                     </tr>
                     <tr>
                         <td>NomeArticolo</td>
-                        <td>Status</td>
                         <td>01/01/1970</td>
+                        <td>Tipo</td>
                         <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Status</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
+                        <td><a class="has-text-link">Leggi</a></td>
                     </tr>
                 </tbody>
             </table>

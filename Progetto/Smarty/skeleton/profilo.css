@@ -119,7 +119,7 @@ span {
     margin-right: 5px;
 }
 
-.content, table, .content > table > tr, .content >.table > td {
+.content, table, .content > table > tr, .content > table > td {
     width: 100%;
     max-width: inherit;
 }
