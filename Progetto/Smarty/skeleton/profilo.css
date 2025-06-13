@@ -20,6 +20,13 @@
     padding: 20px;
 }
 
+.column.is-two-fifth.c {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .column {
     display: flex;
     flex-direction: row;
@@ -61,4 +68,8 @@
     width: 100%;
     max-width: inherit;
     height: 100%;
+}
+
+th {
+    font-weight: 800;
 }
