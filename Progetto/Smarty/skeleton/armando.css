@@ -47,6 +47,11 @@
     justify-content: center;
     max-width: 149px;
     width: 100%;
+    font-size: large;
+}
+
+.navbar-item, .minilogo {
+    font-size: medium;
 }
 
 .minilogo {

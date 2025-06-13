@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalPlot-Profilo</title>
+    <link rel="stylesheet" href="bulma/bulma.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="profilo.css">
+    <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
+    <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header columns">
+        <div class="column is-one-quarter left">
+            <a href="index.html" class="button is-rounded">Home</a>
+            <a href="abbonati.html" class="button is-rounded">Abbonati</a>
+        </div>
+        <div class="column">
+            <div>
+                <a href="#" class="title is-1">Digital</a>
+                <a href="#" class="title is-1 has-text-warning">Plot</a>
+            </div> 
+        </div>
+        <div class="column is-one-quarter right">
+            <a href="accesso.html" class="button is-warning">Accedi</a>
+        </div>
+    </header>
+    <div class="body-container">
+        <div class="card">
+            <div class="container">
+                <h1>Profilo Utente</h1>
+                <div class="profile-info">
+                    <p><strong>Nome:</strong> {$user.name}</p>
+                    <p><strong>Email:</strong> {$user.email}</p>
+                    <p><strong>Registrato il:</strong> {$user.registration_date}</p>
+                </div>
+                <div class="profile-actions">
+                    <a href="/edit-profile" class="button button-primary">Modifica Profilo</a>
+                    <a href="/logout" class="button button-secondary">Esci</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
