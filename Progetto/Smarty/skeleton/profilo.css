@@ -20,11 +20,15 @@
     padding: 20px;
 }
 
-.column.is-two-fifth.c {
+.column.is-two-fifth.c, .column.is-two-fifth.cs {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.column.is-two-fifth.cs {
+    gap: 10px;
 }
 
 .column {
@@ -72,4 +76,16 @@
 
 th {
     font-weight: 800;
+}
+
+.is-5.s {
+    font-weight: 800;
+}
+
+.is-gapped {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
 }
