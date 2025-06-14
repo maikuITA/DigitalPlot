@@ -101,13 +101,23 @@ nav {
 @media screen and (max-width: 768px) {
     
     header {
-        flex-direction: column;
-        align-items: column;
-        max-height: 150px;
+        flex-direction: row;
+        align-items: row;
+        max-height: max-content;
+        padding: 0;
+        margin: 0;
     }
     
     .header.columns {
-        max-height: 150px;
+        max-height: 100px;
+    }
+
+    .column.is-one-quarter.left {
+        max-width: fit-content;
+        z-index: 1001;
+    }
+    .column {
+        max-width: fit-content;
     }
 
     .navbar-menu {
