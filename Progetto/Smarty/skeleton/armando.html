@@ -16,22 +16,19 @@
 <body>
     <header class="header columns">
         <div class="column is-one-quarter left">
-            <nav class="navbar has-shadow" id="navbar" role="navigation" aria-label="dropdown navigation">
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link is-arrowless is-fullwidth" id="burger">Menu</a>
-                    <div class="navbar-dropdown" id="dropdown">
-                        <a class="navbar-item" href="index.html">Home</a>
-                        <a class="navbar-item" href="abbonati.html">Abbonati</a>
-                        <hr class="navbar-divider">
-                        <div class="navbar-item">
-                            <div class="minilogo">
-                                <a>Digital</a>
-                                <a class="has-text-warning">Plot</a>
-                            </div>
-                        </div>
-                    </div>
+            <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="index.html">Home</a>
+                    <a class="navbar-item" href="abbonati.html">Abbonati</a>
                 </div>
-            </nav>
+            </div>
         </div>
         <div class="column">
             <div>
@@ -106,3 +103,24 @@
 </body>
 </html>
 <script src="navburger.js"></script>
+
+<!-- 
+Old on-hover dropdown navigation
+
+<nav class="navbar has-shadow" id="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link is-arrowless is-fullwidth" id="burger">Menu</a>
+                    <div class="navbar-dropdown" id="dropdown">
+                        <a class="navbar-item" href="index.html">Home</a>
+                        <a class="navbar-item" href="abbonati.html">Abbonati</a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item">
+                            <div class="minilogo">
+                                <a>Digital</a>
+                                <a class="has-text-warning">Plot</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+-->

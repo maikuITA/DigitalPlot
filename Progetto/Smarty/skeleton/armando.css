@@ -16,18 +16,6 @@
     align-items: right;
 }
 
-@media screen and (min-width: 1024px) {
-  .navbar-burger {
-    display: inherit;
-  }
-}
-
-@media screen and (max-width: 1023px) {
-  .navbar-dropdown {
-    display: none;
-  }
-}
-
 .navbar-dropdown.is-active {
     display: block;
 }
