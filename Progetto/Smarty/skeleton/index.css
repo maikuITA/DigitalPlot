@@ -99,9 +99,15 @@ nav {
 }
 
 @media screen and (max-width: 768px) {
+    
     header {
         flex-direction: column;
-        align-items: row;
+        align-items: column;
+        max-height: 150px;
+    }
+    
+    .header.columns {
+        max-height: 150px;
     }
 
     .navbar-menu {
@@ -109,7 +115,7 @@ nav {
     z-index: 1001;
     top: 30%;
     right: 3%;
-}
+    }
 
     .container {
         display: flex;
