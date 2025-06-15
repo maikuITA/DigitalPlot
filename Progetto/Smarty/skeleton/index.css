@@ -118,6 +118,7 @@ nav {
 
     .column.is-one-quarter.left {
         max-width: fit-content;
+        margin-left: 20px;
         z-index: 1001;
     }
     .column {
@@ -128,7 +129,7 @@ nav {
         position: absolute;
         z-index: 1100;
         top: 75%;
-        left: 3%;
+        left: 5%;
         background-color: white;
     }
 
