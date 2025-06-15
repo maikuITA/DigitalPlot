@@ -93,9 +93,13 @@ nav {
     text-align: center;
 }
 
-.navbar-item:hover {
+.navbar-item:hover, .navbar-item.has-text-link.transfer:hover {
     background-color: rgb(0, 0, 0, 0.1);
     color:hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l))
+}
+
+.navbar-item.has-text-link.transfer {
+    display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -121,10 +125,11 @@ nav {
     }
 
     .navbar-menu {
-    position: absolute;
-    z-index: 1001;
-    top: 30%;
-    right: 3%;
+        position: absolute;
+        z-index: 1100;
+        top: 75%;
+        left: 3%;
+        background-color: white;
     }
 
     .container {
@@ -144,5 +149,9 @@ nav {
 
     .button.is-warning.ok {
         display: none;
+    }
+
+    .navbar-item.has-text-link.transfer {
+        display: inherit;
     }
 }
