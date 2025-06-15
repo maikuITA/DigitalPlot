@@ -56,3 +56,24 @@ ul {
 .content ul {
   margin-inline-start: 0em;
 }
+
+@media screen and (max-width: 768px) {
+    
+    .body-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container, .content {
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .field {
+        margin-top: 20px;
+    }
+
+    .input {
+        padding: 10px;
+    }
+}
