@@ -38,3 +38,20 @@
 span {
     margin-right: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    .body-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .body-container > .card {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .field.is-grouped {
+        flex-direction: column;
+        align-items: center;
+    }
+}
