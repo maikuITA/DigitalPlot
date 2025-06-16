@@ -123,3 +123,83 @@ span {
     width: 100%;
     max-width: inherit;
 }
+
+@media screen and (max-width: 768px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .body-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: fit-content;
+        max-height: max-content;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .absolute-left {
+        position: inherit;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .absolute-left > .card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .card {
+        max-width: 400px;
+    }
+
+    .card.content, .content {
+        width: 100%;
+        max-width: 400px;
+        height: min-content;
+    }
+
+    .card.yes {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .card.articles {
+        max-width: 400px;
+        overflow:scroll;
+    }
+
+    .card-content {
+        width: 100%;
+        max-width: 400px;
+        height: min-content;
+    }
+
+    .columns {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fixed {
+        width: 100%;
+        max-width: 400px;
+    }
+}
