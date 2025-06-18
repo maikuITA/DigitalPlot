@@ -1,9 +1,6 @@
 <?php
 
 require_once 'Progetto/autoload.php';
-require_once 'StartSmarty.php';
-
-use Controller\CRunner;
 
 // Provo ad istallare il database
 InstallerDb::install();
@@ -13,7 +10,8 @@ InstallerDb::install();
 // error_reporting(E_ALL);
 
 // Avvio il runner (FrontController)
-$runner = new CRunner();
+$runner = new CFrontController();
+$runner->redirectToHttps();
 $runner->run();
 
 ?>

@@ -1,15 +1,15 @@
 <?php
 
-class FPersistantManager {
+class FPersistentManager {
 
     private static $instance;
 
     private function __construct() {
     }
 
-    public static function getInstance(): FPersistantManager {
+    public static function getInstance(): FPersistentManager {
         if (self::$instance === null) {
-            self::$instance = new FPersistantManager();
+            self::$instance = new FPersistentManager();
         }
         return self::$instance;
     }

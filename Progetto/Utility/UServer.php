@@ -1,5 +1,4 @@
 <?php
-namespace Utility;
 /**
  * Class to access the $_SERVER superglobal array, You must use this array instead of using directly the _SERVER array
  */
@@ -33,7 +32,7 @@ class UServer
      */
     public static function getClientIP() : ?string {
         if($_SERVER['REMOTE_ADDR'] === null) {
-            return $_SERVER['HTTP_X_FORWARDED_FOR']?? null;
+            return $_SERVER['HTTP_X_FORWARDED_FOR'] ?? null;
         } else {
             return $_SERVER['REMOTE_ADDR'];
         } 
@@ -44,7 +43,7 @@ class UServer
      * @param string $key
      * @return mixed|null
      */
-    public static function get(string $key): mixed
+    public static function getValue(string $key): mixed
     {
         return $_SERVER[$key] ?? null;
     }

@@ -1,13 +1,27 @@
 <?php
 
-namespace Utility;
+// File by which you can update log files
 
-class LogSys {
+class ULogSys {
 
-    public static function toLog(string $tolog) : void {
-        // Nome del file di log
-        $logs = __DIR__ . '/events.log';
-    
+    /**
+     *  Writes a log message to the log file.
+     *  If the message is empty, it writes only a new line without a timestamp.
+     *   @param string $tolog The message to log.
+     *   @return void
+     */
+    public static function toLog(string $tolog, bool $error = false) : void {
+
+        if ($error) {
+            // scrivi il messaggio di errore nel file di error log
+            // prende il path del file di log
+            $logs = __DIR__ . DIRECTORY_SEPARATOR .'Logs' . DIRECTORY_SEPARATOR . 'errors.log';
+        }
+        else {
+            // prende il path del file di log
+           $logs = __DIR__ . DIRECTORY_SEPARATOR .'Logs' . DIRECTORY_SEPARATOR . 'events.log';
+        }
+
         // Messaggio di log da scrivere
         $timestamp = "[" . date('Y-m-d H:i:s') . "]";
     
@@ -29,7 +43,6 @@ class LogSys {
             echo 'PERCORSO: ' . $logs . '<br>';
         }
     }
-
 }
 
 ?>

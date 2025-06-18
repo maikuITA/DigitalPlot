@@ -53,7 +53,7 @@ NOTA 2, verificare che nel file composer.json siano presenti doctrine e symfony 
 5. creare i file config.php e doctrine.php (prendere come esempio quelli usati nel progetto)
 6. creare le classi entità e mapparle con i tag #[ORM\....]
 
-NOTA sui tipi di tag:
+----------------------Tag per mappare le Entity-------------------------
 
 #[ORM\Entity] -> definisce la tabella
 #[ORM\Table(name: "Utente")] -> da il nome alla tabella
@@ -84,6 +84,7 @@ Relazione uno a molti, si crea con un doppio tag (i tag vanno nelle due classi c
 -> referencedColumnName: nome della chiave primaria di EAbbonamento (nel db)
 -> nullable: specifica se il campo può essere nullo 
 
+---------------------------------------------------------------------------
 
 7. dalla cartella del progetto eseguire il comando 
 php bin/doctrine.php orm:schema-tool:create
@@ -97,3 +98,60 @@ alcune chiavi esterne possono essere nulle, dato che non è detto che ci sia la 
 
 In tutte le altre relazioni non c'è bisogno di fare questa operazione
 
+Come inizializzare un progetto che utilizza Doctrine e Smarty
+
+1. ------------------------------Avere PHP--------------------------------
+Assicurati di avere già installato PHP.
+
+2. -------------------------Installare composer---------------------------
+installa composer (MAC/Linux) con i seguenti comandi
+
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    php composer-setup.php
+    php -r "unlink('composer-setup.php');"
+    sudo mv composer.phar /usr/local/bin/composer
+
+l'ultimo comando serve per spostarlo in una cartella di sistema. (su MAC è nascosta di default)
+Varifica che funzioni con 
+
+    composer --version
+
+3. --------------------------Creazione Progetto------------------------
+Spostati/crea la cartella del progetto.
+
+4. -------------------------Utilizzo di composer-----------------------
+Eseguire il comando
+
+    composer init
+
+per inizializzare composer, tieni conto che potrebbe chiederti info aggiuntive che puoi skippare con enter
+Installa Doctrine e Smarty
+
+    composer require doctrine/orm
+    composer require doctrine/dbal
+    composer require smarty/smarty
+
+in alternativa, puoi aggiornare il file composer.json con i pacchetti che vuoi aggiungere.
+Per poter apportare le modifice effettuate bisogna eseguire il comando
+
+    composer update
+---------------------------------------------------------------------------
+
+Come utilizzare Doctrine (Dopo averlo installato)
+
+1.-------------Annotare le Entity--------------
+Annotare tutte le Entity con i tag opportunamente.
+Ci sono degli esempi sopra.
+
+2.----------Inizializzare il Database----------
+Prendere spunto dal file InstallerDb.php per creare il codice per inizializzare il database. 
+Vedere anche il file bootstrapDoctrine.php per avere un idea di come generare l'EntityManager.
+---------------------------------------------------------------------------
+
+
+
+
+DA FARE:
+1. Crea il file di ErrorLog che tenga traccia di tutti gli errori
+2. Modificare il file logsys per poter scrivere anche sul file error log
+3. Foundation: all'interno del file FEntityManager scrivi all'interno del catch il messaggio di errore nel file creato al passo prima;

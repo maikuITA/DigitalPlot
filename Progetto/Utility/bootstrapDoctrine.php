@@ -1,6 +1,5 @@
 <?php
 
-
 require_once (__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "vendor" . DIRECTORY_SEPARATOR . "autoload.php");
 require_once (__DIR__ . DIRECTORY_SEPARATOR . "config.php");
 
@@ -18,7 +17,7 @@ function getEntityManager(): EntityManager{
             'user' => DB_USER,
             'password' => DB_PASS,
             'host' => DB_HOST,
-            'driver' => 'pdo_mysql',
+            'driver' => DRIVER
         ];
         // Configurazione di Doctrine
         $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/../Entity/"], isDevMode: true);
