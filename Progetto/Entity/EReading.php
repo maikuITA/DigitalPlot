@@ -10,18 +10,18 @@ use Doctrine\ORM\Mapping as ORM;
 class EReading{
     #[ORM\Id]           
     #[ORM\GeneratedValue(strategy:"IDENTITY")]  
-    #[ORM\Column(name:"reading_id", type:"integer")]
+    #[ORM\Column(name:"reading_cod", type:"integer")]
     private int $cod;
     #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "readings")]
     #[ORM\JoinColumn(name : "fk_user" , referencedColumnName : "user_id", nullable:false)] // definizione chiave esterna
-    private EUser $idUser;
+    private EUser $userId;
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "readings")]
     #[ORM\JoinColumn(name : "fk_article", referencedColumnName : "article_id", nullable: false)] // definizione chiave esterna
-    private EArticle $idArticle;
+    private EArticle $articleId;
 
-    public function __construct(EUser $idUser, EArticle $idArticle ) {
-        $this->idUser = $idUser;
-        $this->idArticle = $idArticle;
+    public function __construct(EUser $userId, EArticle $articleId ) {
+        $this->userId = $userId;
+        $this->articleId = $articleId;
     }
 
     // Set methods
@@ -29,22 +29,22 @@ class EReading{
     {
         $this->cod = $cod;
     }
-    public function setIdUser(EUser $idUser)
+    public function setUserId(EUser $userId)
     {
-        $this->idUser = $idUser;
+        $this->userId = $userId;
     }
-    public function setIdArticle(EArticle $idArticle)
+    public function setArticleId(EArticle $articleId)
     {
-        $this->idArticle = $idArticle;
+        $this->articleId = $articleId;
     }
     // Get methods
     public function getCod(){
         return $this->cod;
     }
-    public function getIdUser(): EUser{
-        return $this->idUser;
+    public function getUserId(): EUser{
+        return $this->userId;
     }
-    public function getIdArticle(): EArticle{
-        return $this->idArticle;
+    public function getArticleId(): EArticle{
+        return $this->articleId;
     }
 }
