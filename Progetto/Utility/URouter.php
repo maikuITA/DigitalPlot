@@ -3,7 +3,7 @@
 
 use Exception;
 
-class Router {
+class URouter {
     private array $routes = [];
 
     /**
