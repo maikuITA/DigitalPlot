@@ -33,6 +33,19 @@
     margin-top: 20px;
 }
 
+.body-left {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-header {
+    width: inherit;
+    height: inherit;
+}
+
 .confirm {
     width: 100%;
 }
@@ -82,7 +95,7 @@ span {
     margin-right: 5px;
 }
 
-.control.has-icons-left.indirizzo {
+.control.has-icons-left.indirizzo, .control.has-icons-left.carta {
     width: 100%;
     max-width: 300px;
 }
@@ -192,6 +205,6 @@ span {
 
     .control.has-icons-left.intestatario {
         width: 100%;
-        max-width: 400px;
+        max-width: 350px;
     }
 }
