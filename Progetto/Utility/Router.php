@@ -1,6 +1,5 @@
 <?php
 
-namespace Utility;
 
 use Exception;
 use Utility\LogSys;

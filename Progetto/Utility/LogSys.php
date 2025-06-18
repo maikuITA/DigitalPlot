@@ -1,7 +1,5 @@
 <?php
 
-namespace Utility;
-
 class LogSys {
 
     public static function toLog(string $tolog) : void {

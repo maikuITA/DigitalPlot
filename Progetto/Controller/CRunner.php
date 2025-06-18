@@ -1,6 +1,5 @@
 <?php
 
-namespace Controller; // Definisce lo spazio dei nomi per la classe CRunner, organizzando il codice.
 
 use Utility\UServer; // Importa la classe UServer dallo spazio dei nomi Utility, per gestire le variabili del server.
 use Utility\LogSys;
