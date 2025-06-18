@@ -14,12 +14,12 @@ class EPlotCard{
     #[ORM\Column(type: "integer")] 
     private int $points;
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "PlotCard")]
-    #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "user_id", nullable:false, unique: true)] // definizione chiave esterna
-    private EUser $idUser;
+    #[ORM\JoinColumn(name : "fk_user", referencedColumnName : "user_id", nullable:false, unique: true)] // definizione chiave esterna
+    private EUser $userId;
 
-    public function __construct(int $points, EUser $idUser ) {
+    public function __construct(int $points, EUser $userId ) {
         $this->setPoints($points);
-        $this->idUser = $idUser;
+        $this->userId = $userId;
     }
     //Metodo per aggiungere points
     public function addPoints(int $points): void {
@@ -30,7 +30,7 @@ class EPlotCard{
         if ($this->points - $points >= 0) {
             $this->points -= $points;
         } else {
-            throw new \Exception("Non puoi sottrarre più points di quelli disponibili.");
+            throw new \Exception("You can't go below zero.");
         }
     }
 
@@ -40,7 +40,7 @@ class EPlotCard{
     public function setId(int $cod) : void{
         $this->cod = $cod;
     }
-    public function getCode(): int {
+    public function getCod(): int {
         return $this->cod;
     }
     public function setPoints(int $points) {
@@ -49,15 +49,15 @@ class EPlotCard{
     public function getPoints(): int {
         return $this->points;
     }
-    public function setIdUser(EUser $idUser) {
-        $this->idUser = $idUser;
+    public function setUserId(EUser $userId) {
+        $this->userId = $userId;
     }
-    public function getIdUser(): EUser {
-        return $this->idUser;
+    public function getUserid(): EUser {
+        return $this->userId;
     }
 
     public function __toString(): string {
-        return "Points: " . $this->points . ", ID Utente: " . $this->idUser;
+        return "Points: " . $this->points . ", User ID: " . $this->userId;
     }
 }
 
