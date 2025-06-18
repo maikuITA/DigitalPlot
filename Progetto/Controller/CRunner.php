@@ -71,9 +71,11 @@ class CRunner { // Definisce la classe CRunner, il controller principale dell'ap
 
     // Method to redirect to HTTPS if not already using it.
     public static function redirectToHttps(): void {
-        if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === 'off'){
-            $location = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-            header('Http/1.1 301 Moved Permanently'); 
+        $protocol = UServer::getValue('HTTPS');
+        $request_URI = UServer::getValue('REQUEST_URI');
+        if (empty($protocol) || $protocol === 'off'){
+            $location = 'https://' . $protocol . $request_URI;
+            header('HTTP/1.1 301 Moved Permanently'); 
             header('Location: ' . $location);
             exit;
         }
