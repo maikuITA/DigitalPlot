@@ -4,11 +4,10 @@ use Exception; // Importa la classe Exception nativa di PHP, per gestire le ecce
 
 class CRunner { // Definisce la classe CRunner, il controller principale dell'applicazione.
 
-    private Router $router; // Dichiara una proprietà privata $router di tipo Router, per gestire il routing.
+    private URouter $router; // Dichiara una proprietà privata $router di tipo Router, per gestire il routing.
 
     public function __construct() { // Definisce il costruttore della classe CRunner.
-        $this->router = new Router(); // Crea una nuova istanza della classe Router e la assegna alla proprietà $router.
-        $this->router->defineRoutes(); // Chiama il metodo defineRoutes() dell'istanza di Router, per definire le rotte.
+        $this->router = new URouter(); // Crea una nuova istanza della classe Router e la assegna alla proprietà $router.
     }
 
     public function run() { // Definisce il metodo run(), il punto di ingresso principale del controller.
@@ -67,7 +66,7 @@ class CRunner { // Definisce la classe CRunner, il controller principale dell'ap
 
     // Gestisce gli errori e visualizza un messaggio di errore.
     private function handleError(int $errorCode, string $message): void {
-        (new VError())->showMessage($errorCode, $message); // Crea un'istanza di VError e visualizza il messaggio di errore.
+        // (new VError())->showMessage($errorCode, $message); // Crea un'istanza di VError e visualizza il messaggio di errore.
     }
 
     // Method to redirect to HTTPS if not already using it.
