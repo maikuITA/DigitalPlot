@@ -46,7 +46,7 @@
     margin-top: 10px;
     width: 100%;
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     transition: transform 2s, display 1.5s linear;
 }
@@ -80,6 +80,11 @@
 
 span {
     margin-right: 5px;
+}
+
+.control.has-icons-left.indirizzo {
+    width: 100%;
+    max-width: 300px;
 }
 
 @media screen and (max-width: 768px) {
@@ -160,7 +165,7 @@ span {
 
     .fatturazione {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         max-height: 600px;
         height: 100%;
@@ -183,5 +188,10 @@ span {
     .control.has-icons-left.tel {
         width: 100%;
         max-width: 225px;
+    }
+
+    .control.has-icons-left.intestatario {
+        width: 100%;
+        max-width: 400px;
     }
 }
