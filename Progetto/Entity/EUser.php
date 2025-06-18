@@ -7,14 +7,14 @@ use Doctrine\ORM\Mapping\DiscriminatorMap;
 
 #[ORM\Entity]
 #[ORM\InheritanceType("JOINED")]
-#[ORM\DiscriminatorColumn(name: "tipo", type: "string")]
-#[ORM\DiscriminatorMap(["abbonato" => "EAbbonato", "lettore" => "ELettore", "scrittore" => "EScrittore", "utente" => "EUser"])]  // definisco i tipi di utenti
-#[ORM\Table(name: "Utente")]
+#[ORM\DiscriminatorColumn(name: "type", type: "string")]
+#[ORM\DiscriminatorMap(["subsciber" => "ESubscriber", "reader" => "EReader", "writer" => "EWriter", "user" => "EUser"])]  // definisco i tipi di utenti
+#[ORM\Table(name: "User")]
 class EUser {
     
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy:"IDENTITY")]
-    #[ORM\Column(name:"id_utente", type:"integer")]
+    #[ORM\Column(name:"user_id", type:"integer")]
     private int $id;
    
     #[ORM\Column(type:"string",nullable:false,unique:true)]
@@ -27,46 +27,46 @@ class EUser {
     private bool $admin = true;
     
     #[ORM\Column(type:"string",length:100, nullable:false) ]
-    private string $nome;
+    private string $name;
     
     #[ORM\Column(type:"string", length:100, nullable:false)]
-    private string $cognome;
+    private string $surname;
     
     #[ORM\Column(type:"date", nullable:false) ]
-    private DateTime $dataNascita;
+    private DateTime $birthdate;
     
     #[ORM\Column(type:"string", length:100, nullable:false)]
-    private string $luogoNascita;
+    private string $birthplace;
       
     #[ORM\Column(type:"string", length:100, nullable:false) ]                                        
     private string $email;
     
     #[ORM\Column(type:"string", length:20, nullable:false)]
-    private string $telefono;
+    private string $telephone;
     
     #[ORM\Column(type:"text")]
-    private string $biografia;
+    private string $biography;
     
-    #[ORM\OneToMany(targetEntity:"ELettura", mappedBy:"id_utente", cascade:["persist", "remove"]) ]
-    private $letture = [];
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
+    private $readings = [];
     
-    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"idUser", cascade:["persist", "remove"])]
-    private $PlotCard = [];
+    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
+    private $plotCard = [];
 
 
-    public function __construct(string $username, string $password,string $nome, string $cognome,bool $admin = false ,string $dataNascita, string $luogoNascita, string $email, string $telefono, string $biografia = "", array $letture = [], array $PlotCard = [] ) {
+    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], array $plotCard = [] ) {
         $this->setUsername($username);
         $this->setPassword($password);
-        $this->setNome($nome);
-        $this->setCognome($cognome);
-        $this->setDataNascita($dataNascita);
-        $this->setLuogoNascita($luogoNascita);
+        $this->setName($name);
+        $this->setSurname($surname);
+        $this->setBirthdate($birthdate);
+        $this->setBirthPlace($birthplace);
         $this->setEmail($email);
-        $this->setTelefono($telefono);
-        $this->setBiografia($biografia);
+        $this->setTelephone($telephone);
+        $this->setBiography($biography);
         $this->setAdmin($admin);
-        $this->letture = $letture;
-        $this->PlotCard = $PlotCard;
+        $this->readings = $readings;
+        $this->plotCard = $plotCard;
     }
     
 
@@ -101,29 +101,29 @@ class EUser {
     public function setAdmin(bool $admin): void {
         $this->admin = $admin;
     }
-    public function setNome(string $nome): void {
-        $this->nome = $nome;
+    public function setName(string $name): void {
+        $this->name = $name;
     }
-    public function getNome(): string {
-        return $this->nome;
+    public function getName(): string {
+        return $this->name;
     }
-    public function setCognome(string $cognome): void {
-        $this->cognome = $cognome;
+    public function setSurname(string $surname): void {
+        $this->surname = $surname;
     }
-    public function getCognome(): string {
-        return $this->cognome;
+    public function getSurname(): string {
+        return $this->surname;
     }
-    public function setDataNascita(string $dataNascita): void {
-        $this->dataNascita = new DateTime($dataNascita);
+    public function setBirthdate(string $birthdate): void {
+        $this->birthdate = new DateTime($birthdate);
     }
-    public function getDataNascita(): DateTime {
-        return $this->dataNascita;
+    public function getBirthdate(): DateTime {
+        return $this->birthdate;
     }
-    public function setLuogoNascita(string $luogoNascita): void {
-        $this->luogoNascita = $luogoNascita;
+    public function setBirthplace(string $birthplace): void {
+        $this->birthplace = $birthplace;
     }
-    public function getLuogoNascita(): string {
-        return $this->luogoNascita;
+    public function getBirthplace(): string {
+        return $this->birthplace;
     }
     public function setEmail(string $email): void {
         $this->email = $email;
@@ -131,65 +131,65 @@ class EUser {
     public function getEmail(): string {
         return $this->email;
     }
-    public function setTelefono(string $telefono): void {
-        $this->telefono = $telefono;
+    public function setTelephone(string $telephone): void {
+        $this->telephone = $telephone;
     }
-    public function getTelefono(): string {
-        return $this->telefono;
+    public function getTelephone(): string {
+        return $this->telephone;
     }
-    public function setBiografia(string $biografia): void {
-        $this->biografia = $biografia;
+    public function setBiography(string $biography): void {
+        $this->biography = $biography;
     }
-    public function getBiografia(): string {
-        return $this->biografia;
+    public function getBiography(): string {
+        return $this->biography;
     }
-    // Metodi per le letture
-    public function addLettura(ELettura $lettura): void {
-        $this->letture[] = $lettura;
+    // Metodi per le readings
+    public function addReading(EReading $reading): void {
+        $this->readings[] = $reading;
     }
-    public function getLetture(): array {
-        return $this->letture;
+    public function getReadings(): array {
+        return $this->readings;
     }
-    public function removeLettura(ELettura $lettura): void {
-        foreach ($this->letture as $key => $value) {
-            if ($value->getCodice() === $lettura->getCodice()) {
-                unset($this->letture[$key]);
+    public function removeReading(EReading $reading): void {
+        foreach ($this->readings as $key => $value) {
+            if ($value->getCod() === $reading->getCod()) {
+                unset($this->readings[$key]);
             }
         }
     }
-    public function getLetturaById( int $id): ?ELettura {
-        foreach ($this->letture as $lettura) {
-            if ($lettura->getCodice() === $id) {
-                return $lettura;
+    public function getReadingById( int $id): ?EReading {
+        foreach ($this->readings as $reading) {
+            if ($reading->getCod() === $id) {
+                return $reading;
             }
         }
         return null;
     }
-    public function getLetturaCount(): int {
-        return count($this->letture);
+    public function countReadings(): int {
+        return count($this->readings);
     }
 
     // Metodi per le PlotCard
     public function addPlotCard(EPlotCard $plotCard): void {
-        $this->PlotCard[0] = $plotCard;
+        $this->plotCard[0] = $plotCard;
     }
     public function getPlotCard(): EPlotCard {
-        return $this->PlotCard[0];
+        return $this->plotCard[0];
     }
     public function removePlotCard(): void {
-        array_shift($this->PlotCard);
+        array_shift($this->plotCard);
     }
     public function __toString()
     {
         return "ID: " . $this->getId() . "\n" .
                "Username: " . $this->getUsername() . "\n" .
-               "Nome: " . $this->getNome() . "\n" .
-               "Cognome: " . $this->getCognome() . "\n" .
-               "Data di Nascita: " . $this->getDataNascita()->format('Y-m-d') . "\n" .
-               "Luogo di Nascita: " . $this->getLuogoNascita() . "\n" .
+               "Name: " . $this->getName() . "\n" .
+               "Surname: " . $this->getSurname() . "\n" .
+               "Data di Nascita: " . $this->getBirthdate()->format('Y-m-d') . "\n" .
+               "Luogo di Nascita: " . $this->getBirthplace() . "\n" .
                "Email: " . $this->getEmail() . "\n" .
-               "Telefono: " . $this->getTelefono() . "\n" .
-               "Biografia: " . $this->getBiografia() . "\n";
+               "Telephone: " . $this->getTelephone() . "\n" .
+               "Biography: " . $this->getBiography() . "\n";
     }
 }
 
