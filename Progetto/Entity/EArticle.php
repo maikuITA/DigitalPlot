@@ -29,20 +29,20 @@ class EArticle{
     #[ORM\Column(name:"release_date",type: "date")]
     private DateTime $releaseDate;
     
-    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "idArticle", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"])]
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $reviews = [];
     
     #[ORM\ManyToOne(targetEntity: "EWriter", inversedBy: "articles")]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private EWriter $idWriter;
+    private EWriter $writerId;
     
     #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articles", cascade: ["persist", "remove"])]
     private $readings = [];
 
 
-    public function __construct(string $title,string $description,string $state = "da approvare", string $genre, string $category, string $releaseDate, EWriter $idWriter, array $readings = [], array $reviews = []) {
+    public function __construct(string $title,string $description,string $state = "da approvare", string $genre, string $category, string $releaseDate, EWriter $writerId, array $readings = [], array $reviews = []) {
         $this->title = $title;
         $this->description = $description;
         $this->state = $state;
@@ -50,20 +50,20 @@ class EArticle{
         $this->category = $category;
         $this->releaseDate = new DateTime($releaseDate);
         $this->readings = $readings;
-        $this->idWriter = $idWriter;
+        $this->writerId = $writerId;
         $this->reviews = $reviews;
     }
 
     //Metodi set e get
     
-    public function getMediaValutazione(): float {
-        $somma = 0;
+    public function getAvgEvaluate(): float {
+        $sum = 0;
         $count = 0;
         foreach ($this->reviews as $review) {
-            $somma += $review->getValutazione();
+            $sum += $review->getEvaluate();
             $count++;
         }
-        return $count > 0 ? $somma / $count : 0;
+        return $count > 0 ? $sum / $count : 0;
     }
 
 
@@ -106,11 +106,11 @@ class EArticle{
     public function getCategory(): string {
         return $this->category;
     }
-    public function setIdWriter(EWriter $idWriter) {
-        $this->idWriter = $idWriter;
+    public function setWriterId(EWriter $writerId) {
+        $this->writerId = $writerId;
     }
-    public function getIdWriter(): EWriter {
-        return $this->idWriter;
+    public function getWriterId(): EWriter {
+        return $this->writerId;
     }
     public function setReleaseDate(string $releaseDate){
         $this->releaseDate = new DateTime($releaseDate);
@@ -149,7 +149,7 @@ class EArticle{
             }
         }
     }
-    public function getReviewCount(): int {
+    public function countReviews(): int {
         return count($this->reviews);
     }
     //Gestione delle readings
@@ -175,7 +175,7 @@ class EArticle{
             }
         }
     }
-    public function getReadingCount(): int {
+    public function countReadings(): int {
         return count($this->readings);
     }
 }
