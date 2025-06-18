@@ -1,10 +1,5 @@
 <?php
 
-
-use Utility\UServer; // Importa la classe UServer dallo spazio dei nomi Utility, per gestire le variabili del server.
-use Utility\LogSys;
-use Utility\Router; // Importa la classe Router dallo spazio dei nomi Utility, per gestire il routing delle richieste.
-use View\VError; // Importa la classe VError dallo spazio dei nomi View, per visualizzare i messaggi di errore.
 use Exception; // Importa la classe Exception nativa di PHP, per gestire le eccezioni.
 
 class CRunner { // Definisce la classe CRunner, il controller principale dell'applicazione.

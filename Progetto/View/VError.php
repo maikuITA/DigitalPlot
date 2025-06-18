@@ -1,6 +1,5 @@
 <?php
 
-namespace View;
 
 use Start\StartSmarty;
 use Smarty\Exception;

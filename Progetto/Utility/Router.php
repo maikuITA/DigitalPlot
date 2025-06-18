@@ -2,7 +2,6 @@
 
 
 use Exception;
-use Utility\LogSys;
 
 class Router {
     private array $routes = [];
