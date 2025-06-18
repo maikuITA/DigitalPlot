@@ -15,6 +15,7 @@ class CFrontController{
         $requestUri = trim($requestUri, '/');
         $uriParts = explode('/', $requestUri);
 
+        // Remove DigitalPlot from the URI parts
         array_shift($uriParts);
 
         // Extract controller and method names
