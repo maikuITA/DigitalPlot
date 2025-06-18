@@ -71,7 +71,7 @@ class ESubscriber extends EUser{
         }
         return null;
     }
-    public function getFollowerByNome(string $name): ?ESubscriber{
+    public function getFollowerByName(string $name): ?ESubscriber{
         foreach($this->followers as $follower){
             if($follower->getName() == $name){
                 return $follower;
@@ -79,7 +79,7 @@ class ESubscriber extends EUser{
         }
         return null;
     }
-    public function getFollowerByCogname(string $surname): ?ESubscriber{
+    public function getFollowerBySurname(string $surname): ?ESubscriber{
         foreach($this->followers as $follower){
             if($follower->getSurname() == $surname){
                 return $follower;
