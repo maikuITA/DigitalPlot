@@ -32,7 +32,7 @@ class UServer
      */
     public static function getClientIP() : ?string {
         if($_SERVER['REMOTE_ADDR'] === null) {
-            return $_SERVER['HTTP_X_FORWARDED_FOR']?? null;
+            return $_SERVER['HTTP_X_FORWARDED_FOR'] ?? null;
         } else {
             return $_SERVER['REMOTE_ADDR'];
         } 

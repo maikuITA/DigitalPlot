@@ -147,3 +147,11 @@ Ci sono degli esempi sopra.
 Prendere spunto dal file InstallerDb.php per creare il codice per inizializzare il database. 
 Vedere anche il file bootstrapDoctrine.php per avere un idea di come generare l'EntityManager.
 ---------------------------------------------------------------------------
+
+
+
+
+DA FARE:
+1. Crea il file di ErrorLog che tenga traccia di tutti gli errori
+2. Modificare il file logsys per poter scrivere anche sul file error log
+3. Foundation: all'interno del file FEntityManager scrivi all'interno del catch il messaggio di errore nel file creato al passo prima;

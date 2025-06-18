@@ -23,9 +23,9 @@ class Router {
      */
     public function resolve(string $requestMethod, string $requestUri): ?array {
 
-        LogSys::toLog("");
-        LogSys::toLog("Ip degl client -> " . UServer::getClientIP());
-        LogSys::toLog("Risolvo la rotta -> Method=$requestMethod, URI=$requestUri");
+        ULogSys::toLog("");
+        ULogSys::toLog("Ip degl client -> " . UServer::getClientIP());
+        ULogSys::toLog("Risolvo la rotta -> Method=$requestMethod, URI=$requestUri");
 
         // Rimuove i parametri GET dalla richiesta (se presenti)
         $parsedUrl = parse_url($requestUri);
@@ -41,7 +41,7 @@ class Router {
 
             $params = []; // Inizializza $params come array vuoto
             if ($this->match($route['path'], $cleanUri, $params) && $route['method'] === strtoupper($requestMethod)){
-                LogSys::toLog("Rotta trovata! " . json_encode($route));
+                ULogSys::toLog("Rotta trovata! " . json_encode($route));
                 return [
                     'controller' => $route['controller'],
                     'action' => $route['action'],
@@ -50,9 +50,9 @@ class Router {
             }
         }
 
-        LogSys::toLog("Rotta non trovata -> Method=$requestMethod, URI=$requestUri");
+        ULogSys::toLog("Rotta non trovata -> Method=$requestMethod, URI=$requestUri");
         foreach ($this->routes as $r) {
-            // Debug -> LogSys::toLog("Defined route: " . json_encode($r));
+            // Debug -> ULogSys::toLog("Defined route: " . json_encode($r));
         }
         return null;
     }
@@ -69,15 +69,13 @@ class Router {
             $action = $route['action'];
             $params = $route['params'];
 
-            LogSys::toLog("Caricamento del controller -> {$controllerName}");
-            //error_log("action: "); error_log($action);
-            //error_log("params: "); error_log(print_r($params));
-
+            ULogSys::toLog("Caricamento del controller -> {$controllerName}");
+           
             // Controllo se il file del controller esiste
-            if (!file_exists(__DIR__ . "/../Controller/{$controllerName}.php")) {
-                LogSys::toLog("ERRORE: Il file {$controllerName}.php NON ESISTE!");
+            if (!file_exists(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "{$controllerName}.php")) {
+                ULogSys::toLog("ERRORE: Il file {$controllerName}.php NON ESISTE!");
             }
-            require_once __DIR__ . "/../Controller/{$controllerName}.php";
+            require_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Controller" . DIRECTORY_SEPARATOR . "{$controllerName}.php";
             $controllerClass = "Controller\\$controllerName";
             if (!class_exists($controllerClass)) {
                 throw new Exception("Controller  -> $controllerClass not found.");
@@ -86,7 +84,7 @@ class Router {
             
             return call_user_func_array([$controller, $action], $params);
         }
-        LogSys::toLog("Rotta non trovata -> " . $requestUri);
+        ULogSys::toLog("Rotta non trovata -> " . $requestUri);
         return null;
     }
 
@@ -130,15 +128,15 @@ class Router {
         }
 
         // Analizzo e creo le rotte
-        // DEBUG LogSys::toLog("");
-        // DEBUG LogSys::toLog("[!] DEBUG ROTTE");
+        // DEBUG ULogSys::toLog("");
+        // DEBUG ULogSys::toLog("[!] DEBUG ROTTE");
         foreach ($rotte as $rotta => $parametri) {
             if (is_array($parametri)) {
                 // Se il valore è un array, itera attraverso di esso e recupero i parametri della rotta
-                // DEBUG LogSys::toLog($parametri["metodo"] . $parametri["uri"] . $parametri["controller"] . $parametri["action"]);
+                // DEBUG ULogSys::toLog($parametri["metodo"] . $parametri["uri"] . $parametri["controller"] . $parametri["action"]);
                 $this->addRoute($parametri["metodo"], $parametri["uri"], $parametri["controller"], $parametri["action"]); // Root
             }
         }
-        // DEBUG LogSys::toLog("");
+        // DEBUG ULogSys::toLog("");
     }
 }
