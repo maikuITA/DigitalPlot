@@ -12,9 +12,11 @@ class EReading{
     #[ORM\GeneratedValue(strategy:"IDENTITY")]  
     #[ORM\Column(name:"reading_cod", type:"integer")]
     private int $cod;
+
     #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "readings")]
     #[ORM\JoinColumn(name : "fk_user" , referencedColumnName : "user_id", nullable:false)] // definizione chiave esterna
     private EUser $userId;
+    
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "readings")]
     #[ORM\JoinColumn(name : "fk_article", referencedColumnName : "article_id", nullable: false)] // definizione chiave esterna
     private EArticle $articleId;

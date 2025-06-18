@@ -15,7 +15,7 @@ class EDiscount{
     #[ORM\Column(type: "integer")]
     private int $price;
     
-    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "discount_cod", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "discountCod", cascade: ["persist", "remove"])]
     private $purchases = [];
 
 

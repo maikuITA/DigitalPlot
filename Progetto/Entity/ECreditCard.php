@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 class ECreditCard{
     
     #[ORM\Id]
-    #[ORM\Column( type: "integer")]
+    #[ORM\Column( name : "card_number" ,type: "integer")]
     public int $cardNumber;
     
     #[ORM\Column(type: "string", length: 100)]

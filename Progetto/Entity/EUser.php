@@ -47,14 +47,14 @@ class EUser {
     #[ORM\Column(type:"text")]
     private string $biography;
     
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user_id", cascade:["persist", "remove"]) ]
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"userId", cascade:["persist", "remove"]) ]
     private $readings = [];
     
-    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user_id", cascade:["persist", "remove"])]
-    private $PlotCard = [];
+    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"userId", cascade:["persist", "remove"])]
+    private $plotCard = [];
 
 
-    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], array $PlotCard = [] ) {
+    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], array $plotCard = [] ) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setName($name);
@@ -66,7 +66,7 @@ class EUser {
         $this->setBiography($biography);
         $this->setAdmin($admin);
         $this->readings = $readings;
-        $this->PlotCard = $PlotCard;
+        $this->plotCard = $plotCard;
     }
     
 
@@ -171,13 +171,13 @@ class EUser {
 
     // Metodi per le PlotCard
     public function addPlotCard(EPlotCard $plotCard): void {
-        $this->PlotCard[0] = $plotCard;
+        $this->plotCard[0] = $plotCard;
     }
     public function getPlotCard(): EPlotCard {
-        return $this->PlotCard[0];
+        return $this->plotCard[0];
     }
     public function removePlotCard(): void {
-        array_shift($this->PlotCard);
+        array_shift($this->plotCard);
     }
     public function __toString()
     {

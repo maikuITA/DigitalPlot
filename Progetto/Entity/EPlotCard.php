@@ -11,9 +11,11 @@ class EPlotCard{
     #[ORM\GeneratedValue(strategy: "IDENTITY")]  
     #[ORM\Column(name: "card_cod", type: "integer")] 
     private int $cod;
+
     #[ORM\Column(type: "integer")] 
     private int $points;
-    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "PlotCard")]
+
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "plotCard")]
     #[ORM\JoinColumn(name : "fk_user", referencedColumnName : "user_id", nullable:false, unique: true)] // definizione chiave esterna
     private EUser $userId;
 
