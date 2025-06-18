@@ -152,7 +152,7 @@ class EUser {
     }
     public function removeReading(EReading $reading): void {
         foreach ($this->readings as $key => $value) {
-            if ($value->getCode() === $reading->getCode()) {
+            if ($value->getCode() === $reading->getCod()) {
                 unset($this->readings[$key]);
             }
         }
