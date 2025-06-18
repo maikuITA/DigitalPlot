@@ -1,9 +1,7 @@
 <?php
 
 
-use Start\StartSmarty;
 use Smarty\Exception;
-use Utility\LogSys;
 
 class VAreaUtente {
 

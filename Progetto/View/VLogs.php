@@ -1,10 +1,7 @@
 <?php
 
 
-use Start\StartSmarty;
 use Smarty\Exception;
-use Utility\LogSys;
-
 class VLogs {
 
     public static function display() {

@@ -1,6 +1,5 @@
 <?php
 
-use Start\StartSmarty;
 
 class VUtente {
     private $smarty;

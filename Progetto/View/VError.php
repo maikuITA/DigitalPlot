@@ -1,9 +1,7 @@
 <?php
 
 
-use Start\StartSmarty;
 use Smarty\Exception;
-use Smarty\Smarty;
 
 class VError {
     private Smarty $smarty;
