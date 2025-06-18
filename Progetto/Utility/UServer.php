@@ -43,7 +43,7 @@ class UServer
      * @param string $key
      * @return mixed|null
      */
-    public static function get(string $key): mixed
+    public static function getValue(string $key): mixed
     {
         return $_SERVER[$key] ?? null;
     }
