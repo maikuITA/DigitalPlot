@@ -3,7 +3,7 @@
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-#[ORM\Table(name: "CarteDiCredito")]
+#[ORM\Table(name: "CartaDiCredito")]
 class ECartaDiCredito{
     
     #[ORM\Id]
