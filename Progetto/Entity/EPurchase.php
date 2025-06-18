@@ -70,7 +70,7 @@ class EPurchase{
         return $this->purchaseDate;
     }
     public function getSubTotal(): float{
-        $this->subTotal = $this->calcolaSubTotal($this->subscriptionId, $this->discountCod);
+        $this->subTotal = $this->calculateSubTotal($this->subscriptionId, $this->discountCod);
         return $this->subTotal;
     }
     public function getPurchaseId(): ESubscription{
@@ -84,7 +84,7 @@ class EPurchase{
     }
 
 
-    public function calcolaSubTotal(ESubscription $subscription, EDiscount $discount): float
+    public function calculateSubTotal(ESubscription $subscription, EDiscount $discount): float
     {
         if ($discount === null){
             return $subscription->getPrice();
