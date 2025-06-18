@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\DiscriminatorMap;
 #[ORM\Entity]
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: "type", type: "string")]
-#[ORM\DiscriminatorMap(["subsciber" => "ESubscribero", "reader" => "EReader", "writer" => "EWriter", "user" => "EUser"])]  // definisco i tipi di utenti
+#[ORM\DiscriminatorMap(["subsciber" => "ESubscriber", "reader" => "EReader", "writer" => "EWriter", "user" => "EUser"])]  // definisco i tipi di utenti
 #[ORM\Table(name: "User")]
 class EUser {
     
@@ -152,20 +152,20 @@ class EUser {
     }
     public function removeReading(EReading $reading): void {
         foreach ($this->readings as $key => $value) {
-            if ($value->getCode() === $reading->getCod()) {
+            if ($value->getCod() === $reading->getCod()) {
                 unset($this->readings[$key]);
             }
         }
     }
     public function getReadingById( int $id): ?EReading {
         foreach ($this->readings as $reading) {
-            if ($reading->getCode() === $id) {
+            if ($reading->getCod() === $id) {
                 return $reading;
             }
         }
         return null;
     }
-    public function getReadingCount(): int {
+    public function countReadings(): int {
         return count($this->readings);
     }
 
