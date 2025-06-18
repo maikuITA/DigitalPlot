@@ -2,6 +2,7 @@
 
 
 use Smarty\Exception;
+use Smarty\Smarty;
 
 class VError {
     private Smarty $smarty;
