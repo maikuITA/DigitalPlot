@@ -14,7 +14,7 @@ class EUser {
     
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy:"IDENTITY")]
-    #[ORM\Column(name:"id_user", type:"integer")]
+    #[ORM\Column(name:"user_id", type:"integer")]
     private int $id;
    
     #[ORM\Column(type:"string",nullable:false,unique:true)]
@@ -47,10 +47,10 @@ class EUser {
     #[ORM\Column(type:"text")]
     private string $biography;
     
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"id_user", cascade:["persist", "remove"]) ]
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user_id", cascade:["persist", "remove"]) ]
     private $readings = [];
     
-    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"idUser", cascade:["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user_id", cascade:["persist", "remove"])]
     private $PlotCard = [];
 
 

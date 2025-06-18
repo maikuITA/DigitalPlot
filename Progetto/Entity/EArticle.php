@@ -8,7 +8,7 @@ class EArticle{
 
     #[ORM\Id]   
     #[ORM\GeneratedValue(strategy: "IDENTITY")]
-    #[ORM\Column(name: "id_article", type: "integer")]
+    #[ORM\Column(name: "article_id", type: "integer")]
     private int $id;
     
     #[ORM\Column(type: "string", length: 100)]
@@ -34,7 +34,7 @@ class EArticle{
     private $reviews = [];
     
     #[ORM\ManyToOne(targetEntity: "EWriter", inversedBy: "articles")]
-    #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "id_utente", nullable: false)] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private EWriter $idWriter;
     

@@ -9,45 +9,45 @@ class EPlotCard{
 
     #[ORM\Id]            
     #[ORM\GeneratedValue(strategy: "IDENTITY")]  
-    #[ORM\Column(name: "id_card", type: "integer")] 
-    private int $id;
+    #[ORM\Column(name: "card_cod", type: "integer")] 
+    private int $cod;
     #[ORM\Column(type: "integer")] 
-    private int $punti;
+    private int $points;
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "PlotCard")]
-    #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "id_utente", nullable:false, unique: true)] // definizione chiave esterna
+    #[ORM\JoinColumn(name : "fk_utente", referencedColumnName : "user_id", nullable:false, unique: true)] // definizione chiave esterna
     private EUser $idUser;
 
-    public function __construct(int $punti, EUser $idUser ) {
-        $this->setPunti($punti);
+    public function __construct(int $points, EUser $idUser ) {
+        $this->setPoints($points);
         $this->idUser = $idUser;
     }
-    //Metodo per aggiungere punti
-    public function addPunti(int $punti): void {
-        $this->punti += $punti;
+    //Metodo per aggiungere points
+    public function addPoints(int $points): void {
+        $this->points += $points;
     }
-    //Metodo per sottrarre punti
-    public function subPunti(int $punti) : void{
-        if ($this->punti - $punti >= 0) {
-            $this->punti -= $punti;
+    //Metodo per sottrarre points
+    public function subPoints(int $points) : void{
+        if ($this->points - $points >= 0) {
+            $this->points -= $points;
         } else {
-            throw new \Exception("Non puoi sottrarre più punti di quelli disponibili.");
+            throw new \Exception("Non puoi sottrarre più points di quelli disponibili.");
         }
     }
 
 
 
     //Metodi set e get
-    public function setId(int $id) : void{
-        $this->id = $id;
+    public function setId(int $cod) : void{
+        $this->cod = $cod;
     }
-    public function getId(): int {
-        return $this->id;
+    public function getCode(): int {
+        return $this->cod;
     }
-    public function setPunti(int $punti) {
-        $this->punti = $punti;
+    public function setPoints(int $points) {
+        $this->points = $points;
     }
-    public function getPunti(): int {
-        return $this->punti;
+    public function getPoints(): int {
+        return $this->points;
     }
     public function setIdUser(EUser $idUser) {
         $this->idUser = $idUser;
@@ -57,7 +57,7 @@ class EPlotCard{
     }
 
     public function __toString(): string {
-        return "Punti: " . $this->punti . ", ID Utente: " . $this->idUser;
+        return "Points: " . $this->points . ", ID Utente: " . $this->idUser;
     }
 }
 
