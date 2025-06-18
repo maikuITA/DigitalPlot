@@ -36,13 +36,13 @@ class EArticle{
     #[ORM\ManyToOne(targetEntity: "EWriter", inversedBy: "articles")]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private EWriter $writerId;
+    private EWriter $writer;
     
     #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private $readings = [];
 
 
-    public function __construct(string $title,string $description,string $state = "da approvare", string $genre, string $category, string $releaseDate, EWriter $writerId, array $readings = [], array $reviews = []) {
+    public function __construct(string $title,string $description,string $state = "da approvare", string $genre, string $category, string $releaseDate, EWriter $writer, array $readings = [], array $reviews = []) {
         $this->title = $title;
         $this->description = $description;
         $this->state = $state;
@@ -50,7 +50,7 @@ class EArticle{
         $this->category = $category;
         $this->releaseDate = new DateTime($releaseDate);
         $this->readings = $readings;
-        $this->writerId = $writerId;
+        $this->writer = $writer;
         $this->reviews = $reviews;
     }
 
@@ -106,11 +106,11 @@ class EArticle{
     public function getCategory(): string {
         return $this->category;
     }
-    public function setWriterId(EWriter $writerId) {
-        $this->writerId = $writerId;
+    public function setWriter(EWriter $writer) {
+        $this->writer = $writer;
     }
-    public function getWriterId(): EWriter {
-        return $this->writerId;
+    public function getWriter(): EWriter {
+        return $this->writer;
     }
     public function setReleaseDate(string $releaseDate){
         $this->releaseDate = new DateTime($releaseDate);

@@ -15,15 +15,15 @@ class EReading{
 
     #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "readings")]
     #[ORM\JoinColumn(name : "fk_user" , referencedColumnName : "user_id", nullable:false)] // definizione chiave esterna
-    private EUser $userId;
-    
+    private EUser $user;
+
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "readings")]
     #[ORM\JoinColumn(name : "fk_article", referencedColumnName : "article_id", nullable: false)] // definizione chiave esterna
-    private EArticle $articleId;
+    private EArticle $article;
 
-    public function __construct(EUser $userId, EArticle $articleId ) {
-        $this->userId = $userId;
-        $this->articleId = $articleId;
+    public function __construct(EUser $user, EArticle $article ) {
+        $this->user = $user;
+        $this->article = $article;
     }
 
     // Set methods
@@ -31,22 +31,22 @@ class EReading{
     {
         $this->cod = $cod;
     }
-    public function setUserId(EUser $userId)
+    public function setUser(EUser $user)
     {
-        $this->userId = $userId;
+        $this->user = $user;
     }
-    public function setArticleId(EArticle $articleId)
+    public function setArticle(EArticle $article)
     {
-        $this->articleId = $articleId;
+        $this->article = $article;
     }
     // Get methods
     public function getCod(){
         return $this->cod;
     }
-    public function getUserId(): EUser{
-        return $this->userId;
+    public function getUser(): EUser{
+        return $this->user;
     }
-    public function getArticleId(): EArticle{
-        return $this->articleId;
+    public function getArticle(): EArticle{
+        return $this->article;
     }
 }

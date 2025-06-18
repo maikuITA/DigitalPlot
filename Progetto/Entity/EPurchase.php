@@ -21,7 +21,7 @@ class EPurchase{
 
     #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases")]
     #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false)] // definizione chiave esterna
-    private ESubscription $subscriptionId;
+    private ESubscription $subscription;
      
     #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases")]
     #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", nullable: false)] // definizione chiave esterna
@@ -33,11 +33,11 @@ class EPurchase{
 
     public function __construct( string $purchaseDate, ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
 
-        $this->subscriptionId = $subscription;
+        $this->subscription = $subscription;
         $this->purchaseDate = new DateTime($purchaseDate);
         $this->discountCod = $discount;
         $this->creditCardNumber = $card;
-        $this->subTotal = $this->calculateSubTotal($this->subscriptionId, $this->discountCod);
+        $this->subTotal = $this->calculateSubTotal($this->subscription, $this->discountCod);
     }
     
     // Set methods
@@ -49,10 +49,6 @@ class EPurchase{
     {
         $this->purchaseDate = new DateTime($purchaseDate);
     }
-    public function setPurchaseId(ESubscription $subscriptionId)
-    {
-        $this->subscriptionId = $subscriptionId;
-    }
     public function setDiscountCode(EDiscount $discountCod)
     {
         $this->discountCod = $discountCod;
@@ -60,6 +56,10 @@ class EPurchase{
     public function setCard(ECreditCard $card)
     {
         $this->creditCardNumber = $card;
+    }
+    public function setSubscription(ESubscription $subscription): void
+    {
+        $this->subscription = $subscription;
     }
     
     // Get methods
@@ -70,17 +70,18 @@ class EPurchase{
         return $this->purchaseDate;
     }
     public function getSubTotal(): float{
-        $this->subTotal = $this->calculateSubTotal($this->subscriptionId, $this->discountCod);
+        $this->subTotal = $this->calculateSubTotal($this->subscription, $this->discountCod);
         return $this->subTotal;
-    }
-    public function getPurchaseId(): ESubscription{
-        return $this->subscriptionId;
     }
     public function getDiscountCod(): EDiscount{
         return $this->discountCod;
     }
     public function getCard(): ECreditCard{
         return $this->creditCardNumber;
+    }
+    public function getSubscription(): ESubscription
+    {
+        return $this->subscription;
     }
 
 

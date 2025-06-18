@@ -47,10 +47,10 @@ class EUser {
     #[ORM\Column(type:"text")]
     private string $biography;
     
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"userId", cascade:["persist", "remove"]) ]
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
     private $readings = [];
     
-    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"userId", cascade:["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
     private $plotCard = [];
 
 

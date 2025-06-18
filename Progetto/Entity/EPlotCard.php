@@ -17,11 +17,11 @@ class EPlotCard{
 
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "plotCard")]
     #[ORM\JoinColumn(name : "fk_user", referencedColumnName : "user_id", nullable:false, unique: true)] // definizione chiave esterna
-    private EUser $userId;
+    private EUser $user;
 
-    public function __construct(int $points, EUser $userId ) {
+    public function __construct(int $points, EUser $user ) {
         $this->setPoints($points);
-        $this->userId = $userId;
+        $this->user = $user;
     }
     //Metodo per aggiungere points
     public function addPoints(int $points): void {
@@ -51,15 +51,15 @@ class EPlotCard{
     public function getPoints(): int {
         return $this->points;
     }
-    public function setUserId(EUser $userId) {
-        $this->userId = $userId;
+    public function setUser(EUser $user) {
+        $this->user = $user;
     }
-    public function getUserid(): EUser {
-        return $this->userId;
+    public function getUser(): EUser {
+        return $this->user;
     }
 
     public function __toString(): string {
-        return "Points: " . $this->points . ", User ID: " . $this->userId;
+        return "Points: " . $this->points . ", User ID: " . $this->user;
     }
 }
 

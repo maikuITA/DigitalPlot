@@ -16,7 +16,7 @@ class ESubscriber extends EUser{
     #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"])]
     private $following = [];
 
-    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriberId", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"])]
     private $reviews = [];
     
     public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, EPlotCard $plotCard, string $biography = "", $followers = [], $following = []) {

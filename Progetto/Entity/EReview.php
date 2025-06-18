@@ -20,17 +20,17 @@ class EReview{
 
     #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "reviews")]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
-    private ESubscriber $subscriberId;
+    private ESubscriber $subscriber;
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews")]
     #[ORM\JoinColumn(name: "fk_article", referencedColumnName: "article_id", nullable: false)] // definizione chiave esterna
-    private EArticle $articleId;
+    private EArticle $article;
 
-    public function __construct(int $evaluate, string $comment, string $releaseDate, ESubscriber $subscriberId , EArticle $articleId ) {
+    public function __construct(int $evaluate, string $comment, string $releaseDate, ESubscriber $subscriber , EArticle $article ) {
 
         $this->evaluate = $evaluate;
         $this->comment = $comment;
-        $this->subscriberId = $subscriberId;
-        $this->articleId = $articleId;
+        $this->subscriber = $subscriber;
+        $this->article = $article;
         $this->releaseDate = new DateTime($releaseDate);
     }
 
@@ -53,17 +53,17 @@ class EReview{
     public function getComment(): string {
         return $this->comment;
     }
-    public function setUserId(ESubscriber $subscriberId) {
-        $this->subscriberId = $subscriberId;
+    public function setSubscriber(ESubscriber $subscriber) {
+        $this->subscriber = $subscriber;
     }
-    public function getSubscriberId(): ESubscriber {
-        return $this->subscriberId;
+    public function getSubscriber(): ESubscriber {
+        return $this->subscriber;
     }
-    public function setArticle(EArticle $articleId) {
-        $this->articleId = $articleId;
+    public function setArticle(EArticle $article) {
+        $this->article = $article;
     }
-    public function getArticleId(): EArticle {
-        return $this->articleId;
+    public function getArticle(): EArticle {
+        return $this->article;
     }
 
     public function getReleaseDate(): DateTime {
