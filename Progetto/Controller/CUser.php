@@ -18,7 +18,7 @@ class CUser{
             $logged = true;
         }
         if(!$logged){
-            header('Location: /DigitalPlot/Guest/home');
+            header('Location: https://digitalplot.altervista.org/home');
             exit;
         }
         return true;
@@ -34,6 +34,17 @@ class CUser{
             $articles = FPersistentManager::getInstance()->getCasualArticles(8);
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlocard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles);
         }  
+    }
+
+
+    /**
+     * Method to redirect to the login page
+     */
+     public static function logout(){
+        USession::getInstance();
+        USession::unsetSession();
+        USession::destroySession();
+        header('Location: https://digitalplot.altervista.org/home');
     }
     
 }
