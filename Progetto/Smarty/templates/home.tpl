@@ -24,13 +24,17 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="index.html">Home</a>
                     <a class="navbar-item" href="abbonati.html">Abbonati</a>
-                    <a class="navbar-item" href="">PlotPoints: XXX</a>
-                    <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                    {if $isLogged === true}
+                        <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
+                    {else}
+                        <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                    {/if}
+
                 </div>
             </div>
         </div>
         <div class="column">
-            <div>
+            <div
                 <a href="#" class="title is-1">Digital</a>
                 <a href="#" class="title is-1 has-text-warning">Plot</a>
             </div> 
@@ -41,7 +45,11 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <figure class="image is-48x48">
-                    <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                    {if $proPic === null}
+                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                    {else}
+                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                    {/if}
                 </figure>
             {else}
                 <a href="accesso.html" class="button is-warning ok">Accedi</a>
