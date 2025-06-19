@@ -164,8 +164,9 @@ class FEntityManager {
             $resultpart = $query->getResult();
             $result = [];
             for ($i = 0; $i < $articlesNum; $i++){
-                $randomInt = random_int(1, count($resultpart) - 1);
-                $result[$i] = $resultpart[$randomInt];
+                $randomInt = range(1, count($resultpart) - 1);
+                shuffle($randomInt); // Shuffle the array to get a random order
+                $result[$i] = $resultpart[$randomInt[$i]];
             }
             return $result;
         }catch(Exception $e){

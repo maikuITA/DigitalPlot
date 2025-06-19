@@ -2,7 +2,7 @@
 
 class VUser{
 
-    public static function home( string $username, int $plotPoints, $proPic, EArticle $articles[]){
+    public static function home( string $username, int $plotPoints, $proPic, array $articles){
         $smarty = StartSmarty::configuration();
         // $smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> home.tpl");
