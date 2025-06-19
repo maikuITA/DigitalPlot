@@ -41,7 +41,7 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <figure class="image is-48x48">
-                    <img class="is-rounded" src="https://bulma.io/assets/images/placeholders/48x48.png" />
+                    <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                 </figure>
             {else}
                 <a href="accesso.html" class="button is-warning ok">Accedi</a>
