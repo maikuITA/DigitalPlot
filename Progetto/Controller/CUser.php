@@ -31,8 +31,8 @@ class CUser{
     public static function home(): void {
         if(self::isLogged()){
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-            //funz che prende 8 articolil
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlocard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles[]);
+            $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlocard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles);
         }  
     }
 

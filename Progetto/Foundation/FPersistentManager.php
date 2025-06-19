@@ -46,8 +46,22 @@ class FPersistentManager {
         return FEntityManager::getInstance()->retriveObjById($className, $id);
     }
 
+    /**
+     * Retrive an object by a specific attribute
+     * @param string $username
+     * @return object || null
+     */
     public function retriveUserOnUsername(string $username): ?object {
         return FEntityManager::getInstance()->retriveObjByAttribute(EUser::class, 'username', $username);
+    }
+
+    /**
+     * Retrieve an array of article, its sized is specified by the parameter
+     * @param int $articlesNum Number of articles to retrieve
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function getCasualArticles(int $articlesNum): array {
+        return FEntityManager::getInstance()->selectNotAll(EArticle::class, $articlesNum);
     }
 
     /**

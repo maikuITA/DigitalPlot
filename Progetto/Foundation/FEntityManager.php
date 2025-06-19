@@ -138,7 +138,7 @@ class FEntityManager {
      * @return array || null
      * @throws Exception
      */
-    public static function selectAll(string $className){
+    public static function selectAll(string $className): ?array {
         try{
             $dql = "SELECT e FROM $className e";
             $query = self::$entityManager->createQuery($dql);
@@ -149,6 +149,31 @@ class FEntityManager {
             return null;
         }
     }
+
+    /**
+     * return a specified number of object of a specifyc table 
+     * @param string $className
+     * @param int $articlesNum
+     * @return EArticle[] | null
+     * @throws Exception
+     */
+    public static function selectNotAll(string $className, int $articlesNum): ?array {
+        try{
+            $dql = "SELECT e FROM $className e";
+            $query = self::$entityManager->createQuery($dql);
+            $resultpart = $query->getResult();
+            $result = [];
+            for ($i = 0; $i < $articlesNum; $i++){
+                $randomInt = random_int(1, count($resultpart) - 1);
+                $result[$i] = $resultpart[$randomInt];
+            }
+            return $result;
+        }catch(Exception $e){
+            echo "ERROR " . $e->getMessage();
+            return null;
+        }
+    }
+
     /**
      * verify if exist an object
      * @param string $primaryKey

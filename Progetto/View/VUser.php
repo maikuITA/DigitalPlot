@@ -10,6 +10,7 @@ class VUser{
         $smarty->assign('username', $username);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
+        $smarty->assign('articles', $articles);
         $smarty->display('home.tpl');
     }
 }
