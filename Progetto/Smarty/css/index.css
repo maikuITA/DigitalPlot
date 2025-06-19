@@ -120,7 +120,7 @@ span, i {
     color: hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l));
 }
 
-figure:hover {
+figure:hover, i:hover, span:hover {
     cursor: pointer;
     transform: scale(1.1);
 }
