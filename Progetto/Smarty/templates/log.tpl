@@ -68,16 +68,14 @@
         <div class="container">
             <label class="title is-3">Logs</label>
         </div>
-        <div class="container" id="container">
-            <div class="card">
+        <div class="container">
+            <div class="card log">
                 <div class="card-content">
                     <p class="title">Logs di errore</p>
                     <p class="subtitle" id="contenuto-file-errori"></p>
                 </div>
             </div>
-        </div>
-        <div class="container" id="container">
-            <div class="card">
+            <div class="card log">
                 <div class="card-content">
                     <p class="title">Logs di eventi</p>
                     <p class="subtitle" id="contenuto-file-eventi"></p>
