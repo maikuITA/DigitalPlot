@@ -48,7 +48,7 @@
                 <i class="fa fa-window-close fa-10x" aria-hidden="true"></i>
             </span> 
             <p class="title">
-                Errore 404 <br>
+                Errore {$errore} <br>
                 Risorsa non trovata!
             </p>
             <a class="subtitle has-text-link" href="index.html">

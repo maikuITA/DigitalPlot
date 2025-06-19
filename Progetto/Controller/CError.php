@@ -8,8 +8,8 @@ class CError {
      * @return void
      */
     public static function error404(): void {
-        header('HTTP/1.1 404 Not Found');
-        // chiama la view per la pagina di errore 404
+        VError::render("404 Not Found");
+        //header('HTTP/1.1 404 Not Found');
         exit;
     }
     
@@ -19,8 +19,8 @@ class CError {
      * @return void
      */
     public static function error500(): void {
-        header('HTTP/1.1 500 Internal Server Error');
-        // chiama la view per la pagina di errore 500
+        VError::render("500 Internal Server Error");
+        //header('HTTP/1.1 500 Internal Server Error');
         exit;       
     }
 }
