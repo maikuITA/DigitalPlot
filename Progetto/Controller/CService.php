@@ -42,13 +42,13 @@ class CService{
         ];
         $zero = self::printCounts($allData);
         if ($zero === 0){
-            echo "Database has been populated successfully.";
+            ULogSys::toLog("Database has been populated successfully.");
         } else {
-            echo "Waiting for the database to be populated...";
+            ULogSys::toLog("Waiting for the database to be populated...");
             FPersistentManager::getInstance()->clearAll();
             InstallerDb::install();
             BasicEntry::populateDb();
-            echo "Database has been populated successfully.";
+            ULogSys::toLog("Database has been populated successfully.");
         }
     }
     

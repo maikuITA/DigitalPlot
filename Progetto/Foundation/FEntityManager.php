@@ -37,7 +37,7 @@ class FEntityManager {
             return $obj;
         }
         catch (Exception $e){
-            echo "Error: " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -56,7 +56,7 @@ class FEntityManager {
             return $obj;
         }
         catch (Exception $e){
-            echo "Error: " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -82,7 +82,7 @@ class FEntityManager {
             }
         }
         catch (Exception $e){
-            echo "Error: " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -107,7 +107,7 @@ class FEntityManager {
             return $result;
         }
         catch (Exception $e){
-            echo "Error: " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -130,7 +130,7 @@ class FEntityManager {
                 return null;
             }
         }catch(Exception $e){
-                echo "ERROR " . $e->getMessage();
+                ULogSys::toLog('Error: ' . $e->getMessage(), true);
                 return null;
         }
     }
@@ -147,7 +147,7 @@ class FEntityManager {
             $result = $query->getResult();
             return $result;
         }catch(Exception $e){
-            echo "ERROR " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -172,7 +172,7 @@ class FEntityManager {
             }
             return $result;
         }catch(Exception $e){
-            echo "ERROR " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -197,9 +197,9 @@ class FEntityManager {
                 return false;
             }
         }catch(Exception $e){
-                echo "ERROR " . $e->getMessage();
-                return false;
-            }
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return false;
+        }
     }
 
     //------------Saving and Deleting Methods--------------
@@ -217,7 +217,7 @@ class FEntityManager {
             self::$entityManager->getConnection()->commit();
             return true;
         }catch(Exception $e){
-            echo "Error: " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return false;
         }
     }

@@ -114,7 +114,7 @@ class FPersistentManager {
      * @return void
      */
     public function clearAll(): void{
-        FEntityManager::getInstance()->clearAll();
+        FEntityManager::getInstance()->dropDatabase();
     }
 
     /*
