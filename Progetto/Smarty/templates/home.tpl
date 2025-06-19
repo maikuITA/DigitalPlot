@@ -66,61 +66,19 @@
         </label>
     </div>
     <div class="container" id="container">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
+        {foreach $articles as $article}
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">Lorem ipsum dolor sit amet</p>
+                    <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-footer-item">
+                        <a href="#" class="button is-warning">Leggi di più</a>
+                    </p>
+                </footer>
             </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
+        {/foreach}
     </div>
 </body>
 </html>
