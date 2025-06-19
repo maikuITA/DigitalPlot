@@ -9,22 +9,13 @@ class CFrontController {
         'error' => ['CError', 'error404'],
     ];
     
-    /**
-     * Method to run the front controller
-     * This method will parse the request URI, determine the controller and method to call,
-     * and then call the appropriate method with any parameters.
-     * @param string $requestUri The request URI to process, typically obtained from the server's request.
-     * @return void
-     */
     public function start(): void {
 
-        // Get the request URI from the server
-        $requestUri = UServer::getValue('REQUEST_URI');
+        $requestUri = UServer::getValue('REQUEST_URI'); // Get the request URI from the server
 
         $route = trim($requestUri, '/'); // Get the second part of the URI and trim slashes
 
-        if(in_array($route, array_keys(self::$routes))) {
-            // If the route exists, call the corresponding controller and method
+        if(in_array($route, array_keys(self::$routes))) { // If the route exists, call the corresponding controller and method
             $controller = self::$routes[$route][0];
             $method = self::$routes[$route][1];
 
