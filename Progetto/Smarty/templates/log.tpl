@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigitalPlot-Logs</title>
-    <link rel="stylesheet" href="bulma/bulma.css">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="logs.css">
+    <link rel="stylesheet" href="/Progetto/Smarty/css/bulma/bulma.css">
+    <link rel="stylesheet" href="/Progetto/Smarty/css/index.css">
+    <link rel="stylesheet" href="/Progetto/Smarty/css/logs.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('contenuto-file-errori').innerHTML = xhr.responseText;
+                    document.getElementById('contenuto-file-eventi').innerHTML = xhr.responseText;
                 }
             };
             xhr.open('GET', '/Progetto/Utility/ULeggiEventi.php', true);
@@ -64,20 +64,24 @@
             <a href="accesso.html" class="button is-warning ok">Accedi</a>
         </div>
     </header>
-    <div class="container">
-        <label class="title is-3">Logs</label>
-    </div>
-    <div class="container" id="container">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Logs di errore</p>
-                <p class="subtitle" id="contenuto-file-errori"></p>
+    <div class="body-container">
+        <div class="container">
+            <label class="title is-3">Logs</label>
+        </div>
+        <div class="container" id="container">
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">Logs di errore</p>
+                    <p class="subtitle" id="contenuto-file-errori"></p>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Logs di eventi</p>
-                <p class="subtitle" id="contenuto-file"></p>
+        <div class="container" id="container">
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">Logs di eventi</p>
+                    <p class="subtitle" id="contenuto-file-eventi"></p>
+                </div>
             </div>
         </div>
     </div>
