@@ -42,6 +42,11 @@ label {
     text-align: center;
 }
 
+.regis-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
 .tabs {
     width: 100%;
     margin: 0px;

@@ -4,13 +4,13 @@ class CFrontController {
 
     private static $routes = [
         '' => ['CUser', 'welcome'], // Default route
-        'home' => ['CUser', 'welcome'],
+        'home' => ['CUser', 'home'],
         'welcome' => ['CUser', 'welcome'],
         'accesso' => ['CAccesso', 'accesso'],
         'abbonati' => ['CAbbonati', 'abbonati'],
         'error' => ['CError', 'error404'],
         'login' => ['CUser', 'login'],
-        'registrazione' => ['CGuest', 'register'],
+        'registrazione' => ['CUser', 'register'],
     ];
     
     public function start(): void {

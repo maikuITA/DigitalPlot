@@ -30,13 +30,19 @@ class CUser{
      * @return void
      */
     public static function welcome(): void {
-        // Check if the user is logged in
-        if (self::isLogged()) {
-            // Redirect to the home page with user data
-            self::home();
+        $logged = false;
+        if(UCookie::isSet('PHPSESSID')){
+            if(session_status() == PHP_SESSION_NONE){
+                USession::getInstance();
+            }
+        }
+        if(USession::isSetSessionElement('user')){
+            $logged = true;
+        }
+        if(!$logged){
+            VUser::home();
         } else {
-            // If not logged in, redirect to the login page
-            VUser::home(logged: false);
+            self::home();
         }
     }
 
