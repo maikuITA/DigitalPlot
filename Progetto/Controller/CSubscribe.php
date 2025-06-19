@@ -1,13 +1,13 @@
 <?php
 
-class CAbbonati {
+class CSubscribe {
     
     public static function subscribe(): void {
         // chiama la view per la home page
-        if(file_exists(__DIR__ . '/../View/VAbbonati.php')) {
-            VAbbonati::render();
+        if(file_exists(__DIR__ . '/../View/VSubscribe.php')) {
+            VSubscribe::render();
         } else {
-            ULogSys::toLog("VHome file not found", true);
+            ULogSys::toLog("VSubscribe file not found", true);
         }
     }
 
