@@ -1,6 +1,6 @@
 <?php
 
-class VAbbonati {
+class VSubscribe {
 
     /**
      * Mostra la homepage con i dati ricevuti dal controller.

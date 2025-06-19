@@ -1,6 +1,6 @@
 <?php
 
-class VAccesso {
+class VAccess{
 
     /**
      * Mostra la homepage con i dati ricevuti dal controller.
