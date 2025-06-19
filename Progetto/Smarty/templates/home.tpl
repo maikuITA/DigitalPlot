@@ -22,18 +22,18 @@
             </a>
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="index.html">Home</a>
-                    <a class="navbar-item" href="abbonati.html">Abbonati</a>
+                    <a class="navbar-item" href="/home">Home</a>
+                    <a class="navbar-item" href="/abbonati">Abbonati</a>
                     {if $isLogged === true}
                         <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
                     {else}
-                        <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                        <a class="navbar-item has-text-link transfer" href="/accesso">Accedi</a>
                     {/if}
                 </div>
             </div>
         </div>
         <div class="column">
-            <div
+            <div>
                 <a href="#" class="title is-1">Digital</a>
                 <a href="#" class="title is-1 has-text-warning">Plot</a>
             </div> 
