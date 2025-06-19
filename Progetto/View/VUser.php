@@ -2,11 +2,10 @@
 
 class VUser{
 
-    public static function home( string $username, int $plotPoints, $proPic, array $articles){
+    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, ?array $articles = null, bool $logged = false){
         $smarty = StartSmarty::configuration();
-        // $smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> home.tpl");
-        $smarty->assign('isLogged', true);
+        $smarty->assign('isLogged', $logged);
         $smarty->assign('username', $username);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);

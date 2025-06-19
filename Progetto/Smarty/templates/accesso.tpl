@@ -80,7 +80,7 @@
                         <p class="control has-icons-left">
                             <input class="input" type="text" placeholder="Nome" name="name" required>
                             <span class="icon is-small is-left has-link">
-                            <i class="fa fa-user-circle"></i>
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
                             </span>
                         </p>
                     </div>
@@ -88,7 +88,7 @@
                         <p class="control has-icons-left">
                             <input class="input" type="text" placeholder="Cognome" name="surname" required>
                             <span class="icon is-small is-left has-link">
-                            <i class="fa fa-user-circle"></i>
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
                             </span>
                         </p>
                     </div>
