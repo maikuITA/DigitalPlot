@@ -37,6 +37,9 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
+                <span class="icon is-large">
+                    <i class="fa fa-search-plus" aria-hidden="true"></i>
+                </span>
                 <figure class="image is-48x48">
                     <img class="is-rounded" src="https://bulma.io/assets/images/placeholders/48x48.png" />
                 </figure>

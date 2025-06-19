@@ -84,6 +84,7 @@ nav {
 }
 
 .column.is-one-quarter.right {
+    display: flex;
     justify-content: right;
     align-items: right;
 }
@@ -100,6 +101,14 @@ nav {
 
 .navbar-item.has-text-link.transfer {
     display: none;
+}
+
+span {
+    margin-right: 5px;
+}
+
+span, i {
+    color: black;
 }
 
 @media screen and (max-width: 768px) {

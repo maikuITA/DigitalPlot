@@ -8,8 +8,9 @@ class VHome {
      */
     public static function render() {
         $smarty = StartSmarty::configuration();
+        $smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> home.tpl");
-        $smarty->assign('isLogged', 'true');
+        $smarty->assign('isLogged', true);
         $smarty->display('home.tpl');
     }
 }
