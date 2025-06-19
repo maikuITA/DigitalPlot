@@ -35,19 +35,5 @@ class CUser{
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlocard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles);
         }  
     }
-
-    public static function login(){
-        if(UCookie::isSet('PHPSESSID')){
-            if(session_status() == PHP_SESSION_NONE){
-                USession::getInstance();
-            }
-        }
-        if(USession::isSetSessionElement('user')){
-            header('Location: /DigitalPlot/User/home');
-        }
-        $view = new VUser();
-        // $view->showLoginForm();
-    }
-
     
 }
