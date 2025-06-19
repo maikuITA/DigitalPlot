@@ -14,19 +14,19 @@ class EPurchase{
     #[ORM\Column(name: "purchase_date", type: "date")]
     private DateTime $purchaseDate;
     
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "purchases")]
+    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
     private ESubscriber $subscriber;
     
-    #[ORM\ManyToOne(targetEntity: "EDiscount", inversedBy: "purchases")]
+    #[ORM\ManyToOne(targetEntity: "EDiscount", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_discount", referencedColumnName: "discount_cod", nullable: true)] // definizione chiave esterna
     private ?EDiscount $discountCod;
 
-    #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases")]
+    #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false)] // definizione chiave esterna
     private ESubscription $subscription;
      
-    #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases")]
+    #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", nullable: false)] // definizione chiave esterna
     private ECreditCard $creditCardNumber;
      
@@ -95,7 +95,7 @@ class EPurchase{
     }
 
 
-    public function calculateSubTotal(ESubscription $subscription, EDiscount $discount): float
+    public function calculateSubTotal(ESubscription $subscription, ?EDiscount $discount): float
     {
         if ($discount === null){
             return $subscription->getPrice();

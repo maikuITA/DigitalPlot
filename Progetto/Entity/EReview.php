@@ -18,10 +18,10 @@ class EReview{
     #[ORM\Column(name: "release_date", type: "date")]
     private DateTime $releaseDate;
 
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "reviews")]
+    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "reviews", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     private ESubscriber $subscriber;
-    #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews")]
+    #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_article", referencedColumnName: "article_id", nullable: false)] // definizione chiave esterna
     private EArticle $article;
 

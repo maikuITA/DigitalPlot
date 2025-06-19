@@ -25,8 +25,8 @@ class EWriter extends ESubscriber {
     #[ORM\Column(type: "float")]
     private float $evaluation;
 
-    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, $plotCard, string $biography = "", $followers = [], $following = [], $articles = []) {
-        parent::__construct($username, $password, $name, $surname, $birthdate, $birthplace, $email, $telephone, $plotCard, $biography, $followers, $following);
+    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $plotCard = [], $followers = [], $following = [], $articles = []) {
+        parent::__construct($username, $password, $name, $surname, $birthdate, $birthplace, $email, $telephone, $biography, $plotCard, $followers, $following);
         $this->numFollowers = count($followers);
         $this->numFollowing = count($following);
         $this->numeroArticles = count($articles);
@@ -58,8 +58,11 @@ class EWriter extends ESubscriber {
         foreach($articles as $article){
             $media = $media + $article->getMediaEvaluation();
         }
-        $evaluation = $media / count($articles);
-        return $evaluation;
+        if (count($articles) !== 0){
+            $evaluation = $media / count($articles);
+            return $evaluation;
+        }
+        return 0; 
     }
     public function getEvaluation(): float{
         return $this->evaluation;

@@ -57,7 +57,7 @@ class EUser {
     private $plotCard = [];
 
 
-    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], $plotCard = null, mixed $profilePicture = null) {
+    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", $plotCard = [], array $readings = [], mixed $profilePicture = null) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setName($name);
@@ -209,7 +209,7 @@ class EUser {
     }
     public function __toString()
     {
-        return "ID: " . $this->getId() . "\n" .
+        return // "ID: " . $this->getId() . "\n" .
                "Username: " . $this->getUsername() . "\n" .
                "Name: " . $this->getName() . "\n" .
                "Surname: " . $this->getSurname() . "\n" .

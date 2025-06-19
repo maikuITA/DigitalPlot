@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 class EFollow{
     
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "followers")]
+    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "followers", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     private $follower;
     
 
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "following")]
+    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "following", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     private $following;
 
