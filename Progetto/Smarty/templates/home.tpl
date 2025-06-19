@@ -24,13 +24,17 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="index.html">Home</a>
                     <a class="navbar-item" href="abbonati.html">Abbonati</a>
-                    <a class="navbar-item" href="">PlotPoints: XXX</a>
-                    <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                    {if $isLogged === true}
+                        <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
+                    {else}
+                        <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                    {/if}
+
                 </div>
             </div>
         </div>
         <div class="column">
-            <div>
+            <div
                 <a href="#" class="title is-1">Digital</a>
                 <a href="#" class="title is-1 has-text-warning">Plot</a>
             </div> 
@@ -41,7 +45,11 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <figure class="image is-48x48">
-                    <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                    {if $proPic === null}
+                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                    {else}
+                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                    {/if}
                 </figure>
             {else}
                 <a href="accesso.html" class="button is-warning ok">Accedi</a>
@@ -58,50 +66,6 @@
         </label>
     </div>
     <div class="container" id="container">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
         <div class="card">
             <div class="card-content">
                 <p class="title">Lorem ipsum dolor sit amet</p>
