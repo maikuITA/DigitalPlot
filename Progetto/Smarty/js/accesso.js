@@ -1,20 +1,29 @@
+/**
+ * Script for managing user login and registration.
+ * Allows showing/hiding the login and registration forms,
+ * adapting the style and container width based on the window size.
+ */
+
+// Selects the login and registration forms
 const login = document.getElementById("login-form");
-//console.log("login form", login);
 const regis = document.getElementById("regis-form");
-//console.log("regis form", regis);
-regis.style.display = 'none'; // Hide registration form by default
+regis.style.display = 'none'; // Hides the registration form on startup
 const stile = login.style.display;
 
+// Selects the login and registration buttons/tabs
 const log = document.getElementById("log");
 const reg = document.getElementById("reg");
-//console.log("show login", log, reg);
 
+// Selects the main container
 const content = document.getElementById("content");
-//console.log("content", content);
 
+// Selects all inputs with the "field" class
 const inputs = document.querySelectorAll(".field");
-//console.log("inputs", inputs);
 
+/**
+ * Shows the login form and hides the registration form.
+ * Updates the tab styles and container width based on the window size.
+ */
 function showLogin() {
     if (login && regis) {
         login.style.display = stile;
@@ -39,6 +48,10 @@ function showLogin() {
     }
 }
 
+/**
+ * Shows the registration form and hides the login form.
+ * Updates the tab styles and container width based on the window size.
+ */
 function showRegis() {
     if (login && regis) {
         regis.style.display = stile;
@@ -56,39 +69,37 @@ function showRegis() {
             }
         }
         if(inputs) {
-            if(window.innerWidth > 768) {
-                content.style.width = '40%';
-                inputs.forEach(function(input) {
-                    input.style.display = 'block';
-                });
-            }
-            else {
-                content.style.width = '100%';
-                inputs.forEach(function(input) {
-                    input.style.display = 'block';
-                });
-            }
-            
+            inputs.forEach(function(input) {
+                input.style.display = 'block';
+            });
         }
     }
 }
 
+/**
+ * Adds the "is-loading" class to the input with the specified id,
+ * useful for showing a loading indicator.
+ * @param {string} id - The id of the input element
+ */
 function loading(id) {
-    //console.log(id);
     const input = document.getElementById(id);
     if (input) {
         input.classList.add("is-loading");
     }
 }
 
+/**
+ * Removes the "is-loading" class from the input with the specified id.
+ * @param {string} id - The id of the input element
+ */
 function notloading(id) {
-    //console.log(id);
     const input = document.getElementById(id);
     if (input) {
         input.classList.remove("is-loading");
     }
 }
 
+// Adjusts the main container width when the window is resized
 window.addEventListener('resize', function() {
     if (login && regis) {
         if (login.style.display === stile) {
@@ -98,3 +109,37 @@ window.addEventListener('resize', function() {
         }
     }
 });
+
+const nameInput = document.getElementById("name");
+const surnameInput = document.getElementById("surname");
+const birthdateInput = document.getElementById("birthdate");
+const birthplaceInput = document.getElementById("birthplace");
+const usernameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const password2Input = document.getElementById("password2");
+const submitBtn = document.getElementById("submit-regis");
+
+const regisInputs = [
+    nameInput,
+    surnameInput,
+    birthdateInput,
+    birthplaceInput,
+    usernameInput,
+    emailInput,
+    passwordInput,
+    password2Input
+];
+
+if (submitBtn) {
+    regisInputs.forEach(function(input) {
+        if (input) {
+            input.addEventListener("input", function() {
+                submitBtn.disabled = input === document.activeElement;
+            });
+            input.addEventListener("blur", function() {
+                submitBtn.disabled = false;
+            });
+        }
+    });
+}

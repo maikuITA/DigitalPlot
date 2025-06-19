@@ -41,6 +41,10 @@
     margin-top: 30px;
 }
 
+.field .control input {
+    width: 100%;
+}
+
 .input {
     padding: 15px;
     width: 100%;
@@ -77,6 +81,16 @@ ul {
 
 .content ul {
   margin-inline-start: 0em;
+}
+
+.control.has-icons-left.alr, .control.alr {
+    width: 100%;
+    max-width: inherit;
+}
+
+.field.out .control {
+    width: 100%;
+    max-width: inherit;
 }
 
 @media screen and (max-width: 768px) {
