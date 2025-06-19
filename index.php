@@ -3,7 +3,7 @@
 require_once 'Progetto/autoload.php';
 
 // Provo ad istallare il database
-InstallerDb::install();
+//InstallerDb::install();
 
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
