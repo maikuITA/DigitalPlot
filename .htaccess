@@ -7,3 +7,6 @@ RewriteEngine on
 # if the requested file does not exist, redirects to the script "index.php"
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* index.php
+
+# # av:php5-engine
+AddHandler av-php84 .php

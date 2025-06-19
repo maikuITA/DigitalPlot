@@ -11,7 +11,7 @@ InstallerDb::install();
 
 // Avvio il runner (FrontController)
 $runner = new CFrontController();
-$runner->redirectToHttps();
+//$runner->redirectToHttps(); PROBLEMA
 $runner->run();
 
 ?>

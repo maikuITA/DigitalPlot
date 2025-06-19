@@ -1,11 +1,38 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.4.4, created on 2025-06-19 11:59:15
+  from 'file:home.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.4.4',
+  'unifunc' => 'content_6853df732762d9_71827802',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '13dfa62494f1e50ba5b79be2faaf95aaefb70bfa' => 
+    array (
+      0 => 'home.tpl',
+      1 => 1750327151,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_6853df732762d9_71827802 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = 'C:\\xampp\\htdocs\\DigitalPlot\\Progetto\\Smarty\\templates';
+?><!DOCTYPE html>
 <html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigitalPlot-Home</title>
-    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css">
-    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->getValue('base_url');?>
+bulma<?php echo DIRECTORY_SEPARATOR;?>
+bulma.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->getValue('base_url');?>
+index.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,13 +63,7 @@
             </div> 
         </div>
         <div class="column is-one-quarter right">
-            {if $isLogged === true}
-                <figure class="image is-48x48">
-                    <img class="is-rounded" src="https://bulma.io/assets/images/placeholders/48x48.png" />
-                </figure>
-            {else}
-                <a href="accesso.html" class="button is-warning ok">Accedi</a>
-            {/if}
+            <a href="accesso.html" class="button is-warning ok">Accedi</a>
         </div>
     </header>
     <div class="container">
@@ -107,4 +128,7 @@
     </div>
 </body>
 </html>
-<script src="navburger.js"></script>
+<?php echo '<script'; ?>
+ src="navburger.js"><?php echo '</script'; ?>
+><?php }
+}

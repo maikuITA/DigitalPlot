@@ -29,19 +29,21 @@ class CFrontController{
 
         ULogSys::toLog("");
         ULogSys::toLog("Ip degl client -> " . UServer::getClientIP());
-        ULogSys::toLog("Risolvo la rotta -> URI=$requestUri");
+        ULogSys::toLog("Controller: " . $controllerFile);
 
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
 
             // Check if the method exists in the controller
             if (method_exists($controllerClass, $methodName)) {
+                ULogSys::toLog("if", true);
                 // Call the method
                 $params = array_slice($uriParts, 2); // Get optional parameters
                 call_user_func_array([$controllerClass, $methodName], $params);
             } else {
                 // Method not found, handle appropriately (e.g., show 404 page)
-                header('Location: /DigitalPlot/User/home');
+                ULogSys::toLog("else", true);
+                header('Location: /DigitalPlot/Home/home');
             }
         } else {
             // Controller not found, handle appropriately (e.g., show 404 page)
