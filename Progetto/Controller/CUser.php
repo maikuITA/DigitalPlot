@@ -36,5 +36,18 @@ class CUser{
         }  
     }
 
+    public static function login(){
+        if(UCookie::isSet('PHPSESSID')){
+            if(session_status() == PHP_SESSION_NONE){
+                USession::getInstance();
+            }
+        }
+        if(USession::isSetSessionElement('user')){
+            header('Location: /DigitalPlot/User/home');
+        }
+        $view = new VUser();
+        // $view->showLoginForm();
+    }
+
     
 }
