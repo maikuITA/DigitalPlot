@@ -9,7 +9,6 @@ class CError {
      */
     public static function error404(): void {
         VError::render("404 Not Found");
-        //header('HTTP/1.1 404 Not Found');
         exit;
     }
     
@@ -20,7 +19,6 @@ class CError {
      */
     public static function error500(): void {
         VError::render("500 Internal Server Error");
-        //header('HTTP/1.1 500 Internal Server Error');
         exit;       
     }
 }

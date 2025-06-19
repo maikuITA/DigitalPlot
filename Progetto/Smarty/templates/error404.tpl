@@ -26,9 +26,9 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="index.html">Home</a>
-                    <a class="navbar-item" href="abbonati.html">Abbonati</a>
-                    <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                    <a class="navbar-item" href="/home">Home</a>
+                    <a class="navbar-item" href="/abbonati">Abbonati</a>
+                    <a class="navbar-item has-text-link transfer" href="/accesso">Accedi</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             </div> 
         </div>
         <div class="column is-one-quarter right">
-            <a href="accesso.html" class="button is-warning ok">Accedi</a>
+            <a href="/accesso" class="button is-warning ok">Accedi</a>
         </div>
     </header>
     <div class="body-container">
@@ -51,7 +51,7 @@
                 Errore {$errore} <br>
                 Risorsa non trovata!
             </p>
-            <a class="subtitle has-text-link" href="index.html">
+            <a class="subtitle has-text-link" href="/home">
                 Controlla se l'URL è corretto o torna alla home.
             </a>
         </div>

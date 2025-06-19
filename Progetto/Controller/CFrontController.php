@@ -4,9 +4,9 @@ class CFrontController {
 
     private static $routes = [
         'home' => ['CHome', 'home'],
-        'error404' => ['CError', 'error404'],
         'accesso' => ['CAccesso', 'accesso'],
         'abbonati' => ['CAbbonati', 'abbonati'],
+        'error' => ['CError', 'error404'],
     ];
     
     /**
@@ -32,11 +32,11 @@ class CFrontController {
                 call_user_func_array([$controller, $method], []);
             } else {
                 // If the controller or method does not exist, show a 404 error
-                CError::error404();
+                header('Location: https://digitalplot.altervista.org/error');
             }
         } else {
             // If the route does not exist, show a 404 error
-            CError::error404();
+            header('Location: https://digitalplot.altervista.org/error');
         }
     }
 }
