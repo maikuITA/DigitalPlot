@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigitalPlot-Logs</title>
+    <link rel="stylesheet" href="bulma/bulma.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="abbonati.css">
+    <link rel="stylesheet" href="log.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script>
         function aggiornaContenuto() {
             var xhr = new XMLHttpRequest();
@@ -19,18 +20,28 @@
                     document.getElementById('contenuto-file').innerHTML = xhr.responseText;
                 }
             };
-            xhr.open('GET', 'Progetto/Utility/LeggiLog.php', true);
+            xhr.open('GET', '/Progetto/Utility/ULeggiLog.php', true);
             xhr.send();
         }
-
         setInterval(aggiornaContenuto, 1000); // Aggiorna ogni secondo
     </script>
 </head>
 <body>
     <header class="header columns">
         <div class="column is-one-quarter left">
-            <a href="index.html" class="button is-rounded">Home</a>
-            <a href="abbonati.html" class="button is-rounded">Abbonati</a>
+            <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="index.html">Home</a>
+                    <a class="navbar-item" href="abbonati.html">Abbonati</a>
+                    <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
+                </div>
+            </div>
         </div>
         <div class="column">
             <div>
@@ -42,10 +53,15 @@
             <a href="accesso.html" class="button is-warning ok">Accedi</a>
         </div>
     </header>
-    <div class="main-content">
-        <label for="container" class="Lcontainer" id="Lcontainer">Scegli il piano più adatto a te</label>
-        <div name="container" class="container">
-            
+    <div class="container">
+        <label class="title is-3">Logs</label>
+    </div>
+    <div class="container" id="container">
+        <div class="card">
+            <div class="card-content">
+                <p class="title">Logs di errore</p>
+                <p class="subtitle" id="contenuto-file"></p>
+            </div>
         </div>
     </div>
 </body>
