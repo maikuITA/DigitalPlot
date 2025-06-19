@@ -29,7 +29,6 @@
                     {else}
                         <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
                     {/if}
-
                 </div>
             </div>
         </div>
