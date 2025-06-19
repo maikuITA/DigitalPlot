@@ -100,6 +100,23 @@ class FPersistentManager {
         return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'id', $id);
     }
 
+    /**
+     *  Retrieve all objects of a specific class
+     * @param string $className
+     * @return array | null
+     */
+    public function retriveAll(string $className): ?array {
+        return FEntityManager::getInstance()->retriveAll($className);
+    }
+
+    /**
+     * drop db
+     * @return void
+     */
+    public function clearAll(): void{
+        FEntityManager::getInstance()->clearAll();
+    }
+
     /*
     // ========== Query DQL personalizzate ==========
 

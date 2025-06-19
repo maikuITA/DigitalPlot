@@ -11,6 +11,7 @@ class CFrontController {
         'error' => ['CError', 'error404'],
         'login' => ['CUser', 'login'],
         'registrazione' => ['CUser', 'register'],
+        'populateDb'  => ['CService', 'dbInit'],
     ];
     
     public function start(): void {

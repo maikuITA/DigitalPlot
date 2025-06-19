@@ -1,6 +1,8 @@
 <?php
 
 require_once (__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "bootstrapDoctrine.php");
+use Doctrine\ORM\Tools\SchemaTool;
+use Exception;
 
 class FEntityManager {
 
@@ -234,10 +236,26 @@ class FEntityManager {
             self::$entityManager->getConnection()->commit();
             return true;
         }catch(Exception $e){
-            echo "Error: " . $e->getMessage();
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return false;
         }
     }
+
+    public static function dropDatabase(): void {
+        try {
+            $connection = self::$entityManager->getConnection();
+            $connection->beginTransaction();
+            $metadata = self::$entityManager->getMetadataFactory()->getAllMetadata();
+            if (!empty($metadata)) {
+                $tool = new SchemaTool(self::$entityManager);
+                $tool->dropDatabase(); // Elimina completamente il DB (tabelle + schema)
+            }
+            $connection->commit();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error during dropping database: ' . $e->getMessage(), true);
+            self::$entityManager->getConnection()->rollBack();
+        }
+}
 }
 
 ?>

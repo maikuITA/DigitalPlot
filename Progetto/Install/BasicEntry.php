@@ -1,8 +1,12 @@
 <?php
 
+class BasicEntry{
+
     /**
-     * File with a basic set of entry for the database
+     *  Method to populate the database with basic entries.
+     * @return void
      */
+    public static function populateDb(): void {
 
     // User
     $u1 = new EUser('Admin','Admin123','Admin','Admin',true,'2003-04-18', 'Pescara','admin@admin.com','0000000000');
@@ -320,4 +324,13 @@
     FPersistentManager::getInstance()->saveInBd($read10);
     FPersistentManager::getInstance()->saveInBd($read11);
 
-  
+    }
+
+    /**
+     * Method to drop all tables in the database.
+     * @return bool True if tables were dropped successfully, false otherwise.
+     */
+    public static function dropDates(): void {
+        FPersistentManager::getInstance()->clearAll();
+    }
+}
