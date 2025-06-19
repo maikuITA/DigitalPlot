@@ -141,10 +141,10 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="field">
-                            <div class="control">
-                                <button type="submit" class="button is-link is-fullwidth">Registrati</button>
-                            </div>
+                    </div>
+                    <div class="field out">
+                        <div class="control">
+                            <button type="submit" class="button is-link is-fullwidth">Registrati</button>
                         </div>
                     </div>
                 </form>
