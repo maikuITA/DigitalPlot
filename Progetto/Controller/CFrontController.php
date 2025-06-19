@@ -10,6 +10,7 @@ class CFrontController{
      * @return void
      */
     public function run(): void {
+
         $requestUri = UServer::getValue('REQUEST_URI');
 
         $requestUri = trim($requestUri, '/');
@@ -25,6 +26,10 @@ class CFrontController{
         // Load the controller class
         $controllerClass = 'C' . $controllerName;
         $controllerFile = __DIR__ . "/{$controllerClass}.php";
+
+        ULogSys::toLog("");
+        ULogSys::toLog("Ip degl client -> " . UServer::getClientIP());
+        ULogSys::toLog("Risolvo la rotta -> URI=$requestUri");
 
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
