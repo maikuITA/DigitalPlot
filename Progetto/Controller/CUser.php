@@ -107,7 +107,6 @@ class CUser{
      * @return void
      */
     public static function access(): void {
-        ULogSys::toLog("Sono dentro a access()", true);
         if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'access')) {
             VUser::access();
         } else {
@@ -128,7 +127,7 @@ class CUser{
             $username = UHTTPMethods::post('username');
             $password = UHTTPMethods::post('password');
             try {
-                $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, $username);
+                $user = FPersistentManager::getInstance()->retriveUserOnUsername($username);
                 if ($user && password_verify($password, $user->getPassword())) {
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());
@@ -141,7 +140,7 @@ class CUser{
                 ULogSys::toLog('Error during login: ' . $e->getMessage());
                 header('Location: https://digitalplot.altervista.org/access');
             }
-        } elseif(UServer::getRequestMethod() === 'GET') {
+        } else{
             header('Location: https://digitalplot.altervista.org/access');
         }
     }
