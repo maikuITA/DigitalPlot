@@ -154,14 +154,14 @@ class FEntityManager {
      * @param string $primaryKey
      * @param string $className
      * @param string $field
-     * @param mixed $id
+     * @param mixed $value
      * @return boolean
      */
-    public static function verifyAttributes(string $primaryKey, string $className, string $field, mixed $id) : bool{
+    public static function verifyAttributes(string $primaryKey, string $className, string $field, mixed $value) : bool{
         try{
             $dql = "SELECT u.$primaryKey FROM " . $className . " u WHERE u." . $field . " = :attribute";
             $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('attribute', $id);
+            $query->setParameter('attribute', $value);
             $result = $query->getResult();
             if(count($result) > 0){
                 return true;

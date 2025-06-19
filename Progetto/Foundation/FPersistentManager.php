@@ -50,6 +50,42 @@ class FPersistentManager {
         return FEntityManager::getInstance()->retriveObjByAttribute(EUser::class, 'username', $username);
     }
 
+    /**
+     * Check if an email already exists in the database
+     * @param string $email
+     * @return bool
+     */
+    public function checkIfExistEmail(string $email): bool{
+        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'email', $email);
+    }
+
+    /**
+     * Check if a username already exists in the database
+     * @param string $username
+     * @return bool
+     */
+    public function checkIfExistUsername(string $username): bool{
+        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'username', $username);
+    }
+
+    /**
+     * Check if a telephone already exists in the database
+     * @param string $telephone
+     * @return bool
+     */
+    public function checkIfExistTelephone(string $telephone): bool{
+        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'telephone', $telephone);
+    }
+
+    /**
+     * Check if a user has been added properly
+     * @param int $id
+     * @return bool
+     */
+    public function checkIfExistUser(int $id): bool{
+        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'id', $id);
+    }
+
     /*
     // ========== Query DQL personalizzate ==========
 
