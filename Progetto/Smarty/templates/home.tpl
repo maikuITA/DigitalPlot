@@ -24,6 +24,7 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="index.html">Home</a>
                     <a class="navbar-item" href="abbonati.html">Abbonati</a>
+                    <a class="navbar-item" href="">PlotPoints: XXX</a>
                     <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
                 </div>
             </div>
@@ -48,7 +49,13 @@
         </div>
     </header>
     <div class="container">
-        <label class="title is-3">Scelti per te</label>
+        <label class="title is-3">
+            {if $isLogged === true}
+                Scelti per {$username}
+            {else}
+                Scelti per te
+            {/if}
+        </label>
     </div>
     <div class="container" id="container">
         <div class="card">
