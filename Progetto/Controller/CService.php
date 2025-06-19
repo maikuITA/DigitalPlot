@@ -38,4 +38,13 @@ class CService{
         } 
     }
 
+    public static function logs(): void {
+        // chiama la view per la home page
+        if(file_exists(__DIR__ . '/../View/VLogs.php')) {
+            VLogs::render();
+        } else {
+            ULogSys::toLog("VLogs file not found", true);
+        }
+    }
+
 }

@@ -6,24 +6,35 @@
     <title>DigitalPlot-Logs</title>
     <link rel="stylesheet" href="bulma/bulma.css">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="logs.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <script>
-        function aggiornaContenuto() {
+        function aggiornaErrori() {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('contenuto-file').innerHTML = xhr.responseText;
+                    document.getElementById('contenuto-file-errori').innerHTML = xhr.responseText;
                 }
             };
-            xhr.open('GET', '/Progetto/Utility/ULeggiLog.php', true);
+            xhr.open('GET', '/Progetto/Utility/ULeggiErrori.php', true);
             xhr.send();
         }
-        setInterval(aggiornaContenuto, 1000); // Aggiorna ogni secondo
+        setInterval(aggiornaErrori, 1000); // Aggiorna ogni secondo
+        function aggiornaEventi() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('contenuto-file-errori').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open('GET', '/Progetto/Utility/ULeggiEventi.php', true);
+            xhr.send();
+        }
+        setInterval(aggiornaEventi, 1000); // Aggiorna ogni secondo
     </script>
 </head>
 <body>
@@ -60,6 +71,12 @@
         <div class="card">
             <div class="card-content">
                 <p class="title">Logs di errore</p>
+                <p class="subtitle" id="contenuto-file-errori"></p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <p class="title">Logs di eventi</p>
                 <p class="subtitle" id="contenuto-file"></p>
             </div>
         </div>
