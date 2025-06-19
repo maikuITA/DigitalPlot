@@ -1,14 +1,3 @@
-/**
- * Class VHome
- *
- * Gestisce la visualizzazione della homepage dell'applicazione.
- *
- * Metodi:
- * - render(): Mostra la homepage utilizzando il template Smarty 'home.tpl', 
- *   assegnando variabili come lo stato di login, username, punti e immagine profilo.
- *
- * @package View
- */
 <?php
 
 class VHome {
@@ -25,6 +14,7 @@ class VHome {
         $smarty->assign('username', 'Pippo');
         $smarty->assign('plotPoints', 100);
         $smarty->assign('proPic', null );
+        $smarty->assign('articles', $articles ?? []);
         $smarty->display('home.tpl');
     }
 }
