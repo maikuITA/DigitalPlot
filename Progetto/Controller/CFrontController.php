@@ -12,6 +12,7 @@ class CFrontController {
         'login' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
         'dbInit'  => ['CService', 'dbInit'],
+        'logs' => ['CService', 'logs'],
     ];
     
     public function start(): void {

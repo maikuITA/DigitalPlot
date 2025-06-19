@@ -1,6 +1,6 @@
 <?php
 
-    $path = __DIR__ . '/events.log';
+    $path = __DIR__ . '/Logs/events.log';
     // DEBUG: echo $logs;
 
     // Verifica se il file esiste
