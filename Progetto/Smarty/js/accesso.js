@@ -9,6 +9,12 @@ const log = document.getElementById("log");
 const reg = document.getElementById("reg");
 console.log("show login", log, reg);
 
+const diolupinterzo = document.getElementById("content");
+console.log("diolupinterzo", diolupinterzo);
+
+const inputs = document.querySelectorAll(".input");
+console.log("inputs", inputs);
+
 function showLogin() {
     if (login && regis) {
         login.style.display = stile;
@@ -16,6 +22,14 @@ function showLogin() {
         if (log && reg) {
             log.classList.add("is-active");
             reg.classList.remove("is-active");
+        }
+        if(diolupinterzo) {
+            diolupinterzo.style.width = '30%';
+        }
+        if(inputs) {
+            inputs.forEach(function(input) {
+                input.style.width = '100%';
+            });
         }
     }
 }
@@ -27,6 +41,14 @@ function showRegis() {
         if (log && reg) {
             log.classList.remove("is-active");
             reg.classList.add("is-active");
+        }
+        if(diolupinterzo) {
+            diolupinterzo.style.width = '40%';
+        }
+        if(inputs) {
+            inputs.forEach(function(input) {
+                input.style.width = '45%';
+            });
         }
     }
 }

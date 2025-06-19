@@ -42,7 +42,7 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="content">
+        <div class="content" id="content">
             <div class="tabs is-medium is-centered">
                 <ul>
                     <li id="log" class="is-active"><a onclick="showLogin()"><i class="fa fa-key fa-fw"></i>Login</a></li>
@@ -76,57 +76,75 @@
                 </form>
                 <form action="https://digitalplot.altervista.org/registrazione" method="post" class="form" id="regis-form">
                     <label class="title is-3" for="login-form">Crea il tuo account</label>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Nome" name="name" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fa fa-user-circle"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Cognome" name="surname" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fa fa-user-circle"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Username" name="username" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fa fa-user-circle"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fas fa-envelope"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" type="password" placeholder="Conferma la tua password" name="password2" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <button type="submit" class="button is-link is-fullwidth">Registrati</button>
+                    <div class="grigliata">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Nome" name="name" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-address-card" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Cognome" name="surname" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-address-card" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input" type="date" name="birthdate" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-calendar"></i> 
+                                </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Luogo di nascita" name="birthplace" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Username" name="username" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-user-circle"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="password" placeholder="Conferma la tua password" name="password2" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-link is-fullwidth">Registrati</button>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -53,7 +53,7 @@
                     {/if}
                 </figure>
             {else}
-                <a href="accesso.html" class="button is-warning ok">Accedi</a>
+                <a href="/accesso" class="button is-warning ok">Accedi</a>
             {/if}
         </div>
     </header>

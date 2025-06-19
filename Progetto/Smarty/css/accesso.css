@@ -42,6 +42,17 @@ label {
     text-align: center;
 }
 
+.regis-form {
+    width: 100%;
+    max-width: 600px;
+}
+
+.griglia {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
 .tabs {
     width: 100%;
     margin: 0px;
