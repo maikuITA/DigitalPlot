@@ -87,7 +87,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Cognome" name="surname" required>
+                                <input class="input" type="text" placeholder="Cognome" name="surname" id="surname" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-address-card" aria-hidden="true"></i>
                                 </span>
@@ -95,7 +95,7 @@
                         </div>
                         <div class="field">
                             <div class="control has-icons-left">
-                                <input class="input" type="date" name="birthdate" required>
+                                <input class="input" type="date" name="birthdate" id="birthdate" required>
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-calendar"></i> 
                                 </span>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Luogo di nascita" name="birthplace" required>
+                                <input class="input" type="text" placeholder="Luogo di nascita" name="birthplace" id="birthplace" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </span>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Username" name="username" required>
+                                <input class="input" type="text" placeholder="Username" name="username" id="username" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-user-circle"></i>
                                 </span>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="email" placeholder="Inserisci la tua email" name="email" required>
+                                <input class="input" type="email" placeholder="Inserisci la tua email" name="email" id="email" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fas fa-envelope"></i>
                                 </span>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
+                                <input class="input" type="password" placeholder="Inserisci la tua password" name="password" id="password" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fas fa-lock"></i>
                                 </span>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Conferma la tua password" name="password2" required>
+                                <input class="input" type="password" placeholder="Conferma la tua password" name="password2" id="password2" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fas fa-lock"></i>
                                 </span>
@@ -144,7 +144,7 @@
                     </div>
                     <div class="field out">
                         <div class="control">
-                            <button type="submit" class="button is-link is-fullwidth">Registrati</button>
+                            <button type="submit" class="button is-link is-fullwidth" id="submit-regis">Registrati</button>
                         </div>
                     </div>
                 </form>

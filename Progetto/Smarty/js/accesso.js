@@ -109,3 +109,37 @@ window.addEventListener('resize', function() {
         }
     }
 });
+
+const nameInput = document.getElementById("name");
+const surnameInput = document.getElementById("surname");
+const birthdateInput = document.getElementById("birthdate");
+const birthplaceInput = document.getElementById("birthplace");
+const usernameInput = document.getElementById("username");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const password2Input = document.getElementById("password2");
+const submitBtn = document.getElementById("submit-regis");
+
+const regisInputs = [
+    nameInput,
+    surnameInput,
+    birthdateInput,
+    birthplaceInput,
+    usernameInput,
+    emailInput,
+    passwordInput,
+    password2Input
+];
+
+if (submitBtn) {
+    regisInputs.forEach(function(input) {
+        if (input) {
+            input.addEventListener("input", function() {
+                submitBtn.disabled = input === document.activeElement;
+            });
+            input.addEventListener("blur", function() {
+                submitBtn.disabled = false;
+            });
+        }
+    });
+}

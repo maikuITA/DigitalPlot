@@ -2,7 +2,7 @@
 
 class CAccess {
     
-    public static function access(): void {
+    public static function accesso(): void {
         // chiama la view per la home page
         if(file_exists(__DIR__ . '/../View/VAccess.php')) {
             VAccess::render();
