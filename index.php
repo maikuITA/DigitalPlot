@@ -10,7 +10,7 @@ InstallerDb::install();
 // error_reporting(E_ALL);
 
 // Avvio il runner (FrontController)
-//$runner = new CFrontController();
-//$runner->start();
+$runner = new CFrontController();
+$runner->start();
 
 ?>

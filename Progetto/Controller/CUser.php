@@ -107,6 +107,7 @@ class CUser{
      * @return void
      */
     public static function access(): void {
+        ULogSys::toLog("Sono dentro a access()", true);
         if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'access')) {
             VUser::access();
         } else {
