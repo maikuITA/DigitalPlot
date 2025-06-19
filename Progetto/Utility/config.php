@@ -1,8 +1,8 @@
 <?php
 //Database connection settings
 define('DB_HOST', 'localhost');
-define('DB_USER', 'digitalplot');
-define('DB_PASS', '');
+define('DB_USER', 'root');
+define('DB_PASS', 'pippo');
 define('DB_NAME', 'my_digitalplot');
 define('DRIVER', 'pdo_mysql');
 

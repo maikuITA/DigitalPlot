@@ -48,7 +48,7 @@ class EUser {
     private string $biography;
     
     #[ORM\Column(type:"blob", nullable:true)]
-    private string $profilePicture;
+    private mixed $profilePicture;
 
     #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
     private $readings = [];
@@ -57,7 +57,7 @@ class EUser {
     private $plotCard = [];
 
 
-    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], array $plotCard = [], $profilePicture = null) {
+    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], $plotCard = null, mixed $profilePicture = null) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setName($name);
@@ -69,7 +69,7 @@ class EUser {
         $this->setBiography($biography);
         $this->setAdmin($admin);
         $this->readings = $readings;
-        $this->plotCard = $plotCard;
+        $this->plotCard[0] = $plotCard;
         $this->profilePicture = $profilePicture;
     }
     

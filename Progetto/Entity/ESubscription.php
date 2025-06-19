@@ -9,7 +9,7 @@ class ESubscription {  // cod type period price
     // definisco il campo come chiave primaria con la prima @ORM\Id, mentre la seconda permette di far generare il valore del campo dal sistema (si può specificare la strategia di generazione)
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "IDENTITY")]
-    #[ORM\Column(name: "id_subscription", type: "integer")]
+    #[ORM\Column(name: "subscription_id", type: "integer")]
     public int $cod;
     
     #[ORM\Column(type: "string", length: 100)]

@@ -12,7 +12,7 @@ la classe Lettore e Subscriber rappresentano due tabelle distinte e in Lettore c
 #[ORM\Table(name: "Reader")]
 class EReader extends ESubscriber{
     
-    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, ?EPlotCard $plotCard, string $biography = "", $followers = [], $following = []) {
+    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, $plotCard, string $biography = "", $followers = [], $following = []) {
         parent::__construct($username, $password, $name, $surname, $birthdate, $birthplace, $email, $telephone, $plotCard, $biography, $followers, $following);
         
 
