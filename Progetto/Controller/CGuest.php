@@ -27,7 +27,6 @@ class CGuest{
             USession::getInstance();
             USession::setSessionElement('user', $user->getId());
             CUser::home();
-            
         }
     }
 }
