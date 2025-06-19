@@ -14,6 +14,9 @@ class EPurchase{
     #[ORM\Column(name: "purchase_date", type: "date")]
     private DateTime $purchaseDate;
     
+    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "purchases")]
+    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
+    private ESubscriber $subscriber;
     
     #[ORM\ManyToOne(targetEntity: "EDiscount", inversedBy: "purchases")]
     #[ORM\JoinColumn(name: "fk_discount", referencedColumnName: "discount_cod", nullable: true)] // definizione chiave esterna
@@ -31,8 +34,8 @@ class EPurchase{
     private float $subTotal;
 
 
-    public function __construct( string $purchaseDate, ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
-
+    public function __construct( string $purchaseDate, ESubscriber $subscriber ,ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
+        $this->subscriber = $subscriber;
         $this->subscription = $subscription;
         $this->purchaseDate = new DateTime($purchaseDate);
         $this->discountCod = $discount;
@@ -61,6 +64,9 @@ class EPurchase{
     {
         $this->subscription = $subscription;
     }
+    public function setSubscriber(ESubscriber $subscriber){
+        $this->subscriber = $subscriber;
+    }
     
     // Get methods
     public function getCod(): int{
@@ -82,6 +88,10 @@ class EPurchase{
     public function getSubscription(): ESubscription
     {
         return $this->subscription;
+    }
+    public function getSubscriber(): ESubscriber
+    {
+        return $this->subscriber;
     }
 
 

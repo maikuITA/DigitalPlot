@@ -18,12 +18,15 @@ class ESubscriber extends EUser{
 
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"])]
     private $reviews = [];
+
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"])]
+    private $purchases = [];
     
-    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, EPlotCard $plotCard, string $biography = "", $followers = [], $following = []) {
+    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, ?EPlotCard $plotCard, string $biography = "", $followers = [], $following = [], $purchases = []) {
         parent::__construct($username, $password, $name, $surname, $birthdate, $birthplace, $email, $telephone, $plotCard, $biography);
         $this->followers = $followers;
         $this->following = $following;
-
+        $this->purchases = $purchases;
     }
 
     // followers
@@ -136,4 +139,31 @@ class ESubscriber extends EUser{
         return count($this->reviews);
     }
 
+    //purchase
+    
+    public function addPurchase(EPurchase $purchase): void {
+        array_push($this->purchases, $purchase);
+    }
+    public function getPurchases(): array {
+        return $this->purchases;
+    }
+    public function getPurchaseById(int $id): ?EPurchase {
+        foreach ($this->purchases as $purchase) {
+            if ($purchase->getId() === $id) {
+                return $purchase;
+            }
+        }
+        return null;
+    }
+    public function removePurchase(int $id): void {
+        foreach ($this->purchases as $key => $purchase) {
+            if ($purchase->getId() === $id) {
+                unset($this->purchases[$key]);
+                break;
+            }
+        }
+    }
+    public function getPurchaseCount(): int {
+        return count($this->purchases);
+    }
 }

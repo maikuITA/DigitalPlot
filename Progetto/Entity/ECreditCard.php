@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 class ECreditCard{
     
     #[ORM\Id]
-    #[ORM\Column( name : "card_number" ,type: "integer")]
-    public int $cardNumber;
+    #[ORM\Column( name : "card_number" ,type: "string")]
+    public string $cardNumber;
     
     #[ORM\Column(type: "string", length: 100)]
     public string $name;
@@ -22,7 +22,7 @@ class ECreditCard{
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"])]
     private $purchases = [];
 
-    public function __construct(int $cardNumber, string $name,string $surname, string $expirationDate, array $purchases = []) {
+    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, array $purchases = []) {
         $this->cardNumber = $cardNumber;
         $this->name = $name;
         $this->surname = $surname;
@@ -31,7 +31,7 @@ class ECreditCard{
     }
 
     // Set methods
-    public function setCardNumber(int $cardNumber)
+    public function setCardNumber(string $cardNumber)
     {
         $this->cardNumber = $cardNumber;
     }
@@ -52,7 +52,7 @@ class ECreditCard{
     }
 
     // Get methods
-    public function getCardNumber(): int{
+    public function getCardNumber(): string{
         return $this->cardNumber;
     }
 

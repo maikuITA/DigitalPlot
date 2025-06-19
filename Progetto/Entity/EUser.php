@@ -149,6 +149,7 @@ class EUser {
     }
     // Metodi per le readings
     public function addReading(EReading $reading): void {
+        $this->plotCard[0]->addPoints(POINTS);
         $this->readings[] = $reading;
     }
     public function getReadings(): array {

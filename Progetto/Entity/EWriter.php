@@ -25,7 +25,7 @@ class EWriter extends ESubscriber {
     #[ORM\Column(type: "float")]
     private float $evaluation;
 
-    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, EPlotCard $plotCard, string $biography = "", $followers = [], $following = [], $articles = []) {
+    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $birthplace, string $email, string $telephone, ?EPlotCard $plotCard, string $biography = "", $followers = [], $following = [], $articles = []) {
         parent::__construct($username, $password, $name, $surname, $birthdate, $birthplace, $email, $telephone, $plotCard, $biography, $followers, $following);
         $this->numFollowers = count($followers);
         $this->numFollowing = count($following);
