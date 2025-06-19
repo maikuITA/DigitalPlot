@@ -1,0 +1,53 @@
+.body-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 50px;
+    height: auto;
+}
+
+.body-left {
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.body-left > .card {
+    width: 300px;
+    height: fit-content;
+    max-height: 250px;
+}
+
+.body-right {
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: block;
+    align-items: center;
+}
+
+.container > a {
+    display: block;
+    text-align: center;
+}
+
+.subtitle {
+    width: 100%;
+    text-align: justify;
+}
+
+i {
+    color: inherit;
+}
+
+span {
+    margin-right: 5px;
+}

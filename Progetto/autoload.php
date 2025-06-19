@@ -14,7 +14,7 @@ spl_autoload_register(function ($class_name) {
 
     // Cerca la classe in ciascun package
     foreach ($directories as $directory) {
-        $file = $directory . DIRECTORY_SEPARATOR . $class_name . ".php";
+        $file = $directory . DIRECTORY_SEPARATOR . $class_name . ".php";   
         if (file_exists($file)) {
             include $file;
             return;

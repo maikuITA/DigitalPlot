@@ -10,6 +10,7 @@ class CFrontController{
      * @return void
      */
     public function run(): void {
+
         $requestUri = UServer::getValue('REQUEST_URI');
 
         $requestUri = trim($requestUri, '/');
@@ -19,43 +20,34 @@ class CFrontController{
         array_shift($uriParts);
 
         // Extract controller and method names
-        $controllerName = !empty($uriParts[0]) ? ucfirst($uriParts[0]) : 'User';
-        $methodName = !empty($uriParts[1]) ? $uriParts[1] : 'login';
+        $controllerName = !empty($uriParts[0]) ? ucfirst($uriParts[0]) : 'Home';
+        $methodName = !empty($uriParts[1]) ? $uriParts[1] : 'home';
 
         // Load the controller class
         $controllerClass = 'C' . $controllerName;
         $controllerFile = __DIR__ . "/{$controllerClass}.php";
+
+        ULogSys::toLog("");
+        ULogSys::toLog("Ip degl client -> " . UServer::getClientIP());
+        ULogSys::toLog("Controller: " . $controllerFile);
 
         if (file_exists($controllerFile)) {
             require_once $controllerFile;
 
             // Check if the method exists in the controller
             if (method_exists($controllerClass, $methodName)) {
+                ULogSys::toLog("if", true);
                 // Call the method
                 $params = array_slice($uriParts, 2); // Get optional parameters
                 call_user_func_array([$controllerClass, $methodName], $params);
             } else {
                 // Method not found, handle appropriately (e.g., show 404 page)
-                header('Location: /DigitalPlot/User/home');
+                ULogSys::toLog("else", true);
+                header('Location: /DigitalPlot/Home/home');
             }
         } else {
             // Controller not found, handle appropriately (e.g., show 404 page)
             header('Location: /DigitalPlot/Error/error404');
-        }
-    }
-
-    /**
-     * Method to redirect to HTTPS if not already using it
-     * @return void
-     */
-    public static function redirectToHttps(): void {
-        $protocol = UServer::getValue('HTTPS');
-        $request_URI = UServer::getValue('REQUEST_URI');
-        if (empty($protocol) || $protocol === 'off'){
-            $location = 'https://' . $protocol . $request_URI;
-            header('HTTP/1.1 301 Moved Permanently'); 
-            header('Location: ' . $location);
-            exit;
         }
     }
 }

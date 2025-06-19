@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalPlot-Logs</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="abbonati.css">
+    <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
+    <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script>
+        function aggiornaContenuto() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('contenuto-file').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open('GET', 'Progetto/Utility/LeggiLog.php', true);
+            xhr.send();
+        }
+
+        setInterval(aggiornaContenuto, 1000); // Aggiorna ogni secondo
+    </script>
+</head>
+<body>
+    <header class="header columns">
+        <div class="column is-one-quarter left">
+            <a href="index.html" class="button is-rounded">Home</a>
+            <a href="abbonati.html" class="button is-rounded">Abbonati</a>
+        </div>
+        <div class="column">
+            <div>
+                <a href="#" class="title is-1">Digital</a>
+                <a href="#" class="title is-1 has-text-warning">Plot</a>
+            </div> 
+        </div>
+        <div class="column is-one-quarter right">
+            <a href="accesso.html" class="button is-warning ok">Accedi</a>
+        </div>
+    </header>
+    <div class="main-content">
+        <label for="container" class="Lcontainer" id="Lcontainer">Scegli il piano più adatto a te</label>
+        <div name="container" class="container">
+            
+        </div>
+    </div>
+</body>
+</html>
+<script src="navburger.js"></script>
