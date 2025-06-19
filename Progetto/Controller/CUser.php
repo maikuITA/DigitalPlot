@@ -35,6 +35,5 @@ class CUser{
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlocard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles);
         }  
     }
-
     
 }

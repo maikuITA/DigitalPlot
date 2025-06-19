@@ -29,7 +29,7 @@ class InstallerDb{
                 $schemaTool->createSchema($metadata);
             }
         }catch(PDOException $e){
-            echo "ERROR: ". $e->getMessage();
+            ULogSys::toLog("Error creating database: " . $e->getMessage(), true);
         }
     }
 
