@@ -44,9 +44,12 @@ class EUser {
     #[ORM\Column(type:"string", length:20, nullable:false)]
     private string $telephone;
     
-    #[ORM\Column(type:"text")]
+    #[ORM\Column(type:"text", nullable:true)]
     private string $biography;
     
+    #[ORM\Column(type:"blob", nullable:true)]
+    private string $profilePicture;
+
     #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
     private $readings = [];
     
@@ -54,7 +57,7 @@ class EUser {
     private $plotCard = [];
 
 
-    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], array $plotCard = [] ) {
+    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", array $readings = [], array $plotCard = [], $profilePicture = null) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setName($name);
@@ -67,6 +70,7 @@ class EUser {
         $this->setAdmin($admin);
         $this->readings = $readings;
         $this->plotCard = $plotCard;
+        $this->profilePicture = $profilePicture;
     }
     
 
@@ -168,6 +172,29 @@ class EUser {
     public function countReadings(): int {
         return count($this->readings);
     }
+
+    public function setProfilePicture($profilePicture): void {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * Returns the profile picture as a base64 encoded string.
+     * If the profile picture is a resource, it reads the contents and encodes it.
+     * If it's already a string, it encodes it directly.
+     */
+    public function getEncodedData(): ?string {
+        if($this->profilePicture === null){
+            return null; // Gestione del caso in cui non sia stata impostata alcuna immagine
+        }
+        if(is_resource($this->profilePicture)){
+            $data = stream_get_contents($this->profilePicture);
+            return base64_encode($data);
+        }else{
+            return base64_encode($this->profilePicture);
+        }
+        
+    }
+
 
     // Metodi per le PlotCard
     public function addPlotCard(EPlotCard $plotCard): void {

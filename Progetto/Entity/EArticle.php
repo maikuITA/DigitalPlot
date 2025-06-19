@@ -25,6 +25,9 @@ class EArticle{
     
     #[ORM\Column(name: "category", type: "string", length: 100)]
     private string $category;
+
+    #[ORM\Column(type: "blob", nullable: true)]
+    private string $contents;
     
     #[ORM\Column(name:"release_date",type: "date")]
     private DateTime $releaseDate;
@@ -123,6 +126,12 @@ class EArticle{
     }
     public function getState(): string {
         return $this->state;
+    }
+    public function setContents(string $contents): void {
+        $this->contents = $contents;
+    }
+    public function getContents(): string {
+        return $this->contents;
     }
 
     //Gestione delle reviews
