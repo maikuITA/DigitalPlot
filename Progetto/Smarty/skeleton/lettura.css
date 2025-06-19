@@ -1,0 +1,28 @@
+.body-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 30px;
+}
+
+.card.text {
+    max-width: 700px;
+}
+
+.subtitle {
+    width: 100%;
+    text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+    .body-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .card.text {
+        max-width: 100%;
+        text-align: center;
+    }
+}
