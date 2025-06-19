@@ -101,5 +101,51 @@ class CUser{
             header('Location: https://digitalplot.altervista.org/home');
         }
     }
+
+    /**
+     * Method to show the access page
+     * @return void
+     */
+    public static function access(): void {
+        if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'access')) {
+            VUser::access();
+        } else {
+            ULogSys::toLog("VUser file not found", true);
+        }
+    }
+    
+    /**
+     * Method to check the login credentials and log the user in
+     * This method retrieves the username and password from the POST request,
+     * verifies them against the database, and sets the session if successful.
+     * If the credentials are invalid or an error occurs, it logs the error and redirects to the access page.
+     * @return void
+     * @throws Exception
+     */
+    public static function checklogin(): void{
+        if (UServer::getRequestMethod() === 'POST') {
+            $username = UHTTPMethods::post('username');
+            $password = UHTTPMethods::post('password');
+            try {
+                $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, $username);
+                if ($user && password_verify($password, $user->getPassword())) {
+                    USession::getInstance();
+                    USession::setSessionElement('user', $user->getId());
+                    header('Location: https://digitalplot.altervista.org/home');
+                } else {
+                    ULogSys::toLog('Invalid username or password');
+                    header('Location: https://digitalplot.altervista.org/access');
+                }
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during login: ' . $e->getMessage());
+                header('Location: https://digitalplot.altervista.org/access');
+            }
+        } elseif(UServer::getRequestMethod() === 'GET') {
+            header('Location: https://digitalplot.altervista.org/access');
+        }
+    }
+
+    
+
     
 }

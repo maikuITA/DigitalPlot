@@ -6,10 +6,10 @@ class CFrontController {
         '' => ['CUser', 'welcome'], // Default route
         'home' => ['CUser', 'home'],
         'welcome' => ['CUser', 'welcome'],
-        'accesso' => ['CAccess', 'accesso'],
-        'abbonati' => ['CSubscribe', 'subscribe'],
+        'access' => ['CUser', 'access'],
+        'subscribe' => ['CSubscribe', 'subscribe'],
         'error' => ['CError', 'error404'],
-        'login' => ['CUser', 'login'],
+        'login' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
     ];
     
