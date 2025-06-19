@@ -7,6 +7,8 @@ class CFrontController {
         'accesso' => ['CAccesso', 'accesso'],
         'abbonati' => ['CAbbonati', 'abbonati'],
         'error' => ['CError', 'error404'],
+        'login' => ['CUser', 'login'],
+        'registrazione' => ['CGuest', 'register'],
     ];
     
     public function start(): void {

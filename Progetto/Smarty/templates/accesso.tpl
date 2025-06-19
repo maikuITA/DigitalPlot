@@ -50,7 +50,7 @@
                 </ul>
             </div>
             <div class="container">
-                <form action="" method="post" class="form" id="login-form">
+                <form action="https://digitalplot.altervista.org/login" method="post" class="form" id="login-form">
                     <label class="title is-3" for="login-form">Accedi al tuo account</label>
                     <div class="field">
                         <div class="control has-icons-left" id="email">
@@ -74,11 +74,11 @@
                         </div>
                     </div>
                 </form>
-                <form action="" method="post" class="form" id="regis-form">
+                <form action="https://digitalplot.altervista.org/registrazione" method="post" class="form" id="regis-form">
                     <label class="title is-3" for="login-form">Crea il tuo account</label>
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Nome" name="nome" required>
+                            <input class="input" type="text" placeholder="Nome" name="name" required>
                             <span class="icon is-small is-left has-link">
                             <i class="fa fa-user-circle"></i>
                             </span>
@@ -86,7 +86,15 @@
                     </div>
                     <div class="field">
                         <p class="control has-icons-left">
-                            <input class="input" type="text" placeholder="Cognome" name="cognome" required>
+                            <input class="input" type="text" placeholder="Cognome" name="surname" required>
+                            <span class="icon is-small is-left has-link">
+                            <i class="fa fa-user-circle"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control has-icons-left">
+                            <input class="input" type="text" placeholder="Username" name="username" required>
                             <span class="icon is-small is-left has-link">
                             <i class="fa fa-user-circle"></i>
                             </span>

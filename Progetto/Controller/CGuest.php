@@ -19,14 +19,19 @@ class CGuest{
             $birthdate = UHTTPMethods::post('birthdate');
             $birthplace = UHTTPMethods::post('birthplace');
             $biography = UHTTPMethods::post('biography'); 
-            $user = new EUser($username, $password, $name, $surname, $birthdate, $birthplace, $email, $telephone, $biography);
+            $user = new EUser($username, $password, $name, $surname, false, $birthdate, $birthplace, $email, $telephone, $biography);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
-            FPersistentManager::getInstance()->saveInBd($user);
-            FPersistentManager::getInstance()->saveInBd($plotCard);
-            USession::getInstance();
-            USession::setSessionElement('user', $user->getId());
-            CUser::home();
+            try {
+                FPersistentManager::getInstance()->saveInBd($user);
+                FPersistentManager::getInstance()->saveInBd($plotCard);
+                USession::getInstance();
+                USession::setSessionElement('user', $user->getId());
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during registration: ' . $e->getMessage());
+                header('Location: https://digitalplot.altervista.org/home');
+            }
+            header('Location: https://digitalplot.altervista.org/home');
         }
     }
 }
