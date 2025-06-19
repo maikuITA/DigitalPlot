@@ -29,12 +29,22 @@
     border-radius: 15px;
 }
 
+.alr {
+    width: 100%;
+}
+
+.control {
+    max-width: 250px;
+}
+
 .field {
     margin-top: 30px;
 }
 
 .input {
     padding: 15px;
+    width: 100%;
+    height: 40px;
 }
 
 label {
@@ -42,15 +52,16 @@ label {
     text-align: center;
 }
 
-.regis-form {
+.form.regis {
     width: 100%;
     max-width: 600px;
 }
 
-.griglia {
+.grigliata {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
 }
 
 .tabs {
@@ -69,7 +80,6 @@ ul {
 }
 
 @media screen and (max-width: 768px) {
-    
     .body-container {
         flex-direction: column;
         align-items: center;
@@ -77,14 +87,22 @@ ul {
 
     .container, .content {
         width: 90%;
-        margin-top: 20px;
+        max-width: none;
     }
 
-    .field {
+    .content {
         margin-top: 20px;
+        max-width: 400px;
     }
 
-    .input {
-        padding: 10px;
+    .grigliata {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+    }
+
+
+    .form.regis {
+        width: 100%;
+        max-width: 400px;
     }
 }

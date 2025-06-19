@@ -33,8 +33,8 @@
         </div>
         <div class="column">
             <div>
-                <a href="#" class="title is-1">Digital</a>
-                <a href="#" class="title is-1 has-text-warning">Plot</a>
+                <a class="title is-1">Digital</a>
+                <a class="title is-1 has-text-warning">Plot</a>
             </div> 
         </div>
         <div class="column is-one-quarter right">
@@ -53,7 +53,7 @@
                 <form action="https://digitalplot.altervista.org/login" method="post" class="form" id="login-form">
                     <label class="title is-3" for="login-form">Accedi al tuo account</label>
                     <div class="field">
-                        <div class="control has-icons-left" id="email">
+                        <div class="control has-icons-left alr" id="email">
                             <input class="input" onkeypress="loading('email')" onfocusout="notloading('email')" type="email" placeholder="Inserisci la tua email" name="email"required>
                             <span class="icon is-small is-left has-link">
                             <i class="fas fa-envelope"></i>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="field">
-                        <p class="control has-icons-left">
+                        <p class="control has-icons-left alr">
                             <input class="input" type="password" placeholder="Inserisci la tua password" name="email" required>
                             <span class="icon is-small is-left has-link">
                             <i class="fas fa-lock"></i>
@@ -69,14 +69,14 @@
                         </p>
                     </div>
                     <div class="field">
-                        <div class="control">
+                        <div class="control alr">
                             <button type="submit" class="button is-link is-fullwidth">Accedi</button>
                         </div>
                     </div>
                 </form>
-                <form action="https://digitalplot.altervista.org/registrazione" method="post" class="form" id="regis-form">
+                <form action="https://digitalplot.altervista.org/registrazione" method="post" class="form regis" id="regis-form">
                     <label class="title is-3" for="login-form">Crea il tuo account</label>
-                    <div class="grigliata">
+                    <div class="grigliata" id="grigliata">
                         <div class="field">
                             <p class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Nome" name="name" required>
