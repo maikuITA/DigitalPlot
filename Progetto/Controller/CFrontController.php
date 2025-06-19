@@ -6,6 +6,7 @@ class CFrontController {
         'home' => ['CHome', 'home'],
         'error404' => ['CError', 'error404'],
         'accesso' => ['CAccesso', 'accesso'],
+        'abbonati' => ['CAbbonati', 'abbonati'],
     ];
     
     /**
