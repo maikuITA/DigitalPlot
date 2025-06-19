@@ -79,7 +79,7 @@
                     <div class="grigliata" id="grigliata">
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Nome" name="name" required>
+                                <input class="input" type="text" placeholder="Nome" name="name" id="name" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-address-card" aria-hidden="true"></i>
                                 </span>
