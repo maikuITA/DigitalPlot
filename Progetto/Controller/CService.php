@@ -3,6 +3,21 @@
 class CService{
 
     /**
+     *  This function prints the counts of items in each category
+     *  @param array $allData
+     *  @return int
+     */
+    public static function printCounts(array $allData): int {
+        foreach ($allData as $key => $items) {
+            $count = count($items);
+            if ($count === 0) {
+                return 1;
+            } 
+        }
+        return 0;
+    }
+
+    /**
      * run this function in order to populate the db
      * @return void
      */
@@ -25,19 +40,23 @@ class CService{
             'users' => $db->retriveAll(EUser::class),
             'writers' => $db->retriveAll(EWriter::class),
         ];
-        if (count($allData) > 0 && count($allData) === 13) {
-            // Database is not empty, do not populate
-            echo "Database already populated.";
-            
-        } elseif (count($allData) > 0) {
-            // Populate entirely the db
+        $zero = self::printCounts($allData);
+        if ($zero === 0){
+            echo "Database has been populated successfully.";
+        } else {
+            echo "Waiting for the database to be populated...";
             FPersistentManager::getInstance()->clearAll();
             InstallerDb::install();
             BasicEntry::populateDb();
-            echo "Database populated successfully.";
-        } 
+            echo "Database has been populated successfully.";
+        }
     }
+    
 
+    /**
+     * This function renders the logs page view
+     * @return void
+     */
     public static function logs(): void {
         // chiama la view per la home page
         if(file_exists(__DIR__ . '/../View/VLogs.php')) {
