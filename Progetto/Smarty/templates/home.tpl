@@ -24,6 +24,7 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="index.html">Home</a>
                     <a class="navbar-item" href="abbonati.html">Abbonati</a>
+                    <a class="navbar-item" href="">PlotPoints: XXX</a>
                     <a class="navbar-item has-text-link transfer" href="accesso.html">Accedi</a>
                 </div>
             </div>
@@ -40,7 +41,7 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </span>
                 <figure class="image is-48x48">
-                    <img class="is-rounded" src="https://bulma.io/assets/images/placeholders/48x48.png" />
+                    <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                 </figure>
             {else}
                 <a href="accesso.html" class="button is-warning ok">Accedi</a>
@@ -48,7 +49,13 @@
         </div>
     </header>
     <div class="container">
-        <label class="title is-3">Scelti per te</label>
+        <label class="title is-3">
+            {if $isLogged === true}
+                Scelti per {$username}
+            {else}
+                Scelti per te
+            {/if}
+        </label>
     </div>
     <div class="container" id="container">
         <div class="card">
