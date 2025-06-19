@@ -127,5 +127,5 @@
     </div>
 </body>
 </html>
-<script src="accesso.js"></script>
-<script src="navburger.js"></script>
+<script src="/Progetto/Smarty/js/accesso.js"></script>
+<script src="/Progetto/Smarty/js/navburger.js"></script>

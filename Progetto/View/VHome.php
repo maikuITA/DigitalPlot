@@ -14,7 +14,6 @@ class VHome {
         $smarty->assign('username', 'Pippo');
         $smarty->assign('plotPoints', 100);
         $smarty->assign('proPic', null);
-        $smarty->assign('articles', $articles ?? []);
         $smarty->display('home.tpl');
     }
 }

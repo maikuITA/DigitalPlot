@@ -11,6 +11,6 @@ InstallerDb::install();
 
 // Avvio il runner (FrontController)
 $runner = new CFrontController();
-$runner->run();
+$runner->start();
 
 ?>

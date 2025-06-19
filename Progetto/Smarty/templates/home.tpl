@@ -40,9 +40,11 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
-                <span class="icon is-large">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </span>
+                <a href="/cerca">
+                    <span class="icon is-large">
+                        <i class="fa fa-search lens" aria-hidden="true"></i>
+                    </span>
+                </a>
                 <figure class="image is-48x48">
                     {if $proPic === null}
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
@@ -79,4 +81,4 @@
     </div>
 </body>
 </html>
-<script src="navburger.js"></script>
+<script src="/Progetto/Smarty/js/navburger.js"></script>
