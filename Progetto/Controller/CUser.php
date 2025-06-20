@@ -25,6 +25,19 @@ class CUser{
     }
 
     /**
+     * Function to check if the use is administrator
+     * @return boolean
+     */
+    public static function isAdmin(): bool {
+        $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+        if($user->isAdmin()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Method to welcome the user for the first time
      * This method checks if the user is logged in and redirects accordingly.
      * @return void
