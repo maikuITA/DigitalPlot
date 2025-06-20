@@ -40,9 +40,11 @@ class CUser{
     /**
      * Method to welcome the user for the first time
      * This method checks if the user is logged in and redirects accordingly.
+     * If the user is logged in, it redirects to the user home page.
+     * If the user is not logged in, it redirects to the guest home page.
      * @return void
      */
-    public static function welcome(): void {
+    public static function home(): void {
         $logged = false;
         if(UCookie::isSet('PHPSESSID')){
             if(session_status() == PHP_SESSION_NONE){
@@ -52,25 +54,36 @@ class CUser{
         if(USession::isSetSessionElement('user')){
             $logged = true;
         }
-        if(!$logged){
-            VUser::home(articles: $articles = FPersistentManager::getInstance()->getCasualArticles(8));
+        if($logged === true){
+            self::user();
         } else {
-            self::home(articles: $articles = FPersistentManager::getInstance()->getCasualArticles(8));
+            self::guest();
         }
     }
 
     /**
-     * Method to redirect to the home page of the user
+     * Method to redirect to the home page of a logged user
+     * This method retrieves the user data and casual articles,
+     * and displays the home page for logged-in users.
      * @return void
      */
-    public static function home(array $articles): void {
+    public static function user(): void {
         if(self::isLogged()) {
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-            if($articles === null) {
-                $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-            }
+            $articles = FPersistentManager::getInstance()->getCasualArticles(8);
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement('user'));
         }    
+    }
+
+    /**
+     * Method to redirect to the home page of a guest user
+     * This method retrieves casual articles and displays the home page for guests.
+     * It does not require any user session.
+     * @return void
+     */
+    public static function guest(): void {
+        $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+        VUser::home(articles: $articles);   
     }
 
     /**

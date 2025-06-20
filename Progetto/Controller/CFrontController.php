@@ -5,7 +5,6 @@ class CFrontController {
     private static $routes = [
         '' => ['CUser', 'welcome'], // Default route
         'home' => ['CUser', 'home'],
-        'welcome' => ['CUser', 'welcome'],
         'auth' => ['CUser', 'auth'],
         'subscribe' => ['CSubscribe', 'subscribe'],
         'error' => ['CError', 'error404'],
