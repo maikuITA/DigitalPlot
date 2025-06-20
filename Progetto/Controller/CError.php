@@ -9,7 +9,8 @@ class CError {
      */
     public static function error404(): void {
         if(CUser::isLogged()) {
-            VError::render("404 Not Found", true);
+            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            VError::render("404 Not Found", $user->getPlotCard()->getPlotPoints(), $user->getEncriptedData() , true);
         } else {
             VError::render("404 Not Found", false);
         }
@@ -24,7 +25,8 @@ class CError {
      */
     public static function error500(): void {
         if(CUser::isLogged()) {
-            VError::render("500 Internal Server Error", true);
+            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            VError::render("500 Internal Server Error", $user->getPlotCard()->getPoints(), $user->getEncodedData() , true);
         } else {
             VError::render("500 Internal Server Error", false);
         }
