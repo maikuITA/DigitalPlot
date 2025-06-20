@@ -81,9 +81,9 @@
                 <p class="subtitle">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
                 </p>
-                <div class="field is-grouped">
-                    <div class="control has-icons-left" id="email">
-                        <input class="input is-rounded" type="text" placeholder="Titolo..." name="titolo">
+                <form class="field is-grouped" method="POST" action="/search">
+                    <div class="control has-icons-left" >
+                        <input class="input is-rounded" type="text" placeholder="Titolo..." name="title">
                         <span class="icon is-small is-left has-link">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </span>
@@ -116,7 +116,7 @@
                     <div class="control">
                         <button class="button is-link is-fullwidth is-rounded">Invia</button>
                     </div>
-                </div>
+                </form>
             </section>
         </div>
     </div>

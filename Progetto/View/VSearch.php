@@ -7,7 +7,7 @@ class VSearch {
      * @param array $articles
      * @return void
      */
-    public static function displaySearchResults(array $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false): void {
+    public static function displaySearchResults(?array $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
         $smarty->assign('articles', $articles);

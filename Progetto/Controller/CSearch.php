@@ -9,10 +9,10 @@ class CSearch {
         // Check if the user is logged in
         if (CUser::isLogged()) {
             if(CUser::isSubbed()){
-                $title = UHTTPMethods::post(['title']);
-                $type = UHTTPMethods::post(['type']);
-                $genre = UHTTPMethods::post(['genre']);
-                $date = UHTTPMethods::post(['date']);
+                $title = UHTTPMethods::post('title');
+                $type = UHTTPMethods::post('type');
+                $genre = UHTTPMethods::post('genre');
+                $date = UHTTPMethods::post('date');
                 CSearch::emptyValues($title, $type, $genre, $date);
             }else{
                 header('Location: https://digitalplot.altervista.org/home');

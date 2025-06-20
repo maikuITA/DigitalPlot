@@ -16,8 +16,9 @@ class CFrontController {
         'registrazione' => ['CUser', 'register'],
         'dbInit'  => ['CService', 'dbInit'],
         'logs' => ['CService', 'logs'],
-        'logout' => ['CUser', 'logout'],
         'find' => ['CSearch', 'find'],
+        'logout' => ['CUser', 'logout'],
+        'search' => ['CSearch', 'takeValueArticle'],
         'clearcache' => ['CService', 'clearCache'],
     ];
     
