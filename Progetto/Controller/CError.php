@@ -10,8 +10,12 @@ class CError {
     public static function error404(): void {
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-            $franco = CUser::isSubbed();
-            VError::render("404 Not Found", $user->getPlotCard()->getPoints(), $user->getEncodedData(), true);
+            if(CUser::isSubbed()){
+                 VError::render("404 Not Found", $user->getPlotCard()->getPoints(), $user->getEncodedData(), true, true);
+            }
+            else {
+                VError::render("404 Not Found", $user->getPlotCard()->getPoints(), $user->getEncodedData(), false ,true);
+            }
         } else {
             VError::render("404 Not Found", false);
         }

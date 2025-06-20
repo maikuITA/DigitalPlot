@@ -126,7 +126,7 @@ class FPersistentManager {
     }
 
     public static function isSubbed(mixed $id) : bool {
-        if(FEntityManager::getInstance()->verifyAttributes('user_id', ESubscriber::class, 'user_id', $id)) {
+        if(FEntityManager::getInstance()->verifyExists( ESubscriber::class, $id)) {
             $purch_date = FEntityManager::getInstance()->retrieveSubscriptionDatePeriod($id);
             ULogSys::toLog("Succhia: " . var_dump($purch_date), true);
             return true;

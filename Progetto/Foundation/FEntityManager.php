@@ -174,16 +174,15 @@ class FEntityManager {
     }
 
     /**
-     * Verify if an attribute of an object is already present in the database
-     * @param string $primaryKey The primary key of the entity
-     * @param string $className The class name of the entity
-     * @param string $field The field to check
-     * @param mixed $value The value to check
-     * @return bool True if the attribute exists, false otherwise
+     * Verify if an object with a specific attribute exists in the database
+     * @param string $className
+     * @param mixed $value
+     * @return bool
+     * @throws Exception
      */
-    public static function verifyAttributes(string $primaryKey, string $className, string $field, mixed $value) : bool{
+    public static function verifyExists( string $className, mixed $value) : bool{
         try{
-            $dql = "SELECT u.$primaryKey FROM " . $className . " u WHERE u." . $field . " = :attribute";
+            $dql = "SELECT u.id FROM " . $className . " u WHERE u.id = :attribute";
             $query = self::$entityManager->createQuery($dql);
             $query->setParameter('attribute', $value);
             $result = $query->getResult();
@@ -193,7 +192,7 @@ class FEntityManager {
                 return false;
             }
         }catch(Exception $e){
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            ULogSys::toLog('Error verifing Attributes: ' . $e->getMessage(), true);
             return false;
         }
     }
@@ -255,14 +254,9 @@ class FEntityManager {
 
     public static function retrieveSubscriptionDatePeriod(mixed $id) : ?array {
         try {
-            $dql = "SELECT p.purchaseDate, s.period 
-                    FROM App\Entity\EPurchase p 
-                    JOIN p.subscription s 
-                    WHERE p.subscriber.userId = :id 
-                    ORDER BY p.purchaseDate DESC";
+            $dql = "SELECT p FROM EPurchase::class p WHERE p.id = :val";
             $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('id', $id);
-            ULogSys::toLog("query: " . $query, true);
+            $query->setParameter('val', $id);
             $result = $query->getResult();
             if(count($result) > 0){
                 return $result[0];
@@ -271,7 +265,7 @@ class FEntityManager {
             }
         }
         catch (Exception $e) {
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            ULogSys::toLog('Error purchase: ' . $e->getMessage(), true);
             return null;
         }
     }

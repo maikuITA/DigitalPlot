@@ -20,8 +20,7 @@ class CUser{
     }
 
     public static function isSubbed(): bool {
-        FPersistentManager::getInstance()->isSubbed(7);
-        return false;
+        return FPersistentManager::getInstance()->isSubbed(USession::getSessionElement('user'));
     }
 
     /**
