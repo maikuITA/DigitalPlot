@@ -6,7 +6,7 @@ class CFrontController {
         '' => ['CUser', 'welcome'], // Default route
         'home' => ['CUser', 'home'],
         'welcome' => ['CUser', 'welcome'],
-        'access' => ['CUser', 'access'],
+        'auth' => ['CUser', 'auth'],
         'subscribe' => ['CSubscribe', 'subscribe'],
         'error' => ['CError', 'error404'],
         'login' => ['CUser', 'checklogin'],
@@ -20,11 +20,11 @@ class CFrontController {
         $requestUri = UServer::getValue('REQUEST_URI'); // Get the request URI from the server
 
         $route = trim($requestUri, '/'); // Get the second part of the URI and trim slashes
-        ULogSys::toLog("Rotta:".$route, true);
+        ULogSys::toLog("Rotta:".$route);
         if(in_array($route, array_keys(self::$routes))) { // If the route exists, call the corresponding controller and method
             $controller = self::$routes[$route][0];
             $method = self::$routes[$route][1];
-            ULogSys::toLog("Controller:".$controller . "Method:".$method, true);
+            ULogSys::toLog("Controller:".$controller . " # Method:".$method);
             if (class_exists($controller) && method_exists($controller, $method)) {
                 call_user_func_array([$controller, $method], []);
             } else {

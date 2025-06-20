@@ -27,7 +27,7 @@
                     {if $isLogged === true}
                         <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
                     {else}
-                        <a class="navbar-item has-text-link transfer" href="/accesso">Accedi</a>
+                        <a class="navbar-item has-text-link transfer" href="/auh">Accedi</a>
                     {/if}
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     {/if}
                 </figure>
             {else}
-                <a href="/accesso" class="button is-warning ok">Accedi</a>
+                <a href="/auh" class="button is-warning ok">Accedi</a>
             {/if}
         </div>
     </header>

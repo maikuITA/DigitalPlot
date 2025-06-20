@@ -106,9 +106,9 @@ class CUser{
      * Method to show the access page
      * @return void
      */
-    public static function access(): void {
-        if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'access')) {
-            VUser::access();
+    public static function auth(): void {
+        if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'auth')) {
+            VUser::auth();
         } else {
             ULogSys::toLog("VUser file not found", true);
         }
@@ -133,15 +133,15 @@ class CUser{
                     USession::setSessionElement('user', $user->getId());
                     header('Location: https://digitalplot.altervista.org/home');
                 } else {
-                    ULogSys::toLog('Invalid username or password');
-                    header('Location: https://digitalplot.altervista.org/access');
+                    ULogSys::toLog('Invalid username or password', true);
+                    header('Location: https://digitalplot.altervista.org/auth');
                 }
             } catch (Exception $e) {
-                ULogSys::toLog('Error during login: ' . $e->getMessage());
-                header('Location: https://digitalplot.altervista.org/access');
+                ULogSys::toLog('Error during login: ' . $e->getMessage(), true);
+                header('Location: https://digitalplot.altervista.org/auth');
             }
         } else{
-            header('Location: https://digitalplot.altervista.org/access');
+            header('Location: https://digitalplot.altervista.org/auth');
         }
     }
 

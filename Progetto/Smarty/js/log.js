@@ -8,6 +8,8 @@ function aggiornaErrori() {
     };
     xhr.open('GET', '/Progetto/Utility/ULeggiErrori.php', true);
     xhr.send();
+    const div1 = document.getElementById("contenuto-file-errori");
+    div1.scrollTop = div1.scrollHeight;
 }
 setInterval(aggiornaErrori, 1000); // Aggiorna ogni secondo
 
@@ -20,11 +22,7 @@ function aggiornaEventi() {
     };
     xhr.open('GET', '/Progetto/Utility/ULeggiEventi.php', true);
     xhr.send();
+    const div2 = document.getElementById("contenuto-file-eventi");
+    div2.scrollTop = div2.scrollHeight;
 }
 setInterval(aggiornaEventi, 1000); // Aggiorna ogni secondo
-
-const div1 = document.getElementById("contenuto-file-errori");
-div1.scrollTop = div1.scrollHeight;
-const div2 = document.getElementById("contenuto-file-eventi");
-div2.scrollTop = div2.scrollHeight;
-

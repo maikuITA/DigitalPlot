@@ -26,7 +26,7 @@ class VUser{
      * Show the access page
      * @throws Exception
      */
-    public static function access() {
+    public static function auth() {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> accesso.tpl");
         $smarty->display('accesso.tpl');
