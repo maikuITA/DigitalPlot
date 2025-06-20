@@ -6,13 +6,14 @@ class VError {
      * Mostra la homepage con i dati ricevuti dal controller.
      * @throws Exception
      */
-    public static function render(string $errore, $poltPoints = 0 , $proPic = null , bool $isLogged = false): void {
+    public static function render(string $errore, $plotPoints = 0 , $proPic = null , bool $isAbbonato = false, bool $isLogged = false): void {
         $smarty = StartSmarty::configuration();
-        ULogSys::toLog("Display -> error404.tpl");
+        ULogSys::toLog("Display -> error.tpl");
         $smarty->assign('errore', $errore);
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('poltPoints', $poltPoints);
+        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
-        $smarty->display('error404.tpl');
+        $smarty->display('error.tpl');
     }
 }

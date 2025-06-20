@@ -117,6 +117,16 @@ class FPersistentManager {
         FEntityManager::getInstance()->dropDatabase();
     }
 
+    public static function isSubbed(mixed $id) : bool {
+        if(FEntityManager::getInstance()->verifyAttributes('user_id', ESubscriber::class, 'user_id', $id)) {
+            $purch_date = FEntityManager::getInstance()->retrieveSubscriptionDatePeriod($id);
+            ULogSys::toLog("Succhia: " . var_dump($purch_date), true);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     // ========== Query DQL personalizzate ==========
 

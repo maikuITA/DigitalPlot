@@ -174,12 +174,12 @@ class FEntityManager {
     }
 
     /**
-     * verify if exist an object
-     * @param string $primaryKey
-     * @param string $className
-     * @param string $field
-     * @param mixed $value
-     * @return boolean
+     * Verify if an attribute of an object is already present in the database
+     * @param string $primaryKey The primary key of the entity
+     * @param string $className The class name of the entity
+     * @param string $field The field to check
+     * @param mixed $value The value to check
+     * @return bool True if the attribute exists, false otherwise
      */
     public static function verifyAttributes(string $primaryKey, string $className, string $field, mixed $value) : bool{
         try{
@@ -250,6 +250,25 @@ class FEntityManager {
         } catch (Exception $e) {
             ULogSys::toLog('Error during dropping database: ' . $e->getMessage(), true);
             self::$entityManager->getConnection()->rollBack();
+        }
+    }
+
+
+    public static function retrieveSubscriptionDatePeriod(mixed $id) : ?array {
+        try {
+            $dql = "SELECT p.purchase_date, s.period FROM EPurchase p JOIN e.fk_subscription s WHERE p.fk_subscriber = :id ORDER BY p.purchase_date DESC";
+            $query = self::$entityManager->createQuery($dql);
+            $query->setParameter('id', $id);
+            ULogSys::toLog("query: " . $query, true);
+            $result = $query->getResult();
+            if(count($result) > 0){
+                return $result[0];
+            }else {
+                return null;
+            }
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
         }
     }
 }

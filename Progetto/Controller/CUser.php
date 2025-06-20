@@ -19,6 +19,11 @@ class CUser{
         return false;
     }
 
+    public static function isSubbed(): bool {
+        FPersistentManager::getInstance()->isSubbed(7);
+        return false;
+    }
+
     /**
      * Method to check if the user is an admin
      * This method retrieves the user from the persistent manager using the session element 'user',
