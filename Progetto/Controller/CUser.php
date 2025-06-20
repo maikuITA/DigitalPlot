@@ -53,9 +53,9 @@ class CUser{
             $logged = true;
         }
         if(!$logged){
-            VUser::home();
+            VUser::home(articles: $articles = FPersistentManager::getInstance()->getCasualArticles(8));
         } else {
-            self::home();
+            self::home(articles: $articles = FPersistentManager::getInstance()->getCasualArticles(8));
         }
     }
 
@@ -63,14 +63,15 @@ class CUser{
      * Method to redirect to the home page of the user
      * @return void
      */
-    public static function home(): void {
+    public static function home(array $articles): void {
         if(self::isLogged()) {
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-            $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+            if($articles === null) {
+                $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+            }
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement('user'));
         }    
     }
-
 
     /**
      * Method to redirect to the login page
