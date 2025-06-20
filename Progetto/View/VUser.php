@@ -3,10 +3,11 @@
 class VUser{
 
     /**
-     * Show the home page with the data received from the controller.
+     * This method is used to display the home page.
+     * It uses Smarty to render the 'home.tpl' template.
      * @param string|null $username The username of the logged-in user.
      * @param int|null $plotPoints The plot points of the user.
-     * @param mixed $proPic The profile picture of the user, can be a string (URL) or a resource (image data).
+     * @param mixed $proPic The profile picture of the user.
      * @param array|null $articles The articles to be displayed on the home page.
      * @param bool $logged Indicates if the user is logged in.
      * @throws Exception
@@ -23,7 +24,8 @@ class VUser{
     }
 
     /**
-     * Show the auth page
+     * This method is used to display the access page.
+     * It uses Smarty to render the 'accesso.tpl' template.
      * @throws Exception
      */
     public static function auth() {
@@ -33,12 +35,15 @@ class VUser{
     }
 
     /**
-     * Show the find page
+     * @param bool $isLogged Indicates if the user is logged in.
+     * This method is used to display the search page.
+     * It uses Smarty to render the 'ricerca.tpl' template.
      * @throws Exception
      */
-    public static function find() {
+    public static function find($isLogged) {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
+        $smarty->assign('isLogged', $isLogged);
         $smarty->display('ricerca.tpl');
     }
 }
