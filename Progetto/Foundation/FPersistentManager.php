@@ -127,12 +127,17 @@ class FPersistentManager {
 
     public static function isSubbed(mixed $id) : bool {
         if(FEntityManager::getInstance()->verifyExists( ESubscriber::class, $id)) {
-            $purch_date = FEntityManager::getInstance()->retrieveSubscriptionDatePeriod($id);
-            ULogSys::toLog("Succhia: " . var_dump($purch_date), true);
-            return true;
+            $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
+            $notExpiredPurch = array_filter($notExpiredPurch, function($purchase) use ($id) {
+                return $purchase->getSubscriber()->getId() === $id;
+            });
+            if (count($notExpiredPurch) > 0) {
+                return true;
+            } 
         } else {
             return false;
         }
+        return false;
     }
 
     /*

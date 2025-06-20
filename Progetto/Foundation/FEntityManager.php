@@ -252,14 +252,13 @@ class FEntityManager {
         }
     }
 
-    public static function retrieveSubscriptionDatePeriod(mixed $id) : ?array {
+    public static function retrieveValidPurchase() : ?array {
         try {
-            $dql = "SELECT p FROM EPurchase::class p WHERE p.id = :val";
+            $dql = "SELECT p FROM EPurchase p WHERE p.expireDate > CURRENT_DATE()";
             $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('val', $id);
             $result = $query->getResult();
             if(count($result) > 0){
-                return $result[0];
+                return $result;
             }else {
                 return null;
             }
