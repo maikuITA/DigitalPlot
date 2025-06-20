@@ -1,4 +1,7 @@
 <?php
+
+require_once __DIR__ . '/config.php'; // Include the configuration file
+
 /**
  * class to access to the $_SESSION superglobal array, you Must use this class instead of using directly the array
  */
@@ -12,7 +15,7 @@ class USession{
      private static $instance;
 
      private function __construct() {
-        session_set_cookie_params(COOKIE_EXP_TIME); //set the duration of the session cookie
+        session_set_cookie_params(lifetime_or_options: COOKIE_EXP_TIME); //set the duration of the session cookie
         session_start(); //start the session
      }
  

@@ -53,16 +53,16 @@
                 <form action="https://digitalplot.altervista.org/login" method="post" class="form" id="login-form">
                     <label class="title is-3" for="login-form">Accedi al tuo account</label>
                     <div class="field">
-                        <p class="control has-icons-left">
+                        <p class="control has-icons-left alr">
                             <input class="input" type="text" placeholder="Username" name="username" id="username" required>
                             <span class="icon is-small is-left has-link">
                             <i class="fa fa-user-circle"></i>
-                            </span>
+                            </span> 
                         </p>
                     </div>
                     <div class="field">
                         <p class="control has-icons-left alr">
-                            <input class="input" type="password" placeholder="Inserisci la tua password" name="email" required>
+                            <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
                             <span class="icon is-small is-left has-link">
                             <i class="fas fa-lock"></i>
                             </span>
