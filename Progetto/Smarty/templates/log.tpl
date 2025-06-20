@@ -12,30 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    <script>
-        function aggiornaErrori() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('contenuto-file-errori').innerHTML = xhr.responseText;
-                }
-            };
-            xhr.open('GET', '/Progetto/Utility/ULeggiErrori.php', true);
-            xhr.send();
-        }
-        setInterval(aggiornaErrori, 1000); // Aggiorna ogni secondo
-        function aggiornaEventi() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    document.getElementById('contenuto-file-eventi').innerHTML = xhr.responseText;
-                }
-            };
-            xhr.open('GET', '/Progetto/Utility/ULeggiEventi.php', true);
-            xhr.send();
-        }
-        setInterval(aggiornaEventi, 1000); // Aggiorna ogni secondo
-    </script>
+    <script src="/Progetto/Smarty/js/log.js"></script>"
 </head>
 <body>
     <header class="header columns">
@@ -85,4 +62,4 @@
     </div>
 </body>
 </html>
-<script src="navburger.js"></script>
+<script src="/Progetto/Smarty/js/navburger.js"></script>
