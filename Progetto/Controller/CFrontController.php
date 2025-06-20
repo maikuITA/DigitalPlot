@@ -3,7 +3,7 @@
 class CFrontController {
 
     private static $routes = [
-        '' => ['CUser', 'welcome'], // Default route
+        '' => ['CUser', 'home'], // Default route
         'home' => ['CUser', 'home'],
         'auth' => ['CUser', 'auth'],
         'subscribe' => ['CSubscribe', 'subscribe'],

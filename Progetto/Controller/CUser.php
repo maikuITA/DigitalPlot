@@ -18,7 +18,7 @@ class CUser{
             $logged = true;
         }
         if(!$logged){
-            header('Location: https://digitalplot.altervista.org/welcome');
+            header('Location: https://digitalplot.altervista.org/home');
             exit;
         }
         return true;
@@ -38,7 +38,7 @@ class CUser{
     }
 
     /**
-     * Method to welcome the user for the first time
+     * Method to home the user for the first time
      * This method checks if the user is logged in and redirects accordingly.
      * If the user is logged in, it redirects to the user home page.
      * If the user is not logged in, it redirects to the guest home page.
@@ -93,7 +93,7 @@ class CUser{
         USession::getInstance();
         USession::unsetSession();
         USession::destroySession();
-        header('Location: https://digitalplot.altervista.org/welcome');
+        header('Location: https://digitalplot.altervista.org/home');
     }
 
     /**
