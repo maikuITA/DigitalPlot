@@ -40,7 +40,7 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
-                <a href="/find">
+                <a href="/find" class="ok">
                     <span class="icon is-large">
                         <i class="fa fa-search lens" aria-hidden="true"></i>
                     </span>
@@ -52,7 +52,7 @@
                         <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure>
-                <a href="/logout">
+                <a href="/logout" class="ok">
                     <span class="icon is-large">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                     </span>
@@ -72,17 +72,19 @@
         </label>
     </div>
     <div class="container" id="container">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
+        {foreach from=$articles item=$article}
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">{$article->getTitle()}</p>
+                    <p class="subtitle">{$article->getDescription()}</p>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-footer-item">
+                        <a href="#" class="button is-warning">Leggi di più</a>
+                    </p>
+                </footer>
             </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
+        {/foreach}
     </div>
 </body>
 </html>

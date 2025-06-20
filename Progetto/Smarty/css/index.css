@@ -37,7 +37,8 @@ nav {
 }
 
 .card {
-    max-width: 300px;
+    width: 250px;
+    max-height: 300px;
 }
 
 .card-header {
@@ -172,6 +173,10 @@ figure:hover, i:hover, span:hover {
     }
 
     .button.is-warning.ok {
+        display: none;
+    }
+
+    .ok {
         display: none;
     }
 
