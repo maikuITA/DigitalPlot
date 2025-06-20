@@ -72,8 +72,8 @@
         </label>
     </div>
     <div class="container" id="container">
-        {if isset($articles) }
-            {foreach from=$articles item=$article}
+        {if isset($articles)}
+            {foreach from=$articles item=article}
                 <div class="card">
                     <div class="card-content">
                         <p class="title">{$article->getTitle()}</p>

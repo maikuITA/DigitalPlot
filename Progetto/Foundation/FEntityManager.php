@@ -164,11 +164,8 @@ class FEntityManager {
             $dql = "SELECT e FROM $className e";
             $query = self::$entityManager->createQuery($dql);
             $resultpart = $query->getResult();
-            echo "resultpart: " . count($resultpart) . "\n";
             shuffle($resultpart); // Shuffle the array to get a random order
-            echo "shuffled resultpart: " . count($resultpart) . "\n";
             array_slice($resultpart, 0, $articlesNum); // Get the first $articlesNum elements
-            echo "sliced resultpart: " . count($resultpart) . "\n";
             return $resultpart;
         }catch(Exception $e) {
             ULogSys::toLog('Error -> ' . $e->getMessage(), true);
