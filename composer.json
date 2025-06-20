@@ -4,7 +4,7 @@
         "doctrine/orm": "^3.0",
         "doctrine/dbal": "^3.9",
         "symfony/cache": "^7.2",
-        "doctrine/persistence": "^3.3.1 || ^4"
+        "doctrine/persistence": "3.3.1"
     },
     "autoload": {
         "psr-4": {
