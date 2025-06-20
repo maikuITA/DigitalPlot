@@ -171,18 +171,5 @@ class CUser{
         }
     }
 
-    /**
-     * Method to authenticate the user
-     * This method checks if the VUser view exists and calls its auth method.
-     * If the VUser view does not exist, it logs an error message.
-     * This method is used to display the authentication page for users.
-     * @return void
-     */
-    public static function find(): void {
-        if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'find')) {
-            VUser::find(self::isLogged());
-        } else {
-            ULogSys::toLog("VUser file not found", true);
-        }
-    }
+   
 }

@@ -38,9 +38,22 @@ class CSearch {
             $date = '%';
         }
             $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
-            VSearch::displaySearchResults(articles: $result);
-        
-       
+            VSearch::displaySearchResults(articles: $result);    
+    }
+
+    /**
+     * Method to authenticate the user
+     * This method checks if the VUser view exists and calls its auth method.
+     * If the VUser view does not exist, it logs an error message.
+     * This method is used to display the authentication page for users.
+     * @return void
+     */
+    public static function find(): void {
+        if(file_exists(__DIR__ . '/../View/VSearch.php') && method_exists('VSearch', 'find')) {
+            VSearch::find(CUser::isLogged());
+        } else {
+            ULogSys::toLog("VSearch file not found", true);
+        }
     }
 
 
