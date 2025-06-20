@@ -64,31 +64,32 @@
                         </span>
                     </div>
                     <div class="select is-rounded">
-                        <select>
-                            <option>Tipo</option>
-                            <option>Articolo</option>
-                            <option>Giornale</option>
-                            <option>Rivista</option>
+                        <select name='type'>
+                            <option value = '' >Tipo</option>
+                            <option value = 'articolo' >Articolo</option>
+                            <option value = 'giornale' >Giornale</option>
+                            <option value = 'rivista' >Rivista</option>
                         </select>
                     </div>
                     <div class="select is-rounded">
-                        <select>
-                            <option>Genere</option>
-                            <option>Cronaca</option>
-                            <option>Economia</option>
-                            <option>Politica</option>
+                        <select name = 'genre' >
+                            <option value = '' >Genere</option>
+                            <option value = 'cronaca' >Cronaca</option>
+                            <option value = 'economia' >Economia</option>
+                            <option value = 'politica' >Politica</option>
+                            <option value = 'sport' >Sport</option>
                         </select>
                     </div>
                     <div class="select is-rounded">
-                        <select>
-                            <option>Anno</option>
-                            <option>2025</option>
-                            <option>2024</option>
-                            <option>2023</option>
+                        <select name = 'date' >
+                            <option value = '' >Anno</option>
+                            <option value = '2025' >2025</option>
+                            <option value = '2024' >2024</option>
+                            <option value = '2023' >2023</option>
                         </select>
                     </div>
                     <div class="select is-rounded">
-                        <select>
+                        <select name = 'evaluate'>
                             <option value="5">&#11088&#11088&#11088&#11088&#11088</option>
                             <option value="4">&#11088&#11088&#11088&#11088</option>
                             <option value="3">&#11088&#11088&#11088</option>
@@ -105,4 +106,4 @@
     </div>
 </body>
 </html>
-<script src="navburger.js"></script>
+<script src="/Progetto/Smarty/js/navburger.js"></script>
