@@ -72,19 +72,21 @@
         </label>
     </div>
     <div class="container" id="container">
-        {foreach from=$articles item=$article}
-            <div class="card">
-                <div class="card-content">
-                    <p class="title">{$article->getTitle()}</p>
-                    <p class="subtitle">{$article->getDescription()}</p>
+        {if isset($articles) }
+            {foreach from=$articles item=$article}
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">{$article->getTitle()}</p>
+                        <p class="subtitle">{$article->getDescription()}</p>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <a href="#" class="button is-warning">Leggi di più</a>
+                        </p>
+                    </footer>
                 </div>
-                <footer class="card-footer">
-                    <p class="card-footer-item">
-                        <a href="#" class="button is-warning">Leggi di più</a>
-                    </p>
-                </footer>
-            </div>
-        {/foreach}
+            {/foreach}
+        {/if}
     </div>
 </body>
 </html>
