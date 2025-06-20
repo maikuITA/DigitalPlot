@@ -252,6 +252,50 @@ class FEntityManager {
             self::$entityManager->getConnection()->rollBack();
         }
     }
+
+
+    /**
+     * Retrieve all objects of a specific class
+     * @param string $className
+     * @return array|null
+     * @throws Exception
+     */
+    public static function retrieveAll(string $className): ?array {
+        try {
+            $dql = "SELECT e FROM $className e";
+            $query = self::$entityManager->createQuery($dql);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieve articles based on specific criteria
+     * @param string $className
+     * @param string $title
+     * @param string $type
+     * @param string $genre
+     * @param string $date
+     * @return array|null
+     * @throws Exception
+     */
+    public static function retrieveArticles(string $className, string $title, string $type, string $genre, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.title = :title AND a.type = :type AND a.genre = :genre AND a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('title', $title)
+                ->setParameter('type', $type)
+                ->setParameter('genre', $genre)
+                ->setParameter('date', $date);
+            $query = self::$entityManager->createQuery($dql);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
 }
 
 ?>

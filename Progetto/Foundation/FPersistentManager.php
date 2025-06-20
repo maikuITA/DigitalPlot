@@ -110,6 +110,14 @@ class FPersistentManager {
     }
 
     /**
+     * Retrieve all articles from the database
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticles(string $title, string $type, string $genre, string $date): ?array {
+        return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $type, $genre, $date);
+    }
+
+    /**
      * drop db
      * @return void
      */
