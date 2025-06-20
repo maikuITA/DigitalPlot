@@ -110,6 +110,14 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Telefono" name="telephone" id="telephone" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Username" name="username" id="username" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-user-circle"></i>
