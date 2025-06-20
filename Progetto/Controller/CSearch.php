@@ -28,22 +28,18 @@ class CSearch {
      * @return void
      */
     public static function emptyValues(string $title, string $type, string $genre, string $date): void {
-        if(empty($title) && empty($type) && empty($genre) && !empty($date)) {
-            $result = FPersistentManager::getInstance()->searchArticlesNoDate($title, $type, $genre);
-        } elseif (empty($title) && empty($type) && !empty($genre) && empty($date)) {
-            $result = FPersistentManager::getInstance()->searchArticlesNoGenre($title, $type, $date);
-        } elseif (empty($title) && !empty($type) && empty($genre) && empty($date)) {
-            $result = FPersistentManager::getInstance()->searchArticlesNoType($title, $genre, $date);
-        } elseif (!empty($title) && empty($type) && empty($genre) && empty($date)) {
-           $result = FPersistentManager::getInstance()->searchArticlesNoTitle($type, $genre, $date);
-        } elseif (!empty($title) && !empty($type) && empty($genre) && empty($date)) {
-            $result = FPersistentManager::getInstance()->searchArticlesNoTitleNoType($genre, $date);
-        } elseif (!empty($title) && !empty($type) && !empty($genre) && empty($date)) {
-            $result = FPersistentManager::getInstance()->searchArticlesOnlyDate($date);
-        } else {
+        if($title === '') {
+            $title = '%';
+        } elseif ($genre === '') {
+            $genre = '%';
+        } elseif ($type === '') {
+            $type = '%';
+        } elseif ($date === '') {
+            $date = '%';
+        }
             $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
             VSearch::displaySearchResults(articles: $result);
-        }
+        
        
     }
 
