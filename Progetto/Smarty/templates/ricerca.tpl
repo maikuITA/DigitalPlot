@@ -88,15 +88,6 @@
                             <option value = '2023' >2023</option>
                         </select>
                     </div>
-                    <div class="select is-rounded">
-                        <select name = 'evaluate'>
-                            <option value="5">&#11088&#11088&#11088&#11088&#11088</option>
-                            <option value="4">&#11088&#11088&#11088&#11088</option>
-                            <option value="3">&#11088&#11088&#11088</option>
-                            <option value="2">&#11088&#11088</option>
-                            <option value="1">&#11088</option>
-                        </select>
-                    </div>
                     <div class="control">
                         <button class="button is-link is-fullwidth is-rounded">Invia</button>
                     </div>

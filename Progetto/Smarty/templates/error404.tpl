@@ -23,12 +23,15 @@
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             </a>
-
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
-                    <a class="navbar-item" href="/abbonati">Abbonati</a>
-                    <a class="navbar-item has-text-link transfer" href="/accesso">Accedi</a>
+                    <a class="navbar-item" href="/subscribe">Abbonati</a>
+                    {if $isLogged === true}
+                        <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
+                    {else}
+                        <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
+                    {/if}
                 </div>
             </div>
         </div>
@@ -39,7 +42,27 @@
             </div> 
         </div>
         <div class="column is-one-quarter right">
-            <a href="/accesso" class="button is-warning ok">Accedi</a>
+            {if $isLogged === true}
+                <a href="/find" class="is-ok">
+                    <span class="icon is-large is-ok">
+                        <i class="fa fa-search lens is-ok" aria-hidden="true"></i>
+                    </span>
+                </a>
+                <figure class="image is-48x48">
+                    {if $proPic === null}
+                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                    {else}
+                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                    {/if}
+                </figure>
+                <a href="/logout" class="is-ok">
+                    <span class="icon is-large is-ok">
+                        <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
+                    </span>
+                </a>
+            {else}
+                <a href="/auth" class="button is-warning ok">Accedi</a>
+            {/if}
         </div>
     </header>
     <div class="body-container">

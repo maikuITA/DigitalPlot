@@ -8,7 +8,12 @@ class CError {
      * @return void
      */
     public static function error404(): void {
-        VError::render("404 Not Found");
+        if(CUser::isLogged()) {
+            VError::render("404 Not Found", true);
+        } else {
+            VError::render("404 Not Found", false);
+        }
+        ULogSys::toLog("404 Internal Server Error", true);
         exit;
     }
     
@@ -18,7 +23,12 @@ class CError {
      * @return void
      */
     public static function error500(): void {
-        VError::render("500 Internal Server Error");
+        if(CUser::isLogged()) {
+            VError::render("500 Internal Server Error", true);
+        } else {
+            VError::render("500 Internal Server Error", false);
+        }
+        ULogSys::toLog("500 Internal Server Error", true);
         exit;       
     }
 }
