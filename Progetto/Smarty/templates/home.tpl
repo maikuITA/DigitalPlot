@@ -42,7 +42,7 @@
             {if $isLogged === true}
                 <a href="/find" class="is-ok">
                     <span class="icon is-large is-ok">
-                        <i class="fa fa-search lens" aria-hidden="true"></i>
+                        <i class="fa fa-search lens is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
                 <figure class="image is-48x48">
@@ -54,7 +54,7 @@
                 </figure>
                 <a href="/logout" class="is-ok">
                     <span class="icon is-large is-ok">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
             {else}

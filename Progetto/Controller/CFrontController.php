@@ -15,6 +15,7 @@ class CFrontController {
         'logs' => ['CService', 'logs'],
         'find' => ['CUser', 'find'],
         'logout' => ['CUser', 'logout'],
+        'clearcache' => ['CService', 'clearCache'],
     ];
     
     public function start(): void {

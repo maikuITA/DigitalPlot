@@ -176,11 +176,7 @@ figure:hover, i:hover, span:hover {
         display: none;
     }
 
-    .is-ok {
-        display: none;
-    }
-
-    .icon.is-large.is-ok {
+    .is-ok, .icon.is-large.is-ok, .fa.fa-sign-out.is-ok, .fa.fa-search.lens.is-ok {
         display: none;
     }
 
