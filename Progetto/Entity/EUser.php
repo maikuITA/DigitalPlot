@@ -24,7 +24,7 @@ class EUser {
     private string $password;
     
     #[ORM\Column(name:"admin",type:"boolean")]
-    private bool $admin = true;
+    private bool $admin = false;
     
     #[ORM\Column(type:"string",length:100, nullable:false) ]
     private string $name;

@@ -63,9 +63,10 @@ class CService{
             } else {
                 ULogSys::toLog("VLogs file not found", true);
             }
+        }else{
+            header('Location: https://digitalplot.altervista.org/home');
+            exit;
         }
-        header('Location: https://digitalplot.altervista.org/home');
-        exit;
     }
 
     /**
