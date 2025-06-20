@@ -184,5 +184,5 @@
     </div>
 </body>
 </html>
-<script src="pagamento.js"></script>
-<script src="navburger.js"></script>
+<script src="/Progetto/Smarty/js/pagamento.js"></script>
+<script src="/Progetto/Smarty/js/navburger.js"></script>

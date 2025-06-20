@@ -95,4 +95,4 @@
     </div>
 </body>
 </html>
-<script src="navburger.js"></script>
+<script src="/Progetto/Smarty/js/navburger.js"></script>
