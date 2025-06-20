@@ -73,7 +73,7 @@ class CService{
      * @return void
      */
     public static function clearCache(): void {
-        require_once __DIR__ . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "clearcache.php";   
+        require_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "clearcache.php";   
         ULogSys::toLog("Cache pulita correttamente.");
         header('Location: https://digitalplot.altervista.org/home'); 
     }
