@@ -27,7 +27,7 @@ class EArticle{
     private string $category;
 
     #[ORM\Column(type: "blob", nullable: true)]
-    private string $contents;
+    private $contents;
     
     #[ORM\Column(name:"release_date",type: "date")]
     private DateTime $releaseDate;
