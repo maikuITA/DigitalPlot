@@ -118,6 +118,55 @@ class FPersistentManager {
     }
 
     /**
+     * Retrieve all articles from the database without date
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticlesNoDate(string $title, string $type, string $genre): ?array {
+        return FEntityManager::getInstance()->retrieveArticlesNoDate(EArticle::class, $title, $type, $genre);
+    }
+
+    /**
+     * Retrieve all articles from the database without type
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticlesNoGenre(string $title, string $type, string $date): ?array {
+        return FEntityManager::getInstance()->retrieveArticlesNoGenre(EArticle::class, $title, $type, $date);
+    }
+
+
+    /**
+     * Retrieve all articles from the database without genre
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticlesNoType(string $title, string $genre, string $date): ?array {
+        return FEntityManager::getInstance()->retrieveArticlesNoType(EArticle::class, $title, $genre, $date);
+    }
+
+    /**
+     * Retrieve all articles from the database without title
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticlesNoTitle(string $type, string $genre, string $date): ?array {
+        return FEntityManager::getInstance()->retrieveArticlesNoTitle(EArticle::class, $type, $genre, $date);
+    }
+
+    /**
+     * Retrieve all articles from the database without title and type
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticlesNoTitleNoType(string $genre, string $date): ?array {
+        return FEntityManager::getInstance()->retrieveArticlesNoTitleNoType(EArticle::class, $genre, $date);
+    }
+
+    /**
+     * Retrieve all articles from the database with only date
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public function searchArticlesOnlyDate(string $date): ?array {
+        return FEntityManager::getInstance()->retrieveArticlesOnlyDate(EArticle::class, $date);
+    }
+
+    /**
      * drop db
      * @return void
      */
