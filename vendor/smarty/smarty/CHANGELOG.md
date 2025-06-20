@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [5.5.1] - 2025-05-19
+- Fix missing support for loading modifiercompilers from plugin dir in BCPluginsAdapter [#1132](https://github.com/smarty-php/smarty/pull/1132)
+
+
+## [5.5.0] - 2025-05-03
+- Support trailing comma in array [#1013](https://github.com/smarty-php/smarty/issues/1013)
+
+
+## [5.4.5] - 2025-04-15
+- Fixed deprecation notice in StringEval in PHP8.4 [#1119](https://github.com/smarty-php/smarty/issues/1119)
+
+
 ## [5.4.4] - 2025-04-13
 - Fix syntax error occurring when registering a function plugin that ends with the string 'close' [#1122](https://github.com/smarty-php/smarty/issues/1122)
 - Replace SMARTY_VERSION constant with $smarty.version in debug.tpl [#1073](https://github.com/smarty-php/smarty/issues/1073)
