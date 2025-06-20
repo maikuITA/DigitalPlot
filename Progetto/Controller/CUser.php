@@ -74,7 +74,8 @@ class CUser{
     }
 
     /**
-     * Method to redirect to the login page
+     * Method to log out the user
+     * This method destroys the user session and redirects to the home page.
      */
      public static function logout(){
         USession::getInstance();
@@ -84,7 +85,10 @@ class CUser{
     }
 
     /**
-     * make the registration
+     * Method to register a new user
+     * This method retrieves user data from the POST request,
+     * creates a new user and plot card,
+     * and saves them in the database.
      * @return void
      */
     public static function register(): void {
@@ -116,14 +120,22 @@ class CUser{
     }
 
     /**
-     * Method to show the access page
+     * Method to authenticate the user
+     * This method checks if the VUser view exists and calls its auth method.
+     * If the VUser view does not exist, it logs an error message.
+     * This method is used to display the authentication page for users.
      * @return void
      */
     public static function auth(): void {
-        if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'auth')) {
-            VUser::auth();
+        if(self::isLogged()) {
+            header('Location: https://digitalplot.altervista.org/home');
+            return;
         } else {
-            ULogSys::toLog("VUser file not found", true);
+            if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'auth')) {
+                VUser::auth();
+            } else {
+                ULogSys::toLog("VUser file not found", true);
+            }
         }
     }
     
@@ -159,12 +171,15 @@ class CUser{
     }
 
     /**
-     * Method to find an article
+     * Method to authenticate the user
+     * This method checks if the VUser view exists and calls its auth method.
+     * If the VUser view does not exist, it logs an error message.
+     * This method is used to display the authentication page for users.
      * @return void
      */
     public static function find(): void {
         if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'find')) {
-            VUser::find();
+            VUser::find(self::isLogged());
         } else {
             ULogSys::toLog("VUser file not found", true);
         }

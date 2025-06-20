@@ -23,7 +23,9 @@ class VUser{
     }
 
     /**
-     * Show the auth page
+     * Show the access page
+     * This method is used to display the access page.
+     * It uses Smarty to render the 'accesso.tpl' template.
      * @throws Exception
      */
     public static function auth() {
@@ -33,12 +35,14 @@ class VUser{
     }
 
     /**
-     * Show the find page
+     * Show the access page
+     * @param bool $isLogged Indicates if the user is logged in.
      * @throws Exception
      */
-    public static function find() {
+    public static function find($isLogged) {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
+        $smarty->assign('isLogged', $isLogged);
         $smarty->display('ricerca.tpl');
     }
 }
