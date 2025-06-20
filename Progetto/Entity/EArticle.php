@@ -45,6 +45,7 @@ class EArticle{
     private $readings = [];
 
 
+
     public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EWriter $writer, array $readings = [], array $reviews = []) {
         $this->title = $title;
         $this->description = $description;

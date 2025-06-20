@@ -266,11 +266,191 @@ class FEntityManager {
             }else {
                 return null;
             }
+        }
+        catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     * Retrieve all objects of a specific class
+     * @param string $className
+     * @return array|null
+     * @throws Exception
+     */
+    public static function retrieveAll(string $className): ?array {
+        try {
+            $dql = "SELECT e FROM $className e";
+            $query = self::$entityManager->createQuery($dql);
+            return $query->getResult();
         } catch (Exception $e) {
             ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return null;
         }
     }
+
+    /**
+     * Retrieve articles based on specific criteria
+     * @param string $className
+     * @param string $title
+     * @param string $type
+     * @param string $genre
+     * @param string $date
+     * @return array|null
+     * @throws Exception
+     */
+    public static function retrieveArticles(string $className, string $title, string $type, string $genre, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.title = :title AND a.type = :type AND a.genre = :genre AND a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('title', $title)
+                ->setParameter('type', $type)
+                ->setParameter('genre', $genre)
+                ->setParameter('date', $date);
+            $query = self::$entityManager->createQuery($dql);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     *  Retrieve articles based on title, type, and genre, ignoring date
+     *  @param string $className
+     *  @param string $title
+     *  @param string $type
+     *  @param string $genre
+     *  @return array|null
+     *  @throws Exception
+     */
+
+    public static function retrieveArticlesNoDate(string $className, string $title, string $type, string $genre): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.title = :title AND a.type = :type AND a.genre = :genre";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('title', $title)
+                ->setParameter('type', $type)
+                ->setParameter('genre', $genre);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     *  Retrieve articles based on title, type, and date, ignoring genre
+     *  @param string $className
+     *  @param string $title
+     *  @param string $type
+     *  @param string $date
+     *  @return array|null
+     *  @throws Exception
+     */
+    public static function retrieveArticlesNoGenre(string $className, string $title, string $type, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.title = :title AND a.type = :type AND a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('title', $title)
+                ->setParameter('type', $type)
+                ->setParameter('date', $date);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     *  Retrieve articles based on title, genre, and date, ignoring type
+     *  @param string $className
+     *  @param string $title
+     *  @param string $genre
+     *  @param string $date
+     *  @return array|null
+     *  @throws Exception
+     */
+    public static function retrieveArticlesNoType(string $className, string $title, string $genre, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.title = :title AND a.genre = :genre AND a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('title', $title)
+                ->setParameter('genre', $genre)
+                ->setParameter('date', $date);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     *  Retrieve articles based on type, genre, and date, ignoring title
+     *  @param string $className
+     *  @param string $type
+     *  @param string $genre
+     *  @param string $date
+     *  @return array|null
+     *  @throws Exception
+     */
+    public static function retrieveArticlesNoTitle(string $className, string $type, string $genre, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.type = :type AND a.genre = :genre AND a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('type', $type)
+                ->setParameter('genre', $genre)
+                ->setParameter('date', $date);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+
+    /**
+     *  Retrieve articles based on genre and date, ignoring title and type
+     *  @param string $className
+     *  @param string $genre
+     *  @param string $date
+     *  @return array|null
+     *  @throws Exception
+     */
+    public static function retrieveArticlesNoTitleNoType(string $className, string $genre, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.genre = :genre AND a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('genre', $genre)
+                ->setParameter('date', $date);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+    /**
+     *  Retrieve articles based on date only
+     *  @param string $className
+     *  @param string $date
+     *  @return array|null
+     *  @throws Exception
+     */
+    public static function retrieveArticlesOnlyDate(string $className, string $date): ?array {
+        try {
+            $dql = "SELECT a FROM " . $className . " a WHERE a.date = :date";
+            $query = self::$entityManager->createQuery($dql)
+                ->setParameter('date', $date);
+            return $query->getResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+
+
 }
 
 ?>
