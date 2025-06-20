@@ -13,6 +13,9 @@ class EPurchase{
     
     #[ORM\Column(name: "purchase_date", type: "date")]
     private DateTime $purchaseDate;
+
+    #[ORM\Column(name: "expire_date", type: "date")]
+    private DateTime $expireDate;
     
     #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
@@ -34,10 +37,11 @@ class EPurchase{
     private float $subTotal;
 
 
-    public function __construct( string $purchaseDate, ESubscriber $subscriber ,ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
+    public function __construct( string $purchaseDate, string $expireDate, ESubscriber $subscriber ,ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
         $this->subscriber = $subscriber;
         $this->subscription = $subscription;
         $this->purchaseDate = new DateTime($purchaseDate);
+        $this->expireDate = new DateTime($expireDate);
         $this->discountCod = $discount;
         $this->creditCardNumber = $card;
         $this->subTotal = $this->calculateSubTotal($this->subscription, $this->discountCod);
@@ -51,6 +55,10 @@ class EPurchase{
     public function setPurchaseDate(string $purchaseDate)
     {
         $this->purchaseDate = new DateTime($purchaseDate);
+    }
+    public function setExpireDate(string $expireDate)
+    {
+        $this->expireDate = new DateTime($expireDate);
     }
     public function setDiscountCode(EDiscount $discountCod)
     {
@@ -74,6 +82,9 @@ class EPurchase{
     }
     public function getPurchaseDate(): DateTime{
         return $this->purchaseDate;
+    }
+    public function getExpireDate(): DateTime{
+        return $this->expireDate;
     }
     public function getSubTotal(): float{
         $this->subTotal = $this->calculateSubTotal($this->subscription, $this->discountCod);

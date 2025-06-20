@@ -53,9 +53,9 @@ class BasicEntry{
 
     //ESubcription
 
-    $sub1 = new ESubscription('writer', '1 motnh', 20.00);
+    $sub1 = new ESubscription('writer', '1 month', 20.00);
     $sub2 = new ESubscription('writer', '1 week', 10.00);
-    $sub3 = new ESubscription('reader', '1 motnh', 10.00);
+    $sub3 = new ESubscription('reader', '1 month', 10.00);
     $sub4 = new ESubscription('reader', '1 week', 5.00);
 
     //ECreditCard
@@ -71,10 +71,10 @@ class BasicEntry{
 
     //EPurchase
     
-    $pur1 = new EPurchase('2023-10-01',$u7,$sub3,$d1,$cc1);
-    $pur2 = new EPurchase('2023-10-01',$u8,$sub4,null,$cc2);
-    $pur3 = new EPurchase('2023-10-01',$u9,$sub1,null,$cc3);
-    $pur4 = new EPurchase('2023-10-01',$u10,$sub2,null,$cc4);
+    $pur1 = new EPurchase('2023-10-01','2023-11-01',$u7,$sub3,$d1,$cc1);
+    $pur2 = new EPurchase('2023-10-01','2024-10-01',$u8,$sub4,null,$cc2);
+    $pur3 = new EPurchase('2023-10-01','2027-10-01',$u9,$sub1,null,$cc3);
+    $pur4 = new EPurchase('2023-10-01','2023-12-01',$u10,$sub2,null,$cc4);
 
     $d1->addPurchase($pur1);
 
