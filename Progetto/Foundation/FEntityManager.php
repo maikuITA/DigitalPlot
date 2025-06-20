@@ -140,7 +140,7 @@ class FEntityManager {
      * @return array || null
      * @throws Exception
      */
-    public static function selectAll(string $className): ?array {
+    public static function retriveAll(string $className): ?array {
         try{
             $dql = "SELECT e FROM $className e";
             $query = self::$entityManager->createQuery($dql);

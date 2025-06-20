@@ -15,7 +15,10 @@ class InstallerDb{
             $stmt = $db->query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '" . DB_NAME ."'");
             $existingDatabase = $stmt->fetchColumn();
 
-            if(!$existingDatabase){
+            $tables = $db->query("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = '" . DB_NAME ."';");
+            $existingTables = $tables->fetchColumn();
+
+            if(!$existingDatabase || $existingTables == 0){
                 $queryCreateDB = "CREATE DATABASE IF NOT EXISTS " . DB_NAME;
                 $db->exec($queryCreateDB);
 
