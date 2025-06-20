@@ -23,11 +23,11 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
-                    <a class="navbar-item" href="/abbonati">Abbonati</a>
+                    <a class="navbar-item" href="/subscribe">Abbonati</a>
                     {if $isLogged === true}
                         <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
                     {else}
-                        <a class="navbar-item has-text-link transfer" href="/auh">Accedi</a>
+                        <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}
                 </div>
             </div>
@@ -40,7 +40,7 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
-                <a href="/cerca">
+                <a href="/find">
                     <span class="icon is-large">
                         <i class="fa fa-search lens" aria-hidden="true"></i>
                     </span>
@@ -52,8 +52,13 @@
                         <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure>
+                <a href="/logout">
+                    <span class="icon is-large">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </span>
+                </a>
             {else}
-                <a href="/auh" class="button is-warning ok">Accedi</a>
+                <a href="/auth" class="button is-warning ok">Accedi</a>
             {/if}
         </div>
     </header>

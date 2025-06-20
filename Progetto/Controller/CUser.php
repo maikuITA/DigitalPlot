@@ -54,7 +54,7 @@ class CUser{
         if(self::isLogged()) {
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
             $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement($user));
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement('user'));
         }    
     }
 
@@ -66,7 +66,7 @@ class CUser{
         USession::getInstance();
         USession::unsetSession();
         USession::destroySession();
-        header('Location: https://digitalplot.altervista.org/home');
+        header('Location: https://digitalplot.altervista.org/welcome');
     }
 
     /**
@@ -85,8 +85,7 @@ class CUser{
             $surname = UHTTPMethods::post('surname');
             $birthdate = UHTTPMethods::post('birthdate');
             $birthplace = UHTTPMethods::post('birthplace');
-            $biography = UHTTPMethods::post('biography'); 
-            $user = new EUser($username, $password, $name, $surname, false, $birthdate, $birthplace, $email, $telephone, $biography);
+            $user = new EUser($username, $password, $name, $surname, false, $birthdate, $birthplace, $email, $telephone);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
             try {
