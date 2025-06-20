@@ -176,7 +176,11 @@ figure:hover, i:hover, span:hover {
         display: none;
     }
 
-    .ok {
+    .is-ok {
+        display: none;
+    }
+
+    .icon.is-large.is-ok {
         display: none;
     }
 

@@ -23,12 +23,22 @@ class VUser{
     }
 
     /**
-     * Show the access page
+     * Show the auth page
      * @throws Exception
      */
     public static function auth() {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> accesso.tpl");
         $smarty->display('accesso.tpl');
+    }
+
+    /**
+     * Show the find page
+     * @throws Exception
+     */
+    public static function find() {
+        $smarty = StartSmarty::configuration();
+        ULogSys::toLog("Display -> ricerca.tpl");
+        $smarty->display('ricerca.tpl');
     }
 }

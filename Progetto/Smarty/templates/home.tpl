@@ -40,8 +40,8 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
-                <a href="/find" class="ok">
-                    <span class="icon is-large">
+                <a href="/find" class="is-ok">
+                    <span class="icon is-large is-ok">
                         <i class="fa fa-search lens" aria-hidden="true"></i>
                     </span>
                 </a>
@@ -52,8 +52,8 @@
                         <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure>
-                <a href="/logout" class="ok">
-                    <span class="icon is-large">
+                <a href="/logout" class="is-ok">
+                    <span class="icon is-large is-ok">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                     </span>
                 </a>
