@@ -40,9 +40,9 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
-                <a href="/find">
-                    <span class="icon is-large">
-                        <i class="fa fa-search lens" aria-hidden="true"></i>
+                <a href="/find" class="is-ok">
+                    <span class="icon is-large is-ok">
+                        <i class="fa fa-search lens is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
                 <figure class="image is-48x48">
@@ -52,9 +52,9 @@
                         <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure>
-                <a href="/logout">
-                    <span class="icon is-large">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <a href="/logout" class="is-ok">
+                    <span class="icon is-large is-ok">
+                        <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
             {else}
@@ -72,17 +72,19 @@
         </label>
     </div>
     <div class="container" id="container">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
+        {foreach from=$articles item=$article}
+            <div class="card">
+                <div class="card-content">
+                    <p class="title">{$article->getTitle()}</p>
+                    <p class="subtitle">{$article->getDescription()}</p>
+                </div>
+                <footer class="card-footer">
+                    <p class="card-footer-item">
+                        <a href="#" class="button is-warning">Leggi di più</a>
+                    </p>
+                </footer>
             </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">Leggi di più</a>
-                </p>
-            </footer>
-        </div>
+        {/foreach}
     </div>
 </body>
 </html>

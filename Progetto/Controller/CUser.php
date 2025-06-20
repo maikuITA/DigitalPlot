@@ -157,7 +157,15 @@ class CUser{
         }
     }
 
-    
-
-    
+    /**
+     * Method to find an article
+     * @return void
+     */
+    public static function find(): void {
+        if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'find')) {
+            VUser::find();
+        } else {
+            ULogSys::toLog("VUser file not found", true);
+        }
+    }
 }
