@@ -7,11 +7,15 @@ class VSearch {
      * @param array $articles
      * @return void
      */
-    public static function displaySearchResults(array $articles): void {
-       $smarty = StartSmarty::configuration();
-       ULogSys::toLog("Display -> ricerca.tpl");
-       $smarty->assign('articles', $articles);
-       $smarty->display('ricerca.tpl');
+    public static function displaySearchResults(array $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false): void {
+        $smarty = StartSmarty::configuration();
+        ULogSys::toLog("Display -> ricerca.tpl");
+        $smarty->assign('articles', $articles);
+        $smarty->assign('isLogged', $isLogged);
+        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('plotPoints', $plotPoints);
+        $smarty->assign('proPic', $proPic);
+        $smarty->display('ricerca.tpl');
     }
 
     /**
@@ -20,10 +24,13 @@ class VSearch {
      * It uses Smarty to render the 'ricerca.tpl' template.
      * @throws Exception
      */
-    public static function find($isLogged) {
+    public static function find(bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false) {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
         $smarty->assign('isLogged', $isLogged);
+        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('plotPoints', $plotPoints);
+        $smarty->assign('proPic', $proPic);
         $smarty->display('ricerca.tpl');
     }
 }

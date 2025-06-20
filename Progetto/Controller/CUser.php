@@ -19,6 +19,13 @@ class CUser{
         return false;
     }
 
+    /**
+     * Method to check if the user is subscribed
+     * This method retrieves the user from the persistent manager using the session element 'user',
+     * and checks if the user is subscribed.
+     * It returns true if the user is subscribed, otherwise false.
+     * @return boolean
+     */
     public static function isSubbed(): bool {
         return FPersistentManager::getInstance()->isSubbed(USession::getSessionElement('user'));
     }
@@ -59,7 +66,12 @@ class CUser{
     public static function user(): void {
         $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-        VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement('user'));
+        if(self::isSubbed()){
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, isAbbonato: true);
+        }
+        else{
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, isAbbonato: false);
+        }
     }
 
     /**
@@ -117,6 +129,9 @@ class CUser{
             }
             header('Location: https://digitalplot.altervista.org/home');
         }
+        else {
+            header('Location: https://digitalplot.altervista.org/auth');
+        }
     }
 
     /**
@@ -131,11 +146,7 @@ class CUser{
             header('Location: https://digitalplot.altervista.org/home');
             return;
         } else {
-            if(file_exists(__DIR__ . '/../View/VUser.php') && method_exists('VUser', 'auth')) {
-                VUser::auth();
-            } else {
-                ULogSys::toLog("VUser file not found", true);
-            }
+            VUser::auth();
         }
     }
     

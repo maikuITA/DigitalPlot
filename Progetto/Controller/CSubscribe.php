@@ -9,12 +9,20 @@ class CSubscribe {
      * @param bool $isLogged Indicates if the user is logged in
      * @return void
      */
-    public static function subscribe($isLogged): void {
-        if(file_exists(__DIR__ . '/../View/VSubscribe.php')) {
-            VSubscribe::render($isLogged);
+    public static function subscribe(): void {
+        if(CUser::isLogged()) {
+            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            if(CUser::isSubbed()){
+                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true);
+            }
+            else {
+                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false);
+            }
         } else {
-            ULogSys::toLog("VSubscribe file not found", true);
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit;
         }
+        
     }
 
 }

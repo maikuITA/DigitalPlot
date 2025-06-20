@@ -9,10 +9,13 @@ class VSubscribe {
      * @param bool $isLogged Indicates if the user is logged in
      * @return void
      */
-    public static function render($isLogged) {
+    public static function render(bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> abbonati.tpl");
         $smarty->assign('isLogged', $isLogged);
+        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('plotPoints', $plotPoints);
+        $smarty->assign('proPic', $proPic);
         $smarty->display('abbonati.tpl');
     }
 }

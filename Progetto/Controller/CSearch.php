@@ -8,11 +8,15 @@ class CSearch {
     public static function takeValueArticle(): void {
         // Check if the user is logged in
         if (CUser::isLogged()) {
-            $title = UHTTPMethods::post(['title']);
-            $type = UHTTPMethods::post(['type']);
-            $genre = UHTTPMethods::post(['genre']);
-            $date = UHTTPMethods::post(['date']);
-            $ris =  CSearch::emptyValues($title, $type, $genre, $date);
+            if(CUser::isSubbed()){
+                $title = UHTTPMethods::post(['title']);
+                $type = UHTTPMethods::post(['type']);
+                $genre = UHTTPMethods::post(['genre']);
+                $date = UHTTPMethods::post(['date']);
+                CSearch::emptyValues($title, $type, $genre, $date);
+            }else{
+                header('Location: https://digitalplot.altervista.org/home');
+            }
         } else {
             // If the user is not logged in, redirect to the authentication page
             header('Location: https://digitalplot.altervista.org/auth');
@@ -37,8 +41,9 @@ class CSearch {
         } elseif ($date === '') {
             $date = '%';
         }
-            $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
-            VSearch::displaySearchResults(articles: $result);    
+        $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
+        $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+        VSearch::displaySearchResults( $result, true,$user->getPlotCard()->getPoints(), $user->getEncodedData(), true);    
     }
 
     /**
@@ -49,10 +54,16 @@ class CSearch {
      * @return void
      */
     public static function find(): void {
-        if(file_exists(__DIR__ . '/../View/VSearch.php') && method_exists('VSearch', 'find')) {
-            VSearch::find(CUser::isLogged());
+        if(CUser::isLogged()) {
+            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            if(CUser::isSubbed()){
+                VSearch::find(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(),true);
+            }
+            else {
+                header('Location: https://digitalplot.altervista.org/home');
+            }
         } else {
-            ULogSys::toLog("VSearch file not found", true);
+            header('Location: https://digitalplot.altervista.org/auth');
         }
     }
 

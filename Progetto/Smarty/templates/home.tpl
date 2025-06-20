@@ -23,9 +23,11 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
-                    <a class="navbar-item" href="/subscribe">Abbonati</a>
                     {if $isLogged === true}
                         <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
+                        {if $isAbbonato === false}
+                            <a class="navbar-item" href="/subscribe">Abbonati</a>
+                        {/if}
                     {else}
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}
