@@ -3,29 +3,27 @@
 class CUser{
 
     /**
-     * check if the user is logged (using session)
+     * Method to check if the user is logged in
+     * This method checks if the session is set and if the user session element exists.
      * @return boolean
      */
     public static function isLogged() : bool {
-        $logged = false;
-
         if(UCookie::isSet('PHPSESSID')){
             if(session_status() == PHP_SESSION_NONE){
                 USession::getInstance();
             }
         }
         if(USession::isSetSessionElement('user')){
-            $logged = true;
+            return true;
         }
-        if(!$logged){
-            header('Location: https://digitalplot.altervista.org/home');
-            exit;
-        }
-        return true;
+        return false;
     }
 
     /**
-     * Function to check if the use is administrator
+     * Method to check if the user is an admin
+     * This method retrieves the user from the persistent manager using the session element 'user',
+     * and checks if the user has admin privileges.
+     * It returns true if the user is an admin, otherwise false.
      * @return boolean
      */
     public static function isAdmin(): bool {
@@ -45,16 +43,7 @@ class CUser{
      * @return void
      */
     public static function home(): void {
-        $logged = false;
-        if(UCookie::isSet('PHPSESSID')){
-            if(session_status() == PHP_SESSION_NONE){
-                USession::getInstance();
-            }
-        }
-        if(USession::isSetSessionElement('user')){
-            $logged = true;
-        }
-        if($logged === true){
+        if(self::isLogged()) {
             self::user();
         } else {
             self::guest();
@@ -68,11 +57,9 @@ class CUser{
      * @return void
      */
     public static function user(): void {
-        if(self::isLogged()) {
-            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-            $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement('user'));
-        }    
+        $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+        $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+        VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, logged: USession::isSetSessionElement('user'));
     }
 
     /**
