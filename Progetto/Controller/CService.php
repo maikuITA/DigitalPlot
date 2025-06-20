@@ -45,8 +45,6 @@ class CService{
             ULogSys::toLog("Database has been populated successfully.");
         } else {
             ULogSys::toLog("Waiting for the database to be populated...");
-            FPersistentManager::getInstance()->clearAll();
-            InstallerDb::install();
             BasicEntry::populateDb();
             ULogSys::toLog("Database has been populated successfully.");
         }

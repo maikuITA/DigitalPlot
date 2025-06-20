@@ -255,7 +255,7 @@ class FEntityManager {
             ULogSys::toLog('Error during dropping database: ' . $e->getMessage(), true);
             self::$entityManager->getConnection()->rollBack();
         }
-}
+    }
 }
 
 ?>
