@@ -147,7 +147,7 @@ class FEntityManager {
             $result = $query->getResult();
             return $result;
         }catch(Exception $e){
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            ULogSys::toLog('Error -> ' . $e->getMessage(), true);
             return null;
         }
     }
@@ -167,8 +167,8 @@ class FEntityManager {
             shuffle($resultpart); // Shuffle the array to get a random order
             array_slice($resultpart, 0, $articlesNum); // Get the first $articlesNum elements
             return $resultpart;
-        }catch(Exception $e){
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+        }catch(Exception $e) {
+            ULogSys::toLog('Error -> ' . $e->getMessage(), true);
             return null;
         }
     }
