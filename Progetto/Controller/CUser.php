@@ -28,11 +28,7 @@ class CUser{
      */
     public static function isAdmin(): bool {
         $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-        if($user->getAdmin()){
-            return true;
-        } else {
-            return false;
-        }
+        return $user->getAdmin();
     }
 
     /**

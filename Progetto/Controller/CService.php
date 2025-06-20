@@ -3,9 +3,12 @@
 class CService{
 
     /**
-     *  This function prints the counts of items in each category
-     *  @param array $allData
-     *  @return int
+     * This function checks if any of the entities in the database are empty
+     * It iterates through the provided array of data and checks the count of items in each entity.
+     * If any entity has a count of zero, it returns 1, indicating that the database is empty.
+     * If all entities have items, it returns 0.
+     * @param array $allData
+     * @return int
      */
     public static function printCounts(array $allData): int {
         foreach ($allData as $key => $items) {
@@ -18,7 +21,10 @@ class CService{
     }
 
     /**
-     * run this function in order to populate the db
+     * This function initializes the database
+     * It checks if the database is empty and installs it if necessary.
+     * It retrieves all data from various entities and checks if any of them are empty.
+     * If any entity is empty, it populates the database with initial data.
      * @return void
      */
     public static function dbInit(): void{
@@ -52,7 +58,10 @@ class CService{
     
 
     /**
-     * This function renders the logs page view
+     * This function displays the logs
+     * It checks if the user is logged in and is an admin.
+     * If so, it calls the VLogs view to render the logs.
+     * If the user is not logged in or is not an admin, it redirects to the home page.
      * @return void
      */
     public static function logs(): void {
@@ -63,13 +72,16 @@ class CService{
             } else {
                 ULogSys::toLog("VLogs file not found", true);
             }
+        }else{
+            header('Location: https://digitalplot.altervista.org/home');
+            exit;
         }
-        header('Location: https://digitalplot.altervista.org/home');
-        exit;
     }
 
     /**
      * This function clears the cache
+     * It requires the clearcache.php file to perform the cache clearing operation.
+     * After clearing the cache, it logs a message and redirects to the home page.
      * @return void
      */
     public static function clearCache(): void {

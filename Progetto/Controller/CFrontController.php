@@ -28,9 +28,7 @@ class CFrontController {
      * @return void
      */
     public function start(): void {
-
         $requestUri = UServer::getValue('REQUEST_URI');
-
         $route = trim($requestUri, '/');
         ULogSys::toLog("Rotta:".$route);
         if(in_array($route, array_keys(self::$routes))) {
