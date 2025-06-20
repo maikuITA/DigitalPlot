@@ -255,7 +255,11 @@ class FEntityManager {
 
     public static function retrieveSubscriptionDatePeriod(mixed $id) : ?array {
         try {
-            $dql = "SELECT p.purchase_date, s.period FROM EPurchase p JOIN e.fk_subscription s WHERE p.fk_subscriber = :id ORDER BY p.purchase_date DESC";
+            $dql = "SELECT p.purchaseDate, s.period 
+                    FROM App\Entity\EPurchase p 
+                    JOIN p.subscription s 
+                    WHERE p.subscriber.userId = :id 
+                    ORDER BY p.purchaseDate DESC";
             $query = self::$entityManager->createQuery($dql);
             $query->setParameter('id', $id);
             ULogSys::toLog("query: " . $query, true);
