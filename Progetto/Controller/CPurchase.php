@@ -19,7 +19,7 @@ class CPurchase{
         }
         if(CUser::isLogged()){
             if (!CUser::isSubbed()){
-                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('userId'));
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                 $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
                 VPurchase::startPurchase(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subscription, $points);
             } else {
@@ -44,7 +44,7 @@ class CPurchase{
             exit();
         }
         if (!CUser::isSubbed()){
-            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('userId'));
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
             $card = self::getCreditCard();
             $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
