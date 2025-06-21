@@ -162,23 +162,23 @@
                 <div class="card gruppo">
                     <div class="field is-grouped">
                         <p class="control has-icons-left intestatario">
-                            <input class="input is-rounded" type="text" placeholder="Nome dell'intestatario" required>
+                            <input class="input is-rounded" type="text" name ="nameC" placeholder="Nome dell'intestatario" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"> {$card->getName()} </i>
+                                <i class="fa fa-user" aria-hidden="true">  </i>
                             </span>
                         </p>
                     </div>
                     <div class="field has-addons has-addons-centered">
                         <p class="control has-icons-left carta">
-                            <input class="input is-rounded" type="text" placeholder="Numero della carta" required>
+                            <input class="input is-rounded" type="text" name= "cardNumber" placeholder="Numero della carta" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-credit-card" aria-hidden="true"> {$card->getCardNumber()} </i>
+                                <i class="fa fa-credit-card" aria-hidden="true">  </i>
                             </span>
                         </p>
                         <p class="control has-icons-left civico">
-                            <input class="input is-rounded" type="text" placeholder="CVV" required>
+                            <input class="input is-rounded" type="text" name="cvv"  placeholder="CVV" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-lock" aria-hidden="true"> {$card->getCvv()} </i>
+                                <i class="fa fa-lock" aria-hidden="true"> </i>
                             </span>
                         </p>
                     </div>
