@@ -102,23 +102,23 @@
                 <div class="card gruppo">
                     <div class="field is-grouped">
                         <p class="control has-icons-left">
-                            <input class="input is-rounded" type="text" placeholder="Nome" required>
+                            <input class="input is-rounded" type="text" placeholder="Nome" name ="{$user->getName()}" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"> {$user->getName()}</i>
+                                <i class="fa fa-user" aria-hidden="true"> </i>
                             </span>
                         </p>
                         <p class="control has-icons-left">
-                            <input class="input is-rounded" type="text" placeholder="Cognome" required>
+                            <input class="input is-rounded" type="text" placeholder="Cognome" name="{$user->getSurname()}" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"> {$user->getSurname()} </i>
+                                <i class="fa fa-user" aria-hidden="true">  </i>
                             </span>
                         </p>
                     </div>          
                     <div class="field has-addons has-addons-centered">
                         <p class="control has-icons-left indirizzo">
-                            <input class="input is-rounded" type="text" placeholder="Indirizzo" required>
+                            <input class="input is-rounded" type="text" placeholder="Indirizzo" value="{$user->getStreetAddress()}" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-map-marker" aria-hidden="true"> {$user->getStreetAddress()} </i>
+                                <i class="fa fa-map-marker" aria-hidden="true">  </i>
                             </span>
                         </p>
                     </div>
@@ -152,9 +152,9 @@
                             </span>
                         </p>
                         <p class="control has-icons-left tel">
-                            <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="[0-9]{10}" required>
+                            <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="[0-9]{10}" value="{$user->getTelephone()}"  required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-phone" aria-hidden="true"> {$user->getTelephone()} </i>
+                                <i class="fa fa-phone" aria-hidden="true">  </i>
                             </span>
                         </p>
                     </div>
