@@ -11,6 +11,7 @@ class CFrontController {
         'home' => ['CUser', 'home'],
         'auth' => ['CUser', 'auth'],
         'subscribe' => ['CSubscribe', 'subscribe'],
+        'purchase' => ['CPurchase', 'makePurchase'],
         'error' => ['CError', 'error404'],
         'login' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],

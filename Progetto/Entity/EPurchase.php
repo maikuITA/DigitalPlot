@@ -20,6 +20,9 @@ class EPurchase{
     #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
     private ESubscriber $subscriber;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $billingAddress;
     
     #[ORM\ManyToOne(targetEntity: "EDiscount", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_discount", referencedColumnName: "discount_cod", nullable: true)] // definizione chiave esterna
@@ -37,8 +40,9 @@ class EPurchase{
     private float $subTotal;
 
 
-    public function __construct( string $purchaseDate, string $expireDate, ESubscriber $subscriber ,ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
+    public function __construct( string $purchaseDate, string $expireDate, ESubscriber $subscriber, string $billingAddress, ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
         $this->subscriber = $subscriber;
+        $this->billingAddress = $billingAddress;
         $this->subscription = $subscription;
         $this->purchaseDate = new DateTime($purchaseDate);
         $this->expireDate = new DateTime($expireDate);
@@ -75,6 +79,10 @@ class EPurchase{
     public function setSubscriber(ESubscriber $subscriber){
         $this->subscriber = $subscriber;
     }
+    public function setBillingAddress(string $billingAddress): void
+    {
+        $this->billingAddress = $billingAddress;
+    }
     
     // Get methods
     public function getCod(): int{
@@ -104,7 +112,10 @@ class EPurchase{
     {
         return $this->subscriber;
     }
-
+    public function getBillingAddress(): string
+    {
+        return $this->billingAddress;
+    }
 
     public function calculateSubTotal(ESubscription $subscription, ?EDiscount $discount): float
     {

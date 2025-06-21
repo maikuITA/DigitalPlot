@@ -32,8 +32,12 @@ class EUser {
     #[ORM\Column(type:"string", length:100, nullable:false)]
     private string $surname;
     
+    
     #[ORM\Column(type:"date", nullable:false) ]
     private DateTime $birthdate;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $streetAddress;
     
     #[ORM\Column(type:"string", length:100, nullable:false)]
     private string $birthplace;
@@ -57,12 +61,13 @@ class EUser {
     private $plotCard = [];
 
 
-    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $birthplace, string $email, string $telephone, string $biography = "", $plotCard = [], array $readings = [], mixed $profilePicture = null) {
+    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $streetAddress, string $birthplace, string $email, string $telephone, string $biography = "", $plotCard = [], array $readings = [], mixed $profilePicture = null) {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setName($name);
         $this->setSurname($surname);
         $this->setBirthdate($birthdate);
+        $this->setStreetAddress($streetAddress);
         $this->setBirthPlace($birthplace);
         $this->setEmail($email);
         $this->setTelephone($telephone);
@@ -123,10 +128,16 @@ class EUser {
     public function getBirthdate(): DateTime {
         return $this->birthdate;
     }
-    public function setBirthplace(string $birthplace): void {
+    public function setStreetAddress(string $streetAddress): void {
+        $this->streetAddress = $streetAddress;
+    }
+    public function getStreetAddress(): string {
+        return $this->streetAddress;
+    }
+    public function setBirthPlace(string $birthplace): void {
         $this->birthplace = $birthplace;
     }
-    public function getBirthplace(): string {
+    public function getBirthPlace(): string {
         return $this->birthplace;
     }
     public function setEmail(string $email): void {

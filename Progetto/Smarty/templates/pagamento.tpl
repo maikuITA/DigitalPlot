@@ -104,13 +104,13 @@
                         <p class="control has-icons-left">
                             <input class="input is-rounded" type="text" placeholder="Nome" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-user" aria-hidden="true"> {$user->getName()}</i>
                             </span>
                         </p>
                         <p class="control has-icons-left">
                             <input class="input is-rounded" type="text" placeholder="Cognome" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-user" aria-hidden="true"> {$user->getSurname()} </i>
                             </span>
                         </p>
                     </div>          
@@ -118,13 +118,13 @@
                         <p class="control has-icons-left indirizzo">
                             <input class="input is-rounded" type="text" placeholder="Indirizzo" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <i class="fa fa-map-marker" aria-hidden="true"> {$user->getName()} </i>
                             </span>
                         </p>
                         <p class="control has-icons-left civico">
                             <input class="input is-rounded" type="text" placeholder="Civico" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <i class="fa fa-map-marker" aria-hidden="true"> {$user->getStreetAddress()} </i>
                             </span>
                         </p>
                     </div>
@@ -141,7 +141,7 @@
                         <p class="control has-icons-left tel">
                             <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="[0-9]{10}" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
+                                <i class="fa fa-phone" aria-hidden="true"> {$user->getTelephone()} </i>
                             </span>
                         </p>
                     </div>
@@ -151,7 +151,7 @@
                         <p class="control has-icons-left intestatario">
                             <input class="input is-rounded" type="text" placeholder="Nome dell'intestatario" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <i class="fa fa-user" aria-hidden="true"> </i>
                             </span>
                         </p>
                     </div>
