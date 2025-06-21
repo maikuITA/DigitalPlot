@@ -99,7 +99,7 @@
                 </section>
             </div>
             <div class="fatturazione" id="fatturazione">
-                <form action="/purchase" method="post" class="form">
+                <form action="/purchase/{$subscription->getCod()}" method="post" class="form">
                     <div class="card gruppo">
                         <div class="field is-grouped">
                             <p class="control has-icons-left">
