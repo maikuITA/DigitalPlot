@@ -71,11 +71,11 @@ class CPurchase{
      */
     public static function getCreditCard(): ECreditCard {
         $cardNumber = UHTTPMethods::post('cardNumber');
-        $name = UHTTPMethods::post('name');
+        $nameC = UHTTPMethods::post('name');
         $surname = UHTTPMethods::post('surname');
         $expiration = UHTTPMethods::post('expirationDate');
         $cvv = UHTTPMethods::post('cvv');
-        $card = new ECreditCard($cardNumber, $name, $surname, $expiration, $cvv);
+        $card = new ECreditCard($cardNumber, $nameC, $surname, $expiration, $cvv);
         FPersistentManager::getInstance()->saveInDb($card);
         return $card;
     }
