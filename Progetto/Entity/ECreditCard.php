@@ -18,15 +18,19 @@ class ECreditCard{
     
     #[ORM\Column(type: "date")]
     public DateTime $expirationDate;
+
+    #[ORM\Column(type: "string", length: 3)]
+    public string $cvv;
     
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"])]
     private $purchases = [];
 
-    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, array $purchases = []) {
+    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv, array $purchases = []) {
         $this->cardNumber = $cardNumber;
         $this->name = $name;
         $this->surname = $surname;
         $this->expirationDate = new DateTime($expirationDate);
+        $this->cvv = $cvv; // inizializza il CVV
         $this->purchases = $purchases; // inizializza l'array di acquisti
     }
 
@@ -50,6 +54,10 @@ class ECreditCard{
     {
         $this->expirationDate = new DateTime($expirationDate);
     }
+    public function setCvv(string $cvv)
+    {
+        $this->cvv = $cvv;
+    }
 
     // Get methods
     public function getCardNumber(): string{
@@ -67,6 +75,10 @@ class ECreditCard{
     public function getExpirationDate(): DateTime{
         return $this->expirationDate;
     }
+    public function getCvv(): string{
+        return $this->cvv;
+    }
+    
      //Acquisti
      public function getPurchases(): array{
         return $this->purchases;

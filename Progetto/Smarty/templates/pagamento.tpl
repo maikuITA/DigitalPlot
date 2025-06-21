@@ -118,12 +118,6 @@
                         <p class="control has-icons-left indirizzo">
                             <input class="input is-rounded" type="text" placeholder="Indirizzo" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-map-marker" aria-hidden="true"> {$user->getName()} </i>
-                            </span>
-                        </p>
-                        <p class="control has-icons-left civico">
-                            <input class="input is-rounded" type="text" placeholder="Civico" required>
-                            <span class="icon is-small is-left">
                                 <i class="fa fa-map-marker" aria-hidden="true"> {$user->getStreetAddress()} </i>
                             </span>
                         </p>
@@ -134,7 +128,26 @@
                             <select>
                                 <option>+39</option>
                                 <option>+1</option>
-                                <option>+10</option>
+                                <option>+7</option>
+                                <option>+20</option>
+                                <option>+27</option>
+                                <option>+30</option>
+                                <option>+31</option>
+                                <option>+32</option>
+                                <option>+33</option>
+                                <option>+34</option>
+                                <option>+36</option>
+                                <option>+39</option>
+                                <option>+44</option>
+                                <option>+49</option>
+                                <option>+52</option>
+                                <option>+55</option>
+                                <option>+55</option>
+                                <option>+61</option>
+                                <option>+81</option>
+                                <option>+86</option>
+                                <option>+90</option>
+                                <option>+91</option>
                             </select>
                             </span>
                         </p>
@@ -151,7 +164,7 @@
                         <p class="control has-icons-left intestatario">
                             <input class="input is-rounded" type="text" placeholder="Nome dell'intestatario" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"> </i>
+                                <i class="fa fa-user" aria-hidden="true"> {$card->getName()} </i>
                             </span>
                         </p>
                     </div>
@@ -159,13 +172,13 @@
                         <p class="control has-icons-left carta">
                             <input class="input is-rounded" type="text" placeholder="Numero della carta" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                <i class="fa fa-credit-card" aria-hidden="true"> {$card->getCardNumber()} </i>
                             </span>
                         </p>
                         <p class="control has-icons-left civico">
                             <input class="input is-rounded" type="text" placeholder="CVV" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                <i class="fa fa-lock" aria-hidden="true"> {$card->getCvv()} </i>
                             </span>
                         </p>
                     </div>
@@ -200,9 +213,10 @@
             </header>
             <div class="card-content">
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                    iaculis mauris.</p>
-                    <a class="has-text-link">€ 4.99</a>
+                    <p> Tipo: {$subscription->getType()} <br/> 
+                        Periodo: {$subscription->getPeriod()} 
+                        Sconto da applicare: {$points} </p>
+                    <a class="has-text-link"> {$subscription->getPrice() - $points} </a>
                 </div>
             </div>
         </div>
