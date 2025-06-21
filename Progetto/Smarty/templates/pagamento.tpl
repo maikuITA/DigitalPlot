@@ -153,7 +153,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left tel">
-                                <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="[0-9]{10}" value="{$user->getTelephone()}"  required>
+                                <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="" value="{$user->getTelephone()}"  required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-phone" aria-hidden="true">  </i>
                                 </span>
@@ -168,6 +168,20 @@
                                     <i class="fa fa-user" aria-hidden="true">  </i>
                                 </span>
                             </p>
+                            <p class="control has-icons-left intestatario">
+                                <input class="input is-rounded" type="text" name ="surnameC" placeholder="Cognome dell'intestatario" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field is-grouped">
+                            <div class="control has-icons-left">
+                                <input class="input" type="date" name="expirationDate" id="birthdate" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-calendar"></i> 
+                                </span>
+                            </div>
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left carta">
