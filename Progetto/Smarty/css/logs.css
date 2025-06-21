@@ -31,8 +31,3 @@
     overflow: auto;
     max-height:350px;
 }
-
-.is-ok, .icon.is-large.is-ok, .fa.fa-sign-out.is-ok, .fa.fa-search.lens.is-ok {
-        display: none;
-    }
-

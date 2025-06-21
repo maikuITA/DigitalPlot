@@ -68,7 +68,6 @@
         </div>
     </header>
     <div class="body-container">
-        <h1> porco dio </h1>
         <div class="container">
             <label class="title is-3">Logs</label>
         </div>
