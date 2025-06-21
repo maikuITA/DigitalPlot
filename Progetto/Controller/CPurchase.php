@@ -21,7 +21,7 @@ class CPurchase{
             if (!CUser::isSubbed()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                 $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
-                VPurchase::startPurchase(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subscription, $points);
+                VPurchase::startPurchase($user,true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subscription, $points);
             } else {
                 header('Location: https://digitalplot.altervista.org/home');
                 exit();
