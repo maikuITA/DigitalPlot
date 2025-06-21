@@ -134,7 +134,26 @@
                             <select>
                                 <option>+39</option>
                                 <option>+1</option>
-                                <option>+10</option>
+                                <option>+7</option>
+                                <option>+20</option>
+                                <option>+27</option>
+                                <option>+30</option>
+                                <option>+31</option>
+                                <option>+32</option>
+                                <option>+33</option>
+                                <option>+34</option>
+                                <option>+36</option>
+                                <option>+39</option>
+                                <option>+44</option>
+                                <option>+49</option>
+                                <option>+52</option>
+                                <option>+55</option>
+                                <option>+55</option>
+                                <option>+61</option>
+                                <option>+81</option>
+                                <option>+86</option>
+                                <option>+90</option>
+                                <option>+91</option>
                             </select>
                             </span>
                         </p>
