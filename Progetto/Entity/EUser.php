@@ -163,7 +163,7 @@ class EUser {
         $this->plotCard[0]->addPoints(POINTS);
         $this->readings[] = $reading;
     }
-    public function getReadings(): ?array {
+    public function getReadings(): mixed {
         return $this->readings;
     }
     public function removeReading(EReading $reading): void {
