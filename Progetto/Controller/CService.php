@@ -32,19 +32,19 @@ class CService{
         InstallerDb::install();
         $db = FPersistentManager::getInstance();
         $allData = [
-            'articles' => $db->retriveAll(EArticle::class),
-            'cards' => $db->retriveAll(ECreditCard::class),
-            'discounts' => $db->retriveAll(EDiscount::class),
-            'follow' => $db->retriveAll(EFollow::class),
-            'plotcards' => $db->retriveAll(EPlotCard::class),
-            'purchases' => $db->retriveAll(EPurchase::class),
-            'readers' => $db->retriveAll(EReader::class),
-            'readings' => $db->retriveAll(EReading::class),
-            'reviews' => $db->retriveAll(EReview::class),
-            'subscribers' => $db->retriveAll(ESubscriber::class),
-            'subscriptions' => $db->retriveAll(ESubscription::class),
-            'users' => $db->retriveAll(EUser::class),
-            'writers' => $db->retriveAll(EWriter::class),
+            'articles' => $db->retrieveAll(EArticle::class),
+            'cards' => $db->retrieveAll(ECreditCard::class),
+            'discounts' => $db->retrieveAll(EDiscount::class),
+            'follow' => $db->retrieveAll(EFollow::class),
+            'plotcards' => $db->retrieveAll(EPlotCard::class),
+            'purchases' => $db->retrieveAll(EPurchase::class),
+            'readers' => $db->retrieveAll(EReader::class),
+            'readings' => $db->retrieveAll(EReading::class),
+            'reviews' => $db->retrieveAll(EReview::class),
+            'subscribers' => $db->retrieveAll(ESubscriber::class),
+            'subscriptions' => $db->retrieveAll(ESubscription::class),
+            'users' => $db->retrieveAll(EUser::class),
+            'writers' => $db->retrieveAll(EWriter::class),
         ];
         $zero = self::printCounts($allData);
         if ($zero === 0){
@@ -68,7 +68,7 @@ class CService{
         if(CUser::isLogged() && CUser::isAdmin()){
             // chiama la view per la home page
             if(file_exists(__DIR__ . '/../View/VLogs.php')) {
-                $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                 VLogs::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(),true);
             } else {
                 ULogSys::toLog("VLogs file not found", true);

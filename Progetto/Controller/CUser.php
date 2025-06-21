@@ -38,7 +38,7 @@ class CUser{
      * @return boolean
      */
     public static function isAdmin(): bool {
-        $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+        $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         return $user->getAdmin();
     }
 
@@ -64,7 +64,7 @@ class CUser{
      * @return void
      */
     public static function user(): void {
-        $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+        $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
         if(self::isSubbed()){
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, isAbbonato: true);
@@ -163,7 +163,7 @@ class CUser{
             $username = UHTTPMethods::post('username');
             $password = UHTTPMethods::post('password');
             try {
-                $user = FPersistentManager::getInstance()->retriveUserOnUsername($username);
+                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
                 if ($user && password_verify($password, $user->getPassword())) {
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());

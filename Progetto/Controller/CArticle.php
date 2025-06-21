@@ -8,12 +8,12 @@ class CArticle{
             exit();
         }
         if(CUser::isLogged()){
-            $article = FPersistentManager::getInstance()->retriveObjById(EArticle::class, $idArticolo);
+            $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
             if(!isset($article)){
                 header('Location: https://digitalplot.altervista.org/error');
                 exit();
             }
-            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if(CUser::isSubbed()){
                 VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true, $article, $article->getWriter());
             }

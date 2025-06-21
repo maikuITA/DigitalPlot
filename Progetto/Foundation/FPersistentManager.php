@@ -42,8 +42,8 @@ class FPersistentManager {
      * @return object || null
      * @throws Exception
      */
-    public function retriveObjById(string $className, $id): ?object {
-        return FEntityManager::getInstance()->retriveObjById($className, $id);
+    public function retrieveObjById(string $className, $id): ?object {
+        return FEntityManager::getInstance()->retrieveObjById($className, $id);
     }
 
     /**
@@ -51,8 +51,8 @@ class FPersistentManager {
      * @param string $username
      * @return object || null
      */
-    public function retriveUserOnUsername(string $username): ?object {
-        return FEntityManager::getInstance()->retriveObjByAttribute(EUser::class, 'username', $username);
+    public function retrieveUserOnUsername(string $username): ?object {
+        return FEntityManager::getInstance()->retrieveObjByAttribute(EUser::class, 'username', $username);
     }
 
     /**
@@ -105,8 +105,8 @@ class FPersistentManager {
      * @param string $className
      * @return array | null
      */
-    public function retriveAll(string $className): ?array {
-        return FEntityManager::getInstance()->retriveAll($className);
+    public function retrieveAll(string $className): ?array {
+        return FEntityManager::getInstance()->retrieveAll($className);
     }
 
     /**
@@ -125,6 +125,11 @@ class FPersistentManager {
         FEntityManager::getInstance()->dropDatabase();
     }
 
+    /**
+     * Check if a user is subscribed
+     * @param mixed $id
+     * @return bool
+     */
     public static function isSubbed(mixed $id) : bool {
         if(FEntityManager::getInstance()->verifyExists( ESubscriber::class, $id)) {
             $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
@@ -139,6 +144,16 @@ class FPersistentManager {
         }
         return false;
     }
+
+    /**
+     *  Retrieve all objects of a specific class
+     * @param string $className
+     * @return array | null
+     */
+    public function retrieveAllSubscriptions(): ?array {
+        return FEntityManager::getInstance()->retrieveAllSubscriptions();
+    }
+    
 
     /*
     // ========== Query DQL personalizzate ==========

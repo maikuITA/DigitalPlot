@@ -42,7 +42,7 @@ class CSearch {
             $date = '%';
         }
         $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
-        $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+        $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         VSearch::displaySearchResults( $result, true,$user->getPlotCard()->getPoints(), $user->getEncodedData(), true);    
     }
 
@@ -55,7 +55,7 @@ class CSearch {
      */
     public static function find(): void {
         if(CUser::isLogged()) {
-            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if(CUser::isSubbed()){
                 VSearch::find(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(),true);
             }

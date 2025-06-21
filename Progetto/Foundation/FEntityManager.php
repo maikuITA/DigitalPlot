@@ -31,7 +31,7 @@ class FEntityManager {
      * @param mixed $id
      * @throws Exception
      */
-    public static function retriveObjById( string $className, $id) : ?object {
+    public static function retrieveObjById( string $className, $id) : ?object {
         try{
             $obj = self::$entityManager->find($className, $id);
             return $obj;
@@ -50,7 +50,7 @@ class FEntityManager {
      * @param mixed $value
      * @throws Exception
      */
-    public static function retriveObjByAttribute( string $className, string $filedName, $value) : ?object {
+    public static function retrieveObjByAttribute( string $className, string $filedName, $value) : ?object {
         try{
             $obj = self::$entityManager->getRepository($className)->findOneBy([$filedName => $value]);
             return $obj;
@@ -69,7 +69,7 @@ class FEntityManager {
      * @return array || null
      * @throws Exception
      */
-    public static function retriveObjList( string $tableName, string $fieldName, mixed $value) : ?array {
+    public static function retrieveObjList( string $tableName, string $fieldName, mixed $value) : ?array {
         try{
             $dql = "SELECT e FROM $tableName e WHERE e.$fieldName = :value"; // value è un placeholder e serve per evitare SQL injection
             $query = self::$entityManager->createQuery($dql);
@@ -97,7 +97,7 @@ class FEntityManager {
      * @return object || null
      * @throws Exception
      */
-    public static function retriveObjListByTwoAtt( string $tableName, string $fieldName1, mixed $value1,string $fieldName2, mixed $value2) : ?array {
+    public static function retrieveObjListByTwoAtt( string $tableName, string $fieldName1, mixed $value1,string $fieldName2, mixed $value2) : ?array {
         try{
             $dql = "SELECT e FROM $tableName e WHERE e.$fieldName1 = :value1 AND e.$fieldName2 = :value2"; 
             $query = self::$entityManager->createQuery($dql);
@@ -140,7 +140,7 @@ class FEntityManager {
      * @return array || null
      * @throws Exception
      */
-    public static function retriveAll(string $className): ?array {
+    public static function retrieveAll(string $className): ?array {
         try{
             $dql = "SELECT e FROM $className e";
             $query = self::$entityManager->createQuery($dql);
@@ -275,9 +275,9 @@ class FEntityManager {
      * @return array|null
      * @throws Exception
      */
-    public static function retrieveAll(string $className): ?array {
+    public static function retrieveAllSubscriptions(): ?array {
         try {
-            $dql = "SELECT e FROM $className e";
+            $dql = "SELECT e FROM ESubscription e ORDER BY e.type DESC";
             $query = self::$entityManager->createQuery($dql);
             return $query->getResult();
         } catch (Exception $e) {
@@ -311,7 +311,6 @@ class FEntityManager {
             return null;
         }
     }
-
 
 
 }

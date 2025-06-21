@@ -10,8 +10,8 @@ class CSubscribe {
      */
     public static function subscribe(): void {
         if(CUser::isLogged()) {
-            $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
-            $subs = FPersistentManager::getInstance()->retriveAll(ESubscription::class);
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            $subs = FPersistentManager::getInstance()->retrieveAllSubscriptions();
             if(CUser::isSubbed()){
                 header('Location: https://digitalplot.altervista.org/home');
                 exit;
