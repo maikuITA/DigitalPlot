@@ -120,8 +120,8 @@ class CUser{
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
             try {
-                FPersistentManager::getInstance()->saveInBd($user);
-                FPersistentManager::getInstance()->saveInBd($plotCard);
+                FPersistentManager::getInstance()->saveInDb($user);
+                FPersistentManager::getInstance()->saveInDb($plotCard);
                 USession::getInstance();
                 USession::setSessionElement('user', $user->getId());
             } catch (Exception $e) {
