@@ -20,7 +20,7 @@ class VSubscribe {
         $smarty->assign('isAbbonato', $isAbbonato);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
-        $smarty->assign('subs', $subs);
+        $smarty->assign('subscriptions', $subs);
         $smarty->display('abbonati.tpl');
     }
 }

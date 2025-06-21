@@ -70,61 +70,21 @@
         <label class="title is-3">Piani di sottoscrizione</label>
     </div>
     <div class="container" id="container">
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">€XX.XX</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">€XX.XX</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">€XX.XX</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">€XX.XX</a>
-                </p>
-            </footer>
-        </div>
-        <div class="card">
-            <div class="card-content">
-                <p class="title">Lorem ipsum dolor sit amet</p>
-                <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.</p>
-            </div>
-            <footer class="card-footer">
-                <p class="card-footer-item">
-                    <a href="#" class="button is-warning">€XX.XX</a>
-                </p>
-            </footer>
-        </div>
+        {if isset($subscriptions)}
+            {foreach from=$subscriptios item=subscription}
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">{$subscription->getType()}</p>
+                        <p class="subtitle">{$subscription->getPeriod()}</p>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <a href="/purchase/{$subscription->getId()}" class="button is-warning">{$subscription->getPrice()} €</a>
+                        </p>
+                    </footer>
+                </div>
+            {/foreach}
+        {/if}
     </div>
 </body>
 </html>
