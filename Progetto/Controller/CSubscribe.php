@@ -6,18 +6,18 @@ class CSubscribe {
      * Method to render the subscription view
      * This method checks if the VSubscribe view file exists and renders it.
      * If the file does not exist, it logs an error message.
-     * @param bool $isLogged Indicates if the user is logged in
      * @return void
      */
     public static function subscribe(): void {
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
+            $subs = FPersistentManager::getInstance()->retriveAll(ESubscription::class);
             if(CUser::isSubbed()){
                 header('Location: https://digitalplot.altervista.org/home');
                 exit;
             }
             else {
-                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false);
+                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subs);
             }
         } else {
             header('Location: https://digitalplot.altervista.org/auth');
