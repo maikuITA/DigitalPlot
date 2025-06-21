@@ -60,10 +60,10 @@ class BasicEntry{
 
     //ECreditCard
 
-    $cc1 = new ECreditCard('1111 2222 3333 4444', 'Marco', 'Gentile', '2025-12-31');
-    $cc2 = new ECreditCard('5555 6666 7777 8888', 'Chiara', 'Marino', '2024-11-30');
-    $cc3 = new ECreditCard('9999 0000 1111 2222', 'Stefano', 'De Luca', '2023-10-31');
-    $cc4 = new ECreditCard('3333 4444 5555 6666', 'Francesco', 'Romano', '2026-09-30');
+    $cc1 = new ECreditCard('1111 2222 3333 4444', 'Marco', 'Gentile', '2025-12-31', 123);
+    $cc2 = new ECreditCard('5555 6666 7777 8888', 'Chiara', 'Marino', '2024-11-30', 123);
+    $cc3 = new ECreditCard('9999 0000 1111 2222', 'Stefano', 'De Luca', '2023-10-31', 123);
+    $cc4 = new ECreditCard('3333 4444 5555 6666', 'Francesco', 'Romano', '2026-09-30', 122);
 
     //EDiscount
 
@@ -238,91 +238,91 @@ class BasicEntry{
 
     //Popolazione db
 
-    FPersistentManager::getInstance()->saveInBd($u1);
-    FPersistentManager::getInstance()->saveInBd($u2);
-    FPersistentManager::getInstance()->saveInBd($u3);
-    FPersistentManager::getInstance()->saveInBd($u4);
-    FPersistentManager::getInstance()->saveInBd($u5);
-    FPersistentManager::getInstance()->saveInBd($u6);
-    FPersistentManager::getInstance()->saveInBd($u7);
-    FPersistentManager::getInstance()->saveInBd($u8);
-    FPersistentManager::getInstance()->saveInBd($u9);
-    FPersistentManager::getInstance()->saveInBd($u10);
+    FPersistentManager::getInstance()->saveInDb($u1);
+    FPersistentManager::getInstance()->saveInDb($u2);
+    FPersistentManager::getInstance()->saveInDb($u3);
+    FPersistentManager::getInstance()->saveInDb($u4);
+    FPersistentManager::getInstance()->saveInDb($u5);
+    FPersistentManager::getInstance()->saveInDb($u6);
+    FPersistentManager::getInstance()->saveInDb($u7);
+    FPersistentManager::getInstance()->saveInDb($u8);
+    FPersistentManager::getInstance()->saveInDb($u9);
+    FPersistentManager::getInstance()->saveInDb($u10);
 
-    FPersistentManager::getInstance()->saveInBd($p1);
-    FPersistentManager::getInstance()->saveInBd($p2);
-    FPersistentManager::getInstance()->saveInBd($p3);
-    FPersistentManager::getInstance()->saveInBd($p4);
-    FPersistentManager::getInstance()->saveInBd($p5);
-    FPersistentManager::getInstance()->saveInBd($p6);
-    FPersistentManager::getInstance()->saveInBd($p7);
-    FPersistentManager::getInstance()->saveInBd($p8);
-    FPersistentManager::getInstance()->saveInBd($p9);
-    FPersistentManager::getInstance()->saveInBd($p10);
+    FPersistentManager::getInstance()->saveInDb($p1);
+    FPersistentManager::getInstance()->saveInDb($p2);
+    FPersistentManager::getInstance()->saveInDb($p3);
+    FPersistentManager::getInstance()->saveInDb($p4);
+    FPersistentManager::getInstance()->saveInDb($p5);
+    FPersistentManager::getInstance()->saveInDb($p6);
+    FPersistentManager::getInstance()->saveInDb($p7);
+    FPersistentManager::getInstance()->saveInDb($p8);
+    FPersistentManager::getInstance()->saveInDb($p9);
+    FPersistentManager::getInstance()->saveInDb($p10);
 
-    FPersistentManager::getInstance()->saveInBd($sub1);
-    FPersistentManager::getInstance()->saveInBd($sub2);
-    FPersistentManager::getInstance()->saveInBd($sub3);
-    FPersistentManager::getInstance()->saveInBd($sub4);
+    FPersistentManager::getInstance()->saveInDb($sub1);
+    FPersistentManager::getInstance()->saveInDb($sub2);
+    FPersistentManager::getInstance()->saveInDb($sub3);
+    FPersistentManager::getInstance()->saveInDb($sub4);
 
-    FPersistentManager::getInstance()->saveInBd($cc1);
-    FPersistentManager::getInstance()->saveInBd($cc2);
-    FPersistentManager::getInstance()->saveInBd($cc3);
-    FPersistentManager::getInstance()->saveInBd($cc4);
+    FPersistentManager::getInstance()->saveInDb($cc1);
+    FPersistentManager::getInstance()->saveInDb($cc2);
+    FPersistentManager::getInstance()->saveInDb($cc3);
+    FPersistentManager::getInstance()->saveInDb($cc4);
 
-    FPersistentManager::getInstance()->saveInBd($d1);
+    FPersistentManager::getInstance()->saveInDb($d1);
 
-    FPersistentManager::getInstance()->saveInBd($pur1);
-    FPersistentManager::getInstance()->saveInBd($pur2);
-    FPersistentManager::getInstance()->saveInBd($pur3);
-    FPersistentManager::getInstance()->saveInBd($pur4);
+    FPersistentManager::getInstance()->saveInDb($pur1);
+    FPersistentManager::getInstance()->saveInDb($pur2);
+    FPersistentManager::getInstance()->saveInDb($pur3);
+    FPersistentManager::getInstance()->saveInDb($pur4);
 
-    FPersistentManager::getInstance()->saveInBd($fo1);
-    FPersistentManager::getInstance()->saveInBd($fo2);
+    FPersistentManager::getInstance()->saveInDb($fo1);
+    FPersistentManager::getInstance()->saveInDb($fo2);
 
-    FPersistentManager::getInstance()->saveInBd($art1);
-    FPersistentManager::getInstance()->saveInBd($art2);
-    FPersistentManager::getInstance()->saveInBd($art3);
-    FPersistentManager::getInstance()->saveInBd($art4);
-    FPersistentManager::getInstance()->saveInBd($art5);
-    FPersistentManager::getInstance()->saveInBd($art6);
-    FPersistentManager::getInstance()->saveInBd($art7);
-    FPersistentManager::getInstance()->saveInBd($art8);
+    FPersistentManager::getInstance()->saveInDb($art1);
+    FPersistentManager::getInstance()->saveInDb($art2);
+    FPersistentManager::getInstance()->saveInDb($art3);
+    FPersistentManager::getInstance()->saveInDb($art4);
+    FPersistentManager::getInstance()->saveInDb($art5);
+    FPersistentManager::getInstance()->saveInDb($art6);
+    FPersistentManager::getInstance()->saveInDb($art7);
+    FPersistentManager::getInstance()->saveInDb($art8);
 
-    FPersistentManager::getInstance()->saveInBd($rev1);
-    FPersistentManager::getInstance()->saveInBd($rev2);
-    FPersistentManager::getInstance()->saveInBd($rev3);
-    FPersistentManager::getInstance()->saveInBd($rev4);
-    FPersistentManager::getInstance()->saveInBd($rev5);
-    FPersistentManager::getInstance()->saveInBd($rev6);
-    FPersistentManager::getInstance()->saveInBd($rev7);
-    FPersistentManager::getInstance()->saveInBd($rev8);
-    FPersistentManager::getInstance()->saveInBd($rev9);
-    FPersistentManager::getInstance()->saveInBd($rev10);
-    FPersistentManager::getInstance()->saveInBd($rev11);
-    FPersistentManager::getInstance()->saveInBd($rev12);
-    FPersistentManager::getInstance()->saveInBd($rev13);
-    FPersistentManager::getInstance()->saveInBd($rev14);
-    FPersistentManager::getInstance()->saveInBd($rev15);
-    FPersistentManager::getInstance()->saveInBd($rev16);
-    FPersistentManager::getInstance()->saveInBd($rev17);
-    FPersistentManager::getInstance()->saveInBd($rev18);
-    FPersistentManager::getInstance()->saveInBd($rev19);
-    FPersistentManager::getInstance()->saveInBd($rev20);
-    FPersistentManager::getInstance()->saveInBd($rev21);
-    FPersistentManager::getInstance()->saveInBd($rev22);
+    FPersistentManager::getInstance()->saveInDb($rev1);
+    FPersistentManager::getInstance()->saveInDb($rev2);
+    FPersistentManager::getInstance()->saveInDb($rev3);
+    FPersistentManager::getInstance()->saveInDb($rev4);
+    FPersistentManager::getInstance()->saveInDb($rev5);
+    FPersistentManager::getInstance()->saveInDb($rev6);
+    FPersistentManager::getInstance()->saveInDb($rev7);
+    FPersistentManager::getInstance()->saveInDb($rev8);
+    FPersistentManager::getInstance()->saveInDb($rev9);
+    FPersistentManager::getInstance()->saveInDb($rev10);
+    FPersistentManager::getInstance()->saveInDb($rev11);
+    FPersistentManager::getInstance()->saveInDb($rev12);
+    FPersistentManager::getInstance()->saveInDb($rev13);
+    FPersistentManager::getInstance()->saveInDb($rev14);
+    FPersistentManager::getInstance()->saveInDb($rev15);
+    FPersistentManager::getInstance()->saveInDb($rev16);
+    FPersistentManager::getInstance()->saveInDb($rev17);
+    FPersistentManager::getInstance()->saveInDb($rev18);
+    FPersistentManager::getInstance()->saveInDb($rev19);
+    FPersistentManager::getInstance()->saveInDb($rev20);
+    FPersistentManager::getInstance()->saveInDb($rev21);
+    FPersistentManager::getInstance()->saveInDb($rev22);
 
-    FPersistentManager::getInstance()->saveInBd($read1);
-    FPersistentManager::getInstance()->saveInBd($read2);
-    FPersistentManager::getInstance()->saveInBd($read3);
-    FPersistentManager::getInstance()->saveInBd($read4);
-    FPersistentManager::getInstance()->saveInBd($read5);
-    FPersistentManager::getInstance()->saveInBd($read6);
-    FPersistentManager::getInstance()->saveInBd($read7);
-    FPersistentManager::getInstance()->saveInBd($read8);
-    FPersistentManager::getInstance()->saveInBd($read9);
-    FPersistentManager::getInstance()->saveInBd($read10);
-    FPersistentManager::getInstance()->saveInBd($read11);
+    FPersistentManager::getInstance()->saveInDb($read1);
+    FPersistentManager::getInstance()->saveInDb($read2);
+    FPersistentManager::getInstance()->saveInDb($read3);
+    FPersistentManager::getInstance()->saveInDb($read4);
+    FPersistentManager::getInstance()->saveInDb($read5);
+    FPersistentManager::getInstance()->saveInDb($read6);
+    FPersistentManager::getInstance()->saveInDb($read7);
+    FPersistentManager::getInstance()->saveInDb($read8);
+    FPersistentManager::getInstance()->saveInDb($read9);
+    FPersistentManager::getInstance()->saveInDb($read10);
+    FPersistentManager::getInstance()->saveInDb($read11);
 
     }
 
