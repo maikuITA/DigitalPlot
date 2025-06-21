@@ -151,7 +151,7 @@
                         <p class="control has-icons-left intestatario">
                             <input class="input is-rounded" type="text" placeholder="Nome dell'intestatario" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"> </i>
+                                <i class="fa fa-user" aria-hidden="true"> {$card->getName()} </i>
                             </span>
                         </p>
                     </div>
@@ -159,13 +159,13 @@
                         <p class="control has-icons-left carta">
                             <input class="input is-rounded" type="text" placeholder="Numero della carta" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                <i class="fa fa-credit-card" aria-hidden="true"> {$card->getCardNumber()} </i>
                             </span>
                         </p>
                         <p class="control has-icons-left civico">
                             <input class="input is-rounded" type="text" placeholder="CVV" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                <i class="fa fa-lock" aria-hidden="true"> {$card->getCvv()} </i>
                             </span>
                         </p>
                     </div>
@@ -200,9 +200,10 @@
             </header>
             <div class="card-content">
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                    iaculis mauris.</p>
-                    <a class="has-text-link">€ 4.99</a>
+                    <p> Tipo: {$subscription->getType()} <br/> 
+                        Periodo: {$subscription->getPeriod()} 
+                        Sconto da applicare: {$plotPoints} </p>
+                    <a class="has-text-link"> {$subscription->getPrice() - $plotPoints} </a>
                 </div>
             </div>
         </div>
