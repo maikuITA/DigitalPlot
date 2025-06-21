@@ -39,8 +39,8 @@
         </div>
         <div class="column">
             <div>
-                <a  class="title is-1">Digital</a>
-                <a  class="title is-1 has-text-warning">Plot</a>
+                <a  class="title is-1"> Digital </a>
+                <a  class="title is-1 has-text-warning"> Plot </a>
             </div> 
         </div>
         <div class="column is-one-quarter right">
@@ -67,6 +67,7 @@
             {/if}
         </div>
     </header>
+    <h1> porco dio </h1>
     <div class="body-container">
         <div class="container">
             <label class="title is-3">Logs</label>
