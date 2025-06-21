@@ -75,7 +75,16 @@
                 <div class="card">
                     <div class="card-content">
                         <p class="title">{$subscription->getType()}</p>
-                        <p class="subtitle">{$subscription->getPeriod()}</p>
+                        {if $subscription->getType === "Writer"}
+                            <p class="subtitle">Con l’abbonamento attivo hai accesso all’area riservata per pubblicare i tuoi articoli direttamente sul sito. 
+                                                        Condividi le tue idee, racconta le tue esperienze o approfondisci i tuoi interessi: 
+                                                        ogni contributo arricchisce la nostra community! <br/> {$subscription->getPeriod()}</p>
+                        {else}
+                            <p class="subtitle">Attivando l’abbonamento potrai accedere a tutti gli articoli completi presenti sul sito, senza limiti.
+                                 Approfondimenti, storie, guide e opinioni: contenuti di qualità sempre a tua disposizione per restare informato e ispirato.
+                                                <br/>{$subscription->getPeriod()}</p>
+                        {/if}
+                       
                     </div>
                     <footer class="card-footer">
                         <p class="card-footer-item">
