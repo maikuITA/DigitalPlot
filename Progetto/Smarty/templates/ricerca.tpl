@@ -39,8 +39,8 @@
         </div>
         <div class="column">
             <div>
-                <a href="#" class="title is-1">Digital</a>
-                <a href="#" class="title is-1 has-text-warning">Plot</a>
+                <a class="title is-1">Digital</a>
+                <a class="title is-1 has-text-warning">Plot</a>
             </div> 
         </div>
         <div class="column is-one-quarter right">
@@ -118,6 +118,23 @@
                     </div>
                 </form>
             </section>
+            <div class="container" id="container">
+                {if isset($articles)}
+                    {foreach from=$articles item=article}
+                        <div class="card">
+                            <div class="card-content">
+                                <p class="title">{$article->getTitle()}</p>
+                                <p class="subtitle">{$article->getDescription()}</p>
+                            </div>
+                            <footer class="card-footer">
+                                <p class="card-footer-item">
+                                    <a href="/article" class="button is-warning">Leggi di più</a>
+                                </p>
+                            </footer>
+                        </div>
+                    {/foreach}
+                {/if}
+            </div>
         </div>
     </div>
 </body>

@@ -19,6 +19,7 @@ class CFrontController {
         'find' => ['CSearch', 'find'],
         'logout' => ['CUser', 'logout'],
         'search' => ['CSearch', 'takeValueArticle'],
+        'article' => ['CArticle', 'showArticle'],
         'clearcache' => ['CService', 'clearCache'],
     ];
     

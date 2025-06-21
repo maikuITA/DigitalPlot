@@ -39,8 +39,8 @@
         </div>
         <div class="column">
             <div>
-                <a href="#" class="title is-1">Digital</a>
-                <a href="#" class="title is-1 has-text-warning">Plot</a>
+                <a class="title is-1">Digital</a>
+                <a class="title is-1 has-text-warning">Plot</a>
             </div> 
         </div>
         <div class="column is-one-quarter right">
@@ -71,8 +71,8 @@
         <div class="card text">
             <div class="card-content">
                 <div class="content">
-                    <p class="title">Lorem ipsum dolor sit amet</p>
-                    <p class="subtitle">consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus. Donec lobortis dictum magna, id iaculis dolor mollis a. Nulla rhoncus, libero quis posuere dictum, nisl leo bibendum justo, nec ornare nibh dui at felis. Nulla viverra nibh et lectus vehicula lacinia. Morbi finibus ex in blandit ultrices. Duis scelerisque, nulla eget placerat rhoncus, tellus metus iaculis tortor, non scelerisque diam ante eget nunc. Donec congue eros dolor, eu sollicitudin eros placerat a. Praesent mollis congue elit, sit amet finibus massa suscipit vel. Praesent vitae efficitur ex. Vivamus consequat, arcu vitae tincidunt vehicula, ipsum ipsum congue ligula, eu venenatis odio tortor at magna. Phasellus fringilla tempor tempus. Curabitur vulputate neque lorem, vel dapibus dolor pretium a.</p>
+                    <p class="title"> {$title} </p>
+                    <p class="subtitle"> {$description} </p>
                 </div>
             </div>
         </div>
@@ -96,8 +96,8 @@
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-4">John Smith</p>
-                    <p class="subtitle is-6">@johnsmith</p>
+                    <p class="title is-4"> {$writer->getName()} </p>
+                    <p class="subtitle is-6"> {$writer->getUsername() }</p>
                 </div>
                 </div>
 
