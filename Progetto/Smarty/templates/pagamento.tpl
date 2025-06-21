@@ -103,13 +103,13 @@
                     <div class="card gruppo">
                         <div class="field is-grouped">
                             <p class="control has-icons-left">
-                                <input class="input is-rounded" type="text" placeholder="Nome" name ="{$user->getName()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Nome" value ="{$user->getName()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-user" aria-hidden="true"> </i>
                                 </span>
                             </p>
                             <p class="control has-icons-left">
-                                <input class="input is-rounded" type="text" placeholder="Cognome" name="{$user->getSurname()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Cognome" value="{$user->getSurname()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-user" aria-hidden="true">  </i>
                                 </span>
