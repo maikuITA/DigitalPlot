@@ -218,6 +218,26 @@ class FEntityManager {
     }
 
     /**
+     * save an array of objects in the db (persistance of Entity) or update it
+     * @param string $className
+     * @return object $object
+     * @return void
+     * @throws Exception
+     */
+    public static function addObj(string $className, object $object): void {
+        try{
+            self::$entityManager->getConnection()->beginTransaction();
+            self::$entityManager->persist($object);
+            self::$entityManager->flush();
+            self::$entityManager->getConnection()->commit();
+        }catch(Exception $e){
+            ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            self::$entityManager->getConnection()->rollBack();
+        }
+    }
+    
+
+    /**
      * delete an object from the db
      * @param object $obj
      * @return boolean

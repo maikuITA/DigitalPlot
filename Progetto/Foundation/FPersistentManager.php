@@ -26,6 +26,18 @@ class FPersistentManager {
         return FEntityManager::getInstance()->saveObj($entity);
     }
     /**
+     * Add an object in the database
+     * @param string $className
+     * @param object $entity
+     * @return bool
+     * @throws Exception
+     */
+    public function insertInDb(string $className, object $entity): bool {
+        return FEntityManager::getInstance()->addObj($className, $entity);
+    }
+
+
+    /**
      * Delete an object in the database
      * @param object $entity
      * @return bool
