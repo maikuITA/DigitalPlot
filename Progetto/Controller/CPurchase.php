@@ -2,24 +2,37 @@
 
 class CPurchase{
 
-    public static function makePurchase(int $subscriptionCod): void {
+
+    public static function startPurchase(int $subscriptionCod): void {
         if($subscriptionCod === null || $subscriptionCod <= 0){
             header('Location: https://digitalplot.altervista.org/error');
             exit();
         }
-        if(CUser::isLogged()){
-            $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
-            if(!isset($subscription)){
+        $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
+         if(!isset($subscription)){
                 header('Location: https://digitalplot.altervista.org/error');
                 exit();
-            }
+        }
+        if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('userId'));
-            $card = self::getCreditCard();
-            VPurchase::showPaymentsView(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true, $subscription, $card);
+            VPurchase::startPurchase(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false);
         } else{
             header('Location: https://digitalplot.altervista.org/login');
             exit();
         } 
+    }
+
+   
+    public static function purchase(int $subscriptionCod): void {
+        if(!CUser::isLogged()){
+            header('Location: https://digitalplot.altervista.org/login');
+            exit();
+        }
+        $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('userId'));
+        $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
+        $card = self::getCreditCard();
+        $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
+        VPurchase::buy(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true, $points, $subscription, $card);
     }
 
     public static function getCreditCard(): ECreditCard {
@@ -30,5 +43,15 @@ class CPurchase{
         $cvv = UHTTPMethods::post('cvv');
         $card = new ECreditCard($cardNumber, $name, $surname, $expiration, $cvv);
         return $card;
+    }
+
+    public static function verifyPoints(int $points, float $price): float {
+        $difference = $price - ($points * 0.01);
+        if ($difference > 0) {
+            return $points * 0.01; 
+        } else {
+            return 0;
+        }
+
     }
 }

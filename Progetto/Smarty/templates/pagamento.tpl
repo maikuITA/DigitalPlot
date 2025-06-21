@@ -118,12 +118,6 @@
                         <p class="control has-icons-left indirizzo">
                             <input class="input is-rounded" type="text" placeholder="Indirizzo" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-map-marker" aria-hidden="true"> {$user->getName()} </i>
-                            </span>
-                        </p>
-                        <p class="control has-icons-left civico">
-                            <input class="input is-rounded" type="text" placeholder="Civico" required>
-                            <span class="icon is-small is-left">
                                 <i class="fa fa-map-marker" aria-hidden="true"> {$user->getStreetAddress()} </i>
                             </span>
                         </p>
@@ -221,8 +215,8 @@
                 <div class="content">
                     <p> Tipo: {$subscription->getType()} <br/> 
                         Periodo: {$subscription->getPeriod()} 
-                        Sconto da applicare: {$plotPoints} </p>
-                    <a class="has-text-link"> {$subscription->getPrice() - $plotPoints} </a>
+                        Sconto da applicare: {$points} </p>
+                    <a class="has-text-link"> {$subscription->getPrice() - $points} </a>
                 </div>
             </div>
         </div>
