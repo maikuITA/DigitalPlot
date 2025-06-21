@@ -31,14 +31,15 @@ class CFrontController {
      */
     public function start(): void {
         $requestUri = UServer::getValue('REQUEST_URI');
-        $route = trim($requestUri, '/');
-        ULogSys::toLog("Rotta:".$route);
-        if(in_array($route, array_keys(self::$routes))) {
-            $controller = self::$routes[$route][0];
-            $method = self::$routes[$route][1];
+        $route = explode('/', trim($requestUri, '/')); // Split the URI into parts
+        ULogSys::toLog("Rotta: ".$route);
+        if(self::hasMatchingKey(self::$routes, $route)) {
+            $controller = self::$routes[$route[0]][0];
+            $method = self::$routes[$route[0]][1];
+            $params = array_slice($route, 1); // Get any additional parameters from the URL
             ULogSys::toLog("Controller -> ".$controller . " # Method -> ".$method);
             if (class_exists($controller) && method_exists($controller, $method)) {
-                call_user_func_array([$controller, $method], []);
+                call_user_func_array([$controller, $method], $params);
             } else {
                 header('Location: https://digitalplot.altervista.org/error');
             }
@@ -46,4 +47,14 @@ class CFrontController {
             header('Location: https://digitalplot.altervista.org/error');
         }
     }
+
+    public static function hasMatchingKey(array $routes, array $route): bool {
+        foreach (array_keys($routes) as $key) {
+            if ($key === $route[0]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
