@@ -17,7 +17,7 @@ class CPurchase{
                 header('Location: https://digitalplot.altervista.org/error');
                 exit();
         }
-        if(!CUser::isLogged()){
+        if(CUser::isLogged()){
             if (!CUser::isSubbed()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('userId'));
                 $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
