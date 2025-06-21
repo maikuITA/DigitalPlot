@@ -18,7 +18,7 @@ class CPurchase{
                 exit();
         }
         if(!CUser::isLogged()){
-            if (CUser::isSubbed()){
+            if (!CUser::isSubbed()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('userId'));
                 $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
                 VPurchase::startPurchase(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subscription, $points);
