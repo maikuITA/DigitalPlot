@@ -71,8 +71,8 @@
         <div class="card text">
             <div class="card-content">
                 <div class="content">
-                    <p class="title"> {$title} </p>
-                    <p class="subtitle"> {$description} </p>
+                    <p class="title"> {$article->getTitle()} </p>
+                    <p class="subtitle"> {$article->getdescription()} </p>
                 </div>
             </div>
         </div>
@@ -102,8 +102,7 @@
                 </div>
 
                 <div class="content">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
+                {$writer->getBiography()} <a>@bulmaio</a>. <a href="#">#css</a>
                 <a href="#">#responsive</a>
                 <br />
                 <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
