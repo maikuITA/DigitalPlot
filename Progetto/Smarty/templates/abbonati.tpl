@@ -75,7 +75,7 @@
                 <div class="card">
                     <div class="card-content">
                         <p class="title">{$subscription->getType()}</p>
-                        {if $subscription->getType === "writer"}
+                        {if $subscription->getType() === "writer"}
                             <p class="subtitle"> Descrizione: con l’abbonamento attivo hai accesso all’area riservata per pubblicare i tuoi articoli direttamente sul sito e potrai leggere tutto ciò che desideri. 
                                                         Condividi le tue idee, racconta le tue esperienze o approfondisci i tuoi interessi: 
                                                         ogni contributo arricchisce la nostra community! 
