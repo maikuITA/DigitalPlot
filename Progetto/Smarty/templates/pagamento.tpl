@@ -153,7 +153,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left tel">
-                                <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="" value="{$user->getTelephone()}"  required>
+                                <input class="input is-rounded" type="text" placeholder="Numero di telefono" pattern="[0-9]{10}" value="{$user->getTelephone()}"  required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-phone" aria-hidden="true">  </i>
                                 </span>
