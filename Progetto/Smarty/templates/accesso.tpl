@@ -49,7 +49,7 @@
                 </ul>
             </div>
             <div class="container">
-                <form action="/checkLlogin" method="post" class="form" id="login-form">
+                <form action="/checkLogin" method="post" class="form" id="login-form">
                     <label class="title is-3" for="login-form">Accedi al tuo account</label>
                     <div class="field">
                         <p class="control has-icons-left alr">
