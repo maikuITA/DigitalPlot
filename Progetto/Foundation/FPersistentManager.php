@@ -22,18 +22,17 @@ class FPersistentManager {
      * @return bool
      * @throws Exception
      */
-    public function saveInBd(object $entity): bool {
+    public function saveInDb(object $entity): bool {
         return FEntityManager::getInstance()->saveObj($entity);
     }
     /**
      * Add an object in the database
-     * @param string $className
      * @param object $entity
      * @return bool
      * @throws Exception
      */
-    public function insertInDb(string $className, object $entity): bool {
-        return FEntityManager::getInstance()->addObj($className, $entity);
+    public function insertInDb(object $entity): bool {
+        return FEntityManager::getInstance()->addObj($entity);
     }
 
 

@@ -22,10 +22,11 @@ class ESubscriber extends EUser{
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"])]
     private $purchases = [];
     
-    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $streetAddress, string $birthplace, string $email, string $telephone, string $biography = "",  array $plotCard = [], $followers = [], $following = [], $purchases = []) {
-        parent::__construct($username, $password, $name, $surname, false, $birthdate, $streetAddress, $birthplace, $email, $biography, $telephone, $plotCard);
+    public function __construct(string $username, string $password, string $name, string $surname, string $birthdate, string $streetAddress, string $birthplace, string $email, string $telephone, string $biography = "",  array $plotCard = [], $followers = [], $following = [], array $reviews = [], $purchases = []) {
+        parent::__construct($username, $password, $name, $surname, false, $birthdate, $streetAddress, $birthplace, $email, $biography, $telephone, $plotCard, $followers, $following, $reviews, $purchases);
         $this->followers = $followers;
         $this->following = $following;
+        $this->reviews = $reviews;
         $this->purchases = $purchases;
     }
 
