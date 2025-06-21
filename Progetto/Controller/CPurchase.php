@@ -105,7 +105,7 @@ class CPurchase{
                                 $user->getPassword(), 
                                 $user->getName(), 
                                 $user->getSurname(),
-                                $date = $user->getBirthdate()->format('Y-m-d'),
+                                $user->getBirthdate()->format('Y-m-d'),
                                 $user->getStreetAddress(),
                                 $user->getBirthplace(),
                                 $user->getEmail(),
