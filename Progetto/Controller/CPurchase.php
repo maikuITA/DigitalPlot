@@ -13,7 +13,7 @@ class CPurchase{
             exit();
         }
         $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
-         if(!isset($subscription)){
+        if(!isset($subscription)){
                 header('Location: https://digitalplot.altervista.org/error');
                 exit();
         }
