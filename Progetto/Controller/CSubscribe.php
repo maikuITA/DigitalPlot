@@ -13,7 +13,8 @@ class CSubscribe {
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retriveObjById(EUser::class, USession::getSessionElement('user'));
             if(CUser::isSubbed()){
-                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true);
+                header('Location: https://digitalplot.altervista.org/home');
+                exit;
             }
             else {
                 VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false);
