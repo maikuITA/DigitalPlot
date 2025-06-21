@@ -99,106 +99,108 @@
                 </section>
             </div>
             <div class="fatturazione" id="fatturazione">
-                <div class="card gruppo">
-                    <div class="field is-grouped">
-                        <p class="control has-icons-left">
-                            <input class="input is-rounded" type="text" placeholder="Nome" name ="{$user->getName()}" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true"> </i>
-                            </span>
-                        </p>
-                        <p class="control has-icons-left">
-                            <input class="input is-rounded" type="text" placeholder="Cognome" name="{$user->getSurname()}" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true">  </i>
-                            </span>
-                        </p>
-                    </div>          
-                    <div class="field has-addons has-addons-centered">
-                        <p class="control has-icons-left indirizzo">
-                            <input class="input is-rounded" type="text" placeholder="Indirizzo" value="{$user->getStreetAddress()}" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-map-marker" aria-hidden="true">  </i>
-                            </span>
-                        </p>
+                <form action="/purchase" method="post" class="form">
+                    <div class="card gruppo">
+                        <div class="field is-grouped">
+                            <p class="control has-icons-left">
+                                <input class="input is-rounded" type="text" placeholder="Nome" name ="{$user->getName()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user" aria-hidden="true"> </i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left">
+                                <input class="input is-rounded" type="text" placeholder="Cognome" name="{$user->getSurname()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>          
+                        <div class="field has-addons has-addons-centered">
+                            <p class="control has-icons-left indirizzo">
+                                <input class="input is-rounded" type="text" placeholder="Indirizzo" value="{$user->getStreetAddress()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field has-addons has-addons-centered">
+                            <p class="control">
+                                <span class="select is-rounded">
+                                <select>
+                                    <option>+39</option>
+                                    <option>+1</option>
+                                    <option>+7</option>
+                                    <option>+20</option>
+                                    <option>+27</option>
+                                    <option>+30</option>
+                                    <option>+31</option>
+                                    <option>+32</option>
+                                    <option>+33</option>
+                                    <option>+34</option>
+                                    <option>+36</option>
+                                    <option>+39</option>
+                                    <option>+44</option>
+                                    <option>+49</option>
+                                    <option>+52</option>
+                                    <option>+55</option>
+                                    <option>+55</option>
+                                    <option>+61</option>
+                                    <option>+81</option>
+                                    <option>+86</option>
+                                    <option>+90</option>
+                                    <option>+91</option>
+                                </select>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left tel">
+                                <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="[0-9]{10}" value="{$user->getTelephone()}"  required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-phone" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="field has-addons has-addons-centered">
-                        <p class="control">
-                            <span class="select is-rounded">
-                            <select>
-                                <option>+39</option>
-                                <option>+1</option>
-                                <option>+7</option>
-                                <option>+20</option>
-                                <option>+27</option>
-                                <option>+30</option>
-                                <option>+31</option>
-                                <option>+32</option>
-                                <option>+33</option>
-                                <option>+34</option>
-                                <option>+36</option>
-                                <option>+39</option>
-                                <option>+44</option>
-                                <option>+49</option>
-                                <option>+52</option>
-                                <option>+55</option>
-                                <option>+55</option>
-                                <option>+61</option>
-                                <option>+81</option>
-                                <option>+86</option>
-                                <option>+90</option>
-                                <option>+91</option>
-                            </select>
-                            </span>
-                        </p>
-                        <p class="control has-icons-left tel">
-                            <input class="input is-rounded" type="tel" placeholder="Numero di telefono" pattern="[0-9]{10}" value="{$user->getTelephone()}"  required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-phone" aria-hidden="true">  </i>
-                            </span>
-                        </p>
+                    <div class="card gruppo">
+                        <div class="field is-grouped">
+                            <p class="control has-icons-left intestatario">
+                                <input class="input is-rounded" type="text" name ="nameC" placeholder="Nome dell'intestatario" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-user" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field has-addons has-addons-centered">
+                            <p class="control has-icons-left carta">
+                                <input class="input is-rounded" type="text" name= "cardNumber" placeholder="Numero della carta" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-credit-card" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left civico">
+                                <input class="input is-rounded" type="text" name="cvv"  placeholder="CVV" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-lock" aria-hidden="true"> </i>
+                                </span>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="card gruppo">
-                    <div class="field is-grouped">
-                        <p class="control has-icons-left intestatario">
-                            <input class="input is-rounded" type="text" name ="nameC" placeholder="Nome dell'intestatario" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-user" aria-hidden="true">  </i>
-                            </span>
-                        </p>
+                    <div class="card gruppo">
+                        <div class="field is-grouped">
+                            <p class="control has-icons-left confirm">
+                                <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
+                                <span class="icon is-small is-left has-text-link">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left delete">
+                                <button class="button is-danger is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
+                                <span class="icon is-small is-left has-text-danger">
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
                     </div>
-                    <div class="field has-addons has-addons-centered">
-                        <p class="control has-icons-left carta">
-                            <input class="input is-rounded" type="text" name= "cardNumber" placeholder="Numero della carta" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-credit-card" aria-hidden="true">  </i>
-                            </span>
-                        </p>
-                        <p class="control has-icons-left civico">
-                            <input class="input is-rounded" type="text" name="cvv"  placeholder="CVV" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock" aria-hidden="true"> </i>
-                            </span>
-                        </p>
-                    </div>
-                </div>
-                <div class="card gruppo">
-                    <div class="field is-grouped">
-                        <p class="control has-icons-left confirm">
-                            <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
-                            <span class="icon is-small is-left has-text-link">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
-                            </span>
-                        </p>
-                        <p class="control has-icons-left delete">
-                            <button class="button is-danger is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
-                            <span class="icon is-small is-left has-text-danger">
-                                <i class="fa fa-times-circle" aria-hidden="true"></i>
-                            </span>
-                        </p>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="absolute-right">
@@ -214,7 +216,7 @@
             <div class="card-content">
                 <div class="content">
                     <p> Tipo: {$subscription->getType()} <br/> 
-                        Periodo: {$subscription->getPeriod()} 
+                        Periodo: {$subscription->getPeriod()} <br/> 
                         Sconto da applicare: {$points} </p>
                     <a class="has-text-link"> {$subscription->getPrice() - $points} </a>
                 </div>
