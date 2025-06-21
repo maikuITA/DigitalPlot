@@ -14,7 +14,7 @@ class CFrontController {
         'startPurchase' => ['CPurchase', 'startPurchase'],
         'purchase' => ['CPurchase', 'purchase'],
         'error' => ['CError', 'error404'],
-        'login' => ['CUser', 'checklogin'],
+        'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
         'dbInit'  => ['CService', 'dbInit'],
         'logs' => ['CService', 'logs'],

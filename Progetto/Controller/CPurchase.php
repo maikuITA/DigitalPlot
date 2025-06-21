@@ -28,7 +28,7 @@ class CPurchase{
             }
             
         } else{
-            header('Location: https://digitalplot.altervista.org/login');
+            header('Location: https://digitalplot.altervista.org/auth');
             exit();
         } 
     }
@@ -40,7 +40,7 @@ class CPurchase{
      */
     public static function purchase(int $subscriptionCod): void {
         if(!CUser::isLogged()){
-            header('Location: https://digitalplot.altervista.org/login');
+            header('Location: https://digitalplot.altervista.org/auth');
             exit();
         }
         if (!CUser::isSubbed()){
