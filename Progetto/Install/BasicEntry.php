@@ -9,16 +9,16 @@ class BasicEntry{
     public static function populateDb(): void {
 
     // User
-    $u1 = new EUser('admin','admin123','Admin','Admin',true,'2003-04-18', 'Pescara','admin@admin.com','0000000000');
-    $u2 = new EUser('Mario', 'Mpass01', 'Mario', 'Rossi', false, '1998-09-12', 'Roma', 'mario.rossi@example.com', '3281234567');
-    $u3 = new EUser('Lucia', 'LuciaPwd!', 'Lucia', 'Bianchi', false, '1995-07-23', 'Milano', 'lucia.bianchi@example.com', '3297654321',);
-    $u4 = new EUser('Giulia', 'GiuLia22', 'Giulia', 'Verdi', false, '2001-05-30', 'Torino', 'giulia.verdi@example.com', '3271239876');
-    $u5 = new EUser('Lorenzo', 'Lz@1999', 'Lorenzo', 'Conti', false, '1999-02-14', 'Firenze', 'lorenzo.conti@example.com', '3209988776');
-    $u6 = new EUser('Elena', 'Elena77_', 'Elena', 'Ferrari', false, '2000-12-04', 'Bologna', 'elena.ferrari@example.com', '3218877665');
-    $u7 = new EReader('Marco', 'M@rco123', 'Marco', 'Gentile', '1997-03-03','Napoli','marco.gentile@example.com', '3301122334', "", []);
-    $u8 = new EReader('Chiara', 'Chiara!98', 'Chiara', 'Marino','1998-12-15', 'Genova', 'chiara.marino@example.com','3312233445', "", []);
-    $u9 = new EWriter('Stefano', 'Stef_99x', 'Stefano', 'De Luca', '1996-03-05', 'Palermo', 'stefano.deluca@example.com' ,'3323344556', "", []);
-    $u10 = new EWriter('Francesca', 'Fr@nce12', 'Francesca', 'Romano', '2002-02-30', 'Trieste', 'francesca.romano@example.com' ,'3334455667', "",[]);
+    $u1 = new EUser('admin','admin123','Admin','Admin',true,'2003-04-18', 'Via Monte Saraceno, 11','Pescara','admin@admin.com','0000000000');
+    $u2 = new EUser('Mario', 'Mpass01', 'Mario', 'Rossi', false, '1998-09-12', 'Via Lago di Garda, 24' ,'Roma', 'mario.rossi@example.com', '3281234567');
+    $u3 = new EUser('Lucia', 'LuciaPwd!', 'Lucia', 'Bianchi', false, '1995-07-23', 'Via Colli Euganei, 15' ,'Milano', 'lucia.bianchi@example.com', '3297654321',);
+    $u4 = new EUser('Giulia', 'GiuLia22', 'Giulia', 'Verdi', false, '2001-05-30','Via Bosco Ceduo, 33' ,'Torino', 'giulia.verdi@example.com', '3271239876');
+    $u5 = new EUser('Lorenzo', 'Lz@1999', 'Lorenzo', 'Conti', false, '1999-02-14','Via Valle d\'Aosta, 9', 'Firenze', 'lorenzo.conti@example.com', '3209988776');
+    $u6 = new EUser('Elena', 'Elena77_', 'Elena', 'Ferrari', false, '2000-12-04','Via Fiume Adda, 21' ,'Bologna', 'elena.ferrari@example.com', '3218877665');
+    $u7 = new EReader('Marco', 'M@rco123', 'Marco', 'Gentile', '1997-03-03','Via Pianura Padana, 12','Napoli','marco.gentile@example.com', '3301122334', "", []);
+    $u8 = new EReader('Chiara', 'Chiara!98', 'Chiara', 'Marino','1998-12-15','Via Pianura Padana, 12' ,'Genova', 'chiara.marino@example.com','3312233445', "", []);
+    $u9 = new EWriter('Stefano', 'Stef_99x', 'Stefano', 'De Luca', '1996-03-05','Via Monte Subasio, 4', 'Palermo', 'stefano.deluca@example.com' ,'3323344556', "", []);
+    $u10 = new EWriter('Francesca', 'Fr@nce12', 'Francesca', 'Romano', '2002-02-30','Via Costa Smeralda, 18', 'Trieste', 'francesca.romano@example.com' ,'3334455667', "",[]);
 
     //PlotCard
     $p1 = new EPlotCard(10000, $u1);
@@ -71,10 +71,10 @@ class BasicEntry{
 
     //EPurchase
     
-    $pur1 = new EPurchase('2023-10-01','2023-11-01',$u7,$sub3,$d1,$cc1);
-    $pur2 = new EPurchase('2023-10-01','2024-10-01',$u8,$sub4,null,$cc2);
-    $pur3 = new EPurchase('2023-10-01','2027-10-01',$u9,$sub1,null,$cc3);
-    $pur4 = new EPurchase('2023-10-01','2023-12-01',$u10,$sub2,null,$cc4);
+    $pur1 = new EPurchase('2023-10-01','2023-11-01',$u7,'Via Pianura Padana, 12',$sub3,$d1,$cc1);
+    $pur2 = new EPurchase('2023-10-01','2024-10-01',$u8,'Via Pianura Padana, 12',$sub4,null,$cc2);
+    $pur3 = new EPurchase('2023-10-01','2027-10-01',$u9,'Via Monte Subasio, 4',$sub1,null,$cc3);
+    $pur4 = new EPurchase('2023-10-01','2023-12-01',$u10,'Via Costa Smeralda, 18',$sub2,null,$cc4);
 
     $d1->addPurchase($pur1);
 

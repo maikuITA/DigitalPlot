@@ -115,7 +115,8 @@ class CUser{
             $surname = UHTTPMethods::post('surname');
             $birthdate = UHTTPMethods::post('birthdate');
             $birthplace = UHTTPMethods::post('birthplace');
-            $user = new EUser($username, $password, $name, $surname, false, $birthdate, $birthplace, $email, $telephone);
+            $streetAddress = UHTTPMethods::post('streetAddress');
+            $user = new EUser($username, $password, $name, $surname, false, $birthdate, $streetAddress ,$birthplace, $email, $telephone);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
             try {
