@@ -89,7 +89,7 @@
                     </div>
                     <footer class="card-footer">
                         <p class="card-footer-item">
-                            <a href="/purchase/{$subscription->getCod()}" class="button is-warning">{$subscription->getPrice()} €</a>
+                            <a href="/startPurchase/{$subscription->getCod()}" class="button is-warning">{$subscription->getPrice()} €</a>
                         </p>
                     </footer>
                 </div>
