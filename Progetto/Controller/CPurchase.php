@@ -114,14 +114,17 @@ class CPurchase{
         $writer->setId($user->getId());
         $writer->addPlotCard($user->getPlotCard());
         $writer->setProfilePicture($user->getEncodedData());
-        foreach ($user->getReadings() as $reading) {
-            $writer->addReading($reading);
+        if ($user->getReadings() !== []) {
+            foreach ($user->getReadings() as $reading) {
+                 $writer->addReading($reading);
+            }
         }
         return $writer;
     }
 
 
-     public static function createReader(EUser $user): EReader {
+
+    public static function createReader(EUser $user): EReader {
         
         $reader = new EReader($user->getUsername(), 
                             $user->getPassword(), 
@@ -136,10 +139,11 @@ class CPurchase{
     $reader->setId($user->getId());
     $reader->addPlotCard($user->getPlotCard());
     $reader->setProfilePicture($user->getEncodedData());
-    foreach ($user->getReadings() as $reading) {
-        $reader->addReading($reading);
-    }
+     if ($user->getReadings() !== []) {
+            foreach ($user->getReadings() as $reading) {
+                 $reader->addReading($reading);
+            }
+        }
     return $reader;
-
     }
 }
