@@ -102,7 +102,47 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Paese di nascita" name="country" id="country" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Luogo di nascita" name="birthplace" id="birthplace" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Provincia" name="province" id="province" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="CAP" name="zipCode" id="zipCode" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Indirizzo" name="streetAddress" id="streetAddress" required>
+                                <span class="icon is-small is-left has-link">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" type="text" placeholder="Numero Civico" name="streetNumber" id="streetNumber" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </span>
