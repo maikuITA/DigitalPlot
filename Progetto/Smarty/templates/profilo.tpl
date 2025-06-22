@@ -16,6 +16,7 @@
 </head>
 <body>
     <header class="header columns">
+        <header class="header columns">
         <div class="column is-one-quarter left">
             <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -31,6 +32,10 @@
                         {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
                         {/if}
+                        {if $privilege === 3}
+                            <a class="navbar-item" href="/dashboard" > Dashboard </a>
+                            <a class="navbar-item" href="/logs"> Logs </a>
+                        {/if}
                     {else}
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}
@@ -39,8 +44,8 @@
         </div>
         <div class="column">
             <div>
-                <a  class="title is-1">Digital</a>
-                <a  class="title is-1 has-text-warning">Plot</a>
+                <a class="title is-1">Digital</a>
+                <a class="title is-1 has-text-warning">Plot</a>
             </div> 
         </div>
         <div class="column is-one-quarter right">
