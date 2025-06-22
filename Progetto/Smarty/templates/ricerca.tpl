@@ -107,7 +107,7 @@
                         </select>
                     </div>
                     <div class="select is-rounded">
-                        <select name = 'date' >
+                        <select name = 'releaseDate' >
                             <option value = '' >Anno</option>
                             <option value = '2025' >2025</option>
                             <option value = '2024' >2024</option>

@@ -352,12 +352,12 @@ class FEntityManager {
      */
     public static function retrieveArticles(string $className, string $title, string $category, string $genre, string $releaseDate): ?array {
         try {
-            $dql = "SELECT a FROM $className a WHERE (a.title LIKE :title OR a.title IN (:title)) AND a.category LIKE :category AND a.genre LIKE :genre AND a.releaseDate LIKE :releaseDate";
+            $dql = "SELECT a FROM $className a WHERE a.title LIKE :title AND a.genre LIKE :genre AND a.category LIKE :category AND YEAR(a.releaseDate) >= :releaseDate";
             $query = self::$entityManager->createQuery($dql)
                 ->setParameter('title', $title)
                 ->setParameter('category', $category)
                 ->setParameter('genre', $genre)
-                ->setParameter('date', $releaseDate);
+                ->setParameter('releaseDate', $releaseDate);
             $query = self::$entityManager->createQuery($dql);
             return $query->getResult();
         } catch (Exception $e) {

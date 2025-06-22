@@ -12,7 +12,7 @@ class CSearch {
                 $title = UHTTPMethods::post('title');
                 $category = UHTTPMethods::post('category');
                 $genre = UHTTPMethods::post('genre');
-                $releaseDate = UHTTPMethods::post('date');
+                $releaseDate = UHTTPMethods::post('releaseDate');
                 CSearch::emptyValues($title, $category, $genre, $releaseDate);
             }else{
                 header('Location: https://digitalplot.altervista.org/home');
@@ -32,14 +32,14 @@ class CSearch {
      * @return void
      */
     public static function emptyValues(string $title, string $category, string $genre, string $releaseDate): void {
-        if($title === '') {
-            $title = '%';
-        } elseif ($genre === '') {
+        $title = trim($title);
+        $title = "%" . $title . "%";
+        if ($genre === '') {
             $genre = '%';
         } elseif ($category === '') {
             $category = '%';
         } elseif ($releaseDate === '') {
-            $releaseDate = '%';
+            $releaseDate = '0';
         }
         $result = FPersistentManager::getInstance()->searchArticles($title, $category, $genre, $releaseDate);
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
