@@ -17,7 +17,7 @@ class CFrontController {
         'error' => ['CError', 'error404'],
         'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
-        'profile' => ['CUser', 'gToProfile'],
+        'profile' => ['CUser', 'goToProfile'],
         'dbInit'  => ['CService', 'dbInit'],
         'logs' => ['CService', 'logs'],
         'find' => ['CSearch', 'find'],
