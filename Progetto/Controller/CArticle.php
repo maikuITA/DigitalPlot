@@ -55,11 +55,12 @@ class CArticle{
         }
     }
 
-    public static function dropArticle(EArticle $article): void{
+    public static function dropArticle(int $idArticle): void{
         if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if($user->getPrivilege() > 1){
                 $articles = $user->getArticles();
+                $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
                 FPersistentManager::getInstance()->delete($article);
                 VProfile::render(user: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
             }
