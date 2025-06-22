@@ -22,7 +22,7 @@ class ECreditCard{
     #[ORM\Column(type: "string", length: 3)]
     public string $cvv;
     
-    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $purchases = [];
 
     public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv, array $purchases = []) {

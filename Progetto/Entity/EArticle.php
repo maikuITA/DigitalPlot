@@ -32,7 +32,7 @@ class EArticle{
     #[ORM\Column(name:"release_date",type: "date")]
     private DateTime $releaseDate;
     
-    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $reviews = [];
     
@@ -41,7 +41,7 @@ class EArticle{
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private EUser $writer;
     
-    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $readings = [];
 
 

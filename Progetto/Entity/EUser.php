@@ -68,31 +68,31 @@ class EUser {
 
     //-----------------BASIC-----------------
 
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"], orphanRemoval: true) ]
     private $readings = [];
     
-    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"], orphanRemoval: true)]
     private $plotCard = [];
 
-    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $purchases = [];
 
     //-----------------READER-----------------
 
     // definisco il name del campo dell'altra tabella che è chiave esterna
-    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $followers = [];
     
-    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $following = [];
 
-    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $reviews = [];
 
     //-----------------WRITER-----------------
 
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"], orphanRemoval: true)]
     private $articles = [];
 
     //-----------------ADMIN-----------------
