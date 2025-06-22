@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "Subscription")]
@@ -22,13 +23,13 @@ class ESubscription {  // cod type period price
     private float $price;
     
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist", "remove"], orphanRemoval: true)]  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private $purchases = []; // array di purchases associati all'abbonamento
+    private $purchases; // array di purchases associati all'abbonamento
     
-    public function __construct(int $type,string $period, float $price, array $purchases = []) {
+    public function __construct(int $type,string $period, float $price) {
         $this->setType($type);
         $this->period = $period;
         $this->price = $price;
-        $this->purchases = $purchases; // inizializza l'array di purchases
+        $this->purchases = new ArrayCollection(); 
     }
 
     // Set methods
@@ -71,20 +72,21 @@ class ESubscription {  // cod type period price
         return $this->purchases;
     }
     public function addPurchase(EPurchase $purchase){
-        $this->purchases[] = $purchase;
+        $this->purchases->add($purchase);
     }
     public function removePurchase(EPurchase $purchase){
-        $key = array_search($purchase, $this->purchases);
-        if ($key !== false) {
-            unset($this->purchases[$key]);
+        if ($this->purchases->contains($purchase)) {
+            $this->purchases->removeElement($purchase);
         }
     }
     public function getPurchasesCount(){
-        return count($this->purchases);
+        return $this->purchases->count();
     }
     public function getPurchaseById(int $index){
-        if (array_key_exists($index, $this->purchases)) {
-            return $this->purchases[$index];
+        foreach ($this->purchases as $purchase) {
+            if ($purchase->getCod() === $index) {
+                return $purchase;
+            }
         }
         return null;
     }

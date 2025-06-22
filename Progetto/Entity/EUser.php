@@ -1,9 +1,7 @@
 <?php 
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\InheritanceType;
-use Doctrine\ORM\Mapping\DiscriminatorMap;
-
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "User")]
@@ -69,31 +67,31 @@ class EUser {
     //-----------------BASIC-----------------
 
     #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"], orphanRemoval: true) ]
-    private $readings = [];
+    private $readings;
     
     #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"], orphanRemoval: true)]
-    private $plotCard = [];
+    private $plotCard;
 
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $purchases = [];
+    private $purchases;
 
     //-----------------READER-----------------
 
     // definisco il name del campo dell'altra tabella che è chiave esterna
     #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $followers = [];
+    private $followers;
     
     #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $following = [];
+    private $following;
 
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $reviews = [];
+    private $reviews;
 
     //-----------------WRITER-----------------
 
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $articles = [];
+    private $articles;
 
     //-----------------ADMIN-----------------
 
@@ -116,13 +114,6 @@ class EUser {
                                 string $telephone, 
                                 string $biography = "", 
                                 mixed $profilePicture = null,
-                                $readings = [], 
-                                $plotCard = [], 
-                                $purchases = [],
-                                $following = [], 
-                                $followers = [], 
-                                $reviews = [], 
-                                $articles = []
                                 ) {
         $this->setPrivilege($privilege);
         $this->setUsername($username);
@@ -140,13 +131,13 @@ class EUser {
         $this->setTelephone($telephone);
         $this->setBiography($biography);
         $this->setProfilePicture($profilePicture);
-        $this->readings = $readings;
-        $this->plotCard[0] = $plotCard;
-        $this->purchases = $purchases;
-        $this->following = $following;
-        $this->followers = $followers;
-        $this->reviews = $reviews;
-        $this->articles = $articles;
+        $this->readings = new ArrayCollection();
+        $this->plotCard = new ArrayCollection();
+        $this->purchases = new ArrayCollection();
+        $this->following = new ArrayCollection();
+        $this->followers = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
     
 
@@ -281,17 +272,15 @@ class EUser {
 
     //readings methods
     public function addReading(EReading $reading): void {
-        $this->plotCard[0]->addPoints(POINTS);
-        $this->readings[] = $reading;
+        $this->plotCard->first()->addPoints(POINTS);
+        $this->readings->add($reading);
     }
-    public function getReadings(): mixed {
+    public function getReadings() {
         return $this->readings;
     }
     public function removeReading(EReading $reading): void {
-        foreach ($this->readings as $key => $value) {
-            if ($value->getCod() === $reading->getCod()) {
-                unset($this->readings[$key]);
-            }
+        if($this->readings->contains($reading)) {
+            $this->readings->removeElement($reading);
         }
     }
     public function getReadingById( int $id): ?EReading {
@@ -303,25 +292,25 @@ class EUser {
         return null;
     }
     public function countReadings(): int {
-        return count($this->readings);
+        return $this->readings->count();
     }
 
     //PlotCard methods
     public function addPlotCard(EPlotCard $plotCard): void {
-        $this->plotCard[0] = $plotCard;
+        $this->plotCard->add($plotCard);
     }
-    public function getPlotCard(): EPlotCard {
-        return $this->plotCard[0];
+    public function getPlotCard() {
+        return $this->plotCard;
     }
     public function removePlotCard(): void {
-        array_shift($this->plotCard);
+        $this->plotCard->clear();
     }
 
     //purchases methods
     public function addPurchase(EPurchase $purchase): void {
-        array_push($this->purchases, $purchase);
+        $this->purchases->add($purchase);
     }
-    public function getPurchases(): array {
+    public function getPurchases() {
         return $this->purchases;
     }
     public function getPurchaseById(int $id): ?EPurchase {
@@ -332,16 +321,13 @@ class EUser {
         }
         return null;
     }
-    public function removePurchase(int $id): void {
-        foreach ($this->purchases as $key => $purchase) {
-            if ($purchase->getId() === $id) {
-                unset($this->purchases[$key]);
-                break;
-            }
+    public function removePurchase(EPurchase $id): void {
+        if($this->purchases->contains($id)) {
+            $this->purchases->removeElement($id);
         }
     }
     public function getPurchaseCount(): int {
-        return count($this->purchases);
+        return $this->purchases->count();
     }
 
     //-----------------READER-----------------
@@ -349,22 +335,25 @@ class EUser {
      // followers
 
     public function setFollowers(EUser $follower): void{
-        array_push($this->followers, $follower);
+        $this->followers->add($follower);
     }
-    public function getFollowers(): array{
+    public function getFollowers(){
         return $this->followers;
     }
-    public function getFollower(int $index): EUser{
-        return $this->followers[$index];
+    public function getFollower(int $index): ?EUser{
+        foreach($this->followers as $follower){
+            if($follower->getId() == $index){
+                return $follower;
+            }
+        }
+        return null;
     }
     public function getNumFollowers(): int{
-        return count($this->followers);
+        return $this->followers->count();
     }
     public function removeFollower(EUser $follower): void{
-        foreach($this->followers as $key => $value){
-            if($value == $follower){
-                unset($this->followers[$key]);
-            }
+        if($this->followers->contains($follower)) {
+            $this->followers->removeElement($follower);
         }
     }
     public function getFollowerById(int $id): ?EUser{
@@ -375,48 +364,23 @@ class EUser {
         }
         return null;
     }
-    public function getFollowerByUsername(string $username): ?EUser{
-        foreach($this->followers as $follower){
-            if($follower->getUsername() == $username){
-                return $follower;
-            }
-        }
-        return null;
-    }
-    public function getFollowerByName(string $name): ?EUser{
-        foreach($this->followers as $follower){
-            if($follower->getName() == $name){
-                return $follower;
-            }
-        }
-        return null;
-    }
-    public function getFollowerBySurname(string $surname): ?EUser{
-        foreach($this->followers as $follower){
-            if($follower->getSurname() == $surname){
-                return $follower;
-            }
-        }
-        return null;
-    }
-
     // following methods
     public function addFollowing(EUser $following): void{
-        array_push($this->following, $following);
+        $this->following->add($following);
     }
-    public function getFollowing(): array{
+    public function getFollowing(){
         return $this->following;
     }
 
     public function getNumFollowing(): int{
-        return count($this->following);
+        return $this->following->count();
     }
 
     //reviews methods
     public function addReview(EReview $review): void {
-        array_push($this->reviews, $review);
+        $this->reviews->add($review);
     }
-    public function getReviews(): array {
+    public function getReviews() {
         return $this->reviews;
     }
     public function getReviewById(int $id): ?EReview {
@@ -427,39 +391,38 @@ class EUser {
         }
         return null;
     }
-    public function removeReview(int $id): void {
-        foreach ($this->reviews as $key => $review) {
-            if ($review->getId() === $id) {
-                unset($this->reviews[$key]);
-                break;
-            }
+    public function removeReview(EReview $review): void {
+        if($this->reviews->contains($review)) {
+            $this->reviews->removeElement($review);
         }
     }
     public function getReviewCount(): int {
-        return count($this->reviews);
+        return $this->reviews->count();
     }
 
     //-----------------WRITER-----------------
 
     // articles methods
     public function addArticle(EArticle $article): void{
-        array_push($this->articles, $article);
+        $this->articles->add($article);
     }
     public function getArticles(){
         return $this->articles;
     }
-    public function getArticleById(int $index): EArticle{
-        return $this->articles[$index];
+    public function getArticleById(int $index): ?EArticle{
+        foreach($this->articles as $article){
+            if($article->getId() == $index){
+                return $article;
+            }
+        }
+        return null;
     }
     public function getNumArticles(): int{
-        $numeroArticles = count($this->articles);
-        return $numeroArticles;
+        return $this->articles->count();
     }
     public function removeArticle(EArticle $article): void{
-        foreach($this->articles as $key => $value){
-            if($value == $article){
-                unset($this->articles[$key]);
-            }
+        if($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
         }
     }
     public function __toString()
