@@ -231,7 +231,7 @@
                 <div class="content">
                     <p> Tipo: {$subscription->getType()} <br/> 
                         Periodo: {$subscription->getPeriod()} <br/> 
-                        Prezzo: {$subscription->getPrice()} <br/> 
+                        Prezzo: {$subscription->getPrice()} €<br/> 
                         Sconto da applicare: {$points} €</p>
                     <a class="has-text-link">Totale: {$subscription->getPrice() - $points} € </a>
                 </div>
