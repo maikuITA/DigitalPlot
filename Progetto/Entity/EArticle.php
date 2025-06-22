@@ -37,11 +37,11 @@ class EArticle{
     private $reviews = [];
     
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
-    #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false, onDelete: "casade")] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private EUser $writer;
     
-    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private $readings = [];
 
 
