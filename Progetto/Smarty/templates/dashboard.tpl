@@ -31,7 +31,7 @@
                         {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
                         {/if}
-                        {if $privilege === 3}
+                        {if $privilege > 2}
                             <a class="navbar-item" href="/logs"> Logs </a>
                         {/if}
                     {else}
