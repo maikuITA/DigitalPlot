@@ -19,11 +19,11 @@ class EReading{
 
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "readings", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name : "fk_article", referencedColumnName : "article_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
-    private EArticle $article;
+    private EArticle $articleId;
 
-    public function __construct(EUser $user, EArticle $article ) {
+    public function __construct(EUser $user, EArticle $articleId ) {
         $this->user = $user;
-        $this->article = $article;
+        $this->articleId = $articleId;
     }
 
     // Set methods
@@ -37,7 +37,7 @@ class EReading{
     }
     public function setArticle(EArticle $article)
     {
-        $this->article = $article;
+        $this->articleId = $article;
     }
     // Get methods
     public function getCod(){
@@ -47,6 +47,6 @@ class EReading{
         return $this->user;
     }
     public function getArticle(): EArticle{
-        return $this->article;
+        return $this->articleId;
     }
 }
