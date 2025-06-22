@@ -126,7 +126,7 @@
                                 </span>
                             </p>
                         </div>          
-                        <div class="field has-addons has-addons-centered">
+                        <div class="field is-grouped">
                             <p class="control has-icons-left indirizzo">
                                 <input class="input is-rounded" type="text" placeholder="Paese" value="{$user->getCountry()}" required>
                                 <span class="icon is-small is-left">
@@ -140,7 +140,7 @@
                                 </span>
                             </p>
                         </div>
-                        <div class="field has-addons has-addons-centered">
+                        <div class="field is-grouped">
                             <p class="control has-icons-left indirizzo">
                                 <input class="input is-rounded" type="text" placeholder="Provincia" value="{$user->getProvince()}" required>
                                 <span class="icon is-small is-left">
