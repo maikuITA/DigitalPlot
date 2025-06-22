@@ -53,10 +53,10 @@ class BasicEntry{
 
     //ESubcription
 
-    $sub1 = new ESubscription('writer', '1 month', 20.00);
-    $sub2 = new ESubscription('writer', '1 week', 10.00);
-    $sub3 = new ESubscription('reader', '1 month', 10.00);
-    $sub4 = new ESubscription('reader', '1 week', 5.00);
+    $sub1 = new ESubscription(WRITER, '1 month', 20.00);
+    $sub2 = new ESubscription(WRITER, '1 week', 10.00);
+    $sub3 = new ESubscription(READER, '1 month', 10.00);
+    $sub4 = new ESubscription(READER, '1 week', 5.00);
 
     //ECreditCard
 
@@ -65,18 +65,14 @@ class BasicEntry{
     $cc3 = new ECreditCard('9999 0000 1111 2222', 'Stefano', 'De Luca', '2023-10-31', 123);
     $cc4 = new ECreditCard('3333 4444 5555 6666', 'Francesco', 'Romano', '2026-09-30', 122);
 
-    //EDiscount
 
-    $d1 = new EDiscount('ZZZZ',200);
 
     //EPurchase
     
-    $pur1 = new EPurchase('2023-10-01','2023-11-01',$u7,'Via Pianura Padana, 12',$sub3,$d1,$cc1);
-    $pur2 = new EPurchase('2023-10-01','2024-10-01',$u8,'Via Pianura Padana, 12',$sub4,null,$cc2);
-    $pur3 = new EPurchase('2023-10-01','2027-10-01',$u9,'Via Monte Subasio, 4',$sub1,null,$cc3);
-    $pur4 = new EPurchase('2023-10-01','2023-12-01',$u10,'Via Costa Smeralda, 18',$sub2,null,$cc4);
-
-    $d1->addPurchase($pur1);
+    $pur1 = new EPurchase('2023-10-01','2023-11-01',$u7,'Via Pianura Padana, 12',$sub3,$cc1);
+    $pur2 = new EPurchase('2023-10-01','2024-10-01',$u8,'Via Pianura Padana, 12',$sub4,$cc2);
+    $pur3 = new EPurchase('2023-10-01','2027-10-01',$u9,'Via Monte Subasio, 4',$sub1,$cc3);
+    $pur4 = new EPurchase('2023-10-01','2023-12-01',$u10,'Via Costa Smeralda, 18',$sub2,$cc4);
 
     //EFollow
     $fo1 = new EFollow($u7,$u9);

@@ -24,8 +24,8 @@ class ESubscription {  // cod type period price
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist", "remove"])]  // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $purchases = []; // array di purchases associati all'abbonamento
     
-    public function __construct(string $type,string $period, float $price, array $purchases = []) {
-        $this->type = $type;
+    public function __construct(int $type,string $period, float $price, array $purchases = []) {
+        $this->setType($type);
         $this->period = $period;
         $this->price = $price;
         $this->purchases = $purchases; // inizializza l'array di purchases
@@ -36,9 +36,14 @@ class ESubscription {  // cod type period price
     {
         $this->cod = $cod;
     }
-    public function setType(string $type)
+    public function setType(int $type)
     {
-        $this->type = $type;
+        if ($type == READER){
+            $this->type = "reader";
+        }else{
+            $this->type = "writer";
+        }
+        
     }
     public function setPeriod(string $period)
     {

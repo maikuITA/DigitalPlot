@@ -17,12 +17,31 @@ class EPurchase{
     #[ORM\Column(name: "expire_date", type: "date")]
     private DateTime $expireDate;
     
-    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist"])]
-    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
-    private EUser $subscriber;
+    //---------------Billing Address----------------
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $country;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $city;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $province;
+
+    #[ORM\Column(type:"string", length:5, nullable:false)]
+    private string $zipCode;
 
     #[ORM\Column(type:"string", length:40, nullable:false)]
     private string $billingAddress;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $streetNumber;
+
+    //---------------Relationships-------------------
+
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist"])]
+    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
+    private EUser $subscriber;
 
     #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false)] // definizione chiave esterna
@@ -36,7 +55,12 @@ class EPurchase{
     private float $subTotal;
 
 
-    public function __construct( string $purchaseDate, string $expireDate, EUser $subscriber, string $billingAddress, ESubscription $subscription, ECreditCard $card) {
+    public function __construct(string $purchaseDate, 
+                                string $expireDate, 
+                                string $billingAddress,
+                                EUser $subscriber, 
+                                ESubscription $subscription, 
+                                ECreditCard $card) {
         $this->subscriber = $subscriber;
         $this->billingAddress = $billingAddress;
         $this->subscription = $subscription;
