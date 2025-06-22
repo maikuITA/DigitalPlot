@@ -78,7 +78,7 @@
             {/if}
         </div>
     </header>
-        <div class = "container">
+        <div>
             <section class="section">
                 <p class="subtitle">
                     Inserisci il titolo dell'articolo che desideri leggere.
