@@ -17,7 +17,7 @@ class CSubscribe {
                 exit;
             }
             else {
-                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subs);
+                VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $subs);
             }
         } else {
             header('Location: https://digitalplot.altervista.org/auth');

@@ -7,7 +7,7 @@ class VSearch {
      * @param array $articles
      * @return void
      */
-    public static function displaySearchResults(?array $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false): void {
+    public static function displaySearchResults(?array $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $isAbbonato = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
         $smarty->assign('articles', $articles);
@@ -24,7 +24,7 @@ class VSearch {
      * It uses Smarty to render the 'ricerca.tpl' template.
      * @throws Exception
      */
-    public static function find(bool $isLogged = false, $plotPoints = 0 , $proPic = null, bool $isAbbonato = false) {
+    public static function find(bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $isAbbonato = BASIC) {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
         $smarty->assign('isLogged', $isLogged);

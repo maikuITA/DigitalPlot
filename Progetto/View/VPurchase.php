@@ -2,7 +2,7 @@
 
 class VPurchase{
     
-    public static function startPurchase(EUser $user, bool $isLogged = false, int $plotPoints = 0, $proPic = null, bool $isAbbonato = false, ESubscription $subscription, float $poits): void {
+    public static function startPurchase(EUser $user, bool $isLogged = false, int $plotPoints = 0, $proPic = null, int $isAbbonato = BASIC, ESubscription $subscription, float $poits): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> pagamento.tpl");
         $smarty->assign('user', $user);
@@ -15,7 +15,7 @@ class VPurchase{
         $smarty->display('pagamento.tpl');
     }
 
-    public static function buy(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , bool $isAbbonato = false, float $points, ESubscription $subscription, ECreditCard $card): void {
+    public static function buy(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $isAbbonato = BASIC, float $points, ESubscription $subscription, ECreditCard $card): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> pagamento.tpl");
         $smarty->assign('isLogged', $isLogged);
