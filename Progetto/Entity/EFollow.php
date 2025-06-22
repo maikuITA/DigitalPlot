@@ -9,13 +9,13 @@ class EFollow{
     
     #[ORM\Id]
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "followers", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "user_id", onDelete: "cascade")] // definizione chiave esterna
     private EUser $follower;
     
 
     #[ORM\Id]
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "following", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "user_id", onDelete: "cascade")] // definizione chiave esterna
     private EUser $following;
 
 

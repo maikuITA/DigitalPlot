@@ -19,36 +19,36 @@ class EPurchase{
     
     //---------------Billing Address----------------
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $country;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $city;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $province;
 
-    #[ORM\Column(type:"string", length:5, nullable:false)]
+    #[ORM\Column(type:"string", length:5)]
     private string $zipCode;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $billingAddress;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $streetNumber;
 
     //---------------Relationships-------------------
 
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist","remove"])]
-    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true, onDelete: "cascade")]
+    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", onDelete: "cascade")]
     private EUser $subscriber;
 
     #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", onDelete: "cascade")] // definizione chiave esterna
     private ESubscription $subscription;
      
     #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", onDelete: "cascade")] // definizione chiave esterna
     private ECreditCard $creditCardNumber;
      
     #[ORM\Column(name: "subtotal", type: "float")]
