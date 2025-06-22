@@ -359,6 +359,7 @@ class FEntityManager {
                 ->setParameter('genre', $genre)
                 ->setParameter('releaseDate', $releaseDate);
             $query = self::$entityManager->createQuery($dql);
+            ULogSys::toLog("Query result: " . $query->getResult(), true);
             return $query->getResult();
         } catch (Exception $e) {
             ULogSys::toLog('Error: ' . $e->getMessage(), true);
