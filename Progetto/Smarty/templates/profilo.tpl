@@ -130,13 +130,13 @@
                 </div>
                 <div class="column is-two-fifth c">
                     <a class="title">{$user->getUsername()}</a>
-                    {if $user->getPrivilege === 0}
+                    {if $user->getPrivilege() === 0}
                         <a class="subtitle has-text-warning">Utente base</a>
-                    {elseif $user->getPrivilege === 1}
-                        <a class="subtitle has-text-warning">Utente Reader</a>
-                    {elseif $user->getPrivilege === 2}
-                        <a class="subtitle has-text-warning">Utente Writer</a>
-                    {elseif $user->getPrivilege === 3}
+                    {elseif $user->getPrivilege() === 1}
+                        <a class="subtitle has-text-warning">Utente Premium</a>
+                    {elseif $user->getPrivilege() === 2}
+                        <a class="subtitle has-text-warning">Utente Pro</a>
+                    {elseif $user->getPrivilege() === 3}
                         <a class="subtitle has-text-warning">Amministratore</a>
                     {/if}
                 </div>
