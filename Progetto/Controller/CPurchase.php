@@ -20,7 +20,7 @@ class CPurchase{
         if(CUser::isLogged()){
             if (!CUser::isSubbed()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                $points = EPurchase::calculateDiscount($subscription->getPrice(), $user->getPlotCard()->getPoints());
+                $points = EPurchase::calculateDiscount($subscription, $user->getPlotCard()->getPoints());
                 VPurchase::startPurchase($user,true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $subscription, $points);
             } else {
                 header('Location: https://digitalplot.altervista.org/home');
@@ -47,7 +47,7 @@ class CPurchase{
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
             $card = self::getCreditCard();
-            $points = EPurchase::calculateDiscount($subscription->getPrice(), $user->getPlotCard()->getPoints());
+            $points = EPurchase::calculateDiscount($subscription, $user->getPlotCard()->getPoints());
             $user->getPlotCard()->setPoints($user->getPlotCard()->getPoints() - ($points / POINTS_MULTIPLIER));
             if (strtolower($subscription->getType()) === 'writer' ){
                 $writer = $user->setPrivilege(2);
