@@ -15,10 +15,10 @@ class CArticle{
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if(CUser::isSubbed()){
-                VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true, $article, $article->getWriter());
+                VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter());
             }
             else{
-                VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $article, $article->getWriter());
+                VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter());
             }
         }else{
             header('Location: https://digitalplot.altervista.org/auth');

@@ -12,11 +12,11 @@ class VUser{
      * @param bool $logged Indicates if the user is logged in.
      * @throws Exception
      */
-    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, ?array $articles = null, bool $isLogged = false, int $isAbbonato = BASIC): void {
+    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, ?array $articles = null, bool $isLogged = false, int $privilege = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> home.tpl");
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('privilege', $privilege);
         $smarty->assign('username', $username);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
@@ -29,11 +29,11 @@ class VUser{
      * It uses Smarty to render the 'accesso.tpl' template.
      * @throws Exception
      */
-    public static function auth(bool $isLogged = false, int $isAbbonato = BASIC) {
+    public static function auth(bool $isLogged = false, int $privilege = BASIC) {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> accesso.tpl");
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('privilege', $privilege);
         $smarty->display('accesso.tpl');
     }
 

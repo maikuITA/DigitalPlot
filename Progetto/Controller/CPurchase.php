@@ -20,7 +20,7 @@ class CPurchase{
         if(CUser::isLogged()){
             if (!CUser::isSubbed()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                $points = EPurchase::calculateSubTotal($subscription->getPrice(), $user->getPlotCard()->getPoints());
+                $points = EPurchase::calculateDiscount($subscription->getPrice(), $user->getPlotCard()->getPoints());
                 VPurchase::startPurchase($user,true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $subscription, $points);
             } else {
                 header('Location: https://digitalplot.altervista.org/home');

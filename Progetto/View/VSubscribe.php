@@ -13,11 +13,11 @@ class VSubscribe {
      * @param array|null $subs An array of subscriptions, if available
      * @return void
      */
-    public static function render(bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $isAbbonato = BASIC, ?array $subs = null ): void {
+    public static function render(bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC, ?array $subs = null ): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> abbonati.tpl");
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
         $smarty->assign('subscriptions', $subs);

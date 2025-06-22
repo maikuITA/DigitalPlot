@@ -13,12 +13,12 @@ class VError {
      * @return void
      * @throws Exception
      */
-    public static function render(string $errore, $plotPoints = 0 , $proPic = null , int $isAbbonato = BASIC, bool $isLogged = false): void {
+    public static function render(string $errore, $plotPoints = 0 , $proPic = null , int $privilege = BASIC, bool $isLogged = false): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> error.tpl");
         $smarty->assign('errore', $errore);
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
         $smarty->display('error.tpl');

@@ -2,12 +2,12 @@
 
 class VPurchase{
     
-    public static function startPurchase(EUser $user, bool $isLogged = false, int $plotPoints = 0, $proPic = null, int $isAbbonato = BASIC, ESubscription $subscription, float $poits): void {
+    public static function startPurchase(EUser $user, bool $isLogged = false, int $plotPoints = 0, $proPic = null, int $privilege = BASIC, ESubscription $subscription, float $poits): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> pagamento.tpl");
         $smarty->assign('user', $user);
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic); 
         $smarty->assign('subscription', $subscription);
@@ -15,11 +15,11 @@ class VPurchase{
         $smarty->display('pagamento.tpl');
     }
 
-    public static function buy(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $isAbbonato = BASIC, float $points, ESubscription $subscription, ECreditCard $card): void {
+    public static function buy(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC, float $points, ESubscription $subscription, ECreditCard $card): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> pagamento.tpl");
         $smarty->assign('isLogged', $isLogged);
-        $smarty->assign('isAbbonato', $isAbbonato);
+        $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
         $smarty->assign('subscription', $subscription);
