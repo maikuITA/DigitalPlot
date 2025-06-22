@@ -8,14 +8,9 @@ class CDashboard{
      */
     public static function dashboard(): void{
         if(CUser::isLogged() && CUser::isAdmin()){
-            // chiama la view per la home page
-            if(file_exists(__DIR__ . '/../View/VDashboard.php')) {
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                 VDashboard::render(plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData());
-            } else {
-                ULogSys::toLog("VDashboard file not found", true);
-            }
-        }else{
+        }else {
             header('Location: https://digitalplot.altervista.org/home');
             exit;
         }
