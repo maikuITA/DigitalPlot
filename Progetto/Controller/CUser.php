@@ -189,5 +189,20 @@ class CUser{
         }
     }
 
+    /**
+     * Method to redirect to the user profile page
+     * This method checks if the user is logged in and retrieves the user data.
+     * If the user is logged in, it renders the profile view with the user's data.
+     * If the user is not logged in, it redirects to the authentication page.
+     * @return void
+     */
+    public static function goToProfile(): void {
+        if (CUser::isLogged()) {
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            VProfile::render(user: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+        }
+    }
    
 }

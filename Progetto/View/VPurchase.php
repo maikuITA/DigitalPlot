@@ -14,7 +14,7 @@ class VPurchase{
      * @param ESubscription $subscription The subscription details.
      * @param float $poits The amount of points for the purchase.
      */
-    public static function startPurchase(EUser $user, bool $isLogged = false, int $plotPoints = 0, $proPic = null, int $privilege = BASIC, ESubscription $subscription, float $poits): void {
+    public static function startPurchase(EUser $user, bool $isLogged = false, int $plotPoints = 0, $proPic = null, int $privilege = BASIC, ESubscription $subscription, float $points): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> pagamento.tpl");
         $smarty->assign('user', $user);
@@ -23,7 +23,7 @@ class VPurchase{
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic); 
         $smarty->assign('subscription', $subscription);
-        $smarty->assign('points', $poits);
+        $smarty->assign('points', $points);
         $smarty->display('pagamento.tpl');
     }
 

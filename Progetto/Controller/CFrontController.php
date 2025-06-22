@@ -17,12 +17,14 @@ class CFrontController {
         'error' => ['CError', 'error404'],
         'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
+        'profile' => ['CUser', 'gToProfile'],
         'dbInit'  => ['CService', 'dbInit'],
         'logs' => ['CService', 'logs'],
         'find' => ['CSearch', 'find'],
         'logout' => ['CUser', 'logout'],
         'search' => ['CSearch', 'takeValueArticle'],
         'article' => ['CArticle', 'showArticle'],
+        'newArticle' => ['CArticle', 'newArticle'],
         'clearcache' => ['CService', 'clearCache'],
     ];
     
