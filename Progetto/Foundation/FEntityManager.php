@@ -359,14 +359,12 @@ class FEntityManager {
                   AND a.releaseDate >= :releaseDate 
                 ORDER BY a.title DESC, a.releaseDate";
 
-        $query = self::$entityManager->createQuery($dql)
-            ->setParameter('title', $title%)
-            ->setParameter('category', $category)
-            ->setParameter('genre', $genre)
-            ->setParameter('releaseDate', new \DateTime($releaseDate));
-
+        $query = self::$entityManager->createQuery($dql);
+        $query->setParameter('title', $title);
+        $query->setParameter('category', $category);
+        $query->setParameter('genre', $genre);
+        $query->setParameter('releaseDate', $releaseDate);
         $results = $query->getResult();
-
         ULogSys::toLog("Query returned " . count($results) . " result(s).", true);
         return $results;
 
