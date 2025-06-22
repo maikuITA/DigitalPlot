@@ -52,9 +52,9 @@
                 </a>
                 <figure class="image is-48x48">
                     {if $proPic === null}
-                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                        <a href="/profile"><img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/></a>
                     {else}
-                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                        <a href="/profile"><img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/></a>
                     {/if}
                 </figure>
                 <a href="/logout" class="is-ok">

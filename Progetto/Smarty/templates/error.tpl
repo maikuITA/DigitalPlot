@@ -27,9 +27,13 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
                     {if $isLogged === true}
-                        <a class="navbar-item" >PlotPoints: {$plotPoints}</a>
+                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
                         {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
+                        {/if}
+                        {if $privilege === 3}
+                            <a class="navbar-item" href="/dashboard" > Dashboard </a>
+                            <a class="navbar-item" href="/logs"> Logs </a>
                         {/if}
                     {else}
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
@@ -39,8 +43,8 @@
         </div>
         <div class="column">
             <div>
-                <a  class="title is-1">Digital</a>
-                <a  class="title is-1 has-text-warning">Plot</a>
+                <a class="title is-1">Digital</a>
+                <a class="title is-1 has-text-warning">Plot</a>
             </div> 
         </div>
         <div class="column is-one-quarter right">
