@@ -117,14 +117,15 @@ class EPurchase{
         return $this->billingAddress;
     }
 
-    public function calculateSubTotal(ESubscription $subscription, ?EDiscount $discount): float
+    public function calculateSubTotal(ESubscription $subscription, int $points): float
     {
-        if ($discount === null){
-            return $subscription->getPrice();
+        $price = $subscription->getPrice();
+        $difference = $price - ($points * POINTS_MULTIPLIER);
+        $result = $points * POINTS_MULTIPLIER;
+        if ($difference > 0) {
+            return $result; 
+        } else{
+            return $price;
         }
-        $priceA = $subscription->getPrice();
-        $priceS = $discount->getPrice();
-        $sub = $priceA - $priceS;
-        return $sub;
     }
 }
