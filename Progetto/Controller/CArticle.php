@@ -55,5 +55,23 @@ class CArticle{
         }
     }
 
+    public static function dropArticle(int $idArticle): void{
+        if(CUser::isLogged()){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if($user->getPrivilege() > 1){
+                $articles = $user->getArticles();
+                FPersistentManager::getInstance()->deleteArticleById(EArticle::class, $idArticle);
+                VProfile::showArticlesWriter(user: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
+            }
+            else{
+                header('Location: https://digitalplot.altervista.org/home');
+                exit();
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit();
+        }
+    }
+
 
 }

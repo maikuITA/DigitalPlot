@@ -166,8 +166,8 @@
                                 <td>{$article->getState()}</td>
                                 <td>{$article->getReleaseDate()}</td>
                                 <td>{$article->getGenre()}</td>
-                                <td><a class="has-text-link" >Modifica</a></td>
-                                <td><a class="has-text-danger">Elimina</a></td>
+                                <td><a class="has-text-link" href="/modifyArticle/{$article->getId()}" >Modifica</a></td>
+                                <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
                             </tr>
                         
                     {/foreach}
