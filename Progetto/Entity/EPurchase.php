@@ -40,15 +40,15 @@ class EPurchase{
     //---------------Relationships-------------------
 
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist","remove"])]
-    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true, onDelete: "casade")]
+    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true, onDelete: "cascade")]
     private EUser $subscriber;
 
     #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false, onDelete: "casade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
     private ESubscription $subscription;
      
     #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", nullable: false, onDelete: "casade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", nullable: false, onDelete: "cascade")] // definizione chiave esterna
     private ECreditCard $creditCardNumber;
      
     #[ORM\Column(name: "subtotal", type: "float")]

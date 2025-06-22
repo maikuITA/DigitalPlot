@@ -19,10 +19,10 @@ class EReview{
     private DateTime $releaseDate;
 
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "reviews", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: false, onDelete: "casade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
     private EUser $subscriber;
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews", cascade: ["persist","remove"])]
-    #[ORM\JoinColumn(name: "fk_article", referencedColumnName: "article_id", nullable: false, onDelete: "casade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_article", referencedColumnName: "article_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
     private EArticle $article;
 
     public function __construct(int $evaluate, string $comment, string $releaseDate, EUser $subscriber , EArticle $article ) {
