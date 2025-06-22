@@ -136,14 +136,14 @@ class CPurchase{
                             $user->getEmail(),
                             $user->getTelephone(),
                             $user->getBiography());
-    $reader->setId($user->getId());
-    $reader->addPlotCard($user->getPlotCard());
-    $reader->setProfilePicture($user->getEncodedData());
-     if ($user->getReadings() !== []) {
-            foreach ($user->getReadings() as $reading) {
-                 $reader->addReading($reading);
+        $reader->setId($user->getId());
+        $reader->addPlotCard($user->getPlotCard());
+        $reader->setProfilePicture($user->getEncodedData());
+        if ($user->getReadings() !== []) {
+                foreach ($user->getReadings() as $reading) {
+                    $reader->addReading($reading);
+                }
             }
+        return $reader;
         }
-    return $reader;
-    }
 }
