@@ -50,9 +50,7 @@ class FPersistentManager {
         return FEntityManager::getInstance()->deleteObj($entity);
     }
 
-    public function deleteArticleById(string $className, $idArticle): bool{
-        return FEntityManager::getInstance()->deleteArticleById($className, $idArticle);
-    }
+
 
     /**
      * Retrive an object by its id
