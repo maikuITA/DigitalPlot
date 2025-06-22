@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -24,7 +25,7 @@ class ECreditCard{
     public string $cvv;
     
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"])]
-    private $purchases;
+    private Collection $purchases;
 
     public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv) {
         $this->cardNumber = $cardNumber;

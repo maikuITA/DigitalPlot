@@ -35,7 +35,7 @@ class EArticle{
     private DateTime $releaseDate;
     
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"])]
-    private $reviews;
+    private Collection $reviews;
     
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", onDelete: "cascade")] // definizione chiave esterna
