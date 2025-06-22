@@ -134,7 +134,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left indirizzo">
-                                <input class="input is-rounded" type="text" placeholder="Città" value="{$user->getCity()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Città" value="{$user->getBirthplace()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
