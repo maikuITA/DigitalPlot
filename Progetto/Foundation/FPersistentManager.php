@@ -141,21 +141,32 @@ class FPersistentManager {
     }
 
     /**
-     * Check if a user is subscribed
+     * Check if a user is subscribed or not, if the subscription is expired, it will set the user privilege to BASIC
      * @param mixed $id
      * @return bool
      */
     public static function isSubbed(mixed $id) : bool {
-        if(FEntityManager::getInstance()->verifyExists( EUser::class, $id)) {
-            $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
-            $notExpiredPurch = array_filter($notExpiredPurch, function($purchase) use ($id) {
-                return $purchase->getSubscriber()->getId() === $id;
-            });
-            if (count($notExpiredPurch) > 0) {
+        if(FEntityManager::getInstance()->verifyExists(EUser::class, $id)) {
+            $user = FEntityManager::getInstance()->retrieveObjById(EUser::class, $id);
+            if ($user->getPrivilege() === READER || $user->getPrivilege() === WRITER) {
+                $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
+                $notExpiredPurch = array_filter($notExpiredPurch, function($purchase) use ($id) {
+                    return $purchase->getSubscriber()->getId() === $id;
+                });
+                if (count($notExpiredPurch) > 0) {
+                    return true;
+                } 
+                else{
+                    FEntityManager::getInstance()->updateField(EUser::class, $id, 'privilege', BASIC);
+                    return false;
+                }
+            }
+            elseif ($user->getPrivilege() === BASIC) {
+                return false;
+            }
+            elseif ($user->getPrivilege() === ADMIN) {
                 return true;
-            } 
-        } else {
-            return false;
+            }
         }
         return false;
     }

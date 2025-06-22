@@ -77,7 +77,7 @@ class EPurchase{
         $this->subscriber = $subscriber;
         $this->subscription = $subscription;
         $this->creditCardNumber = $card;
-        $this->subTotal = self::calculateSubTotal($this->subscription, $subscriber->getPlotCard()->getPoints());
+        $this->subTotal = $subscription->getPrice() - self::calculateDiscount($this->subscription, $subscriber->getPlotCard()->getPoints());
     }
     
     // Set methods
@@ -179,7 +179,7 @@ class EPurchase{
         return $this->subTotal;
     }
 
-    public static function calculateSubTotal(ESubscription $subscription, int $points): float
+    public static function calculateDiscount(ESubscription $subscription, int $points): float
     {
         $price = $subscription->getPrice();
         $difference = $price - ($points * POINTS_MULTIPLIER);
