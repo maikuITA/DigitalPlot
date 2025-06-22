@@ -251,10 +251,10 @@
                                     <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </span>
                             </p>
-                            <p class="control has-icons-left delete">
-                                <button class="button is-danger is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
-                                <span class="icon is-small is-left has-text-danger">
-                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                            <p class="control has-icons-left confirm">
+                                <button class="button is-link is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
+                                <span class="icon is-small is-left has-text-link">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
                                 </span>
                             </p>
                         </div>
