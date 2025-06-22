@@ -26,8 +26,8 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
                     {if $isLogged === true}
-                        <a class="navbar-item" href="">PlotPoints: {$plotPoints}</a>
-                        {if $isAbbonato === false}
+                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
+                        {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
                         {/if}
                     {else}
