@@ -10,10 +10,10 @@ class CSearch {
         if (CUser::isLogged()) {
             if(CUser::isSubbed()){
                 $title = UHTTPMethods::post('title');
-                $type = UHTTPMethods::post('type');
+                $category = UHTTPMethods::post('category');
                 $genre = UHTTPMethods::post('genre');
-                $date = UHTTPMethods::post('date');
-                CSearch::emptyValues($title, $type, $genre, $date);
+                $releaseDate = UHTTPMethods::post('date');
+                CSearch::emptyValues($title, $category, $genre, $releaseDate);
             }else{
                 header('Location: https://digitalplot.altervista.org/home');
             }
@@ -31,17 +31,17 @@ class CSearch {
      * @param string $date
      * @return void
      */
-    public static function emptyValues(string $title, string $type, string $genre, string $date): void {
+    public static function emptyValues(string $title, string $category, string $genre, string $releaseDate): void {
         if($title === '') {
             $title = '%';
         } elseif ($genre === '') {
             $genre = '%';
-        } elseif ($type === '') {
-            $type = '%';
-        } elseif ($date === '') {
-            $date = '%';
+        } elseif ($category === '') {
+            $category = '%';
+        } elseif ($releaseDate === '') {
+            $releaseDate = '%';
         }
-        $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
+        $result = FPersistentManager::getInstance()->searchArticles($title, $category, $genre, $releaseDate);
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         VSearch::displaySearchResults( $result, true,$user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());    
     }

@@ -128,8 +128,8 @@ class FPersistentManager {
      * Retrieve all articles from the database
      * @return EArticle[]|null Array of article objects or null if none found
      */
-    public function searchArticles(string $title, string $type, string $genre, string $date): ?array {
-        return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $type, $genre, $date);
+    public function searchArticles(string $title, string $category, string $genre, string $releaseDate): ?array {
+        return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $category, $genre, $releaseDate);
     }
 
     /**

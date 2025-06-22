@@ -90,7 +90,7 @@
                         </span>
                     </div>
                     <div class="select is-rounded">
-                        <select name='type'>
+                        <select name='category'>
                             <option value = '' >Tipo</option>
                             <option value = 'articolo' >Articolo</option>
                             <option value = 'giornale' >Giornale</option>

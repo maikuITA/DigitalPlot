@@ -350,14 +350,14 @@ class FEntityManager {
      * @return array|null
      * @throws Exception
      */
-    public static function retrieveArticles(string $className, string $title, string $type, string $genre, string $date): ?array {
+    public static function retrieveArticles(string $className, string $title, string $category, string $genre, string $releaseDate): ?array {
         try {
-            $dql = "SELECT a FROM $className a WHERE (a.title LIKE :title OR a.title IN (:titles)) AND a.type LIKE :type AND a.genre LIKE :genre AND a.date LIKE :date";
+            $dql = "SELECT a FROM $className a WHERE (a.title LIKE :title OR a.title IN (:title)) AND a.category LIKE :category AND a.genre LIKE :genre AND a.releaseDate LIKE :releaseDate";
             $query = self::$entityManager->createQuery($dql)
                 ->setParameter('title', $title)
-                ->setParameter('type', $type)
+                ->setParameter('category', $category)
                 ->setParameter('genre', $genre)
-                ->setParameter('date', $date);
+                ->setParameter('date', $releaseDate);
             $query = self::$entityManager->createQuery($dql);
             return $query->getResult();
         } catch (Exception $e) {
