@@ -34,14 +34,14 @@ class EArticle{
     #[ORM\Column(name:"release_date",type: "date")]
     private DateTime $releaseDate;
     
-    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private $reviews;
     
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
-    #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", onDelete: "cascade")] // definizione chiave esterna
     private EUser $writer;
     
-    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private Collection $readings;
 
     public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EUser $writer) {
@@ -150,12 +150,9 @@ class EArticle{
     public function getReviews() {
         return $this->reviews;
     }
-    public function removeReview(int $id): void {
-        foreach ($this->reviews as $key => $review) {
-            if ($review->getId() === $id) {
-                unset($this->reviews[$key]);
-                break;
-            }
+    public function removeReview(EReview $review): void {
+        if($this->reviews->contains($review)) {
+            $this->reviews->removeElement($review);
         }
     }
     public function countReviews(): int {
