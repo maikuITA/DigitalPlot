@@ -132,23 +132,23 @@
             </section>
         </div>
     </div>
-            <div class="container" id="container">
-                {if isset($articles)}
-                    {foreach from=$articles item=article}
-                        <div class="card">
-                            <div class="card-content">
-                                <p class="title">{$article->getTitle()}</p>
-                                <p class="subtitle">{$article->getDescription()}</p>
-                            </div>
-                            <footer class="card-footer">
-                                <p class="card-footer-item">
-                                    <a href="/article" class="button is-warning">Leggi di più</a>
-                                </p>
-                            </footer>
-                        </div>
-                    {/foreach}
-                {/if}
-            </div>           
+    <div class="container" id="container">
+        {if isset($articles)}
+            {foreach from=$articles item=article}
+                <div class="card">
+                    <div class="card-content">
+                        <p class="title">{$article->getTitle()}</p>
+                        <p class="subtitle">{$article->getDescription()}</p>
+                    </div>
+                    <footer class="card-footer">
+                        <p class="card-footer-item">
+                            <a href="/article" class="button is-warning">Leggi di più</a>
+                        </p>
+                    </footer>
+                </div>
+            {/foreach}
+        {/if}
+    </div>           
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
