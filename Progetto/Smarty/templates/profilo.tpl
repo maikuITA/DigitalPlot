@@ -129,7 +129,7 @@
                     </figure>
                 </div>
                 <div class="column is-two-fifth c">
-                    <a class="title">NomeUtente</a>
+                    <a class="title">{$user->getUsername()}</a>
                     <a class="subtitle has-text-warning">tipoAbbonamento</a>
                 </div>
                 <div class="column is-two-fifth cs">
