@@ -16,7 +16,7 @@ class EPlotCard{
     private int $points;
 
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "plotCard", cascade: ["persist", "remove"])]
-    #[ORM\JoinColumn(name : "fk_user", referencedColumnName : "user_id", nullable:false, unique: true, onDelete: "casade")] // definizione chiave esterna
+    #[ORM\JoinColumn(name : "fk_user", referencedColumnName : "user_id", nullable:false, unique: true, onDelete: "cascade")] // definizione chiave esterna
     private EUser $user;
 
     public function __construct(int $points, EUser $user ) {
