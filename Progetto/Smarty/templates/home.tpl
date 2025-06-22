@@ -49,7 +49,7 @@
                 {if $privilege >= 2}
                     <a href="/newArticle" class="is-ok">
                         <span class="icon is-large is-ok">
-                            <i class="fa fa-file-text" style="font-size:24px"></i>
+                            <i class="fa fa-plus-square" style="font-size:24px"></i>
                         </span>
                     </a>
                 {/if}
