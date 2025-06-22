@@ -36,17 +36,17 @@ class EArticle{
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $reviews = [];
     
-    #[ORM\ManyToOne(targetEntity: "EWriter", inversedBy: "articles", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private EWriter $writer;
+    private EUser $writer;
     
     #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private $readings = [];
 
 
 
-    public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EWriter $writer, array $readings = [], array $reviews = []) {
+    public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EUser $writer, array $readings = [], array $reviews = []) {
         $this->title = $title;
         $this->description = $description;
         $this->contents = $contents;
@@ -111,10 +111,10 @@ class EArticle{
     public function getCategory(): string {
         return $this->category;
     }
-    public function setWriter(EWriter $writer) {
+    public function setWriter(EUser $writer) {
         $this->writer = $writer;
     }
-    public function getWriter(): EWriter {
+    public function getWriter(): EUser {
         return $this->writer;
     }
     public function setReleaseDate(string $releaseDate){

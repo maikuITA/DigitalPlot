@@ -6,9 +6,6 @@ use Doctrine\ORM\Mapping\DiscriminatorMap;
 
 
 #[ORM\Entity]
-#[ORM\InheritanceType("JOINED")]
-#[ORM\DiscriminatorColumn(name: "type", type: "string")]
-#[ORM\DiscriminatorMap(["subsciber" => "ESubscriber", "reader" => "EReader", "writer" => "EWriter", "user" => "EUser"])]  // definisco i tipi di utenti
 #[ORM\Table(name: "User")]
 class EUser {
     
@@ -16,6 +13,11 @@ class EUser {
     #[ORM\GeneratedValue(strategy:"IDENTITY")]
     #[ORM\Column(name:"user_id", type:"integer")]
     private int $id;
+
+    #[ORM\Column(name:"privilege", type:"int", nullable:false)]
+    private int $privilege = BASIC;
+
+    //----------------CREDENTIALS----------------
    
     #[ORM\Column(type:"string",nullable:false,unique:true)]
     private string $username;
@@ -23,15 +25,13 @@ class EUser {
     #[ORM\Column(type:"string", nullable:false)]
     private string $password;
     
-    #[ORM\Column(name:"admin",type:"boolean")]
-    private bool $admin = false;
-    
+    //-----------------REGISTRY-----------------
+
     #[ORM\Column(type:"string",length:100, nullable:false) ]
     private string $name;
     
     #[ORM\Column(type:"string", length:100, nullable:false)]
     private string $surname;
-    
     
     #[ORM\Column(type:"date", nullable:false) ]
     private DateTime $birthdate;
@@ -54,14 +54,61 @@ class EUser {
     #[ORM\Column(type:"blob", nullable:true)]
     private mixed $profilePicture;
 
+    //-----------------BASIC-----------------
+
     #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
     private $readings = [];
     
     #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
     private $plotCard = [];
 
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"])]
+    private $purchases = [];
 
-    public function __construct(string $username, string $password,string $name, string $surname,bool $admin = false ,string $birthdate, string $streetAddress, string $birthplace, string $email, string $telephone, string $biography = "", $plotCard = [], array $readings = [], mixed $profilePicture = null) {
+    //-----------------READER-----------------
+
+    // definisco il name del campo dell'altra tabella che è chiave esterna
+    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"])]
+    private $followers = [];
+    
+    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"])]
+    private $following = [];
+
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"])]
+    private $reviews = [];
+
+    //-----------------WRITER-----------------
+
+    // definisco il nome del campo dell'altra tabella che è chiave esterna
+    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"])]
+    private $articles = [];
+
+    //-----------------ADMIN-----------------
+
+
+    //-----------------CONSTRUCT-----------------
+
+    public function __construct(int $privilege,
+                                string $username, 
+                                string $password,
+                                string $name, 
+                                string $surname,
+                                string $birthdate, 
+                                string $streetAddress, 
+                                string $birthplace, 
+                                string $email, 
+                                string $telephone, 
+                                string $biography = "", 
+                                mixed $profilePicture = null,
+                                $readings = [], 
+                                $plotCard = [], 
+                                $purchases = [],
+                                $following = [], 
+                                $followers = [], 
+                                $reviews = [], 
+                                $articles = []
+                                ) {
+        $this->setPrivilege($privilege);
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setName($name);
@@ -72,10 +119,14 @@ class EUser {
         $this->setEmail($email);
         $this->setTelephone($telephone);
         $this->setBiography($biography);
-        $this->setAdmin($admin);
+        $this->setProfilePicture($profilePicture);
         $this->readings = $readings;
         $this->plotCard[0] = $plotCard;
-        $this->profilePicture = $profilePicture;
+        $this->purchases = $purchases;
+        $this->following = $following;
+        $this->followers = $followers;
+        $this->reviews = $reviews;
+        $this->articles = $articles;
     }
     
 
@@ -86,6 +137,13 @@ class EUser {
 
     public function getId(): ?int {
         return $this->id;
+    }
+
+    public function setPrivilege(int $privilege): void {
+        $this->privilege = $privilege;
+    }
+    public function getPrivilege(): int {
+        return $this->privilege;
     }
 
     public function setUsername(string $username) {
@@ -103,13 +161,6 @@ class EUser {
     public function getPassword(): string {
         return $this->password;
     }    
-
-    public function getAdmin(): bool {
-        return $this->admin;
-    }
-    public function setAdmin(bool $admin): void {
-        $this->admin = $admin;
-    }
     public function setName(string $name): void {
         $this->name = $name;
     }
@@ -158,7 +209,33 @@ class EUser {
     public function getBiography(): string {
         return $this->biography;
     }
-    // Metodi per le readings
+
+    public function setProfilePicture($profilePicture): void {
+        $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * Returns the profile picture as a base64 encoded string.
+     * If the profile picture is a resource, it reads the contents and encodes it.
+     * If it's already a string, it encodes it directly.
+     */
+    public function getEncodedData(): ?string {
+        if($this->profilePicture === null){
+            return null; // Gestione del caso in cui non sia stata impostata alcuna immagine
+        }
+        if(is_resource($this->profilePicture)){
+            $data = stream_get_contents($this->profilePicture);
+            return base64_encode($data);
+        }else{
+            return base64_encode($this->profilePicture);
+        }
+        
+    }
+
+    //-----------------BASIC-----------------
+
+
+    //readings methods
     public function addReading(EReading $reading): void {
         $this->plotCard[0]->addPoints(POINTS);
         $this->readings[] = $reading;
@@ -185,30 +262,7 @@ class EUser {
         return count($this->readings);
     }
 
-    public function setProfilePicture($profilePicture): void {
-        $this->profilePicture = $profilePicture;
-    }
-
-    /**
-     * Returns the profile picture as a base64 encoded string.
-     * If the profile picture is a resource, it reads the contents and encodes it.
-     * If it's already a string, it encodes it directly.
-     */
-    public function getEncodedData(): ?string {
-        if($this->profilePicture === null){
-            return null; // Gestione del caso in cui non sia stata impostata alcuna immagine
-        }
-        if(is_resource($this->profilePicture)){
-            $data = stream_get_contents($this->profilePicture);
-            return base64_encode($data);
-        }else{
-            return base64_encode($this->profilePicture);
-        }
-        
-    }
-
-
-    // Metodi per le PlotCard
+    //PlotCard methods
     public function addPlotCard(EPlotCard $plotCard): void {
         $this->plotCard[0] = $plotCard;
     }
@@ -218,10 +272,155 @@ class EUser {
     public function removePlotCard(): void {
         array_shift($this->plotCard);
     }
+
+    //purchases methods
+    public function addPurchase(EPurchase $purchase): void {
+        array_push($this->purchases, $purchase);
+    }
+    public function getPurchases(): array {
+        return $this->purchases;
+    }
+    public function getPurchaseById(int $id): ?EPurchase {
+        foreach ($this->purchases as $purchase) {
+            if ($purchase->getId() === $id) {
+                return $purchase;
+            }
+        }
+        return null;
+    }
+    public function removePurchase(int $id): void {
+        foreach ($this->purchases as $key => $purchase) {
+            if ($purchase->getId() === $id) {
+                unset($this->purchases[$key]);
+                break;
+            }
+        }
+    }
+    public function getPurchaseCount(): int {
+        return count($this->purchases);
+    }
+
+    //-----------------READER-----------------
+
+     // followers
+
+    public function setFollowers(EUser $follower): void{
+        array_push($this->followers, $follower);
+    }
+    public function getFollowers(): array{
+        return $this->followers;
+    }
+    public function getFollower(int $index): EUser{
+        return $this->followers[$index];
+    }
+    public function getNumFollowers(): int{
+        return count($this->followers);
+    }
+    public function removeFollower(EUser $follower): void{
+        foreach($this->followers as $key => $value){
+            if($value == $follower){
+                unset($this->followers[$key]);
+            }
+        }
+    }
+    public function getFollowerById(int $id): ?EUser{
+        foreach($this->followers as $follower){
+            if($follower->getId() == $id){
+                return $follower;
+            }
+        }
+        return null;
+    }
+    public function getFollowerByUsername(string $username): ?EUser{
+        foreach($this->followers as $follower){
+            if($follower->getUsername() == $username){
+                return $follower;
+            }
+        }
+        return null;
+    }
+    public function getFollowerByName(string $name): ?EUser{
+        foreach($this->followers as $follower){
+            if($follower->getName() == $name){
+                return $follower;
+            }
+        }
+        return null;
+    }
+    public function getFollowerBySurname(string $surname): ?EUser{
+        foreach($this->followers as $follower){
+            if($follower->getSurname() == $surname){
+                return $follower;
+            }
+        }
+        return null;
+    }
+
+    // following methods
+    public function addFollowing(EUser $following): void{
+        array_push($this->following, $following);
+    }
+    public function getFollowing(): array{
+        return $this->following;
+    }
+
+    public function getNumFollowing(): int{
+        return count($this->following);
+    }
+
+    //reviews methods
+    public function addReview(EReview $review): void {
+        array_push($this->reviews, $review);
+    }
+    public function getReviews(): array {
+        return $this->reviews;
+    }
+    public function getReviewById(int $id): ?EReview {
+        foreach ($this->reviews as $review) {
+            if ($review->getId() === $id) {
+                return $review;
+            }
+        }
+        return null;
+    }
+    public function removeReview(int $id): void {
+        foreach ($this->reviews as $key => $review) {
+            if ($review->getId() === $id) {
+                unset($this->reviews[$key]);
+                break;
+            }
+        }
+    }
+    public function getReviewCount(): int {
+        return count($this->reviews);
+    }
+
+    //-----------------WRITER-----------------
+
+    // articles methods
+    public function addArticle(EArticle $article): void{
+        array_push($this->articles, $article);
+    }
+    public function getArticles(): array{
+        return $this->articles;
+    }
+    public function getArticleById(int $index): EArticle{
+        return $this->articles[$index];
+    }
+    public function getNumArticles(): int{
+        $numeroArticles = count($this->articles);
+        return $numeroArticles;
+    }
+    public function removeArticle(EArticle $article): void{
+        foreach($this->articles as $key => $value){
+            if($value == $article){
+                unset($this->articles[$key]);
+            }
+        }
+    }
     public function __toString()
     {
-        return // "ID: " . $this->getId() . "\n" .
-               "Username: " . $this->getUsername() . "\n" .
+        return "Username: " . $this->getUsername() . "\n" .
                "Name: " . $this->getName() . "\n" .
                "Surname: " . $this->getSurname() . "\n" .
                "Data di Nascita: " . $this->getBirthdate()->format('Y-m-d') . "\n" .

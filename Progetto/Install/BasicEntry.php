@@ -9,7 +9,7 @@ class BasicEntry{
     public static function populateDb(): void {
 
     // User
-    $u1 = new EUser('admin','admin123','Admin','Admin',true,'2003-04-18', 'Via Monte Saraceno, 11','Pescara','admin@admin.com','0000000000');
+    $u1 = new EUser(ADMIN,'admin','admin123','Admin','Admin','2003-04-18', 'Via Monte Saraceno, 11','Pescara','admin@admin.com','0000000000');
     $u2 = new EUser('Mario', 'Mpass01', 'Mario', 'Rossi', false, '1998-09-12', 'Via Lago di Garda, 24' ,'Roma', 'mario.rossi@example.com', '3281234567');
     $u3 = new EUser('Lucia', 'LuciaPwd!', 'Lucia', 'Bianchi', false, '1995-07-23', 'Via Colli Euganei, 15' ,'Milano', 'lucia.bianchi@example.com', '3297654321',);
     $u4 = new EUser('Giulia', 'GiuLia22', 'Giulia', 'Verdi', false, '2001-05-30','Via Bosco Ceduo, 33' ,'Torino', 'giulia.verdi@example.com', '3271239876');

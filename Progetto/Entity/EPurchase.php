@@ -17,9 +17,9 @@ class EPurchase{
     #[ORM\Column(name: "expire_date", type: "date")]
     private DateTime $expireDate;
     
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "purchases", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
-    private ESubscriber $subscriber;
+    private EUser $subscriber;
 
     #[ORM\Column(type:"string", length:40, nullable:false)]
     private string $billingAddress;
@@ -40,7 +40,7 @@ class EPurchase{
     private float $subTotal;
 
 
-    public function __construct( string $purchaseDate, string $expireDate, ESubscriber $subscriber, string $billingAddress, ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
+    public function __construct( string $purchaseDate, string $expireDate, EUser $subscriber, string $billingAddress, ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
         $this->subscriber = $subscriber;
         $this->billingAddress = $billingAddress;
         $this->subscription = $subscription;
@@ -76,7 +76,7 @@ class EPurchase{
     {
         $this->subscription = $subscription;
     }
-    public function setSubscriber(ESubscriber $subscriber){
+    public function setSubscriber(EUser $subscriber){
         $this->subscriber = $subscriber;
     }
     public function setBillingAddress(string $billingAddress): void
@@ -108,7 +108,7 @@ class EPurchase{
     {
         return $this->subscription;
     }
-    public function getSubscriber(): ESubscriber
+    public function getSubscriber(): EUser
     {
         return $this->subscriber;
     }

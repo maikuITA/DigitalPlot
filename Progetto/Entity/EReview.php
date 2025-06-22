@@ -18,14 +18,14 @@ class EReview{
     #[ORM\Column(name: "release_date", type: "date")]
     private DateTime $releaseDate;
 
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "reviews", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "reviews", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
-    private ESubscriber $subscriber;
+    private EUser $subscriber;
     #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_article", referencedColumnName: "article_id", nullable: false)] // definizione chiave esterna
     private EArticle $article;
 
-    public function __construct(int $evaluate, string $comment, string $releaseDate, ESubscriber $subscriber , EArticle $article ) {
+    public function __construct(int $evaluate, string $comment, string $releaseDate, EUser $subscriber , EArticle $article ) {
 
         $this->evaluate = $evaluate;
         $this->comment = $comment;
@@ -53,10 +53,10 @@ class EReview{
     public function getComment(): string {
         return $this->comment;
     }
-    public function setSubscriber(ESubscriber $subscriber) {
+    public function setSubscriber(EUser $subscriber) {
         $this->subscriber = $subscriber;
     }
-    public function getSubscriber(): ESubscriber {
+    public function getSubscriber(): EUser {
         return $this->subscriber;
     }
     public function setArticle(EArticle $article) {
