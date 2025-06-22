@@ -133,9 +133,9 @@
                     {if $user->getPrivilege() === 0}
                         <a class="subtitle has-text-warning">Utente base</a>
                     {elseif $user->getPrivilege() === 1}
-                        <a class="subtitle has-text-warning">Utente Premium</a>
+                        <a class="subtitle has-text-warning">Utente reader</a>
                     {elseif $user->getPrivilege() === 2}
-                        <a class="subtitle has-text-warning">Utente Pro</a>
+                        <a class="subtitle has-text-warning">Utente writer</a>
                     {elseif $user->getPrivilege() === 3}
                         <a class="subtitle has-text-warning">Amministratore</a>
                     {/if}
