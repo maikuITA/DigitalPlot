@@ -35,6 +35,10 @@ class FPersistentManager {
         return FEntityManager::getInstance()->addObj($entity);
     }
 
+    public function updateObject(string $className, $id, string $fieldName, $value): bool {
+        return FEntityManager::getInstance()->updateField($className, $id, $fieldName, $value);
+    }
+
 
     /**
      * Delete an object in the database
@@ -142,7 +146,7 @@ class FPersistentManager {
      * @return bool
      */
     public static function isSubbed(mixed $id) : bool {
-        if(FEntityManager::getInstance()->verifyExists( ESubscriber::class, $id)) {
+        if(FEntityManager::getInstance()->verifyExists( EUser::class, $id)) {
             $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
             $notExpiredPurch = array_filter($notExpiredPurch, function($purchase) use ($id) {
                 return $purchase->getSubscriber()->getId() === $id;

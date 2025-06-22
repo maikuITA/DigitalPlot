@@ -20,7 +20,7 @@ class CPurchase{
         if(CUser::isLogged()){
             if (!CUser::isSubbed()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
+                $points = EPurchase::calculateSubTotal($subscription->getPrice(), $user->getPlotCard()->getPoints());
                 VPurchase::startPurchase($user,true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), false, $subscription, $points);
             } else {
                 header('Location: https://digitalplot.altervista.org/home');
@@ -47,14 +47,14 @@ class CPurchase{
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
             $card = self::getCreditCard();
-            $points = self::verifyPoints($user->getPlotCard()->getPoints(), $subscription->getPrice());
+            $points = EPurchase::calculateSubTotal($subscription->getPrice(), $user->getPlotCard()->getPoints());
             $user->getPlotCard()->setPoints($user->getPlotCard()->getPoints() - ($points / POINTS_MULTIPLIER));
-            if (strtolower($subscription->getType()) == 'writer' ){
-                $writer = self::createWriter($user);
-                FPersistentManager::getInstance()->saveInDb($writer);
+            if (strtolower($subscription->getType()) === 'writer' ){
+                $writer = $user->setPrivilege(2);
+                FPersistentManager::getInstance()->updateObject(EUser::class, $writer, 'privilege', WRITER); 
             }else{
-                $reader = self::createReader($user);
-                FPersistentManager::getInstance()->saveInDb($reader);
+                $reader = $user->setPrivilege(1);
+                FPersistentManager::getInstance()->updateObject(EUser::class, $reader, 'privilege', READER);
             }
             VPurchase::buy(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), true, $points, $subscription, $card);
         }
@@ -79,71 +79,4 @@ class CPurchase{
         FPersistentManager::getInstance()->saveInDb($card);
         return $card;
     }
-
-    /**
-     * This method verifies if the points are enough to cover the price of the subscription.
-     * If the points are enough, it returns the total value of the points used.
-     * If not, it returns the price of the subscription.
-     * @param int $points The number of points available
-     * @param float $price The price of the subscription
-     * @return float The value of points used or the price of the subscription
-     */
-    public static function verifyPoints(int $points, float $price): float {
-        $difference = $price - ($points * POINTS_MULTIPLIER);
-        $result = $points * POINTS_MULTIPLIER;
-        if ($difference > 0) {
-            return $result; 
-        } else{
-            return $price;
-        }
-    }
-
-
-    public static function createWriter(EUser $user): EWriter {
-        
-        $writer = new EWriter($user->getUsername(), 
-                                $user->getPassword(), 
-                                $user->getName(), 
-                                $user->getSurname(),
-                                $user->getBirthdate()->format('Y-m-d'),
-                                $user->getStreetAddress(),
-                                $user->getBirthplace(),
-                                $user->getEmail(),
-                                $user->getTelephone(),
-                                $user->getBiography());
-        $writer->setId($user->getId());
-        $writer->addPlotCard($user->getPlotCard());
-        $writer->setProfilePicture($user->getEncodedData());
-        if ($user->getReadings() !== []) {
-            foreach ($user->getReadings() as $reading) {
-                 $writer->addReading($reading);
-            }
-        }
-        return $writer;
-    }
-
-
-
-    public static function createReader(EUser $user): EReader {
-        
-        $reader = new EReader($user->getUsername(), 
-                            $user->getPassword(), 
-                            $user->getName(), 
-                            $user->getSurname(),
-                            $user->getBirthdate()->format('Y-m-d'),
-                            $user->getStreetAddress(),
-                            $user->getBirthplace(),
-                            $user->getEmail(),
-                            $user->getTelephone(),
-                            $user->getBiography());
-        $reader->setId($user->getId());
-        $reader->addPlotCard($user->getPlotCard());
-        $reader->setProfilePicture($user->getEncodedData());
-        if ($user->getReadings() !== []) {
-                foreach ($user->getReadings() as $reading) {
-                    $reader->addReading($reading);
-                }
-            }
-        return $reader;
-        }
 }
