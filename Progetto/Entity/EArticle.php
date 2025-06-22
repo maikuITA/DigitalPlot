@@ -35,12 +35,10 @@ class EArticle{
     private DateTime $releaseDate;
     
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
-    // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $reviews;
     
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
-    // definisco il nome del campo dell'altra tabella che è chiave esterna
     private EUser $writer;
     
     #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
