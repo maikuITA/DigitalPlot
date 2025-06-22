@@ -66,7 +66,7 @@ class EUser {
 
     //-----------------BASIC-----------------
 
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"])]
     private $readings;
     
     #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
@@ -90,7 +90,7 @@ class EUser {
     //-----------------WRITER-----------------
 
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"])]
     private $articles;
 
     //-----------------ADMIN-----------------
