@@ -66,25 +66,25 @@ class EUser {
 
     //-----------------BASIC-----------------
 
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"], orphanRemoval: true) ]
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
     private $readings;
     
-    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
     private $plotCard;
 
-    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"])]
     private $purchases;
 
     //-----------------READER-----------------
 
     // definisco il name del campo dell'altra tabella che è chiave esterna
-    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"])]
     private $followers;
     
-    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"])]
     private $following;
 
-    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"])]
     private $reviews;
 
     //-----------------WRITER-----------------
