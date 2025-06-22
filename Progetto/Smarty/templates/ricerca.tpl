@@ -78,9 +78,11 @@
             {/if}
         </div>
     </header>
+        <div class = "body-container">
             <section class="section">
                 <p class="subtitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                    Inserisci il titolo dell'articolo che desideri leggere.
+                    Oppure, se preferisci, puoi utilizzare i filtri per categoria, genere e data di pubblicazione per affinare la ricerca.
                 </p>
                 <form class="field is-grouped" method="POST" action="/search">
                     <div class="control has-icons-left" >
