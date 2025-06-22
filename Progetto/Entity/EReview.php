@@ -21,7 +21,7 @@ class EReview{
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "reviews", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     private EUser $subscriber;
-    #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews", cascade: ["persist",   "remove"])]
+    #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "reviews", cascade: ["persist","remove"])]
     #[ORM\JoinColumn(name: "fk_article", referencedColumnName: "article_id", nullable: false)] // definizione chiave esterna
     private EArticle $article;
 
