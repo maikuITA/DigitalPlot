@@ -49,18 +49,25 @@
         </div>
         <div class="column is-one-quarter right">
             {if $isLogged === true}
+                {if $privilege >= 2}
+                    <a href="/newArticle" class="is-ok">
+                        <span class="icon is-large is-ok">
+                            <i class="fa fa-search lens is-ok" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                {/if}
                 <a href="/find" class="is-ok">
                     <span class="icon is-large is-ok">
                         <i class="fa fa-search lens is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
-                <figure class="image is-48x48">
+                <a href="/profile"><figure class="image is-48x48">
                     {if $proPic === null}
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                     {else}
                         <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
-                </figure>
+                </figure></a>
                 <a href="/logout" class="is-ok">
                     <span class="icon is-large is-ok">
                         <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
