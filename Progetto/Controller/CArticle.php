@@ -2,6 +2,11 @@
 
 class CArticle{
 
+    /**
+     * @param ?int $idArticolo
+     * @return void
+     * @throws Exception
+     */
     public static function showArticle(?int $idArticolo):void{
         if($idArticolo === null || $idArticolo <= 0){
             header('Location: https://digitalplot.altervista.org/error');
@@ -24,5 +29,31 @@ class CArticle{
             header('Location: https://digitalplot.altervista.org/auth');
             exit();
         }
+        
     }
+
+
+    /**
+     * Method to display the new article page
+     * This method checks if the user is logged in and has the privilege to write articles.
+     * If the user is authorized, it displays the new article page; otherwise, it redirects to the home page.
+     * @return void
+     */
+    public static function newArticle():void {
+        if(CUser::isLogged()){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if($user->getPrivilege() === WRITER || $user->getPrivilege() === ADMIN){
+                VArticle::newArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());
+            }
+            else{
+                header('Location: https://digitalplot.altervista.org/home');
+                exit();
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit();
+        }
+    }
+
+
 }

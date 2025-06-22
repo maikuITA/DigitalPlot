@@ -12,7 +12,7 @@ class VProfile {
      * @param int $privilege The privilege level of the user (default is BASIC).
      * @return void
      */
-    public static function render(EUser $user, int $plotPoints, string $proPic,bool $isLogged = false, int $privilege = BASIC  ): void {
+    public static function render(string $user, int $plotPoints, $proPic = null, bool $isLogged = false, int $privilege = BASIC ): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> profilo.tpl");
         $smarty->assign('user', $user);
