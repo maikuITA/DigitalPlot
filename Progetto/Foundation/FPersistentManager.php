@@ -132,6 +132,7 @@ class FPersistentManager {
         return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $category, $genre, $releaseDate);
     }
 
+
     /**
      * drop db
      * @return void

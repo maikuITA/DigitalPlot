@@ -159,30 +159,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Pubblico</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Attesa di approvazione</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>Disabilitato</td>
-                        <td>01/01/1970</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-warning" disabled>Modifica</a></td>
-                        <td><a class="has-text-danger">Elimina</a></td>
-                    </tr>
+                {if isset($articles)}
+                    {foreach from=$articles item=article}
+                            <tr>
+                                <td>{$article->getTitle()}</td>
+                                <td>{$article->getState()}</td>
+                                <td>{$article->getReleaseDate()}</td>
+                                <td>{$article->getGenre()}</td>
+                                <td><a class="has-text-link" >Modifica</a></td>
+                                <td><a class="has-text-danger">Elimina</a></td>
+                            </tr>
+                        
+                    {/foreach}
+                {/if}
                 </tbody>
             </table>
         </div>

@@ -22,4 +22,16 @@ class VProfile {
         $smarty->assign('proPic', $proPic); 
         $smarty->display('profilo.tpl');
     }
+
+    public static function showArticlesWriter(string $user, int $plotPoints, $proPic = null, bool $isLogged = false, int $privilege = BASIC,?array $articles = []){
+        $smarty = StartSmarty::configuration();
+        ULogSys::toLog("Display -> profilo.tpl");
+        $smarty->assign('user', $user);
+        $smarty->assign('isLogged', $isLogged);
+        $smarty->assign('privilege', $privilege);
+        $smarty->assign('plotPoints', $plotPoints);
+        $smarty->assign('proPic', $proPic); 
+        $smarty->assign('articles', $articles); 
+        $smarty->display('profilo.tpl');
+    }
 }
