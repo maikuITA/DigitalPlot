@@ -9,17 +9,17 @@ class BasicEntry{
     public static function populateDb(): void {
 
     // User
-    $u1 = new EUser(ADMIN,'admin','admin123','Admin','Admin','2003-04-18', 'Via Monte Saraceno, 11','Pescara','admin@admin.com','0000000000');
-    $u2 = new EUser(BASIC,'Mario', 'Mpass01', 'Mario', 'Rossi', '1998-09-12', 'Via Lago di Garda, 24' ,'Roma', 'mario.rossi@example.com', '3281234567');
-    $u3 = new EUser(BASIC,'Lucia', 'LuciaPwd!', 'Lucia', 'Bianchi', '1995-07-23', 'Via Colli Euganei, 15' ,'Milano', 'lucia.bianchi@example.com', '3297654321',);
-    $u4 = new EUser(BASIC,'Giulia', 'GiuLia22', 'Giulia', 'Verdi', '2001-05-30','Via Bosco Ceduo, 33' ,'Torino', 'giulia.verdi@example.com', '3271239876');
-    $u5 = new EUser(BASIC,'Lorenzo', 'Lz@1999', 'Lorenzo', 'Conti', '1999-02-14','Via Valle d\'Aosta, 9', 'Firenze', 'lorenzo.conti@example.com', '3209988776');
-    $u6 = new EUser(BASIC,'Elena', 'Elena77_', 'Elena', 'Ferrari', '2000-12-04','Via Fiume Adda, 21' ,'Bologna', 'elena.ferrari@example.com', '3218877665');
-    $u7 = new EUser(READER,'Marco', 'M@rco123', 'Marco', 'Gentile', '1997-03-03','Via Pianura Padana, 12','Napoli','marco.gentile@example.com', '3301122334');
-    $u8 = new EUser(READER,'Chiara', 'Chiara!98', 'Chiara', 'Marino','1998-12-15','Via Pianura Padana, 12' ,'Genova', 'chiara.marino@example.com','3312233445');
-    $u9 = new EUser(WRITER,'Stefano', 'Stef_99x', 'Stefano', 'De Luca', '1996-03-05','Via Monte Subasio, 4', 'Palermo', 'stefano.deluca@example.com' ,'3323344556');
-    $u10 = new EUser(WRITER,'Francesca', 'Fr@nce12', 'Francesca', 'Romano', '2002-02-30','Via Costa Smeralda, 18', 'Trieste', 'francesca.romano@example.com' ,'3334455667');
-
+    $u1 = new EUser(ADMIN, 'admin', 'admin123', 'Admin', 'Admin', '2003-04-18', 'Italy', 'Pescara', 'PE', '65125', 'Via Monte Saraceno', '11', 'admin@admin.com', '0000000000');
+    $u2 = new EUser(BASIC, 'mario.rossi', 'passMario1', 'Mario', 'Rossi', '1995-06-12', 'Italy', 'Roma', 'RM', '00100', 'Via Appia Nuova', '45', 'mario.rossi@example.com', '3201234567');
+    $u3 = new EUser(READER, 'lisa.romano', 'lisaRead@24', 'Lisa', 'Romano', '1991-08-14', 'Italy', 'Trieste', 'TS', '34100', 'Via San Nicolò', '9', 'lisa.romano@example.com', '3275566888');
+    $u4 = new EUser(WRITER, 'matteo.riva', 'writerMatteo$', 'Matteo', 'Riva', '1989-02-11', 'Italy', 'Parma', 'PR', '43100', 'Viale Piacenza', '23', 'matteo.riva@example.com', '3289988776');
+    $u5 = new EUser(BASIC, 'francesca.neri', 'fraNeri2024', 'Francesca', 'Neri', '2000-05-05', 'Italy', 'Bologna', 'BO', '40100', 'Via dell\'Indipendenza', '34', 'francesca.neri@example.com', '3295566778');
+    $u6 = new EUser(ADMIN, 'ezio.auditore', 'BestAssassin1', 'Ezio', 'Auditore', '1459-06-24', 'Italy', 'Firenze', 'FI', '50100', 'Viale dei Mille', '8', 'ezio.auditore@example.com', '3214455667',"Bella vita la nostra, eh Fratello? La migliore, possa non cambiare mai e possa non cambiare noi.");
+    $u7 = new EUser(WRITER, 'chiara.fontana', 'chiaraW_2024', 'Chiara', 'Fontana', '1994-04-04', 'Italy', 'Ancona', 'AN', '60100', 'Via XXV Aprile', '5', 'chiara.fontana@example.com', '3229988775');
+    $u8 = new EUser(BASIC, 'carlo.bruni', 'adminCarlo!', 'Carlo', 'Bruni', '1985-07-17', 'Italy', 'Genova', 'GE', '16100', 'Via XX Settembre', '55', 'carlo.bruni@example.com', '3242233445');
+    $u9 = new EUser(BASIC, 'sara.galli', 'saraBasic99', 'Sara', 'Galli', '1996-11-03', 'Italy', 'Verona', 'VR', '37100', 'Piazza Bra', '3', 'sara.galli@example.com', '3267788990');
+    $u10 = new EUser(READER, 'giorgio.conti', 'giorgioRead99', 'Giorgio', 'Conti', '1993-12-21', 'Italy', 'Lecce', 'LE', '73100', 'Via Leuca', '17', 'giorgio.conti@example.com', '3254433221');
+    
     //PlotCard
     $p1 = new EPlotCard(10000, $u1);
     $u1->addPlotCard($p1);
@@ -36,7 +36,7 @@ class BasicEntry{
     $p5 = new EPlotCard(11000, $u5);
     $u5->addPlotCard($p5);
 
-    $p6 = new EPlotCard(9700, $u6);
+    $p6 = new EPlotCard(1459, $u6);
     $u6->addPlotCard($p6);
 
     $p7 = new EPlotCard(12500, $u7);
@@ -52,11 +52,13 @@ class BasicEntry{
     $u10->addPlotCard($p10);
 
     //ESubcription
-
-    $sub1 = new ESubscription(WRITER, '1 month', 20.00);
-    $sub2 = new ESubscription(WRITER, '1 week', 10.00);
-    $sub3 = new ESubscription(READER, '1 month', 10.00);
-    $sub4 = new ESubscription(READER, '1 week', 5.00);
+    
+    $sub1 = new ESubscription(WRITER, '1 year', 200.00);
+    $sub2 = new ESubscription(WRITER, '1 month', 20.00);
+    $sub3 = new ESubscription(WRITER, '1 week', 10.00);
+    $sub4 = new ESubscription(READER, '1 year', 100.00);
+    $sub5 = new ESubscription(READER, '1 month', 10.00);
+    $sub6 = new ESubscription(READER, '1 week', 5.00);
 
     //ECreditCard
 
@@ -69,32 +71,33 @@ class BasicEntry{
 
     //EPurchase
     
-    $pur1 = new EPurchase('2023-10-01','2023-11-01',$u7,'Via Pianura Padana, 12',$sub3,$cc1);
-    $pur2 = new EPurchase('2023-10-01','2024-10-01',$u8,'Via Pianura Padana, 12',$sub4,$cc2);
-    $pur3 = new EPurchase('2023-10-01','2027-10-01',$u9,'Via Monte Subasio, 4',$sub1,$cc3);
-    $pur4 = new EPurchase('2023-10-01','2023-12-01',$u10,'Via Costa Smeralda, 18',$sub2,$cc4);
+    $pur1 = new EPurchase('2023-10-01','2024-10-01','Italy','Roma','RM','00100','Via Appia Nuova, 45', '1', $u7,$sub1,$cc1);
+    $pur2 = new EPurchase('2024-01-15', '2024-02-15', 'Italy', 'Torino', 'TO', '10100', 'Via Po, 19', '2', $u4, $sub2, $cc2);
+    $pur3 = new EPurchase('2023-06-20', '2023-06-27', 'Italy', 'Genova', 'GE', '16100', 'Via XX Settembre, 55', '3', $u10, $sub6, $cc3);
+    $pur4 = new EPurchase('2022-11-05', '2023-11-05', 'Italy', 'Verona', 'VR', '37100', 'Piazza Bra, 3', '4', $u3, $sub4, $cc4);
 
     //EFollow
-    $fo1 = new EFollow($u7,$u9);
-    $fo2 = new EFollow($u8,$u9);
+    $fo1 = new EFollow($u3,$u4);
+    $fo2 = new EFollow($u10,$u7);
     
     //EArticle
-    $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', 'Nel bel mezzo del cazzo' , 'approved', 'Romazo', 'Classico', '1400-01-01', $u9);
-    $u9->addArticle($art1);
-    $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', 'Una storia di trasformazioni e immobilismo', 'approved', 'Romanzo', 'Storico', '1958-05-01', $u9);
-    $u9->addArticle($art2);
-    $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', 'Distopia totalitaria tra controllo e censura', 'approved', 'Romanzo', 'Fantascienza', '1949-06-08', $u9);
-    $u9->addArticle($art3);
-    $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', 'Una danza tra amore e convenzioni sociali', 'approved', 'Romanzo', 'Sentimentale', '1813-01-28', $u9);
-    $u9->addArticle($art4);
-    $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', 'Un’indagine tra libri, simboli e inquisitori', 'approved', 'Romanzo', 'Giallo', '1980-10-01', $u9);
-    $u9->addArticle($art5);
-    $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', 'Un cammino tra ascetismo, ricchezza e consapevolezza', 'approved', 'Romanzo', 'Spirituale', '1922-01-01', $u10);
-    $u10->addArticle($art6);
-    $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', 'Un mostro umano più degli umani stessi', 'approved', 'Romanzo', 'Horror', '1818-03-11', $u10);
-    $u10->addArticle($art7);
-    $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', 'Vivere tra i rami per vedere il mondo meglio', 'approved', 'Romanzo', 'Fiabesco', '1957-11-25', $u10);
-    $u10->addArticle($art8);
+    $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', 'Nel bel mezzo del cazzo' , 'approved', 'Romazo', 'Classico', '1400-01-01', $u4);
+    $u4->addArticle($art1);
+    $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', 'Una storia di trasformazioni e immobilismo', 'approved', 'Romanzo', 'Storico', '1958-05-01', $u4);
+    $u4->addArticle($art2);
+    $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', 'Distopia totalitaria tra controllo e censura', 'approved', 'Romanzo', 'Fantascienza', '1949-06-08', $u4);
+    $u4->addArticle($art3);
+    $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', 'Una danza tra amore e convenzioni sociali', 'approved', 'Romanzo', 'Sentimentale', '1813-01-28', $u4);
+    $u4->addArticle($art4);
+    $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', 'Un’indagine tra libri, simboli e inquisitori', 'approved', 'Romanzo', 'Giallo', '1980-10-01', $u7);
+    $u7->addArticle($art5);
+    $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', 'Un cammino tra ascetismo, ricchezza e consapevolezza', 'approved', 'Romanzo', 'Spirituale', '1922-01-01', $u7);
+    $u7->addArticle($art6);
+    $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', 'Un mostro umano più degli umani stessi', 'approved', 'Romanzo', 'Horror', '1818-03-11', $u7);
+    $u7->addArticle($art7);
+    $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', 'Vivere tra i rami per vedere il mondo meglio', 'approved', 'Romanzo', 'Fiabesco', '1957-11-25', $u7);
+    $u7->addArticle($art8);
+    
 
     //EReview
 
@@ -106,85 +109,78 @@ class BasicEntry{
     $art2->addReview($rev2);
     $u7->addReview($rev2);
 
-    $rev3 = new EReview(5, 'Distopico e attuale', '2021-03-10', $u8, $art3);
-    $art3->addReview($rev3);
-    $u8->addReview($rev3);
+    $rev23 = new EReview(3, 'Interessante ma complesso', '2023-01-10', $u3, $art1);
+    $art1->addReview($rev23);
+    $u3->addReview($rev23);
 
-    $rev4 = new EReview(3, 'Carino ma lento', '2019-07-22', $u9, $art4);
-    $art4->addReview($rev4);
-    $u9->addReview($rev4);
+    $rev24 = new EReview(5, 'Capolavoro assoluto', '2023-01-15', $u4, $art2);
+    $art2->addReview($rev24);
+    $u4->addReview($rev24);
 
-    $rev5 = new EReview(5, 'Geniale! Eco non delude.', '2022-02-17', $u10, $art5);
-    $art5->addReview($rev5);
-    $u10->addReview($rev5);
+    $rev25 = new EReview(4, 'Molto coinvolgente', '2023-02-01', $u7, $art3);
+    $art3->addReview($rev25);
+    $u7->addReview($rev25);
 
-    $rev6 = new EReview(2, 'Troppo filosofico per i miei gusti', '2021-09-30', $u7, $art6);
-    $art6->addReview($rev6);
-    $u7->addReview($rev6);
+    $rev26 = new EReview(2, 'Troppo lento', '2023-02-10', $u10, $art4);
+    $art4->addReview($rev26);
+    $u10->addReview($rev26);
 
-    $rev7 = new EReview(4, 'Interessante rilettura del mito', '2023-04-01', $u8, $art7);
-    $art7->addReview($rev7);
-    $u8->addReview($rev7);
+    $rev27 = new EReview(5, 'Mi ha emozionato', '2023-03-05', $u3, $art5);
+    $art5->addReview($rev27);
+    $u3->addReview($rev27);
 
-    $rev8 = new EReview(1, 'Non l\'ho proprio capito...', '2018-11-11', $u9, $art8);
-    $art8->addReview($rev8);
-    $u9->addReview($rev8);
+    $rev28 = new EReview(4, 'Ottima lettura', '2023-03-12', $u4, $art6);
+    $art6->addReview($rev28);
+    $u4->addReview($rev28);
 
-    $rev9 = new EReview(5, 'Poesia pura', '2020-06-06', $u10, $art1);
-    $art1->addReview($rev9);
-    $u10->addReview($rev9);
+    $rev29 = new EReview(3, 'Niente di speciale', '2023-03-20', $u7, $art7);
+    $art7->addReview($rev29);
+    $u7->addReview($rev29);
 
-    $rev10 = new EReview(4, 'Un romanzo da leggere almeno una volta', '2019-12-05', $u7, $art2);
-    $art2->addReview($rev10);
-    $u7->addReview($rev10);
+    $rev30 = new EReview(1, 'Noioso', '2023-04-01', $u10, $art8);
+    $art8->addReview($rev30);
+    $u10->addReview($rev30);
 
-    $rev11 = new EReview(3, 'Troppa lentezza nella trama', '2020-08-20', $u8, $art3);
-    $art3->addReview($rev11);
-    $u8->addReview($rev11);
+    $rev31 = new EReview(5, 'Storia bellissima', '2023-04-15', $u3, $art2);
+    $art2->addReview($rev31);
+    $u3->addReview($rev31);
 
-    $rev12 = new EReview(5, 'Elizabeth è un personaggio fantastico', '2021-01-02', $u9, $art4);
-    $art4->addReview($rev12);
-    $u9->addReview($rev12);
+    $rev32 = new EReview(3, 'Scritto bene ma poco originale', '2023-05-01', $u4, $art3);
+    $art3->addReview($rev32);
+    $u4->addReview($rev32);
 
-    $rev13 = new EReview(2, 'Non sono riuscito a finirlo', '2022-10-10', $u10, $art5);
-    $art5->addReview($rev13);
-    $u10->addReview($rev13);
+    $rev33 = new EReview(4, 'Letto tutto d\'un fiato', '2023-05-10', $u7, $art4);
+    $art4->addReview($rev33);
+    $u7->addReview($rev33);
 
-    $rev14 = new EReview(4, 'Molto spirituale e riflessivo', '2023-03-15', $u7, $art6);
-    $art6->addReview($rev14);
-    $u7->addReview($rev14);
+    $rev34 = new EReview(2, 'Mi aspettavo di più', '2023-05-20', $u10, $art5);
+    $art5->addReview($rev34);
+    $u10->addReview($rev34);
 
-    $rev15 = new EReview(5, 'Attualissimo anche oggi', '2024-05-09', $u8, $art3);
-    $art3->addReview($rev15);
-    $u8->addReview($rev15);
+    $rev35 = new EReview(5, 'Assolutamente consigliato', '2023-06-01', $u3, $art6);
+    $art6->addReview($rev35);
+    $u3->addReview($rev35);
 
-    $rev16 = new EReview(1, 'Noioso e sopravvalutato', '2017-07-14', $u9, $art7);
-    $art7->addReview($rev16);
-    $u9->addReview($rev16);
+    $rev36 = new EReview(4, 'Un grande classico', '2023-06-15', $u4, $art7);
+    $art7->addReview($rev36);
+    $u4->addReview($rev36);
 
-    $rev17 = new EReview(3, 'Bella idea, ma poco coinvolgente', '2021-11-25', $u10, $art8);
-    $art8->addReview($rev17);
-    $u10->addReview($rev17);
+    $rev37 = new EReview(3, 'Carino, ma non il mio genere', '2023-07-01', $u7, $art8);
+    $art8->addReview($rev37);
+    $u7->addReview($rev37);
 
-    $rev18 = new EReview(5, 'Capolavoro assoluto', '2022-04-04', $u7, $art1);
-    $art1->addReview($rev18);
-    $u7->addReview($rev18);
+    $rev38 = new EReview(1, 'Lento e difficile da seguire', '2023-07-10', $u10, $art1);
+    $art1->addReview($rev38);
+    $u10->addReview($rev38);
 
-    $rev19 = new EReview(2, 'Non fa per me', '2020-02-29', $u8, $art6);
-    $art6->addReview($rev19);
-    $u8->addReview($rev19);
+    $rev39 = new EReview(4, 'Trama avvincente', '2023-08-01', $u3, $art3);
+    $art3->addReview($rev39);
+    $u3->addReview($rev39);
 
-    $rev20 = new EReview(4, 'Mi ha sorpreso positivamente', '2023-09-12', $u9, $art2);
-    $art2->addReview($rev20);
-    $u9->addReview($rev20);
+    $rev40 = new EReview(5, 'Meraviglioso', '2023-08-15', $u4, $art5);
+    $art5->addReview($rev40);
+    $u4->addReview($rev40);
 
-    $rev21 = new EReview(5, 'Incredibilmente attuale', '2024-01-30', $u10, $art3);
-    $art3->addReview($rev21);
-    $u10->addReview($rev21);
-
-    $rev22 = new EReview(3, 'Stile interessante', '2022-06-18', $u7, $art5);
-    $art5->addReview($rev22);
-    $u7->addReview($rev22);
         
     //EReading
     
@@ -234,6 +230,7 @@ class BasicEntry{
 
     //Popolazione db
 
+    // utenti
     FPersistentManager::getInstance()->saveInDb($u1);
     FPersistentManager::getInstance()->saveInDb($u2);
     FPersistentManager::getInstance()->saveInDb($u3);
@@ -244,7 +241,7 @@ class BasicEntry{
     FPersistentManager::getInstance()->saveInDb($u8);
     FPersistentManager::getInstance()->saveInDb($u9);
     FPersistentManager::getInstance()->saveInDb($u10);
-
+    // plot cards
     FPersistentManager::getInstance()->saveInDb($p1);
     FPersistentManager::getInstance()->saveInDb($p2);
     FPersistentManager::getInstance()->saveInDb($p3);
@@ -255,27 +252,25 @@ class BasicEntry{
     FPersistentManager::getInstance()->saveInDb($p8);
     FPersistentManager::getInstance()->saveInDb($p9);
     FPersistentManager::getInstance()->saveInDb($p10);
-
+    // subscriptions
     FPersistentManager::getInstance()->saveInDb($sub1);
     FPersistentManager::getInstance()->saveInDb($sub2);
     FPersistentManager::getInstance()->saveInDb($sub3);
     FPersistentManager::getInstance()->saveInDb($sub4);
-
+    //credit cards
     FPersistentManager::getInstance()->saveInDb($cc1);
     FPersistentManager::getInstance()->saveInDb($cc2);
     FPersistentManager::getInstance()->saveInDb($cc3);
     FPersistentManager::getInstance()->saveInDb($cc4);
-
-    FPersistentManager::getInstance()->saveInDb($d1);
-
+    // purchases
     FPersistentManager::getInstance()->saveInDb($pur1);
     FPersistentManager::getInstance()->saveInDb($pur2);
     FPersistentManager::getInstance()->saveInDb($pur3);
     FPersistentManager::getInstance()->saveInDb($pur4);
-
+    // follows
     FPersistentManager::getInstance()->saveInDb($fo1);
     FPersistentManager::getInstance()->saveInDb($fo2);
-
+    // articles
     FPersistentManager::getInstance()->saveInDb($art1);
     FPersistentManager::getInstance()->saveInDb($art2);
     FPersistentManager::getInstance()->saveInDb($art3);
@@ -284,30 +279,28 @@ class BasicEntry{
     FPersistentManager::getInstance()->saveInDb($art6);
     FPersistentManager::getInstance()->saveInDb($art7);
     FPersistentManager::getInstance()->saveInDb($art8);
-
+    // reviews
     FPersistentManager::getInstance()->saveInDb($rev1);
     FPersistentManager::getInstance()->saveInDb($rev2);
-    FPersistentManager::getInstance()->saveInDb($rev3);
-    FPersistentManager::getInstance()->saveInDb($rev4);
-    FPersistentManager::getInstance()->saveInDb($rev5);
-    FPersistentManager::getInstance()->saveInDb($rev6);
-    FPersistentManager::getInstance()->saveInDb($rev7);
-    FPersistentManager::getInstance()->saveInDb($rev8);
-    FPersistentManager::getInstance()->saveInDb($rev9);
-    FPersistentManager::getInstance()->saveInDb($rev10);
-    FPersistentManager::getInstance()->saveInDb($rev11);
-    FPersistentManager::getInstance()->saveInDb($rev12);
-    FPersistentManager::getInstance()->saveInDb($rev13);
-    FPersistentManager::getInstance()->saveInDb($rev14);
-    FPersistentManager::getInstance()->saveInDb($rev15);
-    FPersistentManager::getInstance()->saveInDb($rev16);
-    FPersistentManager::getInstance()->saveInDb($rev17);
-    FPersistentManager::getInstance()->saveInDb($rev18);
-    FPersistentManager::getInstance()->saveInDb($rev19);
-    FPersistentManager::getInstance()->saveInDb($rev20);
-    FPersistentManager::getInstance()->saveInDb($rev21);
-    FPersistentManager::getInstance()->saveInDb($rev22);
-
+    FPersistentManager::getInstance()->saveInDb($rev23);
+    FPersistentManager::getInstance()->saveInDb($rev24);
+    FPersistentManager::getInstance()->saveInDb($rev25);
+    FPersistentManager::getInstance()->saveInDb($rev26);
+    FPersistentManager::getInstance()->saveInDb($rev27);
+    FPersistentManager::getInstance()->saveInDb($rev28);
+    FPersistentManager::getInstance()->saveInDb($rev29);
+    FPersistentManager::getInstance()->saveInDb($rev30);
+    FPersistentManager::getInstance()->saveInDb($rev31);
+    FPersistentManager::getInstance()->saveInDb($rev32);
+    FPersistentManager::getInstance()->saveInDb($rev33);
+    FPersistentManager::getInstance()->saveInDb($rev34);
+    FPersistentManager::getInstance()->saveInDb($rev35);
+    FPersistentManager::getInstance()->saveInDb($rev36);
+    FPersistentManager::getInstance()->saveInDb($rev37);
+    FPersistentManager::getInstance()->saveInDb($rev38);
+    FPersistentManager::getInstance()->saveInDb($rev39);
+    FPersistentManager::getInstance()->saveInDb($rev40);
+    // readings
     FPersistentManager::getInstance()->saveInDb($read1);
     FPersistentManager::getInstance()->saveInDb($read2);
     FPersistentManager::getInstance()->saveInDb($read3);
