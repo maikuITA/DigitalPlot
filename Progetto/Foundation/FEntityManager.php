@@ -283,7 +283,6 @@ class FEntityManager {
             ULogSys::toLog('prova4', true);
             if ($obj !== null){
                 self::$entityManager->remove($obj);
-                ULogSys::toLog('prova1', true);
                 self::$entityManager->flush();
                 ULogSys::toLog('prova2', true);
                 self::$entityManager->getConnection()->commit();
