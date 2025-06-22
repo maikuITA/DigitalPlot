@@ -8,7 +8,7 @@ class VError {
      * @param string $errore The error message to display
      * @param int $plotPoints The number of plot points the user has (default is 0)
      * @param mixed $proPic The user's profile picture data (default is null)   
-     * @param bool $isAbbonato Indicates if the user is a subscriber (default is false)
+     * @param bool $privilege  Indicates if the user is a subscriber (default is false)
      * @param bool $isLogged Indicates if the user is logged in (default is false)
      * @return void
      * @throws Exception

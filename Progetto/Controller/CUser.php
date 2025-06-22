@@ -70,10 +70,10 @@ class CUser{
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
         if(self::isSubbed()){
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, isAbbonato: $user->getPrivilege());
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege());
         }
         else{
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, isAbbonato: $user->getPrivilege());
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege());
         }
     }
 

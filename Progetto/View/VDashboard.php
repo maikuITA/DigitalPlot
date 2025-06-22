@@ -7,7 +7,7 @@ class VDashboard{
      * This function sets up the Smarty template engine and assigns variables to it.
      * It then displays the 'dashboard.tpl' template.
      *
-     * @param bool $isAbbonato Indicates if the user is a subscriber.
+     * @param bool $privilege  Indicates if the user is a subscriber.
      * @param int $plotPoints The number of plot points the user has.
      * @param ?string $proPic The user's profile picture, if available.
      * @param bool $isLogged Indicates if the user is logged in.

@@ -9,7 +9,7 @@ class VSubscribe {
      * @param bool $isLogged Indicates if the user is logged in
      * @param int $plotPoints The number of plot points the user has
      * @param mixed $proPic The user's profile picture data
-     * @param bool $isAbbonato Indicates if the user is a subscriber
+     * @param bool $privilege  Indicates if the user is a subscriber
      * @param array|null $subs An array of subscriptions, if available
      * @return void
      */
