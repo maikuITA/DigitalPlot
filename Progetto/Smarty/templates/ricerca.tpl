@@ -91,7 +91,7 @@
                     </div>
                     <div class="select is-rounded">
                         <select name='category'>
-                            <option value = '' >Tipo</option>
+                            <option value = '%' >Tipo</option>
                             <option value = 'articolo' >Articolo</option>
                             <option value = 'giornale' >Giornale</option>
                             <option value = 'rivista' >Rivista</option>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="select is-rounded">
                         <select name = 'genre' >
-                            <option value = '' >Genere</option>
+                            <option value = '%' >Genere</option>
                             <option value = 'cronaca' >Cronaca</option>
                             <option value = 'economia' >Economia</option>
                             <option value = 'politica' >Politica</option>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="select is-rounded">
                         <select name = 'releaseDate' >
-                            <option value = '' >Anno</option>
+                            <option value = '0' >Anno</option>
                             <option value = '2025' >2025</option>
                             <option value = '2024' >2024</option>
                             <option value = '2023' >2023</option>

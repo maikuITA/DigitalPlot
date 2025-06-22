@@ -34,13 +34,6 @@ class CSearch {
     public static function emptyValues(string $title, string $category, string $genre, string $releaseDate): void {
         $title = trim($title);
         $title = "%" . $title . "%";
-        if ($genre === '') {
-            $genre = '%';
-        } elseif ($category === '') {
-            $category = '%';
-        } elseif ($releaseDate === '') {
-            $releaseDate = '0';
-        }
         $result = FPersistentManager::getInstance()->searchArticles($title, $category, $genre, $releaseDate);
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         VSearch::displaySearchResults( $result, true,$user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());    
