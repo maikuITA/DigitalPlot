@@ -128,7 +128,41 @@
                         </div>          
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left indirizzo">
+                                <input class="input is-rounded" type="text" placeholder="Paese" value="{$user->getCountry()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left indirizzo">
+                                <input class="input is-rounded" type="text" placeholder="Città" value="{$user->getCity()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field has-addons has-addons-centered">
+                            <p class="control has-icons-left indirizzo">
+                                <input class="input is-rounded" type="text" placeholder="Provincia" value="{$user->getProvince()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left indirizzo">
+                                <input class="input is-rounded" type="text" placeholder="CAP" value="{$user->getZipCode()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field has-addons has-addons-centered">
+                            <p class="control has-icons-left indirizzo">
                                 <input class="input is-rounded" type="text" placeholder="Indirizzo" value="{$user->getStreetAddress()}" required>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-map-marker" aria-hidden="true">  </i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left indirizzo">
+                                <input class="input is-rounded" type="text" placeholder="Numero Civico" value="{$user->getStreetNumber()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
@@ -187,12 +221,12 @@
                             </p>
                         </div>
                         <div class="field is-grouped">
-                            <div class="control has-icons-left">
-                                <input class="input" type="date" name="expirationDate" id="birthdate" required>
+                            <p class="control has-icons-left intestatario">
+                                <input class="input is-rounded" type="date" name ="expirationDate" id="birthdate" required>
                                 <span class="icon is-small is-left">
-                                    <i class="fas fa-calendar"></i> 
+                                    <i class="fa fa-calendar" aria-hidden="true">  </i>
                                 </span>
-                            </div>
+                            </p>
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left carta">
