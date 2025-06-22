@@ -127,13 +127,13 @@
                             </p>
                         </div>          
                         <div class="field is-grouped">
-                            <p class="control has-icons-left indirizzo">
+                            <p class="control has-icons-left ">
                                 <input class="input is-rounded" type="text" placeholder="Paese" value="{$user->getCountry()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
                             </p>
-                            <p class="control has-icons-left indirizzo">
+                            <p class="control has-icons-left ">
                                 <input class="input is-rounded" type="text" placeholder="Città" value="{$user->getBirthplace()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
@@ -141,13 +141,13 @@
                             </p>
                         </div>
                         <div class="field is-grouped">
-                            <p class="control has-icons-left indirizzo">
+                            <p class="control has-icons-left ">
                                 <input class="input is-rounded" type="text" placeholder="Provincia" value="{$user->getProvince()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
                             </p>
-                            <p class="control has-icons-left indirizzo">
+                            <p class="control has-icons-left ">
                                 <input class="input is-rounded" type="text" placeholder="CAP" value="{$user->getZipCode()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
@@ -161,7 +161,7 @@
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
                             </p>
-                            <p class="control has-icons-left indirizzo">
+                            <p class="control has-icons-left">
                                 <input class="input is-rounded" type="text" placeholder="Numero Civico" value="{$user->getStreetNumber()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
