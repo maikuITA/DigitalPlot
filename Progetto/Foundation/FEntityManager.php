@@ -277,11 +277,12 @@ class FEntityManager {
      * @return boolean
      * @throws Exception
      */
-    public static function deleteObj(object $obj): bool {
+    public static function deleteObj(string $className, object $obj): bool {
         try{
             self::$entityManager->getConnection()->beginTransaction();
+            $managedObj = self::$entityManager->find($className, $obj->getId());
             ULogSys::toLog('prova4', true);
-            if ($obj !== null){
+            if ($managedObj !== null){
                 self::$entityManager->remove($obj);
                 self::$entityManager->flush();
                 ULogSys::toLog('prova2', true);

@@ -61,7 +61,7 @@ class CArticle{
             if($user->getPrivilege() > 1){
                 $articles = $user->getArticles();
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
-                FPersistentManager::getInstance()->delete($article);
+                FPersistentManager::getInstance()->delete(EArticle::class, $article);
                 VProfile::render(user: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
             }
             else{
