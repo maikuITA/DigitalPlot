@@ -114,7 +114,7 @@ class EUser {
                                 string $email, 
                                 string $telephone, 
                                 string $biography = "", 
-                                mixed $profilePicture = null,
+                                mixed $profilePicture = null
                                 ) {
         $this->setPrivilege($privilege);
         $this->setUsername($username);
