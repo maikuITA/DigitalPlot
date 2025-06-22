@@ -1,7 +1,6 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "Subscription")]
@@ -22,14 +21,14 @@ class ESubscription {  // cod type period price
     #[ORM\Column(type: "float")]
     private float $price;
     
-    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist", "remove"], orphanRemoval: true)]  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private $purchases; // array di purchases associati all'abbonamento
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist", "remove"])]  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    private $purchases = []; // array di purchases associati all'abbonamento
     
-    public function __construct(int $type,string $period, float $price) {
+    public function __construct(int $type,string $period, float $price, array $purchases = []) {
         $this->setType($type);
         $this->period = $period;
         $this->price = $price;
-        $this->purchases = new ArrayCollection(); 
+        $this->purchases = $purchases; // inizializza l'array di purchases
     }
 
     // Set methods
@@ -72,21 +71,20 @@ class ESubscription {  // cod type period price
         return $this->purchases;
     }
     public function addPurchase(EPurchase $purchase){
-        $this->purchases->add($purchase);
+        $this->purchases[] = $purchase;
     }
     public function removePurchase(EPurchase $purchase){
-        if ($this->purchases->contains($purchase)) {
-            $this->purchases->removeElement($purchase);
+        $key = array_search($purchase, $this->purchases);
+        if ($key !== false) {
+            unset($this->purchases[$key]);
         }
     }
     public function getPurchasesCount(){
-        return $this->purchases->count();
+        return count($this->purchases);
     }
     public function getPurchaseById(int $index){
-        foreach ($this->purchases as $purchase) {
-            if ($purchase->getCod() === $index) {
-                return $purchase;
-            }
+        if (array_key_exists($index, $this->purchases)) {
+            return $this->purchases[$index];
         }
         return null;
     }
