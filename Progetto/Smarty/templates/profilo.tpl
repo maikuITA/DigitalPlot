@@ -164,7 +164,7 @@
                             <tr>
                                 <td>{$article->getTitle()}</td>
                                 <td>{$article->getState()}</td>
-                                <td>{$article->getReleaseDate()}</td>
+                                <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
                                 <td>{$article->getGenre()}</td>
                                 <td><a class="has-text-link" href="/modifyArticle/{$article->getId()}" >Modifica</a></td>
                                 <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
