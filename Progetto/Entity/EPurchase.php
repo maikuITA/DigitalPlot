@@ -57,15 +57,25 @@ class EPurchase{
 
     public function __construct(string $purchaseDate, 
                                 string $expireDate, 
+                                string $country, 
+                                string $city, 
+                                string $province, 
+                                string $zipCode,
                                 string $billingAddress,
+                                string $streetNumber,
                                 EUser $subscriber, 
                                 ESubscription $subscription, 
                                 ECreditCard $card) {
-        $this->subscriber = $subscriber;
-        $this->billingAddress = $billingAddress;
-        $this->subscription = $subscription;
         $this->purchaseDate = new DateTime($purchaseDate);
         $this->expireDate = new DateTime($expireDate);
+        $this->country = $country;
+        $this->city = $city;
+        $this->province = $province;
+        $this->zipCode = $zipCode;
+        $this->billingAddress = $billingAddress;
+        $this->streetNumber = $streetNumber;
+        $this->subscriber = $subscriber;
+        $this->subscription = $subscription;
         $this->creditCardNumber = $card;
         $this->subTotal = self::calculateSubTotal($this->subscription, $subscriber->getPlotCard()->getPoints());
     }
@@ -83,10 +93,31 @@ class EPurchase{
     {
         $this->expireDate = new DateTime($expireDate);
     }   
-    public function setCard(ECreditCard $card)
+    public function setCountry(string $country): void
     {
-        $this->creditCardNumber = $card;
+        $this->country = $country;
     }
+    public function setCity(string $city): void
+    {
+        $this->city = $city;
+    }
+    public function setProvince(string $province): void
+    {
+        $this->province = $province;
+    }
+    public function setZipCode(string $zipCode): void
+    {
+        $this->zipCode = $zipCode;
+    }
+    public function setBillingAddress(string $billingAddress): void
+    {
+        $this->billingAddress = $billingAddress;
+    }
+    public function setStreetNumber(string $streetNumber): void
+    {
+        $this->streetNumber = $streetNumber;
+    }
+    
     public function setSubscription(ESubscription $subscription): void
     {
         $this->subscription = $subscription;
@@ -94,9 +125,9 @@ class EPurchase{
     public function setSubscriber(EUser $subscriber){
         $this->subscriber = $subscriber;
     }
-    public function setBillingAddress(string $billingAddress): void
+    public function setCard(ECreditCard $card)
     {
-        $this->billingAddress = $billingAddress;
+        $this->creditCardNumber = $card;
     }
     
     // Get methods
@@ -109,11 +140,29 @@ class EPurchase{
     public function getExpireDate(): DateTime{
         return $this->expireDate;
     }
-    public function getSubTotal(): float{
-        return $this->subTotal;
+    public function getCountry(): string
+    {
+        return $this->country;
     }
-    public function getCard(): ECreditCard{
-        return $this->creditCardNumber;
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+    public function getProvince(): string
+    {
+        return $this->province;
+    }
+    public function getZipCode(): string
+    {
+        return $this->zipCode;
+    }
+    public function getBillingAddress(): string
+    {
+        return $this->billingAddress;
+    }
+    public function getStreetNumber(): string
+    {
+        return $this->streetNumber;
     }
     public function getSubscription(): ESubscription
     {
@@ -123,9 +172,11 @@ class EPurchase{
     {
         return $this->subscriber;
     }
-    public function getBillingAddress(): string
-    {
-        return $this->billingAddress;
+    public function getCard(): ECreditCard{
+        return $this->creditCardNumber;
+    }
+     public function getSubTotal(): float{
+        return $this->subTotal;
     }
 
     public static function calculateSubTotal(ESubscription $subscription, int $points): float
