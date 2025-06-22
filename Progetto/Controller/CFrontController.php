@@ -25,6 +25,7 @@ class CFrontController {
         'search' => ['CSearch', 'takeValueArticle'],
         'article' => ['CArticle', 'showArticle'],
         'newArticle' => ['CArticle', 'newArticle'],
+        'dropArticle'=> ['CArticle', 'dropArticle'],
         'clearcache' => ['CService', 'clearCache'],
     ];
     
