@@ -12,56 +12,56 @@ class EUser {
     #[ORM\Column(name:"user_id", type:"integer")]
     private int $id;
 
-    #[ORM\Column(name:"privilege", type:"integer", nullable:false)]
+    #[ORM\Column(name:"privilege", type:"integer")]
     private int $privilege = BASIC;
 
     //----------------CREDENTIALS----------------
    
-    #[ORM\Column(type:"string",nullable:false,unique:true)]
+    #[ORM\Column(type:"string",unique:true)]
     private string $username;
     
-    #[ORM\Column(type:"string", nullable:false)]
+    #[ORM\Column(type:"string")]
     private string $password;
     
     //-----------------REGISTRY-----------------
 
-    #[ORM\Column(type:"string",length:100, nullable:false) ]
+    #[ORM\Column(type:"string",length:100) ]
     private string $name;
     
-    #[ORM\Column(type:"string", length:100, nullable:false)]
+    #[ORM\Column(type:"string", length:100)]
     private string $surname;
     
-    #[ORM\Column(type:"date", nullable:false) ]
+    #[ORM\Column(type:"date") ]
     private DateTime $birthdate;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $country;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $birthplace;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $province;
 
-    #[ORM\Column(type:"string", length:5, nullable:false)]
+    #[ORM\Column(type:"string", length:5)]
     private string $zipCode;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $streetAddress;
 
-    #[ORM\Column(type:"string", length:40, nullable:false)]
+    #[ORM\Column(type:"string", length:40)]
     private string $streetNumber;
     
-    #[ORM\Column(type:"string", length:100, nullable:false) ]                                        
+    #[ORM\Column(type:"string", length:100) ]                                        
     private string $email;
     
-    #[ORM\Column(type:"string", length:20, nullable:false)]
+    #[ORM\Column(type:"string", length:20)]
     private string $telephone;
     
-    #[ORM\Column(type:"text", nullable:true)]
+    #[ORM\Column(type:"text")]
     private string $biography;
     
-    #[ORM\Column(type:"blob", nullable:true)]
+    #[ORM\Column(type:"blob")]
     private mixed $profilePicture;
 
     //-----------------BASIC-----------------
