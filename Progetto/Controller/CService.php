@@ -65,7 +65,7 @@ class CService{
             // chiama la view per la home page
             if(file_exists(__DIR__ . '/../View/VLogs.php')) {
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                VLogs::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());
+                VLogs::render(ADMIN, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());
             } else {
                 ULogSys::toLog("VLogs file not found", true);
             }

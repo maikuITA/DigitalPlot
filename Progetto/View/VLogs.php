@@ -12,7 +12,7 @@ class VLogs {
      * @return void
      * @throws Exception
      */
-    public static function render(int $privilege = BASIC,int  $plotPoints = 0 , $proPic = null , bool $isLogged = false): void {
+    public static function render(int $privilege = ADMIN,int  $plotPoints = 0 , $proPic = null , bool $isLogged = false): void {
         $smarty = StartSmarty::configuration();
         //$smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> log.tpl");
