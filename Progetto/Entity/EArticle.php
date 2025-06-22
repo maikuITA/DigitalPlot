@@ -1,6 +1,8 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "Article")]
@@ -34,19 +36,17 @@ class EArticle{
     
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private $reviews = [];
+    private $reviews;
     
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false, onDelete: "casade")] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private EUser $writer;
     
-    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
-    private $readings = [];
+    #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"], orphanRemoval: true)]
+    private Collection $readings;
 
-
-
-    public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EUser $writer, array $readings = [], array $reviews = []) {
+    public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EUser $writer) {
         $this->title = $title;
         $this->description = $description;
         $this->contents = $contents;
@@ -54,13 +54,12 @@ class EArticle{
         $this->genre = $genre;
         $this->category = $category;
         $this->releaseDate = new DateTime($releaseDate);
-        $this->readings = $readings;
+        $this->readings = new ArrayCollection();
         $this->writer = $writer;
-        $this->reviews = $reviews;
+        $this->reviews = new ArrayCollection();
     }
 
     //Metodi set e get
-    
     public function getAvgEvaluate(): float {
         $sum = 0;
         $count = 0;
@@ -147,20 +146,11 @@ class EArticle{
 
 
     //Gestione delle reviews
-
     public function addReview(EReview $review): void {
-        array_push($this->reviews, $review);
+        $this->reviews->add($review);
     }
-    public function getReviews(): array {
+    public function getReviews() {
         return $this->reviews;
-    }
-    public function getReviewById(int $id): ?EReview {
-        foreach ($this->reviews as $review) {
-            if ($review->getId() === $id) {
-                return $review;
-            }
-        }
-        return null;
     }
     public function removeReview(int $id): void {
         foreach ($this->reviews as $key => $review) {
@@ -171,33 +161,39 @@ class EArticle{
         }
     }
     public function countReviews(): int {
-        return count($this->reviews);
+        return $this->reviews->count();
     }
+    public function getReviewsById(int $index){
+        foreach ($this->reviews as $review) {
+            if ($review->getCod() === $index) {
+                return $review;
+            }
+        }
+        return null; 
+    }
+
     //Gestione delle readings
     public function addReading(EReading $reading): void {
-        array_push($this->readings, $reading);
+        $this->readings->add($reading);
     }
-    public function getReadings(): array {
+    public function getReadings() {
         return $this->readings;
     }
-    public function getReadingById(int $id): ?EReading {
+    public function removeReading(EReading $reading): void {
+        if($this->readings->contains($reading)) {
+            $this->readings->removeElement($reading);
+        }
+    }
+    public function countReadings(): int {
+        return $this->readings->count();
+    }
+    public function getReadingById(int $index) {
         foreach ($this->readings as $reading) {
-            if ($reading->getId() === $id) {
+            if ($reading->getCod() === $index) {
                 return $reading;
             }
         }
         return null;
-    }
-    public function removeReading(int $id): void {
-        foreach ($this->readings as $key => $reading) {
-            if ($reading->getId() === $id) {
-                unset($this->readings[$key]);
-                break;
-            }
-        }
-    }
-    public function countReadings(): int {
-        return count($this->readings);
-    }
+     } 
 }
 ?>

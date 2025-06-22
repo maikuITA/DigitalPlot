@@ -1,5 +1,6 @@
 <?php
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -23,15 +24,15 @@ class ECreditCard{
     public string $cvv;
     
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $purchases = [];
+    private $purchases;
 
-    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv, array $purchases = []) {
+    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv) {
         $this->cardNumber = $cardNumber;
         $this->name = $name;
         $this->surname = $surname;
         $this->expirationDate = new DateTime($expirationDate);
         $this->cvv = $cvv; // inizializza il CVV
-        $this->purchases = $purchases; // inizializza l'array di acquisti
+        $this->purchases = new ArrayCollection(); // inizializza l'array di acquisti
     }
 
     // Set methods
@@ -80,26 +81,27 @@ class ECreditCard{
     }
     
      //Acquisti
-     public function getPurchases(): array{
+     public function getPurchases(){
         return $this->purchases;
     }
     public function addPurchase(EPurchase $purchase){
-        $this->purchases[] = $purchase;
+        $this->purchases->add($purchase);
     }
     public function removePurchase(EPurchase $purchase){
-        $key = array_search($purchase, $this->purchases);
-        if ($key !== false) {
-            unset($this->purchases[$key]);
+        if ($this->purchases->contains($purchase)) {
+            $this->purchases->removeElement($purchase);
         }
     }
     public function purchasesCount(){
-        return count($this->purchases);
+        return $this->purchases->count();
     }
     public function getPurchaseById(int $index){
-        if (array_key_exists($index, $this->purchases)) {
-            return $this->purchases[$index];
+        foreach ($this->purchases as $purchase) {
+            if ($purchase->getId() === $index) {
+                return $purchase;
+            }
         }
-        return null;
+        return null; // Se non viene trovato l'acquisto con l'ID specificato
     }
 
 }
