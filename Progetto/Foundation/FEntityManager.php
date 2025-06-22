@@ -290,23 +290,7 @@ class FEntityManager {
         }
     }
 
-    public function deleteArticleById(string $className, $idArticle): bool{
-        try{
-            self::$entityManager->getConnection()->beginTransaction();
-            $obj = self::$entityManager->find($className, $idArticle);
-            if ($obj !== null){
-                self::$entityManager->remove($obj);
-                self::$entityManager->flush();
-                self::$entityManager->getConnection()->commit();
-                return true;
-            }
-            ULogSys::toLog('Error: object not found', true);
-            return false; 
-        }catch(Exception $e){
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
-            return false;
-        }
-    }
+
 
     public static function dropDatabase(): void {
         try {
