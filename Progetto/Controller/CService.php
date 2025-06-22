@@ -34,17 +34,13 @@ class CService{
         $allData = [
             'articles' => $db->retrieveAll(EArticle::class),
             'cards' => $db->retrieveAll(ECreditCard::class),
-            'discounts' => $db->retrieveAll(EDiscount::class),
             'follow' => $db->retrieveAll(EFollow::class),
             'plotcards' => $db->retrieveAll(EPlotCard::class),
             'purchases' => $db->retrieveAll(EPurchase::class),
-            'readers' => $db->retrieveAll(EReader::class),
             'readings' => $db->retrieveAll(EReading::class),
             'reviews' => $db->retrieveAll(EReview::class),
-            'subscribers' => $db->retrieveAll(ESubscriber::class),
             'subscriptions' => $db->retrieveAll(ESubscription::class),
-            'users' => $db->retrieveAll(EUser::class),
-            'writers' => $db->retrieveAll(EWriter::class),
+            'users' => $db->retrieveAll(EUser::class)
         ];
         $zero = self::printCounts($allData);
         if ($zero === 0){

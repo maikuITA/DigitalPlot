@@ -39,7 +39,10 @@ class CUser{
      */
     public static function isAdmin(): bool {
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-        return $user->getAdmin();
+        if ($user->getPrivilege() === ADMIN){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -107,16 +110,20 @@ class CUser{
         // Check if the request method is POST
         $method = UServer::getRequestMethod();
         if ($method === 'POST') {
-            $telephone = UHTTPMethods::post('telephone');
             $username = UHTTPMethods::post('username');
-            $email = UHTTPMethods::post('email');
             $password = UHTTPMethods::post('password');
             $name = UHTTPMethods::post('name');
             $surname = UHTTPMethods::post('surname');
             $birthdate = UHTTPMethods::post('birthdate');
+            $country = UHTTPMethods::post('country');
             $birthplace = UHTTPMethods::post('birthplace');
+            $province = UHTTPMethods::post('province');
+            $zipCode = UHTTPMethods::post('zipCode');
             $streetAddress = UHTTPMethods::post('streetAddress');
-            $user = new EUser($username, $password, $name, $surname, false, $birthdate, $streetAddress ,$birthplace, $email, $telephone);
+            $streetNumber = UHTTPMethods::post('streetNumber');
+            $email = UHTTPMethods::post('email');
+            $telephone = UHTTPMethods::post('telephone');
+            $user = new EUser(BASIC, $username, $password, $name, $surname, $birthdate, $country, $birthplace, $province, $zipCode, $streetAddress, $streetNumber, $email, $telephone);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
             try {
@@ -165,7 +172,7 @@ class CUser{
             $password = UHTTPMethods::post('password');
             try {
                 $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
-                if ($user && password_verify($password, $user->getPassword())) {
+                if (isset($user) && password_verify($password, $user->getPassword())) {
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());
                     header('Location: https://digitalplot.altervista.org/home');
