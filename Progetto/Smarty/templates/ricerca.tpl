@@ -78,7 +78,6 @@
             {/if}
         </div>
     </header>
-        <div>
             <section class="section">
                 <p class="subtitle">
                     Inserisci il titolo dell'articolo che desideri leggere.
@@ -137,9 +136,7 @@
                         </div>
                     {/foreach}
                 {/if}
-            </div>
-        </div>
-    </div>
+            </div>           
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
