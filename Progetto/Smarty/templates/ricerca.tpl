@@ -78,6 +78,16 @@
             {/if}
         </div>
     </header>
+    <div class="body-container">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title title">
+                    <span class="icon is-medium is-left">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </span>
+                    Ricerca
+                </p>
+            </header>
             <section class="section">
                 <p class="subtitle">
                     Inserisci il titolo dell'articolo che desideri leggere.
@@ -120,6 +130,8 @@
                     </div>
                 </form>
             </section>
+        </div>
+    </div>
             <div class="container" id="container">
                 {if isset($articles)}
                     {foreach from=$articles item=article}
