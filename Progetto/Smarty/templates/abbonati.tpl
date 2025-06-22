@@ -72,7 +72,7 @@
     <div class="container" id="container">
         {if isset($subscriptions)}
             {foreach from=$subscriptions item=subscription}
-                <div class="card">
+                <div class="card abbonamento">
                     <div class="card-content">
                         <p class="title">{$subscription->getType()}</p>
                         {if $subscription->getType() === "writer"}
