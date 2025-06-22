@@ -28,6 +28,10 @@
                         {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
                         {/if}
+                        {if $privilege === 3}
+                            <a href="/dashboard" class="button is-warning ok"> Dashboard </a>
+                            <a href="/logs" class="button is-warning ok"> Logs </a>
+                        {/if}
                     {else}
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}

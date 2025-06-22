@@ -8,6 +8,7 @@ class CFrontController {
      */
     private static $routes = [
         '' => ['CUser', 'home'], // Default route
+        'dashboard' => ['CDashboard', 'dashboard'],
         'home' => ['CUser', 'home'],
         'auth' => ['CUser', 'auth'],
         'subscribe' => ['CSubscribe', 'subscribe'],
