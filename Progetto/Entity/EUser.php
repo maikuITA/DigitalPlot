@@ -37,11 +37,23 @@ class EUser {
     private DateTime $birthdate;
 
     #[ORM\Column(type:"string", length:40, nullable:false)]
-    private string $streetAddress;
-    
-    #[ORM\Column(type:"string", length:100, nullable:false)]
+    private string $country;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
     private string $birthplace;
-      
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $province;
+
+    #[ORM\Column(type:"string", length:5, nullable:false)]
+    private string $zipCode;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $streetAddress;
+
+    #[ORM\Column(type:"string", length:40, nullable:false)]
+    private string $streetNumber;
+    
     #[ORM\Column(type:"string", length:100, nullable:false) ]                                        
     private string $email;
     
@@ -94,8 +106,12 @@ class EUser {
                                 string $name, 
                                 string $surname,
                                 string $birthdate, 
-                                string $streetAddress, 
+                                string $country,
                                 string $birthplace, 
+                                string $province,
+                                string $zipCode,
+                                string $streetAddress, 
+                                string $streetNumber,
                                 string $email, 
                                 string $telephone, 
                                 string $biography = "", 
@@ -114,8 +130,12 @@ class EUser {
         $this->setName($name);
         $this->setSurname($surname);
         $this->setBirthdate($birthdate);
-        $this->setStreetAddress($streetAddress);
+        $this->setCountry($country);
         $this->setBirthPlace($birthplace);
+        $this->setProvince($province);
+        $this->setZipCode($zipCode);
+        $this->setStreetAddress($streetAddress);
+        $this->setStreetNumber($streetNumber);
         $this->setEmail($email);
         $this->setTelephone($telephone);
         $this->setBiography($biography);
@@ -179,17 +199,41 @@ class EUser {
     public function getBirthdate(): DateTime {
         return $this->birthdate;
     }
-    public function setStreetAddress(string $streetAddress): void {
-        $this->streetAddress = $streetAddress;
+    public function setCountry(string $country): void {
+        $this->country = $country;
     }
-    public function getStreetAddress(): string {
-        return $this->streetAddress;
+    public function getCountry(): string {
+        return $this->country;
     }
     public function setBirthPlace(string $birthplace): void {
         $this->birthplace = $birthplace;
     }
     public function getBirthPlace(): string {
         return $this->birthplace;
+    }
+    public function setProvince(string $province): void {
+        $this->province = $province;
+    }
+    public function getProvince(): string {
+        return $this->province;
+    }
+    public function setZipCode(string $zipCode): void {
+        $this->zipCode = $zipCode;
+    }
+    public function getZipCode(): string {
+        return $this->zipCode;
+    }
+    public function setStreetAddress(string $streetAddress): void {
+        $this->streetAddress = $streetAddress;
+    }
+    public function getStreetAddress(): string {
+        return $this->streetAddress;
+    }
+    public function setStreetNumber(string $streetNumber): void {
+        $this->streetNumber = $streetNumber;
+    }
+    public function getStreetNumber(): string {
+        return $this->streetNumber;
     }
     public function setEmail(string $email): void {
         $this->email = $email;
