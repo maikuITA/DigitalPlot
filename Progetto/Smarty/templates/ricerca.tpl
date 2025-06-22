@@ -101,11 +101,27 @@
                         </span>
                     </div>
                     <div class="select is-rounded">
-                        <select name='category'>
-                            <option value = '%' >Tipo</option>
-                            <option value = 'articolo' >Articolo</option>
-                            <option value = 'giornale' >Giornale</option>
-                            <option value = 'rivista' >Rivista</option>
+                        <select name="category">
+                            <option value="%">Categorie</option>
+                            <option value="articolo">Articolo</option>
+                            <option value="giornale">Giornale</option>
+                            <option value="rivista">Rivista</option>
+                            <option value="romanzo">Romanzo</option>
+                            <option value="racconto">Racconto</option>
+                            <option value="saggio">Saggio</option>
+                            <option value="blog">Blog</option>
+                            <option value="notizia">Notizia</option>
+                            <option value="editoriale">Editoriale</option>
+                            <option value="recensione">Recensione</option>
+                            <option value="intervista">Intervista</option>
+                            <option value="manuale">Manuale</option>
+                            <option value="tesi">Tesi</option>
+                            <option value="fumetto">Fumetto</option>
+                            <option value="pamphlet">Pamphlet</option>
+                            <option value="biografia">Biografia</option>
+                            <option value="autobiografia">Autobiografia</option>
+                            <option value="poesia">Poesia</option>
+                            <option value="dramma">Dramma</option>
                         </select>
                     </div>
                     <div class="select is-rounded">
