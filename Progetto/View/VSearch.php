@@ -6,14 +6,14 @@ class VSearch {
      * Method to display search results.
      * This method uses Smarty to render the 'ricerca.tpl' template with the provided articles,
      * user login status, plot points, profile picture, and privilege level.    
-     * @param array $articles
+     * @param mixed $articles
      * @param bool $isLogged Indicates if the user is logged in.
      * @param int $plotPoints The number of plot points the user has.
      * @param mixed $proPic The user's profile picture data.
      * @param int $privilege The user's privilege level (default is BASIC).
      * @return void
      */
-    public static function displaySearchResults(?array $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC): void {
+    public static function displaySearchResults( $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
         $smarty->assign('articles', $articles);

@@ -8,11 +8,11 @@ class VUser{
      * @param string|null $username The username of the logged-in user.
      * @param int|null $plotPoints The plot points of the user.
      * @param mixed $proPic The profile picture of the user.
-     * @param array|null $articles The articles to be displayed on the home page.
+     * @param mixed|null $articles The articles to be displayed on the home page.
      * @param bool $logged Indicates if the user is logged in.
      * @throws Exception
      */
-    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, ?array $articles = null, bool $isLogged = false, int $privilege = BASIC): void {
+    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, $articles = null, bool $isLogged = false, int $privilege = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> home.tpl");
         $smarty->assign('isLogged', $isLogged);

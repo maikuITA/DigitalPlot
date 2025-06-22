@@ -10,10 +10,10 @@ class VSubscribe {
      * @param int $plotPoints The number of plot points the user has
      * @param mixed $proPic The user's profile picture data
      * @param bool $privilege  Indicates if the user is a subscriber
-     * @param array|null $subs An array of subscriptions, if available
+     * @param mixed|null $subs An array of subscriptions, if available
      * @return void
      */
-    public static function render(bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC, ?array $subs = null ): void {
+    public static function render(bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC, $subs = null ): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> abbonati.tpl");
         $smarty->assign('isLogged', $isLogged);
