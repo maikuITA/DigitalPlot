@@ -71,10 +71,10 @@ class BasicEntry{
 
     //EPurchase
     
-    $pur1 = new EPurchase('2023-10-01','2024-10-01','Italy','Roma','RM','00100','Via Appia Nuova, 45', '1', $u7,$sub1,$cc1);
-    $pur2 = new EPurchase('2024-01-15', '2024-02-15', 'Italy', 'Torino', 'TO', '10100', 'Via Po, 19', '2', $u4, $sub2, $cc2);
-    $pur3 = new EPurchase('2023-06-20', '2023-06-27', 'Italy', 'Genova', 'GE', '16100', 'Via XX Settembre, 55', '3', $u10, $sub6, $cc3);
-    $pur4 = new EPurchase('2022-11-05', '2023-11-05', 'Italy', 'Verona', 'VR', '37100', 'Piazza Bra, 3', '4', $u3, $sub4, $cc4);
+    $pur1 = new EPurchase('2025-10-01','2026-10-01','Italy','Roma','RM','00100','Via Appia Nuova, 45', '1', $u7,$sub1,$cc1);
+    $pur2 = new EPurchase('2026-01-15', '2026-02-15', 'Italy', 'Torino', 'TO', '10100', 'Via Po, 19', '2', $u4, $sub2, $cc2);
+    $pur3 = new EPurchase('2026-06-20', '2026-06-27', 'Italy', 'Genova', 'GE', '16100', 'Via XX Settembre, 55', '3', $u10, $sub6, $cc3);
+    $pur4 = new EPurchase('2024-11-05', '2025-11-05', 'Italy', 'Verona', 'VR', '37100', 'Piazza Bra, 3', '4', $u3, $sub4, $cc4);
 
     //EFollow
     $fo1 = new EFollow($u3,$u4);

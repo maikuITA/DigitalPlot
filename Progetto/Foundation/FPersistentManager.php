@@ -151,6 +151,10 @@ class FPersistentManager {
             $user = FEntityManager::getInstance()->retrieveObjById(EUser::class, $id);
             if ($user->getPrivilege() === READER || $user->getPrivilege() === WRITER) {
                 $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
+                if ($notExpiredPurch === null) {
+                    FEntityManager::getInstance()->updateField(EUser::class, $id, 'privilege', BASIC);
+                    return false;
+                }
                 $notExpiredPurch = array_filter($notExpiredPurch, function($purchase) use ($id) {
                     return $purchase->getSubscriber()->getId() === $id;
                 });
