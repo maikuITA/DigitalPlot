@@ -300,7 +300,7 @@ class EUser {
         $this->plotCard->add($plotCard);
     }
     public function getPlotCard() {
-        return $this->plotCard;
+        return $this->plotCard->first();
     }
     public function removePlotCard(): void {
         $this->plotCard->clear();
