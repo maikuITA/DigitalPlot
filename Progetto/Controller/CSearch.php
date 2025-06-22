@@ -43,7 +43,7 @@ class CSearch {
         }
         $result = FPersistentManager::getInstance()->searchArticles($title, $type, $genre, $date);
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-        VSearch::displaySearchResults( $result, true,$user->getPlotCard()->getPoints(), $user->getEncodedData(), true);    
+        VSearch::displaySearchResults( $result, true,$user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());    
     }
 
     /**
@@ -57,7 +57,7 @@ class CSearch {
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if(CUser::isSubbed()){
-                VSearch::find(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(),true);
+                VSearch::find(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(),$user->getPrivilege());
             }
             else {
                 header('Location: https://digitalplot.altervista.org/home');
