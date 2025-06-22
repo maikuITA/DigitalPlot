@@ -36,7 +36,7 @@ class EArticle{
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private $reviews = [];
     
-    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
     // definisco il nome del campo dell'altra tabella che è chiave esterna
     private EUser $writer;

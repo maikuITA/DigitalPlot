@@ -13,11 +13,11 @@ class EReading{
     #[ORM\Column(name:"reading_cod", type:"integer")]
     private int $cod;
 
-    #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "readings", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity:"EUser", inversedBy: "readings", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name : "fk_user" , referencedColumnName : "user_id", nullable:false)] // definizione chiave esterna
     private EUser $user;
 
-    #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "readings", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "EArticle", inversedBy: "readings", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name : "fk_article", referencedColumnName : "article_id", nullable: false)] // definizione chiave esterna
     private EArticle $article;
 

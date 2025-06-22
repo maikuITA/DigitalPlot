@@ -39,15 +39,15 @@ class EPurchase{
 
     //---------------Relationships-------------------
 
-    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "purchases", cascade: ["persist","remove"])]
     #[ORM\JoinColumn(name: "fk_subscriber", referencedColumnName: "user_id", nullable: true)]
     private EUser $subscriber;
 
-    #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false)] // definizione chiave esterna
     private ESubscription $subscription;
      
-    #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases", cascade: ["persist"])]
+    #[ORM\ManyToOne(targetEntity: "ECreditCard", inversedBy: "purchases", cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name: "fk_card", referencedColumnName: "card_number", nullable: false)] // definizione chiave esterna
     private ECreditCard $creditCardNumber;
      
