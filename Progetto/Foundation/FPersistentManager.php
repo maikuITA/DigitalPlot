@@ -60,7 +60,6 @@ class FPersistentManager {
      * @throws Exception
      */
     public function retrieveObjById(string $className, $id): ?object {
-        ULogSys::toLog('prova0', true);
         return FEntityManager::getInstance()->retrieveObjById($className, $id);
     }
 
