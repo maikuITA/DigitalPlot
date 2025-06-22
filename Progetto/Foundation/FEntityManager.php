@@ -352,7 +352,8 @@ class FEntityManager {
      */
     public static function retrieveArticles(string $className, string $title, string $type, string $genre, string $date): ?array {
         try {
-            $dql = "SELECT a FROM " . $className . " a WHERE (a.title LIKE :title) OR (a.title IN :title) AND a.type LIKE :type AND a.genre LIKE :genre AND a.date LIKE :date";
+            $dql = "SELECT a FROM $className a WHERE (a.title LIKE :title OR a.title IN (:titles)) AND a.type LIKE :type AND a.genre LIKE :genre AND a.date LIKE :date)";
+";
             $query = self::$entityManager->createQuery($dql)
                 ->setParameter('title', $title)
                 ->setParameter('type', $type)
