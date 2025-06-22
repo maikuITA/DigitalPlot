@@ -445,7 +445,7 @@ class EUser {
     public function addArticle(EArticle $article): void{
         array_push($this->articles, $article);
     }
-    public function getArticles(): ?array{
+    public function getArticles(){
         return $this->articles;
     }
     public function getArticleById(int $index): EArticle{

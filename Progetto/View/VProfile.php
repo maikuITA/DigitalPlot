@@ -23,7 +23,7 @@ class VProfile {
         $smarty->display('profilo.tpl');
     }
 
-    public static function showArticlesWriter(string $user, int $plotPoints, $proPic = null, bool $isLogged = false, int $privilege = BASIC,?array $articles = []){
+    public static function showArticlesWriter(string $user, int $plotPoints, $proPic = null, bool $isLogged = false, int $privilege = BASIC, ?array $articles = []){
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> profilo.tpl");
         $smarty->assign('user', $user);
