@@ -23,10 +23,6 @@ class EPurchase{
 
     #[ORM\Column(type:"string", length:40, nullable:false)]
     private string $billingAddress;
-    
-    #[ORM\ManyToOne(targetEntity: "EDiscount", inversedBy: "purchases", cascade: ["persist"])]
-    #[ORM\JoinColumn(name: "fk_discount", referencedColumnName: "discount_cod", nullable: true)] // definizione chiave esterna
-    private ?EDiscount $discountCod;
 
     #[ORM\ManyToOne(targetEntity: "ESubscription", inversedBy: "purchases", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_subscription", referencedColumnName: "subscription_id", nullable: false)] // definizione chiave esterna
@@ -40,15 +36,14 @@ class EPurchase{
     private float $subTotal;
 
 
-    public function __construct( string $purchaseDate, string $expireDate, EUser $subscriber, string $billingAddress, ESubscription $subscription, ?EDiscount $discount, ECreditCard $card) {
+    public function __construct( string $purchaseDate, string $expireDate, EUser $subscriber, string $billingAddress, ESubscription $subscription, ECreditCard $card) {
         $this->subscriber = $subscriber;
         $this->billingAddress = $billingAddress;
         $this->subscription = $subscription;
         $this->purchaseDate = new DateTime($purchaseDate);
         $this->expireDate = new DateTime($expireDate);
-        $this->discountCod = $discount;
         $this->creditCardNumber = $card;
-        $this->subTotal = $this->calculateSubTotal($this->subscription, $this->discountCod);
+        $this->subTotal = self::calculateSubTotal($this->subscription, $subscriber->getPlotCard()->getPoints());
     }
     
     // Set methods
@@ -63,11 +58,7 @@ class EPurchase{
     public function setExpireDate(string $expireDate)
     {
         $this->expireDate = new DateTime($expireDate);
-    }
-    public function setDiscountCode(EDiscount $discountCod)
-    {
-        $this->discountCod = $discountCod;
-    }    
+    }   
     public function setCard(ECreditCard $card)
     {
         $this->creditCardNumber = $card;
@@ -95,11 +86,7 @@ class EPurchase{
         return $this->expireDate;
     }
     public function getSubTotal(): float{
-        $this->subTotal = $this->calculateSubTotal($this->subscription, $this->discountCod);
         return $this->subTotal;
-    }
-    public function getDiscountCod(): EDiscount{
-        return $this->discountCod;
     }
     public function getCard(): ECreditCard{
         return $this->creditCardNumber;
@@ -117,7 +104,7 @@ class EPurchase{
         return $this->billingAddress;
     }
 
-    public function calculateSubTotal(ESubscription $subscription, int $points): float
+    public static function calculateSubTotal(ESubscription $subscription, int $points): float
     {
         $price = $subscription->getPrice();
         $difference = $price - ($points * POINTS_MULTIPLIER);
