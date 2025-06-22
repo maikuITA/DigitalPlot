@@ -280,10 +280,16 @@ class FEntityManager {
     public static function deleteObj(object $obj): bool {
         try{
             self::$entityManager->getConnection()->beginTransaction();
-            self::$entityManager->remove($obj);
-            self::$entityManager->flush();
-            self::$entityManager->getConnection()->commit();
-            return true;
+            if ($obj !== null){
+                self::$entityManager->remove($obj);
+                ULogSys::toLog('prova1', true);
+                self::$entityManager->flush();
+                ULogSys::toLog('prova2', true);;
+                self::$entityManager->getConnection()->commit();
+                return true;
+            }
+            ULogSys::toLog('Error: object not exists', true);
+            return false;
         }catch(Exception $e){
             ULogSys::toLog('Error: ' . $e->getMessage(), true);
             return false;
