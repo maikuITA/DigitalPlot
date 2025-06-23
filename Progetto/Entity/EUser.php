@@ -99,7 +99,7 @@ class EUser {
 
     //-----------------CONSTRUCT-----------------
 
-    public function __construct(int $privilege,
+    public function __construct(int $privilege = BASIC,
                                 string $username, 
                                 string $password,
                                 string $name, 
