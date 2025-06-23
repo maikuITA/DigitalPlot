@@ -44,36 +44,31 @@ class CPurchase{
             exit();
         }
         if (!CUser::isSubbed()){
+            //retriving all object
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
             $card = self::getCreditCard();
+            $purchase =  self::validatePurchase($user, $subscription, $card);
+            //calculating discuont and update all object
             $points = EPurchase::calculateDiscount($subscription, $user->getPlotCard()->getPoints());
             $user->getPlotCard()->setPoints($user->getPlotCard()->getPoints() - ($points / POINTS_MULTIPLIER));
-            $purchase = new EPurchase(date("Y-m-d"), 
-                                      date('Y-m-d', strtotime("+".$subscription->getPeriod())), // Assuming a 1-year subscription
-                                      UHTTPMethods::post('country'),
-                                      UHTTPMethods::post('city'),
-                                      UHTTPMethods::post('province'),
-                                      UHTTPMethods::post('zipCode'),
-                                      UHTTPMethods::post('billingAddress'),
-                                      UHTTPMethods::post('streetNumber'),
-                                      $user,
-                                      $subscription,
-                                      $card);
             $user->addPurchase($purchase);   
             $card->addPurchase($purchase);                      
-            $subscription->addPurchase($purchase);               
+            $subscription->addPurchase($purchase); 
+            //saving in db              
             FPersistentManager::getInstance()->saveInDb($purchase);
             FPersistentManager::getInstance()->saveInDb($card);
             FPersistentManager::getInstance()->saveInDb($subscription);
             FPersistentManager::getInstance()->saveInDb($user);
+            //upgrade the user
             if (strtolower($subscription->getType()) === 'writer' ){
-                $writer = $user->setPrivilege(2);
-                FPersistentManager::getInstance()->updateObject(EUser::class, $writer->getId(), 'privilege', WRITER); 
+                $user->setPrivilege(WRITER);
+                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'privilege', WRITER); 
             }else{
-                $reader = $user->setPrivilege(1);
-                FPersistentManager::getInstance()->updateObject(EUser::class, $reader->getId(), 'privilege', READER);
+                $user->setPrivilege(READER);
+                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'privilege', READER);
             }
+            //showing the view
             $messaggio = "Grazie ".$user->getUsername(). " per esserti abbonato!";
             VConfirm::render( $messaggio, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
             exit;
@@ -89,7 +84,7 @@ class CPurchase{
      * and creates a new ECreditCard object, saving it in the database.
      * @return ECreditCard The created credit card object
      */
-    public static function getCreditCard(): ECreditCard {
+    private static function getCreditCard(): ECreditCard {
         $cardNumber = UHTTPMethods::post('cardNumber');
         $nameC = UHTTPMethods::post('nameC');
         $surnameC = UHTTPMethods::post('surnameC');
@@ -97,5 +92,18 @@ class CPurchase{
         $cvv = UHTTPMethods::post('cvv');
         $card = new ECreditCard($cardNumber, $nameC, $surnameC, $expiration, $cvv);
         return $card;
+    }
+
+
+    private static function validatePurchase(EUser $user, ESubscription $subscription, ECreditCard $card): EPurchase{
+        $currentdate = date('Y-m-g');
+        $country = UHTTPMethods::post('country');
+        $city = UHTTPMethods::post('city');
+        $province = UHTTPMethods::post('province');
+        $zipCode = UHTTPMethods::post('zipCode');
+        $billingAddress = UHTTPMethods::post('billingAddress');
+        $streetNumber = UHTTPMethods::post('streetNumber');
+        $expirationDate = date('Y-m-d', strtotime("+".$subscription->getPeriod()));
+        return new EPurchase( $currentdate , $expirationDate, $country, $city, $province, $zipCode, $billingAddress, $streetNumber, $user, $subscription, $card );
     }
 }
