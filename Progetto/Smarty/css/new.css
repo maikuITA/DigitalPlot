@@ -40,7 +40,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .field > .control, .field > .control > .input {
