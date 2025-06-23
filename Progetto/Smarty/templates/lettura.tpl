@@ -105,13 +105,18 @@
                 </div>
 
                 <div class="content">
-                <p class="subtitle">Biografia:</p>    
-                <p>{$writer->getBiography()}</p>
-                <p class="subtitle">Articoli scritti:</p>    
-                <p>{$writer->getNumArticles()}</p>
-                <p class="subtitle">Follower:</p>    
-                <p>{$writer->getNumFollowers()}</p>
+
+                <div class="is-gapped">
+                    <a class="is-5 s">Biografia</a><a class="is-5">{$writer->getBiography()}</a>
                 </div>
+                <div class="is-gapped">
+                    <a class="is-5 s">Numero articoli</a><a class="is-5">{$writer->getNumArticles()}</a>
+                </div>
+                <div class="is-gapped">
+                    <a class="is-5 s">Follower</a><a class="is-5">{$writer->getNumFollowers()}</a>
+                </div>
+                </div>
+                
             </div>
         </div>
         <div class="card text">
@@ -122,6 +127,7 @@
                     <p class="subtitle"> {$article->getCategory()} </p>
                     <p class="subtitle"> {$article->getGenre()} </p>
                 </div>
+                
             </div>
         </div>
         
