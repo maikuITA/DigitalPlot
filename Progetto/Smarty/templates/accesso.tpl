@@ -150,7 +150,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Telefono" name="telephone" id="telephone" pattern ="[0-9]{10}" required>
+                                <input class="input" type="tel" placeholder="Telefono" name="telephone" id="telephone" pattern ="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-phone" aria-hidden="true"></i>
                                 </span>
