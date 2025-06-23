@@ -86,7 +86,7 @@
             <p class="title">
                 Errore <br> {$errore} 
             </p>
-            <a class="subtitle has-text-link" href="/home">
+            <a class="subtitle has-text-link" href="/profile">
                 Controlla se l'URL è corretto o torna alla home.
             </a>
         </div>
