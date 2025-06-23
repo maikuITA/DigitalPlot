@@ -117,7 +117,7 @@
                 </p>
             </div>
             <p class="subtitle">
-                Carica/Inserisci <p class=".small-bold-text"> (in formato .pdf)</p>
+                Carica/Inserisci <span class=".small-bold-text"> (in formato .pdf) </span>
             </p>
             <input type="file" name = "articleFile"> 
             
