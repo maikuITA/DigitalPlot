@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const expiryInput = document.getElementById('expiry');
+    const expiryInput = document.getElementById('expirationDate');
     const errorMsg = document.getElementById('error-msg');
 
     if (expiryInput) {

@@ -14,7 +14,7 @@ class EUser {
     private int $id;
 
     #[ORM\Column(name:"privilege", type:"integer", nullable:false)]
-    private int $privilege = BASIC;
+    private int $privilege;
 
     //----------------CREDENTIALS----------------
    

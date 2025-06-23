@@ -1,4 +1,7 @@
 <?php
+require_once (__DIR__ . "/../Utility/config.php");
+
+
 class CUser{
 
     /**
@@ -122,8 +125,7 @@ class CUser{
             $streetNumber = UHTTPMethods::post('streetNumber');
             $email = UHTTPMethods::post('email');
             $telephone = UHTTPMethods::post('telephone');
-            $privilege = BASIC;
-            $user = new EUser ($privilege, $username, $password, $name, $surname, $birthdate, $country, $birthplace, $province, $zipCode, $streetAddress, $streetNumber, $email, $telephone);
+            $user = new EUser (privilege: BASIC, username: $username, password: $password,name: $name,surname: $surname, birthdate: $birthdate,country: $country,birthplace: $birthplace,province: $province,zipCode: $zipCode,streetAddress: $streetAddress,streetNumber: $streetNumber,email: $email,telephone: $telephone);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
             try {

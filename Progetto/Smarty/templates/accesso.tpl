@@ -104,7 +104,7 @@
                             <p class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Paese di nascita" name="country" id="country" required>
                                 <span class="icon is-small is-left has-link">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <i class="fa fa-globe" aria-hidden="true"></i>
                                 </span>
                             </p>
                         </div>
@@ -136,7 +136,7 @@
                             <p class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Indirizzo" name="streetAddress" id="streetAddress" required>
                                 <span class="icon is-small is-left has-link">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <i class='fas fa-map-pin' aria-hidden="true"></i>
                                 </span>
                             </p>
                         </div>
@@ -144,7 +144,7 @@
                             <p class="control has-icons-left">
                                 <input class="input" type="text" placeholder="Numero Civico" name="streetNumber" id="streetNumber" {literal} pattern="^\d{1,5}[a-zA-Z]?(\/?[a-zA-Z0-9]+)?$" {/literal} required>
                                 <span class="icon is-small is-left has-link">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <i class='fas fa-map-pin' aria-hidden="true"></i>
                                 </span>
                             </p>
                         </div>
@@ -176,7 +176,7 @@
                             <p class="control has-icons-left">
                                 <input class="input" type="password" placeholder="Inserisci la tua password" name="password" id="password" required>
                                 <span class="icon is-small is-left has-link">
-                                <i class="fas fa-lock"></i>
+                                <i class='fas fa-key'></i>
                                 </span>
                             </p>
                         </div>
@@ -184,7 +184,7 @@
                             <p class="control has-icons-left">
                                 <input class="input" type="password" placeholder="Conferma la tua password" name="password2" id="password2" required>
                                 <span class="icon is-small is-left has-link">
-                                <i class="fas fa-lock"></i>
+                                <i class='fas fa-key'></i>
                                 </span>
                             </p>
                         </div>

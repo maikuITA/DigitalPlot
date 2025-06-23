@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="/Progetto/Smarty/js/validate-expiry.js"></script>
 </head>
 <body>
     <header class="header columns">
@@ -223,11 +222,12 @@
                         </div>
                         <div class="field is-grouped">
                             <p class="control has-icons-left intestatario">
-                                <input class="input is-rounded" type="date" name ="expirationDate" id="birthdate" required>
+                                <input class="input is-rounded" type="date" name ="expirationDate" id="expirationDate" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-calendar" aria-hidden="true">  </i>
                                 </span>
                             </p>
+                            <span id="error-msg" style="color: red;"></span>
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left carta">
@@ -284,6 +284,7 @@
             </div>
         </div>
     </div>
+    <script src="/Progetto/Smarty/js/validate-expiry.js"></script>
 </body>
 </html>
 <script src="/Progetto/Smarty/js/pagamento.js"></script>
