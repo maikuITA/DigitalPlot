@@ -126,7 +126,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="CAP" name="zipCode" id="zipCode" required>
+                                <input class="input" type="text" placeholder="CAP" name="zipCode" id="zipCode" {literal} pattern="^\d{5}$" {/literal} required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </span>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Numero Civico" name="streetNumber" id="streetNumber" required>
+                                <input class="input" type="text" placeholder="Numero Civico" name="streetNumber" id="streetNumber" {literal} pattern="^\d{1,5}[a-zA-Z]?(\/?[a-zA-Z0-9]+)?$" {/literal} required>
                                 <span class="icon is-small is-left has-link">
                                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </span>

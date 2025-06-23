@@ -148,7 +148,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left ">
-                                <input class="input is-rounded" type="text" placeholder="CAP" value="{$user->getZipCode()}" required>
+                                <input class="input is-rounded" type="text" placeholder="CAP" value="{$user->getZipCode()}" {literal} pattern="^\d{5}$" {/literal} required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
@@ -162,7 +162,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left">
-                                <input class="input is-rounded" type="text" placeholder="Numero Civico" value="{$user->getStreetNumber()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Numero Civico" value="{$user->getStreetNumber()}" {literal} pattern="^\d{1,5}[a-zA-Z]?(\/?[a-zA-Z0-9]+)?$" {/literal} required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
@@ -236,7 +236,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left civico">
-                                <input class="input is-rounded" type="text" name="cvv"  placeholder="CVV" required>
+                                <input class="input is-rounded" type="text" name="cvv"  placeholder="CVV" {literal} pattern="^\d{3}$" {/literal} required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-lock" aria-hidden="true"> </i>
                                 </span>
