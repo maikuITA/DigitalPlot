@@ -40,6 +40,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 .field > .control, .field > .control > .input {
@@ -60,4 +61,26 @@ span {
 textarea {
     text-decoration: none;
     font-family: unset;
+}
+
+.small-bold-text {
+    font-size: 0.8rem;     /* oppure 12px */
+    font-weight: bold;
+    font-family: Arial, sans-serif; /* basic, leggibile */
+    color: #000;           /* colore nero base */
+}
+
+input[type="file"] {
+display: none; /* nasconde il file input */
+}
+
+label[for="upload"] {
+display: inline-block;
+background-color: #f0f1f0;
+color: rgb(4, 1, 1);
+padding: 10px 20px;
+font-weight: bold;
+border-radius: 5px;
+cursor: pointer;
+max-width: 170px;          /* larghezza massima */
 }
