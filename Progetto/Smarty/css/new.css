@@ -74,13 +74,19 @@ input[type="file"] {
 display: none; /* nasconde il file input */
 }
 
-label[for="upload"] {
-display: inline-block;
-background-color: #f0f1f0;
-color: rgb(4, 1, 1);
-padding: 10px 20px;
-font-weight: bold;
-border-radius: 5px;
-cursor: pointer;
-max-width: 170px;          /* larghezza massima */
+.custom-file-label {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;       /* semi-bold */
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    background-color: #fdfdfd;
+    color: rgb(0, 0, 0);
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    max-width: 250px;
+    gap: 10px; /* spazio tra icona e testo */
 }
