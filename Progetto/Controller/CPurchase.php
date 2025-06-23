@@ -69,12 +69,14 @@ class CPurchase{
             FPersistentManager::getInstance()->saveInDb($user);
             if (strtolower($subscription->getType()) === 'writer' ){
                 $writer = $user->setPrivilege(2);
-                FPersistentManager::getInstance()->updateObject(EUser::class, $writer, 'privilege', WRITER); 
+                FPersistentManager::getInstance()->updateObject(EUser::class, $writer->getId(), 'privilege', WRITER); 
             }else{
                 $reader = $user->setPrivilege(1);
-                FPersistentManager::getInstance()->updateObject(EUser::class, $reader, 'privilege', READER);
+                FPersistentManager::getInstance()->updateObject(EUser::class, $reader->getId(), 'privilege', READER);
             }
-            VPurchase::buy(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $points, $subscription, $card);
+            $messaggio = "Grazie ".$user->getUsername(). " per esserti abbonato!";
+            VConfirm::render( $messaggio, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
+            exit;
         }
         else {
             header('Location: https://digitalplot.altervista.org/home');

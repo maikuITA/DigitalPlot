@@ -128,13 +128,13 @@
                         </div>          
                         <div class="field is-grouped">
                             <p class="control has-icons-left ">
-                                <input class="input is-rounded" type="text" placeholder="Paese" value="{$user->getCountry()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Paese" name="country" value="{$user->getCountry()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
                             </p>
                             <p class="control has-icons-left ">
-                                <input class="input is-rounded" type="text" placeholder="Città" value="{$user->getBirthplace()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Città" name="city" value="{$user->getBirthplace()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
@@ -142,13 +142,13 @@
                         </div>
                         <div class="field is-grouped">
                             <p class="control has-icons-left ">
-                                <input class="input is-rounded" type="text" placeholder="Provincia" value="{$user->getProvince()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Provincia" name="province" value="{$user->getProvince()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
                             </p>
                             <p class="control has-icons-left ">
-                                <input class="input is-rounded" type="text" placeholder="CAP" value="{$user->getZipCode()}" {literal} pattern="^\d{5}$" {/literal} required>
+                                <input class="input is-rounded" type="text" placeholder="CAP" name="zipCode" value="{$user->getZipCode()}" {literal} pattern="^\d{5}$" {/literal} required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
@@ -156,13 +156,13 @@
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left indirizzo">
-                                <input class="input is-rounded" type="text" placeholder="Indirizzo" value="{$user->getStreetAddress()}" required>
+                                <input class="input is-rounded" type="text" placeholder="Indirizzo" name="billingAddress" value="{$user->getStreetAddress()}" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
                             </p>
                             <p class="control has-icons-left">
-                                <input class="input is-rounded" type="text" placeholder="Numero Civico" value="{$user->getStreetNumber()}" {literal} pattern="^\d{1,5}[a-zA-Z]?(\/?[a-zA-Z0-9]+)?$" {/literal} required>
+                                <input class="input is-rounded" type="text" placeholder="Numero Civico" name="streetNumber" value="{$user->getStreetNumber()}" {literal} pattern="^\d{1,5}[a-zA-Z]?(\/?[a-zA-Z0-9]+)?$" {/literal} required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-map-marker" aria-hidden="true">  </i>
                                 </span>
@@ -198,7 +198,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left tel">
-                                <input class="input is-rounded" type="text" placeholder="Numero di telefono" {literal} pattern='^(\+39)?[0-9\s\-]{9,15}$' {/literal} value="{$user->getTelephone()}">
+                                <input class="input is-rounded" type="text" placeholder="Numero di telefono" name="telephone" {literal} pattern='^(\+39)?[0-9\s\-]{9,15}$' {/literal} value="{$user->getTelephone()}">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-phone" aria-hidden="true">  </i>
                                 </span>

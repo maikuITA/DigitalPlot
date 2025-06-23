@@ -54,21 +54,25 @@ class FEntityManager {
      */
     public static function updateField(string $className, $id, string $fieldName, $newValue): bool {
         try {
+            self::$entityManager->getConnection()->beginTransaction();
             $obj = self::$entityManager->find($className, $id);
 
             if (!$obj) {
                 ULogSys::toLog("Object not found by ID: $id", true);
+                self::$entityManager->getConnection()->rollBack(); 
                 return false;
             }
 
             $setter = 'set' . ucfirst($fieldName);
             if (!method_exists($obj, $setter)) {
+                self::$entityManager->getConnection()->rollBack(); 
                 ULogSys::toLog("$setter method not exists in $className", true);
                 return false;
             }
 
             $obj->$setter($newValue);
             self::$entityManager->flush();  //update the object in the databas
+            self::$entityManager->getConnection()->commit(); 
             return true;
 
         } catch (Exception $e) {
