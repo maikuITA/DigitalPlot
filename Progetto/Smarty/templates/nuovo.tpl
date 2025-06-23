@@ -119,8 +119,9 @@
             <p class="subtitle">
                 Carica/Inserisci <span class=".small-bold-text"> (in formato .pdf) </span>
             </p>
-            
-            <input type="file" name = "articleFile"> 
+
+            <label for="upload">Carica il tuo file</label>
+            <input type="file" id="upload" name="articleFile">
             
             <div class="field">
                 <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
