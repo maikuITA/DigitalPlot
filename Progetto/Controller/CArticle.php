@@ -59,10 +59,9 @@ class CArticle{
         if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if($user->getPrivilege() > 1){
-                $articles = $user->getArticles();
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
                 FPersistentManager::getInstance()->delete($article);
-                VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
+                VConfirm::render("L'articolo" . $article->getTitle() . "è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
             }
             else{
                 header('Location: https://digitalplot.altervista.org/home');
