@@ -6,7 +6,6 @@
     <title>DigitalPlot-Abbonati</title>
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/abbonati.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,24 +82,29 @@
     <div class="container" id="container">
         {if isset($subscriptions)}
             {foreach from=$subscriptions item=subscription}
-                <div class="card abbonamento">
+                <div class="card mb-5">
+                    <header class="card-header">
+                        <p class="card-header-title is-centered">{$subscription->getType()}</p>
+                    </header>
                     <div class="card-content">
-                        <p class="title">{$subscription->getType()}</p>
                         {if $subscription->getType() === "writer"}
-                            <p class="subtitle"> Descrizione: con l’abbonamento attivo hai accesso all’area riservata per pubblicare i tuoi articoli direttamente sul sito e potrai leggere tutto ciò che desideri. 
-                                                        Condividi le tue idee, racconta le tue esperienze o approfondisci i tuoi interessi: 
-                                                        ogni contributo arricchisce la nostra community! 
-                                                        <br/>  Durata: {$subscription->getPeriod()}</p>
+                            <div class="content"> Descrizione: <br/>
+                                Con l’abbonamento Writer potrai accedere all’area riservata per pubblicare i tuoi articoli, 
+                                raccontare esperienze, condividere progetti e confrontarti con altri utenti. 
+                                Avrai anche accesso illimitato alla lettura dei contenuti. 
+                                Unisciti alla community e fai sentire la tua voce nel nostro spazio editoriale.
+                            </div>
                         {else}
-                            <p class="subtitle"> Descrizione: attivando l’abbonamento potrai accedere a tutti gli articoli completi presenti sul sito, senza limiti.
-                                 Approfondimenti, storie, guide e opinioni: contenuti di qualità sempre a tua disposizione per restare informato e ispirato.
-                                                <br/> Durata: {$subscription->getPeriod()}</p>
+                            <div class="content"> Descrizione: <br/>
+                                Attivando l’abbonamento potrai accedere a tutti gli articoli completi pubblicati sul sito, senza alcun limite. 
+                                Approfondimenti, storie, analisi e guide: contenuti curati e aggiornati per offrirti una lettura stimolante e affidabile. Resta sempre informato e lasciati ispirare da voci diverse e prospettive originali.
+                            </div>
                         {/if}
-                       
+                        <p class="subtitle">Durata: {$subscription->getPeriod()}</p>
                     </div>
                     <footer class="card-footer">
                         <p class="card-footer-item">
-                            <a href="/startPurchase/{$subscription->getCod()}" class="button is-warning">{$subscription->getPrice()} €</a>
+                        <a class="button is-warning" href="/startPurchase/{$subscription->getCod()}" >{$subscription->getPrice()} €</a>
                         </p>
                     </footer>
                 </div>
