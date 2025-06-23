@@ -1,11 +1,10 @@
 {
+    "name": "andreacostantini/digital-plot",
     "require": {
-        "smarty/smarty": "^5.4",
-        "doctrine/orm": "^3.4.1",
-        "doctrine/dbal": "^3.8.2",
-        "symfony/cache": "^7.2",
-        "doctrine/persistence": "3.3.1",
-        "backendtea/un-poly-intl-grapheme": "^1.0"
+        "doctrine/orm": "^3.0",
+        "smarty/smarty": "^5.5",
+        "doctrine/dbal": "^4.0",
+        "symfony/cache": "^7.2"
     },
     "autoload": {
         "psr-4": {
