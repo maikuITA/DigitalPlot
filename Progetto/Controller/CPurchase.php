@@ -62,10 +62,8 @@ class CPurchase{
             FPersistentManager::getInstance()->saveInDb($user);
             //upgrade the user
             if (strtolower($subscription->getType()) === 'writer' ){
-                $user->setPrivilege(WRITER);
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'privilege', WRITER); 
             }else{
-                $user->setPrivilege(READER);
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'privilege', READER);
             }
             //showing the view
