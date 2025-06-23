@@ -60,8 +60,11 @@ class CArticle{
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if($user->getPrivilege() > 1){
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
-                FPersistentManager::getInstance()->delete($article);
-                VConfirm::render("L'articolo" . $article->getTitle() . "è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                $drop_result = FPersistentManager::getInstance()->delete($article);
+                if ($drop_result){
+                    VConfirm::render("L'articolo" . $article->getTitle() . "è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                }
+                VError::render("Non è stato possibile effettuare l'operazione", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
             }
             else{
                 header('Location: https://digitalplot.altervista.org/home');
