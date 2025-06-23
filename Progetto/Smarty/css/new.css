@@ -61,3 +61,10 @@ textarea {
     text-decoration: none;
     font-family: unset;
 }
+
+.small-bold-text {
+    font-size: 0.8rem;     /* oppure 12px */
+    font-weight: bold;
+    font-family: Arial, sans-serif; /* basic, leggibile */
+    color: #000;           /* colore nero base */
+}

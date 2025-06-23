@@ -98,37 +98,42 @@
         </div>
     </div>
     <div class="body-container">
-        <div class="card">
-            <p class="title">
-                <span class="icon is-small is-left">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </span>
-                Aggiungi un nuovo articolo
-            </p>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input"  type="text" placeholder="Titolo dell'articolo" required>
+        <form action="/modifyArticle" method="post" enctype="multipart/form-data">
+            <div class="card">
+                <p class="title">
                     <span class="icon is-small is-left">
-                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </span>
-                    <span class="icon is-small is-right">
-                        <i class="fa fa-quote-right" aria-hidden="true"></i>
-                    </span>
+                    Aggiungi un nuovo articolo
                 </p>
-            </div>
-            <p class="subtitle">
-                Carica/Inserisci
-            </p>
-            <div class="field">
-                <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
-                <script type="text/javascript">
-                    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-                </script>
-                <p class="control">
-                    <textarea class="textarea" placeholder="Descrizione dell'articolo" required></textarea>
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input"  type="text" placeholder="Titolo dell'articolo" required>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
+                <p class="subtitle">
+                    <input type="file" name="articleFile" required>
+                    <p class=".small-bold-text"> (è richiesto il formato .pdf) </p>
+                    <button type="submit"> Carica file </button>
+                    
                 </p>
+                <div class="field">
+                    <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
+                    <script type="text/javascript">
+                        bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                    </script>
+                    <p class="control">
+                        <textarea class="textarea" placeholder="Descrizione dell'articolo" required></textarea>
+                    </p>
+                </div>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>

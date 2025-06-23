@@ -83,4 +83,29 @@ class CArticle{
         }
     }
 
+
+    /*
+    public static function modifyArticle(int $idArticle): void{
+         if(CUser::isLogged()){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if($user->getPrivilege() > 1){
+                $modify_result = UHTTPMethods::files();
+                if ($drop_result){
+                    VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                    exit();
+                }
+                VError::render("Non è stato possibile effettuare l'operazione", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                exit();
+            }
+            else{
+                header('Location: https://digitalplot.altervista.org/home');
+                exit();
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit();
+        }
+    }
+        */
+
 }
