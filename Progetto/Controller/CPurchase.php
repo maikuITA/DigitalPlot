@@ -49,6 +49,24 @@ class CPurchase{
             $card = self::getCreditCard();
             $points = EPurchase::calculateDiscount($subscription, $user->getPlotCard()->getPoints());
             $user->getPlotCard()->setPoints($user->getPlotCard()->getPoints() - ($points / POINTS_MULTIPLIER));
+            $purchase = new EPurchase(date("Y-m-d"), 
+                                      date('Y-m-d', strtotime("+".$subscription->getPeriod())), // Assuming a 1-year subscription
+                                      UHTTPMethods::post('country'),
+                                      UHTTPMethods::post('city'),
+                                      UHTTPMethods::post('province'),
+                                      UHTTPMethods::post('zipCode'),
+                                      UHTTPMethods::post('billingAddress'),
+                                      UHTTPMethods::post('streetNumber'),
+                                      $user,
+                                      $subscription,
+                                      $card);
+            $user->addPurchase($purchase);   
+            $card->addPurchase($purchase);                      
+            $subscription->addPurchase($purchase);               
+            FPersistentManager::getInstance()->saveInDb($purchase);
+            FPersistentManager::getInstance()->saveInDb($card);
+            FPersistentManager::getInstance()->saveInDb($subscription);
+            FPersistentManager::getInstance()->saveInDb($user);
             if (strtolower($subscription->getType()) === 'writer' ){
                 $writer = $user->setPrivilege(2);
                 FPersistentManager::getInstance()->updateObject(EUser::class, $writer, 'privilege', WRITER); 
@@ -76,7 +94,6 @@ class CPurchase{
         $expiration = UHTTPMethods::post('expirationDate');
         $cvv = UHTTPMethods::post('cvv');
         $card = new ECreditCard($cardNumber, $nameC, $surnameC, $expiration, $cvv);
-        FPersistentManager::getInstance()->saveInDb($card);
         return $card;
     }
 }
