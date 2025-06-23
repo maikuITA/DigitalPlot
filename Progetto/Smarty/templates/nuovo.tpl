@@ -117,12 +117,13 @@
                 </p>
             </div>
             <p class="subtitle">
-                Carica/Inserisci
+                Carica/Inserisci <p class=".small-bold-text"> (in formato .pdf)</p>
+                <input type="file" name = "articleFile">
             </p>
             <div class="field">
                 <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
                 <script type="text/javascript">
-                    bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+                    bkLib.onDomLoaded(function() { nicEditors.allTextAreas()});
                 </script>
                 <p class="control">
                     <textarea class="textarea" placeholder="Descrizione dell'articolo" required></textarea>
