@@ -84,10 +84,8 @@
         {if isset($subscriptions)}
             {foreach from=$subscriptions item=subscription}
                 <div class="card mb-5">
-                    <header class="card-header">
-                        <p class="card-header-title is-centered">{$subscription->getType()}</p>
-                    </header>
                     <div class="card-content">
+                        <p class="title is-centered">{$subscription->getType()}</p>
                         {if $subscription->getType() === "writer"}
                             <div class="content"> Descrizione: <br/>
                                 Con l’abbonamento Writer potrai accedere all’area riservata per pubblicare i tuoi articoli, 

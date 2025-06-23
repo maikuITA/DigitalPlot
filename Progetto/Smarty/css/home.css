@@ -11,8 +11,10 @@
   flex-direction: column;
   height: 100%;
   max-width: 350px;
+  min-height: 350px;
 }
 
 .card-content {
   flex-grow: 1;
 }
+
