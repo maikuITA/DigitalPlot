@@ -115,9 +115,15 @@
                 <div class="is-gapped">
                     <a class="is-5 s">Follower: </a><a class="is-5">{$writer->getNumFollowers()}</a>
                 </div>
+                <div class="is-gapped">
+                    <a class="is-5 s">Follower: </a><a class="is-5">{$writer->getNumFollowers()}</a>
                 </div>
-                
             </div>
+            <footer class="card-footer">
+                <p class="card-footer-item">
+                    <a href="/follow/{$writer->getId()}" class="button is-link">segui</a>
+                </p>
+            </footer>
         </div>
         <div class="card text">
             <div class="card-content">
