@@ -80,22 +80,16 @@
     </header>
     <div class="body-container">
         <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                <img
-                    src="https://bulma.io/assets/images/placeholders/1280x960.png"
-                    alt="Placeholder image"
-                />
-                </figure>
-            </div>
+            
             <div class="card-content">
                 <div class="media">
                 <div class="media-left">
                     <figure class="image is-48x48">
-                    <img
-                        src="https://bulma.io/assets/images/placeholders/96x96.png"
-                        alt="Placeholder image"
-                    />
+                    {if $proPic === null}
+                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                    {else}
+                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                    {/if}
                     </figure>
                 </div>
                 <div class="media-content">
@@ -107,16 +101,14 @@
                 <div class="content">
 
                 <div class="is-gapped">
-                    <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
+                    <a class="is-5 s">Biografia </a><a class="is-5">{$writer->getBiography()}</a>
                 </div>
                 <div class="is-gapped">
-                    <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
-                </div>
-                <div class="is-gapped">
-                    <a class="is-5 s">Follower: </a><a class="is-5">{$writer->getNumFollowers()}</a>
+                    <a class="is-5 s">Numero articoli </a><a class="is-5">{$writer->getNumArticles()}</a>
                 </div>
                 <div class="is-gapped">
                     <a class="is-5 s">Follower: </a><a class="is-5">{$writer->getNumFollowers()}</a>
+                </div>
                 </div>
             </div>
             <footer class="card-footer">
