@@ -3,7 +3,7 @@
         'name' => 'andreacostantini/digital-plot',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '88bb615ff2802fc7b254c6c0303d22294999868c',
+        'reference' => '27cea555c5e97ec9c3e9433587efd6f4fbcc388b',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'andreacostantini/digital-plot' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '88bb615ff2802fc7b254c6c0303d22294999868c',
+            'reference' => '27cea555c5e97ec9c3e9433587efd6f4fbcc388b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
