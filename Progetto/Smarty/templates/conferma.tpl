@@ -87,7 +87,7 @@
                 {$confirmMessage}
             </p>
             <a class="subtitle has-text-link" href="/profile">
-                Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagine profile
+                Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina del tuo profilo
             </a>
         </div>
     </div>
