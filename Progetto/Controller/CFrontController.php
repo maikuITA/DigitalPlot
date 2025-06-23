@@ -46,13 +46,10 @@ class CFrontController {
             $params = array_slice($route, 1); // Get any additional parameters from the URL
             ULogSys::toLog("Controller -> ".$controller . " # Method -> ".$method);
             if (class_exists($controller) && method_exists($controller, $method)) {
-                try{
+                
                     call_user_func_array([$controller, $method], $params);
-                }
-                catch(Exception $e){
-                    header('Location: https://digitalplot.altervista.org/error');
-                    exit;
-                }
+                
+                
             } else {
                 header('Location: https://digitalplot.altervista.org/error');
                 exit;

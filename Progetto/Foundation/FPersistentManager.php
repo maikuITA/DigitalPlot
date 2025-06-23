@@ -77,7 +77,7 @@ class FPersistentManager {
      * @param int $articlesNum Number of articles to retrieve
      * @return EArticle[]|null Array of article objects or null if none found
      */
-    public function getCasualArticles(int $articlesNum): array {
+    public function getCasualArticles(int $articlesNum): ?array {
         return FEntityManager::getInstance()->selectNotAll(EArticle::class, $articlesNum);
     }
 
