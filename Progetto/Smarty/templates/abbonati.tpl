@@ -6,6 +6,7 @@
     <title>DigitalPlot-Abbonati</title>
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/abbonati.css">
     <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
     <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,7 +77,7 @@
             {/if}
         </div>
     </header>
-    <div class="container">
+    <div class="container" id="container">
         <label class="title is-3">Piani di sottoscrizione</label>
     </div>
     <div class="container" id="container">
