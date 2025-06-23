@@ -37,7 +37,7 @@ class EArticle{
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private Collection $reviews;
     
-    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist","remove"])]
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", onDelete: "cascade")] // definizione chiave esterna
     private EUser $writer;
     
