@@ -26,11 +26,11 @@ class ESubscription {  // cod type period price
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist"])]  // definisco il nome del campo dell'altra tabella che è chiave esterna
     private Collection $purchases; // array di purchases associati all'abbonamento
     
-    public function __construct(int $type,string $period, float $price, array $purchases = []) {
+    public function __construct(int $type,string $period, float $price) {
         $this->setType($type);
         $this->period = $period;
         $this->price = $price;
-        $this->purchases = $purchases; // inizializza l'array di purchases
+        $this->purchases = new ArrayCollection(); // inizializza l'array di purchases
     }
 
     // Set methods
@@ -69,26 +69,27 @@ class ESubscription {  // cod type period price
         return $this->price;
     }
     //Acquisti
-    public function getPurchases(){
+    public function getPurchases(): Collection {
         return $this->purchases;
     }
-    public function addPurchase(EPurchase $purchase){
-        $this->purchases[] = $purchase;
+    public function addPurchase(EPurchase $purchase): void{
+        $this->purchases->add($purchase);
     }
-    public function removePurchase(EPurchase $purchase){
-        $key = array_search($purchase, $this->purchases);
-        if ($key !== false) {
-            unset($this->purchases[$key]);
+    public function removePurchase(EPurchase $purchase): void{
+        if ($this->purchases->contains($purchase)) {
+            $this->purchases->removeElement($purchase);
         }
     }
     public function getPurchasesCount(){
-        return count($this->purchases);
+        return $this->purchases->count();
     }
     public function getPurchaseById(int $index){
-        if (array_key_exists($index, $this->purchases)) {
-            return $this->purchases[$index];
+        foreach ($this->purchases as $purchase) {
+            if ($purchase->getCod() === $index) {
+                return $purchase;
+            }
         }
-        return null;
+        return null; 
     }
 }
 
