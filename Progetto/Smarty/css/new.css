@@ -76,10 +76,14 @@ display: none; /* nasconde il file input */
 
 label[for="upload"] {
 display: inline-block;
-background-color: #007bff;
-color: white;
+background-color: #f0f1f0;
+color: rgb(4, 1, 1);
 padding: 10px 20px;
 font-weight: bold;
 border-radius: 5px;
 cursor: pointer;
+max-width: 100px;          /* larghezza massima */
+white-space: nowrap;       /* niente a capo */
+overflow: hidden;          /* nasconde l’eccesso */
+text-overflow: ellipsis;   /* mostra "..." */
 }
