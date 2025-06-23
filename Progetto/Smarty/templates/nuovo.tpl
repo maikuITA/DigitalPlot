@@ -120,7 +120,7 @@
                 Carica/Inserisci <span class=".small-bold-text"> (in formato .pdf) </span>
             </p>
 
-            <label for="upload"> <i class='fas fa-file'> Carica il tuo file </i></label>
+            <label for="upload"> Carica il tuo file </label>
             <input type="file" id="upload" name="articleFile">
             
             <div class="field">
