@@ -27,13 +27,13 @@ class ECreditCard{
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "creditCardNumber", cascade: ["persist", "remove"])]
     private Collection $purchases;
 
-    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv, array $purchases = []) {
+    public function __construct(string $cardNumber, string $name,string $surname, string $expirationDate, string $cvv) {
         $this->cardNumber = $cardNumber;
         $this->name = $name;
         $this->surname = $surname;
         $this->expirationDate = new DateTime($expirationDate);
         $this->cvv = $cvv; // inizializza il CVV
-        $this->purchases = $purchases; // inizializza l'array di acquisti
+        $this->purchases = new ArrayCollection(); // inizializza l'array di acquisti
     }
 
     // Set methods
@@ -82,24 +82,26 @@ class ECreditCard{
     }
     
      //Acquisti
-     public function getPurchases(): array{
+     public function getPurchases(){
         return $this->purchases;
     }
     public function addPurchase(EPurchase $purchase){
         $this->purchases[] = $purchase;
     }
     public function removePurchase(EPurchase $purchase){
-        $key = array_search($purchase, $this->purchases);
+        $key = $this->purchases->contains($purchase);
         if ($key !== false) {
-            unset($this->purchases[$key]);
+            $this->purchases->removeElement($purchase);
         }
     }
     public function purchasesCount(){
         return count($this->purchases);
     }
-    public function getPurchaseById(int $index){
-        if (array_key_exists($index, $this->purchases)) {
-            return $this->purchases[$index];
+    public function getPurchaseById(int $index): ?EPurchase{
+        foreach($this->purchases as $element){
+            if ($element->getId() === $index){
+                return $element;
+            }
         }
         return null;
     }
