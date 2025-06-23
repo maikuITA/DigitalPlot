@@ -117,11 +117,10 @@
                 </p>
             </div>
             <p class="subtitle">
-                Carica/Inserisci 
+                Carica/Inserisci <p class=".small-bold-text"> (in formato .pdf)</p>
             </p>
-            <p class=".small-bold-text"> (in formato .pdf)</p>
             <input type="file" name = "articleFile"> 
-            <br/>
+            
             <div class="field">
                 <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
                 <script type="text/javascript">
