@@ -120,7 +120,8 @@
                 Carica/Inserisci 
             </p>
             <p class=".small-bold-text"> (in formato .pdf)</p>
-            <input type="file" name = "articleFile"> <br/>
+            <input type="file" name = "articleFile"> 
+            <br/>
             <div class="field">
                 <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
                 <script type="text/javascript">
