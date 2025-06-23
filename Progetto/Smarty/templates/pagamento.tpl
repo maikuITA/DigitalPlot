@@ -198,7 +198,7 @@
                                 </span>
                             </p>
                             <p class="control has-icons-left tel">
-                                <input class="input is-rounded" type="text" placeholder="Numero di telefono" pattern="[0-9]{10}" value="{$user->getTelephone()}">
+                                <input class="input is-rounded" type="text" placeholder="Numero di telefono" {literal} pattern='^(\+39)?[0-9\s\-]{9,15}$' {/literal} value="{$user->getTelephone()}">
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-phone" aria-hidden="true">  </i>
                                 </span>
