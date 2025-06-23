@@ -125,7 +125,11 @@
             <div class="columns">
                 <div class="column is-one-fifth">
                     <figure class="image is-128x128">
-                        <img src="favicon.ico" alt="Avatar">
+                        {if $proPic === null}
+                            <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                        {else}
+                            <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                        {/if}
                     </figure>
                 </div>
                 <div class="column is-two-fifth c">
