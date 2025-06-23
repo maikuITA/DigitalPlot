@@ -82,8 +82,5 @@ padding: 10px 20px;
 font-weight: bold;
 border-radius: 5px;
 cursor: pointer;
-max-width: 100px;          /* larghezza massima */
-white-space: nowrap;       /* niente a capo */
-overflow: hidden;          /* nasconde l’eccesso */
-text-overflow: ellipsis;   /* mostra "..." */
+max-width: 400px;          /* larghezza massima */
 }
