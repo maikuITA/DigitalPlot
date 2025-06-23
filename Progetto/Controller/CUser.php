@@ -123,7 +123,8 @@ class CUser{
             $streetNumber = UHTTPMethods::post('streetNumber');
             $email = UHTTPMethods::post('email');
             $telephone = UHTTPMethods::post('telephone');
-            $user = new EUser (BASIC, $username, $password, $name, $surname, $birthdate, $country, $birthplace, $province, $zipCode, $streetAddress, $streetNumber, $email, $telephone);
+            $privilege = BASIC;
+            $user = new EUser ($privilege, $username, $password, $name, $surname, $birthdate, $country, $birthplace, $province, $zipCode, $streetAddress, $streetNumber, $email, $telephone);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
             try {
