@@ -79,14 +79,6 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="card text">
-            <div class="card-content">
-                <div class="content">
-                    <p class="title"> {$article->getTitle()} </p>
-                    <p class="subtitle"> {$article->getdescription()} </p>
-                </div>
-            </div>
-        </div>
         <div class="card">
             <div class="card-image">
                 <figure class="image is-4by3">
@@ -113,13 +105,26 @@
                 </div>
 
                 <div class="content">
-                {$writer->getBiography()} <a>@bulmaio</a>. <a href="#">#css</a>
-                <a href="#">#responsive</a>
-                <br />
-                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                <p class="subtitle">Biografia:</p>    
+                <p>{$writer->getBiography()}</p>
+                <p class="subtitle">Articoli scritti:</p>    
+                <p>{$writer->getNumArticles()}</p>
+                <p class="subtitle">Follower:</p>    
+                <p>{$writer->getNumFollowers()}</p>
                 </div>
             </div>
         </div>
+        <div class="card text">
+            <div class="card-content">
+                <div class="content">
+                    <p class="title"> {$article->getTitle()} </p>
+                    <p class="subtitle"> {$article->getDescription()} </p>
+                    <p class="subtitle"> {$article->getCategory()} </p>
+                    <p class="subtitle"> {$article->getGenre()} </p>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>
