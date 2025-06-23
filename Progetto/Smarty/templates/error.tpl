@@ -84,8 +84,7 @@
                 <i class="fa fa-window-close fa-10x" aria-hidden="true"></i>
             </span> 
             <p class="title">
-                Errore {$errore} <br>
-                Risorsa non trovata!
+                Errore <br> {$errore} 
             </p>
             <a class="subtitle has-text-link" href="/home">
                 Controlla se l'URL è corretto o torna alla home.
