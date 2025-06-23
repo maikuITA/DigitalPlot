@@ -55,6 +55,11 @@ class CArticle{
         }
     }
 
+    /**
+     * allow you to drop an article from the profile view
+     * @param $idArticle
+     * @return void
+     */
     public static function dropArticle(int $idArticle): void{
         if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
@@ -77,6 +82,5 @@ class CArticle{
             exit();
         }
     }
-
 
 }

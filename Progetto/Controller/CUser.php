@@ -200,7 +200,8 @@ class CUser{
         if (CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $articles = $user->getArticles();
-            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
+            $readdenArticles = $user->getReadings();
+            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles);
 
         } else {
             header('Location: https://digitalplot.altervista.org/auth');
