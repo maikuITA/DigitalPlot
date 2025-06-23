@@ -62,7 +62,7 @@ class CArticle{
                 $articles = $user->getArticles();
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
                 FPersistentManager::getInstance()->delete($article);
-                VProfile::render(user: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
+                VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles);
             }
             else{
                 header('Location: https://digitalplot.altervista.org/home');
