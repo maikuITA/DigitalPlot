@@ -142,7 +142,7 @@
                 </div>
                 <div class="column is-two-fifth cs">
                     <div class="is-gapped">
-                        <a class="is-5 s">Follower</a><a class="is-5">{$user->getFollowerCount()}</a>
+                        <a class="is-5 s">Follower</a><a class="is-5">{$user->getNumFollowers()}</a>
                     </div>
                     <div class="is-gapped">
                         <a class="is-5 s">Seguiti</a><a class="is-5">{$user->getNumFollowing()}</a>
@@ -189,33 +189,23 @@
                     <tr>
                         <th>Nome articolo</th>
                         <th>Data pubblicazione</th>
-                        <th>Tipo</th>
+                        <th>Categoria</th>
                         <th>Genere</th>
                         <th>Leggi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>01/01/1970</td>
-                        <td>Tipo</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Leggi</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>01/01/1970</td>
-                        <td>Tipo</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Leggi</a></td>
-                    </tr>
-                    <tr>
-                        <td>NomeArticolo</td>
-                        <td>01/01/1970</td>
-                        <td>Tipo</td>
-                        <td>Genere</td>
-                        <td><a class="has-text-link">Leggi</a></td>
-                    </tr>
+                {if isset($readdenArticles)}
+                    {foreach from=$readdenArticles item=article}
+                            <tr>
+                                <td>{$article->getTitle()}</td>
+                                <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
+                                <td>{$article->getCategory()}</td>
+                                <td>{$article->getGenre()}</td>
+                                <td><a class="has-text-link" href="/article/{$article->getId()}" >Leggi</a></td>
+                            </tr>           
+                    {/foreach}
+                {/if}    
                 </tbody>
             </table>
         </div>
