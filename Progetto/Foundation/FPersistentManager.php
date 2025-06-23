@@ -46,7 +46,7 @@ class FPersistentManager {
      * @return bool
      * @throws Exception
      */
-    public function delete(object $entity): bool {
+    public function delete(?object $entity): bool {
         return FEntityManager::getInstance()->deleteObj($entity);
     }
 

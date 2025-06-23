@@ -277,7 +277,7 @@ class FEntityManager {
      * @return boolean
      * @throws Exception
      */
-    public static function deleteObj(object $obj): bool {
+    public static function deleteObj(?object $obj): bool {
         try{
             self::$entityManager->getConnection()->beginTransaction();
             ULogSys::toLog('prova4', true);
