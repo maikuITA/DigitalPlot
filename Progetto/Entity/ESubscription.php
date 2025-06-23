@@ -1,6 +1,8 @@
 <?php
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "Subscription")]
@@ -21,8 +23,8 @@ class ESubscription {  // cod type period price
     #[ORM\Column(type: "float")]
     private float $price;
     
-    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist", "remove"])]  // definisco il nome del campo dell'altra tabella che è chiave esterna
-    private $purchases; // array di purchases associati all'abbonamento
+    #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscription", cascade: ["persist"])]  // definisco il nome del campo dell'altra tabella che è chiave esterna
+    private Collection $purchases; // array di purchases associati all'abbonamento
     
     public function __construct(int $type,string $period, float $price, array $purchases = []) {
         $this->setType($type);

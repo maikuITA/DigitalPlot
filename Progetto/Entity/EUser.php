@@ -2,6 +2,7 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "User")]
@@ -66,32 +67,32 @@ class EUser {
 
     //-----------------BASIC-----------------
 
-    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"]) ]
-    private $readings;
+    #[ORM\OneToMany(targetEntity:"EReading", mappedBy:"user", cascade:["persist", "remove"])]
+    private Collection $readings;
     
     #[ORM\OneToMany(targetEntity:"EPlotCard", mappedBy:"user", cascade:["persist", "remove"])]
-    private $plotCard;
+    private Collection $plotCard;
 
     #[ORM\OneToMany(targetEntity: "EPurchase", mappedBy: "subscriber", cascade: ["persist", "remove"])]
-    private $purchases;
+    private Collection $purchases;
 
     //-----------------READER-----------------
 
     // definisco il name del campo dell'altra tabella che è chiave esterna
     #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "follower", cascade: ["persist", "remove"])]
-    private $followers;
+    private Collection $followers;
     
     #[ORM\OneToMany(targetEntity: "EFollow", mappedBy: "following", cascade: ["persist", "remove"])]
-    private $following;
+    private Collection $following;
 
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "subscriber", cascade: ["persist", "remove"])]
-    private $reviews;
+    private Collection $reviews;
 
     //-----------------WRITER-----------------
 
     // definisco il nome del campo dell'altra tabella che è chiave esterna
-    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"], orphanRemoval: true)]
-    private $articles;
+    #[ORM\OneToMany(targetEntity: "EArticle", mappedBy: "writer", cascade: ["persist", "remove"])]
+    private Collection $articles;
 
     //-----------------ADMIN-----------------
 
@@ -113,7 +114,7 @@ class EUser {
                                 string $email, 
                                 string $telephone, 
                                 string $biography = "", 
-                                mixed $profilePicture = null,
+                                mixed $profilePicture = null
                                 ) {
         $this->setPrivilege($privilege);
         $this->setUsername($username);
