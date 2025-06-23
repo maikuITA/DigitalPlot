@@ -84,8 +84,7 @@
                 <i class="fa fa-check-circle fa-10x" aria-hidden="true"></i>
             </span> 
             <p class="title">
-                Pagamento effettuato! <br>
-                Controlla la tua email per la conferma
+                {$confirmMessage}
             </p>
             <a class="subtitle has-text-link">
                 Grazie per aver scelto DigitalPlot!
