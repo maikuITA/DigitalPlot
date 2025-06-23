@@ -70,13 +70,3 @@ textarea {
     color: #000;           /* colore nero base */
 }
 
-
-.custom-file-label {
-    display: inline-block;
-    background-color: #3273dc;
-    color: white;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
