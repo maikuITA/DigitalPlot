@@ -38,7 +38,7 @@ nav {
 
 .card {
     width: 250px;
-    max-height: 300px;
+    min-height: auto;
 }
 
 .card-header {

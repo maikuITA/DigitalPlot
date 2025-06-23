@@ -257,6 +257,8 @@ class BasicEntry{
     FPersistentManager::getInstance()->saveInDb($sub2);
     FPersistentManager::getInstance()->saveInDb($sub3);
     FPersistentManager::getInstance()->saveInDb($sub4);
+    FPersistentManager::getInstance()->saveInDb($sub5);
+    FPersistentManager::getInstance()->saveInDb($sub6);
     //credit cards
     FPersistentManager::getInstance()->saveInDb($cc1);
     FPersistentManager::getInstance()->saveInDb($cc2);
