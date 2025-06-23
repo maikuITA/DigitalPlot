@@ -296,6 +296,14 @@ class EUser {
         return $this->readings->count();
     }
 
+    public function getReaddenArticles() {
+        $articles = new ArrayCollection();
+        foreach($this->readings as $reading){
+            $articles->add($reading->getArticle());
+        }
+        return $articles;
+    }
+
     //PlotCard methods
     public function addPlotCard(EPlotCard $plotCard): void {
         $this->plotCard->add($plotCard);
