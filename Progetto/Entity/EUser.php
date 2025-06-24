@@ -379,7 +379,7 @@ class EUser {
     }
     public function getFollowingById(int $id): ?EFollow{
         foreach($this->following as $follower){
-            if($follower->getFollowed()->getId() == $id){
+            if($follower->getFollower()->getId() == $id){
                 return $follower;
             }
         }
