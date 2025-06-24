@@ -80,4 +80,37 @@ class CFollow{
         }
     }
 
+    /**
+     * check if the user is a follower of the writer
+     * @param string|null $usernameWriter username of the writer
+     */
+    public static function isFollower(?string $usernameWriter){
+        header('Content-Type: application/json');
+        if($usernameWriter === null ){
+            echo json_encode(['success' => false, 'message' => 'writer missing']);
+            exit;
+        }else{
+            if(CUser::isLogged()){
+                if(CUser::isSubbed()){
+                    $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                    $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
+                    $follow = $user->getFollowingById($writer->getId());
+                    if (isset($writer) && isset($follow)){
+                        echo json_encode(['success' => true, 'message' => 'follow successful']);
+                        exit;
+                    }else{
+                        echo json_encode(['success' => false, 'message' => 'writer missing']);
+                        exit;
+                    }
+                }else{
+                    echo json_encode(['success' => false, 'message' => 'writer missing']);
+                    exit;
+                }
+            }else{
+                echo json_encode(['success' => false, 'message' => 'writer missing']);
+                exit;
+            }
+        }
+    }
+
 }

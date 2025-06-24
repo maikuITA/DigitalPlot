@@ -57,3 +57,34 @@ unfollow.addEventListener('click', async () => {
   }
 });
 
+document.addEventListener('DOMContentLoaded', async ()=>{
+  // Costruzione dell'URL con parametri
+  const url = '/isFollow/' + username.textContent
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Errore nella risposta del server');
+    }
+
+    const result = await response.json();
+
+    if (result.success === true) {
+      follow.classList.add('is-hidden')
+      unfollow.classList.remove('is-hidden')
+    }
+    else{
+      unfollow.classList.add('is-hidden')
+      follow.classList.remove('is-hidden')  
+    }
+  } catch (error) {
+    console.error('Errore nella richiesta:', error);
+  }
+})
+
