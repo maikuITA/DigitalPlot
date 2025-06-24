@@ -231,7 +231,9 @@
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left carta">
-                                <input class="input is-rounded" type="text" name= "cardNumber" placeholder="Numero della carta" {literal} pattern="^(\d{4}([- ]))\d{4}\2\d{4}\2\d{4}$" {/literal} required>
+                                <input class="input is-rounded" type="text" name="cardNumber" placeholder="Numero della carta"
+                                        {literal} pattern="^(\d{4} \d{4} \d{4} \d{4}|\d{4}-\d{4}-\d{4}-\d{4}|\d{16})$" {/literal}
+                                        required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-credit-card" aria-hidden="true">  </i>
                                 </span>
