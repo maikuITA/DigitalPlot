@@ -93,8 +93,8 @@
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-4"> {$writer->getName()} </p>
-                    <p id="username"class="subtitle is-6"> {$writer->getUsername() }</p>
+                    <p class="title is-4">{$writer->getName()} </p>
+                    <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
                 </div>
                 </div>
 

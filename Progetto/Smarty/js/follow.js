@@ -32,7 +32,7 @@ follow.addEventListener('click', async () => {
 
 unfollow.addEventListener('click', async () => {
   // Costruzione dell'URL con parametri
-  const url = '/follow/' + username.textContent
+  const url = '/unfollow/' + username.textContent
 
   try {
     const response = await fetch(url, {

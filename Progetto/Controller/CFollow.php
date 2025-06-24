@@ -10,7 +10,7 @@ class CFollow{
     public static function follow(?string $usernameWriter) : bool {
         header('Content-Type: application/json');
         if($usernameWriter === null){
-            echo json_encode(['success' => false, 'message' => 'writer missing']);
+            echo json_encode(['success' => false, 'message' => 'manca username']);
             exit;
         }else{
             if(CUser::isLogged()){
@@ -27,15 +27,15 @@ class CFollow{
                         echo json_encode(['success' => true, 'message' => 'follow successful']);
                         exit;
                     }else{
-                        echo json_encode(['success' => false, 'message' => 'writer missing']);
+                        echo json_encode(['success' => false, 'message' => 'writer non caricato']);
                         exit;
                     }
                 }else{
-                    echo json_encode(['success' => false, 'message' => 'writer missing']);
+                    echo json_encode(['success' => false, 'message' => 'non iscritto']);
                     exit;
                 }
             }else{
-                echo json_encode(['success' => false, 'message' => 'writer missing']);
+                echo json_encode(['success' => false, 'message' => 'non loggato']);
                 exit;
             }
         }
