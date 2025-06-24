@@ -128,16 +128,16 @@
                                 <form id="avatarForm" action="/uploadAvatar" method="POST" enctype="multipart/form-data">
                                     <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
                                     {if $proPic === null}
-                                            <label for="avatarInput" class="labelProfileU">
-                                                <img src="/Progetto/Smarty/img/propic.png" alt="Foto profilo" class="profilePictureU">
-                                                <i class="fas fa-camera iconU"></i>
+                                            <label for="avatarInput" class="avatar-wrapper">
+                                                <img src="/Progetto/Smarty/img/propic.png" alt="Foto profilo" id="avatarPreview" class="profilePictureU">
+                                                <i class="fas fa-camera camera-icon"></i>
                                             </label>
                                     {else}
-                                        <label for="avatarInput" class="labelProfileU">
-                                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
+                                        <label for="avatarInput" class="avatar-wrapper">
+                                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}" id="avatarPreview" class="profilePictureU"/>
                                         </label>
                                     {/if}  
-                            </form>
+                                </form>
                         </figure>
                     </form>
                 </div>

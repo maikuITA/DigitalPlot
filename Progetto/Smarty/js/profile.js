@@ -4,3 +4,4 @@ document.getElementById('avatarInput').addEventListener('change', function () {
         document.getElementById('avatarForm').submit();
     }
 });
+
