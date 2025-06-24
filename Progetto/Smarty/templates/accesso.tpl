@@ -26,7 +26,6 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
-                    <a class="navbar-item" href="/abbonati">Abbonati</a>
                 </div>
             </div>
         </div>

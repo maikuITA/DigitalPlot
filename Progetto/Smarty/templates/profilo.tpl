@@ -152,7 +152,10 @@
                         <a class="is-5 s">Seguiti</a><a class="is-5">{$user->getNumFollowing()}</a>
                     </div>
                     <div class="is-gapped">
-                        <a class="is-5 s">Numero articoli</a><a class="is-5">{$user->getNumArticles()}</a>
+                        <a class="is-5 s">Articoli scritti</a><a class="is-5">{$user->getNumArticles()}</a>
+                    </div>
+                    <div class="is-gapped">
+                        <a class="is-5 s">Articoli letti</a><a class="is-5">{$user->getNumReadings()}</a>
                     </div>
                 </div>
             </div>
