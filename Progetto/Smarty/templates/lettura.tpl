@@ -94,7 +94,7 @@
                 </div>
                 <div class="media-content">
                     <p class="title is-4"> {$writer->getName()} </p>
-                    <p class="subtitle is-6"> {$writer->getUsername() }</p>
+                    <p id="username"class="subtitle is-6"> {$writer->getUsername() }</p>
                 </div>
                 </div>
 
@@ -113,7 +113,8 @@
             </div>
             <footer class="card-footer">
                 <p class="card-footer-item">
-                    <a href="/follow/{$writer->getId()}" class="button is-link">segui</a>
+                    <a class="button is-link" id="follow">follow</a>
+                    <a class="button is-link" id="unfollow">unfollow</a>
                 </p>
             </footer>
         </div>
@@ -133,3 +134,4 @@
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
+<script src="/Progetto/Smarty/js/follow.js"></script>
