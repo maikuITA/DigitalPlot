@@ -187,11 +187,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="field">
-
+                <div class="block-container mt-4 mb-4">
                     <div id="editor-container"></div>   
                     <input type="hidden" name="contenuto" id="contenuto-articolo">
-
                 </div>
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
