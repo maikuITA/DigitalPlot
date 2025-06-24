@@ -19,8 +19,8 @@ class CFollow{
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     if (isset($writer)){
                         $follow = new EFollow($user, $writer);
-                        $user->addFollowing($writer);
-                        $writer->addFollower($user);
+                        $user->addFollowing($follow);
+                        $writer->addFollower($follow);
                         FPersistentManager::getInstance()->saveInDb($follow);
                         FPersistentManager::getInstance()->saveInDb($user);
                         FPersistentManager::getInstance()->saveInDb($writer);
@@ -59,8 +59,8 @@ class CFollow{
                     $follow = $user->getFollowingById($writer->getId());
                     if (isset($writer) and isset($follow)){
                         $follow = new EFollow($user, $writer);
-                        $user->removeFollowing($writer);
-                        $writer->removeFollower($user);
+                        $user->removeFollowing($follow);
+                        $writer->removeFollower($follow);
                         FPersistentManager::getInstance()->delete($follow);
                         FPersistentManager::getInstance()->saveInDb($user);
                         FPersistentManager::getInstance()->saveInDb($writer);
