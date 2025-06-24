@@ -187,10 +187,12 @@ class CUser{
                 } else {
                     ULogSys::toLog('Invalid username or password', true);
                     header('Location: https://digitalplot.altervista.org/auth');
+                    exit;
                 }
             } catch (Exception $e) {
                 ULogSys::toLog('Error during login: ' . $e->getMessage(), true);
                 header('Location: https://digitalplot.altervista.org/auth');
+                exit;
             }
         } else{
             header('Location: https://digitalplot.altervista.org/auth');
@@ -215,5 +217,42 @@ class CUser{
             header('Location: https://digitalplot.altervista.org/auth');
         }
     }
+
+    public function uploadAvatar(): void {
+        // the input of files is the value of "name", attribute in <input type = "file" ...
+        if (CUser::isLogged() === true){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if (UServer::getRequestMethod() === 'POST' && isset(UHTTPMethods::files('avatar'))) {
+                $file = UHTTPMethods::files('avatar');
+                $tmpName = $file['tmp_name']; // refers to the temporary path in which the server uploads the photo; PHP has its default value; it doesn't change according to the server used
+                $mime = mime_content_type($tmpName); // server understands the format of the file uploaded
+
+                // Sicurezza
+                $allowed = ['image/jpeg', 'image/png'];  // formats allowed
+                if (!in_array($mime, $allowed)) { // if the format is not allowed
+                    $error = "Formato immagine non supportato";
+                    VError::render($error,  plotPoints: $user->getPlotCard()->getPoints(), isLogged:true, privilege: $user->getPrivilege());
+                    exit;
+                }
+
+                // Upload binary code from the path into the variable $blob
+                $blob = file_get_contents($tmpName);
+
+                // save into the db 
+                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob); 
+
+                header("Location: https://digitalplot.altervista.org/profile");
+                exit;
+            } else {
+                $error = 'Errore: metodo errato / file non recuperato da $_FILES';
+                VError::render($error,  plotPoints: $user->getPlotCard()->getPoints(), isLogged:true, privilege: $user->getPrivilege());
+                exit;
+            }
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit;
+        }
+    }
+
 
 }

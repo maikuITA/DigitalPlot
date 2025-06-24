@@ -18,6 +18,7 @@ class CFrontController {
         'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
         'profile' => ['CUser', 'goToProfile'],
+        'uploadAvatar' => ['CUser', 'uploadAvatar'],
         'dbInit'  => ['CService', 'dbInit'],
         'logs' => ['CService', 'logs'],
         'find' => ['CSearch', 'find'],

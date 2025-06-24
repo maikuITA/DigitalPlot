@@ -124,13 +124,22 @@
         <div class="card">
             <div class="columns">
                 <div class="column is-one-fifth">
-                    <figure class="image is-128x128">
-                        {if $proPic === null}
-                            <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
-                        {else}
-                            <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
-                        {/if}
-                    </figure>
+                        <figure class="image is-128x128">
+                            <form id="avatarForm" action="/uploadAvatar" method="POST" enctype="multipart/form-data">
+                                <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
+                                    {if $proPic === null}
+                                        <label for="avatarInput" class="labelProfile">
+                                            <img src="/Progetto/Smarty/img/propic.png" id="avatarPreview" alt="Foto profilo" class = "profilePicture">
+                                            <i class="fas fa-camera icon"></i>
+                                        </label>
+                                    {else}
+                                        <label for="avatarInput" class="labelProfile">
+                                            <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                                        </label>
+                                    {/if}   
+                            </form>
+                        </figure>
+                    </form>
                 </div>
                 <div class="column is-two-fifth c">
                     <a class="title">{$user->getUsername()}</a>
@@ -143,6 +152,7 @@
                     {elseif $user->getPrivilege() === 3}
                         <a class="subtitle has-text-warning">Amministratore</a>
                     {/if}
+
                 </div>
                 <div class="column is-two-fifth cs">
                     <div class="is-gapped">
@@ -159,6 +169,7 @@
                     </div>
                 </div>
             </div>
+            <div> <p class="is-5 s"> Biografia </p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sagittis augue in nibh porta interdum. Sed eu ex et felis sollicitudin pulvinar. </div>
         </div>
         <div class="card articles" id="articles">
             <table class="table is-striped is-hoverable">
