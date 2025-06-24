@@ -115,6 +115,7 @@
                 <p class="card-footer-item">
                     <a class="button is-link" id="follow">follow</a>
                     <a class="button is-link" id="unfollow">unfollow</a>
+                    
                 </p>
             </footer>
         </div>
