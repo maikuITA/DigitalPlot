@@ -95,7 +95,7 @@ class CFollow{
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     if($user->getId()=== $writer->getId()){
-                        echo json_encode(['isMe' => true, 'message' => 'sei tu']);
+                        echo json_encode(['isMe' => true, 'success' => true, 'message' => 'sei tu']);
                         exit;
                     }
                     $follow = $user->getFollowingById($writer->getId());
