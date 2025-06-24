@@ -78,7 +78,11 @@ class BasicEntry{
 
     //EFollow
     $fo1 = new EFollow($u3,$u4);
+    $u4->addFollowing($fo1);
+    $u3->addFollower($fo1);
     $fo2 = new EFollow($u10,$u7);
+    $u7->addFollowing($fo2);
+    $u10->addFollower($fo2);
     
     //EArticle
     $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', 'Nel bel mezzo del cazzo' , 'approved', 'Classico', 'Romazo', '1400-01-01', $u4);

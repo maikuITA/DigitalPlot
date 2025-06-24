@@ -19,9 +19,13 @@ class EFollow{
     private EUser $following;
 
 
-    public function __construct(EUser $follower, EUser $following) {
+    /**
+     * @param EUser $follower colui che guadagna un follower
+     * @param EUser $followed colui che guadagna un following    
+     */
+    public function __construct(EUser $follower, EUser $followed) {
         $this->follower = $follower;
-        $this->following = $following;
+        $this->following = $followed;
     }
 
     public function getFollower(): EUser{
