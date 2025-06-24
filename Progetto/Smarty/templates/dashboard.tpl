@@ -92,7 +92,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
                         iaculis mauris.</p>
                         <a class="has-text-link">@admin</a>
-                        <time datetime="2016-1-1">15:51 PM - 7 Jun 2025</time>
+                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
                         iaculis mauris.</p>
                         <a class="has-text-link">@admin</a>
-                        <time datetime="2016-1-1">15:51 PM - 7 Jun 2025</time>
+                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
                         iaculis mauris.</p>
                         <a class="has-text-link">@admin</a>
-                        <time datetime="2016-1-1">15:51 PM - 7 Jun 2025</time>
+                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
                         iaculis mauris.</p>
                         <a class="has-text-link">@admin</a>
-                        <time datetime="2016-1-1">15:51 PM - 7 Jun 2025</time>
+                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
             </div>
