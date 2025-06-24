@@ -87,7 +87,6 @@ class CFollow{
     public static function isFollow(?string $usernameWriter){
         header('Content-Type: application/json');
         if($usernameWriter === null ){
-            ULogSys::toLog('DIO',true);
             echo json_encode(['success' => false, 'me' => false]);
             exit;
         }else{
@@ -96,13 +95,11 @@ class CFollow{
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     if($user->getId()=== $writer->getId()){
-                        ULogSys::toLog('DIO '. var_dump(json_encode(['success' => false, 'me' => true])),true);
                         echo json_encode(['success' => false, 'me' => true]);
                         exit;
                     }
                     $follow = $user->getFollowingById($writer->getId());
                     if (isset($writer) && isset($follow)){
-                        ULogSys::toLog('DIO '. var_dump(json_encode(['success' => true, 'me' => false])),true);
                         echo json_encode(['success' => true, 'me' => false]);
                         exit;
                     }else{
