@@ -343,7 +343,7 @@ class EUser {
 
      // followers
 
-    public function setFollowers(EUser $follower): void{
+    public function addFollower(EUser $follower): void{
         $this->followers->add($follower);
     }
     public function getFollowers(){
@@ -384,7 +384,19 @@ class EUser {
     public function getNumFollowing(): int{
         return $this->following->count();
     }
-
+    public function getFollowingById(int $id): ?EUser{
+        foreach($this->following as $follower){
+            if($follower->getId() == $id){
+                return $follower;
+            }
+        }
+        return null;
+    }
+    public function removeFollowing(EUser $follower): void{
+        if($this->following->contains($follower)) {
+            $this->following->removeElement($follower);
+        }
+    }
     //reviews methods
     public function addReview(EReview $review): void {
         $this->reviews->add($review);
