@@ -84,7 +84,7 @@ class CFollow{
      * check if the user is a follower of the writer
      * @param string|null $usernameWriter username of the writer
      */
-    public static function isFollower(?string $usernameWriter){
+    public static function isFollow(?string $usernameWriter){
         header('Content-Type: application/json');
         if($usernameWriter === null ){
             echo json_encode(['success' => false, 'me' => false]);
