@@ -136,7 +136,8 @@
                                         <label for="avatarInput" class="labelProfile">
                                             <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
                                         </label>
-                                    {/if}   
+                                    {/if}  
+                                    <button type="submit"> Carica </button>
                             </form>
                         </figure>
                     </form>

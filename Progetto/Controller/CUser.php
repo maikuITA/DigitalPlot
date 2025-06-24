@@ -218,14 +218,25 @@ class CUser{
         }
     }
 
-    public function uploadAvatar(): void {
+    public static function uploadAvatar(): void {
         // the input of files is the value of "name", attribute in <input type = "file" ...
         if (CUser::isLogged() === true){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $file = UHTTPMethods::files('avatar');
             if (UServer::getRequestMethod() === 'POST' && isset($file)) {
                 $file = UHTTPMethods::files('avatar');
-                $tmpName = $file['tmp_name']; // refers to the temporary path in which the server uploads the photo; PHP has its default value; it doesn't change according to the server used
+                
+                if (!empty($file) && $file['error'] === UPLOAD_ERR_OK && !empty($file['tmp_name'])) {
+                    $tmpName = $file['tmp_name'];
+                    $mime = mime_content_type($tmpName);
+                    
+                    // prosegui con controlli MIME ecc...
+                } else {
+                    $error = "Nessuna imaggine rilevata";
+                    VError::render($error,  plotPoints: $user->getPlotCard()->getPoints(), isLogged:true, privilege: $user->getPrivilege());
+                    exit;
+                }
+                
                 $mime = mime_content_type($tmpName); // server understands the format of the file uploaded
 
                 // Sicurezza
