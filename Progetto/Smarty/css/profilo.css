@@ -205,7 +205,7 @@ span {
 }
 
 
-.profilePicture {
+.profilePictureU {
     width: 100px; 
     height: 100px; 
     border-radius: 50%; 
@@ -213,7 +213,7 @@ span {
     border: 2px solid #ccc;
 }
 
-.icon{
+.iconU{
     position: absolute; 
     bottom: 5px; 
     right: 5px; 
@@ -223,7 +223,7 @@ span {
     font-size: 14px;
 }
 
-.labelProfile{
+.labelProfileU{
     cursor: pointer; 
     display: inline-block; 
     position: relative;

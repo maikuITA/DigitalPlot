@@ -65,7 +65,7 @@
                     {if $proPic === null}
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                     {else}
-                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure></a>
                 <a href="/logout" class="is-ok">
@@ -125,19 +125,18 @@
             <div class="columns">
                 <div class="column is-one-fifth">
                         <figure class="image is-128x128">
-                            <form id="avatarForm" action="/uploadAvatar" method="POST" enctype="multipart/form-data">
-                                <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
+                                <form id="avatarForm" action="/uploadAvatar" method="POST" enctype="multipart/form-data">
+                                    <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
                                     {if $proPic === null}
-                                        <label for="avatarInput" class="labelProfile">
-                                            <img src="/Progetto/Smarty/img/propic.png" id="avatarPreview" alt="Foto profilo" class = "profilePicture">
-                                            <i class="fas fa-camera icon"></i>
-                                        </label>
+                                            <label for="avatarInput" class="labelProfileU">
+                                                <img src="/Progetto/Smarty/img/propic.png" alt="Foto profilo" class="profilePictureU">
+                                                <i class="fas fa-camera iconU"></i>
+                                            </label>
                                     {else}
-                                        <label for="avatarInput" class="labelProfile">
-                                            <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                                        <label for="avatarInput" class="labelProfileU">
+                                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
                                         </label>
                                     {/if}  
-                                    <button type="submit"> Carica </button>
                             </form>
                         </figure>
                     </form>
@@ -229,6 +228,13 @@
             </table>
         </div>
     </div>
+    <script>
+        document.getElementById('avatarInput').addEventListener('change', function () {
+        if (this.files.length > 0) {
+            document.getElementById('avatarForm').submit();
+        }
+        });
+    </script>
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>

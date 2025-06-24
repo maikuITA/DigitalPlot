@@ -218,6 +218,7 @@ class CUser{
         }
     }
 
+    /**
     public static function uploadAvatar(): void {
         // the input of files is the value of "name", attribute in <input type = "file" ...
         if (CUser::isLogged() === true){
@@ -225,7 +226,7 @@ class CUser{
             $file = UHTTPMethods::files('avatar');
             if (UServer::getRequestMethod() === 'POST' && isset($file)) {
                 $file = UHTTPMethods::files('avatar');
-                
+
                 if (!empty($file) && $file['error'] === UPLOAD_ERR_OK && !empty($file['tmp_name'])) {
                     $tmpName = $file['tmp_name'];
                     $mime = mime_content_type($tmpName);
@@ -265,6 +266,86 @@ class CUser{
             exit;
         }
     }
+        */
+
+
+
+    public static function uploadAvatar(): void {
+        // the input of files is the value of "name", attribute in <input type = "file" ...
+        if (CUser::isLogged() === true){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            $file = UHTTPMethods::files('avatar');
+            if (!empty($file) && $file['error'] === UPLOAD_ERR_OK && !empty($file['tmp_name'])) {
+                $tmpName = $file['tmp_name'];
+
+                // Verifica MIME
+                $mime = mime_content_type($tmpName);
+                $allowed = ['image/jpeg', 'image/png', 'image/webp'];
+                if (!in_array($mime, $allowed)) {
+                    VError::render("Formato non valido");
+                    exit;
+                }
+
+                // Verifica dimensione (es. max 2MB)
+                if ($file['size'] > 2 * 1024 * 1024) {
+                    VError::render("Immagine troppo grande");
+                    exit;
+                }
+
+                // OK: leggi contenuto binario
+                $blob = file_get_contents($tmpName);
+
+                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob); 
+
+                header("Location: https://digitalplot.altervista.org/profile");
+                exit;
+            } else {
+                var_dump($file);
+                exit;
+
+                VError::render("Errore nel caricamento del file");
+                exit;
+            }
+
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit;
+        }
+    }
+
+
+
+
+
+    
+    /**
+    
+    public static function setProPic(){
+        if(CUser::isLogged()){
+            $userId = USession::getInstance()->getSessionElement('user');
+            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
+            
+            if(UHTTPMethods::files('imageFile','size') > 0){
+                $uploadedImage = UHTTPMethods::files('imageFile');
+                $check = FPersistentManager::getInstance()->manageImageProfile($uploadedImage, $user);
+                if(!$check){
+                    $view = new VUser();
+                    $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
+
+                    $view->FileError($userAndPropic);
+                }else{
+                    header('Location: /Agora/User/personalProfile');
+                }
+                
+            }else{
+                header('Location: /Agora/User/settings');
+            }
+        }
+    }
+    */
+
+
+
 
 
 }
