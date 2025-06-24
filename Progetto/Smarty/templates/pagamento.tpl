@@ -226,15 +226,16 @@
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-calendar" aria-hidden="true">  </i>
                                 </span>
-                                <span id="error-msg" style="color: red;"></span>
+                                <div id="feedback-expiry" style="margin-top: 5px;"></div>
                             </p>
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left carta">
-                                <input class="input is-rounded" type="text" name= "cardNumber" placeholder="Numero della carta" {literal} pattern="^(\d{4}([- ]))\d{4}\2\d{4}\2\d{4}$" {/literal} required>
+                                <input class="input is-rounded" type="text" name="cardNumber" id="cardNumber" placeholder="Numero della carta" {literal} pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11}|[0-9]{16}|[0-9]{4}[\- ][0-9]{4}[\- ][0-9]{4}[\- ][0-9]{4})$" {/literal} required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-credit-card" aria-hidden="true">  </i>
                                 </span>
+                                <div id="feedback-card-number" style="margin-top: 5px;"></div>
                             </p>
                             <p class="control has-icons-left civico">
                                 <input class="input is-rounded" type="text" name="cvv"  placeholder="CVV" {literal} pattern="^\d{3}$" {/literal} required>
@@ -284,7 +285,6 @@
             </div>
         </div>
     </div>
-    <script src="/Progetto/Smarty/js/validate-expiry.js"></script>
     <script src="/Progetto/Smarty/js/pagamento.js"></script>
     <script src="/Progetto/Smarty/js/navburger.js"></script>
 </body>
