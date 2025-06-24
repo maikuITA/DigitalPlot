@@ -57,7 +57,7 @@ class CFollow{
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     $follow = $user->getFollowingById($writer->getId());
-                    if (isset($writer) and isset($follow)){
+                    if (isset($writer) && isset($follow)){
                         $user->removeFollowing($follow);
                         $writer->removeFollower($follow);
                         FPersistentManager::getInstance()->delete($follow);
