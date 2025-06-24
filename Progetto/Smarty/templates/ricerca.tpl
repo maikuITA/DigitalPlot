@@ -301,7 +301,7 @@
                     </div>
                     <footer class="card-footer">
                         <p class="card-footer-item">
-                            <a href="/article" class="button is-warning">Leggi di più</a>
+                            <a href="/article/{$article->getId()}" class="button is-warning">Leggi di più</a>
                         </p>
                     </footer>
                 </div>
