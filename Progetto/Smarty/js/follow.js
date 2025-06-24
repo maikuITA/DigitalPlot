@@ -78,7 +78,8 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     }
 
     const result = await response.json();
-    if(result.isMe === false){
+    if(result.me === false){
+      console.error(result);
       if (result.success === true) {
         follow.classList.add('is-hidden')
         unfollow.classList.remove('is-hidden')

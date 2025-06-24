@@ -87,7 +87,7 @@ class CFollow{
     public static function isFollower(?string $usernameWriter){
         header('Content-Type: application/json');
         if($usernameWriter === null ){
-            echo json_encode(['isMe' => false,'success' => false, 'message' => 'writer missing']);
+            echo json_encode(['success' => false, 'me' => false]);
             exit;
         }else{
             if(CUser::isLogged()){
@@ -95,23 +95,23 @@ class CFollow{
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     if($user->getId()=== $writer->getId()){
-                        echo json_encode(['isMe' => true, 'success' => true, 'message' => 'sei tu']);
+                        echo json_encode(['success' => false, 'me' => true]);
                         exit;
                     }
                     $follow = $user->getFollowingById($writer->getId());
                     if (isset($writer) && isset($follow)){
-                        echo json_encode(['isMe' => false,'success' => true, 'message' => 'follow successful']);
+                        echo json_encode(['success' => true, 'me' => false]);
                         exit;
                     }else{
-                        echo json_encode(['isMe' => false,'success' => false, 'message' => 'writer missing']);
+                        echo json_encode(['success' => false, 'me' => false]);
                         exit;
                     }
                 }else{
-                    echo json_encode(['isMe' => false,'success' => false, 'message' => 'writer missing']);
+                    echo json_encode(['success' => false, 'me' => false]);
                     exit;
                 }
             }else{
-                echo json_encode(['isMe' => false,'success' => false, 'message' => 'writer missing']);
+                echo json_encode(['success' => false, 'me' => false]);
                 exit;
             }
         }

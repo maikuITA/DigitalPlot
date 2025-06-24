@@ -284,11 +284,9 @@ class FEntityManager {
     public static function deleteObj(?object $obj): bool {
         try{
             self::$entityManager->getConnection()->beginTransaction();
-            ULogSys::toLog('prova4', true);
             if ($obj !== null){
                 self::$entityManager->remove($obj);
                 self::$entityManager->flush();
-                ULogSys::toLog('prova2', true);
                 self::$entityManager->getConnection()->commit();
                 return true;
             }
