@@ -208,3 +208,15 @@ span {
         max-width: 350px;
     }
 }
+
+
+.span-error{
+    margin-top: 5px;
+}
+
+/* In pagamento.css o in un blocco <style> */
+.expiration-input-container {
+    max-width: 250px; /* O qualsiasi larghezza desiderata */
+    /* Puoi usare anche width, ma max-width è spesso più flessibile */
+}
+
