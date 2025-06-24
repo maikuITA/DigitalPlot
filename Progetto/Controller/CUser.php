@@ -218,7 +218,7 @@ class CUser{
         }
     }
 
-    
+
     public static function uploadAvatar(): void {
         // the input of files is the value of "name", attribute in <input type = "file" ...
         if (CUser::isLogged() === true){
@@ -249,10 +249,8 @@ class CUser{
                 header("Location: https://digitalplot.altervista.org/profile");
                 exit;
             } else {
-                var_dump($file);
-                exit;
-
-                VError::render("Errore nel caricamento del file");
+                $message = "Error: method not found or null";
+                VError::render(errore: $message, isLogged: true);
                 exit;
             }
 
