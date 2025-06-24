@@ -48,6 +48,10 @@ class CPurchase{
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
             $card = self::getCreditCard();
+            // verify if credit card already exists in db
+            if (FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $card->getCardNumber()) === false){
+                FPersistentManager::getInstance()->saveInDb($card);
+            }
             $purchase =  self::validatePurchase($user, $subscription, $card);
             //calculating discuont and update all object
             $points = EPurchase::calculateDiscount($subscription, $user->getPlotCard()->getPoints());
@@ -57,7 +61,6 @@ class CPurchase{
             $subscription->addPurchase($purchase); 
             //saving in db              
             FPersistentManager::getInstance()->saveInDb($purchase);
-            FPersistentManager::getInstance()->saveInDb($card);
             FPersistentManager::getInstance()->saveInDb($subscription);
             FPersistentManager::getInstance()->saveInDb($user);
             //upgrade the user
@@ -82,21 +85,14 @@ class CPurchase{
      * and creates a new ECreditCard object, saving it in the database.
      * @return ECreditCard The created credit card object
      */
-    private static function getCreditCard(): ?ECreditCard {
+    private static function getCreditCard(): ECreditCard {
         $cardNumber = UHTTPMethods::post('cardNumber');
-        if (FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $cardNumber) === false){
-            $nameC = UHTTPMethods::post('nameC');
-            $surnameC = UHTTPMethods::post('surnameC');
-            $expiration = UHTTPMethods::post('expirationDate');
-            $cvv = UHTTPMethods::post('cvv');
-            $card = new ECreditCard($cardNumber, $nameC, $surnameC, $expiration, $cvv);
-            return $card;
-        } else {
-            $message = "La carta inserita è errata";
-            ULogSys::toLog("Error: card already exists", true);
-            VError::render(errore: $message, isLogged: true);
-            return null;
-        }
+        $nameC = UHTTPMethods::post('nameC');
+        $surnameC = UHTTPMethods::post('surnameC');
+        $expiration = UHTTPMethods::post('expirationDate');
+        $cvv = UHTTPMethods::post('cvv');
+        $card = new ECreditCard($cardNumber, $nameC, $surnameC, $expiration, $cvv);
+        return $card;
     }
 
 
