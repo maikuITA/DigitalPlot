@@ -1,5 +1,5 @@
 const username = document.getElementById("username")
-
+const numFollowers = document.getElementById("numFollowers")
 const follow = document.getElementById('follow')
 const unfollow = document.getElementById('unfollow')
 
@@ -22,6 +22,8 @@ follow.addEventListener('click', async () => {
     const result = await response.json();
 
     if (result.success === true) {
+      let x = parseInt(numFollowers.textContent) + 1
+      numFollowers.textContent = x
       follow.classList.add('is-hidden')
       unfollow.classList.remove('is-hidden')
     }
@@ -49,6 +51,8 @@ unfollow.addEventListener('click', async () => {
     const result = await response.json();
 
     if (result.success === true) {
+      let x = parseInt(numFollowers.textContent) - 1
+      numFollowers.textContent = x
       unfollow.classList.add('is-hidden')
       follow.classList.remove('is-hidden')
     }

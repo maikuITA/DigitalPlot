@@ -107,7 +107,7 @@
                     <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
                 </div>
                 <div class="is-gapped">
-                    <a class="is-5 s">Follower: </a><a class="is-5">{$writer->getNumFollowers()}</a>
+                    <a class="is-5 s">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
                 </div>
                 </div>
             </div>
