@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
     <header class="header columns">
@@ -98,115 +99,116 @@
         </div>
     </div>
     <div class="body-container">
-        <div class="card">
-            <p class="title">
-                <span class="icon is-small is-left">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                </span>
-                Aggiungi un nuovo articolo
-            </p>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input"  type="text" placeholder="Titolo dell'articolo" required>
+        <form id="form-articolo" method="POST" action="/salva-articolo.php"></form>
+            <div class="card">
+                <p class="title">
                     <span class="icon is-small is-left">
-                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </span>
-                    <span class="icon is-small is-right">
-                        <i class="fa fa-quote-right" aria-hidden="true"></i>
-                    </span>
+                    Aggiungi un nuovo articolo
                 </p>
-            </div>
-            <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input"  type="text" placeholder="Descrizione dell'articolo" required>
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-quote-left" aria-hidden="true"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fa fa-quote-right" aria-hidden="true"></i>
-                    </span>
-                </p>
-            </div>
-
-            <div class="select-container">
-                <div class="select is-rounded">
-                    <select name="category">
-                        <option value="%">Categorie</option>
-                        <option value="articolo">Articolo</option>
-                        <option value="giornale">Giornale</option>
-                        <option value="rivista">Rivista</option>
-                        <option value="romanzo">Romanzo</option>
-                        <option value="racconto">Racconto</option>
-                        <option value="saggio">Saggio</option>
-                        <option value="blog">Blog</option>
-                        <option value="notizia">Notizia</option>
-                        <option value="editoriale">Editoriale</option>
-                        <option value="recensione">Recensione</option>
-                        <option value="intervista">Intervista</option>
-                        <option value="manuale">Manuale</option>
-                        <option value="tesi">Tesi</option>
-                        <option value="fumetto">Fumetto</option>
-                        <option value="pamphlet">Pamphlet</option>
-                        <option value="biografia">Biografia</option>
-                        <option value="autobiografia">Autobiografia</option>
-                        <option value="poesia">Poesia</option>
-                        <option value="dramma">Dramma</option>
-                    </select>
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input"  type="text" placeholder="Titolo dell'articolo" required>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input"  type="text" placeholder="Descrizione dell'articolo" required>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fa fa-quote-right" aria-hidden="true"></i>
+                        </span>
+                    </p>
                 </div>
 
-                <div class="select is-rounded">
-                    <select name="genre">
-                        <option value="%">Genere</option>
-                        <option value="cronaca">Cronaca</option>
-                        <option value="politica">Politica</option>
-                        <option value="economia">Economia</option>
-                        <option value="esteri">Esteri</option>
-                        <option value="interni">Interni</option>
-                        <option value="cultura">Cultura</option>
-                        <option value="spettacolo">Spettacolo</option>
-                        <option value="sport">Sport</option>
-                        <option value="tecnologia">Tecnologia</option>
-                        <option value="scienza">Scienza</option>
-                        <option value="ambiente">Ambiente</option>
-                        <option value="salute">Salute</option>
-                        <option value="viaggi">Viaggi</option>
-                        <option value="motori">Motori</option>
-                        <option value="lifestyle">Lifestyle</option>
-                        <option value="moda">Moda</option>
-                        <option value="gastronomia">Gastronomia</option>
-                        <option value="religione">Religione</option>
-                        <option value="istruzione">Istruzione</option>
-                        <option value="diritti">Diritti</option>
-                        <option value="giustizia">Giustizia</option>
-                        <option value="gossip">Gossip</option>
-                        <option value="musica">Musica</option>
-                        <option value="cinema">Cinema</option>
-                        <option value="libri">Libri</option>
-                    </select>
+                <div class="select-container">
+                    <div class="select is-rounded">
+                        <select name="category">
+                            <option value="%">Categorie</option>
+                            <option value="articolo">Articolo</option>
+                            <option value="giornale">Giornale</option>
+                            <option value="rivista">Rivista</option>
+                            <option value="romanzo">Romanzo</option>
+                            <option value="racconto">Racconto</option>
+                            <option value="saggio">Saggio</option>
+                            <option value="blog">Blog</option>
+                            <option value="notizia">Notizia</option>
+                            <option value="editoriale">Editoriale</option>
+                            <option value="recensione">Recensione</option>
+                            <option value="intervista">Intervista</option>
+                            <option value="manuale">Manuale</option>
+                            <option value="tesi">Tesi</option>
+                            <option value="fumetto">Fumetto</option>
+                            <option value="pamphlet">Pamphlet</option>
+                            <option value="biografia">Biografia</option>
+                            <option value="autobiografia">Autobiografia</option>
+                            <option value="poesia">Poesia</option>
+                            <option value="dramma">Dramma</option>
+                        </select>
+                    </div>
+
+                    <div class="select is-rounded">
+                        <select name="genre">
+                            <option value="%">Genere</option>
+                            <option value="cronaca">Cronaca</option>
+                            <option value="politica">Politica</option>
+                            <option value="economia">Economia</option>
+                            <option value="esteri">Esteri</option>
+                            <option value="interni">Interni</option>
+                            <option value="cultura">Cultura</option>
+                            <option value="spettacolo">Spettacolo</option>
+                            <option value="sport">Sport</option>
+                            <option value="tecnologia">Tecnologia</option>
+                            <option value="scienza">Scienza</option>
+                            <option value="ambiente">Ambiente</option>
+                            <option value="salute">Salute</option>
+                            <option value="viaggi">Viaggi</option>
+                            <option value="motori">Motori</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="moda">Moda</option>
+                            <option value="gastronomia">Gastronomia</option>
+                            <option value="religione">Religione</option>
+                            <option value="istruzione">Istruzione</option>
+                            <option value="diritti">Diritti</option>
+                            <option value="giustizia">Giustizia</option>
+                            <option value="gossip">Gossip</option>
+                            <option value="musica">Musica</option>
+                            <option value="cinema">Cinema</option>
+                            <option value="libri">Libri</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+
+                    <div id="editor-container"></div>   
+                    <input type="hidden" name="contenuto" id="contenuto-articolo">
+
+                </div>
+                <p class="subtitle"> oppure </p> 
+                <div class="flex-container">
+                    <p>
+                        Carica/Inserisci <span> (in formato .pdf)</span>
+                    </p>
+
+                    <label for="upload" class="custom-file-label">
+                        <i class="fa fa-file-upload" aria-hidden="true"></i> Carica il tuo file
+                    </label>
+                    <input type="file" id="upload" name="articleFile" style="display:none;">
                 </div>
             </div>
-            <div class="field">
-                <script type="text/javascript" src="//js.nicedit.com/nicEdit-latest.js"></script> 
-                <script type="text/javascript">
-                    bkLib.onDomLoaded(function() { nicEditors.allTextAreas()});
-                </script>
-                <p class="control">
-                    <textarea class="textarea" placeholder="Descrizione dell'articolo" required></textarea>
-                </p>
-            </div>
-            <p class="subtitle"> oppure </p> 
-            <div class="flex-container">
-                <p>
-                    Carica/Inserisci <span> (in formato .pdf)</span>
-                </p>
-
-                <label for="upload" class="custom-file-label">
-                    <i class="fa fa-file-upload" aria-hidden="true"></i> Carica il tuo file
-                </label>
-                <input type="file" id="upload" name="articleFile" style="display:none;">
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="/Progetto/Smarty/js/textEditor.js"></script>
