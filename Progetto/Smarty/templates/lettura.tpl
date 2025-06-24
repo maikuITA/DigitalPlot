@@ -101,10 +101,10 @@
                 <div class="content">
 
                 <div class="is-gapped">
-                    <a class="is-5 s">Biografia </a><a class="is-5">{$writer->getBiography()}</a>
+                    <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
                 </div>
                 <div class="is-gapped">
-                    <a class="is-5 s">Numero articoli </a><a class="is-5">{$writer->getNumArticles()}</a>
+                    <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
                 </div>
                 <div class="is-gapped">
                     <a class="is-5 s">Follower: </a><a class="is-5">{$writer->getNumFollowers()}</a>
@@ -122,8 +122,8 @@
                 <div class="content">
                     <p class="title"> {$article->getTitle()} </p>
                     <p class="subtitle"> {$article->getDescription()} </p>
-                    <p class="subtitle"> {$article->getCategory()} </p>
-                    <p class="subtitle"> {$article->getGenre()} </p>
+                    <p class="subtitle">Categoria: {$article->getCategory()} </p>
+                    <p class="subtitle">Genere: {$article->getGenre()} </p>
                 </div>
                 
             </div>

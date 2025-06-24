@@ -155,7 +155,7 @@
                         <a class="is-5 s">Articoli scritti</a><a class="is-5">{$user->getNumArticles()}</a>
                     </div>
                     <div class="is-gapped">
-                        <a class="is-5 s">Articoli letti</a><a class="is-5">{$user->getNumReadings()}</a>
+                        <a class="is-5 s">Articoli letti</a><a class="is-5">{$user->countReadings()}</a>
                     </div>
                 </div>
             </div>
