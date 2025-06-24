@@ -187,11 +187,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="field">
-
+                <div class="block-container mt-4 mb-4">
                     <div id="editor-container"></div>   
                     <input type="hidden" name="contenuto" id="contenuto-articolo">
-
                 </div>
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
@@ -205,6 +203,22 @@
                     <input type="file" id="upload" name="articleFile" style="display:none;">
                 </div>
             </div>
+            <div class="card gruppo">
+                        <div class="field is-grouped">
+                            <p class="control has-icons-left confirm">
+                                <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
+                                <span class="icon is-small is-left has-text-link">
+                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                            <p class="control has-icons-left confirm">
+                                <button class="button is-danger is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
+                                <span class="icon is-small is-left has-text-danger">
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
         </form>
     </div>
 </body>
