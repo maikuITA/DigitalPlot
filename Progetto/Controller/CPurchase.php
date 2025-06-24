@@ -82,14 +82,21 @@ class CPurchase{
      * and creates a new ECreditCard object, saving it in the database.
      * @return ECreditCard The created credit card object
      */
-    private static function getCreditCard(): ECreditCard {
+    private static function getCreditCard(): ?ECreditCard {
         $cardNumber = UHTTPMethods::post('cardNumber');
-        $nameC = UHTTPMethods::post('nameC');
-        $surnameC = UHTTPMethods::post('surnameC');
-        $expiration = UHTTPMethods::post('expirationDate');
-        $cvv = UHTTPMethods::post('cvv');
-        $card = new ECreditCard($cardNumber, $nameC, $surnameC, $expiration, $cvv);
-        return $card;
+        if (FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $cardNumber) === false){
+            $nameC = UHTTPMethods::post('nameC');
+            $surnameC = UHTTPMethods::post('surnameC');
+            $expiration = UHTTPMethods::post('expirationDate');
+            $cvv = UHTTPMethods::post('cvv');
+            $card = new ECreditCard($cardNumber, $nameC, $surnameC, $expiration, $cvv);
+            return $card;
+        } else {
+            $message = "La carta inserita è errata";
+            ULogSys::toLog("Error: card already exists", true);
+            VError::render(errore: $message, isLogged: true);
+            return null;
+        }
     }
 
 

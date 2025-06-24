@@ -221,12 +221,12 @@
                             </p>
                         </div>
                         <div class="field is-grouped">
-                            <p class="control has-icons-left intestatario">
+                            <p class="control has-icons-left intestatario expiration-input-container">
                                 <input class="input is-rounded" type="date" name ="expirationDate" id="expirationDate" required>
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-calendar" aria-hidden="true">  </i>
                                 </span>
-                                <div id="feedback-expiry" style="margin-top: 5px;"></div>
+                                <span id="feedback-expiry" class="span-error"></span>
                             </p>
                         </div>
                         <div class="field has-addons has-addons-centered">
