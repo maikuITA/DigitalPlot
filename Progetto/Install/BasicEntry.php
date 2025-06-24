@@ -81,21 +81,21 @@ class BasicEntry{
     $fo2 = new EFollow($u10,$u7);
     
     //EArticle
-    $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', 'Nel bel mezzo del cazzo' , 'approved', 'Romazo', 'Classico', '1400-01-01', $u4);
+    $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', 'Nel bel mezzo del cazzo' , 'approved', 'Classico', 'Romazo', '1400-01-01', $u4);
     $u4->addArticle($art1);
-    $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', 'Una storia di trasformazioni e immobilismo', 'approved', 'Romanzo', 'Storico', '1958-05-01', $u4);
+    $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', 'Una storia di trasformazioni e immobilismo', 'approved', 'Storico', 'Romanzo', '1958-05-01', $u4);
     $u4->addArticle($art2);
-    $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', 'Distopia totalitaria tra controllo e censura', 'approved', 'Romanzo', 'Fantascienza', '1949-06-08', $u4);
+    $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', 'Distopia totalitaria tra controllo e censura', 'approved', 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
     $u4->addArticle($art3);
-    $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', 'Una danza tra amore e convenzioni sociali', 'approved', 'Romanzo', 'Sentimentale', '1813-01-28', $u4);
+    $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', 'Una danza tra amore e convenzioni sociali', 'approved', 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
     $u4->addArticle($art4);
-    $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', 'Un’indagine tra libri, simboli e inquisitori', 'approved', 'Romanzo', 'Giallo', '1980-10-01', $u7);
+    $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', 'Un’indagine tra libri, simboli e inquisitori', 'approved', 'Giallo', 'Romanzo', '1980-10-01', $u7);
     $u7->addArticle($art5);
-    $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', 'Un cammino tra ascetismo, ricchezza e consapevolezza', 'approved', 'Romanzo', 'Spirituale', '1922-01-01', $u7);
+    $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', 'Un cammino tra ascetismo, ricchezza e consapevolezza', 'approved', 'Spirituale', 'Romanzo', '1922-01-01', $u7);
     $u7->addArticle($art6);
-    $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', 'Un mostro umano più degli umani stessi', 'approved', 'Romanzo', 'Horror', '1818-03-11', $u7);
+    $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', 'Un mostro umano più degli umani stessi', 'approved',  'Horror','Romanzo', '1818-03-11', $u7);
     $u7->addArticle($art7);
-    $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', 'Vivere tra i rami per vedere il mondo meglio', 'approved', 'Romanzo', 'Fiabesco', '1957-11-25', $u7);
+    $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', 'Vivere tra i rami per vedere il mondo meglio', 'approved', 'Fiabesco','Romanzo', '1957-11-25', $u7);
     $u7->addArticle($art8);
     
 
