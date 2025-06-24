@@ -95,10 +95,16 @@ class CUser{
      * This method destroys the user session and redirects to the home page.
      */
      public static function logout(){
-        USession::getInstance();
-        USession::unsetSession();
-        USession::destroySession();
-        header('Location: https://digitalplot.altervista.org/home');
+        if (CUser::isLogged() === true){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            $confirmMessage = "Arrivederci " . $user->getUsername() . " !";
+            USession::getInstance();
+            USession::unsetSession();
+            USession::destroySession();
+            VConfirm::render(confirmMessage: $confirmMessage, isLogged:false);
+        } else {
+            header('Location: https://digitalplot.altervista.org/home');
+        }
     }
 
     /**

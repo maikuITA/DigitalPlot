@@ -23,4 +23,5 @@ class VConfirm {
         $smarty->assign('proPic', $proPic);
         $smarty->display('conferma.tpl');
     }
+
 }

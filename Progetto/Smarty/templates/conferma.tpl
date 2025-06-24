@@ -86,9 +86,15 @@
             <p class="title">
                 {$confirmMessage}
             </p>
-            <a class="subtitle has-text-link" href="/profile">
-                Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina del tuo profilo
-            </a>
+            {if $isLogged === false}
+                <a class="subtitle has-text-link" href="/auth">
+                    Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina di accesso
+                </a>
+            {else}
+                <a class="subtitle has-text-link" href="/profile">
+                        Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina profilo
+                </a>
+            {/if}
         </div>
     </div>
 </body>
