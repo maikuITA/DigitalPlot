@@ -89,10 +89,10 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                        iaculis mauris.</p>
-                        <a class="has-text-link">@admin</a>
-                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
+                        <a class="is-5 s">Ultime 24H: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultima settimana: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultimo mese: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
                     </div>
                 </div>
             </div>
@@ -102,10 +102,10 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                        iaculis mauris.</p>
-                        <a class="has-text-link">@admin</a>
-                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
+                        <a class="is-5 s">Giornaliero: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Settimanale: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
                     </div>
                 </div>
             </div>
@@ -128,9 +128,10 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                        iaculis mauris.</p>
-                        <a class="has-text-link">@admin</a>
+                        <a class="is-5 s">Ultime 24H: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultima settimana: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultimo mese: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
                         <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
@@ -145,8 +146,34 @@
                     Articoli in attesa di revisione
                 </a>
                 <h2 class="subtitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.
+                    Qui trovi la lista di tutti gli articoli che stanno aspettando l'approvazione per poter essere pubblicati uffiialmente
                 </h2>
+                <table class="table is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Nome articolo</th>
+                        <th>Autore</th>
+                        <th>Stato</th>
+                        <th>Data pubblicazione</th>
+                        <th>Tipo</th>
+                        <th>Genere</th>
+                        <th>Modifica</th>
+                        <th>Elimina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NOME</td>
+                        <td>AUTORE</td>
+                        <td>STATO</td>
+                        <td>DATA</td>
+                        <td>CATEGORIA</td>
+                        <td>GENERE</td>
+                        <td><a class="has-text-link" href="/modifyArticle/" >Modifica</a></td>
+                        <td><a class="has-text-danger" href="/dropArticle/"> Elimina</a></td>
+                    </tr>           
+                </tbody>
+            </table>
             </section>
             <section class="section">
                 <a class="title">
@@ -156,8 +183,34 @@
                     Nuovi articoli pubblicati
                 </a>
                 <h2 class="subtitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.
+                    Qui trovi gli ultimi 10 articoli pubblicati sul sito che sono stati approvati
                 </h2>
+                <table class="table is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Nome articolo</th>
+                        <th>Autore</th>
+                        <th>Stato</th>
+                        <th>Data pubblicazione</th>
+                        <th>Tipo</th>
+                        <th>Genere</th>
+                        <th>Modifica</th>
+                        <th>Elimina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NOME</td>
+                        <td>AUTORE</td>
+                        <td>STATO</td>
+                        <td>DATA</td>
+                        <td>CATEGORIA</td>
+                        <td>GENERE</td>
+                        <td><a class="has-text-link" href="/modifyArticle/" >Modifica</a></td>
+                        <td><a class="has-text-danger" href="/dropArticle/"> Elimina</a></td>
+                    </tr>           
+                </tbody>
+            </table>
             </section>
             <section class="section">
                 <a class="title">
@@ -167,8 +220,30 @@
                     Commenti in attesa di moderazione
                 </a>
                 <h2 class="subtitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sagittis justo sit amet libero dapibus, ac tempus sem iaculis. Morbi magna massa, consequat at blandit sed, vehicula ac lectus.
+                    Qui trovi tutti i commenti raggruppati per data e articolo
                 </h2>
+                <table class="table is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Autore</th>
+                        <th>Stato</th>
+                        <th>Data pubblicazione</th>
+                        <th>Articolo</th>
+                        <th>Modifica</th>
+                        <th>Elimina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AUTORE</td>
+                        <td>STATO</td>
+                        <td>DATA</td>
+                        <td>NOME</td>
+                        <td><a class="has-text-link" href="/modifyArticle/" >Modifica</a></td>
+                        <td><a class="has-text-danger" href="/dropArticle/"> Elimina</a></td>
+                    </tr>           
+                </tbody>
+            </table>
             </section>
         </div>
     </div>
