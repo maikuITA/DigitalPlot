@@ -193,32 +193,30 @@
                 </div>
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
-                    <p>
-                        Carica/Inserisci <span> (in formato .pdf)</span>
-                    </p>
-
+                    <p>Carica/Inserisci <span> (in formato .pdf)</span> </p>
                     <label for="upload" class="custom-file-label">
-                        <i class="fa fa-file-upload" aria-hidden="true"></i> Carica il tuo file
+                        <i class="fa fa-file-upload" aria-hidden="true"></i><p> Carica il tuo file </p> 
                     </label>
                     <input type="file" id="upload" name="articleFile" style="display:none;">
                 </div>
+                <div class="card gruppo mt-4">
+                <div class="field is-grouped is-centered">
+                    <p class="control has-icons-left confirm">
+                        <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
+                        <span class="icon is-small is-left has-text-link">
+                            <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                    <p class="control has-icons-left confirm">
+                        <button class="button is-danger is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
+                        <span class="icon is-small is-left has-text-danger">
+                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                        </span>
+                    </p>
+                </div>
             </div>
-            <div class="card gruppo">
-                        <div class="field is-grouped">
-                            <p class="control has-icons-left confirm">
-                                <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
-                                <span class="icon is-small is-left has-text-link">
-                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                                </span>
-                            </p>
-                            <p class="control has-icons-left confirm">
-                                <button class="button is-danger is-rounded is-fullwidth is-outlined" type="reset">Annulla</button>
-                                <span class="icon is-small is-left has-text-danger">
-                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
+            </div>
+            
         </form>
     </div>
 </body>
