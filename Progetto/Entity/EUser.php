@@ -343,15 +343,15 @@ class EUser {
 
      // followers
 
-    public function addFollower(EUser $follower): void{
+    public function addFollower(EFollow $follower): void{
         $this->followers->add($follower);
     }
     public function getFollowers(){
         return $this->followers;
     }
-    public function getFollower(int $index): ?EUser{
+    public function getFollowerById(int $index): ?EFollow{
         foreach($this->followers as $follower){
-            if($follower->getId() == $index){
+            if($follower->getFollower()->getId() == $index){
                 return $follower;
             }
         }
@@ -360,21 +360,14 @@ class EUser {
     public function getNumFollowers(): int{
         return $this->followers->count();
     }
-    public function removeFollower(EUser $follower): void{
+    public function removeFollower(EFollow $follower): void{
         if($this->followers->contains($follower)) {
             $this->followers->removeElement($follower);
         }
     }
-    public function getFollowerById(int $id): ?EUser{
-        foreach($this->followers as $follower){
-            if($follower->getId() == $id){
-                return $follower;
-            }
-        }
-        return null;
-    }
+    
     // following methods
-    public function addFollowing(EUser $following): void{
+    public function addFollowing(EFollow $following): void{
         $this->following->add($following);
     }
     public function getFollowing(){
@@ -384,15 +377,15 @@ class EUser {
     public function getNumFollowing(): int{
         return $this->following->count();
     }
-    public function getFollowingById(int $id): ?EUser{
+    public function getFollowingById(int $id): ?EFollow{
         foreach($this->following as $follower){
-            if($follower->getId() == $id){
+            if($follower->getFollowing()->getId() == $id){
                 return $follower;
             }
         }
         return null;
     }
-    public function removeFollowing(EUser $follower): void{
+    public function removeFollowing(EFollow $follower): void{
         if($this->following->contains($follower)) {
             $this->following->removeElement($follower);
         }
