@@ -1,6 +1,7 @@
 <?php
 
 require_once 'Progetto/autoload.php';
+require_once 'vendor/autoload.php';
 
 // Provo ad istallare il database
 //InstallerDb::install();
