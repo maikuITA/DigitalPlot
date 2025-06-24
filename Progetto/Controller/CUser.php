@@ -218,58 +218,7 @@ class CUser{
         }
     }
 
-    /**
-    public static function uploadAvatar(): void {
-        // the input of files is the value of "name", attribute in <input type = "file" ...
-        if (CUser::isLogged() === true){
-            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            $file = UHTTPMethods::files('avatar');
-            if (UServer::getRequestMethod() === 'POST' && isset($file)) {
-                $file = UHTTPMethods::files('avatar');
-
-                if (!empty($file) && $file['error'] === UPLOAD_ERR_OK && !empty($file['tmp_name'])) {
-                    $tmpName = $file['tmp_name'];
-                    $mime = mime_content_type($tmpName);
-                    
-                    // prosegui con controlli MIME ecc...
-                } else {
-                    $error = "Nessuna imaggine rilevata";
-                    VError::render($error,  plotPoints: $user->getPlotCard()->getPoints(), isLogged:true, privilege: $user->getPrivilege());
-                    exit;
-                }
-                
-                $mime = mime_content_type($tmpName); // server understands the format of the file uploaded
-
-                // Sicurezza
-                $allowed = ['image/jpeg', 'image/png'];  // formats allowed
-                if (!in_array($mime, $allowed)) { // if the format is not allowed
-                    $error = "Formato immagine non supportato";
-                    VError::render($error,  plotPoints: $user->getPlotCard()->getPoints(), isLogged:true, privilege: $user->getPrivilege());
-                    exit;
-                }
-
-                // Upload binary code from the path into the variable $blob
-                $blob = file_get_contents($tmpName);
-
-                // save into the db 
-                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob); 
-
-                header("Location: https://digitalplot.altervista.org/profile");
-                exit;
-            } else {
-                $error = 'Errore: metodo errato / file non recuperato da $_FILES';
-                VError::render($error,  plotPoints: $user->getPlotCard()->getPoints(), isLogged:true, privilege: $user->getPrivilege());
-                exit;
-            }
-        } else {
-            header('Location: https://digitalplot.altervista.org/auth');
-            exit;
-        }
-    }
-        */
-
-
-
+    
     public static function uploadAvatar(): void {
         // the input of files is the value of "name", attribute in <input type = "file" ...
         if (CUser::isLogged() === true){
@@ -312,40 +261,6 @@ class CUser{
             exit;
         }
     }
-
-
-
-
-
-    
-    /**
-    
-    public static function setProPic(){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-            
-            if(UHTTPMethods::files('imageFile','size') > 0){
-                $uploadedImage = UHTTPMethods::files('imageFile');
-                $check = FPersistentManager::getInstance()->manageImageProfile($uploadedImage, $user);
-                if(!$check){
-                    $view = new VUser();
-                    $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-
-                    $view->FileError($userAndPropic);
-                }else{
-                    header('Location: /Agora/User/personalProfile');
-                }
-                
-            }else{
-                header('Location: /Agora/User/settings');
-            }
-        }
-    }
-    */
-
-
-
 
 
 }
