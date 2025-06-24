@@ -47,10 +47,13 @@ class CPurchase{
             //retriving all object
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
+            ULogSys::toLog("porco i sant", true);
             $card = self::getCreditCard();
             // verify if credit card already exists in db
             if (FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $card->getCardNumber()) === false){
                 FPersistentManager::getInstance()->saveInDb($card);
+            } else{
+                $card = FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $card->getCardNumber());
             }
             $purchase =  self::validatePurchase($user, $subscription, $card);
             //calculating discuont and update all object
