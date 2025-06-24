@@ -61,9 +61,14 @@ unfollow.addEventListener('click', async () => {
   }
 });
 
-document.addEventListener('DOMContentLoaded', async ()=>{
-  // Costruzione dell'URL con parametri
-  const url = '/isFollow/' + username.textContent
+document.addEventListener('DOMContentLoaded', async () => {
+
+  if (!username || !follow || !unfollow) {
+    console.warn('Elementi DOM non trovati');
+    return;
+  }
+
+  const url = '/isFollow/' + encodeURIComponent(username.textContent.trim());
 
   try {
     const response = await fetch(url, {
@@ -78,24 +83,18 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     }
 
     const result = await response.json();
-    if(result.me === false){
-      console.error(result);
-      if (result.success === true) {
-        follow.classList.add('is-hidden')
-        unfollow.classList.remove('is-hidden')
-      }
-      else{
-        unfollow.classList.add('is-hidden')
-        follow.classList.remove('is-hidden')  
-      }
+
+    if (result.isMe === true) {
+      follow.classList.add('is-hidden');
+      unfollow.classList.add('is-hidden');
+    } else if (result.success === true) {
+      follow.classList.add('is-hidden');
+      unfollow.classList.remove('is-hidden');
+    } else {
+      follow.classList.remove('is-hidden');
+      unfollow.classList.add('is-hidden');
     }
-    else{
-      unfollow.classList.add('is-hidden')
-      follow.classList.add('is-hidden') 
-    }
-    
   } catch (error) {
     console.error('Errore nella richiesta:', error);
   }
-})
-
+});

@@ -29,6 +29,7 @@ class CFrontController {
         'modifyArticle'=> ['CArticle', 'modifyArticle'],
         'follow' => ['CFollow', 'follow'],
         'unfollow' => ['CFollow', 'unfollow'],
+        'isFollow' => ['CFollow', 'isFollow'],
         'clearcache' => ['CService', 'clearCache'],
     ];
     
