@@ -1,23 +1,32 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const expiryInput = document.getElementById('expirationDate');
-    const errorMsg = document.getElementById('error-msg');
+console.log("porco dio");
 
-    if (expiryInput) {
-        expiryInput.addEventListener('change', function () {
-            const inputDate = new Date(this.value);
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form.form');
+  const expiryInput = document.getElementById('expirationDate');
+  const errorMsg = document.getElementById('error-msg');
 
-            if (isNaN(inputDate.getTime())) {
-                errorMsg.textContent = "Data non valida.";
-                this.setCustomValidity("Data non valida.");
-            } else if (inputDate < today) {
-                errorMsg.textContent = "La carta è scaduta.";
-                this.setCustomValidity("La carta è scaduta.");
-            } else {
-                errorMsg.textContent = "";
-                this.setCustomValidity("");
-            }
-        });
+  form.addEventListener('submit', function(event) {
+    const inputDate = new Date(expiryInput.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);  // azzera orario per confronto solo su data
+
+    if (!expiryInput.value || isNaN(inputDate.getTime())) {
+      errorMsg.textContent = "Per favore inserisci una data valida.";
+      expiryInput.setCustomValidity("Data non valida");
+      event.preventDefault();
+      return;
+    } 
+    
+    if (inputDate < today) {
+      errorMsg.textContent = "La carta è scaduta.";
+      expiryInput.setCustomValidity("La carta è scaduta");
+      event.preventDefault();
+      return;
     }
+
+    // Se tutto ok, resetta messaggi e validità
+    errorMsg.textContent = "";
+    expiryInput.setCustomValidity("");
+  });
 });
+

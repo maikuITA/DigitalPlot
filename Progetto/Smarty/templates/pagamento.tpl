@@ -226,8 +226,8 @@
                                 <span class="icon is-small is-left">
                                     <i class="fa fa-calendar" aria-hidden="true">  </i>
                                 </span>
+                                <span id="error-msg" style="color: red;"></span>
                             </p>
-                            <span id="error-msg" style="color: red;"></span>
                         </div>
                         <div class="field has-addons has-addons-centered">
                             <p class="control has-icons-left carta">
@@ -285,7 +285,7 @@
         </div>
     </div>
     <script src="/Progetto/Smarty/js/validate-expiry.js"></script>
+    <script src="/Progetto/Smarty/js/pagamento.js"></script>
+    <script src="/Progetto/Smarty/js/navburger.js"></script>
 </body>
 </html>
-<script src="/Progetto/Smarty/js/pagamento.js"></script>
-<script src="/Progetto/Smarty/js/navburger.js"></script>
