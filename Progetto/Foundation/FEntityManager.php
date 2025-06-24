@@ -375,7 +375,7 @@ class FEntityManager {
             $query->setParameter('genre', $genre);
             $query->setParameter('releaseDate', $releaseDate);
             $results = $query->getResult();
-            ULogSys::toLog("Query returned " . count($results) . " result(s).", true);
+            ULogSys::toLog("Query returned " . count($results) . " result(s).");
             return $results;
 
         } catch (\Exception $e) {
