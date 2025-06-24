@@ -78,13 +78,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    if (!response.ok) {
+    if (!response.ok) { 
       throw new Error('Errore nella risposta del server');
     }
 
     const result = await response.json();
 
-    if (result.isMe === true) {
+    if (result.me === true) {
       follow.classList.add('is-hidden');
       unfollow.classList.add('is-hidden');
     } else if (result.success === true) {
