@@ -16,7 +16,7 @@ class CFollow{
             if(CUser::isLogged()){
                 if(CUser::isSubbed()){
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                    $writer = FPersistentManager::getInstance()->retrieveUserOnUsername(EUser::class, $usernameWriter);
+                    $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     if (isset($writer)){
                         $follow = new EFollow($user, $writer);
                         $user->addFollowing($follow);
@@ -55,7 +55,7 @@ class CFollow{
             if(CUser::isLogged()){
                 if(CUser::isSubbed()){
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                    $writer = FPersistentManager::getInstance()->retrieveUserOnUsername(EUser::class, $usernameWriter);
+                    $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     $follow = $user->getFollowingById($writer->getId());
                     if (isset($writer) and isset($follow)){
                         $follow = new EFollow($user, $writer);
