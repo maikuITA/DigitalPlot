@@ -199,10 +199,11 @@ class FEntityManager {
      * @return EArticle[] | null
      * @throws Exception
      */
-    public static function selectNotAll(string $className, int $articlesNum): ?array {
+    public static function selectNotAllArticles(string $className, int $articlesNum): ?array {
         try{
-            $dql = "SELECT e FROM $className e";
+            $dql = "SELECT e FROM $className e WHERE .state = :stat";
             $query = self::$entityManager->createQuery($dql);
+            $query->setParameter('stat', APPROVED);
             $resultpart = $query->getResult();
             shuffle($resultpart); // Shuffle the array to get a random order
             array_slice($resultpart, 0, $articlesNum); // Get the first $articlesNum elements
@@ -360,16 +361,18 @@ class FEntityManager {
      * @return array|null
      * @throws Exception
      */
-    public static function retrieveArticles(string $className, string $title, string $category, string $genre, string $releaseDate): ?array {
+    public static function retrieveArticles(string $className, string $title, string $category, string $genre, string $releaseDate, string $state = APPROVED): ?array {
         try {
             $dql = "SELECT a FROM $className a 
                     WHERE a.title LIKE :title 
                     AND a.category LIKE :category 
                     AND a.genre LIKE :genre 
                     AND a.releaseDate >= :releaseDate 
-                    ORDER BY a.title DESC, a.releaseDate";
+                    AND a.state = :stat
+                    ORDER BY a.releaseDate DESC, a.title";
 
             $query = self::$entityManager->createQuery($dql);
+            $query->setParameter('stat', $state);
             $query->setParameter('title', $title);
             $query->setParameter('category', $category);
             $query->setParameter('genre', $genre);

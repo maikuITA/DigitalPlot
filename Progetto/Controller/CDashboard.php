@@ -15,4 +15,8 @@ class CDashboard{
             exit;
         }
     }
+
+    /**
+     * Retrives all the information for the dashboard
+     */
 }
