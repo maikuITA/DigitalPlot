@@ -82,14 +82,20 @@
         </div>
         <div class="container">
             <div class="card log">
+                <div class="card-header">
+                    <p class="title">
+                        Logs di errore
+                    </p>
+                </div>
                 <div class="card-content">
-                    <p class="title">Logs di errore</p>
                     <p class="subtitle" id="contenuto-file-errori"></p>
                 </div>
             </div>
             <div class="card log">
-                <div class="card-content">
+                <div class="card-header">
                     <p class="title">Logs di eventi</p>
+                </div>
+                <div class="card-content">
                     <p class="subtitle" id="contenuto-file-eventi"></p>
                 </div>
             </div>

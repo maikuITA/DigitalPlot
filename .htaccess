@@ -3,6 +3,9 @@
 # line 4: start the rewrite engine
 RewriteEngine on 
 
+# Escludi favicon.ico dal reindirizzamento
+RewriteRule ^favicon.ico$ - [L]
+
 # the rewrite rule at line 9 is subject to the following condition: 
 # if the requested file does not exist, redirects to the script "index.php"
 RewriteCond %{REQUEST_FILENAME} !-f

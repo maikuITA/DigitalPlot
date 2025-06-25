@@ -1,3 +1,5 @@
+console.log('follow loaded');
+
 const username = document.getElementById("username")
 const numFollowers = document.getElementById("numFollowers")
 const follow = document.getElementById('follow')

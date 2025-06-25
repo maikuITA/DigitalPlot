@@ -1,3 +1,5 @@
+console.log("log loaded");
+
 let primaEsecuzioneErrori = true;
 let primaEsecuzioneEventi = true;
 

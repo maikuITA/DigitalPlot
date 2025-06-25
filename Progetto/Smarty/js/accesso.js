@@ -4,6 +4,9 @@
  * adapting the style and container width based on the window size.
  */
 
+
+console.log("accesso loaded");
+
 // Selects the login and registration forms
 const login = document.getElementById("login-form");
 const regis = document.getElementById("regis-form");

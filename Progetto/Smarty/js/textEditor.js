@@ -1,3 +1,5 @@
+console.log("textEditor loaded");
+
 const quill = new Quill('#editor-container', {
     theme: 'snow',
     placeholder: 'Scrivi il tuo articolo qui...',
