@@ -99,8 +99,8 @@
         </div>
     </div>
     <div class="body-container">
-        <form id="form-articolo" method="POST" action="/saveArticle">
-            <div class="card">
+        <div class="card">
+            <form id="form-articolo" method="POST" action="/saveArticle">
                 <p class="title">
                     <span class="icon is-small is-left">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -132,8 +132,8 @@
 
                 <div class="select-container">
                     <div class="select is-rounded">
-                        <select name="category">
-                            <option value="%">Categorie</option>
+                        <select name="category" required>
+                            <option value="" disabled selected>Categorie</option>
                             <option value="articolo">Articolo</option>
                             <option value="giornale">Giornale</option>
                             <option value="rivista">Rivista</option>
@@ -157,8 +157,8 @@
                     </div>
 
                     <div class="select is-rounded">
-                        <select name="genre">
-                            <option value="%">Genere</option>
+                        <select name="genre" required>
+                            <option value="" disabled selected>Genere</option>
                             <option value="cronaca">Cronaca</option>
                             <option value="politica">Politica</option>
                             <option value="economia">Economia</option>
@@ -198,6 +198,7 @@
                         <i class="fa fa-file-upload" aria-hidden="true"></i><p> Carica il tuo file </p> 
                     </label>
                     <input type="file" id="upload" name="articleFile" style="display:none;">
+                    <div id="fileStatus"></div>
                 </div>
                 <div class="card gruppo mt-4">
                     <div class="field is-grouped is-centered">
@@ -215,14 +216,13 @@
                     </p>
                     </div>
                 </div>
-            </div>
-            
-        </form>
+            </form>
+        </div>
     </div>
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="/Progetto/Smarty/js/textEditor.js"></script>
-
+<script src="/Progetto/Smarty/js/uploadFile.js"></script>
 
