@@ -64,7 +64,6 @@
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                     {else}
                         <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
-                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure></a>
                 <a href="/logout" class="is-ok">
@@ -78,7 +77,6 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="card"> 
         <div class="card"> 
             <div class="card-content">
                 <div class="media">
@@ -95,30 +93,8 @@
                         <p class="title is-4">{$writer->getName()} </p>
                         <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
                     </div>
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                        {if $proPic === null}
-                            <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
-                        {else}
-                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
-                        {/if}
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">{$writer->getName()} </p>
-                        <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
-                    </div>
                 </div>
                 <div class="content">
-                    <div class="is-gapped">
-                        <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
-                    </div>
-                    <div class="is-gapped">
-                        <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
-                    </div>
-                    <div class="is-gapped">
-                        <a class="is-5 s">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
-                    </div>
                     <div class="is-gapped">
                         <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
                     </div>
@@ -144,7 +120,6 @@
                     <p class="subtitle">{$article->getDescription()}</p>
                     <p class="subtitle">Categoria: {$article->getCategory()}</p>
                     <p class="subtitle">Genere: {$article->getGenre()}</p>
-<<<<<<< Updated upstream
                 </div>
             </div>
         </div>
@@ -165,17 +140,9 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< Updated upstream
                 <div class="content" id="ArticleBody">
 
                 </div>
-                
-=======
->>>>>>> Stashed changes
-            </div>
-        </div>
-=======
-                </div>
             </div>
         </div>
         <div class="card comments">
@@ -197,7 +164,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </body>
 </html>
