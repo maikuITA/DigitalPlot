@@ -100,7 +100,7 @@
     </div>
     <div class="body-container">
         <div class="card">
-            <form id="form-articolo" method="POST" action="/saveArticle">
+            <form id="form-articolo" method="POST" action="/saveArticle" enctype="multipart/form-data">
                 <p class="title">
                     <span class="icon is-small is-left">
                         <i class="fa fa-pencil" aria-hidden="true"></i>

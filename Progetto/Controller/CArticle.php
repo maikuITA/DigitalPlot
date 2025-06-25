@@ -95,15 +95,12 @@ class CArticle{
                         $tipo = UHTTPMethods::post('category');
                         $genre = UHTTPMethods::post('genre');
                         $date = date('Y-m-d');
-                        $file = UHTTPMethods::files('articleFile');
+                        $content = UHTTPMethods::files('articleFile');
                         if(UHTTPMethods::post('contenuto') !== "" ){
                             $content = trim(UHTTPMethods::post('contenuto'));
-                        }elseif(isset($file)){
-                            $content = UHTTPMethods::files('articleFile');
-                            $content = self::checkFile($content);
+
                         }else{
-                            header('Location: https://digitalplot.altervista.org/home');
-                            exit();
+                            $content = self::checkFile($content);
                         }
                         $article = new EArticle($title,$description,$content,PENDING,$genre, $tipo, $date, $user);
                         $user->addArticle($article);
@@ -138,7 +135,7 @@ class CArticle{
 
                 // Verifica MIME
                 $mime = mime_content_type($tmpName);
-                $allowed = ['text/plain']; // <-- correzione
+                $allowed = ['text/plain'];
                 if (!in_array($mime, $allowed)) {
                     VError::render("Formato non valido");
                     exit;
@@ -156,9 +153,9 @@ class CArticle{
                 
                 return $html;
             } else {
-                $message = "Error: method not found or null";
+                $message = "Errore: non puoi creare un articolo vuoto";
                 VError::render(errore: $message, isLogged: true);
-                exit;
+                exit();
             }
     }
     /*
