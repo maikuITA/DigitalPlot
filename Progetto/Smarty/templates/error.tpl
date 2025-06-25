@@ -87,7 +87,7 @@
                 Errore <br> {$errore} 
             </p>
             <a class="subtitle has-text-link" href="/profile">
-                Controlla se l'URL è corretto o torna alla home.
+                Torna alla pagina del profilo.
             </a>
         </div>
     </div>
