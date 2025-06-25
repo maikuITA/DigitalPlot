@@ -30,7 +30,7 @@
 
 
     if (file_exists($path)) {
-        echo tail($logFile, $righeDaMostrare);
+        echo tail($path, $righeDaMostrare);
     } else {
         echo "Il file di log non esiste.";
     }
