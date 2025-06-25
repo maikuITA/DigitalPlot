@@ -123,6 +123,7 @@
                 </div>
                 <div class="content" id="ArticleBody">
                     {$article->getContent()}
+                    {$article->getEncodedData()}
                 </div>
             </div>
         </div>
