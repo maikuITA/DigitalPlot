@@ -14,8 +14,17 @@ const quill = new Quill('#editor-container', {
     }
   });
 
-  // Al submit, mettiamo l'HTML dentro il campo hidden
+
   document.getElementById('form-articolo').addEventListener('submit', function (e) {
-    const contenutoHTML = quill.root.innerHTML;
-    document.getElementById('contenuto-articolo').value = contenutoHTML;
-  });
+  const contenutoHTML = quill.root.innerHTML;
+  const contenutoTesto = quill.getText().trim();
+
+  const campoHidden = document.getElementById('contenuto-articolo');
+
+  // Se il testo è vuoto (quindi non è stato scritto nulla di utile)
+  if (contenutoTesto.length === 0) {
+    campoHidden.value = ""; 
+  } else {
+    campoHidden.value = contenutoHTML;
+  }
+});
