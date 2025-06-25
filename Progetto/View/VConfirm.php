@@ -16,6 +16,7 @@ class VConfirm {
     public static function render($confirmMessage, $plotPoints = 0 , $proPic = null , int $privilege = BASIC, bool $isLogged = false): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> conferma.tpl");
+        ULogSys::toLog("");
         $smarty->assign('confirmMessage', $confirmMessage);
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);

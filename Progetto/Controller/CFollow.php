@@ -24,6 +24,8 @@ class CFollow{
                         FPersistentManager::getInstance()->saveInDb($follow);
                         FPersistentManager::getInstance()->saveInDb($user);
                         FPersistentManager::getInstance()->saveInDb($writer);
+                        ULogSys::toLog("Utente followato");
+                        ULogSys::toLog("");
                         echo json_encode(['success' => true, 'message' => 'follow successful']);
                         exit;
                     }else{
@@ -63,6 +65,8 @@ class CFollow{
                         FPersistentManager::getInstance()->delete($follow);
                         FPersistentManager::getInstance()->saveInDb($user);
                         FPersistentManager::getInstance()->saveInDb($writer);
+                        ULogSys::toLog("Utente unfollowato");
+                        ULogSys::toLog("");
                         echo json_encode(['success' => true, 'message' => 'follow successful']);
                         exit;
                     }else{

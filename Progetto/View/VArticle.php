@@ -41,6 +41,7 @@ class VArticle{
     public static function newArticle(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> nuovo.tpl");
+        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);

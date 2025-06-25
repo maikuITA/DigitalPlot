@@ -16,6 +16,7 @@ class VDashboard{
         $smarty = StartSmarty::configuration();
         //$smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> dashboard.tpl");
+        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
