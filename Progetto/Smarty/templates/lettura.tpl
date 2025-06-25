@@ -126,6 +126,9 @@
                     <p class="subtitle">Categoria: {$article->getCategory()} </p>
                     <p class="subtitle">Genere: {$article->getGenre()} </p>
                 </div>
+                <div class="content" id="ArticleBody">
+
+                </div>
                 
             </div>
         </div>
