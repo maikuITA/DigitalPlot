@@ -129,7 +129,7 @@ class EArticle{
     public function setContents(string $contents): void {
         $this->contents = $contents;
     }
-    public function getContents() {
+    public function getContent() {
         return $this->contents;
     }
     public function getEncodedData(): ?string {
