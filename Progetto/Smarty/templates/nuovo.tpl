@@ -193,7 +193,7 @@
                 </div>
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
-                    <p>Carica/Inserisci <span> (in formato .pdf)</span> </p>
+                    <p>Carica/Inserisci <span> (in formato .txt)</span> </p>
                     <label for="upload" class="custom-file-label">
                         <i class="fa fa-file-upload" aria-hidden="true"></i><p> Carica il tuo file </p> 
                     </label>
