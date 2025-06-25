@@ -29,7 +29,7 @@
 
 
     if (file_exists($path)) {
-        echo tail($path, $righeDaMostrare);
+        echo nl2br(tail($path, $righeDaMostrare));
     } else {
         echo "Il file di log non esiste.";
     }
