@@ -224,3 +224,5 @@
 <script src="/Progetto/Smarty/js/navburger.js"></script>
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="/Progetto/Smarty/js/textEditor.js"></script>
+
+
