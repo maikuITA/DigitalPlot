@@ -129,6 +129,9 @@ class EArticle{
     public function setContents(string $contents): void {
         $this->contents = $contents;
     }
+    public function getContents() {
+        return $this->contents;
+    }
     public function getEncodedData(): ?string {
         if($this->contents === null){
             return null; // Gestione del caso in cui non sia stata impostata alcuna immagine
