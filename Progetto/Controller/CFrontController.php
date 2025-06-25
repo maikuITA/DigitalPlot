@@ -50,7 +50,6 @@ class CFrontController {
             $method = self::$routes[$route[0]][1];
             $params = array_slice($route, 1); // Get any additional parameters from the URL
             ULogSys::toLog("Controller -> ".$controller . " # Method -> ".$method);
-            ULogSys::toLog("");
             if (class_exists($controller) && method_exists($controller, $method)) {
                 //try{
                     call_user_func_array([$controller, $method], $params);

@@ -15,6 +15,7 @@ class VProfile {
     public static function render(EUser $user, int $plotPoints, $proPic = null, bool $isLogged = false, int $privilege = BASIC, $articles, $readdenArticles): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> profilo.tpl");
+        ULogSys::toLog("");
         $smarty->assign('user', $user);
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);

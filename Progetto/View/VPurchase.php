@@ -42,6 +42,7 @@ class VPurchase{
     public static function buy(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC, float $points, ESubscription $subscription, ECreditCard $card): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> pagamento.tpl");
+        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);

@@ -16,6 +16,7 @@ class VSubscribe {
     public static function render(bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC, $subs = null ): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> abbonati.tpl");
+        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
