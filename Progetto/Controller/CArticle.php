@@ -107,6 +107,10 @@ class CArticle{
                         $user->addArticle($article);
                         FPersistentManager::getInstance()->saveInDb($article);
                         FPersistentManager::getInstance()->saveInDb($user);
+                        ULogSys::toLog('Nuovo articolo salvato');
+                        $confirmMessage = "Articolo salvato correttamente!";
+                        VConfirm::render($confirmMessage, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
+                        exit;
                 }else{
                         header('Location: https://digitalplot.altervista.org/home');
                         exit();

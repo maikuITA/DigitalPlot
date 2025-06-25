@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div class="content" id="ArticleBody">
-
+                    {$article->getContent()}
                 </div>
             </div>
         </div>

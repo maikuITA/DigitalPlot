@@ -99,7 +99,7 @@
         </div>
     </div>
     <div class="body-container">
-        <form id="form-articolo" method="POST" action="/saveArticle"></form>
+        <form id="form-articolo" method="POST" action="/saveArticle">
             <div class="card">
                 <p class="title">
                     <span class="icon is-small is-left">
@@ -200,7 +200,7 @@
                     <input type="file" id="upload" name="articleFile" style="display:none;">
                 </div>
                 <div class="card gruppo mt-4">
-                <div class="field is-grouped is-centered">
+                    <div class="field is-grouped is-centered">
                     <p class="control has-icons-left confirm">
                         <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
                         <span class="icon is-small is-left has-text-link">
@@ -213,8 +213,8 @@
                             <i class="fa fa-times-circle" aria-hidden="true"></i>
                         </span>
                     </p>
+                    </div>
                 </div>
-            </div>
             </div>
             
         </form>
