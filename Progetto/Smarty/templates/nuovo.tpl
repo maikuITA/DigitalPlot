@@ -66,7 +66,7 @@
                     {if $proPic === null}
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                     {else}
-                        <img class=""is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
+                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure></a>
                 <a href="/logout" class="is-ok">
