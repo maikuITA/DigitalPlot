@@ -98,7 +98,9 @@ class CArticle{
                         if(UHTTPMethods::post('contenuto') !== null ){
                             $content = trim(UHTTPMethods::post('contenuto'));
                         }elseif(UHTTPMethods::files('articleFile') !== null ){
-                            $content = '';
+                            $content = UHTTPMethods::files('articleFile');
+                            $content = self::checkFile($content);
+
                         }else{
                             header('Location: https://digitalplot.altervista.org/error');
                             exit();
@@ -128,6 +130,36 @@ class CArticle{
             exit(); 
         }
         
+    }
+
+    private static function checkFile($content): mixed{
+        if (!empty($content) && $content['error'] === UPLOAD_ERR_OK && !empty($content['tmp_name'])) {
+                $tmpName = $content['tmp_name'];
+
+                // Verifica MIME
+                $mime = mime_content_type($tmpName);
+                $allowed = ['text/txt'];
+                if (!in_array($mime, $allowed)) {
+                    VError::render("Formato non valido");
+                    exit;
+                }
+
+                // Verifica dimensione (es. max 2MB)
+                if ($content['size'] === 0) {
+                    VError::render("File vuoto");
+                    exit;
+                }
+
+                // OK: leggi contenuto binario
+                $txt = file_get_contents($tmpName);
+                $html = nl2br(htmlspecialchars($txt));
+                
+                return $html;
+            } else {
+                $message = "Error: method not found or null";
+                VError::render(errore: $message, isLogged: true);
+                exit;
+            }
     }
     /*
     public static function modifyArticle(int $idArticle): void{
