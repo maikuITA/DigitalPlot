@@ -122,8 +122,7 @@
                     <p class="subtitle">Genere: {$article->getGenre()}</p>
                 </div>
                 <div class="content" id="ArticleBody">
-                    {$article->getContent()}
-                    {$article->getEncodedData()}
+                    {$article->getHtmlContent()}
                 </div>
             </div>
         </div>
