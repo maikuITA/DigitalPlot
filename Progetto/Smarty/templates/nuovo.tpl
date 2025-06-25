@@ -99,7 +99,7 @@
         </div>
     </div>
     <div class="body-container">
-        <form id="form-articolo" method="POST" action="/salva-articolo.php"></form>
+        <form id="form-articolo" method="POST" action="/saveArticle"></form>
             <div class="card">
                 <p class="title">
                     <span class="icon is-small is-left">
@@ -109,7 +109,7 @@
                 </p>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input"  type="text" placeholder="Titolo dell'articolo" required>
+                        <input class="input"  type="text" name="title" placeholder="Titolo dell'articolo" required>
                         <span class="icon is-small is-left">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                         </span>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input"  type="text" placeholder="Descrizione dell'articolo" required>
+                        <input class="input"  type="text" name="description" placeholder="Descrizione dell'articolo" required>
                         <span class="icon is-small is-left">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                         </span>
