@@ -129,20 +129,18 @@ class EArticle{
     public function setContents(string $contents): void {
         $this->contents = $contents;
     }
-    public function getContents() {
+    public function getContent() {
         return $this->contents;
     }
-    public function getEncodedData(): ?string {
-        if($this->contents === null){
-            return null; // Gestione del caso in cui non sia stata impostata alcuna immagine
+    public function getHtmlContent(): ?string {
+        if ($this->contents === null) {
+            return null;
         }
-        if(is_resource($this->contents)){
-            $data = stream_get_contents($this->contents);
-            return base64_encode($data);
-        }else{
-            return base64_encode($this->contents);
+        if (is_resource($this->contents)) {
+            return stream_get_contents($this->contents);
         }
-        
+
+        return $this->contents;
     }
 
 
