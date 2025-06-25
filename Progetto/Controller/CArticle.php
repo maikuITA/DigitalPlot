@@ -95,14 +95,14 @@ class CArticle{
                         $tipo = UHTTPMethods::post('category');
                         $genre = UHTTPMethods::post('genre');
                         $date = date('Y-m-d');
+                        $file = UHTTPMethods::files('articleFile');
                         if(UHTTPMethods::post('contenuto') === "" ){
                             $content = trim(UHTTPMethods::post('contenuto'));
-                        }elseif(UHTTPMethods::files('articleFile') !== null ){
+                        }elseif(isset($file)){
                             $content = UHTTPMethods::files('articleFile');
                             $content = self::checkFile($content);
-
                         }else{
-                            header('Location: https://digitalplot.altervista.org/error');
+                            header('Location: https://digitalplot.altervista.org/home');
                             exit();
                         }
                         $article = new EArticle($title,$description,$content,PENDING,$genre, $tipo, $date, $user);
@@ -138,7 +138,7 @@ class CArticle{
 
                 // Verifica MIME
                 $mime = mime_content_type($tmpName);
-                $allowed = ['text/txt'];
+                $allowed = ['text/plain']; // <-- correzione
                 if (!in_array($mime, $allowed)) {
                     VError::render("Formato non valido");
                     exit;
@@ -150,7 +150,7 @@ class CArticle{
                     exit;
                 }
 
-                // OK: leggi contenuto binario
+
                 $txt = file_get_contents($tmpName);
                 $html = nl2br(htmlspecialchars($txt));
                 
