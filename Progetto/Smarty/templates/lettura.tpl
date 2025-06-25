@@ -7,8 +7,6 @@
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/lettura.css">
-    <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
-    <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -65,7 +63,7 @@
                     {if $proPic === null}
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                     {else}
-                        <img class="is-rounded src="data:image/jpeg;base64,{$proPic}"/>
+                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure></a>
                 <a href="/logout" class="is-ok">
@@ -79,36 +77,33 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="card">
-            
+        <div class="card"> 
             <div class="card-content">
                 <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48">
-                    {if $proPic === null}
-                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
-                    {else}
-                        <img class=""is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
-                    {/if}
-                    </figure>
+                    <div class="media-left">
+                        <figure class="image is-48x48">
+                        {if $proPic === null}
+                            <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                        {else}
+                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
+                        {/if}
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4">{$writer->getName()} </p>
+                        <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
+                    </div>
                 </div>
-                <div class="media-content">
-                    <p class="title is-4">{$writer->getName()} </p>
-                    <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
-                </div>
-                </div>
-
                 <div class="content">
-
-                <div class="is-gapped">
-                    <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
-                </div>
-                <div class="is-gapped">
-                    <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
-                </div>
-                <div class="is-gapped">
-                    <a class="is-5 s">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
-                </div>
+                    <div class="is-gapped">
+                        <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
+                    </div>
+                    <div class="is-gapped">
+                        <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
+                    </div>
+                    <div class="is-gapped">
+                        <a class="is-5 s">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
+                    </div>
                 </div>
             </div>
             <footer class="card-footer">
@@ -121,15 +116,54 @@
         <div class="card text">
             <div class="card-content">
                 <div class="content">
-                    <p class="title"> {$article->getTitle()} </p>
-                    <p class="subtitle"> {$article->getDescription()} </p>
-                    <p class="subtitle">Categoria: {$article->getCategory()} </p>
-                    <p class="subtitle">Genere: {$article->getGenre()} </p>
+                    <p class="title">{$article->getTitle()}</p>
+                    <p class="subtitle">{$article->getDescription()}</p>
+                    <p class="subtitle">Categoria: {$article->getCategory()}</p>
+                    <p class="subtitle">Genere: {$article->getGenre()}</p>
                 </div>
-                
             </div>
         </div>
-        
+        <div class="card comments">
+            <div class="card-content">
+                <div class="content">
+                    <p class="title">Commenti</p>
+                    <div class="card">
+                        <div class="card-header">
+                            <p class="card-header-title">Giulio A.</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="subtitle is-6">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content" id="ArticleBody">
+                    {$article->getContent()}
+                </div>
+            </div>
+        </div>
+        <div class="card comments">
+            <div class="card-content">
+                <div class="content">
+                    <p class="title">Commenti</p>
+                    <div class="card">
+                        <div class="card-header">
+                            <p class="card-header-title">Giulio A.</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <p class="subtitle is-6">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

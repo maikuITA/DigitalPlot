@@ -66,7 +66,7 @@
                     {if $proPic === null}
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
                     {else}
-                        <img class=""is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
+                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
                     {/if}
                 </figure></a>
                 <a href="/logout" class="is-ok">
@@ -99,7 +99,7 @@
         </div>
     </div>
     <div class="body-container">
-        <form id="form-articolo" method="POST" action="/salva-articolo.php"></form>
+        <form id="form-articolo" method="POST" action="/saveArticle">
             <div class="card">
                 <p class="title">
                     <span class="icon is-small is-left">
@@ -109,7 +109,7 @@
                 </p>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input"  type="text" placeholder="Titolo dell'articolo" required>
+                        <input class="input"  type="text" name="title" placeholder="Titolo dell'articolo" required>
                         <span class="icon is-small is-left">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                         </span>
@@ -120,7 +120,7 @@
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input"  type="text" placeholder="Descrizione dell'articolo" required>
+                        <input class="input"  type="text" name="description" placeholder="Descrizione dell'articolo" required>
                         <span class="icon is-small is-left">
                             <i class="fa fa-quote-left" aria-hidden="true"></i>
                         </span>
@@ -193,14 +193,14 @@
                 </div>
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
-                    <p>Carica/Inserisci <span> (in formato .pdf)</span> </p>
+                    <p>Carica/Inserisci <span> (in formato .txt)</span> </p>
                     <label for="upload" class="custom-file-label">
                         <i class="fa fa-file-upload" aria-hidden="true"></i><p> Carica il tuo file </p> 
                     </label>
                     <input type="file" id="upload" name="articleFile" style="display:none;">
                 </div>
                 <div class="card gruppo mt-4">
-                <div class="field is-grouped is-centered">
+                    <div class="field is-grouped is-centered">
                     <p class="control has-icons-left confirm">
                         <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
                         <span class="icon is-small is-left has-text-link">
@@ -213,8 +213,8 @@
                             <i class="fa fa-times-circle" aria-hidden="true"></i>
                         </span>
                     </p>
+                    </div>
                 </div>
-            </div>
             </div>
             
         </form>

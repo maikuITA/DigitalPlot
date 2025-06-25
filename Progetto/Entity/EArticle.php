@@ -14,19 +14,19 @@ class EArticle{
     private int $id;
     
     #[ORM\Column(type: "string", length: 100)]
-    private string $title = "";
+    private string $title;
     
     #[ORM\Column(type: "text")]
     private string $description;
 
     #[ORM\Column(name: "state", type: "string", length: 100)]
     private string $state;
+
+    #[ORM\Column(name: "category", type: "string", length: 100)]
+    private string $category;
     
     #[ORM\Column(name: "genre", type: "string", length: 100)]
     private string $genre;
-    
-    #[ORM\Column(name: "category", type: "string", length: 100)]
-    private string $category;
 
     #[ORM\Column(type: "blob", nullable: true)]
     private $contents;
@@ -44,7 +44,7 @@ class EArticle{
     #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private Collection $readings;
 
-    public function __construct(string $title,string $description, mixed $contents ,string $state = "da approvare", string $genre, string $category, string $releaseDate, EUser $writer) {
+    public function __construct(string $title,string $description, mixed $contents ,string $state = PENDING, string $genre, string $category, string $releaseDate, EUser $writer) {
         $this->title = $title;
         $this->description = $description;
         $this->contents = $contents;

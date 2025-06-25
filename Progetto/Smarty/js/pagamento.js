@@ -1,4 +1,5 @@
-console.log("Pagamento script loaded");
+console.log("pagamento loaded");
+
 const paypal = document.getElementById("paypal");
 const card = document.getElementById("card");
 

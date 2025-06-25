@@ -47,7 +47,6 @@ class CPurchase{
             //retriving all object
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
-            ULogSys::toLog("porco i sant", true);
             $card = self::getCreditCard();
             // verify if credit card already exists in db, if yes, take the card from it
             if (FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $card->getCardNumber()) === false){

@@ -84,6 +84,51 @@ class CArticle{
     }
 
 
+    public static function saveArticle(){
+        if(UServer::getRequestMethod() === 'POST'){
+            if(CUser::isLogged()){
+                if(CUser::isSubbed()){
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                if ($user->getPrivilege() > 1){
+                        $title = UHTTPMethods::post('title');
+                        $description = UHTTPMethods::post('description');
+                        $tipo = UHTTPMethods::post('category');
+                        $genre = UHTTPMethods::post('genre');
+                        $date = date('Y-m-d');
+                        if(UHTTPMethods::post('contenuto') !== null ){
+                            $content = trim(UHTTPMethods::post('contenuto'));
+                        }elseif(UHTTPMethods::files('articleFile') !== null ){
+                            $content = '';
+                        }else{
+                            header('Location: https://digitalplot.altervista.org/error');
+                            exit();
+                        }
+                        $article = new EArticle($title,$description,$content,PENDING,$genre, $tipo, $date, $user);
+                        $user->addArticle($article);
+                        FPersistentManager::getInstance()->saveInDb($article);
+                        FPersistentManager::getInstance()->saveInDb($user);
+                        ULogSys::toLog('Nuovo articolo salvato');
+                        $confirmMessage = "Articolo salvato correttamente!";
+                        VConfirm::render($confirmMessage, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
+                        exit;
+                }else{
+                        header('Location: https://digitalplot.altervista.org/home');
+                        exit();
+                }
+                }else{
+                    header('Location: https://digitalplot.altervista.org/subscribe');
+                    exit();
+                }
+            }else{
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit();
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/home');
+            exit(); 
+        }
+        
+    }
     /*
     public static function modifyArticle(int $idArticle): void{
          if(CUser::isLogged()){

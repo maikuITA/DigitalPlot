@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 5.5.1, created on 2025-06-25 10:44:25
+  from 'file:profilo.tpl' */
+
+/* @var \Smarty\Template $_smarty_tpl */
+if ($_smarty_tpl->getCompiled()->isFresh($_smarty_tpl, array (
+  'version' => '5.5.1',
+  'unifunc' => 'content_685bb6e9b4fb35_41192931',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '2ad8d188d54b3272b2215fec19ebf64eb4dab096' => 
+    array (
+      0 => 'profilo.tpl',
+      1 => 1750840929,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+))) {
+function content_685bb6e9b4fb35_41192931 (\Smarty\Template $_smarty_tpl) {
+$_smarty_current_dir = '/membri/digitalplot/Progetto/Smarty/templates';
+?><!DOCTYPE html>
 <html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -26,18 +50,19 @@
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
-                    {if $isLogged === true}
-                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
-                        {if $privilege eq 0}
+                    <?php if ($_smarty_tpl->getValue('isLogged') === true) {?>
+                        <a class="navbar-item">PlotPoints: <?php echo $_smarty_tpl->getValue('plotPoints');?>
+</a>
+                        <?php if ($_smarty_tpl->getValue('privilege') == 0) {?>
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
-                        {/if}
-                        {if $privilege === 3}
+                        <?php }?>
+                        <?php if ($_smarty_tpl->getValue('privilege') === 3) {?>
                             <a class="navbar-item" href="/dashboard" > Dashboard </a>
                             <a class="navbar-item" href="/logs"> Logs </a>
-                        {/if}
-                    {else}
+                        <?php }?>
+                    <?php } else { ?>
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
-                    {/if}
+                    <?php }?>
                 </div>
             </div>
         </div>
@@ -48,34 +73,35 @@
             </div> 
         </div>
         <div class="column is-one-quarter right">
-            {if $isLogged === true}
-                {if $privilege >= 2}
+            <?php if ($_smarty_tpl->getValue('isLogged') === true) {?>
+                <?php if ($_smarty_tpl->getValue('privilege') >= 2) {?>
                     <a href="/newArticle" class="is-ok">
                         <span class="icon is-large is-ok">
                             <i class="fa fa-plus-square" style="font-size:24px"></i>
                         </span>
                     </a>
-                {/if}
+                <?php }?>
                 <a href="/find" class="is-ok">
                     <span class="icon is-large is-ok">
                         <i class="fa fa-search lens is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
                 <a href="/profile"><figure class="image is-48x48">
-                    {if $proPic === null}
+                    <?php if ($_smarty_tpl->getValue('proPic') === null) {?>
                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
-                    {else}
-                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
-                    {/if}
+                    <?php } else { ?>
+                        <img class="is-rounded" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->getValue('proPic');?>
+"/>
+                    <?php }?>
                 </figure></a>
                 <a href="/logout" class="is-ok">
                     <span class="icon is-large is-ok">
                         <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
-            {else}
+            <?php } else { ?>
                 <a href="/auth" class="button is-warning ok">Accedi</a>
-            {/if}
+            <?php }?>
         </div>
     </header>
     <div class="absolute-left">
@@ -127,45 +153,51 @@
                         <figure class="image is-128x128">
                                 <form id="avatarForm" action="/uploadAvatar" method="POST" enctype="multipart/form-data">
                                     <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
-                                    {if $proPic === null}
+                                    <?php if ($_smarty_tpl->getValue('proPic') === null) {?>
+                                            <label for="avatarInput" class="avatar-wrapper">
+                                                <img src="/Progetto/Smarty/img/propic.png" alt="Foto profilo" id="avatarPreview" class="profilePictureU">
+                                                <i class="fas fa-camera camera-icon"></i>
+                                            </label>
+                                    <?php } else { ?>
                                         <label for="avatarInput" class="avatar-wrapper">
-                                            <img src="/Progetto/Smarty/img/propic.png" alt="Foto profilo" id="avatarPreview" class="profilePictureU">
-                                            <i class="fas fa-camera camera-icon"></i>
+                                            <img class="is-rounded" src="data:image/jpeg;base64,<?php echo $_smarty_tpl->getValue('proPic');?>
+" id="avatarPreview" class="profilePictureU"/>
                                         </label>
-                                    {else}
-                                        <label for="avatarInput" class="avatar-wrapper">
-                                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}" id="avatarPreview" class="profilePictureU"/>
-                                        </label>
-                                    {/if}  
+                                    <?php }?>  
                                 </form>
                         </figure>
                     </form>
                 </div>
                 <div class="column is-two-fifth c">
-                    <a class="title">{$user->getUsername()}</a>
-                    {if $user->getPrivilege() === 0}
+                    <a class="title"><?php echo $_smarty_tpl->getValue('user')->getUsername();?>
+</a>
+                    <?php if ($_smarty_tpl->getValue('user')->getPrivilege() === 0) {?>
                         <a class="subtitle has-text-warning">Utente base</a>
-                    {elseif $user->getPrivilege() === 1}
+                    <?php } elseif ($_smarty_tpl->getValue('user')->getPrivilege() === 1) {?>
                         <a class="subtitle has-text-warning">Utente reader</a>
-                    {elseif $user->getPrivilege() === 2}
+                    <?php } elseif ($_smarty_tpl->getValue('user')->getPrivilege() === 2) {?>
                         <a class="subtitle has-text-warning">Utente writer</a>
-                    {elseif $user->getPrivilege() === 3}
+                    <?php } elseif ($_smarty_tpl->getValue('user')->getPrivilege() === 3) {?>
                         <a class="subtitle has-text-warning">Amministratore</a>
-                    {/if}
+                    <?php }?>
 
                 </div>
                 <div class="column is-two-fifth cs">
                     <div class="is-gapped">
-                        <a class="is-5 s">Follower</a><a class="is-5">{$user->getNumFollowers()}</a>
+                        <a class="is-5 s">Follower</a><a class="is-5"><?php echo $_smarty_tpl->getValue('user')->getNumFollowers();?>
+</a>
                     </div>
                     <div class="is-gapped">
-                        <a class="is-5 s">Seguiti</a><a class="is-5">{$user->getNumFollowing()}</a>
+                        <a class="is-5 s">Seguiti</a><a class="is-5"><?php echo $_smarty_tpl->getValue('user')->getNumFollowing();?>
+</a>
                     </div>
                     <div class="is-gapped">
-                        <a class="is-5 s">Articoli scritti</a><a class="is-5">{$user->getNumArticles()}</a>
+                        <a class="is-5 s">Articoli scritti</a><a class="is-5"><?php echo $_smarty_tpl->getValue('user')->getNumArticles();?>
+</a>
                     </div>
                     <div class="is-gapped">
-                        <a class="is-5 s">Articoli letti</a><a class="is-5">{$user->countReadings()}</a>
+                        <a class="is-5 s">Articoli letti</a><a class="is-5"><?php echo $_smarty_tpl->getValue('user')->countReadings();?>
+</a>
                     </div>
                 </div>
             </div>
@@ -185,18 +217,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                {if isset($articles)}
-                    {foreach from=$articles item=article}
+                <?php if ((true && ($_smarty_tpl->hasVariable('articles') && null !== ($_smarty_tpl->getValue('articles') ?? null)))) {?>
+                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('articles'), 'article');
+$foreach0DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('article')->value) {
+$foreach0DoElse = false;
+?>
                             <tr>
-                                <td>{$article->getTitle()}</td>
-                                <td>{$article->getState()}</td>
-                                <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
-                                <td>{$article->getGenre()}</td>
-                                <td><a class="has-text-link" href="/modifyArticle/{$article->getId()}" >Modifica</a></td>
-                                <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getTitle();?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getState();?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getReleaseDate()->format('Y-m-d');?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getGenre();?>
+</td>
+                                <td><a class="has-text-link" href="/modifyArticle/<?php echo $_smarty_tpl->getValue('article')->getId();?>
+" >Modifica</a></td>
+                                <td><a class="has-text-danger" href="/dropArticle/<?php echo $_smarty_tpl->getValue('article')->getId();?>
+"> Elimina</a></td>
                             </tr>           
-                    {/foreach}
-                {/if}
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                <?php }?>
                 </tbody>
             </table>
         </div>
@@ -213,17 +258,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                {if isset($readdenArticles)}
-                    {foreach from=$readdenArticles item=article}
+                <?php if ((true && ($_smarty_tpl->hasVariable('readdenArticles') && null !== ($_smarty_tpl->getValue('readdenArticles') ?? null)))) {?>
+                    <?php
+$_from = $_smarty_tpl->getSmarty()->getRuntime('Foreach')->init($_smarty_tpl, $_smarty_tpl->getValue('readdenArticles'), 'article');
+$foreach1DoElse = true;
+foreach ($_from ?? [] as $_smarty_tpl->getVariable('article')->value) {
+$foreach1DoElse = false;
+?>
                             <tr>
-                                <td>{$article->getTitle()}</td>
-                                <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
-                                <td>{$article->getCategory()}</td>
-                                <td>{$article->getGenre()}</td>
-                                <td><a class="has-text-link" href="/article/{$article->getId()}" >Leggi</a></td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getTitle();?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getReleaseDate()->format('Y-m-d');?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getCategory();?>
+</td>
+                                <td><?php echo $_smarty_tpl->getValue('article')->getGenre();?>
+</td>
+                                <td><a class="has-text-link" href="/article/<?php echo $_smarty_tpl->getValue('article')->getId();?>
+" >Leggi</a></td>
                             </tr>           
-                    {/foreach}
-                {/if}    
+                    <?php
+}
+$_smarty_tpl->getSmarty()->getRuntime('Foreach')->restore($_smarty_tpl, 1);?>
+                <?php }?>    
                 </tbody>
             </table>
         </div>
@@ -231,5 +288,10 @@
     
 </body>
 </html>
-<script src="/Progetto/Smarty/js/navburger.js"></script>
-<script src="/Progetto/Smarty/js/profile.js"></script>
+<?php echo '<script'; ?>
+ src="/Progetto/Smarty/js/navburger.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="/Progetto/Smarty/js/profile.js"><?php echo '</script'; ?>
+><?php }
+}

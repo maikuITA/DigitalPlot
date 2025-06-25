@@ -18,3 +18,8 @@ define('BASIC', 0);
 define('READER', 1);
 define('WRITER', 2);
 define('ADMIN', 3);
+
+// areticles status
+define('APPROVED', 'approvato');
+define('PENDING', 'in attesa');
+define('REFUSED', 'rifiutato');
