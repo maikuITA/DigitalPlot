@@ -6953,3 +6953,505 @@
 [2025-06-21 12:16:40] # Rotta: Array
 [2025-06-21 12:16:40] # Controller -> CError # Method -> error404
 [2025-06-21 12:16:40] # Display -> error.tpl
+[2025-06-25 09:54:03] # Rotta: article
+[2025-06-25 09:54:03] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:54:03] # Display -> lettura.tpl
+[2025-06-25 09:54:03] # Rotta: article
+[2025-06-25 09:54:03] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:54:03] # Rotta: article
+[2025-06-25 09:54:03] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:54:03] # Rotta: isFollow
+[2025-06-25 09:54:03] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 09:54:04] # Rotta: favicon.ico
+[2025-06-25 09:54:04] # Rotta: error
+[2025-06-25 09:54:04] # Controller -> CError # Method -> error404
+[2025-06-25 09:54:04] # Display -> error.tpl
+[2025-06-25 09:55:24] # Rotta: article
+[2025-06-25 09:55:24] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:55:24] # Display -> lettura.tpl
+[2025-06-25 09:55:25] # Rotta: article
+[2025-06-25 09:55:25] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:55:25] # Rotta: article
+[2025-06-25 09:55:25] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:55:25] # Rotta: isFollow
+[2025-06-25 09:55:25] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 09:55:25] # Rotta: favicon.ico
+[2025-06-25 09:55:25] # Rotta: error
+[2025-06-25 09:55:25] # Controller -> CError # Method -> error404
+[2025-06-25 09:55:25] # Display -> error.tpl
+[2025-06-25 09:55:45] # Rotta: article
+[2025-06-25 09:55:45] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:55:45] # Display -> lettura.tpl
+[2025-06-25 09:55:45] # Rotta: article
+[2025-06-25 09:55:45] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:55:45] # Rotta: article
+[2025-06-25 09:55:45] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:55:46] # Rotta: isFollow
+[2025-06-25 09:55:46] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 09:55:46] # Rotta: favicon.ico
+[2025-06-25 09:55:46] # Rotta: error
+[2025-06-25 09:55:46] # Controller -> CError # Method -> error404
+[2025-06-25 09:55:46] # Display -> error.tpl
+[2025-06-25 09:56:11] # Rotta: article
+[2025-06-25 09:56:11] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:56:11] # Display -> lettura.tpl
+[2025-06-25 09:56:11] # Rotta: article
+[2025-06-25 09:56:11] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:56:11] # Rotta: article
+[2025-06-25 09:56:11] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:56:11] # Rotta: isFollow
+[2025-06-25 09:56:11] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 09:56:11] # Rotta: favicon.ico
+[2025-06-25 09:56:11] # Rotta: error
+[2025-06-25 09:56:11] # Controller -> CError # Method -> error404
+[2025-06-25 09:56:12] # Display -> error.tpl
+[2025-06-25 09:56:53] # Rotta: article
+[2025-06-25 09:56:53] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:56:53] # Display -> lettura.tpl
+[2025-06-25 09:56:53] # Rotta: article
+[2025-06-25 09:56:53] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:56:53] # Rotta: article
+[2025-06-25 09:56:53] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:56:53] # Rotta: isFollow
+[2025-06-25 09:56:53] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 09:59:17] # Rotta: article
+[2025-06-25 09:59:17] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:59:17] # Display -> lettura.tpl
+[2025-06-25 09:59:17] # Rotta: article
+[2025-06-25 09:59:17] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:59:17] # Rotta: article
+[2025-06-25 09:59:17] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 09:59:18] # Rotta: isFollow
+[2025-06-25 09:59:18] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 09:59:18] # Rotta: favicon.ico
+[2025-06-25 09:59:18] # Rotta: error
+[2025-06-25 09:59:18] # Controller -> CError # Method -> error404
+[2025-06-25 09:59:18] # Display -> error.tpl
+[2025-06-25 10:00:43] # Rotta: profile
+[2025-06-25 10:00:43] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:00:43] # Display -> profilo.tpl
+[2025-06-25 10:00:43] # Rotta: webfonts
+[2025-06-25 10:00:43] # Rotta: webfonts
+[2025-06-25 10:00:43] # Rotta: error
+[2025-06-25 10:00:43] # Controller -> CError # Method -> error404
+[2025-06-25 10:00:43] # Display -> error.tpl
+[2025-06-25 10:00:43] # Rotta: error
+[2025-06-25 10:00:43] # Controller -> CError # Method -> error404
+[2025-06-25 10:00:43] # Display -> error.tpl
+[2025-06-25 10:00:44] # Rotta: article
+[2025-06-25 10:00:44] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:00:44] # Display -> lettura.tpl
+[2025-06-25 10:00:44] # Rotta: isFollow
+[2025-06-25 10:00:44] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 10:02:37] # Rotta: article
+[2025-06-25 10:02:37] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:02:37] # Display -> lettura.tpl
+[2025-06-25 10:02:37] # Rotta: article
+[2025-06-25 10:02:37] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:02:37] # Rotta: article
+[2025-06-25 10:02:37] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:02:37] # Rotta: isFollow
+[2025-06-25 10:02:37] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 10:02:38] # Rotta: favicon.ico
+[2025-06-25 10:02:38] # Rotta: error
+[2025-06-25 10:02:38] # Controller -> CError # Method -> error404
+[2025-06-25 10:02:38] # Display -> error.tpl
+[2025-06-25 10:03:37] # Rotta: newArticle
+[2025-06-25 10:03:37] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:03:37] # Display -> nuovo.tpl
+[2025-06-25 10:03:37] # Rotta: webfonts
+[2025-06-25 10:03:37] # Rotta: webfonts
+[2025-06-25 10:03:37] # Rotta: error
+[2025-06-25 10:03:37] # Controller -> CError # Method -> error404
+[2025-06-25 10:03:37] # Rotta: error
+[2025-06-25 10:03:37] # Controller -> CError # Method -> error404
+[2025-06-25 10:03:37] # Display -> error.tpl
+[2025-06-25 10:03:37] # Display -> error.tpl
+[2025-06-25 10:03:48] # Rotta: dashboard
+[2025-06-25 10:03:48] # Controller -> CDashboard # Method -> dashboard
+[2025-06-25 10:03:48] # Display -> dashboard.tpl
+[2025-06-25 10:03:48] # Rotta: webfonts
+[2025-06-25 10:03:48] # Rotta: webfonts
+[2025-06-25 10:03:48] # Rotta: error
+[2025-06-25 10:03:48] # Controller -> CError # Method -> error404
+[2025-06-25 10:03:48] # Rotta: error
+[2025-06-25 10:03:48] # Controller -> CError # Method -> error404
+[2025-06-25 10:03:48] # Display -> error.tpl
+[2025-06-25 10:03:48] # Display -> error.tpl
+[2025-06-25 10:04:49] # Rotta: logs
+[2025-06-25 10:04:49] # Controller -> CService # Method -> logs
+[2025-06-25 10:04:49] # Display -> log.tpl
+[2025-06-25 10:04:54] # Rotta: logs
+[2025-06-25 10:04:54] # Controller -> CService # Method -> logs
+[2025-06-25 10:04:54] # Display -> log.tpl
+[2025-06-25 10:04:55] # Rotta: favicon.ico
+[2025-06-25 10:04:55] # Rotta: error
+[2025-06-25 10:04:55] # Controller -> CError # Method -> error404
+[2025-06-25 10:04:55] # Display -> error.tpl
+[2025-06-25 10:06:49] # Rotta: logs
+[2025-06-25 10:06:49] # Controller -> CService # Method -> logs
+[2025-06-25 10:06:49] # Display -> log.tpl
+[2025-06-25 10:08:38] # Rotta: logs
+[2025-06-25 10:08:38] # Controller -> CService # Method -> logs
+[2025-06-25 10:08:38] # Display -> log.tpl
+[2025-06-25 10:08:42] # Rotta: home
+[2025-06-25 10:08:42] # Controller -> CUser # Method -> home
+[2025-06-25 10:08:42] # Display -> home.tpl
+[2025-06-25 10:08:44] # Rotta: profile
+[2025-06-25 10:08:44] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:08:44] # Display -> profilo.tpl
+[2025-06-25 10:08:45] # Rotta: webfonts
+[2025-06-25 10:08:45] # Rotta: webfonts
+[2025-06-25 10:08:45] # Rotta: error
+[2025-06-25 10:08:45] # Controller -> CError # Method -> error404
+[2025-06-25 10:08:45] # Display -> error.tpl
+[2025-06-25 10:08:45] # Rotta: error
+[2025-06-25 10:08:45] # Controller -> CError # Method -> error404
+[2025-06-25 10:08:45] # Display -> error.tpl
+[2025-06-25 10:08:45] # Rotta: logs
+[2025-06-25 10:08:45] # Controller -> CService # Method -> logs
+[2025-06-25 10:08:45] # Display -> log.tpl
+[2025-06-25 10:09:41] # Rotta: logs
+[2025-06-25 10:09:41] # Controller -> CService # Method -> logs
+[2025-06-25 10:09:41] # Display -> log.tpl
+[2025-06-25 10:10:23] # Rotta: logs
+[2025-06-25 10:10:23] # Controller -> CService # Method -> logs
+[2025-06-25 10:10:23] # Display -> log.tpl
+[2025-06-25 10:11:22] # Rotta: 
+[2025-06-25 10:11:22] # Controller -> CUser # Method -> home
+[2025-06-25 10:11:22] # Display -> home.tpl
+[2025-06-25 10:11:23] # Rotta: error
+[2025-06-25 10:11:23] # Controller -> CError # Method -> error404
+[2025-06-25 10:11:23] # Display -> error.tpl
+[2025-06-25 10:11:27] # Rotta: auth
+[2025-06-25 10:11:27] # Controller -> CUser # Method -> auth
+[2025-06-25 10:11:27] # Display -> accesso.tpl
+[2025-06-25 10:11:27] # Rotta: webfonts
+[2025-06-25 10:11:27] # Rotta: webfonts
+[2025-06-25 10:11:27] # Rotta: error
+[2025-06-25 10:11:27] # Controller -> CError # Method -> error404
+[2025-06-25 10:11:27] # Display -> error.tpl
+[2025-06-25 10:11:27] # Rotta: error
+[2025-06-25 10:11:27] # Controller -> CError # Method -> error404
+[2025-06-25 10:11:27] # Display -> error.tpl
+[2025-06-25 10:11:31] # Rotta: logs
+[2025-06-25 10:11:31] # Controller -> CService # Method -> logs
+[2025-06-25 10:11:31] # Display -> log.tpl
+[2025-06-25 10:11:34] # Rotta: checkLogin
+[2025-06-25 10:11:34] # Controller -> CUser # Method -> checklogin
+[2025-06-25 10:11:34] # Rotta: home
+[2025-06-25 10:11:34] # Controller -> CUser # Method -> home
+[2025-06-25 10:11:34] # Display -> home.tpl
+[2025-06-25 10:11:38] # Rotta: article
+[2025-06-25 10:11:38] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:11:38] # Display -> lettura.tpl
+[2025-06-25 10:11:39] # Rotta: isFollow
+[2025-06-25 10:11:39] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 10:11:56] # Rotta: profile
+[2025-06-25 10:11:56] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:11:56] # Display -> profilo.tpl
+[2025-06-25 10:11:56] # Rotta: webfonts
+[2025-06-25 10:11:56] # Rotta: webfonts
+[2025-06-25 10:11:56] # Rotta: error
+[2025-06-25 10:11:56] # Controller -> CError # Method -> error404
+[2025-06-25 10:11:56] # Display -> error.tpl
+[2025-06-25 10:11:56] # Rotta: error
+[2025-06-25 10:11:56] # Controller -> CError # Method -> error404
+[2025-06-25 10:11:56] # Display -> error.tpl
+[2025-06-25 10:12:03] # Rotta: home
+[2025-06-25 10:12:03] # Controller -> CUser # Method -> home
+[2025-06-25 10:12:03] # Display -> home.tpl
+[2025-06-25 10:12:05] # Rotta: dashboard
+[2025-06-25 10:12:05] # Controller -> CDashboard # Method -> dashboard
+[2025-06-25 10:12:05] # Display -> dashboard.tpl
+[2025-06-25 10:12:05] # Rotta: webfonts
+[2025-06-25 10:12:05] # Rotta: webfonts
+[2025-06-25 10:12:05] # Rotta: error
+[2025-06-25 10:12:05] # Controller -> CError # Method -> error404
+[2025-06-25 10:12:05] # Display -> error.tpl
+[2025-06-25 10:12:05] # Rotta: error
+[2025-06-25 10:12:05] # Controller -> CError # Method -> error404
+[2025-06-25 10:12:05] # Display -> error.tpl
+[2025-06-25 10:12:09] # Rotta: logs
+[2025-06-25 10:12:09] # Controller -> CService # Method -> logs
+[2025-06-25 10:12:09] # Display -> log.tpl
+[2025-06-25 10:12:17] # Rotta: logs
+[2025-06-25 10:12:17] # Controller -> CService # Method -> logs
+[2025-06-25 10:12:17] # Display -> log.tpl
+[2025-06-25 10:12:22] # Rotta: logs
+[2025-06-25 10:12:22] # Controller -> CService # Method -> logs
+[2025-06-25 10:12:22] # Display -> log.tpl
+[2025-06-25 10:12:24] # Rotta: logs
+[2025-06-25 10:12:24] # Controller -> CService # Method -> logs
+[2025-06-25 10:12:24] # Display -> log.tpl
+[2025-06-25 10:12:44] # Rotta: logs
+[2025-06-25 10:12:44] # Controller -> CService # Method -> logs
+[2025-06-25 10:12:44] # Display -> log.tpl
+[2025-06-25 10:13:13] # Rotta: home
+[2025-06-25 10:13:13] # Controller -> CUser # Method -> home
+[2025-06-25 10:13:13] # Display -> home.tpl
+[2025-06-25 10:22:59] # Rotta: article
+[2025-06-25 10:22:59] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:22:59] # Display -> lettura.tpl
+[2025-06-25 10:22:59] # Rotta: isFollow
+[2025-06-25 10:22:59] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 10:24:42] # Rotta: home
+[2025-06-25 10:24:42] # Controller -> CUser # Method -> home
+[2025-06-25 10:24:42] # Display -> home.tpl
+[2025-06-25 10:34:15] # Rotta: newArticle
+[2025-06-25 10:34:15] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:34:15] # Display -> nuovo.tpl
+[2025-06-25 10:34:15] # Rotta: webfonts
+[2025-06-25 10:34:15] # Rotta: webfonts
+[2025-06-25 10:34:15] # Rotta: error
+[2025-06-25 10:34:15] # Controller -> CError # Method -> error404
+[2025-06-25 10:34:15] # Display -> error.tpl
+[2025-06-25 10:34:15] # Rotta: error
+[2025-06-25 10:34:15] # Controller -> CError # Method -> error404
+[2025-06-25 10:34:15] # Display -> error.tpl
+[2025-06-25 10:36:37] # Rotta: profile
+[2025-06-25 10:36:37] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:36:37] # Display -> profilo.tpl
+[2025-06-25 10:36:37] # Rotta: error
+[2025-06-25 10:36:37] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:37] # Display -> error.tpl
+[2025-06-25 10:36:37] # Rotta: error
+[2025-06-25 10:36:37] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:37] # Display -> error.tpl
+[2025-06-25 10:36:38] # Rotta: home
+[2025-06-25 10:36:38] # Controller -> CUser # Method -> home
+[2025-06-25 10:36:38] # Display -> home.tpl
+[2025-06-25 10:36:38] # Rotta: logs
+[2025-06-25 10:36:38] # Controller -> CService # Method -> logs
+[2025-06-25 10:36:38] # Display -> log.tpl
+[2025-06-25 10:36:39] # Rotta: dashboard
+[2025-06-25 10:36:39] # Controller -> CDashboard # Method -> dashboard
+[2025-06-25 10:36:39] # Display -> dashboard.tpl
+[2025-06-25 10:36:39] # Rotta: error
+[2025-06-25 10:36:39] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:39] # Display -> error.tpl
+[2025-06-25 10:36:39] # Rotta: error
+[2025-06-25 10:36:39] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:39] # Display -> error.tpl
+[2025-06-25 10:36:41] # Rotta: newArticle
+[2025-06-25 10:36:41] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:36:41] # Display -> nuovo.tpl
+[2025-06-25 10:36:41] # Rotta: error
+[2025-06-25 10:36:41] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:41] # Rotta: error
+[2025-06-25 10:36:41] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:41] # Display -> error.tpl
+[2025-06-25 10:36:41] # Display -> error.tpl
+[2025-06-25 10:36:42] # Rotta: profile
+[2025-06-25 10:36:42] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:36:42] # Display -> profilo.tpl
+[2025-06-25 10:36:42] # Rotta: webfonts
+[2025-06-25 10:36:42] # Rotta: webfonts
+[2025-06-25 10:36:43] # Rotta: error
+[2025-06-25 10:36:43] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:43] # Display -> error.tpl
+[2025-06-25 10:36:43] # Rotta: error
+[2025-06-25 10:36:43] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:43] # Display -> error.tpl
+[2025-06-25 10:36:46] # Rotta: article
+[2025-06-25 10:36:46] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:36:46] # Display -> lettura.tpl
+[2025-06-25 10:36:47] # Rotta: isFollow
+[2025-06-25 10:36:47] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 10:36:56] # Rotta: profile
+[2025-06-25 10:36:56] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:36:56] # Display -> profilo.tpl
+[2025-06-25 10:36:56] # Rotta: webfonts
+[2025-06-25 10:36:56] # Rotta: webfonts
+[2025-06-25 10:36:57] # Rotta: error
+[2025-06-25 10:36:57] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:57] # Display -> error.tpl
+[2025-06-25 10:36:57] # Rotta: error
+[2025-06-25 10:36:57] # Controller -> CError # Method -> error404
+[2025-06-25 10:36:57] # Display -> error.tpl
+[2025-06-25 10:37:01] # Rotta: profile
+[2025-06-25 10:37:01] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:37:01] # Display -> profilo.tpl
+[2025-06-25 10:37:01] # Rotta: webfonts
+[2025-06-25 10:37:01] # Rotta: webfonts
+[2025-06-25 10:37:01] # Rotta: error
+[2025-06-25 10:37:01] # Rotta: error
+[2025-06-25 10:37:01] # Controller -> CError # Method -> error404
+[2025-06-25 10:37:01] # Controller -> CError # Method -> error404
+[2025-06-25 10:37:01] # Display -> error.tpl
+[2025-06-25 10:37:01] # Display -> error.tpl
+[2025-06-25 10:37:47] # Rotta: profile
+[2025-06-25 10:37:47] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:37:47] # Display -> profilo.tpl
+[2025-06-25 10:37:48] # Rotta: webfonts
+[2025-06-25 10:37:48] # Rotta: webfonts
+[2025-06-25 10:37:48] # Rotta: error
+[2025-06-25 10:37:48] # Controller -> CError # Method -> error404
+[2025-06-25 10:37:48] # Rotta: error
+[2025-06-25 10:37:48] # Controller -> CError # Method -> error404
+[2025-06-25 10:37:48] # Display -> error.tpl
+[2025-06-25 10:37:48] # Display -> error.tpl
+[2025-06-25 10:38:46] # Rotta: profile
+[2025-06-25 10:38:46] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:38:46] # Display -> profilo.tpl
+[2025-06-25 10:38:46] # Rotta: webfonts
+[2025-06-25 10:38:46] # Rotta: webfonts
+[2025-06-25 10:38:46] # Rotta: error
+[2025-06-25 10:38:46] # Controller -> CError # Method -> error404
+[2025-06-25 10:38:46] # Rotta: error
+[2025-06-25 10:38:46] # Controller -> CError # Method -> error404
+[2025-06-25 10:38:46] # Display -> error.tpl
+[2025-06-25 10:38:46] # Display -> error.tpl
+[2025-06-25 10:38:48] # Rotta: home
+[2025-06-25 10:38:48] # Controller -> CUser # Method -> home
+[2025-06-25 10:38:48] # Display -> home.tpl
+[2025-06-25 10:38:50] # Rotta: newArticle
+[2025-06-25 10:38:50] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:38:50] # Display -> nuovo.tpl
+[2025-06-25 10:38:50] # Rotta: webfonts
+[2025-06-25 10:38:50] # Rotta: webfonts
+[2025-06-25 10:38:50] # Rotta: error
+[2025-06-25 10:38:50] # Controller -> CError # Method -> error404
+[2025-06-25 10:38:50] # Rotta: error
+[2025-06-25 10:38:50] # Controller -> CError # Method -> error404
+[2025-06-25 10:38:50] # Display -> error.tpl
+[2025-06-25 10:38:50] # Display -> error.tpl
+[2025-06-25 10:38:53] # Rotta: newArticle
+[2025-06-25 10:38:53] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:38:53] # Display -> nuovo.tpl
+[2025-06-25 10:38:53] # Rotta: webfonts
+[2025-06-25 10:38:53] # Rotta: webfonts
+[2025-06-25 10:38:53] # Rotta: error
+[2025-06-25 10:38:53] # Controller -> CError # Method -> error404
+[2025-06-25 10:38:53] # Display -> error.tpl
+[2025-06-25 10:38:53] # Rotta: error
+[2025-06-25 10:38:53] # Controller -> CError # Method -> error404
+[2025-06-25 10:38:53] # Display -> error.tpl
+[2025-06-25 10:41:55] # Rotta: newArticle
+[2025-06-25 10:41:55] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:41:55] # Display -> nuovo.tpl
+[2025-06-25 10:41:55] # Rotta: webfonts
+[2025-06-25 10:41:55] # Rotta: webfonts
+[2025-06-25 10:41:55] # Rotta: error
+[2025-06-25 10:41:55] # Controller -> CError # Method -> error404
+[2025-06-25 10:41:55] # Rotta: error
+[2025-06-25 10:41:55] # Controller -> CError # Method -> error404
+[2025-06-25 10:41:55] # Display -> error.tpl
+[2025-06-25 10:41:55] # Display -> error.tpl
+[2025-06-25 10:42:20] # Rotta: profile
+[2025-06-25 10:42:20] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:42:20] # Display -> profilo.tpl
+[2025-06-25 10:42:20] # Rotta: webfonts
+[2025-06-25 10:42:20] # Rotta: webfonts
+[2025-06-25 10:42:20] # Rotta: error
+[2025-06-25 10:42:20] # Controller -> CError # Method -> error404
+[2025-06-25 10:42:20] # Display -> error.tpl
+[2025-06-25 10:42:20] # Rotta: error
+[2025-06-25 10:42:20] # Controller -> CError # Method -> error404
+[2025-06-25 10:42:20] # Display -> error.tpl
+[2025-06-25 10:42:26] # Rotta: home
+[2025-06-25 10:42:26] # Controller -> CUser # Method -> home
+[2025-06-25 10:42:27] # Display -> home.tpl
+[2025-06-25 10:42:28] # Rotta: article
+[2025-06-25 10:42:28] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 10:42:28] # Display -> lettura.tpl
+[2025-06-25 10:42:28] # Rotta: isFollow
+[2025-06-25 10:42:28] # Controller -> CFollow # Method -> isFollow
+[2025-06-25 10:42:55] # Rotta: dashboard
+[2025-06-25 10:42:55] # Controller -> CDashboard # Method -> dashboard
+[2025-06-25 10:42:55] # Display -> dashboard.tpl
+[2025-06-25 10:42:55] # Rotta: webfonts
+[2025-06-25 10:42:55] # Rotta: webfonts
+[2025-06-25 10:42:55] # Rotta: error
+[2025-06-25 10:42:55] # Rotta: error
+[2025-06-25 10:42:55] # Controller -> CError # Method -> error404
+[2025-06-25 10:42:55] # Controller -> CError # Method -> error404
+[2025-06-25 10:42:55] # Display -> error.tpl
+[2025-06-25 10:42:55] # Display -> error.tpl
+[2025-06-25 10:42:58] # Rotta: home
+[2025-06-25 10:42:58] # Controller -> CUser # Method -> home
+[2025-06-25 10:42:58] # Display -> home.tpl
+[2025-06-25 10:43:00] # Rotta: dashboard
+[2025-06-25 10:43:00] # Controller -> CDashboard # Method -> dashboard
+[2025-06-25 10:43:00] # Display -> dashboard.tpl
+[2025-06-25 10:43:00] # Rotta: webfonts
+[2025-06-25 10:43:00] # Rotta: webfonts
+[2025-06-25 10:43:00] # Rotta: error
+[2025-06-25 10:43:00] # Controller -> CError # Method -> error404
+[2025-06-25 10:43:00] # Rotta: error
+[2025-06-25 10:43:00] # Controller -> CError # Method -> error404
+[2025-06-25 10:43:00] # Display -> error.tpl
+[2025-06-25 10:43:00] # Display -> error.tpl
+[2025-06-25 10:43:02] # Rotta: logs
+[2025-06-25 10:43:02] # Controller -> CService # Method -> logs
+[2025-06-25 10:43:02] # Display -> log.tpl
+[2025-06-25 10:43:03] # Rotta: find
+[2025-06-25 10:43:03] # Controller -> CSearch # Method -> find
+[2025-06-25 10:43:03] # Display -> ricerca.tpl
+[2025-06-25 10:43:06] # Rotta: home
+[2025-06-25 10:43:06] # Controller -> CUser # Method -> home
+[2025-06-25 10:43:06] # Display -> home.tpl
+[2025-06-25 10:43:08] # Rotta: newArticle
+[2025-06-25 10:43:08] # Controller -> CArticle # Method -> newArticle
+[2025-06-25 10:43:08] # Display -> nuovo.tpl
+[2025-06-25 10:43:08] # Rotta: webfonts
+[2025-06-25 10:43:08] # Rotta: webfonts
+[2025-06-25 10:43:08] # Rotta: error
+[2025-06-25 10:43:08] # Controller -> CError # Method -> error404
+[2025-06-25 10:43:08] # Display -> error.tpl
+[2025-06-25 10:43:08] # Rotta: error
+[2025-06-25 10:43:08] # Controller -> CError # Method -> error404
+[2025-06-25 10:43:08] # Display -> error.tpl
+[2025-06-25 10:43:32] # Rotta: profile
+[2025-06-25 10:43:32] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:43:32] # Display -> profilo.tpl
+[2025-06-25 10:43:32] # Rotta: webfonts
+[2025-06-25 10:43:32] # Rotta: webfonts
+[2025-06-25 10:43:33] # Rotta: error
+[2025-06-25 10:43:33] # Controller -> CError # Method -> error404
+[2025-06-25 10:43:33] # Rotta: error
+[2025-06-25 10:43:33] # Display -> error.tpl
+[2025-06-25 10:43:33] # Controller -> CError # Method -> error404
+[2025-06-25 10:43:33] # Display -> error.tpl
+[2025-06-25 10:44:23] # Rotta: clearcache
+[2025-06-25 10:44:23] # Controller -> CService # Method -> clearCache
+[2025-06-25 10:44:23] # Cache pulita correttamente.
+[2025-06-25 10:44:23] # Rotta: home
+[2025-06-25 10:44:23] # Controller -> CUser # Method -> home
+[2025-06-25 10:44:23] # Display -> home.tpl
+[2025-06-25 10:44:25] # Rotta: profile
+[2025-06-25 10:44:25] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 10:44:25] # Display -> profilo.tpl
+[2025-06-25 10:44:25] # Rotta: webfonts
+[2025-06-25 10:44:25] # Rotta: webfonts
+[2025-06-25 10:44:26] # Rotta: error
+[2025-06-25 10:44:26] # Rotta: error
+[2025-06-25 10:44:26] # Controller -> CError # Method -> error404
+[2025-06-25 10:44:26] # Controller -> CError # Method -> error404
+[2025-06-25 10:44:26] # Display -> error.tpl
+[2025-06-25 10:44:26] # Display -> error.tpl
+[2025-06-25 10:45:46] # Rotta: logs
+[2025-06-25 10:45:46] # Controller -> CService # Method -> logs
+[2025-06-25 10:45:46] # Display -> log.tpl
+[2025-06-25 11:02:15] # Rotta: profile
+[2025-06-25 11:02:15] # Controller -> CUser # Method -> goToProfile
+[2025-06-25 11:02:15] # Display -> profilo.tpl
+[2025-06-25 11:02:15] # Rotta: webfonts
+[2025-06-25 11:02:15] # Rotta: webfonts
+[2025-06-25 11:02:16] # Rotta: error
+[2025-06-25 11:02:16] # Controller -> CError # Method -> error404
+[2025-06-25 11:02:16] # Display -> error.tpl
+[2025-06-25 11:02:16] # Rotta: error
+[2025-06-25 11:02:16] # Controller -> CError # Method -> error404
+[2025-06-25 11:02:16] # Display -> error.tpl
+[2025-06-25 11:06:17] # Rotta: home
+[2025-06-25 11:06:17] # Controller -> CUser # Method -> home
+[2025-06-25 11:06:17] # Display -> home.tpl
+[2025-06-25 11:06:21] # Rotta: home
+[2025-06-25 11:06:21] # Controller -> CUser # Method -> home
+[2025-06-25 11:06:21] # Display -> home.tpl
+[2025-06-25 11:06:23] # Rotta: article
+[2025-06-25 11:06:23] # Controller -> CArticle # Method -> showArticle
+[2025-06-25 11:06:23] # Display -> lettura.tpl
+[2025-06-25 11:06:23] # Rotta: isFollow
+[2025-06-25 11:06:23] # Controller -> CFollow # Method -> isFollow
