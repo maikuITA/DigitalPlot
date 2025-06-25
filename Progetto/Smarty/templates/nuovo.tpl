@@ -156,7 +156,7 @@
                         </select>
                     </div>
 
-                    <div class="select is-rounded">
+                    <div class="select is-rounded ml-4">
                         <select name="genre" required>
                             <option value="" disabled selected>Genere</option>
                             <option value="cronaca">Cronaca</option>
@@ -200,7 +200,7 @@
                     <input type="file" id="upload" name="articleFile" style="display:none;">
                     <div id="fileStatus"></div>
                 </div>
-                <div class="card gruppo mt-4">
+                <div class="card gruppo mt-6">
                     <div class="field is-grouped is-centered">
                     <p class="control has-icons-left confirm">
                         <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
