@@ -96,7 +96,7 @@ class CArticle{
                         $genre = UHTTPMethods::post('genre');
                         $date = date('Y-m-d');
                         $file = UHTTPMethods::files('articleFile');
-                        if(UHTTPMethods::post('contenuto') === "" ){
+                        if(UHTTPMethods::post('contenuto') !== "" ){
                             $content = trim(UHTTPMethods::post('contenuto'));
                         }elseif(isset($file)){
                             $content = UHTTPMethods::files('articleFile');
