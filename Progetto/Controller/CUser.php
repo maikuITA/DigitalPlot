@@ -183,6 +183,8 @@ class CUser{
                 if (isset($user) && password_verify($password, $user->getPassword())) {
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());
+                    ULogSys::toLog("Nuovo login");
+                    ULogSys::toLog("");
                     header('Location: https://digitalplot.altervista.org/home');
                 } else {
                     ULogSys::toLog('Invalid username or password', true);
@@ -245,7 +247,8 @@ class CUser{
                 $blob = file_get_contents($tmpName);
 
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob); 
-
+                ULogSys::toLog("Immagine di profilo updatata");
+                ULogSys::toLog("");
                 header("Location: https://digitalplot.altervista.org/profile");
                 exit;
             } else {

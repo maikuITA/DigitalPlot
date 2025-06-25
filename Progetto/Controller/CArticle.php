@@ -67,6 +67,8 @@ class CArticle{
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
                 $drop_result = FPersistentManager::getInstance()->delete($article);
                 if ($drop_result){
+                    ULogSys::toLog("Articolo eliminato");
+                    ULogSys::toLog("");
                     VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
                     exit();
                 }
@@ -107,6 +109,7 @@ class CArticle{
                         FPersistentManager::getInstance()->saveInDb($article);
                         FPersistentManager::getInstance()->saveInDb($user);
                         ULogSys::toLog('Nuovo articolo salvato');
+                        ULogSys::toLog("");
                         $confirmMessage = "Articolo salvato correttamente!";
                         VConfirm::render($confirmMessage, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
                         exit;
