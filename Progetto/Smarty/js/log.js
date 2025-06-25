@@ -47,6 +47,6 @@ function aggiornaEventi() {
 aggiornaErrori();
 aggiornaEventi();
 
-// Aggiorna ogni 5 secondi
-setInterval(aggiornaErrori, 5000);
-setInterval(aggiornaEventi, 5000);
+// Aggiorna ogni minuto
+setInterval(aggiornaErrori, 60 * 1000);
+setInterval(aggiornaEventi, 60 * 1000);
