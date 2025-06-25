@@ -145,25 +145,6 @@
                 </div>
             </div>
         </div>
-        <div class="card comments">
-            <div class="card-content">
-                <div class="content">
-                    <p class="title">Commenti</p>
-                    <div class="card">
-                        <div class="card-header">
-                            <p class="card-header-title">Giulio A.</p>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <p class="subtitle is-6">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>
