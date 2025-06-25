@@ -27,7 +27,7 @@ class CFrontController {
         'article' => ['CArticle', 'showArticle'],
         'newArticle' => ['CArticle', 'newArticle'],
         'saveArticle' => ['CArticle', 'saveArticle'],
-        'dropArticle'=> ['CArticle', 'dopArticle'],
+        'dropArticle'=> ['CArticle', 'dropArticle'],
         'modifyArticle'=> ['CArticle', 'modifyArticle'],
         'follow' => ['CFollow', 'follow'],
         'unfollow' => ['CFollow', 'unfollow'],
