@@ -86,9 +86,31 @@
             <p class="title">
                 Errore <br> {$errore} 
             </p>
-            <a class="subtitle has-text-link" href="/profile">
-                Torna alla pagina del profilo.
-            </a>
+            {if $type === 404 }
+                <a class="subtitle has-text-link" href="/home">
+                   Clicca qui per tornare alla home.
+                </a>
+            {elseif $type === 1} 
+                <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla tua pagina profilo.
+                </a>
+            {elseif $type === 2} 
+                <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla tua pagina profilo.
+                </a>
+            {elseif $type === 3} 
+                <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla tua pagina profilo.   
+                </a>
+            {elseif $type === 4} 
+                <a class="subtitle has-text-link" href="/newArticle">
+                    Clicca qui per tornare alla pagina precedente.
+                </a>
+            {elseif $type === 5} 
+                <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla tua pagina profilo.
+                </a>
+            {/if}
         </div>
     </div>
 </body>

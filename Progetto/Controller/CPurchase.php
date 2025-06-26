@@ -9,12 +9,12 @@ class CPurchase{
     */
     public static function startPurchase(int $subscriptionCod): void {
         if($subscriptionCod === null || $subscriptionCod <= 0){
-            header('Location: https://digitalplot.altervista.org/error');
+            header('Location: https://digitalplot.altervista.org/error/404');
             exit();
         }
         $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
         if(!isset($subscription)){
-                header('Location: https://digitalplot.altervista.org/error');
+                header('Location: https://digitalplot.altervista.org/error/404');
                 exit();
         }
         if(CUser::isLogged()){

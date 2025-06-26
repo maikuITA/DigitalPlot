@@ -141,7 +141,7 @@ class CUser{
                 USession::setSessionElement('user', $user->getId());
             } catch (Exception $e) {
                 ULogSys::toLog('Error during registration: ' . $e->getMessage());
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: https://digitalplot.altervista.org/auth');
             }
             header('Location: https://digitalplot.altervista.org/home');
         }
@@ -225,21 +225,21 @@ class CUser{
         // the input of files is the value of "name", attribute in <input type = "file" ...
         if (CUser::isLogged() === true){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            $file = UHTTPMethods::files('avatar');
-            if (!empty($file) && $file['error'] === UPLOAD_ERR_OK && !empty($file['tmp_name'])) {
-                $tmpName = $file['tmp_name'];
+            $image = UHTTPMethods::files('avatar');
+            if (!empty($image) && $image['error'] === UPLOAD_ERR_OK && !empty($image['tmp_name'])) {
+                $tmpName = $image['tmp_name'];
 
                 // Verifica MIME
                 $mime = mime_content_type($tmpName);
                 $allowed = ['image/jpeg', 'image/png', 'image/webp'];
                 if (!in_array($mime, $allowed)) {
-                    VError::render("Formato non valido");
+                    header('Location: https://digitalplot.altervista.org/error/2');
                     exit;
                 }
 
                 // Verifica dimensione (es. max 2MB)
-                if ($file['size'] > 2 * 1024 * 1024) {
-                    VError::render("Immagine troppo grande");
+                if ($image['size'] > 2 * 1024 * 1024) {
+                    header('Location: https://digitalplot.altervista.org/error/3');
                     exit;
                 }
 
@@ -252,8 +252,7 @@ class CUser{
                 header("Location: https://digitalplot.altervista.org/profile");
                 exit;
             } else {
-                $message = "Error: method not found or null";
-                VError::render(errore: $message, isLogged: true);
+                header('Location: https://digitalplot.altervista.org/error/5');
                 exit;
             }
 

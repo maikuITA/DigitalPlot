@@ -9,13 +9,13 @@ class CArticle{
      */
     public static function showArticle(?int $idArticolo):void{
         if($idArticolo === null || $idArticolo <= 0){
-            header('Location: https://digitalplot.altervista.org/error');
+            header('Location: https://digitalplot.altervista.org/error/404');
             exit();
         }
         if(CUser::isLogged()){
             $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
             if(!isset($article)){
-                header('Location: https://digitalplot.altervista.org/error');
+                header('Location: https://digitalplot.altervista.org/error/404');
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
@@ -72,7 +72,7 @@ class CArticle{
                     VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
                     exit();
                 }
-                VError::render("Non è stato possibile effettuare l'operazione", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                header('Location: https://digitalplot.altervista.org/error/1');
                 exit();
             }
             else{
@@ -140,13 +140,13 @@ class CArticle{
                 $mime = mime_content_type($tmpName);
                 $allowed = ['text/plain'];
                 if (!in_array($mime, $allowed)) {
-                    VError::render("Formato non valido");
+                    header('Location: https://digitalplot.altervista.org/error/2');
                     exit;
                 }
 
                 // Verifica dimensione (es. max 2MB)
                 if ($content['size'] === 0) {
-                    VError::render("File vuoto");
+                    header('Location: https://digitalplot.altervista.org/error/3');
                     exit;
                 }
 
@@ -156,11 +156,11 @@ class CArticle{
                 
                 return $html;
             } else {
-                $message = "Errore: non puoi creare un articolo vuoto";
-                VError::render(errore: $message, isLogged: true);
+                header('Location: https://digitalplot.altervista.org/error/4');
                 exit();
             }
     }
+
     /*
     public static function modifyArticle(int $idArticle): void{
          if(CUser::isLogged()){
