@@ -115,22 +115,9 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                        iaculis mauris.</p>
-                        <a class="has-text-link">@admin</a>
-                        <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <header class="card-header">
-                    <p class="card-header-title"><span class="icon is-small is-left"><i class="fa fa-line-chart" aria-hidden="true"></i></span>Attività odierna</p>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <a class="is-5 s">Ultime 24H: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Ultima settimana: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Ultimo mese: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Giornaliero: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Settimanale: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a class="is-5">0000</a> <br/>
                         <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
                         <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
