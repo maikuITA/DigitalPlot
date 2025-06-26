@@ -193,6 +193,45 @@ class CArticle{
         }
     }
 
+    public static function saveUpdateArticle(int $idArticle){
+        if(CUser::isLogged()){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if (UServer::getRequestMethod() === "POST"){
+                $title = UHTTPMethods::post('title');
+                $description = UHTTPMethods::post('description');
+                $tipo = UHTTPMethods::post('category');
+                $genre = UHTTPMethods::post('genre');
+                $date = date('Y-m-d');
+                $content = UHTTPMethods::files('articleFile');
+                if(UHTTPMethods::post('contenuto') !== "" ){
+                    $content = trim(UHTTPMethods::post('contenuto'));
+
+                }else{
+                    $content = self::checkFile($content);
+                }
+                $initialArticle = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
+                $dropResult = FPersistentManager::getInstance()->delete($initialArticle);
+                $article = new EArticle($title,$description,$content,PENDING,$genre, $tipo, $date, $user);
+                if ($dropResult){
+                    ULogSys::toLog("MANNAGIA LA SACRA", true);
+                    FPersistentManager::getInstance()->saveInDb($article);
+                    header('Location: https://digitalplot.altervista.org/confirm');
+                    exit();
+                } else {
+                    header('Location: https://digitalplot.altervista.org/error/404');
+                    exit();
+                }
+
+            } else {
+                header('Location: https://digitalplot.altervista.org/home');
+                exit();
+            }
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit();
+        }
+    }
+
     public static function newRewiew(?int $articleId = -1) : void {
         if(UServer::getRequestMethod() === 'POST' && $articleId !== NULL && $articleId > 0){
             if(CUser::isLogged()){

@@ -31,6 +31,7 @@ class CFrontController {
         'saveArticle' => ['CArticle', 'saveArticle'],
         'dropArticle'=> ['CArticle', 'dropArticle'],
         'modifyArticle'=> ['CArticle', 'modifyArticle'],
+        'saveUpdate'=> ['CArticle', 'saveUpdateArticle'],
         'newReview'=> ['CArticle', 'newRewiew'],
         'dropReview'=> ['CArticle', 'dropReview'],
         'follow' => ['CFollow', 'follow'],
