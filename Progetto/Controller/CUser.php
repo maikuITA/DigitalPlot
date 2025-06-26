@@ -293,7 +293,9 @@ class CUser{
         }
     }
 
-    public static function dropReview(?int )
+    public static function dropReview(?int $reviewId){
+
+    }
 
 
 }

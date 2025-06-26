@@ -7,7 +7,7 @@ class CFollow{
      * @param int $idWriter the id of the writer to follow
      * @return bool return true if the follow operation went well 
      */
-    public static function follow(?string $usernameWriter) : bool {
+    public static function follow(?string $usernameWriter = null) : bool {
         header('Content-Type: application/json');
         if($usernameWriter === null){
             echo json_encode(['success' => false, 'message' => 'manca username']);
@@ -48,7 +48,7 @@ class CFollow{
      * @param int $idWriter the id of the writer to follow
      * @return bool return true if the follow operation went well 
      */
-    public static function unfollow(?string $usernameWriter){
+    public static function unfollow(?string $usernameWriter = null){
         header('Content-Type: application/json');
         if($usernameWriter === null ){
             echo json_encode(['success' => false, 'message' => 'writer missing']);

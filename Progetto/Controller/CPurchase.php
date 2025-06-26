@@ -7,7 +7,7 @@ class CPurchase{
      * @param int $subscriptionCod The code of the subscription to purchase
      * @return void
     */
-    public static function startPurchase(int $subscriptionCod): void {
+    public static function startPurchase(int $subscriptionCod = -1): void {
         if($subscriptionCod === null || $subscriptionCod <= 0){
             header('Location: https://digitalplot.altervista.org/error/404');
             exit();
@@ -38,7 +38,11 @@ class CPurchase{
      * @param int $subscriptionCod The code of the subscription to purchase
      * @return void
      */
-    public static function purchase(int $subscriptionCod): void {
+    public static function purchase(int $subscriptionCod = -1): void {
+        if($subscriptionCod === null || $subscriptionCod <= 0){
+            header('Location: https://digitalplot.altervista.org/error/404');
+            exit();
+        }
         if(!CUser::isLogged()){
             header('Location: https://digitalplot.altervista.org/auth');
             exit();
