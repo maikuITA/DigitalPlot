@@ -185,6 +185,12 @@
                 </div>
             </div>
             <div> <p class="is-5 s"> Biografia </p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sagittis augue in nibh porta interdum. Sed eu ex et felis sollicitudin pulvinar. </div>
+            <button class="button is-link is-rounded is-outlined mt-5">
+                <span> 
+                    <i class='fas fa-pen'></i> 
+                    <a href="/modifyProfile">  Modifica profilo </a>
+                </span>
+            </button>  
         </div>
         <div class="card articles" id="articles">
             <table class="table is-striped is-hoverable">
