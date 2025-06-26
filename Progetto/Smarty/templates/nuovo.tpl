@@ -108,89 +108,116 @@
                     Aggiungi un nuovo articolo
                 </p>
                 <div class="field">
-                    <p class="control has-icons-left has-icons-right">
-                        <input class="input"  type="text" name="title" placeholder="Titolo dell'articolo" required>
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fa fa-quote-right" aria-hidden="true"></i>
-                        </span>
-                    </p>
+                    {if $modify === false}
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input"  type="text" name="title" placeholder="Titolo dell'articolo" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                    {else}
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input"  type="text" name="title" placeholder="{$article->getTitle()}" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                            </span>
+                        </p>
+                    {/if}
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input"  type="text" name="description" placeholder="Descrizione dell'articolo" required>
-                        <span class="icon is-small is-left">
-                            <i class="fa fa-quote-left" aria-hidden="true"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fa fa-quote-right" aria-hidden="true"></i>
-                        </span>
+                        {if $modify === false}
+                            <input class="input"  type="text" name="description" placeholder="Descrizione dell'articolo" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                            </span>
+                        {else}
+                            <input class="input"  type="text" name="description" placeholder="{$article->getDescription()}" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                            </span>
+                        {/if}
                     </p>
                 </div>
 
                 <div class="select-container">
                     <div class="select is-rounded">
                         <select name="category" required>
-                            <option value="" disabled selected>Categorie</option>
-                            <option value="articolo">Articolo</option>
-                            <option value="giornale">Giornale</option>
-                            <option value="rivista">Rivista</option>
-                            <option value="romanzo">Romanzo</option>
-                            <option value="racconto">Racconto</option>
-                            <option value="saggio">Saggio</option>
-                            <option value="blog">Blog</option>
-                            <option value="notizia">Notizia</option>
-                            <option value="editoriale">Editoriale</option>
-                            <option value="recensione">Recensione</option>
-                            <option value="intervista">Intervista</option>
-                            <option value="manuale">Manuale</option>
-                            <option value="tesi">Tesi</option>
-                            <option value="fumetto">Fumetto</option>
-                            <option value="pamphlet">Pamphlet</option>
-                            <option value="biografia">Biografia</option>
-                            <option value="autobiografia">Autobiografia</option>
-                            <option value="poesia">Poesia</option>
-                            <option value="dramma">Dramma</option>
+                            <option value="" disabled {if $article.category == ""}selected{/if}>Categorie</option>
+                            <option value="articolo" {if $article.category == 'articolo'}selected{/if}>Articolo</option>
+                            <option value="giornale" {if $article.category == 'giornale'}selected{/if}>Giornale</option>
+                            <option value="rivista" {if $article.category == 'rivista'}selected{/if}>Rivista</option>
+                            <option value="romanzo" {if $article.category == 'romanzo'}selected{/if}>Romanzo</option>
+                            <option value="racconto" {if $article.category == 'racconto'}selected{/if}>Racconto</option>
+                            <option value="saggio" {if $article.category == 'saggio'}selected{/if}>Saggio</option>
+                            <option value="blog" {if $article.category == 'blog'}selected{/if}>Blog</option>
+                            <option value="notizia" {if $article.category == 'notizia'}selected{/if}>Notizia</option>
+                            <option value="editoriale" {if $article.category == 'editoriale'}selected{/if}>Editoriale</option>
+                            <option value="recensione" {if $article.category == 'recensione'}selected{/if}>Recensione</option>
+                            <option value="intervista" {if $article.category == 'intervista'}selected{/if}>Intervista</option>
+                            <option value="manuale" {if $article.category == 'manuale'}selected{/if}>Manuale</option>
+                            <option value="tesi" {if $article.category == 'tesi'}selected{/if}>Tesi</option>
+                            <option value="fumetto" {if $article.category == 'fumetto'}selected{/if}>Fumetto</option>
+                            <option value="pamphlet" {if $article.category == 'pamphlet'}selected{/if}>Pamphlet</option>
+                            <option value="biografia" {if $article.category == 'biografia'}selected{/if}>Biografia</option>
+                            <option value="autobiografia" {if $article.category == 'autobiografia'}selected{/if}>Autobiografia</option>
+                            <option value="poesia" {if $article.category == 'poesia'}selected{/if}>Poesia</option>
+                            <option value="dramma" {if $article.category == 'dramma'}selected{/if}>Dramma</option>
                         </select>
                     </div>
 
+
                     <div class="select is-rounded ml-4">
                         <select name="genre" required>
-                            <option value="" disabled selected>Genere</option>
-                            <option value="cronaca">Cronaca</option>
-                            <option value="politica">Politica</option>
-                            <option value="economia">Economia</option>
-                            <option value="esteri">Esteri</option>
-                            <option value="interni">Interni</option>
-                            <option value="cultura">Cultura</option>
-                            <option value="spettacolo">Spettacolo</option>
-                            <option value="sport">Sport</option>
-                            <option value="tecnologia">Tecnologia</option>
-                            <option value="scienza">Scienza</option>
-                            <option value="ambiente">Ambiente</option>
-                            <option value="salute">Salute</option>
-                            <option value="viaggi">Viaggi</option>
-                            <option value="motori">Motori</option>
-                            <option value="lifestyle">Lifestyle</option>
-                            <option value="moda">Moda</option>
-                            <option value="gastronomia">Gastronomia</option>
-                            <option value="religione">Religione</option>
-                            <option value="istruzione">Istruzione</option>
-                            <option value="diritti">Diritti</option>
-                            <option value="giustizia">Giustizia</option>
-                            <option value="gossip">Gossip</option>
-                            <option value="musica">Musica</option>
-                            <option value="cinema">Cinema</option>
-                            <option value="libri">Libri</option>
+                            <option value="" disabled {if $article.genre == ""}selected{/if}>Genere</option>
+                            <option value="cronaca" {if $article.genre == 'cronaca'}selected{/if}>Cronaca</option>
+                            <option value="politica" {if $article.genre == 'politica'}selected{/if}>Politica</option>
+                            <option value="economia" {if $article.genre == 'economia'}selected{/if}>Economia</option>
+                            <option value="esteri" {if $article.genre == 'esteri'}selected{/if}>Esteri</option>
+                            <option value="interni" {if $article.genre == 'interni'}selected{/if}>Interni</option>
+                            <option value="cultura" {if $article.genre == 'cultura'}selected{/if}>Cultura</option>
+                            <option value="spettacolo" {if $article.genre == 'spettacolo'}selected{/if}>Spettacolo</option>
+                            <option value="sport" {if $article.genre == 'sport'}selected{/if}>Sport</option>
+                            <option value="tecnologia" {if $article.genre == 'tecnologia'}selected{/if}>Tecnologia</option>
+                            <option value="scienza" {if $article.genre == 'scienza'}selected{/if}>Scienza</option>
+                            <option value="ambiente" {if $article.genre == 'ambiente'}selected{/if}>Ambiente</option>
+                            <option value="salute" {if $article.genre == 'salute'}selected{/if}>Salute</option>
+                            <option value="viaggi" {if $article.genre == 'viaggi'}selected{/if}>Viaggi</option>
+                            <option value="motori" {if $article.genre == 'motori'}selected{/if}>Motori</option>
+                            <option value="lifestyle" {if $article.genre == 'lifestyle'}selected{/if}>Lifestyle</option>
+                            <option value="moda" {if $article.genre == 'moda'}selected{/if}>Moda</option>
+                            <option value="gastronomia" {if $article.genre == 'gastronomia'}selected{/if}>Gastronomia</option>
+                            <option value="religione" {if $article.genre == 'religione'}selected{/if}>Religione</option>
+                            <option value="istruzione" {if $article.genre == 'istruzione'}selected{/if}>Istruzione</option>
+                            <option value="diritti" {if $article.genre == 'diritti'}selected{/if}>Diritti</option>
+                            <option value="giustizia" {if $article.genre == 'giustizia'}selected{/if}>Giustizia</option>
+                            <option value="gossip" {if $article.genre == 'gossip'}selected{/if}>Gossip</option>
+                            <option value="musica" {if $article.genre == 'musica'}selected{/if}>Musica</option>
+                            <option value="cinema" {if $article.genre == 'cinema'}selected{/if}>Cinema</option>
+                            <option value="libri" {if $article.genre == 'libri'}selected{/if}>Libri</option>
                         </select>
                     </div>
                 </div>
-                <div class="block-container mt-4 mb-4">
-                    <div id="editor-container"></div>   
-                    <input type="hidden" name="contenuto" id="contenuto-articolo">
+                <div class="block-container mt-4 mb-4"></div>
+                <div id="editor-container"></div>  
+                {if $modify === false}
+                        <input type="hidden" name="contenuto" id="contenuto-articolo">
+                {else}
+                        <input type="hidden" name="contenuto" id="contenuto-articolo" placeholder = "{$article->getHtmlContent()}">
                 </div>
+                {/if}
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
                     <p>Carica/Inserisci <span> (in formato .txt)</span> </p>

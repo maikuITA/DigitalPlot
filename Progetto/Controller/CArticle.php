@@ -43,7 +43,7 @@ class CArticle{
         if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if($user->getPrivilege() === WRITER || $user->getPrivilege() === ADMIN){
-                VArticle::newArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());
+                VArticle::newArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege());
             }
             else{
                 header('Location: https://digitalplot.altervista.org/home');
@@ -161,21 +161,20 @@ class CArticle{
             }
     }
 
-    /*
+    
     public static function modifyArticle(int $idArticle): void{
          if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            if($user->getPrivilege() > 1){
-                $modify_result = UHTTPMethods::files();
-                if ($drop_result){
-                    VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+            if ($user->getPrivilege() > 1){
+                if (CUser::isSubbed()){
+                    $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
+                    VArticle::newArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), modify: true, article: $article);
+                } else {
+                    header('Location: https://digitalplot.altervista.org/subscribe');
                     exit();
                 }
-                VError::render("Non è stato possibile effettuare l'operazione", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
-                exit();
-            }
-            else{
-                header('Location: https://digitalplot.altervista.org/home');
+            } else {
+                header('Location: https://digitalplot.altervista.org/subscribe');
                 exit();
             }
         }else{
@@ -183,6 +182,5 @@ class CArticle{
             exit();
         }
     }
-        */
 
 }
