@@ -224,7 +224,7 @@ class CArticle{
                 if(CUser::isSubbed() || CUser::isAdmin()){
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $commento = UHTTPMethods::post('review');
-                    $evaluation = UHTTPMethods::post('evaluation');
+                    $evaluation = UHTTPMethods::post('score');
                     $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $articleId);
                     if(isset($article)){
                         $review = new EReview($evaluation, $commento, date('Y-m-d'), $user, $article);

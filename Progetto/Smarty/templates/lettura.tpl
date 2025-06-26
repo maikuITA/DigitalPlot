@@ -77,7 +77,7 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="card"> 
+        <div class="card profile"> 
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <footer class="card-footer">
-                <p class="card-footer-item">
+                <p class="card-footer-item follow-buttons">
                     <a class="button is-link" id="follow">follow</a>
                     <a class="button is-link" id="unfollow">unfollow</a>
                 </p>
@@ -148,17 +148,25 @@
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                <form class="form" action="/comment" method="post">
+                                <form class="form" action="/review/{$article->getId()}" method="post">
                                     <div class="control">
                                         <div class="field">
-                                            <input class="input" type="text" id="c_head" placeholder="Titolo del commento"/>
+                                            <textarea class="textarea" name="review" id="c_body" placeholder="Testo"></textarea>
                                         </div>
-                                        <div class="field">
-                                            <textarea class="textarea" id="c_body" placeholder="Testo"></textarea>
-                                        </div>
-                                        <div class="field">
-                                            <div class="control">
-                                                <button class="button is-link" action="submit">Invia</button>
+                                        <div class="field is-grouped">
+                                            <div class="field select is-rounded">
+                                                <select name="score" id="c_score">
+                                                    <option value="1">&#9733;</option>
+                                                    <option value="2">&#9733;&#9733;</option>
+                                                    <option value="3">&#9733;&#9733;&#9733;</option>
+                                                    <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                                                    <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                                                </select>
+                                            </div>
+                                            <div class="field">
+                                                <div class="control">
+                                                    <button class="button is-link" action="submit">Invia</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
