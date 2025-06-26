@@ -398,10 +398,16 @@ class FEntityManager {
      * @return int The number of matching records.
      */
     public static function countRecordWithDate(string $className, string $numericField, string $value ):int{
-        $dql = "SELECT COUNT(a) FROM $className a WHERE a.$numericField >= :value" ;
-        $query = self::$entityManager->createQuery($dql);
-        $query->setParameter('value', $value);
-        return (int) $query->getSingleScalarResult();
+        try{
+            $dql = "SELECT COUNT(a) FROM $className a WHERE a.$numericField >= :value" ;
+            $query = self::$entityManager->createQuery($dql);
+            $query->setParameter('value', $value);
+            return (int) $query->getSingleScalarResult();
+        }catch (Exception $e) {
+            ULogSys::toLog('Error purchase: ' . $e->getMessage(), true);
+            return 0;
+        }
+        
     }
 
     /**
@@ -410,20 +416,63 @@ class FEntityManager {
      * @return int the number of record
      */
     public static function countRecord(string $className): int{
-        $dql = "SELECT COUNT(a) FROM $className a " ;
-        $query = self::$entityManager->createQuery($dql);
-
-        return (int) $query->getSingleScalarResult();
+        try{
+            $dql = "SELECT COUNT(a) FROM $className a " ;
+            $query = self::$entityManager->createQuery($dql);
+            return (int) $query->getSingleScalarResult();
+        }catch (Exception $e) {
+            ULogSys::toLog('Error purchase: ' . $e->getMessage(), true);
+            return 0;
+        }
+        
     }
     /**
      * This method counts the number of the subscriber, admin excluded
      * @return int numer of the subscriber
      */
     public static function countActiveSubsriber(){
-        $dql = "SELECT COUNT(a) FROM EUser a WHERE a.privilege BETWEEN ". READER . " AND " . WRITER ;
-        $query = self::$entityManager->createQuery($dql);
+        try{
+             $dql = "SELECT COUNT(a) FROM EUser a WHERE a.privilege BETWEEN ". READER . " AND " . WRITER ;
+            $query = self::$entityManager->createQuery($dql);
+            return (int) $query->getSingleScalarResult();
+        } catch (Exception $e) {
+            ULogSys::toLog('Error purchase: ' . $e->getMessage(), true);
+            return null;
+        }
+       
+    }
 
-        return (int) $query->getSingleScalarResult();
+    public static function retrievePendingArticles(){
+        try {
+            $dql = "SELECT p FROM EArticle p WHERE p.statte = :stat ORDER BY p.releaseDate DESC";
+            $query = self::$entityManager->createQuery($dql);
+            $result = $query->getResult();
+            if(count($result) > 0){
+                return $result;
+            }else {
+                return null;
+            }
+        }
+        catch (Exception $e) {
+            ULogSys::toLog('Error purchase: ' . $e->getMessage(), true);
+            return null;
+        }
+    }
+    public static function retrieveAllReview(){
+        try {
+            $dql = "SELECT p FROM EReview p ORDER BY p.releaseDate DESC";
+            $query = self::$entityManager->createQuery($dql);
+            $result = $query->getResult();
+            if(count($result) > 0){
+                return $result;
+            }else {
+                return null;
+            }
+        }
+        catch (Exception $e) {
+            ULogSys::toLog('Error purchase: ' . $e->getMessage(), true);
+            return null;
+        }
     }
 
 }

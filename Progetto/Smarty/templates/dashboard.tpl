@@ -155,16 +155,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>NOME</td>
-                        <td>AUTORE</td>
-                        <td>STATO</td>
-                        <td>DATA</td>
-                        <td>CATEGORIA</td>
-                        <td>GENERE</td>
-                        <td><a class="has-text-link" href="/modifyArticle/" >Modifica</a></td>
-                        <td><a class="has-text-danger" href="/dropArticle/"> Elimina</a></td>
-                    </tr>           
+                    {if isset($articoliDaRevisionare)}
+                        {foreach from=$articoliDaRevisionare item=article}
+                                <tr>
+                                    <td>{$article->getTitle()}</td>
+                                    <td>{$article->getWriter()->getUsername()}</td>
+                                    <td>{$article->getState()}</td>
+                                    <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
+                                    <td>{$article->getCategory()}</td>
+                                    <td>{$article->getGenre()}</td>
+                                    <td><a class="has-text-link" href="/article/{$article->getId()}" >Modifica</a></td>
+                                    <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
+                                </tr>           
+                        {/foreach}
+                    {/if}        
                 </tbody>
             </table>
             </section>
@@ -192,16 +196,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>NOME</td>
-                        <td>AUTORE</td>
-                        <td>STATO</td>
-                        <td>DATA</td>
-                        <td>CATEGORIA</td>
-                        <td>GENERE</td>
-                        <td><a class="has-text-link" href="/modifyArticle/" >Modifica</a></td>
-                        <td><a class="has-text-danger" href="/dropArticle/"> Elimina</a></td>
-                    </tr>           
+                    {if isset($articoliPubblicati)}
+                        {foreach from=$articoliPubblicati item=article}
+                                <tr>
+                                    <td>{$article->getTitle()}</td>
+                                    <td>{$article->getWriter()->getUsername()}</td>
+                                    <td>{$article->getState()}</td>
+                                    <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
+                                    <td>{$article->getCategory()}</td>
+                                    <td>{$article->getGenre()}</td>
+                                    <td><a class="has-text-link" href="/article/{$article->getId()}" >Leggi</a></td>
+                                    <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
+                                </tr>           
+                        {/foreach}
+                    {/if}           
                 </tbody>
             </table>
             </section>
@@ -219,22 +227,26 @@
                 <thead>
                     <tr>
                         <th>Autore</th>
-                        <th>Stato</th>
                         <th>Data pubblicazione</th>
                         <th>Articolo</th>
-                        <th>Modifica</th>
+                        <th>Valutazione</th>
+                        <th>Leggi</th>
                         <th>Elimina</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>AUTORE</td>
-                        <td>STATO</td>
-                        <td>DATA</td>
-                        <td>NOME</td>
-                        <td><a class="has-text-link" href="/modifyArticle/" >Modifica</a></td>
-                        <td><a class="has-text-danger" href="/dropArticle/"> Elimina</a></td>
-                    </tr>           
+                    {if isset($commenti)}
+                        {foreach from=$commenti item=commento}
+                                <tr>
+                                    <td>{$commento->getSubscriber()->getUsername()}</td>
+                                    <td>{$commento->getReleaseDate()->format('Y-m-d')}</td>
+                                    <td>{$commento->getArticle()->getTitle()}</td>
+                                    <td>{$commento->getEvaluate()}</td>
+                                    <td><a class="has-text-link" href="/article/{$commento->getArticle()->getId()}" >Modifica</a></td>
+                                    <td><a class="has-text-danger" href="/dropReview/{$commento->getCod()}"> Elimina</a></td>
+                                </tr>           
+                        {/foreach}
+                    {/if}          
                 </tbody>
             </table>
             </section>

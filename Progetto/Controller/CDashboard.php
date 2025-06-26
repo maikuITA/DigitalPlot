@@ -9,7 +9,10 @@ class CDashboard{
     public static function dashboard(): void{
         if(CUser::isLogged() && CUser::isAdmin()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                VDashboard::render(plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData());
+                $articoliDaRevisionare = FPersistentManager::getInstance()->retrievePendingArticles();
+                $articoliPubblicati = FPersistentManager::getInstance()->searchArticles('%', '%', '%', '0001-01-01');
+                $commenti = FPersistentManager::getInstance()->retrieveAllReview();
+                VDashboard::render(plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, articoliDaRevisionare: $articoliDaRevisionare, articoliPubblicati: $articoliPubblicati, commenti: $commenti);
         }else {
             header('Location: https://digitalplot.altervista.org/home');
             exit;

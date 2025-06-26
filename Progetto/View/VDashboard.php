@@ -12,7 +12,7 @@ class VDashboard{
      * @param ?string $proPic The user's profile picture, if available.
      * @param bool $isLogged Indicates if the user is logged in.
      */
-    public static function render( int $privilege = ADMIN, int $plotPoints = 0, ?string $proPic = null, bool $isLogged = true): void {
+    public static function render( int $privilege = ADMIN, int $plotPoints = 0, ?string $proPic = null, bool $isLogged = true, ?array $articoliDaRevisionare, ?array $articoliPubblicati, ?array $commenti): void {
         $smarty = StartSmarty::configuration();
         //$smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> dashboard.tpl");
@@ -20,6 +20,9 @@ class VDashboard{
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
+        $smarty->assign('articoliDaRevisionare', $articoliDaRevisionare);
+        $smarty->assign('articoliPubblicati', $articoliPubblicati);
+        $smarty->assign('commenti', $commenti);
         $smarty->display('dashboard.tpl');
     }
 }

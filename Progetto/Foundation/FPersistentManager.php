@@ -201,6 +201,12 @@ class FPersistentManager {
         return FEntityManager::getInstance()->countActiveSubsriber();
     }
 
+    public static function retrievePendingArticles(){
+        return FEntityManager::getInstance()->retrievePendingArticles();
+    }
+    public static function retrieveAllReview(){
+        return FEntityManager::getInstance()->retrieveAllReview();
+    }
     /*
     // ========== Query DQL personalizzate ==========
 
