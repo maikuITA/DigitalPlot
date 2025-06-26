@@ -48,5 +48,5 @@ aggiornaErrori();
 aggiornaEventi();
 
 // Aggiorna ogni minuto
-setInterval(aggiornaErrori, 60 * 1000);
-setInterval(aggiornaEventi, 60 * 1000);
+setInterval(aggiornaErrori, 1000);
+setInterval(aggiornaEventi, 1000);
