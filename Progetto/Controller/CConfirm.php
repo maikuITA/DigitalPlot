@@ -21,7 +21,7 @@ class CConfirm{
             } elseif ($type === 4){
                 VConfirm::render( confirmMessage:"Grazie ". $user->getUsername() . " per esserti abbonato!" ,plotPoints: $user->getPlotCard()->getPoints(), proPic:$user->getEncodedData(), privilege:$user->getPrivilege(), isLogged:true,type:$type);
             } elseif ($type === 5){
-                VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . "!",plotPoints:0,proPic: null ,isLogged:false, type: $type);
+                VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . "!", plotPoints:0, proPic: null ,isLogged:false, type: $type);
             }
         } else {
             VConfirm::render(confirmMessage: "Conferma", isLogged: false, type: $type);
