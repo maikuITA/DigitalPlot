@@ -152,13 +152,6 @@ class CArticle{
                     exit;
                 }
 
-                // Verifica dimensione (es. max 2MB)
-                if ($content['size'] === 0) {
-                    header('Location: https://digitalplot.altervista.org/error/3');
-                    exit;
-                }
-
-
                 $txt = file_get_contents($tmpName);
                 $html = nl2br(htmlspecialchars($txt));
                 

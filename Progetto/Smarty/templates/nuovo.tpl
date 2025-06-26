@@ -158,7 +158,7 @@
 
                 <div class="select-container">
                         {if $modify === true}
-                            <div class="select is-rounded"></div>
+                            <div class="select is-rounded">
                                 <select name="category" required>
                                     <option value="" disabled {if $article->getCategory() === ""}selected{/if}>Categorie</option>
                                     <option value="articolo" {if $article->getCategory() === 'articolo'}selected{/if}>Articolo</option>
@@ -216,9 +216,9 @@
                                 </select>
                             </div>
                         {else}
-                            <div class="select is-rounded"></div>
+                            <div class="select is-rounded">
                                 <select name="category" required>
-                                    <option value="" disabled>Categorie</option>
+                                    <option value="" disabled selected>Categorie</option>
                                     <option value="articolo" >Articolo</option>
                                     <option value="giornale" >Giornale</option>
                                     <option value="rivista" >Rivista</option>
@@ -244,7 +244,7 @@
 
                             <div class="select is-rounded ml-4">
                                 <select name="genre" required>
-                                    <option value="" disabled>Genere</option>
+                                    <option value="" disabled selected>Genere</option>
                                     <option value="cronaca">Cronaca</option>
                                     <option value="politica">Politica</option>
                                     <option value="economia">Economia</option>
