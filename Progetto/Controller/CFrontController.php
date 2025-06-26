@@ -73,6 +73,13 @@ class CFrontController {
         }
     }
 
+    /**
+     * This method checks if the given route exists in the routes array.
+     * It iterates through the keys of the routes array and compares them with the first element of the route.
+     * @param array $routes The array of defined routes.
+     * @param array $route The route to check.
+     * @return bool Returns true if a matching key is found, otherwise false.
+     */
     public static function hasMatchingKey(array $routes, array $route): bool {
         foreach (array_keys($routes) as $key) {
             if ($key === $route[0]) {

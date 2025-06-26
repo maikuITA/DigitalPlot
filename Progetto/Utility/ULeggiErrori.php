@@ -25,7 +25,7 @@
 
         fclose($f);
         $linesArray = explode("\n", $buffer);
-        return implode("\n", array_reverse(array_slice($linesArray, -$lines)));
+        return implode("\n", array_reverse(array_slice($linesArray, $lines)));
     }
 
 
