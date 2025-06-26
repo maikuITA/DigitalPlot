@@ -243,11 +243,11 @@
                 {if isset($reviews)}
                     {foreach from=$reviews item=comment}
                             <tr>
-                                <td>{$comment->getWriter()->getUsername()}</td>
+                                <td>{$comment->getSubscriber()->getUsername()}</td>
                                 <td>{$comment->getReleaseDate()->format('Y-m-d')}</td>
                                 <td>{$comment->getArticle()->getTitle()}</td>
                                 <td>{$comment->getEvaluate()}</td>
-                                <td><a class="has-text-link" href="/dropReview/{$comment->getId()}" >Elimina</a></td>
+                                <td><a class="has-text-link" href="/dropReview/{$comment->getCod()}" >Elimina</a></td>
                             </tr>           
                     {/foreach}
                 {/if}    
