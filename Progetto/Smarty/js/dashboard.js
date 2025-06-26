@@ -18,6 +18,7 @@ async function upgradeDashboard() {
     document.getElementById("lastMP").textContent = data.lastMP;
     document.getElementById("totalP").textContent = data.totalP;
     document.getElementById("totalU").textContent = data.totalU;
+    document.getElementById("abbAttivi").textContent = data.abbAttivi;
 
   } catch (error) {
     console.error('Errore durante la richiesta:', error);

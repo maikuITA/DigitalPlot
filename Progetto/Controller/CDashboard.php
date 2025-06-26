@@ -31,6 +31,7 @@ class CDashboard{
             $numPurM = FPersistentManager::getInstance()->retrieveNumOnDate(EPurchase::class, 'purchaseDate', date('Y-m-d', strtotime('-1 month')));
             $numPurT = FPersistentManager::getInstance()->countRecord(EPurchase::class);
             $numUserT = FPersistentManager::getInstance()->countRecord(EUser::class);
+            $abbAttivi = FPersistentManager::getInstance()->countActiveSubsriber(EUser::class);
             echo json_encode([
                 'lastGA' => $numArtiG,
                 'lastSA' => $numArtiS,
@@ -40,7 +41,8 @@ class CDashboard{
                 'lastSP' => $numPurS,
                 'lastMP' => $numPurM,
                 'totalP' => $numPurT,
-                'totalU' => $numUserT
+                'totalU' => $numUserT,
+                'abbAttivi' => $abbAttivi
             ]);
             exit;
         }else{

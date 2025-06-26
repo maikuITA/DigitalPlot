@@ -405,6 +405,12 @@ class FEntityManager {
 
         return (int) $query->getSingleScalarResult();
     }
+    public static function countActiveSubsriber(){
+        $dql = "SELECT COUNT(a) FROM FUser a WHERE a.privilege BETWEEN ". READER . " AND " . WRITER ;
+        $query = self::$entityManager->createQuery($dql);
+
+        return (int) $query->getSingleScalarResult();
+    }
 
 }
 
