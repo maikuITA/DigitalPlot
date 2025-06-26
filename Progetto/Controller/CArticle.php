@@ -65,15 +65,20 @@ class CArticle{
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if($user->getPrivilege() > 1){
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
-                $drop_result = FPersistentManager::getInstance()->delete($article);
-                if ($drop_result){
-                    ULogSys::toLog("Articolo eliminato");
-                    ULogSys::toLog("");
-                    VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                if($article->getWriter()->getId() === $user->getId() || $user->getPrivilege() === ADMIN ){
+                    $drop_result = FPersistentManager::getInstance()->delete($article);
+                    if ($drop_result){
+                        ULogSys::toLog("Articolo eliminato");
+                        ULogSys::toLog("");
+                        VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                        exit();
+                    }
+                    header('Location: https://digitalplot.altervista.org/error/1');
                     exit();
+                }else{
+                    header('Location: https://digitalplot.altervista.org/error/1');
+                    exit(); 
                 }
-                header('Location: https://digitalplot.altervista.org/error/1');
-                exit();
             }
             else{
                 header('Location: https://digitalplot.altervista.org/home');
