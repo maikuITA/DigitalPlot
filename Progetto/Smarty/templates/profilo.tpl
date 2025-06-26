@@ -115,6 +115,12 @@
                                 <a href="#readings" class="has-text-link">Letture</a>
                             </td>
                         </tr>
+                        <td>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
+                                </span>
+                                <a href="#reviews" class="has-text-link">Commenti</a>
+                            </td>
                     </table>
                 </div>
             </div>
@@ -228,7 +234,7 @@
             </table>
         </div>
         <div class="card articles">
-            <table class="table is-striped is-hoverable" id="readings">
+            <table class="table is-striped is-hoverable" id="reviews">
                 <caption class="title">Commenti</caption>
                 <thead>
                     <tr>
