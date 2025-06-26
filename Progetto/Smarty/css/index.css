@@ -31,6 +31,10 @@ header {
     z-index: 1001;
 }
 
+.header.columns {
+    margin-top: 0;
+}
+
 nav {
     display: flex;
     gap: 20px;

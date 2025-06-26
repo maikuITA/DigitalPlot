@@ -76,9 +76,9 @@
             {/if}
         </div>
     </header>
-    <div class="body-container">
-        <div class="card profile"> 
-            <div class="card-content">
+    <div class="columns">
+        <div class="column is-one-quarter x">
+            <div class="card pager">
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-48x48">
@@ -105,16 +105,16 @@
                         <a class="is-5 s">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
                     </div>
                 </div>
-            </div>
-            <footer class="card-footer">
+                <footer class="card-footer">
                 <p class="card-footer-item follow-buttons">
                     <a class="button is-link" id="follow">follow</a>
                     <a class="button is-link" id="unfollow">unfollow</a>
                 </p>
             </footer>
+            </div>
         </div>
-        <div class="card text">
-            <div class="card-content">
+        <div class="column is-two-quarters x">
+            <div class="card pager">
                 <div class="content">
                     <p class="title">{$article->getTitle()}</p>
                     <p class="subtitle">{$article->getDescription()}</p>
@@ -126,8 +126,8 @@
                 </div>
             </div>
         </div>
-        <div class="card comments">
-            <div class="card-content">
+        <div class="column is-one-quarter x">
+            <div class="card pager">
                 <div class="content">
                     <p class="title">Commenti</p>
                     <div class="card">
@@ -167,9 +167,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <p class="card-header-title">{$review->getSubscriber()->getUsername()}</p>
-                                    {for $i=1 to $review->getEvaluate()}
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    {/for}
                                 </div>
                                 <div class="card-content">
                                     <div class="content">
@@ -178,10 +175,16 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <p class="card-footer-item">
+                                        {for $i=1 to $review->getEvaluate()}
+                                            &#9733;
+                                        {/for}
+                                    </p>
+                                </div>
                             </div>         
                         {/foreach}
                     {/if}
-                    
                 </div>
             </div>
         </div>
