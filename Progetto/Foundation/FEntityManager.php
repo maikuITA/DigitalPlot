@@ -444,7 +444,7 @@ class FEntityManager {
 
     public static function retrievePendingArticles(){
         try {
-            $dql = "SELECT p FROM EArticle p WHERE p.statte = :stat ORDER BY p.releaseDate DESC";
+            $dql = "SELECT p FROM EArticle p WHERE p.state = :stat ORDER BY p.releaseDate DESC";
             $query = self::$entityManager->createQuery($dql);
             $query->setParameter('stat', PENDING);
             $result = $query->getResult();
