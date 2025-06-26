@@ -13,18 +13,18 @@ class CConfirm{
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if ($type === 1){
-                VConfirm::render("L'articolo è stato eliminato correttamente!",  $user->getPlotCard()->getPoints(), $user->getEncodedData(),  $user->getPrivilege(),true,$type);
+                VConfirm::render(confirmMessage: "L'articolo è stato eliminato correttamente!", plotPoints: $user->getPlotCard()->getPoints(), proPic:$user->getEncodedData(), privilege: $user->getPrivilege(), isLogged:true, type:$type);
             } elseif ($type === 2){
-                VConfirm::render("Articolo salvato correttamente!", $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true, $type);
+                VConfirm::render(confirmMessage:"Articolo salvato correttamente!", plotPoints:$user->getPlotCard()->getPoints(), proPic:$user->getEncodedData(), privilege:$user->getPrivilege(), isLogged: true,type: $type);
             } elseif ($type === 3){
-                VConfirm::render("Commento rimosso con successo", $user->getPlotCard()->getPoints(),  $user->getEncodedData(), $user->getPrivilege(), true, $type);
+                VConfirm::render(confirmMessage:"Commento rimosso con successo", plotPoints:$user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(),isLogged: true,type: $type);
             } elseif ($type === 4){
-                VConfirm::render( "Grazie ". $user->getUsername() . " per esserti abbonato!" , $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true, $type);
+                VConfirm::render( confirmMessage:"Grazie ". $user->getUsername() . " per esserti abbonato!" ,plotPoints: $user->getPlotCard()->getPoints(), proPic:$user->getEncodedData(), privilege:$user->getPrivilege(), isLogged:true,type:$type);
             } elseif ($type === 5){
-            VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . "!", isLogged:false, type: $type);
+                VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . "!",plotPoints:0,proPic: null ,isLogged:false, type: $type);
             }
         } else {
-            VConfirm::render(confirmMessage: "Conferma!", isLogged: false, type: $type);
+            VConfirm::render(confirmMessage: "Conferma", isLogged: false, type: $type);
         }
     }
 }
