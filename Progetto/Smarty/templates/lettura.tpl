@@ -150,7 +150,14 @@
                             <div class="content">
                                 <form class="form" action="/comment" method="post">
                                     <div class="control is-loading">
-                                        <input class="input" type="text" placeholder="Scrivi qui"/>
+                                        <div class="field">
+                                            <input class="input" type="text" placeholder="Scrivi qui"/>
+                                        </div>
+                                        <div class="field">
+                                            <div class="control">
+                                                <button class="button is-link">Submit</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
