@@ -146,11 +146,11 @@
                     <tr>
                         <th>Nome articolo</th>
                         <th>Autore</th>
-                        <th>Stato</th>
                         <th>Data pubblicazione</th>
                         <th>Tipo</th>
                         <th>Genere</th>
-                        <th>Modifica</th>
+                        <th>Leggi</th>
+                        <th>Approva</th>
                         <th>Elimina</th>
                     </tr>
                 </thead>
@@ -160,11 +160,11 @@
                                 <tr>
                                     <td>{$article->getTitle()}</td>
                                     <td>{$article->getWriter()->getUsername()}</td>
-                                    <td>{$article->getState()}</td>
                                     <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
                                     <td>{$article->getCategory()}</td>
                                     <td>{$article->getGenre()}</td>
-                                    <td><a class="has-text-link" href="/article/{$article->getId()}" >Modifica</a></td>
+                                    <td><a class="has-text-link" href="/article/{$article->getId()}" >Leggi</a></td>
+                                    <td><a class="has-text-link" href="/article/{$article->getId()}" >Approva</a>}</td>
                                     <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
                                 </tr>           
                         {/foreach}
@@ -191,7 +191,7 @@
                         <th>Data pubblicazione</th>
                         <th>Tipo</th>
                         <th>Genere</th>
-                        <th>Modifica</th>
+                        <th>Leggi</th>
                         <th>Elimina</th>
                     </tr>
                 </thead>
@@ -242,7 +242,7 @@
                                     <td>{$commento->getReleaseDate()->format('Y-m-d')}</td>
                                     <td>{$commento->getArticle()->getTitle()}</td>
                                     <td>{$commento->getEvaluate()}</td>
-                                    <td><a class="has-text-link" href="/article/{$commento->getArticle()->getId()}" >Modifica</a></td>
+                                    <td><a class="has-text-link" href="/article/{$commento->getArticle()->getId()}" >Leggi</a></td>
                                     <td><a class="has-text-danger" href="/dropReview/{$commento->getCod()}"> Elimina</a></td>
                                 </tr>           
                         {/foreach}
