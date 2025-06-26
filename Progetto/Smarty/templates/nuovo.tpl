@@ -103,7 +103,7 @@
             {if $modify === false}
                 <form id="form-articolo" method="POST" action="/saveArticle" enctype="multipart/form-data">
             {else}
-                <form id="form-articolo" method="POST" action="/modifyArticle" enctype="multipart/form-data">
+                <form id="form-articolo" method="POST" action="/modifyArticle/{$article->getId()}" enctype="multipart/form-data">
             {/if}
                 <p class="title">
                     <span class="icon is-small is-left">
