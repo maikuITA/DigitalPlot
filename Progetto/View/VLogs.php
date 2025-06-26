@@ -14,9 +14,7 @@ class VLogs {
      */
     public static function render(int $privilege = ADMIN,int  $plotPoints = 0 , $proPic = null , bool $isLogged = false): void {
         $smarty = StartSmarty::configuration();
-        //$smarty->clearCache('home.tpl');
         ULogSys::toLog("Display -> log.tpl");
-        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);

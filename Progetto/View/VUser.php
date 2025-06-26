@@ -15,7 +15,6 @@ class VUser{
     public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, $articles = null, bool $isLogged = false, int $privilege = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> home.tpl");
-        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('username', $username);
@@ -33,7 +32,6 @@ class VUser{
     public static function auth(bool $isLogged = false, int $privilege = BASIC) {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> accesso.tpl");
-        ULogSys::toLog("");
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->display('accesso.tpl');

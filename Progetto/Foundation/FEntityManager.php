@@ -201,7 +201,7 @@ class FEntityManager {
      */
     public static function selectNotAllArticles(string $className, int $articlesNum): ?array {
         try{
-            $dql = "SELECT e FROM $className e WHERE .state = :stat";
+            $dql = "SELECT e FROM $className e WHERE e.state = :stat";
             $query = self::$entityManager->createQuery($dql);
             $query->setParameter('stat', APPROVED);
             $resultpart = $query->getResult();
@@ -386,6 +386,20 @@ class FEntityManager {
             return null;
         }
     }
+
+    /**
+     * Method that count the occurrency based on a numerical param
+     * @param string $
+     * @return int 
+     */
+    public static function countRecordWithDate(string $className, string $numericField, string $value ):int{
+        $dql = "SELECT COUNT(a) FROM $className a WHERE a.$numericField >= :value" ;
+        $query = self::$entityManager->createQuery($dql);
+        $query->setParameter('value', $value);
+        $result = $query->getResult();
+        return $result;
+    }
+
 }
 
 ?>

@@ -6,8 +6,15 @@
     gap: 30px;
 }
 
-.card.text {
-    max-width: 700px;
+.card, .card-text, .card-comments {
+    max-width: 300px;
+    width: 100%;
+    height: max-content;
+}
+
+.card-comments {
+    max-width: 400px;
+    height: max-content;
 }
 
 .subtitle {

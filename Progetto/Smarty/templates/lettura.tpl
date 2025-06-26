@@ -142,6 +142,27 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <p class="card-header-title">Lascia un commento</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <form class="form" action="/comment" method="post">
+                                    <div class="control is-loading">
+                                        <div class="field">
+                                            <input class="input" type="text" placeholder="Scrivi qui"/>
+                                        </div>
+                                        <div class="field">
+                                            <div class="control">
+                                                <button class="button is-link">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
