@@ -63,6 +63,7 @@ class FPersistentManager {
         return FEntityManager::getInstance()->retrieveObjById($className, $id);
     }
 
+
     /**
      * Retrive an object by a specific attribute
      * @param string $username
@@ -132,6 +133,10 @@ class FPersistentManager {
      */
     public function searchArticles(string $title, string $category, string $genre, string $releaseDate): ?array {
         return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $category, $genre, $releaseDate);
+    }
+
+    public function deleteForReplacement(string $className,int $idArticle): bool{
+        return FEntityManager::getInstance()->deleteForReplacement($className, $idArticle);
     }
 
 

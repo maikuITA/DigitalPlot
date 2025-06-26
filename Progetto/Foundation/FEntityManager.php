@@ -214,6 +214,23 @@ class FEntityManager {
         }
     }
 
+    public static function deleteForReplacement(string $className, int $idArticle): bool{
+        try{
+            $dql = "DELETE FROM $className a WHERE a.id = :id'";
+            $query = self::$entityManager->createQuery($dql);
+            $query->setParameter('id', $idArticle);
+            $resultpart = $query->getResult();
+            if ($resultpart !== null){
+                return true;
+            } else {
+                return false;
+            }
+        }catch(Exception $e) {
+            ULogSys::toLog('Error -> ' . $e->getMessage(), true);
+            return false;
+        }
+    }
+
     /**
      * Verify if an object with a specific attribute exists in the database
      * @param string $className

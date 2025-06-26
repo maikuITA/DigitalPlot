@@ -120,7 +120,7 @@
                         </p>
                     {else}
                         <p class="control has-icons-left has-icons-right">
-                            <input class="input"  type="text" name="title" placeholder="{$article->getTitle()}" required>
+                            <input class="input"  type="text" name="title" value="{$article->getTitle()|escape:'htmlall':'UTF-8'}" required>
                             <span class="icon is-small is-left">
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
@@ -141,7 +141,7 @@
                                 <i class="fa fa-quote-right" aria-hidden="true"></i>
                             </span>
                         {else}
-                            <input class="input"  type="text" name="description" placeholder="{$article->getDescription()}" required>
+                            <input class="input"  type="text" name="description" value="{$article->getDescription()|escape:'htmlall':'UTF-8'}" required>
                             <span class="icon is-small is-left">
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </span>
@@ -155,67 +155,68 @@
                 <div class="select-container">
                     <div class="select is-rounded">
                         <select name="category" required>
-                            <option value="" disabled {if $article.category == ""}selected{/if}>Categorie</option>
-                            <option value="articolo" {if $article.category == 'articolo'}selected{/if}>Articolo</option>
-                            <option value="giornale" {if $article.category == 'giornale'}selected{/if}>Giornale</option>
-                            <option value="rivista" {if $article.category == 'rivista'}selected{/if}>Rivista</option>
-                            <option value="romanzo" {if $article.category == 'romanzo'}selected{/if}>Romanzo</option>
-                            <option value="racconto" {if $article.category == 'racconto'}selected{/if}>Racconto</option>
-                            <option value="saggio" {if $article.category == 'saggio'}selected{/if}>Saggio</option>
-                            <option value="blog" {if $article.category == 'blog'}selected{/if}>Blog</option>
-                            <option value="notizia" {if $article.category == 'notizia'}selected{/if}>Notizia</option>
-                            <option value="editoriale" {if $article.category == 'editoriale'}selected{/if}>Editoriale</option>
-                            <option value="recensione" {if $article.category == 'recensione'}selected{/if}>Recensione</option>
-                            <option value="intervista" {if $article.category == 'intervista'}selected{/if}>Intervista</option>
-                            <option value="manuale" {if $article.category == 'manuale'}selected{/if}>Manuale</option>
-                            <option value="tesi" {if $article.category == 'tesi'}selected{/if}>Tesi</option>
-                            <option value="fumetto" {if $article.category == 'fumetto'}selected{/if}>Fumetto</option>
-                            <option value="pamphlet" {if $article.category == 'pamphlet'}selected{/if}>Pamphlet</option>
-                            <option value="biografia" {if $article.category == 'biografia'}selected{/if}>Biografia</option>
-                            <option value="autobiografia" {if $article.category == 'autobiografia'}selected{/if}>Autobiografia</option>
-                            <option value="poesia" {if $article.category == 'poesia'}selected{/if}>Poesia</option>
-                            <option value="dramma" {if $article.category == 'dramma'}selected{/if}>Dramma</option>
+                            <option value="" disabled {if $article->getCategory() === ""}selected{/if}>Categorie</option>
+                            <option value="articolo" {if $article->getCategory() === 'articolo'}selected{/if}>Articolo</option>
+                            <option value="giornale" {if $article->getCategory() === 'giornale'}selected{/if}>Giornale</option>
+                            <option value="rivista" {if $article->getCategory() === 'rivista'}selected{/if}>Rivista</option>
+                            <option value="romanzo" {if $article->getCategory() === 'romanzo'}selected{/if}>Romanzo</option>
+                            <option value="racconto" {if $article->getCategory() === 'racconto'}selected{/if}>Racconto</option>
+                            <option value="saggio" {if $article->getCategory() === 'saggio'}selected{/if}>Saggio</option>
+                            <option value="blog" {if $article->getCategory() === 'blog'}selected{/if}>Blog</option>
+                            <option value="notizia" {if $article->getCategory() === 'notizia'}selected{/if}>Notizia</option>
+                            <option value="editoriale" {if $article->getCategory() === 'editoriale'}selected{/if}>Editoriale</option>
+                            <option value="recensione" {if $article->getCategory() === 'recensione'}selected{/if}>Recensione</option>
+                            <option value="intervista" {if $article->getCategory() === 'intervista'}selected{/if}>Intervista</option>
+                            <option value="manuale" {if $article->getCategory() === 'manuale'}selected{/if}>Manuale</option>
+                            <option value="tesi" {if $article->getCategory() === 'tesi'}selected{/if}>Tesi</option>
+                            <option value="fumetto" {if $article->getCategory() === 'fumetto'}selected{/if}>Fumetto</option>
+                            <option value="pamphlet" {if $article->getCategory() === 'pamphlet'}selected{/if}>Pamphlet</option>
+                            <option value="biografia" {if $article->getCategory() === 'biografia'}selected{/if}>Biografia</option>
+                            <option value="autobiografia" {if $article->getCategory() === 'autobiografia'}selected{/if}>Autobiografia</option>
+                            <option value="poesia" {if $article->getCategory() === 'poesia'}selected{/if}>Poesia</option>
+                            <option value="dramma" {if $article->getCategory() === 'dramma'}selected{/if}>Dramma</option>
                         </select>
                     </div>
 
 
                     <div class="select is-rounded ml-4">
                         <select name="genre" required>
-                            <option value="" disabled {if $article.genre == ""}selected{/if}>Genere</option>
-                            <option value="cronaca" {if $article.genre == 'cronaca'}selected{/if}>Cronaca</option>
-                            <option value="politica" {if $article.genre == 'politica'}selected{/if}>Politica</option>
-                            <option value="economia" {if $article.genre == 'economia'}selected{/if}>Economia</option>
-                            <option value="esteri" {if $article.genre == 'esteri'}selected{/if}>Esteri</option>
-                            <option value="interni" {if $article.genre == 'interni'}selected{/if}>Interni</option>
-                            <option value="cultura" {if $article.genre == 'cultura'}selected{/if}>Cultura</option>
-                            <option value="spettacolo" {if $article.genre == 'spettacolo'}selected{/if}>Spettacolo</option>
-                            <option value="sport" {if $article.genre == 'sport'}selected{/if}>Sport</option>
-                            <option value="tecnologia" {if $article.genre == 'tecnologia'}selected{/if}>Tecnologia</option>
-                            <option value="scienza" {if $article.genre == 'scienza'}selected{/if}>Scienza</option>
-                            <option value="ambiente" {if $article.genre == 'ambiente'}selected{/if}>Ambiente</option>
-                            <option value="salute" {if $article.genre == 'salute'}selected{/if}>Salute</option>
-                            <option value="viaggi" {if $article.genre == 'viaggi'}selected{/if}>Viaggi</option>
-                            <option value="motori" {if $article.genre == 'motori'}selected{/if}>Motori</option>
-                            <option value="lifestyle" {if $article.genre == 'lifestyle'}selected{/if}>Lifestyle</option>
-                            <option value="moda" {if $article.genre == 'moda'}selected{/if}>Moda</option>
-                            <option value="gastronomia" {if $article.genre == 'gastronomia'}selected{/if}>Gastronomia</option>
-                            <option value="religione" {if $article.genre == 'religione'}selected{/if}>Religione</option>
-                            <option value="istruzione" {if $article.genre == 'istruzione'}selected{/if}>Istruzione</option>
-                            <option value="diritti" {if $article.genre == 'diritti'}selected{/if}>Diritti</option>
-                            <option value="giustizia" {if $article.genre == 'giustizia'}selected{/if}>Giustizia</option>
-                            <option value="gossip" {if $article.genre == 'gossip'}selected{/if}>Gossip</option>
-                            <option value="musica" {if $article.genre == 'musica'}selected{/if}>Musica</option>
-                            <option value="cinema" {if $article.genre == 'cinema'}selected{/if}>Cinema</option>
-                            <option value="libri" {if $article.genre == 'libri'}selected{/if}>Libri</option>
+                            <option value="" disabled {if $article->getGenre() === ""}selected{/if}>Genere</option>
+                            <option value="cronaca" {if $article->getGenre() === 'cronaca'}selected{/if}>Cronaca</option>
+                            <option value="politica" {if $article->getGenre() === 'politica'}selected{/if}>Politica</option>
+                            <option value="economia" {if $article->getGenre() === 'economia'}selected{/if}>Economia</option>
+                            <option value="esteri" {if $article->getGenre() === 'esteri'}selected{/if}>Esteri</option>
+                            <option value="interni" {if $article->getGenre() === 'interni'}selected{/if}>Interni</option>
+                            <option value="cultura" {if $article->getGenre() === 'cultura'}selected{/if}>Cultura</option>
+                            <option value="spettacolo" {if $article->getGenre() === 'spettacolo'}selected{/if}>Spettacolo</option>
+                            <option value="sport" {if $article->getGenre() === 'sport'}selected{/if}>Sport</option>
+                            <option value="tecnologia" {if $article->getGenre() === 'tecnologia'}selected{/if}>Tecnologia</option>
+                            <option value="scienza" {if $article->getGenre() === 'scienza'}selected{/if}>Scienza</option>
+                            <option value="ambiente" {if $article->getGenre() === 'ambiente'}selected{/if}>Ambiente</option>
+                            <option value="salute" {if $article->getGenre() === 'salute'}selected{/if}>Salute</option>
+                            <option value="viaggi" {if $article->getGenre() === 'viaggi'}selected{/if}>Viaggi</option>
+                            <option value="motori" {if $article->getGenre() === 'motori'}selected{/if}>Motori</option>
+                            <option value="lifestyle" {if $article->getGenre() === 'lifestyle'}selected{/if}>Lifestyle</option>
+                            <option value="moda" {if $article->getGenre() === 'moda'}selected{/if}>Moda</option>
+                            <option value="gastronomia" {if $article->getGenre() === 'gastronomia'}selected{/if}>Gastronomia</option>
+                            <option value="religione" {if $article->getGenre() === 'religione'}selected{/if}>Religione</option>
+                            <option value="istruzione" {if $article->getGenre() === 'istruzione'}selected{/if}>Istruzione</option>
+                            <option value="diritti" {if $article->getGenre() === 'diritti'}selected{/if}>Diritti</option>
+                            <option value="giustizia" {if $article->getGenre() === 'giustizia'}selected{/if}>Giustizia</option>
+                            <option value="gossip" {if $article->getGenre() === 'gossip'}selected{/if}>Gossip</option>
+                            <option value="musica" {if $article->getGenre() === 'musica'}selected{/if}>Musica</option>
+                            <option value="cinema" {if $article->getGenre() === 'cinema'}selected{/if}>Cinema</option>
+                            <option value="libri" {if $article->getGenre() === 'libri'}selected{/if}>Libri</option>
+                            <option value="classico" {if $article->getGenre() === 'classico'}selected{/if}>Classico</option>
                         </select>
                     </div>
                 </div>
                 <div class="block-container mt-4 mb-4"></div>
-                <div id="editor-container"></div>  
+                <div id="editor-container"> {if $article->getContent()}{$article->getContent() nofilter}{/if} </div>  
                 {if $modify === false}
-                        <input type="hidden" name="contenuto" id="contenuto-articolo">
+                    <input type="hidden" name="contenuto" id="contenuto-articolo">
                 {else}
-                        <input type="hidden" name="contenuto" id="contenuto-articolo" placeholder = "{$article->getHtmlContent()}">
+                    <input type="hidden" name="contenuto" id="contenuto-articolo">
                 </div>
                 {/if}
                 <p class="subtitle"> oppure </p> 
@@ -252,4 +253,6 @@
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="/Progetto/Smarty/js/textEditor.js"></script>
 <script src="/Progetto/Smarty/js/uploadFile.js"></script>
+<script src="/Progetto/Smarty/js/uploadArticle.js"></script>
+
 
