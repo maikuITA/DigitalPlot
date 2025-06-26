@@ -10,9 +10,7 @@ class CConfirm{
     public static function confirm(int $type = 0): void {
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            if ($type === 404){
-                VConfirm::render(confirmMessage: "404 Not Found", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
-            } elseif ($type === 1){
+            if ($type === 1){
                 VConfirm::render(confirmMessage: "L'Articolo non è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
             } elseif ($type === 2){
                 VConfirm::render(confirmMessage: "Formato non valido", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
