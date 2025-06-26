@@ -25,14 +25,23 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
                     {if $isLogged === true}
-                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
                         {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
                         {/if}
+                        {if $privilege >= 2}
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" id="new_mobile" href="/newArticle">Nuovo articolo</a>
+                            <a class="navbar-item" id="new_find" href="/find">Ricerca</a>
+                        {/if}
                         {if $privilege === 3}
+                            <hr class="navbar-divider">
                             <a class="navbar-item" href="/dashboard" > Dashboard </a>
                             <a class="navbar-item" href="/logs"> Logs </a>
                         {/if}
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" id="new_logout" href="/logout">Logout</a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
                     {else}
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}
@@ -76,59 +85,69 @@
             {/if}
         </div>
     </header>
-    <div class="columns">
-        <div class="column is-one-quarter x">
-            <div class="card pager">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                        {if $proPic === null}
-                            <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
-                        {else}
-                            <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
-                        {/if}
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4">{$writer->getName()} </p>
-                        <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
+    <div class="columns is-multiline">
+        <div class="column is-three-quarters" id="mario"> 
+            <div class="columns is-multiline" id="franco">
+                <div class="column is-full">
+                    <div class="card pager author">
+                        <div class="media">
+                            <div class="media-center">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                    {if $proPic === null}
+                                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png"/>
+                                    {else}
+                                        <img class="is-rounded" src="data:image/jpeg;base64,{$proPic}"/>
+                                    {/if}
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">{$writer->getName()} </p>
+                                    <p id="username"class="subtitle is-6">{$writer->getUsername() }</p>
+                                </div>
+                            </div>
+                            <div class="media-center">
+                                <div class="is-gapped top-right">
+                                    <div class="to-center">
+                                        <a class="is-5 s has-text-weight-bold">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
+                                    </div>
+                                    <div class="to-center">
+                                        <a class="is-5 s has-text-weight-bold">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
+                                    </div>
+                                    <div>
+                                        <p class="card-footer-item follow-buttons">
+                                            <a class="button is-outlined is-link" id="follow">follow</a>
+                                            <a class="button is-outlined is-link" id="unfollow">unfollow</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="is-gapped">
+                                <a class="is-5 s has-text-weight-bold">Biografia</a><br><a class="is-5">{$writer->getBiography()} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sagittis augue in nibh porta interdum. Sed eu ex et felis sollicitudin pulvinar.</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="content">
-                    <div class="is-gapped">
-                        <a class="is-5 s">Biografia: </a><a class="is-5">{$writer->getBiography()}</a>
-                    </div>
-                    <div class="is-gapped">
-                        <a class="is-5 s">Numero articoli: </a><a class="is-5">{$writer->getNumArticles()}</a>
-                    </div>
-                    <div class="is-gapped">
-                        <a class="is-5 s">Follower: </a><a class="is-5" id="numFollowers">{$writer->getNumFollowers()}</a>
+                <div class="column is-full">
+                    <div class="card pager">
+                        <div class="content is-centered">
+                            <p class="title">{$article->getTitle()}</p>
+                            <p class="subtitle has-text-weight-bold">{$article->getDescription()}</p>
+                            <p class="subtitle has-text-weight-bold">Categoria: {$article->getCategory()}</p>
+                            <p class="subtitle has-text-weight-bold">Genere: {$article->getGenre()}</p>
+                        </div>
+                        <div class="content" id="ArticleBody">
+                            {$article->getHtmlContent()}
+                        </div>
                     </div>
                 </div>
-                <footer class="card-footer">
-                <p class="card-footer-item follow-buttons">
-                    <a class="button is-link" id="follow">follow</a>
-                    <a class="button is-link" id="unfollow">unfollow</a>
-                </p>
-            </footer>
             </div>
         </div>
-        <div class="column is-two-quarters x">
+        <div class="column is-one-quarter" id="pasquale">
             <div class="card pager">
-                <div class="content">
-                    <p class="title">{$article->getTitle()}</p>
-                    <p class="subtitle">{$article->getDescription()}</p>
-                    <p class="subtitle">Categoria: {$article->getCategory()}</p>
-                    <p class="subtitle">Genere: {$article->getGenre()}</p>
-                </div>
-                <div class="content" id="ArticleBody">
-                    {$article->getHtmlContent()}
-                </div>
-            </div>
-        </div>
-        <div class="column is-one-quarter x">
-            <div class="card pager">
-                <div class="content">
+                <div class="content" id="luca">
                     <p class="title">Commenti</p>
                     <div class="card">
                         <div class="card-header">

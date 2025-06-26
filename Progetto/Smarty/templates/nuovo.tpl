@@ -28,14 +28,23 @@
                 <div class="navbar-start">
                     <a class="navbar-item" href="/home">Home</a>
                     {if $isLogged === true}
-                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
                         {if $privilege eq 0}
                             <a class="navbar-item" href="/subscribe">Abbonati</a>
                         {/if}
+                        {if $privilege >= 2}
+                            <hr class="navbar-divider">
+                            <a class="navbar-item" id="new_mobile" href="/newArticle">Nuovo articolo</a>
+                            <a class="navbar-item" id="new_find" href="/find">Ricerca</a>
+                        {/if}
                         {if $privilege === 3}
+                            <hr class="navbar-divider">
                             <a class="navbar-item" href="/dashboard" > Dashboard </a>
                             <a class="navbar-item" href="/logs"> Logs </a>
                         {/if}
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" id="new_logout" href="/logout">Logout</a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">PlotPoints: {$plotPoints}</a>
                     {else}
                         <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}

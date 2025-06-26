@@ -29,10 +29,11 @@ header {
     position: sticky;
     top: 0;
     z-index: 1001;
+    margin: 0;
 }
 
 .header.columns {
-    margin-top: 0;
+    margin: 0;
 }
 
 nav {
@@ -130,6 +131,10 @@ figure:hover, i:hover, span:hover {
     transform: scale(1.1);
 }
 
+#new_mobile, #new_find, #new_logout {
+    display: none;
+}
+
 @media screen and (max-width: 768px) {
     
     header {
@@ -161,6 +166,15 @@ figure:hover, i:hover, span:hover {
         background-color: white;
     }
 
+    .navbar-divider {
+        display: block;
+        height: 0.5px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        color: hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l));
+        border: 1px solid rgb(0, 0, 0, 0.1);
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -186,5 +200,9 @@ figure:hover, i:hover, span:hover {
 
     .navbar-item.has-text-link.transfer {
         display: inherit;
+    }
+
+    #new_mobile, #new_find, #new_logout {
+        display: block;
     }
 }
