@@ -400,6 +400,13 @@ class FEntityManager {
         return $result;
     }
 
+    public static function countRecord(string $className){
+        $dql = "SELECT COUNT(a) FROM $className a " ;
+        $query = self::$entityManager->createQuery($dql);
+        $result = $query->getResult();
+        return $result;
+    }
+
 }
 
 ?>

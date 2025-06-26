@@ -186,6 +186,14 @@ class FPersistentManager {
     public function retrieveAllSubscriptions(): ?array {
         return FEntityManager::getInstance()->retrieveAllSubscriptions();
     }
+
+    public function retrieveNumOnDate(string $className, string $numericField, string $value): int{
+        return FEntityManager::getInstance()->countRecordWithDate( $className, $numericField, $value);
+    }
+
+    public function countRecord(string $className): int{
+        return FEntityManager::getInstance()->countRecord($className);
+    }
     
 
     /*
