@@ -150,7 +150,7 @@
                             <div class="content">
                                 <form class="form" action="/comment" method="post">
                                     <div class="control is-loading">
-                                        <input class="input subtitle is-6" type="text" placeholder="Scrivi qui"/>
+                                        <input class="input" type="text" placeholder="Scrivi qui"/>
                                     </div>
                                 </form>
                             </div>
