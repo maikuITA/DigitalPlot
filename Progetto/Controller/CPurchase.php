@@ -77,7 +77,6 @@ class CPurchase{
             }
             //showing the view
             header('Location: https://digitalplot.altervista.org/confirm/4');
-            VConfirm::render( "Grazie ". $user->getUsername() . " per esserti abbonato!" , $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
             exit;
         }
         else {

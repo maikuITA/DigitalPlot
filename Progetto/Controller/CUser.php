@@ -101,7 +101,6 @@ class CUser{
             USession::unsetSession();
             USession::destroySession();
             header('Location: https://digitalplot.altervista.org/confirm/5');
-            VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . " !", isLogged:false);
         } else {
             header('Location: https://digitalplot.altervista.org/home');
         }

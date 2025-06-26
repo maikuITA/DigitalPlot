@@ -1,5 +1,7 @@
 <?php
 
+use Doctrine\DBAL\Types\Type;
+
 class CConfirm{
 
     /**
@@ -17,12 +19,12 @@ class CConfirm{
             } elseif ($type === 3){
                 VConfirm::render("Commento rimosso con successo", $user->getPlotCard()->getPoints(),  $user->getEncodedData(), $user->getPrivilege(), true, $type);
             } elseif ($type === 4){
-                VConfirm::render(confirmMessage: "Articolo vuoto", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+                VConfirm::render( "Grazie ". $user->getUsername() . " per esserti abbonato!" , $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true, $type);
             } elseif ($type === 5){
-                VConfirm::render(confirmMessage: "L'immagine non è stata caricata correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+            VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . "!", isLogged:false, type: $type);
             }
         } else {
-            VConfirm::render(confirmMessage: "Utente non loggato", isLogged: false, type: $type);
+            VConfirm::render(confirmMessage: "Conferma!", isLogged: false, type: $type);
         }
     }
 }
