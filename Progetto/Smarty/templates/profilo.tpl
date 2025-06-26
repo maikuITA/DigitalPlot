@@ -115,6 +115,12 @@
                                 <a href="#readings" class="has-text-link">Letture</a>
                             </td>
                         </tr>
+                        <td>
+                                <span class="icon is-small is-left">
+                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
+                                </span>
+                                <a href="#reviews" class="has-text-link">Commenti</a>
+                            </td>
                     </table>
                 </div>
             </div>
@@ -228,7 +234,7 @@
             </table>
         </div>
         <div class="card articles">
-            <table class="table is-striped is-hoverable" id="readings">
+            <table class="table is-striped is-hoverable" id="reviews">
                 <caption class="title">Commenti</caption>
                 <thead>
                     <tr>
@@ -243,11 +249,11 @@
                 {if isset($reviews)}
                     {foreach from=$reviews item=comment}
                             <tr>
-                                <td>{$comment->getWriter()->getUsername()}</td>
+                                <td>{$comment->getSubscriber()->getUsername()}</td>
                                 <td>{$comment->getReleaseDate()->format('Y-m-d')}</td>
                                 <td>{$comment->getArticle()->getTitle()}</td>
                                 <td>{$comment->getEvaluate()}</td>
-                                <td><a class="has-text-link" href="/dropReview/{$comment->getId()}" >Elimina</a></td>
+                                <td><a class="has-text-link" href="/dropReview/{$comment->getCod()}" >Elimina</a></td>
                             </tr>           
                     {/foreach}
                 {/if}    

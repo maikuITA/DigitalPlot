@@ -77,7 +77,7 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="card"> 
+        <div class="card profile"> 
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <footer class="card-footer">
-                <p class="card-footer-item">
+                <p class="card-footer-item follow-buttons">
                     <a class="button is-link" id="follow">follow</a>
                     <a class="button is-link" id="unfollow">unfollow</a>
                 </p>
@@ -132,33 +132,29 @@
                     <p class="title">Commenti</p>
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-header-title">Giulio A.</p>
+                            <p class="card-header-title">Lascia un commento</p> 
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                <p class="subtitle is-6">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <p class="card-header-title">Lascia un commento</p>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <form class="form" action="/comment" method="post">
+                                <form class="form" action="/newReview/{$article->getId()}" method="POST">
                                     <div class="control">
                                         <div class="field">
-                                            <input class="input" type="text" id="c_head" placeholder="Titolo del commento"/>
+                                            <textarea class="textarea" name="review" id="c_body" placeholder="Testo"></textarea>
                                         </div>
-                                        <div class="field">
-                                            <textarea class="textarea" id="c_body" placeholder="Testo"></textarea>
-                                        </div>
-                                        <div class="field">
-                                            <div class="control">
-                                                <button class="button is-link" action="submit">Invia</button>
+                                        <div class="field is-grouped">
+                                            <div class="field select is-rounded">
+                                                <select name="score" id="c_score">
+                                                    <option value="1">&#9733;</option>
+                                                    <option value="2">&#9733;&#9733;</option>
+                                                    <option value="3">&#9733;&#9733;&#9733;</option>
+                                                    <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                                                    <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                                                </select>
+                                            </div>
+                                            <div class="field">
+                                                <div class="control">
+                                                    <button class="button is-link" action="submit">Invia</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -166,6 +162,26 @@
                             </div>
                         </div>
                     </div>
+                    {if isset($reviews)}
+                        {foreach from=$reviews item=review}
+                            <div class="card">
+                                <div class="card-header">
+                                    <p class="card-header-title">{$review->getSubscriber()->getUsername()}</p>
+                                    {for $i=1 to $review->getEvaluate()}
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    {/for}
+                                </div>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p class="subtitle is-6">
+                                            {$review->getComment()}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>         
+                        {/foreach}
+                    {/if}
+                    
                 </div>
             </div>
         </div>

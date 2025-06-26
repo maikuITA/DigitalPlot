@@ -23,6 +23,7 @@ class VArticle{
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
         $smarty->assign('article', $article);
+        $smarty->assign('reviews', $article->getReviews());
         $smarty->assign('writer', $writer);
         $smarty->display('lettura.tpl');
     }
