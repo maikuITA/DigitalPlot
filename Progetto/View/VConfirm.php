@@ -13,10 +13,11 @@ class VConfirm {
      * @return void
      * @throws Exception
      */
-    public static function render($confirmMessage, $plotPoints = 0 , $proPic = null , int $privilege = BASIC, bool $isLogged = false): void {
+    public static function render($confirmMessage, $plotPoints = 0 , $proPic = null , int $privilege = BASIC, bool $isLogged = false, int $type): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> conferma.tpl");
         $smarty->assign('confirmMessage', $confirmMessage);
+        $smarty->assign('type', $type);
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
