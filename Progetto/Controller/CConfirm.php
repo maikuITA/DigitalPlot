@@ -24,7 +24,7 @@ class CConfirm{
                 VConfirm::render(confirmMessage: "Arrivederci!",plotPoints: 0, proPic: null , privilege: 0 ,isLogged:false, type: $type);
             }
         } else {
-            VConfirm::render(confirmMessage: "Arrivederci!", plotPoints:0, proPic: null ,privilege: 0,isLogged:false, type: $type);        
+            VConfirm::render(confirmMessage: "Arrivederci!", plotPoints:0, proPic: null ,privilege: BASIC,isLogged:false, type: $type);        
         }
     }
 }
