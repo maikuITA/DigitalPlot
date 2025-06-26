@@ -76,8 +76,8 @@ class CPurchase{
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'privilege', READER);
             }
             //showing the view
-            $messaggio = "Grazie ".$user->getUsername(). " per esserti abbonato!";
-            VConfirm::render( $messaggio, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
+            header('Location: https://digitalplot.altervista.org/confirm/4');
+            VConfirm::render( "Grazie ". $user->getUsername() . " per esserti abbonato!" , $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
             exit;
         }
         else {
