@@ -149,13 +149,16 @@
                         <div class="card-content">
                             <div class="content">
                                 <form class="form" action="/comment" method="post">
-                                    <div class="control is-loading">
+                                    <div class="control">
                                         <div class="field">
-                                            <input class="input" type="text" placeholder="Scrivi qui"/>
+                                            <input class="input" type="text" id="c_head" placeholder="Titolo del commento"/>
+                                        </div>
+                                        <div class="field">
+                                            <textarea class="textarea" id="c_body" placeholder="Testo"></textarea>
                                         </div>
                                         <div class="field">
                                             <div class="control">
-                                                <button class="button is-link">Submit</button>
+                                                <button class="button is-link" action="submit">Invia</button>
                                             </div>
                                         </div>
                                     </div>
