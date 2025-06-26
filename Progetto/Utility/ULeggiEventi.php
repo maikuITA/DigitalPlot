@@ -27,7 +27,7 @@
         return implode("\n", array_reverse(array_slice($linesArray, $lines)));
     }
 
-
+    header('Content-Type: text/html; charset=UTF-8');
     if (file_exists($path)) {
         echo nl2br(tail($path, $righeDaMostrare));
     } else {

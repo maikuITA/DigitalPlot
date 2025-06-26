@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigitalPlot-Conferma Pagamento</title>
+    <title>DigitalPlot-Conferma</title>
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/confermapagamento.css">
