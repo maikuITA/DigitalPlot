@@ -446,6 +446,7 @@ class FEntityManager {
         try {
             $dql = "SELECT p FROM EArticle p WHERE p.statte = :stat ORDER BY p.releaseDate DESC";
             $query = self::$entityManager->createQuery($dql);
+            $query->setParameter('stat', PENDING);
             $result = $query->getResult();
             if(count($result) > 0){
                 return $result;
