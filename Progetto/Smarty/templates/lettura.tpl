@@ -144,11 +144,11 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-header-title">Lascia un commento</p>
+                            <p class="card-header-title">Lascia un commento</p> 
                         </div>
                         <div class="card-content">
                             <div class="content">
-                                <form class="form" action="/review/{$article->getId()}" method="post">
+                                <form class="form" action="/newReview/{$article->getId()}" method="POST">
                                     <div class="control">
                                         <div class="field">
                                             <textarea class="textarea" name="review" id="c_body" placeholder="Testo"></textarea>
