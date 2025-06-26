@@ -37,7 +37,7 @@ class CError {
         if(CUser::isLogged()) {
             VConfirm::render("Conferma");
         } else {
-            VError::render(errore: "Utente non loggato", isLogged: false, type: $type);
+            VConfirm::render( "Utente non loggato", isLogged: false, type: $type);
         }
     }
     
