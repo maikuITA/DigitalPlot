@@ -54,5 +54,5 @@ aggiornaErrori();
 aggiornaEventi();
 
 // Ogni 5 secondi (meglio di 1 secondo, più sostenibile)
-setInterval(aggiornaErrori, 5000);
-setInterval(aggiornaEventi, 5000);
+setInterval(aggiornaErrori, 5*60*1000);
+setInterval(aggiornaEventi, 5*60*1000);
