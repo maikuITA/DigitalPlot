@@ -11,11 +11,11 @@ class CConfirm{
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if ($type === 1){
-                VConfirm::render(confirmMessage: "L'Articolo non è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+                VConfirm::render("L'articolo è stato eliminato correttamente!",  $user->getPlotCard()->getPoints(), $user->getEncodedData(),  $user->getPrivilege(),true,$type);
             } elseif ($type === 2){
-                VConfirm::render(confirmMessage: "Formato non valido", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+                VConfirm::render("Articolo salvato correttamente!", $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true, $type);
             } elseif ($type === 3){
-                VConfirm::render(confirmMessage: "Dimensione del file non valida", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+                VConfirm::render("Commento rimosso con successo", $user->getPlotCard()->getPoints(),  $user->getEncodedData(), $user->getPrivilege(), true, $type);
             } elseif ($type === 4){
                 VConfirm::render(confirmMessage: "Articolo vuoto", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
             } elseif ($type === 5){
