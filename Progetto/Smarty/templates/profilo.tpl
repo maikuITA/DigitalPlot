@@ -227,6 +227,33 @@
                 </tbody>
             </table>
         </div>
+        <div class="card articles">
+            <table class="table is-striped is-hoverable" id="readings">
+                <caption class="title">Commenti</caption>
+                <thead>
+                    <tr>
+                        <th>Autore</th>
+                        <th>Data pubblicazione</th>
+                        <th>Articolo</th>
+                        <th>Valutazione</th>
+                        <th>Elimina</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {if isset($reviews)}
+                    {foreach from=$reviews item=comment}
+                            <tr>
+                                <td>{$comment->getWriter()->getUsername()}</td>
+                                <td>{$comment->getReleaseDate()->format('Y-m-d')}</td>
+                                <td>{$comment->getArticle()->getTitle()}</td>
+                                <td>{$comment->getEvaluate()}</td>
+                                <td><a class="has-text-link" href="/dropReview/{$comment->getId()}" >Elimina</a></td>
+                            </tr>           
+                    {/foreach}
+                {/if}    
+                </tbody>
+            </table>
+        </div>
     </div>
     
 </body>

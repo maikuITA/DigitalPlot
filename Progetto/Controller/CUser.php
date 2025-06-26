@@ -213,7 +213,8 @@ class CUser{
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $articles = $user->getArticles();
             $readdenArticles = $user->getReaddenArticles();
-            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles);
+            $comments = $user->getReviews();
+            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles, reviews: $comments);
 
         } else {
             header('Location: https://digitalplot.altervista.org/auth');
@@ -262,7 +263,7 @@ class CUser{
         }
     }
 
-    public static function newRewiew(?int $articleId) : void {
+    public static function newRewiew(?int $articleId = -1) : void {
         if(UServer::getRequestMethod() === 'POST' && $articleId !== NULL && $articleId > 0){
             if(CUser::isLogged()){
                 if(CUser::isSubbed() || CUser::isAdmin()){
@@ -284,6 +285,30 @@ class CUser{
                     }
                 }else{
                     header('Location: https://digitalplot.altervista.org/subscribe');
+                }
+            }else{
+                header('Location: https://digitalplot.altervista.org/auth');
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/error/404');
+        }
+    }
+
+    public static function dropReview(int $reviewId = -1){
+        if($reviewId < 0 ){
+            if(CUser::isLogged()){
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                $review = FPersistentManager::getInstance()->retrieveObjById(EReview::class, $reviewId);
+                if($review->getSubscriber()->getId() === $user->getId() || CUser::isAdmin()){
+                    $user->removeReview($review);
+                    $article = $review->getArticle();
+                    $article->removeReview($review);
+                    FPersistentManager::getInstance()->delete($review);
+                    FPersistentManager::getInstance()->saveInDb($user);
+                    FPersistentManager::getInstance()->saveInDb($article);
+                    VConfirm::render("Commento rimosso con successo", $user->getPlotCard()->getPoints(),  $user->getEncodedData(), $user->getPrivilege(), true);
+                }else{
+                    header('Location: https://digitalplot.altervista.org/error/404');
                 }
             }else{
                 header('Location: https://digitalplot.altervista.org/auth');

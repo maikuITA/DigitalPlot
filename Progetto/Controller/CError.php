@@ -7,7 +7,7 @@ class CError {
      * This method will redirect the user to a custom 404 error page.
      * @return void
      */
-    public static function error(int $type): void {
+    public static function error(int $type = 0): void {
         if(CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if ($type === 404){

@@ -7,7 +7,7 @@ class CArticle{
      * @return void
      * @throws Exception
      */
-    public static function showArticle(?int $idArticolo):void{
+    public static function showArticle(?int $idArticolo = -1):void{
         if($idArticolo === null || $idArticolo <= 0){
             header('Location: https://digitalplot.altervista.org/error/404');
             exit();
@@ -60,20 +60,29 @@ class CArticle{
      * @param $idArticle
      * @return void
      */
-    public static function dropArticle(int $idArticle): void{
+    public static function dropArticle(?int $idArticle = -1): void{
+        if($idArticle === null || $idArticle <= 0){
+            header('Location: https://digitalplot.altervista.org/error/404');
+            exit();
+        }
         if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if($user->getPrivilege() > 1){
                 $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
-                $drop_result = FPersistentManager::getInstance()->delete($article);
-                if ($drop_result){
-                    ULogSys::toLog("Articolo eliminato");
-                    ULogSys::toLog("");
-                    VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                if($article->getWriter()->getId() === $user->getId() || $user->getPrivilege() === ADMIN ){
+                    $drop_result = FPersistentManager::getInstance()->delete($article);
+                    if ($drop_result){
+                        ULogSys::toLog("Articolo eliminato");
+                        ULogSys::toLog("");
+                        VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+                        exit();
+                    }
+                    header('Location: https://digitalplot.altervista.org/error/1');
                     exit();
+                }else{
+                    header('Location: https://digitalplot.altervista.org/error/1');
+                    exit(); 
                 }
-                header('Location: https://digitalplot.altervista.org/error/1');
-                exit();
             }
             else{
                 header('Location: https://digitalplot.altervista.org/home');
