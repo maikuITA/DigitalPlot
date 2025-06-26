@@ -9,7 +9,7 @@ class VConfirm {
      * @param string $confirmMessage The error message to display
      * @param int $plotPoints The number of plot points the user has (default is 0)
      * @param mixed $proPic The user's profile picture data (default is null)   
-     * @param bool $privilege  Indicates if the user is a subscriber (default is false)
+     * @param int $privilege  Indicates if the user is a subscriber 
      * @param bool $isLogged Indicates if the user is logged in (default is false)
      * @return void
      * @throws Exception
