@@ -132,18 +132,6 @@
                     <p class="title">Commenti</p>
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-header-title">Giulio A.</p>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <p class="subtitle is-6">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
                             <p class="card-header-title">Lascia un commento</p> 
                         </div>
                         <div class="card-content">
@@ -174,6 +162,26 @@
                             </div>
                         </div>
                     </div>
+                    {if isset($reviews)}
+                        {foreach from=$reviews item=review}
+                            <div class="card">
+                                <div class="card-header">
+                                    <p class="card-header-title">{$review->getSubscriber()->getUsername()}</p>
+                                    {for $i=1 to $review->getEvaluate()}
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    {/for}
+                                </div>
+                                <div class="card-content">
+                                    <div class="content">
+                                        <p class="subtitle is-6">
+                                            {$review->getComment()}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>         
+                        {/foreach}
+                    {/if}
+                    
                 </div>
             </div>
         </div>
