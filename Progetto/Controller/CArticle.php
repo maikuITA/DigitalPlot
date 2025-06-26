@@ -191,9 +191,10 @@ class CArticle{
                         }else{
                             $content = self::checkFile($content);
                         }
+                        $initialArticle = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
+                        $dropResult = FPersistentManager::getInstance()->delete($initialArticle);
                         $article = new EArticle($title,$description,$content,PENDING,$genre, $tipo, $date, $user);
-                        $result = FPersistentManager::getInstance()->deleteForReplacement(EArticle::class, $idArticle);
-                        if ($result){
+                        if ($dropResult){
                             FPersistentManager::getInstance()->saveInDb($article);
                         } else {
                             header('Location: https://digitalplot.altervista.org/error/404');

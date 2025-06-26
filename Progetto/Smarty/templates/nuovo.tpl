@@ -100,7 +100,11 @@
     </div>
     <div class="body-container">
         <div class="card">
-            <form id="form-articolo" method="POST" action="/saveArticle" enctype="multipart/form-data">
+            {if $modify === false}
+                <form id="form-articolo" method="POST" action="/saveArticle" enctype="multipart/form-data">
+            {else}
+                <form id="form-articolo" method="POST" action="/modifyArticle" enctype="multipart/form-data">
+            {/if}
                 <p class="title">
                     <span class="icon is-small is-left">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -211,14 +215,15 @@
                         </select>
                     </div>
                 </div>
-                <div class="block-container mt-4 mb-4"></div>
-                <div id="editor-container"> {if $article->getContent()}{$article->getContent() nofilter}{/if} </div>  
-                {if $modify === false}
-                    <input type="hidden" name="contenuto" id="contenuto-articolo">
-                {else}
-                    <input type="hidden" name="contenuto" id="contenuto-articolo">
+                <div class="block-container mt-4 mb-4">
+                    {if $modify === false}
+                        <div id="editor-container"></div>
+                        <input type="hidden" name="contenuto" id="contenuto-articolo">
+                    {else}
+                        <div id="editor-container"> {if $article->getHtmlContent()}{$article->getHtmlContent() nofilter}{/if}</div>
+                        <input type="hidden" name="contenuto" id="contenuto-articolo">
+                    {/if}
                 </div>
-                {/if}
                 <p class="subtitle"> oppure </p> 
                 <div class="flex-container">
                     <p>Carica/Inserisci <span> (in formato .txt)</span> </p>

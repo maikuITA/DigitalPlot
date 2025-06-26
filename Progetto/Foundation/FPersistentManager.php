@@ -135,9 +135,6 @@ class FPersistentManager {
         return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $category, $genre, $releaseDate);
     }
 
-    public function deleteForReplacement(string $className,int $idArticle): bool{
-        return FEntityManager::getInstance()->deleteForReplacement($className, $idArticle);
-    }
 
 
     /**
