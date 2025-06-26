@@ -12,7 +12,7 @@ class CDashboard{
                 $articoliDaRevisionare = FPersistentManager::getInstance()->retrievePendingArticles();
                 $articoliPubblicati = FPersistentManager::getInstance()->searchArticles('%', '%', '%', '0001-01-01');
                 $commenti = FPersistentManager::getInstance()->retrieveAllReview();
-                VDashboard::render(plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, articoliDaRevisionare: $articoliDaRevisionare, articoliPubblicati: $articoliPubblicati, commenti: $commenti);
+                VDashboard::render(privilege: $user->getPrilvlege() ,plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, articoliDaRevisionare: $articoliDaRevisionare, articoliPubblicati: $articoliPubblicati, commenti: $commenti);
         }else {
             header('Location: https://digitalplot.altervista.org/home');
             exit;
