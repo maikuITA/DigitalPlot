@@ -262,7 +262,7 @@ class CUser{
         }
     }
 
-    public static function newRewiew(?int $articleId) : void {
+    public static function newRewiew(?int $articleId = -1) : void {
         if(UServer::getRequestMethod() === 'POST' && $articleId !== NULL && $articleId > 0){
             if(CUser::isLogged()){
                 if(CUser::isSubbed() || CUser::isAdmin()){
@@ -292,6 +292,8 @@ class CUser{
             header('Location: https://digitalplot.altervista.org/error/404');
         }
     }
+
+    public static function dropReview(?int )
 
 
 }
