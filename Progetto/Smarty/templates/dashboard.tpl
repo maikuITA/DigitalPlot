@@ -89,10 +89,10 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <a class="is-5 s">Ultime 24H: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Ultima settimana: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Ultimo mese: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultime 24H: </a><a id="totalU" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultima settimana: </a><a id="" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultimo mese: </a><a id="" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a id="" class="is-5">0000</a> <br/>
                     </div>
                 </div>
             </div>
@@ -102,10 +102,10 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <a class="is-5 s">Giornaliero: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Settimanale: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Mensile: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Giornaliero: </a><a id="last24P" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Settimanale: </a><a id="lastSP" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a id="lastMP" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a id="totalP" class="is-5">0000</a> <br/>
                     </div>
                 </div>
             </div>
@@ -115,9 +115,12 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-                        iaculis mauris.</p>
-                        <a class="has-text-link">@admin</a>
+                        <div class="content">
+                        <a class="is-5 s">Giornaliero: </a><a id="last24A" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Settimanale: </a><a id="lastSA" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a id="lastMA" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a id="totalA" class="is-5">0000</a> <br/>
+                    </div>
                         <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
@@ -128,7 +131,7 @@
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <a class="is-5 s">Ultime 24H: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Ultime 24H: </a><a  class="is-5">0000</a> <br/>
                         <a class="is-5 s">Ultima settimana: </a><a class="is-5">0000</a> <br/>
                         <a class="is-5 s">Ultimo mese: </a><a class="is-5">0000</a> <br/>
                         <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
@@ -250,3 +253,4 @@
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
+<script src="/Progetto/Smarty/js/dashboard.js"></script>

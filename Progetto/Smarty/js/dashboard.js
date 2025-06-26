@@ -1,0 +1,33 @@
+async function upgradeDashboard() {
+  try {
+    const response = await fetch('/dashboardUpdate');
+    if (!response.ok) {
+      throw new Error(`Errore HTTP: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Dati ricevuti:', data);
+
+    // Qui puoi aggiungere il codice per aggiornare il DOM o gestire i dati
+    document.getElementById("last24A").textContent = data.lastGA;
+    document.getElementById("lastSA").textContent = data.lastSA;
+    document.getElementById("lastMA").textContent = data.lastMA;
+    document.getElementById("totalA").textContent = data.totalA;
+    document.getElementById("last24P").textContent = data.lastGP;
+    document.getElementById("lastSP").textContent = data.lastSP;
+    document.getElementById("lastMP").textContent = data.lastMP;
+    document.getElementById("totalP").textContent = data.totalP;
+    document.getElementById("totalU").textContent = data.totalU;
+
+  } catch (error) {
+    console.error('Errore durante la richiesta:', error);
+  }
+}
+
+// Esegui la funzione al caricamento della pagina   
+window.addEventListener('load', () => {
+  upgradeDashboard();
+
+  // Imposta l'intervallo per eseguirla ogni 30 minuti (30 * 60 * 1000 ms)
+  setInterval(upgradeDashboard, 30 * 60 * 1000);
+});
