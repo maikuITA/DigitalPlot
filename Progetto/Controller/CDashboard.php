@@ -19,4 +19,11 @@ class CDashboard{
     /**
      * Retrives all the information for the dashboard
      */
+    public static function dashboardUpdate(): void{
+        if(CUser::isLogged() && CUser::isAdmin()){
+            $
+        }else{
+
+        }
+    }
 }
