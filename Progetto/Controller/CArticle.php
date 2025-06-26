@@ -74,6 +74,7 @@ class CArticle{
                     if ($drop_result){
                         ULogSys::toLog("Articolo eliminato");
                         ULogSys::toLog("");
+                        header('Location: https://digitalplot.altervista.org/confirm/1');
                         VConfirm::render("L'articolo " . $article->getTitle() . " è stato eliminato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
                         exit();
                     }
@@ -119,8 +120,8 @@ class CArticle{
                         FPersistentManager::getInstance()->saveInDb($user);
                         ULogSys::toLog('Nuovo articolo salvato');
                         ULogSys::toLog("");
-                        $confirmMessage = "Articolo salvato correttamente!";
-                        VConfirm::render($confirmMessage, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
+                        header('Location: https://digitalplot.altervista.org/confirm/2');
+                        VConfirm::render("Articolo salvato correttamente!";, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), true);
                         exit;
                 }else{
                         header('Location: https://digitalplot.altervista.org/home');
@@ -275,6 +276,7 @@ class CArticle{
                     FPersistentManager::getInstance()->delete($review);
                     FPersistentManager::getInstance()->saveInDb($user);
                     FPersistentManager::getInstance()->saveInDb($article);
+                    header('Location: https://digitalplot.altervista.org/confirm/3');
                     VConfirm::render("Commento rimosso con successo", $user->getPlotCard()->getPoints(),  $user->getEncodedData(), $user->getPrivilege(), true);
                 }else{
                     header('Location: https://digitalplot.altervista.org/error/404');
