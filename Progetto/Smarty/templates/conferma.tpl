@@ -87,12 +87,30 @@
                 {$confirmMessage}
             </p>
             {if $isLogged === false}
-                <a class="subtitle has-text-link" href="/auth">
-                    Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina di accesso
+                {if $type === 1}
+                <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla pagine profile!
                 </a>
+                {elseif $type === 2}
+                    <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla pagine profile!
+                    </a>
+                {elseif $type === 3}
+                    <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla pagine profile!
+                    </a>
+                {elseif $type === 4}
+                    <a class="subtitle has-text-link" href="/home">
+                        Clicca qui per tornare alla pagine home!
+                    </a>
+                {elseif $type === 5}
+                    <a class="subtitle has-text-link" href="/profile">
+                        Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina di accesso.
+                    </a>
+                {/if}
             {else}
                 <a class="subtitle has-text-link" href="/profile">
-                        Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina profilo
+                    Grazie per aver scelto DigitalPlot! Clicca qui per tornare alla pagina profilo
                 </a>
             {/if}
         </div>
@@ -100,3 +118,4 @@
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
+
