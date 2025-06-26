@@ -22,7 +22,6 @@ class VConfirm {
         $smarty->assign('privilege', $privilege);
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
-        $smarty->assign('type', $type);
         $smarty->display('conferma.tpl');
     }
 
