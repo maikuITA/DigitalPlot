@@ -195,6 +195,9 @@ class FPersistentManager {
         return FEntityManager::getInstance()->countRecord($className);
     }
     
+    public function countActiveSubsriber(): int{
+        return FEntityManager::getInstance()->countActiveSubsriber();
+    }
 
     /*
     // ========== Query DQL personalizzate ==========

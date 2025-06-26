@@ -262,5 +262,36 @@ class CUser{
         }
     }
 
+    public static function newRewiew(?int $articleId) : void {
+        if(UServer::getRequestMethod() === 'POST' && $articleId !== NULL && $articleId > 0){
+            if(CUser::isLogged()){
+                if(CUser::isSubbed() || CUser::isAdmin()){
+                    $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                    $commento = UHTTPMethods::post('review');
+                    $evaluation = UHTTPMethods::post('evaluation');
+                    $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $articleId);
+                    if(isset($article)){
+                        $review = new EReview($evaluation, $commento, date('Y-m-d'), $user, $article);
+                        $user->addReview($review);
+                        $article->addReview($review);
+                        FPersistentManager::getInstance()->saveInDb($review);
+                        FPersistentManager::getInstance()->saveInDb($user);
+                        FPersistentManager::getInstance()->saveInDb($article);
+                        header('Location: https://digitalplot.altervista.org/article/'.$articleId);
+                        exit;
+                    }else{
+                        header('Location: https://digitalplot.altervista.org/error/404');
+                    }
+                }else{
+                    header('Location: https://digitalplot.altervista.org/subscribe');
+                }
+            }else{
+                header('Location: https://digitalplot.altervista.org/auth');
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/error/404');
+        }
+    }
+
 
 }

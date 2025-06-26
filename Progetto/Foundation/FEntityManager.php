@@ -388,23 +388,42 @@ class FEntityManager {
     }
 
     /**
-     * Method that count the occurrency based on a numerical param
-     * @param string $
-     * @return int 
+     * Counts the number of records in the specified entity class where the given numeric field 
+     * is greater than or equal to the provided value.
+     * This method dynamically builds a DQL query to count records that match the given condition.
+     *
+     * @param string $className     The fully qualified class name of the Doctrine entity.
+     * @param string $numericField  The name of the numeric field to compare (must exist in the entity).
+     * @param string $value         The threshold value to compare against (as string, will be passed as a parameter).
+     * @return int The number of matching records.
      */
     public static function countRecordWithDate(string $className, string $numericField, string $value ):int{
         $dql = "SELECT COUNT(a) FROM $className a WHERE a.$numericField >= :value" ;
         $query = self::$entityManager->createQuery($dql);
         $query->setParameter('value', $value);
-        $result = $query->getResult();
-        return $result;
+        return (int) $query->getSingleScalarResult();
     }
 
-    public static function countRecord(string $className){
+    /**
+     * This method count the number of record in the selected table
+     * @param string $className name of the table
+     * @return int the number of record
+     */
+    public static function countRecord(string $className): int{
         $dql = "SELECT COUNT(a) FROM $className a " ;
         $query = self::$entityManager->createQuery($dql);
-        $result = $query->getResult();
-        return $result;
+
+        return (int) $query->getSingleScalarResult();
+    }
+    /**
+     * This method counts the number of the subscriber, admin excluded
+     * @return int numer of the subscriber
+     */
+    public static function countActiveSubsriber(){
+        $dql = "SELECT COUNT(a) FROM EUser a WHERE a.privilege BETWEEN ". READER . " AND " . WRITER ;
+        $query = self::$entityManager->createQuery($dql);
+
+        return (int) $query->getSingleScalarResult();
     }
 
 }

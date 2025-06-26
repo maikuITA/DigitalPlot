@@ -85,40 +85,46 @@
                         <span class="icon is-small is-left">
                             <i class="fa fa-line-chart" aria-hidden="true"></i>
                         </span>
-                    Utenti registrati</p>
+                    Utenti</p>
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <a class="is-5 s">Ultime 24H: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Ultima settimana: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Ultimo mese: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Registrati: </a><a id="totalU" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Abbonati: </a><a id="abbAttivi" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a id="" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a id="" class="is-5">0000</a> <br/>
                     </div>
+                    <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                 </div>
             </div>
             <div class="card">
                 <header class="card-header">
-                    <p class="card-header-title"><span class="icon is-small is-left"><i class="fa fa-line-chart" aria-hidden="true"></i></span>Utenti abbonati</p>
+                    <p class="card-header-title"><span class="icon is-small is-left">
+                        <i class="fa fa-line-chart" aria-hidden="true"></i></span>Abbonamenti</p>
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <a class="is-5 s">Giornaliero: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Settimanale: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Mensile: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Giornaliero: </a><a id="last24P" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Settimanale: </a><a id="lastSP" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a id="lastMP" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a id="totalP" class="is-5">0000</a> <br/>
                     </div>
+                    <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                 </div>
             </div>
             <div class="card">
                 <header class="card-header">
-                    <p class="card-header-title"><span class="icon is-small is-left"><i class="fa fa-line-chart" aria-hidden="true"></i></span>Articoli totali</p>
+                    <p class="card-header-title"><span class="icon is-small is-left">
+                        <i class="fa fa-line-chart" aria-hidden="true"></i></span>Articoli</p>
                 </header>
                 <div class="card-content">
                     <div class="content">
-                        <a class="is-5 s">Giornaliero: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Settimanale: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Mensile: </a><a class="is-5">0000</a> <br/>
-                        <a class="is-5 s">Totale: </a><a class="is-5">0000</a> <br/>
+                        <div class="content">
+                        <a class="is-5 s">Giornaliero: </a><a id="last24A" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Settimanale: </a><a id="lastSA" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Mensile: </a><a id="lastMA" class="is-5">0000</a> <br/>
+                        <a class="is-5 s">Totale: </a><a id="totalA" class="is-5">0000</a> <br/>
+                    </div>
                         <time datetime="{$smarty.now|date_format:"%Y-%m-%d"}">{$smarty.now|date_format:"%d/%m/%Y"}</time>
                     </div>
                 </div>
@@ -237,3 +243,4 @@
 </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
+<script src="/Progetto/Smarty/js/dashboard.js"></script>
