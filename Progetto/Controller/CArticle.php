@@ -49,7 +49,7 @@ class CArticle{
                 $readings = $user->getReaddenArticles();
                 $count = 0;
                 foreach ($readings as $article){
-                    if ($article->getCod() === $idArticolo){
+                    if ($article->getId() === $idArticolo){
                         $count++;
                     }
                 }
