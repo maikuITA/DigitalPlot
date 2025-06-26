@@ -389,22 +389,21 @@ class FEntityManager {
 
     /**
      * Method that count the occurrency based on a numerical param
-     * @param string $
+     * @param 
      * @return int 
      */
     public static function countRecordWithDate(string $className, string $numericField, string $value ):int{
         $dql = "SELECT COUNT(a) FROM $className a WHERE a.$numericField >= :value" ;
         $query = self::$entityManager->createQuery($dql);
         $query->setParameter('value', $value);
-        $result = $query->getResult();
-        return $result;
+        return (int) $query->getSingleScalarResult();
     }
 
     public static function countRecord(string $className){
         $dql = "SELECT COUNT(a) FROM $className a " ;
         $query = self::$entityManager->createQuery($dql);
-        $result = $query->getResult();
-        return $result;
+
+        return (int) $query->getSingleScalarResult();
     }
 
 }
