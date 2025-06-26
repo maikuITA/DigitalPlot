@@ -103,9 +103,3 @@ display: none; /* nasconde il file input */
     align-items: center;
     gap: 8px;             /* spazio tra icona e testo */
 }
-
-.subtitle {
-    margin-top: 2px;
-    text-align: justify;
-    width: 100%;
-}
