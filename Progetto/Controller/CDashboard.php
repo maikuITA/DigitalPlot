@@ -20,6 +20,7 @@ class CDashboard{
      * Retrives all the information for the dashboard
      */
     public static function dashboardUpdate(): void{
+        header('Content-Type: application/json');
         if(CUser::isLogged() && CUser::isAdmin()){
             $numArtiG = FPersistentManager::getInstance()->retrieveNumOnDate(EArticle::class, 'releaseDate', date('Y-m-d', strtotime('-1 day')));
             $numArtiS = FPersistentManager::getInstance()->retrieveNumOnDate(EArticle::class, 'releaseDate', date('Y-m-d', strtotime('-1 week')));
@@ -29,7 +30,31 @@ class CDashboard{
             $numPurS = FPersistentManager::getInstance()->retrieveNumOnDate(EPurchase::class, 'purchaseDate', date('Y-m-d', strtotime('-1 week')));
             $numPurM = FPersistentManager::getInstance()->retrieveNumOnDate(EPurchase::class, 'purchaseDate', date('Y-m-d', strtotime('-1 month')));
             $numPurT = FPersistentManager::getInstance()->countRecord(EPurchase::class);
+            $numUserT = FPersistentManager::getInstance()->countRecord(EUser::class);
+            echo json_encode([
+                'lastGA' => $numArtiG,
+                'lastSA' => $numArtiS,
+                'lastMA' => $numArtiM,
+                'totalA' => $numArtiT,
+                'lastGP' => $numPurG,
+                'lastSP' => $numPurS,
+                'lastMP' => $numPurM,
+                'totalP' => $numPurT,
+                'totalU' => $numUserT
+            ]);
+            exit;
         }else{
+            echo json_encode([
+                'lastGA' => -1,
+                'lastSA' => -1,
+                'lastMA' => -1,
+                'totalA' => -1,
+                'lastGP' => -1,
+                'lastSP' => -1,
+                'lastMP' => -1,
+                'totalP' => -1,
+                'totalU' => -1
+            ]);
             exit;
         }
     }
