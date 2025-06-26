@@ -97,11 +97,11 @@ class CUser{
      public static function logout(){
         if (CUser::isLogged() === true){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            $confirmMessage = "Arrivederci " . $user->getUsername() . " !";
             USession::getInstance();
             USession::unsetSession();
             USession::destroySession();
-            VConfirm::render(confirmMessage: $confirmMessage, isLogged:false);
+            header('Location: https://digitalplot.altervista.org/confirm/5');
+            VConfirm::render(confirmMessage: "Arrivederci " . $user->getUsername() . " !", isLogged:false);
         } else {
             header('Location: https://digitalplot.altervista.org/home');
         }
