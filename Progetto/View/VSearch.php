@@ -16,7 +16,6 @@ class VSearch {
     public static function displaySearchResults( $articles,bool $isLogged = false, $plotPoints = 0 , $proPic = null, int $privilege = BASIC): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> ricerca.tpl");
-        ULogSys::toLog("");
         $smarty->assign('articles', $articles);
         $smarty->assign('isLogged', $isLogged);
         $smarty->assign('privilege', $privilege);

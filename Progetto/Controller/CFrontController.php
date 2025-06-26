@@ -44,6 +44,7 @@ class CFrontController {
     public function start(): void {
         $requestUri = UServer::getValue('REQUEST_URI');
         $route = explode('/', trim($requestUri, '/')); // Split the URI into parts
+        ULogSys::toLog("");
         ULogSys::toLog("Rotta: ".$route[0]);
         if(self::hasMatchingKey(self::$routes, $route)) {
             $controller = self::$routes[$route[0]][0];

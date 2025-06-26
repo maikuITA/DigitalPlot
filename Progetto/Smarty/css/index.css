@@ -117,7 +117,7 @@ span {
     height: 48px;
 }
 
-.lens:hover {
+.fa-sign-out:hover, .fa-search:hover, .fa-plus-square:hover {
     color: hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l));
 }
 
