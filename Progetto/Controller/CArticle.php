@@ -250,7 +250,7 @@ class CArticle{
     }
 
     public static function dropReview(int $reviewId = -1){
-        if($reviewId < 0 ){
+        if($reviewId > 0 ){
             if(CUser::isLogged()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                 $review = FPersistentManager::getInstance()->retrieveObjById(EReview::class, $reviewId);
