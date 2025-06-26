@@ -43,8 +43,6 @@
                         <a class="navbar-item" id="new_logout" href="/logout">Logout</a>
                         <hr class="navbar-divider">
                         <a class="navbar-item">PlotPoints: {$plotPoints}</a>
-                    {else}
-                        <a class="navbar-item has-text-link transfer" href="/auth">Accedi</a>
                     {/if}
                 </div>
             </div>
@@ -81,8 +79,6 @@
                         <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
                     </span>
                 </a>
-            {else}
-                <a href="/auth" class="button is-warning ok">Accedi</a>
             {/if}
         </div>
     </header>
