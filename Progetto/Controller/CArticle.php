@@ -20,6 +20,7 @@ class CArticle{
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if(CUser::isSubbed()){
+                CArticle::addListReadArticles($idArticolo);
                 VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter());
             }
             else{
@@ -32,6 +33,43 @@ class CArticle{
         
     }
 
+    public static function addListReadArticles(?int $idArticolo){
+        if($idArticolo === null || $idArticolo <= 0){
+            header('Location: https://digitalplot.altervista.org/error/404');
+            exit();
+        }
+        if(CUser::isLogged()){
+            $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
+            if(!isset($article)){
+                header('Location: https://digitalplot.altervista.org/error/404');
+                exit();
+            }
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if(CUser::isSubbed()){
+                $readings = $user->getReaddenArticles();
+                $count = 0;
+                foreach ($readings as $article){
+                    if ($article->getCod() === $idArticolo){
+                        $count++;
+                    }
+                }
+                if ($count === 0){
+                    $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
+                    $reading = new EReading($user, $article);
+                    FPersistentManager::getInstance()->saveInDb($reading);
+                    $user->addReading($reading);
+                    $user->getPlotCard()->addPoints(POINTS);
+                }
+            }
+            else{
+                header('Location: https://digitalplot.altervista.org/subscribe');
+                exit();
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit();
+        }
+    }
 
     /**
      * Method to display the new article page
