@@ -12,7 +12,7 @@ class VUser{
      * @param bool $logged Indicates if the user is logged in.
      * @throws Exception
      */
-    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, $articles = null, bool $isLogged = false, int $privilege = BASIC): void {
+    public static function home(?string $username = null, ?int $plotPoints = null, $proPic = null, $articles = null, bool $isLogged = false, int $privilege = BASIC, int $remaningReadings = 0): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> home.tpl");
         $smarty->assign('isLogged', $isLogged);
@@ -21,6 +21,7 @@ class VUser{
         $smarty->assign('plotPoints', $plotPoints);
         $smarty->assign('proPic', $proPic);
         $smarty->assign('articles', $articles);
+        $smarty->assign('remaningReadings', $remaningReadings);
         $smarty->display('home.tpl');
     }
 
