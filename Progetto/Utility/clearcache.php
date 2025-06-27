@@ -20,6 +20,6 @@ $smarty->clearCompiledTemplate();
 // Option 3: Clear compiled template for a specific template
 // $smarty->clearCompiledTemplate('home.tpl'); // Clears only the compiled version of home.tpl
 
-echo "Smarty cache and compiled templates cleared successfully!";
+ULogSys::toLog( "Smarty cache and compiled templates cleared successfully!");
 
 ?>
