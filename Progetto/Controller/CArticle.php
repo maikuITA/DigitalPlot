@@ -58,7 +58,10 @@ class CArticle{
                     $reading = new EReading($user, $article);
                     FPersistentManager::getInstance()->saveInDb($reading);
                     $user->addReading($reading);
+                    $idPlotCard = $user->getPlotCard()->getCod();
                     $user->getPlotCard()->addPoints(POINTS);
+                    $newPoints = $user->getPlotCard()->getPoints();
+                    FPersistentManager::getInstance()->updateObject(EPlotcard::class, $idPlotCard, 'points', $newPoints);
                 }
             }
             else{

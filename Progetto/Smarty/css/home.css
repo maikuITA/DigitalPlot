@@ -30,6 +30,9 @@
 }
  body{
   background-color: #fef5e7;
-  background-image: url('https://png.pngtree.com/background/20250108/original/pngtree-continuous-pattern-featuring-snippets-of-newspaper-articles-picture-image_15255532.jpghttps://png.pngtree.com/background/20240603/original/pngtree-cork-texturecork-board-or-notice-board-office-pin-empty-photo-picture-image_9175874.jpghttps://png.pngtree.com/thumb_back/fw800/background/20240712/pngtree-stick-note-and-pinned-to-a-cork-notice-board-copy-space-image_15872434.jpg');
-
- }
+  background-image: url('https://images.pexels.com/photos/8407028/pexels-photo-8407028.jpeg');
+  background-size: cover;         /* Scala l'immagine per coprire tutto lo schermo */
+  background-repeat: no-repeat;   /* Non ripetere */
+  background-position: center;    /* Centra l'immagine */
+  background-attachment: fixed;   /* (facoltativo) effetto paralasse */
+}
