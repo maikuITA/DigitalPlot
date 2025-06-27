@@ -88,7 +88,7 @@ class CUser{
      */
     public static function guest(): void {
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-        VUser::home(articles: $articles);   
+        VUser::home(articles: $articles , privilege: -1);   
     }
 
     /**

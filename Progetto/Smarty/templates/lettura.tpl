@@ -135,6 +135,7 @@
                         <div class="content is-centered">
                             <p class="title">{$article->getTitle()}</p>
                             <p class="subtitle has-text-weight-bold">{$article->getDescription()}</p>
+                            <p class="subtitle has-text-weight-bold">Valutazione: {$article->getAvgEvaluate()}</p>
                             <p class="subtitle has-text-weight-bold">Categoria: {$article->getCategory()}</p>
                             <p class="subtitle has-text-weight-bold">Genere: {$article->getGenre()}</p>
                         </div>
