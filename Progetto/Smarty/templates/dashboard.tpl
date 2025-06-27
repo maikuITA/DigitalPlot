@@ -161,7 +161,7 @@
                         <th>Genere</th>
                         <th>Leggi</th>
                         <th>Approva</th>
-                        <th>Elimina</th>
+                        <th>Scarta</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -174,8 +174,8 @@
                                     <td>{$article->getCategory()}</td>
                                     <td>{$article->getGenre()}</td>
                                     <td><a class="has-text-link" href="/article/{$article->getId()}" >Leggi</a></td>
-                                    <td><a class="has-text-success" href="/article/{$article->getId()}" >Approva</a></td>
-                                    <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
+                                    <td><a class="has-text-success" href="/approve/{$article->getId()}" >Approva</a></td>
+                                    <td><a class="has-text-danger" href="/decline/{$article->getId()}"> Scarta</a></td>
                                 </tr>           
                         {/foreach}
                     {/if}        

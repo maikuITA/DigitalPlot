@@ -22,6 +22,10 @@ class CError {
                 VError::render(errore: "Articolo vuoto", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
             } elseif ($type === 5){
                 VError::render(errore: "L'immagine non è stata caricata correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+            } elseif ($type === 6){
+                VError::render(errore: "L'articolo non è stato approvato correttamente", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege() , isLogged: true, type: $type);
+            } elseif ($type === 7){
+                VConfirm::render(confirmMessage: "L'articolo non è stato scartato correttamente",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged:true, type: $type);
             }
         } else {
             VError::render(errore: "Utente non loggato", isLogged: false, type: $type);

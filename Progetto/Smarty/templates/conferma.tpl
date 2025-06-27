@@ -112,6 +112,14 @@
                     <a class="subtitle has-text-link" href="/profile">
                         Grazie per aver scelto DigitalPlot! </br> Clicca qui per tornare alla pagina di accesso.
                     </a>
+                {elseif $type === 6}
+                    <a class="subtitle has-text-link" href="/dashboard">
+                        Clicca qui per tornare alla dashboard.
+                    </a>
+                {elseif $type === 7}
+                    <a class="subtitle has-text-link" href="/dashboard">
+                        Clicca qui per tornare alla dashboard.
+                    </a>
                 {/if}
             {else}
                 <a class="subtitle has-text-link" href="/profile">

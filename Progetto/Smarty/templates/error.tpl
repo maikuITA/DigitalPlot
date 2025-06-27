@@ -119,6 +119,14 @@
                 <a class="subtitle has-text-link" href="/profile">
                     Clicca qui per tornare alla tua pagina profilo.
                 </a>
+            {elseif $type === 6} 
+                <a class="subtitle has-text-link" href="/dashboard">
+                    Clicca qui per tornare alla dashboard.
+                </a>
+            {elseif $type === 7}
+                    <a class="subtitle has-text-link" href="/dashboard">
+                        Clicca qui per tornare alla dashboard.
+                    </a>
             {/if}
         </div>
     </div>

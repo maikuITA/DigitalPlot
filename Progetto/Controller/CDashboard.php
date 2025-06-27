@@ -19,6 +19,24 @@ class CDashboard{
         }
     }
 
+    public static function approve(?int $idArticle){
+        $approvedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', APPROVED);
+        if ($approvedArticle){
+            header('Location: https://digitalplot.altervista.org/confirm/6');
+        } else {
+            header('Location: https://digitalplot.altervista.org/error/6');
+        }
+    }
+
+    public static function refuse(?int $idArticle){
+        $refusedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', REFUSED);
+        if ($refusedArticle){
+            header('Location: https://digitalplot.altervista.org/confirm/7');
+        } else {
+            header('Location: https://digitalplot.altervista.org/error/7');
+        }
+    }
+
     /**
      * Retrives all the information for the dashboard
      */

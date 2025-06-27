@@ -22,6 +22,10 @@ class CConfirm{
                 VConfirm::render( confirmMessage:"Grazie ". $user->getUsername() . " per esserti abbonato!" ,plotPoints: $user->getPlotCard()->getPoints(), proPic:$user->getEncodedData(), privilege:$user->getPrivilege(), isLogged:true,type:$type);
             } elseif ($type === 5){
                 VConfirm::render(confirmMessage: "Arrivederci!",plotPoints: 0, proPic: null , privilege: 0 ,isLogged:false, type: $type);
+            } elseif ($type === 6){
+                VConfirm::render(confirmMessage: "L'articolo è stato approvato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged:true, type: $type);
+            } elseif ($type === 7){
+                VConfirm::render(confirmMessage: "L'articolo è stato scartato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged:true, type: $type);
             }
         } else {
             VConfirm::render(confirmMessage: "Arrivederci!", plotPoints:0, proPic: null ,privilege: BASIC,isLogged:false, type: $type);        
