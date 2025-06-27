@@ -329,14 +329,13 @@
 <script src="/Progetto/Smarty/js/uploadFile.js"></script>
 <script src="/Progetto/Smarty/js/uploadArticle.js"></script>
 {if $modify === true}
-    {literal}
+    
     <script>
-        const initialContent = {/literal}"{$content|escape:'js'}"{literal};
+        const initialContent ="{$content|escape:'js'}";
 
-        const campoHidden = document.getElementById('contenuto-articolo');
         quill.root.innerHTML = initialContent;
     </script>
-    {/literal}
+    
 {/if}
 
 
