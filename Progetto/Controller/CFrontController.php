@@ -29,6 +29,8 @@ class CFrontController {
         'logout' => ['CUser', 'logout'],
         'search' => ['CSearch', 'takeValueArticle'],
         'article' => ['CArticle', 'showArticle'],
+        'approve' => ['CDashboard', 'approve'],
+        'refuse' => ['CDashboard', 'refuse'],
         'newArticle' => ['CArticle', 'newArticle'],
         'saveArticle' => ['CArticle', 'saveArticle'],
         'dropArticle'=> ['CArticle', 'dropArticle'],

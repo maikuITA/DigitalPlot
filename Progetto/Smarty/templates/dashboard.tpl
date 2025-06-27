@@ -174,8 +174,8 @@
                                     <td>{$article->getCategory()}</td>
                                     <td>{$article->getGenre()}</td>
                                     <td><a class="has-text-link" href="/article/{$article->getId()}" >Leggi</a></td>
-                                    <td><a class="has-text-success" href="/approve/{$article->getId()}" >Approva</a></td>
-                                    <td><a class="has-text-danger" href="/decline/{$article->getId()}"> Scarta</a></td>
+                                    <td><a class="has-text-success" href="/approve/{$article->getId()}" > Approva</a></td>
+                                    <td><a class="has-text-danger" href="/refuse/{$article->getId()}"> Scarta </a></td>
                                 </tr>           
                         {/foreach}
                     {/if}        
