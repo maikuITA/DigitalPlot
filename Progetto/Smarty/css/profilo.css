@@ -1,14 +1,11 @@
 .body-container {
     height: 100%;
-    max-height: max-content;
     width: 100%;
-    max-width: max-content;
-    margin-top: 50px;
-    margin-left: calc((100vw / 2) - 300px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .card {

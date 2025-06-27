@@ -87,54 +87,6 @@
             {/if}
         </div>
     </header>
-    <div class="absolute-left">
-        <div class="card yes">
-            <header class="card-header">
-                <p class="card-header-title">
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-hashtag" aria-hidden="true"></i>
-                    </span>
-                    Collegamenti
-                </p>
-            </header>
-            <div class="card-content">
-                <div class="content">
-                    <table class="fixed">
-                        <tr>
-                            <td>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
-                                </span>
-                                <a href="#profile" class="has-text-link">Profilo</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
-                                </span>
-                                <a href="#articles" class="has-text-link">Articoli</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
-                                </span>
-                                <a href="#readings" class="has-text-link">Letture</a>
-                            </td>
-                        </tr>
-                        <td>
-                                <span class="icon is-small is-left">
-                                    <i class="fa fa-hashtag" aria-hidden="true"></i>
-                                </span>
-                                <a href="#reviews" class="has-text-link">Commenti</a>
-                            </td>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="body-container">
         <div class="card">
             <div class="columns">
