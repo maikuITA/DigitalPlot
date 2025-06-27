@@ -65,7 +65,7 @@ class EArticle{
             $sum += $review->getEvaluate();
             $count++;
         }
-        return $count > 0 ? $sum / $count : 0;
+        return $count > 0 ? number_format(($sum / $count), 2) : 0;
     }
 
 

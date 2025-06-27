@@ -72,10 +72,11 @@ class CUser{
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
         if(self::isSubbed()){
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege());
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege(),);
         }
         else{
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege());
+            $remaningReadings = MAXREADINGS - $user->countReadings();
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege(), remaningReadings: $remaningReadings);
         }
     }
 
@@ -87,7 +88,7 @@ class CUser{
      */
     public static function guest(): void {
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-        VUser::home(articles: $articles);   
+        VUser::home(articles: $articles , privilege: -1);   
     }
 
     /**

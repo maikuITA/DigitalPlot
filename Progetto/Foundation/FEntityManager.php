@@ -206,8 +206,7 @@ class FEntityManager {
             $query->setParameter('stat', APPROVED);
             $resultpart = $query->getResult();
             shuffle($resultpart); // Shuffle the array to get a random order
-            array_slice($resultpart, 0, $articlesNum); // Get the first $articlesNum elements
-            return $resultpart;
+            return array_slice($resultpart, 0, $articlesNum); // Get the first $articlesNum elements
         }catch(Exception $e) {
             ULogSys::toLog('Error -> ' . $e->getMessage(), true);
             return null;
