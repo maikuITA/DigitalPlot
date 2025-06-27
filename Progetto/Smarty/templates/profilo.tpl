@@ -140,7 +140,7 @@
             <button class="button is-link is-rounded is-outlined mt-5">
                 <span> 
                     <i class='fas fa-pen'></i> 
-                    <a href="/modifyProfile">  Modifica profilo </a>
+                    <a href="/editProfile">  Modifica profilo </a>
                 </span>
             </button>  
         </div>

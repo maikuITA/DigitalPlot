@@ -20,7 +20,7 @@ class CFrontController {
         'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
         'profile' => ['CUser', 'goToProfile'],
-        'modifyProfile' => ['CUser', 'modifyProfile'],
+        'editProfile' => ['CUser', 'editProfile'],
         'applyModify' => ['CUser', 'applyModify'],
         'uploadAvatar' => ['CUser', 'uploadAvatar'],
         'dbInit'  => ['CService', 'dbInit'],

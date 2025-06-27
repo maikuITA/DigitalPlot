@@ -262,10 +262,10 @@ class CUser{
         }
     }
 
-    public static function modifyProfile(){
+    public static function editProfile(){
         if(CUser::isLogged()){
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            VProfile::modifyProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+            VProfile::editProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
         }
     }
 
