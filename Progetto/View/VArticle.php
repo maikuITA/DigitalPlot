@@ -50,6 +50,7 @@ class VArticle{
         $smarty->assign('proPic', $proPic);
         $smarty->assign('article', $article);
         $smarty->assign('modify', $modify);
+        $smarty->assign('content', $article->getHtmlContent());
         $smarty->display('nuovo.tpl');
     }
 

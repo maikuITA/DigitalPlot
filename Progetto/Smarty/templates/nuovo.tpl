@@ -333,7 +333,7 @@
     <script>
         const initialContent ="{$content|escape:'js'}";
 
-        quill.root.innerHTML = initialContent;
+        window.quill.root.innerHTML = initialContent;
     </script>
     
 {/if}

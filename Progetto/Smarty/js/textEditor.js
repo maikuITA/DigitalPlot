@@ -13,7 +13,7 @@ const quill = new Quill('#editor-container', {
       ]
     }
   });
-
+  window.quill = quill;
 
   document.getElementById('form-articolo').addEventListener('submit', function (e) {
   const contenutoHTML = quill.root.innerHTML;
