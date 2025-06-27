@@ -27,7 +27,8 @@ class CArticle{
                 }
             }
             CArticle::addListReadArticles($idArticolo);
-            VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter(), (MAXREADINGS - $user->countReadings()));
+            $remaningReadings = MAXREADINGS - $user->countReadings();
+            VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter(), $remaningReadings);
         }else{
             header('Location: https://digitalplot.altervista.org/auth');
             exit();
