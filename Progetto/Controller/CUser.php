@@ -273,7 +273,8 @@ class CUser{
         if(UServer::getRequestMethod() === 'POST'){
             if(CUser::isLogged()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                if(UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && UHTTPMethods::post('old-password') === $user->getPassword()){
+
+                if(UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'),$user->getPassword())){
                     $user->setUsername(UHTTPMethods::post('username'));
                     $user->setPassword(UHTTPMethods::post('new-password'));
                     $user->setBiography(UHTTPMethods::post('biography'));

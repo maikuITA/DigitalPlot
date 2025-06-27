@@ -84,7 +84,7 @@
     </header>
     <div class="body-container">
         <div class="card">
-            <form action="/confirmEditProfile" method="post" class="form">
+            <form action="/confirmEditProfile" method="POST" class="form">
                 <label class="title is-3" for="login-form">Modifica i tuoi dati</label>
                 <div class="field">
                     <p class="control has-icons-left alr">
@@ -95,7 +95,7 @@
                     </p>
                 </div>
                 <div class="field">
-                    <textarea class="textarea" name="review" id="c_body" placeholder="{$username->getBiography()}"></textarea>
+                    <textarea class="textarea" name="review" id="c_body" placeholder="{$user->getBiography()}"></textarea>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left alr">
@@ -123,10 +123,10 @@
                 </div>
                 <div class="field">
                     <div class="control alr">
-                        <button class="button is-link is-rounded is-outlined mt-5">
+                        <button class="button is-link is-rounded is-outlined mt-5" type="submit">
                             <span> 
                                 <i class='fas fa-pen'></i> 
-                                <a href="/editProfile">Modifica profilo</a>
+                                <a>Modifica profilo</a>
                             </span>
                         </button>  
                     </div>
