@@ -16,6 +16,12 @@
 
 .card-content {
   flex-grow: 1;
+  max-height: 300px;
+}
+.card-content > .subtitle {
+  flex-grow: 1;
+  max-height: 190px;
+  overflow: auto;
 }
 
 .card {
