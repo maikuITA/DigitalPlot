@@ -85,22 +85,27 @@
             {/if}
         </div>
     </header>
-    <div class="container">
-        <label class="title is-3">
-            {if $isLogged === true}
-                Scelti per {$username} 
-                {if $privilege eq 0} 
-                    </br> Articoli che puoi ancora leggere: 
-                    {if $remaningReadings < 0}
-                        0
-                    {else}
-                        {$remaningReadings}
-                    {/if}                    
+    <div class="columns is-vcentered">
+        <div class="column has-text-left mt-5">
+            <label class="title is-3 mr-10">
+                {if $isLogged === true}
+                    Scelti per {$username} 
+                {else}
+                    Scelti per te
                 {/if}
-            {else}
-                Scelti per te
-            {/if}
-        </label>
+            </label>
+        </div>
+        {if $privilege eq 0} 
+            <div class="column has-text-right mt-5 ml-0"> 
+                <label class="title is-3"> puoi ancora leggere 
+                {if $remaningReadings < 0}
+                    0 articoli
+                {else}
+                    {$remaningReadings} articoli
+                {/if}
+                </label>   
+            </div>                 
+        {/if}
     </div>
     <div class="container" id="container">
         {if isset($articles)}

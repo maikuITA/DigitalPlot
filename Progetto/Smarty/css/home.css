@@ -28,11 +28,27 @@
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
- body{
-  background-color: #fef5e7;
-  background-image: url('https://images.pexels.com/photos/8407028/pexels-photo-8407028.jpeg');
-  background-size: cover;         /* Scala l'immagine per coprire tutto lo schermo */
-  background-repeat: no-repeat;   /* Non ripetere */
-  background-position: center;    /* Centra l'immagine */
-  background-attachment: fixed;   /* (facoltativo) effetto paralasse */
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  filter: blur(5px);
+  z-index: -1;
+}
+
