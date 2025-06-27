@@ -95,7 +95,7 @@
                     </p>
                 </div>
                 <div class="field">
-                    <textarea class="textarea" name="review" id="c_body" placeholder="{$user->getBiography()}"></textarea>
+                    <textarea class="textarea" name="biography" id="c_body" placeholder="{$user->getBiography()}"></textarea>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left alr">
