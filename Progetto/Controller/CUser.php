@@ -262,6 +262,43 @@ class CUser{
         }
     }
 
+    public static function modifyProfile(){
+        if(CUser::isLogged()){
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            VProfile::modifyProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+        }
+    }
+
+    public static function applyModify(){
+        if(UServer::getRequestMethod() === 'POST'){
+            if(CUser::isLogged()){
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                $user->setUsername(UHTTPMethods::post('username'));
+                $user->setPassword(UHTTPMethods::post('password'));
+                $user->setName(UHTTPMethods::post('name'));
+                $user->setSurname(UHTTPMethods::post('surname'));
+                $user->setBirthdate(UHTTPMethods::post('birthdate'));
+                $user->setCountry(UHTTPMethods::post('country'));
+                $user->setBirthplace(UHTTPMethods::post('birthplace'));
+                $user->setProvince(UHTTPMethods::post('province'));
+                $user->setZipCode(UHTTPMethods::post('zipCode'));
+                $user->setStreetAddress(UHTTPMethods::post('streetAddress'));
+                $user->setStreetNumber(UHTTPMethods::post('streetNumber'));
+                $user->setEmail(UHTTPMethods::post('email'));
+                $user->setTelephone(UHTTPMethods::post('telephone'));
+                $user->setBiography(UHTTPMethods::post('biography'));
+                FPersistentManager::getInstance()->saveInDb($user);
+                header('Location: https://digitalplot.altervista.org/confirm/8');
+            }else{
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit;
+            }
+        }else{
+            header('Location: https://digitalplot.altervista.org/error/404');
+            exit;
+        }
+        
+    }
 
 
 

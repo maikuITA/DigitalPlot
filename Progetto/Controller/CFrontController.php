@@ -21,6 +21,7 @@ class CFrontController {
         'registrazione' => ['CUser', 'register'],
         'profile' => ['CUser', 'goToProfile'],
         'modifyProfile' => ['CUser', 'modifyProfile'],
+        'applyModify' => ['CUser', 'applyModify'],
         'uploadAvatar' => ['CUser', 'uploadAvatar'],
         'dbInit'  => ['CService', 'dbInit'],
         'logs' => ['CService', 'logs'],
