@@ -103,6 +103,14 @@
                     </p>
                 </div>
                 <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Conferma la tua password" name="password2" id="password2" required>
+                        <span class="icon is-small is-left has-link">
+                        <i class='fas fa-key'></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
                     <div class="control alr">
                         <button class="button is-link is-rounded is-outlined mt-5">
                             <span> 
@@ -111,14 +119,6 @@
                             </span>
                         </button>  
                     </div>
-                </div>
-                <div class="field">
-                    <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Conferma la tua password" name="password2" id="password2" required>
-                        <span class="icon is-small is-left has-link">
-                        <i class='fas fa-key'></i>
-                        </span>
-                    </p>
                 </div>
             </form>
         </div>
