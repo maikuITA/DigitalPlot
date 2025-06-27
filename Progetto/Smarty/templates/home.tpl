@@ -89,6 +89,14 @@
         <label class="title is-3">
             {if $isLogged === true}
                 Scelti per {$username}
+                {if $privilege eq 0} 
+                    Articoli che puoi ancora leggere: 
+                    {if $remaningReadings < 0}
+                        0
+                    {else}
+                        {$remaningReadings}
+                    {/if}                    
+                {/if}
             {else}
                 Scelti per te
             {/if}

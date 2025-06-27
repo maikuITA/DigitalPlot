@@ -19,13 +19,15 @@ class CArticle{
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            if(CUser::isSubbed()){
-                CArticle::addListReadArticles($idArticolo);
-                VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter());
+            if(!CUser::isSubbed()){
+                $numLetture = $user->countReadings();
+                if($numLetture >= MAXREADINGS){
+                    header('Location: https://digitalplot.altervista.org/subscribe');
+                    exit;
+                }
             }
-            else{
-                VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter());
-            }
+            CArticle::addListReadArticles($idArticolo);
+            VArticle::showArticle(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $article, $article->getWriter(), MAXREADINGS - $user->countReadings());
         }else{
             header('Location: https://digitalplot.altervista.org/auth');
             exit();
@@ -45,29 +47,25 @@ class CArticle{
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            if(CUser::isSubbed()){
-                $readings = $user->getReaddenArticles();
-                $count = 0;
-                foreach ($readings as $article){
-                    if ($article->getId() === $idArticolo){
-                        $count++;
-                    }
-                }
-                if ($count === 0){
-                    $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
-                    $reading = new EReading($user, $article);
-                    FPersistentManager::getInstance()->saveInDb($reading);
-                    $user->addReading($reading);
-                    $idPlotCard = $user->getPlotCard()->getCod();
-                    $user->getPlotCard()->addPoints(POINTS);
-                    $newPoints = $user->getPlotCard()->getPoints();
-                    FPersistentManager::getInstance()->updateObject(EPlotcard::class, $idPlotCard, 'points', $newPoints);
+            
+            $readings = $user->getReaddenArticles();
+            $count = 0;
+            foreach ($readings as $article){
+                if ($article->getId() === $idArticolo){
+                    $count++;
                 }
             }
-            else{
-                header('Location: https://digitalplot.altervista.org/subscribe');
-                exit();
+            if ($count === 0){
+                $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
+                $reading = new EReading($user, $article);
+                FPersistentManager::getInstance()->saveInDb($reading);
+                $user->addReading($reading);
+                $idPlotCard = $user->getPlotCard()->getCod();
+                $user->getPlotCard()->addPoints(POINTS);
+                $newPoints = $user->getPlotCard()->getPoints();
+                FPersistentManager::getInstance()->updateObject(EPlotcard::class, $idPlotCard, 'points', $newPoints);
             }
+            
         }else{
             header('Location: https://digitalplot.altervista.org/auth');
             exit();
