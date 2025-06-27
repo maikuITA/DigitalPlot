@@ -88,9 +88,9 @@
     <div class="container">
         <label class="title is-3">
             {if $isLogged === true}
-                Scelti per {$username}
+                Scelti per {$username} 
                 {if $privilege eq 0} 
-                    Articoli che puoi ancora leggere: 
+                    </br> Articoli che puoi ancora leggere: 
                     {if $remaningReadings < 0}
                         0
                     {else}
