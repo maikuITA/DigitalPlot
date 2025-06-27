@@ -26,6 +26,8 @@ class CConfirm{
                 VConfirm::render(confirmMessage: "L'articolo è stato approvato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged: true, type: $type);
             } elseif ($type === 7){
                 VConfirm::render(confirmMessage: "L'articolo è stato scartato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged: true, type: $type);
+            } elseif ($type === 8){
+                VConfirm::render(confirmMessage: "Il profilo è stato modificato con successo!", plotPoints: 0, proPic: null , privilege: 0 ,isLogged: true, type: $type);
             }
         } else {
             VConfirm::render(confirmMessage: "Arrivederci!", plotPoints:0, proPic: null ,privilege: BASIC,isLogged:false, type: $type);        
