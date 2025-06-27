@@ -91,7 +91,6 @@
             <p class="title">
                 {$confirmMessage}
             </p>
-            {if $isLogged === false}
                 {if $type === 1}
                 <a class="subtitle has-text-link" href="/profile">
                     Clicca qui per tornare alla pagine profile!
@@ -121,11 +120,6 @@
                         Clicca qui per tornare alla dashboard.
                     </a>
                 {/if}
-            {else}
-                <a class="subtitle has-text-link" href="/profile">
-                    Grazie per aver scelto DigitalPlot! </br> Clicca qui per tornare alla pagina profilo
-                </a>
-            {/if}
         </div>
     </div>
 </body>

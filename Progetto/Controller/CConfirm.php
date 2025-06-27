@@ -23,9 +23,9 @@ class CConfirm{
             } elseif ($type === 5){
                 VConfirm::render(confirmMessage: "Arrivederci!",plotPoints: 0, proPic: null , privilege: 0 ,isLogged:false, type: $type);
             } elseif ($type === 6){
-                VConfirm::render(confirmMessage: "L'articolo è stato approvato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged:true, type: $type);
+                VConfirm::render(confirmMessage: "L'articolo è stato approvato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged: true, type: $type);
             } elseif ($type === 7){
-                VConfirm::render(confirmMessage: "L'articolo è stato scartato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged:true, type: $type);
+                VConfirm::render(confirmMessage: "L'articolo è stato scartato!",plotPoints: 0, proPic: null , privilege: ADMIN ,isLogged: true, type: $type);
             }
         } else {
             VConfirm::render(confirmMessage: "Arrivederci!", plotPoints:0, proPic: null ,privilege: BASIC,isLogged:false, type: $type);        
