@@ -15,7 +15,7 @@ class VArticle{
      * @param EUser $writer The writer of the article.
      * @return void
      */
-    public static function showArticle(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC, EArticle $article, EUser $writer, int $remaningReadings = 0): void {
+    public static function showArticle(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC, EArticle $article, EUser $writer, int $remaningReadings): void {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> lettura.tpl");
         $smarty->assign('isLogged', $isLogged);
