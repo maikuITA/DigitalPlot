@@ -125,89 +125,35 @@ span {
 }
 
 @media screen and (max-width: 768px) {
-
-    body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    header {
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
-        margin-top: 0;
-    }
-
     .body-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: fit-content;
-        max-height: max-content;
         margin-left: 0;
         margin-top: 20px;
     }
-
-    .absolute-left {
-        position: inherit;
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .absolute-left > .card {
-        width: 100%;
-        max-width: 400px;
-    }
-
+    
     .card {
-        max-width: 400px;
-    }
-
-    .card.content, .content {
         width: 100%;
-        max-width: 400px;
-        height: min-content;
+        max-width: 100%;
+        padding: 10px;
     }
-
+    
     .card.yes {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .column.is-two-fifth.c, .column.is-two-fifth.cs {
         flex-direction: column;
         align-items: center;
-        width: 100%;
-        max-width: 300px;
     }
-
-    .card.articles {
-        max-width: 400px;
-        overflow:scroll;
-    }
-
-    .card-content {
-        width: 100%;
-        max-width: 400px;
-        height: min-content;
-    }
-
-    .columns {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .fixed {
-        width: 100%;
-        max-width: 400px;
+    
+    .column.is-two-fifth.cs {
+        gap: 5px;
     }
 }
 
 
 .profilePictureU {
-  width: 150px;       /* o la dimensione che usi */
-  height: 150px;
   object-fit: cover;
   border-radius: 50%; /* cerchio */
 }
@@ -227,9 +173,18 @@ span {
   position: relative;
   display: inline-block;
   cursor: pointer;
+  width: 128px;
+  height: 128px;
 }
 
 .avatar-wrapper:hover .camera-icon {
   background: rgba(0, 0, 0, 0.8);
   color: #ffd700; /* oro */
+}
+
+#avatarPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
