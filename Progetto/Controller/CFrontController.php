@@ -66,7 +66,7 @@ class CFrontController {
                     call_user_func_array([$controller, $method], $params);
                 /*}catch(Exception $e){
                     ULogSys::toLog("Error front controller: ". $e->getMessage());
-                    header('Location: https://digitalplot.altervista.org/error');
+                    header('Location: https://digitalplot.altervista.org/error/404');
                     exit;
                 }*/
             } else {
