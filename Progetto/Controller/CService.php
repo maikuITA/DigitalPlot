@@ -45,6 +45,7 @@ class CService{
         $zero = self::printCounts($allData);
         if ($zero === 0){
             ULogSys::toLog("Database has been populated successfully.");
+            header('Location: https://digitalplot.altervista.org/home');
         } else {
             ULogSys::toLog("Waiting for the database to be populated...");
             BasicEntry::populateDb();
