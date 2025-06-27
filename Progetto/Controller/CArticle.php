@@ -245,7 +245,7 @@ class CArticle{
                 if ($dropResult){
                     ULogSys::toLog("MANNAGIA LA SACRA", true);
                     FPersistentManager::getInstance()->saveInDb($article);
-                    header('Location: https://digitalplot.altervista.org/confirm');
+                    header('Location: https://digitalplot.altervista.org/confirm/2');
                     exit();
                 } else {
                     header('Location: https://digitalplot.altervista.org/error/404');

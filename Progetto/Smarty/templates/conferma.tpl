@@ -119,6 +119,10 @@
                     <a class="subtitle has-text-link" href="/dashboard">
                         Clicca qui per tornare alla dashboard.
                     </a>
+                {elseif $type === 8}
+                <a class="subtitle has-text-link" href="/profile">
+                    Clicca qui per tornare alla pagina profilo.
+                </a>
                 {/if}
         </div>
     </div>
