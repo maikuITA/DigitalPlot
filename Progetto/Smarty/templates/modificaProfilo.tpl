@@ -87,17 +87,22 @@
             <form action="/confirmEditProfile" method="POST" class="form">
                 <label class="title is-3" for="login-form">Modifica i tuoi dati</label>
                 <div class="field">
+                    <a class="subtitle is-6 has-text-link">Username</a>
                     <p class="control has-icons-left alr">
-                        <input class="input" type="text" placeholder="{$user->getUsername()}" name="username" id="username" required>
+                        <input class="input" type="text" name="username" id="username" value="{$user->getUsername()}" required>
                         <span class="icon is-small is-left has-link">
                         <i class="fa fa-user-circle"></i>
                         </span> 
                     </p>
                 </div>
                 <div class="field">
-                    <textarea class="textarea" name="biography" id="c_body" placeholder="{$user->getBiography()}"></textarea>
+                    <a class="subtitle is-6 has-text-link">Bio</a>
+                    <p class="control has-icons-left alr">
+                        <textarea class="textarea" name="biography" id="c_body">{$user->getBiography()}</textarea>
+                    </p>
                 </div>
                 <div class="field">
+                    <a class="subtitle is-6 has-text-link">Old password</a>
                     <p class="control has-icons-left alr">
                         <input class="input" type="password" placeholder="Vecchia password" name="old-password" required>
                         <span class="icon is-small is-left has-link">
@@ -106,6 +111,7 @@
                     </p>
                 </div>
                 <div class="field">
+                    <a class="subtitle is-6 has-text-link">New password</a>
                     <p class="control has-icons-left alr">
                         <input class="input" type="password" placeholder="Nuova password" name="new-password" required>
                         <span class="icon is-small is-left has-link">
@@ -114,8 +120,9 @@
                     </p>
                 </div>
                 <div class="field">
+                    <a class="subtitle is-6 has-text-link">Confirm new password</a>
                     <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Conferma nuova password" name="new-password2" id="password2" required>
+                        <input class="input" type="password" placeholder="Conferma password" name="new-password2" id="password2" required>
                         <span class="icon is-small is-left has-link">
                             <i class='fas fa-key'></i>
                         </span>
