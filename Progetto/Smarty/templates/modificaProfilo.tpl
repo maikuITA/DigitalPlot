@@ -83,39 +83,31 @@
         </div>
     </header>
     <div class="body-container">
-        <div class="content" id="content">
-            <div class="tabs is-medium is-centered">
-                <ul>
-                    <li id="log" class="is-active"><a onclick="showLogin()"><i class="fa fa-key fa-fw"></i>Login</a></li>
-                    <li id="reg"><a onclick="showRegis()"><i class="fa fa-book fa-fw" aria-hidden="true"></i>Registrazione</a></li>
-                </ul>
-            </div>
-            <div class="container">
-                <form action="/checkLogin" method="post" class="form" id="login-form">
-                    <label class="title is-3" for="login-form">Accedi al tuo account</label>
-                    <div class="field">
-                        <p class="control has-icons-left alr">
-                            <input class="input" type="text" placeholder="Username" name="username" id="username" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fa fa-user-circle"></i>
-                            </span> 
-                        </p>
+        <div class="card">
+            <form action="/checkLogin" method="post" class="form" id="login-form">
+                <label class="title is-3" for="login-form">Modifica i tuoi dati</label>
+                <div class="field">
+                    <p class="control has-icons-left alr">
+                        <input class="input" type="text" placeholder="Username" name="username" id="username" required>
+                        <span class="icon is-small is-left has-link">
+                        <i class="fa fa-user-circle"></i>
+                        </span> 
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left alr">
+                        <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
+                        <span class="icon is-small is-left has-link">
+                        <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <div class="control alr">
+                        <button type="submit" class="button is-link is-fullwidth">Accedi</button>
                     </div>
-                    <div class="field">
-                        <p class="control has-icons-left alr">
-                            <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
-                            <span class="icon is-small is-left has-link">
-                            <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <div class="control alr">
-                            <button type="submit" class="button is-link is-fullwidth">Accedi</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>
