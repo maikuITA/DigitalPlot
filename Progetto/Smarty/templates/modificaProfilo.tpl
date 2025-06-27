@@ -95,18 +95,29 @@
                     </p>
                 </div>
                 <div class="field">
+                    <textarea class="textarea" name="review" id="c_body" placeholder="BIOGRAFIA QUA"></textarea>
+                </div>
+                <div class="field">
                     <p class="control has-icons-left alr">
-                        <input class="input" type="password" placeholder="Inserisci la tua password" name="password" required>
+                        <input class="input" type="password" placeholder="Vecchia password" name="old-password" required>
                         <span class="icon is-small is-left has-link">
-                        <i class="fas fa-lock"></i>
+                            <i class='fas fa-key'></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left alr">
+                        <input class="input" type="password" placeholder="Nuova password" name="new-password" required>
+                        <span class="icon is-small is-left has-link">
+                            <i class='fas fa-key'></i>
                         </span>
                     </p>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Conferma la tua password" name="password2" id="password2" required>
+                        <input class="input" type="password" placeholder="Conferma nuova password" name="new-password2" id="password2" required>
                         <span class="icon is-small is-left has-link">
-                        <i class='fas fa-key'></i>
+                            <i class='fas fa-key'></i>
                         </span>
                     </p>
                 </div>
@@ -115,7 +126,7 @@
                         <button class="button is-link is-rounded is-outlined mt-5">
                             <span> 
                                 <i class='fas fa-pen'></i> 
-                                <a href="/editProfile">  Modifica profilo </a>
+                                <a href="/editProfile">Modifica profilo</a>
                             </span>
                         </button>  
                     </div>
