@@ -23,3 +23,6 @@ define('ADMIN', 3);
 define('APPROVED', 'approvato');
 define('PENDING', 'in attesa');
 define('REFUSED', 'rifiutato');
+
+// max readings for BASIC
+define('MAXREADINGS', 8);
