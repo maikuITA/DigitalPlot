@@ -273,20 +273,14 @@ class CUser{
         if(UServer::getRequestMethod() === 'POST'){
             if(CUser::isLogged()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                $user->setUsername(UHTTPMethods::post('username'));
-                $user->setPassword(UHTTPMethods::post('password'));
-                $user->setName(UHTTPMethods::post('name'));
-                $user->setSurname(UHTTPMethods::post('surname'));
-                $user->setBirthdate(UHTTPMethods::post('birthdate'));
-                $user->setCountry(UHTTPMethods::post('country'));
-                $user->setBirthplace(UHTTPMethods::post('birthplace'));
-                $user->setProvince(UHTTPMethods::post('province'));
-                $user->setZipCode(UHTTPMethods::post('zipCode'));
-                $user->setStreetAddress(UHTTPMethods::post('streetAddress'));
-                $user->setStreetNumber(UHTTPMethods::post('streetNumber'));
-                $user->setEmail(UHTTPMethods::post('email'));
-                $user->setTelephone(UHTTPMethods::post('telephone'));
-                $user->setBiography(UHTTPMethods::post('biography'));
+                if(UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && UHTTPMethods::post('old-password') === $user->getPassword()){
+                    $user->setUsername(UHTTPMethods::post('username'));
+                    $user->setPassword(UHTTPMethods::post('new-password'));
+                    $user->setBiography(UHTTPMethods::post('biography'));
+                }else{
+                    header('Location: https://digitalplot.altervista.org/editProfile');
+                    exit;
+                }
                 FPersistentManager::getInstance()->saveInDb($user);
                 header('Location: https://digitalplot.altervista.org/confirm/8');
             }else{

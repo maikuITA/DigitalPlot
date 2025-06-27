@@ -88,14 +88,14 @@
                 <label class="title is-3" for="login-form">Modifica i tuoi dati</label>
                 <div class="field">
                     <p class="control has-icons-left alr">
-                        <input class="input" type="text" placeholder="USERNAME QUA" name="username" id="username" required>
+                        <input class="input" type="text" placeholder="{$user->getUsername()}" name="username" id="username" required>
                         <span class="icon is-small is-left has-link">
                         <i class="fa fa-user-circle"></i>
                         </span> 
                     </p>
                 </div>
                 <div class="field">
-                    <textarea class="textarea" name="review" id="c_body" placeholder="BIOGRAFIA QUA"></textarea>
+                    <textarea class="textarea" name="review" id="c_body" placeholder="{$username->getBiography()}"></textarea>
                 </div>
                 <div class="field">
                     <p class="control has-icons-left alr">
