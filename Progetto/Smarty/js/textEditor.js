@@ -1,5 +1,5 @@
 console.log("textEditor loaded");
-
+//creazione dell'oggetto quill, che mi permette di avere il text editor
 const quill = new Quill('#editor-container', {
     theme: 'snow',
     placeholder: 'Scrivi il tuo articolo qui...',
@@ -13,8 +13,10 @@ const quill = new Quill('#editor-container', {
       ]
     }
   });
+  //rendo l'oggetto quill reperibile globalmente  
+  window.quill = quill;
 
-
+  //faccio in modo che, quando faccio submit, il contenuto del text editor viene ripreso e inviato correttamente
   document.getElementById('form-articolo').addEventListener('submit', function (e) {
   const contenutoHTML = quill.root.innerHTML;
   const contenutoTesto = quill.getText().trim();

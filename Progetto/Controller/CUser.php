@@ -273,17 +273,32 @@ class CUser{
         if(UServer::getRequestMethod() === 'POST'){
             if(CUser::isLogged()){
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-
+                if(UHTTPMethods::post('username') === ""){
+                    $username = $user->getUsername();
+                }
+                else{
+                    $username = UHTTPMethods::post('username');
+                }
+                if(UHTTPMethods::post('biography') === ""){
+                    $biography = $user->getBiography();
+                }else{
+                    $biography = UHTTPMethods::post('biography');
+                }
                 if(UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'),$user->getPassword())){
-                    $user->setUsername(UHTTPMethods::post('username'));
+                    $user->setUsername($username);
                     $user->setPassword(UHTTPMethods::post('new-password'));
-                    $user->setBiography(UHTTPMethods::post('biography'));
+                    $user->setBiography($biography);
+                    FPersistentManager::getInstance()->saveInDb($user);
+                    header('Location: https://digitalplot.altervista.org/confirm/8');
+                }elseif(UHTTPMethods::post('old-password') === ''){
+                    $user->setUsername($username);
+                    $user->setBiography($biography);
+                    FPersistentManager::getInstance()->saveInDb($user);
+                    header('Location: https://digitalplot.altervista.org/confirm/8');
                 }else{
                     header('Location: https://digitalplot.altervista.org/editProfile');
                     exit;
                 }
-                FPersistentManager::getInstance()->saveInDb($user);
-                header('Location: https://digitalplot.altervista.org/confirm/8');
             }else{
                 header('Location: https://digitalplot.altervista.org/auth');
                 exit;
