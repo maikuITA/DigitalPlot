@@ -84,11 +84,11 @@
     </header>
     <div class="body-container">
         <div class="card">
-            <form action="/checkLogin" method="post" class="form" id="login-form">
+            <form action="/confirmEditProfile" method="post" class="form">
                 <label class="title is-3" for="login-form">Modifica i tuoi dati</label>
                 <div class="field">
                     <p class="control has-icons-left alr">
-                        <input class="input" type="text" placeholder="Username" name="username" id="username" required>
+                        <input class="input" type="text" placeholder="{USERNAME QUA}" name="username" id="username" required>
                         <span class="icon is-small is-left has-link">
                         <i class="fa fa-user-circle"></i>
                         </span> 
@@ -104,8 +104,21 @@
                 </div>
                 <div class="field">
                     <div class="control alr">
-                        <button type="submit" class="button is-link is-fullwidth">Accedi</button>
+                        <button class="button is-link is-rounded is-outlined mt-5">
+                            <span> 
+                                <i class='fas fa-pen'></i> 
+                                <a href="/editProfile">  Modifica profilo </a>
+                            </span>
+                        </button>  
                     </div>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Conferma la tua password" name="password2" id="password2" required>
+                        <span class="icon is-small is-left has-link">
+                        <i class='fas fa-key'></i>
+                        </span>
+                    </p>
                 </div>
             </form>
         </div>
