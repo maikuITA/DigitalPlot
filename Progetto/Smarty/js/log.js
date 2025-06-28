@@ -1,35 +1,39 @@
-let primaEsecuzioneErrori = true;
-const div1 = document.getElementById('contenuto-file-errori');
-
-let primaEsecuzioneEventi = true;
-const div2 = document.getElementById('contenuto-file-eventi');
-
 console.log('log loaded');
 
+function buildText(text) {
+    let testo = '';
+    text = text.split('\n');
+    text.forEach((riga) => {
+        if (riga.trim() !== '') {
+            testo += riga + '<br>';
+        }
+    });
+    console.log(testo);
+    return testo;
+}
+
 async function aggiornaErrori() {
+    console.log('Aggiorno errori');
     fetch('Progetto/Utility/Logs/errors.log')
         .then((res) => res.text())
         .then((text) => {
-            div1.innerHTML = text.split('\n');
+            console.log(text);
+            document.getElementById('contenuto-file-errori').innerHTML =
+                buildText(text);
         })
         .catch((e) => console.error(e));
-    if (primaEsecuzioneEventi) {
-        div1.scrollTop = div2.scrollHeight;
-        primaEsecuzioneEventi = false;
-    }
 }
 
 async function aggiornaEventi() {
+    console.log('Aggiorno eventi');
     fetch('Progetto/Utility/Logs/events.log')
         .then((res) => res.text())
         .then((text) => {
-            div2.innerHTML = text.split('\n');
+            console.log(text);
+            document.getElementById('contenuto-file-eventi').innerHTML =
+                buildText(text);
         })
         .catch((e) => console.error(e));
-    if (primaEsecuzioneEventi) {
-        div2.scrollTop = div2.scrollHeight;
-        primaEsecuzioneEventi = false;
-    }
 }
 
 // Prima esecuzione

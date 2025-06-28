@@ -32,7 +32,6 @@
             href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
             rel="stylesheet"
         />
-        <script src="/Progetto/Smarty/js/log.js"></script>
     </head>
     <body>
         <header class="header columns">
@@ -160,7 +159,7 @@
                 </div>
             </div>
         </div>
+        <script src="/Progetto/Smarty/js/navburger.js"></script>
+        <script src="/Progetto/Smarty/js/log.js"></script>
     </body>
 </html>
-<script src="/Progetto/Smarty/js/navburger.js"></script>
-<script src="/Progetto/Smarty/js/log.js"></script>
