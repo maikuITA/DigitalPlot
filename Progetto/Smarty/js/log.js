@@ -39,3 +39,13 @@ aggiornaEventi();
 // 5*60*1000 SONO 5 MINUTI
 setInterval(aggiornaErrori, 10 * 1000); // 10 secondi
 setInterval(aggiornaEventi, 10 * 1000); // 10 secondi
+
+document.getElementById('errori-bottom').addEventListener('click', () => {
+    const contenutoErrori = document.getElementById('contenuto-file-errori');
+    contenutoErrori.scrollTop = contenutoErrori.scrollHeight;
+});
+
+document.getElementById('eventi-bottom').addEventListener('click', () => {
+    const contenutoEventi = document.getElementById('contenuto-file-eventi');
+    contenutoEventi.scrollTop = contenutoEventi.scrollHeight;
+});

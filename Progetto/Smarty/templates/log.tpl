@@ -146,7 +146,15 @@
                         <p class="card-header-title">Logs di errore</p>
                     </div>
                     <div class="card-content">
-                        <p class="content" id="contenuto-file-errori"></p>
+                        <div class="content" id="contenuto-file-errori"></div>
+                    </div>
+                    <div class="card-footer">
+                        <button
+                            class="button is-primary is-outlined"
+                            id="errori-bottom"
+                        >
+                            Vai in fondo
+                        </button>
                     </div>
                 </div>
                 <div class="card log">
@@ -154,7 +162,15 @@
                         <p class="card-header-title">Logs di eventi</p>
                     </div>
                     <div class="card-content">
-                        <p class="content" id="contenuto-file-eventi"></p>
+                        <div class="content" id="contenuto-file-eventi"></div>
+                    </div>
+                    <div class="card-footer">
+                        <button
+                            class="button is-primary is-outlined"
+                            id="eventi-bottom"
+                        >
+                            Vai in fondo
+                        </button>
                     </div>
                 </div>
             </div>
