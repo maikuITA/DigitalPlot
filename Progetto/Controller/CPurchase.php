@@ -56,7 +56,7 @@ class CPurchase
             $card = self::getCreditCard();
             $possibleCard = FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $card->getCardNumber());
             // verify if credit card already exists in db, if yes, take the card from it
-            if (isset($possibleCard)) {
+            if (!isset($possibleCard)) {
                 FPersistentManager::getInstance()->saveInDb($card);
             } else {
                 $card = $possibleCard;
