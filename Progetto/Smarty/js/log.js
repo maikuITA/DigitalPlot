@@ -4,9 +4,7 @@ function buildText(text) {
     let testo = '';
     text = text.split('\n');
     text.forEach((riga) => {
-        if (riga.trim() !== '') {
-            testo += riga + '<br>';
-        }
+        testo += riga + '<br>';
     });
     return testo;
 }
