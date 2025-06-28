@@ -59,7 +59,7 @@ class CPurchase
             if (isset($possibleCard)) {
                 FPersistentManager::getInstance()->saveInDb($card);
             } else {
-                $card = FPersistentManager::getInstance()->retrieveObjById(ECreditCard::class, $card->getCardNumber());
+                $card = $possibleCard;
             }
             $purchase =  self::validatePurchase($user, $subscription, $card);
             //calculating discuont and update all object
