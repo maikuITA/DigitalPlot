@@ -1,123 +1,124 @@
 .body-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
 .container {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid rgb(0, 0, 0, 0.1);
-    border-radius: 15px;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 
 .content {
-    width: 30%;
-    height: auto;
-    margin-top: 50px;
-    background-color:white;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid rgb(0, 0, 0, 0.1);
-    border-radius: 15px;
+  width: 30%;
+  height: auto;
+  margin-top: 50px;
+  background-color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 15px;
 }
 
 .alr {
-    width: 100%;
+  width: 100%;
 }
 
 .control {
-    max-width: 250px;
+  max-width: 250px;
 }
 
 .field {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .field .control input {
-    width: 100%;
+  width: 100%;
 }
 
 .input {
-    padding: 15px;
-    width: 100%;
-    height: 40px;
+  padding: 15px;
+  width: 100%;
+  height: 40px;
 }
 
 label {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .form.regis {
-    width: 100%;
-    max-width: 600px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .grigliata {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
 
 .tabs {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
 
 ul {
-    margin: 0px;
-    margin-left: 0px;
+  margin: 0px;
+  margin-left: 0px;
 }
 
 .content ul {
   margin-inline-start: 0em;
 }
 
-.control.has-icons-left.alr, .control.alr {
-    width: 100%;
-    max-width: inherit;
+.control.has-icons-left.alr,
+.control.alr {
+  width: 100%;
+  max-width: inherit;
 }
 
 .field.out .control {
-    width: 100%;
-    max-width: inherit;
+  width: 100%;
+  max-width: inherit;
 }
 
 @media screen and (max-width: 768px) {
-    .body-container {
-        flex-direction: column;
-        align-items: center;
-    }
+  .body-container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .container, .content {
-        width: 90%;
-        max-width: none;
-    }
+  .container,
+  .content {
+    width: 90%;
+    max-width: none;
+  }
 
-    .content {
-        margin-top: 20px;
-        max-width: 400px;
-    }
+  .content {
+    margin-top: 20px;
+    max-width: 400px;
+  }
 
-    .grigliata {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
-    }
+  .grigliata {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
+  }
 
-
-    .form.regis {
-        width: 100%;
-        max-width: 400px;
-    }
+  .form.regis {
+    width: 100%;
+    max-width: 400px;
+  }
 }

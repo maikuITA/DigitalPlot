@@ -1,124 +1,130 @@
 .body-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .card {
-    width: 100%;
-    max-width: 850px;
-    height: 100%;
-    max-height: inherit;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
+  width: 100%;
+  max-width: 850px;
+  height: 100%;
+  max-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
 }
 
 .card.yes {
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-    height: 100%;
-    max-height: fit-content;
-    padding: 0;
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: fit-content;
+  padding: 0;
 }
 
 .card.yes > .card-header {
-    width: 100%;
-    height: 100%;
-    max-height: fit-content;
+  width: 100%;
+  height: 100%;
+  max-height: fit-content;
 }
 
-.column.is-two-fifth.c, .column.is-two-fifth.cs {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.column.is-two-fifth.c,
+.column.is-two-fifth.cs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .column.is-two-fifth.cs {
-    gap: 10px;
+  gap: 10px;
 }
 
 .column {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .control.is-grouped {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .field {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-.field > .control, .field > .control > .input {
-    width: 100%;
+.field > .control,
+.field > .control > .input {
+  width: 100%;
 }
 
 .card > .title {
-    display: block;
-    padding: 20px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-align: center;
+  display: block;
+  padding: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-.title, .subtitle {
-    width: 100%;
-    max-width: inherit;
-    text-align: center;
+.title,
+.subtitle {
+  width: 100%;
+  max-width: inherit;
+  text-align: center;
 }
 
-.icon.is-centered{
-    width: 100%;
-    max-width: inherit;
-    height: 100%;
+.icon.is-centered {
+  width: 100%;
+  max-width: inherit;
+  height: 100%;
 }
 
 th {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 .is-5.s {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 .is-gapped {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .absolute-left {
-    position: absolute;
-    left: 30px;
-    max-width: 300px;
-    margin-top: 35px;
-    z-index: 1000;
+  position: absolute;
+  left: 30px;
+  max-width: 300px;
+  margin-top: 35px;
+  z-index: 1000;
 }
 
 span {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
-.content, table, .content > table > tr, .content > table > td {
-    width: 100%;
-    max-width: inherit;
+.content,
+table,
+.content > table > tr,
+.content > table > td {
+  width: 100%;
+  max-width: inherit;
 }
 
 .profilePictureU {
@@ -158,34 +164,39 @@ span {
 }
 
 @media screen and (max-width: 768px) {
-    .body-container {
-        flex-direction: column;
-        align-items: center;
-    }
+  .body-container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .card {
-        width: 90%;
-        max-width: none;
-    }
+  .card {
+    width: 90%;
+    max-width: none;
+  }
 
-    .avatar-wrapper {
-        width: 100px;
-        height: 100px;
-    }
+  .avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
 
-    .card .columns {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .card .columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .card.articles {
-        width: 100%;
-        max-width: 400px;
-        overflow-x: scroll;
-    }
+  .card.articles {
+    width: 100%;
+    max-width: 400px;
+    overflow-x: scroll;
+  }
 
-    table, .table, thead, tbody, tr, td {
-        max-width: 350px;
-    }
+  table,
+  .table,
+  thead,
+  tbody,
+  tr,
+  td {
+    max-width: 350px;
+  }
 }

@@ -1,71 +1,72 @@
 .body-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 50px;
-    height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  height: auto;
 }
 
 .body-left {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .body-left .card {
-    width: 290px;
-    height: fit-content;
-    max-height: 250px;
+  width: 290px;
+  height: fit-content;
+  max-height: 250px;
 }
 
 .body-right {
-    width: 900px;
-    display: flex;
-    flex-direction: column;
+  width: 900px;
+  display: flex;
+  flex-direction: column;
 }
 
 .body-right .card {
-    width: 900px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px;
+  width: 900px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
 }
 
 .card-header {
-    height: fit-content;
+  height: fit-content;
 }
 
 .container {
-    margin-top: 30px;
-    margin-bottom: 40px;
-    display: block;
-    align-items: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  display: block;
+  align-items: center;
 }
 
 .container > a {
-    display: block;
-    text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .subtitle {
-    width: 100%;
-    text-align: justify;
+  width: 100%;
+  text-align: justify;
 }
 
 i {
-    color: inherit;
+  color: inherit;
 }
 
 span {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
-section, .section {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+section,
+.section {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
