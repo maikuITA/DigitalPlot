@@ -165,6 +165,43 @@ body::before {
   z-index: -1;
 }
 
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Spaziatura tra le card */
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 300px; /* Card larga almeno 300px, ma flessibile */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 350px;
+  min-height: 350px;
+}
+
+.card-content {
+  flex-grow: 1;
+  max-height: 300px;
+}
+
+.card-content > .subtitle {
+  flex-grow: 1;
+  max-height: 190px;
+}
+
+.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
 @media screen and (max-width: 768px) {
     
     header {
@@ -238,5 +275,14 @@ body::before {
 
     .column div .title {
         font-size: xx-large;
+    }
+
+    .card-content {
+        max-height: 100px;
+        overflow-y: scroll;
+    }
+
+    .card {
+        overflow: hidden;
     }
 }
