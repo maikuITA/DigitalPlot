@@ -145,8 +145,8 @@
             </button>  
         </div>
         <div class="card articles" id="articles">
+            <a class="title">Articoli caricati</a>
             <table class="table is-striped is-hoverable">
-                <caption class="title">Articoli caricati</caption>
                 <thead>
                     <tr>
                         <th>Nome articolo</th>

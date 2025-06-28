@@ -121,35 +121,6 @@ span {
     max-width: inherit;
 }
 
-@media screen and (max-width: 768px) {
-    .body-container {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-    
-    .card {
-        width: 100%;
-        max-width: 100%;
-        padding: 10px;
-    }
-    
-    .card.yes {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-    }
-    
-    .column.is-two-fifth.c, .column.is-two-fifth.cs {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .column.is-two-fifth.cs {
-        gap: 5px;
-    }
-}
-
-
 .profilePictureU {
   object-fit: cover;
   border-radius: 50%; /* cerchio */
@@ -184,4 +155,37 @@ span {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .body-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        max-width: none;
+    }
+
+    .avatar-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .card .columns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card.articles {
+        width: 100%;
+        max-width: 400px;
+        overflow-x: scroll;
+    }
+
+    table, .table, thead, tbody, tr, td {
+        max-width: 350px;
+    }
 }
