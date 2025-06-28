@@ -88,31 +88,12 @@
             {/if}
         </div>
     </header>
-    <div class="absolute-right">
-        <div class="card cart">
-            <header class="card-header">
-                <p class="card-header-title">
-                    <span class="icon is-small is-left">
-                        <i class="fa fa-sticky-note" aria-hidden="true"></i>
-                    </span>
-                    Info
-                </p>
-            </header>
-            <div class="card-content">
-                <div class="control is-grouped">
-                    <p>Stato: <a class="has-text-link">bozza</a></p> <br>
-                    <p>Visibilità: <a class="has-text-link">privato</a></p> <br>
-                    <p>Ultimo salvataggio: <a class="has-text-link">mai</a></p> <br>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="body-container">
         <div class="card">
             {if $modify === false}
-                <form id="form-articolo" method="POST" action="/saveArticle" enctype="multipart/form-data">
+                <form class="form" id="form-articolo" method="POST" action="/saveArticle" enctype="multipart/form-data">
             {else}
-                <form id="form-articolo" method="POST" action="/saveUpdate/{$article->getId()}" enctype="multipart/form-data">
+                <form class="form" id="form-articolo" method="POST" action="/saveUpdate/{$article->getId()}" enctype="multipart/form-data">
             {/if}
                 <p class="title">
                     <span class="icon is-small is-left">
@@ -302,8 +283,7 @@
                     <input type="file" id="upload" name="articleFile" style="display:none;">
                     <div id="fileStatus"></div>
                 </div>
-                <div class="card gruppo mt-6">
-                    <div class="field is-grouped is-centered">
+                <div class="field is-grouped is-centered">
                     <p class="control has-icons-left confirm">
                         <button class="button is-link is-rounded is-fullwidth is-outlined" type="submit">Conferma</button>
                         <span class="icon is-small is-left has-text-link">
@@ -316,7 +296,6 @@
                             <i class="fa fa-times-circle" aria-hidden="true"></i>
                         </span>
                     </p>
-                    </div>
                 </div>
             </form>
         </div>
