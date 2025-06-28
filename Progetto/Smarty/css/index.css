@@ -142,6 +142,29 @@ img.is-rounded {
     border-radius: 50%;
 }
 
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  filter: blur(3px);
+  z-index: -1;
+}
+
 @media screen and (max-width: 768px) {
     
     header {
@@ -216,28 +239,4 @@ img.is-rounded {
     .column div .title {
         font-size: xx-large;
     }
-
-}
-
-body {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('https://images.pexels.com/photos/3944454/pexels-photo-3944454.jpeg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  filter: blur(3px);
-  z-index: -1;
 }
