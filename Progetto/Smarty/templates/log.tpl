@@ -163,3 +163,4 @@
     </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
+<script src="/Progetto/Smarty/js/log.js"></script>
