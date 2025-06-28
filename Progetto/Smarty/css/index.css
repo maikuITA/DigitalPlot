@@ -212,6 +212,11 @@ img.is-rounded {
     #new_mobile, #new_find, #new_logout {
         display: block;
     }
+
+    .column div .title {
+        font-size: xx-large;
+    }
+
 }
 
 body {
