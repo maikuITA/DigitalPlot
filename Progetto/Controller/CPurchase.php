@@ -103,7 +103,14 @@ class CPurchase
         return $card;
     }
 
-
+    /**
+     * This method validates the purchase by creating a new EPurchase object
+     * with the current date, expiration date, billing information, user, subscription, and credit card.
+     * @param EUser $user The user making the purchase
+     * @param ESubscription $subscription The subscription being purchased
+     * @param ECreditCard $card The credit card used for the purchase
+     * @return EPurchase The created purchase object
+     */
     private static function validatePurchase(EUser $user, ESubscription $subscription, ECreditCard $card): EPurchase
     {
         $currentdate = date('Y-m-g');
