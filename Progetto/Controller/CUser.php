@@ -118,7 +118,7 @@ class CUser{
         // Check if the request method is POST
         $method = UServer::getRequestMethod();
         if ($method === 'POST') {
-            $username = UHTTPMethods::post('username');
+            $username = UHTTPMethods::post('usernameR');
             $password = UHTTPMethods::post('password');
             $password2 = UHTTPMethods::post('password2');
             $name = UHTTPMethods::post('name');
