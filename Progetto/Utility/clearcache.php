@@ -1,11 +1,9 @@
 <?php
-
+// retrieves the object Smarty
 $smarty = StartSmarty::configuration();
 
-// Configure Smarty paths (these should match your setup)
-$smarty->setTemplateDir('/membri/digitalplot/Progetto/Smarty/templates/');
-$smarty->setCompileDir('/membri/digitalplot/Progetto/Smarty/templates_c/'); // This is where compiled templates go
-$smarty->setCacheDir('/membri/digitalplot/Progetto/Smarty/cache/');       // This is where cached output goes (if enabled)
+// Configure Smarty paths in order to clear the cache and compiled templates
+// This is where cached output goes (if enabled)
 
 // --- CLEARING THE CACHE ---
 
@@ -20,6 +18,4 @@ $smarty->clearCompiledTemplate();
 // Option 3: Clear compiled template for a specific template
 // $smarty->clearCompiledTemplate('home.tpl'); // Clears only the compiled version of home.tpl
 
-ULogSys::toLog( "Smarty cache and compiled templates cleared successfully!");
-
-?>
+ULogSys::toLog("Smarty cache and compiled templates cleared successfully!");
