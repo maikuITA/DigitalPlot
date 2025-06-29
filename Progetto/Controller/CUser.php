@@ -1,21 +1,23 @@
 <?php
-require_once (__DIR__ . "/../Utility/config.php");
+require_once(__DIR__ . "/../Utility/config.php");
 
 
-class CUser{
+class CUser
+{
 
     /**
      * Method to check if the user is logged in
      * This method checks if the session is set and if the user session element exists.
      * @return boolean
      */
-    public static function isLogged() : bool {
-        if(UCookie::isSet('PHPSESSID')){
-            if(session_status() == PHP_SESSION_NONE){
+    public static function isLogged(): bool
+    {
+        if (UCookie::isSet('PHPSESSID')) {
+            if (session_status() == PHP_SESSION_NONE) {
                 USession::getInstance();
             }
         }
-        if(USession::isSetSessionElement('user')){
+        if (USession::isSetSessionElement('user')) {
             return true;
         }
         return false;
@@ -28,7 +30,8 @@ class CUser{
      * It returns true if the user is subscribed, otherwise false.
      * @return boolean
      */
-    public static function isSubbed(): bool {
+    public static function isSubbed(): bool
+    {
         return FPersistentManager::getInstance()->isSubbed(USession::getSessionElement('user'));
     }
 
@@ -39,9 +42,10 @@ class CUser{
      * It returns true if the user is an admin, otherwise false.
      * @return boolean
      */
-    public static function isAdmin(): bool {
+    public static function isAdmin(): bool
+    {
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-        if ($user->getPrivilege() === ADMIN){
+        if ($user->getPrivilege() === ADMIN) {
             return true;
         }
         return false;
@@ -54,8 +58,9 @@ class CUser{
      * If the user is not logged in, it redirects to the guest home page.
      * @return void
      */
-    public static function home(): void {
-        if(self::isLogged()) {
+    public static function home(): void
+    {
+        if (self::isLogged()) {
             self::user();
         } else {
             self::guest();
@@ -68,15 +73,15 @@ class CUser{
      * and displays the home page for logged-in users.
      * @return void
      */
-    public static function user(): void {
+    public static function user(): void
+    {
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-        if(self::isSubbed()){
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege(),);
-        }
-        else{
+        if (self::isSubbed()) {
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged: true, privilege: $user->getPrivilege(),);
+        } else {
             $remaningReadings = MAXREADINGS - $user->countReadings();
-            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged:true, privilege: $user->getPrivilege(), remaningReadings: $remaningReadings);
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged: true, privilege: $user->getPrivilege(), remaningReadings: $remaningReadings);
         }
     }
 
@@ -86,17 +91,19 @@ class CUser{
      * It does not require any user session.
      * @return void
      */
-    public static function guest(): void {
+    public static function guest(): void
+    {
         $articles = FPersistentManager::getInstance()->getCasualArticles(8);
-        VUser::home(articles: $articles , privilege: -1);   
+        VUser::home(articles: $articles, privilege: -1);
     }
 
     /**
      * Method to log out the user
      * This method destroys the user session and redirects to the home page.
      */
-     public static function logout(){
-        if (CUser::isLogged() === true){
+    public static function logout()
+    {
+        if (CUser::isLogged() === true) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             USession::getInstance();
             USession::unsetSession();
@@ -114,7 +121,8 @@ class CUser{
      * and saves them in the database.
      * @return void
      */
-    public static function register(): void {
+    public static function register(): void
+    {
         // Check if the request method is POST
         $method = UServer::getRequestMethod();
         if ($method === 'POST') {
@@ -132,13 +140,13 @@ class CUser{
             $streetNumber = UHTTPMethods::post('streetNumber');
             $email = UHTTPMethods::post('email');
             $telephone = UHTTPMethods::post('telephone');
-            if ( $password !== $password2) {
+            if ($password !== $password2) {
                 ULogSys::toLog('Passwords do not match', true);
                 header('Location: https://digitalplot.altervista.org/auth');
                 exit;
             }
-            $user = new EUser (privilege: BASIC, username: $username, password: $password,name: $name,surname: $surname, birthdate: $birthdate,country: $country,birthplace: $birthplace,province: $province,zipCode: $zipCode,streetAddress: $streetAddress,streetNumber: $streetNumber,email: $email,telephone: $telephone);
-            $plotCard = new EPlotCard( 0 , $user );
+            $user = new EUser(privilege: BASIC, username: $username, password: $password, name: $name, surname: $surname, birthdate: $birthdate, country: $country, birthplace: $birthplace, province: $province, zipCode: $zipCode, streetAddress: $streetAddress, streetNumber: $streetNumber, email: $email, telephone: $telephone);
+            $plotCard = new EPlotCard(0, $user);
             $user->addPlotCard($plotCard);
             try {
                 FPersistentManager::getInstance()->saveInDb($user);
@@ -150,8 +158,7 @@ class CUser{
                 header('Location: https://digitalplot.altervista.org/auth');
             }
             header('Location: https://digitalplot.altervista.org/home');
-        }
-        else {
+        } else {
             header('Location: https://digitalplot.altervista.org/auth');
         }
     }
@@ -163,15 +170,16 @@ class CUser{
      * This method is used to display the authentication page for users.
      * @return void
      */
-    public static function auth(): void {
-        if(self::isLogged()) {
+    public static function auth(): void
+    {
+        if (self::isLogged()) {
             header('Location: https://digitalplot.altervista.org/home');
             return;
         } else {
             VUser::auth();
         }
     }
-    
+
     /**
      * Method to check the login credentials and log the user in
      * This method retrieves the username and password from the POST request,
@@ -180,7 +188,8 @@ class CUser{
      * @return void
      * @throws Exception
      */
-    public static function checklogin(): void{
+    public static function checklogin(): void
+    {
         if (UServer::getRequestMethod() === 'POST') {
             $username = UHTTPMethods::post('username');
             $password = UHTTPMethods::post('password');
@@ -202,7 +211,7 @@ class CUser{
                 header('Location: https://digitalplot.altervista.org/auth');
                 exit;
             }
-        } else{
+        } else {
             header('Location: https://digitalplot.altervista.org/auth');
         }
     }
@@ -214,23 +223,30 @@ class CUser{
      * If the user is not logged in, it redirects to the authentication page.
      * @return void
      */
-    public static function goToProfile(): void {
+    public static function goToProfile(): void
+    {
         if (CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $articles = $user->getArticles();
             $readdenArticles = $user->getReaddenArticles();
             $comments = $user->getReviews();
-            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles, reviews: $comments);
-
+            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles, reviews: $comments);
         } else {
             header('Location: https://digitalplot.altervista.org/auth');
         }
     }
 
-
-    public static function uploadAvatar(): void {
+    /**
+     * Method to upload the user's avatar
+     * This method checks if the user is logged in, retrieves the uploaded file,
+     * validates its MIME type and size, and updates the user's profile picture in the database.
+     * If any validation fails, it redirects to an error page.
+     * @return void
+     */
+    public static function uploadAvatar(): void
+    {
         // the input of files is the value of "name", attribute in <input type = "file" ...
-        if (CUser::isLogged() === true){
+        if (CUser::isLogged() === true) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $image = UHTTPMethods::files('avatar');
             if (!empty($image) && $image['error'] === UPLOAD_ERR_OK && !empty($image['tmp_name'])) {
@@ -253,7 +269,7 @@ class CUser{
                 // OK: leggi contenuto binario
                 $blob = file_get_contents($tmpName);
 
-                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob); 
+                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob);
                 ULogSys::toLog("Immagine di profilo updatata");
                 ULogSys::toLog("");
                 header("Location: https://digitalplot.altervista.org/profile");
@@ -262,75 +278,93 @@ class CUser{
                 header('Location: https://digitalplot.altervista.org/error/5');
                 exit;
             }
-
         } else {
             header('Location: https://digitalplot.altervista.org/auth');
             exit;
         }
     }
-
-    public static function editProfile(){
-        if(CUser::isLogged()){
+    /**
+     * Method to show the edit profile page
+     * This method checks if the user is logged in and retrieves the user data.
+     * If the user is logged in, it renders the edit profile view with the user's data.
+     * If the user is not logged in, it redirects to the authentication page.
+     * @return void
+     */
+    public static function editProfile()
+    {
+        if (CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            VProfile::editProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, privilege: $user->getPrivilege());
+            VProfile::editProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, privilege: $user->getPrivilege());
         }
     }
-
-    public static function applyModify(){
-        if(UServer::getRequestMethod() === 'POST'){
-            if(CUser::isLogged()){
+    /**
+     * Method to apply modifications to the user profile
+     * This method checks if the request method is POST, retrieves the user data,
+     * validates the input, updates the user profile, and redirects accordingly.
+     * If the user is not logged in or if the request method is not POST, it redirects to an error page.
+     * @return void
+     */
+    public static function applyModify()
+    {
+        if (UServer::getRequestMethod() === 'POST') {
+            if (CUser::isLogged()) {
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                if(UHTTPMethods::post('username') === ""){
+                if (UHTTPMethods::post('username') === "") {
                     $username = $user->getUsername();
-                }
-                else{
+                } else {
                     $username = UHTTPMethods::post('username');
                 }
-                if(UHTTPMethods::post('biography') === ""){
+                if (UHTTPMethods::post('biography') === "") {
                     $biography = $user->getBiography();
-                }else{
+                } else {
                     $biography = UHTTPMethods::post('biography');
                 }
-                if(UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'),$user->getPassword())){
+                if (UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'), $user->getPassword())) {
                     $user->setUsername($username);
                     $user->setPassword(UHTTPMethods::post('new-password'));
                     $user->setBiography($biography);
                     FPersistentManager::getInstance()->saveInDb($user);
                     header('Location: https://digitalplot.altervista.org/confirm/8');
-                }elseif(UHTTPMethods::post('old-password') === ''){
+                } elseif (UHTTPMethods::post('old-password') === '') {
                     $user->setUsername($username);
                     $user->setBiography($biography);
                     FPersistentManager::getInstance()->saveInDb($user);
                     header('Location: https://digitalplot.altervista.org/confirm/8');
-                }else{
+                } else {
                     header('Location: https://digitalplot.altervista.org/editProfile');
                     exit;
                 }
-            }else{
+            } else {
                 header('Location: https://digitalplot.altervista.org/auth');
                 exit;
             }
-        }else{
+        } else {
             header('Location: https://digitalplot.altervista.org/error/404');
             exit;
         }
-        
     }
-
-    public static function checkUsername(): void {
+    /**
+     * Method to check if a username already exists
+     * This method checks if the request method is POST, retrieves the username from the POST data,
+     * and checks if the username exists in the database.
+     * It returns a JSON response indicating whether the username exists or not.
+     * @return void
+     */
+    public static function checkUsername(): void
+    {
         if (UServer::getRequestMethod() === 'POST') {
             header('Content-Type: application/json');
             $username = UHTTPMethods::post('username');
             try {
-                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);  
+                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
                 if (isset($user)) {
-                    if(CUser::isLogged()){
+                    if (CUser::isLogged()) {
                         $currentUser = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                        if($user && $user->getId() === $currentUser->getId()){
+                        if ($user && $user->getId() === $currentUser->getId()) {
                             echo json_encode(['exists' => false]);
                             return;
                         }
-                    } 
+                    }
                     echo json_encode(['exists' => true]);
                 } else {
                     echo json_encode(['exists' => false]);
@@ -343,7 +377,4 @@ class CUser{
             header('Location: https://digitalplot.altervista.org/error/404');
         }
     }
-
-
-
 }
