@@ -1,5 +1,6 @@
 <?php
 
+// in this way we have an istance of the EntityManager
 require_once(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "bootstrapDoctrine.php");
 
 use Doctrine\ORM\Tools\SchemaTool;
@@ -29,12 +30,15 @@ class FEntityManager
     {
         return self::$entityManager;
     }
+
+
+
     //-------------Searching Methods-------------------
     /**
-     * find an object by its id
-     * @return object || null
+     * Find an object by its id
      * @param string $className
      * @param mixed $id
+     * @return object|null
      * @throws Exception
      */
     public static function retrieveObjById(string $className, $id): ?object
@@ -50,12 +54,11 @@ class FEntityManager
 
     /**
      * Update a single field of an object in the database.
-     *
-     * @param string $className Il nome completo della classe dell'entità (es. EUser::class)
-     * @param mixed $id L'ID dell'entità da aggiornare
-     * @param string $fieldName Il nome del campo da aggiornare (es. 'email')
-     * @param mixed $newValue Il nuovo valore da assegnare
-     * @return bool true se aggiornato correttamente, false altrimenti
+     * @param string $className (es. EUser::class)
+     * @param mixed $id the object's id to update
+     * @param string $fieldName the field's name to update (es. 'email')
+     * @param mixed $newValue the new value to set for the field
+     * @return bool true if the update has been properly, false otherwise
      * @throws Exception
      */
     public static function updateField(string $className, $id, string $fieldName, $newValue): bool
@@ -89,16 +92,17 @@ class FEntityManager
 
 
     /**
-     * find an object by its attribute
-     * @return object || null
+     * Find an object by its attribute
      * @param string $className
      * @param string $filedName
      * @param mixed $value
+     * @return object|null
      * @throws Exception
      */
     public static function retrieveObjByAttribute(string $className, string $filedName, $value): ?object
     {
         try {
+            // the repository represents the entity class
             $obj = self::$entityManager->getRepository($className)->findOneBy([$filedName => $value]);
             return $obj;
         } catch (Exception $e) {
@@ -108,83 +112,9 @@ class FEntityManager
     }
 
     /**
-     * find all objects of a class with a specific attribute
+     * Return all the object of a specifyc table 
      * @param string $className
-     * @param string $fieldName
-     * @param mixed $value
-     * @return array || null
-     * @throws Exception
-     */
-    public static function retrieveObjList(string $tableName, string $fieldName, mixed $value): ?array
-    {
-        try {
-            $dql = "SELECT e FROM $tableName e WHERE e.$fieldName = :value"; // value è un placeholder e serve per evitare SQL injection
-            $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('value', $value);
-            $result = $query->getResult();
-            if (count($result) > 0) {
-                return $result;
-            } else {
-                return null;
-            }
-        } catch (Exception $e) {
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
-            return null;
-        }
-    }
-
-    /**
-     * find an objects of a class with 2 specific attributes
-     * @param string $className
-     * @param string $fieldName1
-     * @param mixed $value1
-     * @param string $fieldName2
-     * @param mixed $value2
-     * @return object || null
-     * @throws Exception
-     */
-    public static function retrieveObjListByTwoAtt(string $tableName, string $fieldName1, mixed $value1, string $fieldName2, mixed $value2): ?array
-    {
-        try {
-            $dql = "SELECT e FROM $tableName e WHERE e.$fieldName1 = :value1 AND e.$fieldName2 = :value2";
-            $query = self::$entityManager->createQuery($dql);
-            $query->setParameter('value1', $value1);
-            $query->setParameter('value2', $value2);
-            $result = $query->getOneOrNullResult();
-            return $result;
-        } catch (Exception $e) {
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
-            return null;
-        }
-    }
-
-    /**
-     * return all the object of a specifyc table where the field value is null(ex. all the report)
-     * @param string $className
-     * @param string $field
-     * @return array || null
-     * @throws Exception
-     */
-    public static function objectListUsingNull(string $className, string $field)
-    {
-        try {
-            $dql = "SELECT e FROM " . $className . " e WHERE e." . $field . " IS NULL";
-            $query = self::$entityManager->createQuery($dql);
-            $result = $query->getResult();
-            if (count($result) > 0) {
-                return $result;
-            } else {
-                return null;
-            }
-        } catch (Exception $e) {
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
-            return null;
-        }
-    }
-    /**
-     * return all the object of a specifyc table 
-     * @param string $className
-     * @return array || null
+     * @return array|null
      * @throws Exception
      */
     public static function retrieveAll(string $className): ?array
@@ -200,11 +130,14 @@ class FEntityManager
         }
     }
 
+
+    //-------------Ad Hoc Methods-------------------
+
     /**
-     * return a specified number of approved Articles from the database 
+     * Return a specified number of approved Articles from the database 
      * @param string $className
      * @param int $articlesNum
-     * @return EArticle[] | null
+     * @return EArticle[]|null
      * @throws Exception
      */
     public static function selectNotAllArticles(string $className, int $articlesNum): ?array
@@ -232,7 +165,7 @@ class FEntityManager
     public static function verifyExists(string $className, mixed $value): bool
     {
         try {
-            $dql = "SELECT u.id FROM " . $className . " u WHERE u.id = :attribute";
+            $dql = "SELECT u.id FROM  $className u WHERE u.id = :attribute";
             $query = self::$entityManager->createQuery($dql);
             $query->setParameter('attribute', $value);
             $result = $query->getResult();
@@ -247,6 +180,11 @@ class FEntityManager
         }
     }
 
+    /**
+     * Retrieve all valid purchases from the database
+     * @return array|null
+     * @throws Exception
+     */
     public static function retrieveValidPurchase(): ?array
     {
         try {
@@ -266,7 +204,6 @@ class FEntityManager
 
     /**
      * Retrieve all objects of a specific class
-     * @param string $className
      * @return array|null
      * @throws Exception
      */
@@ -288,6 +225,7 @@ class FEntityManager
      * @param string $title
      * @param string $type
      * @param string $genre
+     * @param string $releaseDate
      * @param string $date
      * @return array|null
      * @throws Exception
@@ -323,7 +261,7 @@ class FEntityManager
      * is greater than or equal to the provided value.
      * This method dynamically builds a DQL query to count records that match the given condition.
      *
-     * @param string $className     The fully qualified class name of the Doctrine entity.
+     * @param string $className   
      * @param string $numericField  The name of the numeric field to compare (must exist in the entity).
      * @param string $value         The threshold value to compare against (as string, will be passed as a parameter).
      * @return int The number of matching records.
@@ -343,7 +281,7 @@ class FEntityManager
 
     /**
      * This method count the number of record in the selected table
-     * @param string $className name of the table
+     * @param string $className 
      * @return int the number of record
      */
     public static function countRecord(string $className): int
@@ -358,10 +296,10 @@ class FEntityManager
         }
     }
     /**
-     * This method counts the number of the subscriber, admin excluded
-     * @return int numer of the subscriber
+     * This method counts the number of the subscriber, except admin 
+     * @return int|null number of the subscriber
      */
-    public static function countActiveSubsriber()
+    public static function countActiveSubsriber(): ?int
     {
         try {
             $dql = "SELECT COUNT(a) FROM EUser a WHERE a.privilege BETWEEN " . READER . " AND " . WRITER;
@@ -378,7 +316,7 @@ class FEntityManager
      * @return array|null
      * @throws Exception
      */
-    public static function retrievePendingArticles()
+    public static function retrievePendingArticles(): ?array
     {
         try {
             $dql = "SELECT p FROM EArticle p WHERE p.state = :stat ORDER BY p.releaseDate DESC";
@@ -395,12 +333,13 @@ class FEntityManager
             return null;
         }
     }
+
     /**
      * Retrieve all reviews ordered by release date
      * @return array|null
      * @throws Exception
      */
-    public static function retrieveAllReview()
+    public static function retrieveAllReview(): ?array
     {
         try {
             $dql = "SELECT p FROM EReview p ORDER BY p.releaseDate DESC";
@@ -417,9 +356,11 @@ class FEntityManager
         }
     }
 
+
+
     //------------Saving and Deleting Methods--------------
     /**
-     * save one object in the db (persistance of Entity) or update it
+     * Save an object in the db or update it
      * @param object $obj
      * @return boolean
      * @throws Exception
@@ -434,36 +375,18 @@ class FEntityManager
             return true;
         } catch (Exception $e) {
             ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            self::$entityManager->getConnection()->rollBack();
             return false;
         }
     }
 
     /**
-     * save an array of objects in the db (persistance of Entity) or update it
-     * @return object $object
-     * @return void
-     * @throws Exception
-     */
-    public static function addObj(object $object): void
-    {
-        try {
-            self::$entityManager->getConnection()->beginTransaction();
-            self::$entityManager->persist($object);
-            self::$entityManager->flush();
-            self::$entityManager->getConnection()->commit();
-        } catch (Exception $e) {
-            ULogSys::toLog('Error: ' . $e->getMessage(), true);
-            self::$entityManager->getConnection()->rollBack();
-        }
-    }
-
-    /**
-     * delete an object from the db
+     * Delete an object from the db
      * @param object $obj
      * @return boolean
      * @throws Exception
      */
-    public static function deleteObj(?object $obj): bool
+    public static function deleteObj(object $obj): bool
     {
         try {
             self::$entityManager->getConnection()->beginTransaction();
@@ -472,17 +395,23 @@ class FEntityManager
                 self::$entityManager->flush();
                 self::$entityManager->getConnection()->commit();
                 return true;
+            } else {
+                ULogSys::toLog('Error: object not exists', true);
+                return false;
             }
-            ULogSys::toLog('Error: object not exists', true);
-            return false;
         } catch (Exception $e) {
             ULogSys::toLog('Error: ' . $e->getMessage(), true);
+            self::$entityManager->getConnection()->rollBack();
             return false;
         }
     }
 
-
-
+    /**
+     * Drop the database, removing all tables and schema.
+     * This method should be used with caution as it will delete all data.
+     * @return void
+     * @throws Exception
+     */
     public static function dropDatabase(): void
     {
         try {
@@ -491,9 +420,13 @@ class FEntityManager
             $metadata = self::$entityManager->getMetadataFactory()->getAllMetadata();
             if (!empty($metadata)) {
                 $tool = new SchemaTool(self::$entityManager);
-                $tool->dropDatabase(); // Elimina completamente il DB (tabelle + schema)
+                $tool->dropDatabase(); // This will drop all tables in the database
+                ULogSys::toLog('Database dropped successfully.');
+                $connection->commit();
+            } else {
+                ULogSys::toLog('No metadata found, nothing to drop.', true);
+                self::$entityManager->getConnection()->rollBack();
             }
-            $connection->commit();
         } catch (Exception $e) {
             ULogSys::toLog('Error during dropping database: ' . $e->getMessage(), true);
             self::$entityManager->getConnection()->rollBack();
