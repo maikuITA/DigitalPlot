@@ -15,29 +15,28 @@ class FPersistentManager
         return self::$instance;
     }
 
-    // ========== Gestione CRUD ==========
+    // ========== CRUD operations ==========
 
     /**
      * Save an object in the database or update it if it already exists
-     * @param object $entity
+     * @param object $object
      * @return bool
      * @throws Exception
      */
-    public function saveInDb(object $entity): bool
+    public function saveInDb(object $object): bool
     {
-        return FEntityManager::getInstance()->saveObj($entity);
-    }
-    /**
-     * Add an object in the database
-     * @param object $entity
-     * @return bool
-     * @throws Exception
-     */
-    public function insertInDb(object $entity): bool
-    {
-        return FEntityManager::getInstance()->addObj($entity);
+        return FEntityManager::getInstance()->saveObj($object);
     }
 
+    /**
+     * Update a specific field of an object in the database
+     * @param string $className
+     * @param mixed $id
+     * @param string $fieldName
+     * @param mixed $value
+     * @return bool
+     * @throws Exception
+     */
     public function updateObject(string $className, $id, string $fieldName, $value): bool
     {
         return FEntityManager::getInstance()->updateField($className, $id, $fieldName, $value);
@@ -46,13 +45,13 @@ class FPersistentManager
 
     /**
      * Delete an object in the database
-     * @param object $entity
+     * @param object $object
      * @return bool
      * @throws Exception
      */
-    public function delete(?object $entity): bool
+    public function delete(?object $object): bool
     {
-        return FEntityManager::getInstance()->deleteObj($entity);
+        return FEntityManager::getInstance()->deleteObj($object);
     }
 
 
@@ -61,7 +60,7 @@ class FPersistentManager
      * Retrive an object by its id
      * @param string $className
      * @param mixed $id
-     * @return object || null
+     * @return object|null
      * @throws Exception
      */
     public function retrieveObjById(string $className, $id): ?object
@@ -71,9 +70,9 @@ class FPersistentManager
 
 
     /**
-     * Retrive an object by a specific attribute
+     * Retrive an object by username
      * @param string $username
-     * @return object || null
+     * @return object|null
      */
     public function retrieveUserOnUsername(string $username): ?object
     {
@@ -83,7 +82,7 @@ class FPersistentManager
     /**
      * Retrieve an array of article, its sized is specified by the parameter
      * @param int $articlesNum Number of articles to retrieve
-     * @return EArticle[]|null Array of article objects or null if none found
+     * @return EArticle[]|null Array of article objects or null, if none found
      */
     public function getCasualArticles(int $articlesNum): ?array
     {
@@ -91,49 +90,9 @@ class FPersistentManager
     }
 
     /**
-     * Check if an email already exists in the database
-     * @param string $email
-     * @return bool
-     */
-    public function checkIfExistEmail(string $email): bool
-    {
-        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'email', $email);
-    }
-
-    /**
-     * Check if a username already exists in the database
-     * @param string $username
-     * @return bool
-     */
-    public function checkIfExistUsername(string $username): bool
-    {
-        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'username', $username);
-    }
-
-    /**
-     * Check if a telephone already exists in the database
-     * @param string $telephone
-     * @return bool
-     */
-    public function checkIfExistTelephone(string $telephone): bool
-    {
-        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'telephone', $telephone);
-    }
-
-    /**
-     * Check if a user has been added properly
-     * @param int $id
-     * @return bool
-     */
-    public function checkIfExistUser(int $id): bool
-    {
-        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'id', $id);
-    }
-
-    /**
-     *  Retrieve all objects of a specific class
+     * Retrieve all objects of a specific class
      * @param string $className
-     * @return array | null
+     * @return array|null
      */
     public function retrieveAll(string $className): ?array
     {
@@ -141,8 +100,26 @@ class FPersistentManager
     }
 
     /**
+     * drop the database
+     * @return void
+     */
+    public function clearAll(): void
+    {
+        FEntityManager::getInstance()->dropDatabase();
+    }
+
+
+
+
+    //------------ Ad Hoc Methods --------------
+
+    /**
      * Retrieve all articles from the database
-     * @return EArticle[]|null Array of article objects or null if none found
+     * @param string $title
+     * @param string $category
+     * @param string $genre
+     * @param string $releaseDate
+     * @return EArticle[]|null Array of article objects or null, if none found
      */
     public function searchArticles(string $title, string $category, string $genre, string $releaseDate): ?array
     {
@@ -151,18 +128,11 @@ class FPersistentManager
 
 
 
-    /**
-     * drop db
-     * @return void
-     */
-    public function clearAll(): void
-    {
-        FEntityManager::getInstance()->dropDatabase();
-    }
+
 
     /**
      * Check if a user is subscribed or not, if the subscription is expired, it will set the user privilege to BASIC
-     * @param mixed $id
+     * @param mixed $id of the user to check
      * @return bool
      */
     public static function isSubbed(mixed $id): bool
@@ -176,7 +146,7 @@ class FPersistentManager
                     return false;
                 }
                 $notExpiredPurch = array_filter($notExpiredPurch, function ($purchase) use ($id) {
-                    return $purchase->getSubscriber()->getId() === $id;
+                    return $purchase->getSubscriber()->getId() === $id; // Filter purchases by user ID
                 });
                 if (count($notExpiredPurch) > 0) {
                     return true;
@@ -194,25 +164,28 @@ class FPersistentManager
     }
 
     /**
-     *  Retrieve all objects of a specific class
-     * @param string $className
-     * @return array | null
+     * Retrieve all objects of a specific class
+     * @return array|null
      */
     public function retrieveAllSubscriptions(): ?array
     {
         return FEntityManager::getInstance()->retrieveAllSubscriptions();
     }
+
+
     /**
      * Retrieve all objects of a specific class with a specific attribute
      * @param string $className
      * @param string $attribute
-     * @param mixed $value
-     * @return array | null
+     * @param string $value
+     * @return int
      */
     public function retrieveNumOnDate(string $className, string $numericField, string $value): int
     {
         return FEntityManager::getInstance()->countRecordWithDate($className, $numericField, $value);
     }
+
+
     /**
      * Count the number of records of a specific class
      * @param string $className
@@ -222,6 +195,8 @@ class FPersistentManager
     {
         return FEntityManager::getInstance()->countRecord($className);
     }
+
+
     /**
      * Count the number of active subscribers
      * @return int
@@ -230,51 +205,22 @@ class FPersistentManager
     {
         return FEntityManager::getInstance()->countActiveSubsriber();
     }
+
+
     /**
      * Retrieve all articles that are pending review
-     * @return EArticle[]|null Array of article objects or null if none found
      */
     public static function retrievePendingArticles()
     {
         return FEntityManager::getInstance()->retrievePendingArticles();
     }
+
+
     /**
      * Retrieve all reviews from the database
-     * @return EReview[]|null Array of review objects or null if none found
      */
     public static function retrieveAllReview()
     {
         return FEntityManager::getInstance()->retrieveAllReview();
     }
-    /*
-    // ========== Query DQL personalizzate ==========
-
-    public function runDqlQuery(string $dql, array $params = []): array {
-        $query = $this->em->createQuery($dql);
-        foreach ($params as $key => $value) {
-            $query->setParameter($key, $value);
-        }
-        return $query->getResult();
-    }
-
-    // ========== Query SQL native ==========
-
-    public function runNativeQuery(string $sql, array $params = [], array $types = []): array {
-        $conn = $this->em->getConnection();
-        $stmt = $conn->prepare($sql);
-        $result = $stmt->executeQuery($params);
-        return $result->fetchAllAssociative();
-    }
-
-    // ========== Utility ==========
-    //Ripristina lo stato dell'oggetto passato come parametro, riportandolo allo stato del database
-    public function refresh(object $entity): void {
-        $this->em->refresh($entity);
-    }
-
-    //Rende un oggetto non più odificabile, ma non lo elimina dal database
-    public function detach(object $entity): void {
-        $this->em->detach($entity);
-    }
-    */
 }
