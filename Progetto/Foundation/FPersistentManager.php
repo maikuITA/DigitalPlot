@@ -1,13 +1,14 @@
 <?php
 
-class FPersistentManager {
-
+class FPersistentManager
+{
+    // ========== Singleton Pattern ==========
     private static $instance;
 
-    private function __construct() {
-    }
+    private function __construct() {}
 
-    public static function getInstance(): FPersistentManager {
+    public static function getInstance(): FPersistentManager
+    {
         if (self::$instance === null) {
             self::$instance = new FPersistentManager();
         }
@@ -22,7 +23,8 @@ class FPersistentManager {
      * @return bool
      * @throws Exception
      */
-    public function saveInDb(object $entity): bool {
+    public function saveInDb(object $entity): bool
+    {
         return FEntityManager::getInstance()->saveObj($entity);
     }
     /**
@@ -31,11 +33,13 @@ class FPersistentManager {
      * @return bool
      * @throws Exception
      */
-    public function insertInDb(object $entity): bool {
+    public function insertInDb(object $entity): bool
+    {
         return FEntityManager::getInstance()->addObj($entity);
     }
 
-    public function updateObject(string $className, $id, string $fieldName, $value): bool {
+    public function updateObject(string $className, $id, string $fieldName, $value): bool
+    {
         return FEntityManager::getInstance()->updateField($className, $id, $fieldName, $value);
     }
 
@@ -46,7 +50,8 @@ class FPersistentManager {
      * @return bool
      * @throws Exception
      */
-    public function delete(?object $entity): bool {
+    public function delete(?object $entity): bool
+    {
         return FEntityManager::getInstance()->deleteObj($entity);
     }
 
@@ -59,7 +64,8 @@ class FPersistentManager {
      * @return object || null
      * @throws Exception
      */
-    public function retrieveObjById(string $className, $id): ?object {
+    public function retrieveObjById(string $className, $id): ?object
+    {
         return FEntityManager::getInstance()->retrieveObjById($className, $id);
     }
 
@@ -69,7 +75,8 @@ class FPersistentManager {
      * @param string $username
      * @return object || null
      */
-    public function retrieveUserOnUsername(string $username): ?object {
+    public function retrieveUserOnUsername(string $username): ?object
+    {
         return FEntityManager::getInstance()->retrieveObjByAttribute(EUser::class, 'username', $username);
     }
 
@@ -78,7 +85,8 @@ class FPersistentManager {
      * @param int $articlesNum Number of articles to retrieve
      * @return EArticle[]|null Array of article objects or null if none found
      */
-    public function getCasualArticles(int $articlesNum): ?array {
+    public function getCasualArticles(int $articlesNum): ?array
+    {
         return FEntityManager::getInstance()->selectNotAllArticles(EArticle::class, $articlesNum);
     }
 
@@ -87,8 +95,9 @@ class FPersistentManager {
      * @param string $email
      * @return bool
      */
-    public function checkIfExistEmail(string $email): bool{
-        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'email', $email);
+    public function checkIfExistEmail(string $email): bool
+    {
+        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'email', $email);
     }
 
     /**
@@ -96,8 +105,9 @@ class FPersistentManager {
      * @param string $username
      * @return bool
      */
-    public function checkIfExistUsername(string $username): bool{
-        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'username', $username);
+    public function checkIfExistUsername(string $username): bool
+    {
+        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'username', $username);
     }
 
     /**
@@ -105,8 +115,9 @@ class FPersistentManager {
      * @param string $telephone
      * @return bool
      */
-    public function checkIfExistTelephone(string $telephone): bool{
-        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'telephone', $telephone);
+    public function checkIfExistTelephone(string $telephone): bool
+    {
+        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'telephone', $telephone);
     }
 
     /**
@@ -114,8 +125,9 @@ class FPersistentManager {
      * @param int $id
      * @return bool
      */
-    public function checkIfExistUser(int $id): bool{
-        return FEntityManager::getInstance()->verifyAttributes('user_id',EUser::class, 'id', $id);
+    public function checkIfExistUser(int $id): bool
+    {
+        return FEntityManager::getInstance()->verifyAttributes('user_id', EUser::class, 'id', $id);
     }
 
     /**
@@ -123,7 +135,8 @@ class FPersistentManager {
      * @param string $className
      * @return array | null
      */
-    public function retrieveAll(string $className): ?array {
+    public function retrieveAll(string $className): ?array
+    {
         return FEntityManager::getInstance()->retrieveAll($className);
     }
 
@@ -131,7 +144,8 @@ class FPersistentManager {
      * Retrieve all articles from the database
      * @return EArticle[]|null Array of article objects or null if none found
      */
-    public function searchArticles(string $title, string $category, string $genre, string $releaseDate): ?array {
+    public function searchArticles(string $title, string $category, string $genre, string $releaseDate): ?array
+    {
         return FEntityManager::getInstance()->retrieveArticles(EArticle::class, $title, $category, $genre, $releaseDate);
     }
 
@@ -141,7 +155,8 @@ class FPersistentManager {
      * drop db
      * @return void
      */
-    public function clearAll(): void{
+    public function clearAll(): void
+    {
         FEntityManager::getInstance()->dropDatabase();
     }
 
@@ -150,8 +165,9 @@ class FPersistentManager {
      * @param mixed $id
      * @return bool
      */
-    public static function isSubbed(mixed $id) : bool {
-        if(FEntityManager::getInstance()->verifyExists(EUser::class, $id)) {
+    public static function isSubbed(mixed $id): bool
+    {
+        if (FEntityManager::getInstance()->verifyExists(EUser::class, $id)) {
             $user = FEntityManager::getInstance()->retrieveObjById(EUser::class, $id);
             if ($user->getPrivilege() === READER || $user->getPrivilege() === WRITER) {
                 $notExpiredPurch = FEntityManager::getInstance()->retrieveValidPurchase();
@@ -159,21 +175,18 @@ class FPersistentManager {
                     FEntityManager::getInstance()->updateField(EUser::class, $id, 'privilege', BASIC);
                     return false;
                 }
-                $notExpiredPurch = array_filter($notExpiredPurch, function($purchase) use ($id) {
+                $notExpiredPurch = array_filter($notExpiredPurch, function ($purchase) use ($id) {
                     return $purchase->getSubscriber()->getId() === $id;
                 });
                 if (count($notExpiredPurch) > 0) {
                     return true;
-                } 
-                else{
+                } else {
                     FEntityManager::getInstance()->updateField(EUser::class, $id, 'privilege', BASIC);
                     return false;
                 }
-            }
-            elseif ($user->getPrivilege() === BASIC) {
+            } elseif ($user->getPrivilege() === BASIC) {
                 return false;
-            }
-            elseif ($user->getPrivilege() === ADMIN) {
+            } elseif ($user->getPrivilege() === ADMIN) {
                 return true;
             }
         }
@@ -185,26 +198,52 @@ class FPersistentManager {
      * @param string $className
      * @return array | null
      */
-    public function retrieveAllSubscriptions(): ?array {
+    public function retrieveAllSubscriptions(): ?array
+    {
         return FEntityManager::getInstance()->retrieveAllSubscriptions();
     }
-
-    public function retrieveNumOnDate(string $className, string $numericField, string $value): int{
-        return FEntityManager::getInstance()->countRecordWithDate( $className, $numericField, $value);
+    /**
+     * Retrieve all objects of a specific class with a specific attribute
+     * @param string $className
+     * @param string $attribute
+     * @param mixed $value
+     * @return array | null
+     */
+    public function retrieveNumOnDate(string $className, string $numericField, string $value): int
+    {
+        return FEntityManager::getInstance()->countRecordWithDate($className, $numericField, $value);
     }
-
-    public function countRecord(string $className): int{
+    /**
+     * Count the number of records of a specific class
+     * @param string $className
+     * @return int
+     */
+    public function countRecord(string $className): int
+    {
         return FEntityManager::getInstance()->countRecord($className);
     }
-    
-    public function countActiveSubsriber(): int{
+    /**
+     * Count the number of active subscribers
+     * @return int
+     */
+    public function countActiveSubsriber(): int
+    {
         return FEntityManager::getInstance()->countActiveSubsriber();
     }
-
-    public static function retrievePendingArticles(){
+    /**
+     * Retrieve all articles that are pending review
+     * @return EArticle[]|null Array of article objects or null if none found
+     */
+    public static function retrievePendingArticles()
+    {
         return FEntityManager::getInstance()->retrievePendingArticles();
     }
-    public static function retrieveAllReview(){
+    /**
+     * Retrieve all reviews from the database
+     * @return EReview[]|null Array of review objects or null if none found
+     */
+    public static function retrieveAllReview()
+    {
         return FEntityManager::getInstance()->retrieveAllReview();
     }
     /*
@@ -238,6 +277,4 @@ class FPersistentManager {
         $this->em->detach($entity);
     }
     */
-
 }
-?>
