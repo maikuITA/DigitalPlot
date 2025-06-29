@@ -1,36 +1,51 @@
 <?php
 
-class CDashboard{
+class CDashboard
+{
     /**
      * Display the dashboard for the admin user.
      * This function checks if the user is logged in and is an admin.
      * @return void
      */
-    public static function dashboard(): void{
-        if(CUser::isLogged() && CUser::isAdmin()){
-                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                $articoliDaRevisionare = FPersistentManager::getInstance()->retrievePendingArticles();
-                $articoliPubblicati = FPersistentManager::getInstance()->searchArticles('%', '%', '%', '0001-01-01');
-                $commenti = FPersistentManager::getInstance()->retrieveAllReview();
-                VDashboard::render(privilege: $user->getPrivilege() ,plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged:true, articoliDaRevisionare: $articoliDaRevisionare, articoliPubblicati: $articoliPubblicati, commenti: $commenti);
-        }else {
+    public static function dashboard(): void
+    {
+        if (CUser::isLogged() && CUser::isAdmin()) {
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            $articoliDaRevisionare = FPersistentManager::getInstance()->retrievePendingArticles();
+            $articoliPubblicati = FPersistentManager::getInstance()->searchArticles('%', '%', '%', '0001-01-01');
+            $commenti = FPersistentManager::getInstance()->retrieveAllReview();
+            VDashboard::render(privilege: $user->getPrivilege(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, articoliDaRevisionare: $articoliDaRevisionare, articoliPubblicati: $articoliPubblicati, commenti: $commenti);
+        } else {
             header('Location: https://digitalplot.altervista.org/home');
             exit;
         }
     }
 
-    public static function approve(?int $idArticle){
+    /**
+     * Approve an article based on its ID.
+     * This function updates the state of the article to either APPROVED or REFUSED.
+     * @param ?int $idArticle The ID of the article to be approved or refused.
+     * @return void
+     */
+    public static function approve(?int $idArticle)
+    {
         $approvedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', APPROVED);
-        if ($approvedArticle){
+        if ($approvedArticle) {
             header('Location: https://digitalplot.altervista.org/confirm/6');
         } else {
             header('Location: https://digitalplot.altervista.org/error/6');
         }
     }
-
-    public static function refuse(?int $idArticle){
+    /**
+     * Refuse an article based on its ID.
+     * This function updates the state of the article to REFUSED.
+     * @param ?int $idArticle The ID of the article to be refused.
+     * @return void
+     */
+    public static function refuse(?int $idArticle)
+    {
         $refusedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', REFUSED);
-        if ($refusedArticle){
+        if ($refusedArticle) {
             header('Location: https://digitalplot.altervista.org/confirm/7');
         } else {
             header('Location: https://digitalplot.altervista.org/error/7');
@@ -39,10 +54,17 @@ class CDashboard{
 
     /**
      * Retrives all the information for the dashboard
+     * This function checks if the user is logged in and is an admin.
+     * If the user is logged in and is an admin, it retrieves the number of articles
+     * and purchases made in the last day, week, month, and total.
+     * It also retrieves the total number of users and active subscribers.
+     * The results are returned as a JSON response.
+     * If the user is not logged in or is not an admin, it returns -1
      */
-    public static function dashboardUpdate(): void{
+    public static function dashboardUpdate(): void
+    {
         header('Content-Type: application/json');
-        if(CUser::isLogged() && CUser::isAdmin()){
+        if (CUser::isLogged() && CUser::isAdmin()) {
             $numArtiG = FPersistentManager::getInstance()->retrieveNumOnDate(EArticle::class, 'releaseDate', date('Y-m-d', strtotime('-1 day')));
             $numArtiS = FPersistentManager::getInstance()->retrieveNumOnDate(EArticle::class, 'releaseDate', date('Y-m-d', strtotime('-1 week')));
             $numArtiM = FPersistentManager::getInstance()->retrieveNumOnDate(EArticle::class, 'releaseDate', date('Y-m-d', strtotime('-1 month')));
@@ -66,7 +88,7 @@ class CDashboard{
                 'abbAttivi' => $abbAttivi
             ]);
             exit;
-        }else{
+        } else {
             echo json_encode([
                 'lastGA' => -1,
                 'lastSA' => -1,
