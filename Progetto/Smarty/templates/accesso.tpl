@@ -223,7 +223,7 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="text" placeholder="Username" name="username" id="username"
+                                <input class="input" type="text" placeholder="Username" name="username" id="usernameR"
                                     required />
                                 <span class="icon is-small is-left has-link" id="usernameError">
                                     <i class="fa fa-user-circle"></i>

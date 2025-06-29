@@ -319,6 +319,7 @@ class CUser{
 
     public static function checkUsername(): void {
         if (UServer::getRequestMethod() === 'POST') {
+            header('Content-Type: application/json');
             $username = UHTTPMethods::post('username');
             try {
                 $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);

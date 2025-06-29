@@ -20,6 +20,7 @@ class CFrontController
         'confirm' => ['CConfirm', 'confirm'],
         'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
+        'checkUsername' => ['CUser', 'checkUsername'],
         'profile' => ['CUser', 'goToProfile'],
         'editProfile' => ['CUser', 'editProfile'],
         'confirmEditProfile' => ['CUser', 'applyModify'],

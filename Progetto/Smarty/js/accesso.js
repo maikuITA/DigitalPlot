@@ -152,9 +152,8 @@ if (submitBtn) {
 /**
  * Checks if the username is unique.
  */
-document.getElementById("username").addEventListener("blur", function () {
+document.getElementById("usernameR").addEventListener("blur", function () {
     const username = this.value.trim();
-    const errorSpan = document.getElementById("usernameError");
     const submitBtn = document.getElementById("submit-regis");
     const inputField = this;
 
@@ -165,7 +164,7 @@ document.getElementById("username").addEventListener("blur", function () {
         return;
     }
 
-    fetch("/check-username.php", {
+    fetch("/checkUsername", {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -175,11 +174,9 @@ document.getElementById("username").addEventListener("blur", function () {
         .then(res => res.json())
         .then(data => {
             if (data.exists === true) {
-                errorSpan.textContent = "Username già in uso";
                 inputField.classList.add("is-danger");
                 submitBtn.disabled = true;
             } else {
-                errorSpan.textContent = "";
                 inputField.classList.remove("is-danger");
                 submitBtn.disabled = false;
             }
