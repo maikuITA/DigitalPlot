@@ -245,7 +245,6 @@ class CArticle{
                 $dropResult = FPersistentManager::getInstance()->delete($initialArticle);
                 $article = new EArticle($title,$description,$content,PENDING,$genre, $tipo, $date, $user);
                 if ($dropResult){
-                    ULogSys::toLog("MANNAGIA LA SACRA", true);
                     FPersistentManager::getInstance()->saveInDb($article);
                     header('Location: https://digitalplot.altervista.org/confirm/2');
                     exit();

@@ -35,16 +35,16 @@ function showLogin() {
             log.classList.add("is-active");
             reg.classList.remove("is-active");
         }
-        if(content) {
-            if(window.innerWidth > 768) {
+        if (content) {
+            if (window.innerWidth > 768) {
                 content.style.width = '30%';
             }
             else {
                 content.style.width = '100%';
             }
         }
-        if(inputs) {
-            inputs.forEach(function(input) {
+        if (inputs) {
+            inputs.forEach(function (input) {
                 input.style.display = 'block';
             });
         }
@@ -63,16 +63,16 @@ function showRegis() {
             log.classList.remove("is-active");
             reg.classList.add("is-active");
         }
-        if(content) {
-            if(window.innerWidth > 768) {
+        if (content) {
+            if (window.innerWidth > 768) {
                 content.style.width = '40%';
             }
             else {
                 content.style.width = '100%';
             }
         }
-        if(inputs) {
-            inputs.forEach(function(input) {
+        if (inputs) {
+            inputs.forEach(function (input) {
                 input.style.display = 'block';
             });
         }
@@ -103,7 +103,7 @@ function notloading(id) {
 }
 
 // Adjusts the main container width when the window is resized
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     if (login && regis) {
         if (login.style.display === stile) {
             content.style.width = window.innerWidth > 768 ? '30%' : '100%';
@@ -135,14 +135,59 @@ const regisInputs = [
 ];
 
 if (submitBtn) {
-    regisInputs.forEach(function(input) {
+    regisInputs.forEach(function (input) {
         if (input) {
-            input.addEventListener("input", function() {
+            input.addEventListener("input", function () {
                 submitBtn.disabled = input === document.activeElement;
             });
-            input.addEventListener("blur", function() {
+            input.addEventListener("blur", function () {
                 submitBtn.disabled = false;
             });
         }
     });
 }
+
+
+
+/**
+ * Checks if the username is unique.
+ */
+document.getElementById("username").addEventListener("blur", function () {
+    const username = this.value.trim();
+    const errorSpan = document.getElementById("usernameError");
+    const submitBtn = document.getElementById("submit-regis");
+    const inputField = this;
+
+    if (username === "") {
+        errorSpan.textContent = "";
+        inputField.classList.remove("is-danger");
+        submitBtn.disabled = false;
+        return;
+    }
+
+    fetch("/check-username.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "username=" + encodeURIComponent(username)
+    })
+        .then(res => res.json())
+        .then(data => {
+            if (data.exists === true) {
+                errorSpan.textContent = "Username già in uso";
+                inputField.classList.add("is-danger");
+                submitBtn.disabled = true;
+            } else {
+                errorSpan.textContent = "";
+                inputField.classList.remove("is-danger");
+                submitBtn.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error("Errore nella verifica username:", error);
+            errorSpan.textContent = "Errore nel controllo. Riprova.";
+            inputField.classList.add("is-danger");
+            submitBtn.disabled = true;
+        });
+});

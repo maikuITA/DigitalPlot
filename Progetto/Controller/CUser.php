@@ -120,6 +120,7 @@ class CUser{
         if ($method === 'POST') {
             $username = UHTTPMethods::post('username');
             $password = UHTTPMethods::post('password');
+            $password2 = UHTTPMethods::post('password2');
             $name = UHTTPMethods::post('name');
             $surname = UHTTPMethods::post('surname');
             $birthdate = UHTTPMethods::post('birthdate');
@@ -131,6 +132,11 @@ class CUser{
             $streetNumber = UHTTPMethods::post('streetNumber');
             $email = UHTTPMethods::post('email');
             $telephone = UHTTPMethods::post('telephone');
+            if ( $password !== $password2) {
+                ULogSys::toLog('Passwords do not match', true);
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit;
+            }
             $user = new EUser (privilege: BASIC, username: $username, password: $password,name: $name,surname: $surname, birthdate: $birthdate,country: $country,birthplace: $birthplace,province: $province,zipCode: $zipCode,streetAddress: $streetAddress,streetNumber: $streetNumber,email: $email,telephone: $telephone);
             $plotCard = new EPlotCard( 0 , $user );
             $user->addPlotCard($plotCard);
@@ -309,6 +315,25 @@ class CUser{
             exit;
         }
         
+    }
+
+    public static function checkUsername(): void {
+        if (UServer::getRequestMethod() === 'POST') {
+            $username = UHTTPMethods::post('username');
+            try {
+                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
+                if (isset($user)) {
+                    echo json_encode(['exists' => true]);
+                } else {
+                    echo json_encode(['exists' => false]);
+                }
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during username check: ' . $e->getMessage(), true);
+                echo json_encode(['error' => 'An error occurred while checking the username.']);
+            }
+        } else {
+            header('Location: https://digitalplot.altervista.org/error/404');
+        }
     }
 
 
