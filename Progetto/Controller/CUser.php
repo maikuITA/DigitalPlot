@@ -322,8 +322,15 @@ class CUser{
             header('Content-Type: application/json');
             $username = UHTTPMethods::post('username');
             try {
-                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
+                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);  
                 if (isset($user)) {
+                    if(CUser::isLogged()){
+                        $currentUser = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                        if($user && $user->getId() === $currentUser->getId()){
+                            echo json_encode(['exists' => false]);
+                            return;
+                        }
+                    } 
                     echo json_encode(['exists' => true]);
                 } else {
                     echo json_encode(['exists' => false]);
