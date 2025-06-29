@@ -16,5 +16,5 @@ RewriteRule .* index.php
 RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# facciamo in modo che i file .php vengano gestiti da PHP 8.4
+# every php file must be readden by the PHP 8.4 handler
 AddHandler av-php84 .php
