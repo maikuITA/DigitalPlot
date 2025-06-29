@@ -8,40 +8,39 @@ class ULogSys
     /**
      *  Writes a log message to the log file.
      *  If the message is empty, it writes only a new line without a timestamp.
-     *   @param string $tolog The message to log.
+     *   @param string $message The message to log.
      *   @return void
      */
-    public static function toLog(string $tolog, bool $error = false): void
+    public static function toLog(string $message, bool $error = false): void
     {
 
+        // determines if the log is an error or an event
+
         if ($error) {
-            // scrivi il messaggio di errore nel file di error log
-            // prende il path del file di log
             $logs = __DIR__ . DIRECTORY_SEPARATOR . 'Logs' . DIRECTORY_SEPARATOR . 'errors.log';
         } else {
-            // prende il path del file di log
             $logs = __DIR__ . DIRECTORY_SEPARATOR . 'Logs' . DIRECTORY_SEPARATOR . 'events.log';
         }
 
-        // Messaggio di log da scrivere
+        // writes the current timestamp in the format [YYYY-MM-DD HH:MM:SS]
         $timestamp = "[" . date('Y-m-d H:i:s') . "]";
 
-        // Apri il file in modalità append (aggiunge il contenuto alla fine del file)
+        // opens the log file in append mode ('a'), which allows writing to the end of the file without truncating it
         $file = fopen($logs, 'a');
 
-        // Verifica se l'apertura del file ha avuto successo
+        // verifies if the file was opened successfully
         if ($file) {
-            if ($tolog == "") {
-                // Se il messaggio da scrivere è vuoto aggiungo SOLO una riga vuota, senza timestamp (PHP_EOL aggiunge una nuova riga)
-                fwrite($file, $tolog . PHP_EOL . "\n");
+            if ($message == "") {
+                // if there is nothing to write, it writes only a new line(by PHP EOL) without a timestamp
+                fwrite($file, $message . PHP_EOL . "\n");
             } else {
-                // Scrivo la riga nel file, composta da timestamp e messaggio di log
-                fwrite($file, $timestamp . " # " . $tolog . PHP_EOL . "\n");
+                // otherwise, it writes the timestamp followed by the log message
+                fwrite($file, $timestamp . " # " . $message . PHP_EOL . "\n");
             }
-            fclose($file); // Infine chiudo il file di log
+            fclose($file); // closes the file after writing
         } else {
             echo 'Errore nell\'apertura del file di log. <br>';
-            echo 'PERCORSO: ' . $logs . '<br>';
+            echo 'PERCORSO: ' . $message . '<br>';
         }
     }
 }
