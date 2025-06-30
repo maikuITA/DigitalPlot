@@ -7,7 +7,7 @@ const unfollow = document.getElementById('unfollow')
 
 follow.addEventListener('click', async () => {
   // Costruzione dell'URL con parametri
-  const url = '/follow/' + username.textContent
+  const url = '/follow/' + encodeURIComponent(username.textContent.trim())
 
   try {
     const response = await fetch(url, {
@@ -36,7 +36,7 @@ follow.addEventListener('click', async () => {
 
 unfollow.addEventListener('click', async () => {
   // Costruzione dell'URL con parametri
-  const url = '/unfollow/' + username.textContent
+  const url = '/unfollow/' + encodeURIComponent(username.textContent.trim())
 
   try {
     const response = await fetch(url, {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
 
-    if (!response.ok) { 
+    if (!response.ok) {
       throw new Error('Errore nella risposta del server');
     }
 
