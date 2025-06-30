@@ -1,23 +1,25 @@
-<?php 
+<?php
 
-class CFollow{
+class CFollow
+{
 
     /**
-     * This method add a follower to a user
+     * This method adds a follower to a user
      * @param int $idWriter the id of the writer to follow
-     * @return bool return true if the follow operation went well 
+     * @return bool
      */
-    public static function follow(?string $usernameWriter = null) : bool {
+    public static function follow(?string $usernameWriter = null): bool
+    {
         header('Content-Type: application/json');
-        if($usernameWriter === null){
+        if ($usernameWriter === null) {
             echo json_encode(['success' => false, 'message' => 'manca username']);
             exit;
-        }else{
-            if(CUser::isLogged()){
-                if(CUser::isSubbed()){
+        } else {
+            if (CUser::isLogged()) {
+                if (CUser::isSubbed()) {
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
-                    if (isset($writer)){
+                    if (isset($writer)) {
                         $follow = new EFollow($writer, $user);
                         $user->addFollowing($follow);
                         $writer->addFollower($follow);
@@ -28,15 +30,15 @@ class CFollow{
                         ULogSys::toLog("");
                         echo json_encode(['success' => true, 'message' => 'follow successful']);
                         exit;
-                    }else{
+                    } else {
                         echo json_encode(['success' => false, 'message' => 'writer non caricato']);
                         exit;
                     }
-                }else{
+                } else {
                     echo json_encode(['success' => false, 'message' => 'non iscritto']);
                     exit;
                 }
-            }else{
+            } else {
                 echo json_encode(['success' => false, 'message' => 'non loggato']);
                 exit;
             }
@@ -44,22 +46,23 @@ class CFollow{
     }
 
     /**
-     * This method remove a follower to a user
+     * This method removes a follower to a user
      * @param int $idWriter the id of the writer to follow
-     * @return bool return true if the follow operation went well 
+     * @return bool
      */
-    public static function unfollow(?string $usernameWriter = null){
+    public static function unfollow(?string $usernameWriter = null)
+    {
         header('Content-Type: application/json');
-        if($usernameWriter === null ){
+        if ($usernameWriter === null) {
             echo json_encode(['success' => false, 'message' => 'writer missing']);
             exit;
-        }else{
-            if(CUser::isLogged()){
-                if(CUser::isSubbed()){
+        } else {
+            if (CUser::isLogged()) {
+                if (CUser::isSubbed()) {
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
                     $follow = $user->getFollowingById($writer->getId());
-                    if (isset($writer) && isset($follow)){
+                    if (isset($writer) && isset($follow)) {
                         $user->removeFollowing($follow);
                         $writer->removeFollower($follow);
                         FPersistentManager::getInstance()->delete($follow);
@@ -69,15 +72,15 @@ class CFollow{
                         ULogSys::toLog("");
                         echo json_encode(['success' => true, 'message' => 'follow successful']);
                         exit;
-                    }else{
+                    } else {
                         echo json_encode(['success' => false, 'message' => 'writer missing']);
                         exit;
                     }
-                }else{
+                } else {
                     echo json_encode(['success' => false, 'message' => 'writer missing']);
                     exit;
                 }
-            }else{
+            } else {
                 echo json_encode(['success' => false, 'message' => 'writer missing']);
                 exit;
             }
@@ -85,40 +88,40 @@ class CFollow{
     }
 
     /**
-     * check if the user is a follower of the writer
+     * Check if the user is a follower of the writer
      * @param string|null $usernameWriter username of the writer
      */
-    public static function isFollow(?string $usernameWriter){
+    public static function isFollow(?string $usernameWriter)
+    {
         header('Content-Type: application/json');
-        if($usernameWriter === null ){
+        if ($usernameWriter === null) {
             echo json_encode(['success' => false, 'me' => false]);
             exit;
-        }else{
-            if(CUser::isLogged()){
-                if(CUser::isSubbed()){
+        } else {
+            if (CUser::isLogged()) {
+                if (CUser::isSubbed()) {
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                     $writer = FPersistentManager::getInstance()->retrieveUserOnUsername($usernameWriter);
-                    if($user->getId()=== $writer->getId()){
+                    if ($user->getId() === $writer->getId()) {
                         echo json_encode(['success' => false, 'me' => true]);
                         exit;
                     }
                     $follow = $user->getFollowingById($writer->getId());
-                    if (isset($writer) && isset($follow)){
+                    if (isset($writer) && isset($follow)) {
                         echo json_encode(['success' => true, 'me' => false]);
                         exit;
-                    }else{
+                    } else {
                         echo json_encode(['success' => false, 'me' => false]);
                         exit;
                     }
-                }else{
+                } else {
                     echo json_encode(['success' => false, 'me' => false]);
                     exit;
                 }
-            }else{
+            } else {
                 echo json_encode(['success' => false, 'me' => false]);
                 exit;
             }
         }
     }
-
 }
