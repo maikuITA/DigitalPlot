@@ -89,7 +89,7 @@ class CPurchase
 
     /**
      * This method retrieves the credit card information from the POST request
-     * and creates a new ECreditCard object, saving it in the database.
+     * and creates a new ECreditCard object.
      * @return ECreditCard The created credit card object
      */
     private static function getCreditCard(): ECreditCard
