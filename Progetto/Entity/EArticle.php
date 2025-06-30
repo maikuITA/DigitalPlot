@@ -6,16 +6,17 @@ use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
 #[ORM\Table(name: "Article")]
-class EArticle{
+class EArticle
+{
 
-    #[ORM\Id]   
+    #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "IDENTITY")]
     #[ORM\Column(name: "article_id", type: "integer")]
     private int $id;
-    
+
     #[ORM\Column(type: "string", length: 100)]
     private string $title;
-    
+
     #[ORM\Column(type: "text")]
     private string $description;
 
@@ -24,27 +25,28 @@ class EArticle{
 
     #[ORM\Column(name: "category", type: "string", length: 100)]
     private string $category;
-    
+
     #[ORM\Column(name: "genre", type: "string", length: 100)]
     private string $genre;
 
     #[ORM\Column(type: "blob", nullable: true)]
     private $contents;
-    
-    #[ORM\Column(name:"release_date",type: "date")]
+
+    #[ORM\Column(name: "release_date", type: "date")]
     private DateTime $releaseDate;
-    
+
     #[ORM\OneToMany(targetEntity: "EReview", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private Collection $reviews;
-    
+
     #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "articles", cascade: ["persist"])]
     #[ORM\JoinColumn(name: "fk_writer", referencedColumnName: "user_id", onDelete: "cascade")] // definizione chiave esterna
     private EUser $writer;
-    
+
     #[ORM\OneToMany(targetEntity: "EReading", mappedBy: "articleId", cascade: ["persist", "remove"])]
     private Collection $readings;
 
-    public function __construct(string $title,string $description, mixed $contents ,string $state = PENDING, string $genre, string $category, string $releaseDate, EUser $writer) {
+    public function __construct(string $title, string $description, mixed $contents, string $state = PENDING, string $genre, string $category, string $releaseDate, EUser $writer)
+    {
         $this->title = $title;
         $this->description = $description;
         $this->contents = $contents;
@@ -57,86 +59,95 @@ class EArticle{
         $this->reviews = new ArrayCollection();
     }
 
-    //Metodi set e get
-    public function getAvgEvaluate(): float {
-        $sum = 0;
-        $count = 0;
-        foreach ($this->reviews as $review) {
-            $sum += $review->getEvaluate();
-            $count++;
-        }
-        return $count > 0 ? number_format(($sum / $count), 2) : 0;
-    }
+    //Set and Get methods
 
-
-    public function setId(int $id) {
+    public function setId(int $id)
+    {
         $this->id = $id;
     }
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function setTitle(string $title) {
+    public function setTitle(string $title)
+    {
         $this->title = $title;
     }
 
-    public function getTitle(): string {
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
-    public function setDescription(string $description) {
+    public function setDescription(string $description)
+    {
         $this->description = $description;
     }
 
-    public function getDescription(): string {
+    public function getDescription(): string
+    {
         return $this->description;
     }
 
-    public function setGenre(string $genre) {
+    public function setGenre(string $genre)
+    {
         $this->genre = $genre;
     }
 
-    public function getGenre(): string {
+    public function getGenre(): string
+    {
         return $this->genre;
     }
 
-    public function setCategory(string $category) {
+    public function setCategory(string $category)
+    {
         $this->category = $category;
     }
 
-    public function getCategory(): string {
+    public function getCategory(): string
+    {
         return $this->category;
     }
-    public function setWriter(EUser $writer) {
+    public function setWriter(EUser $writer)
+    {
         $this->writer = $writer;
     }
-    public function getWriter(): EUser {
+    public function getWriter(): EUser
+    {
         return $this->writer;
     }
-    public function setReleaseDate(string $releaseDate){
+    public function setReleaseDate(string $releaseDate)
+    {
         $this->releaseDate = new DateTime($releaseDate);
     }
-    public function getReleaseDate(): DateTime{
+    public function getReleaseDate(): DateTime
+    {
         return $this->releaseDate;
     }
-    public function setState(string $state) {
+    public function setState(string $state)
+    {
         $this->state = $state;
     }
-    public function getState(): string {
+    public function getState(): string
+    {
         return $this->state;
     }
-    public function setContents(string $contents): void {
+    public function setContents(string $contents): void
+    {
         $this->contents = $contents;
     }
-    public function getContent() {
+    public function getContent()
+    {
         return $this->contents;
     }
-    public function getHtmlContent(): ?string {
+    public function getHtmlContent(): ?string
+    {
         if ($this->contents === null) {
             return null;
         }
-        if (is_resource($this->contents)) {
+        if (is_resource($this->contents)) { //if the content is a resource (e.g., a stream), it returns the content of the stream as a string
             return stream_get_contents($this->contents);
         }
 
@@ -144,52 +155,76 @@ class EArticle{
     }
 
 
-    //Gestione delle reviews
-    public function addReview(EReview $review): void {
+    // Reviews management
+
+    public function addReview(EReview $review): void
+    {
         $this->reviews->add($review);
     }
-    public function getReviews() {
+    public function getReviews()
+    {
         return $this->reviews;
     }
-    public function removeReview(EReview $review): void {
-        if($this->reviews->contains($review)) {
+    public function removeReview(EReview $review): void
+    {
+        if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
         }
     }
-    public function countReviews(): int {
+    public function countReviews(): int
+    {
         return $this->reviews->count();
     }
-    public function getReviewsById(int $index){
+    public function getReviewsById(int $index)
+    {
         foreach ($this->reviews as $review) {
             if ($review->getCod() === $index) {
                 return $review;
             }
         }
-        return null; 
+        return null;
     }
 
-    //Gestione delle readings
-    public function addReading(EReading $reading): void {
+    //readings management
+
+    public function addReading(EReading $reading): void
+    {
         $this->readings->add($reading);
     }
-    public function getReadings() {
+    public function getReadings()
+    {
         return $this->readings;
     }
-    public function removeReading(EReading $reading): void {
-        if($this->readings->contains($reading)) {
+    public function removeReading(EReading $reading): void
+    {
+        if ($this->readings->contains($reading)) {
             $this->readings->removeElement($reading);
         }
     }
-    public function countReadings(): int {
+    public function countReadings(): int
+    {
         return $this->readings->count();
     }
-    public function getReadingById(int $index) {
+    public function getReadingById(int $index)
+    {
         foreach ($this->readings as $reading) {
             if ($reading->getCod() === $index) {
                 return $reading;
             }
         }
         return null;
-     } 
+    }
+
+    // Ad hoc method 
+
+    public function getAvgEvaluate(): float
+    {
+        $sum = 0;
+        $count = 0;
+        foreach ($this->reviews as $review) {
+            $sum += $review->getEvaluate();
+            $count++;
+        }
+        return $count > 0 ? number_format(($sum / $count), 2) : 0; // if count>0m --> calculates the average with 2 decimal places, otherwise returns 0
+    }
 }
-?>
