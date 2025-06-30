@@ -1,7 +1,7 @@
 <?php
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM; // allows to use annotations for ORM mapping
+use Doctrine\Common\Collections\ArrayCollection; // doctrine class which implements the Collection interface and allow you to represent efficiently array of objects
 use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity]
