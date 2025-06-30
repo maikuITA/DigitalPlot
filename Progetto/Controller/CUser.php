@@ -6,6 +6,55 @@ class CUser
 {
 
     /**
+     * Method to register a new user
+     * This method retrieves user data from the POST request,
+     * creates a new user and plot card,
+     * and saves them in the database.
+     * @return void
+     */
+    public static function register(): void
+    {
+        // Check if the request method is POST
+        $method = UServer::getRequestMethod();
+        if ($method === 'POST') {
+            $username = UHTTPMethods::post('usernameR');
+            $password = UHTTPMethods::post('password');
+            $password2 = UHTTPMethods::post('password2');
+            $name = UHTTPMethods::post('name');
+            $surname = UHTTPMethods::post('surname');
+            $birthdate = UHTTPMethods::post('birthdate');
+            $country = UHTTPMethods::post('country');
+            $birthplace = UHTTPMethods::post('birthplace');
+            $province = UHTTPMethods::post('province');
+            $zipCode = UHTTPMethods::post('zipCode');
+            $streetAddress = UHTTPMethods::post('streetAddress');
+            $streetNumber = UHTTPMethods::post('streetNumber');
+            $email = UHTTPMethods::post('email');
+            $telephone = UHTTPMethods::post('telephone');
+            if ($password !== $password2) {
+                ULogSys::toLog('Passwords do not match', true);
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit;
+            }
+            $user = new EUser(privilege: BASIC, username: $username, password: $password, name: $name, surname: $surname, birthdate: $birthdate, country: $country, birthplace: $birthplace, province: $province, zipCode: $zipCode, streetAddress: $streetAddress, streetNumber: $streetNumber, email: $email, telephone: $telephone);
+            $plotCard = new EPlotCard(0, $user);
+            $user->addPlotCard($plotCard);
+            try {
+                FPersistentManager::getInstance()->saveInDb($user);
+                FPersistentManager::getInstance()->saveInDb($plotCard);
+                USession::getInstance();
+                USession::setSessionElement('user', $user->getId());
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during registration: ' . $e->getMessage(), true);
+                header('Location: https://digitalplot.altervista.org/auth');
+            }
+            header('Location: https://digitalplot.altervista.org/home');
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+        }
+    }
+
+    /**
      * Method to check if the user is logged in
      * This method checks if the session is set and if the user session element exists.
      * @return boolean
@@ -104,8 +153,6 @@ class CUser
     public static function logout()
     {
         if (CUser::isLogged() === true) {
-            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            USession::getInstance();
             USession::unsetSession();
             USession::destroySession();
             header('Location: https://digitalplot.altervista.org/confirm/5');
@@ -114,54 +161,7 @@ class CUser
         }
     }
 
-    /**
-     * Method to register a new user
-     * This method retrieves user data from the POST request,
-     * creates a new user and plot card,
-     * and saves them in the database.
-     * @return void
-     */
-    public static function register(): void
-    {
-        // Check if the request method is POST
-        $method = UServer::getRequestMethod();
-        if ($method === 'POST') {
-            $username = UHTTPMethods::post('usernameR');
-            $password = UHTTPMethods::post('password');
-            $password2 = UHTTPMethods::post('password2');
-            $name = UHTTPMethods::post('name');
-            $surname = UHTTPMethods::post('surname');
-            $birthdate = UHTTPMethods::post('birthdate');
-            $country = UHTTPMethods::post('country');
-            $birthplace = UHTTPMethods::post('birthplace');
-            $province = UHTTPMethods::post('province');
-            $zipCode = UHTTPMethods::post('zipCode');
-            $streetAddress = UHTTPMethods::post('streetAddress');
-            $streetNumber = UHTTPMethods::post('streetNumber');
-            $email = UHTTPMethods::post('email');
-            $telephone = UHTTPMethods::post('telephone');
-            if ($password !== $password2) {
-                ULogSys::toLog('Passwords do not match', true);
-                header('Location: https://digitalplot.altervista.org/auth');
-                exit;
-            }
-            $user = new EUser(privilege: BASIC, username: $username, password: $password, name: $name, surname: $surname, birthdate: $birthdate, country: $country, birthplace: $birthplace, province: $province, zipCode: $zipCode, streetAddress: $streetAddress, streetNumber: $streetNumber, email: $email, telephone: $telephone);
-            $plotCard = new EPlotCard(0, $user);
-            $user->addPlotCard($plotCard);
-            try {
-                FPersistentManager::getInstance()->saveInDb($user);
-                FPersistentManager::getInstance()->saveInDb($plotCard);
-                USession::getInstance();
-                USession::setSessionElement('user', $user->getId());
-            } catch (Exception $e) {
-                ULogSys::toLog('Error during registration: ' . $e->getMessage());
-                header('Location: https://digitalplot.altervista.org/auth');
-            }
-            header('Location: https://digitalplot.altervista.org/home');
-        } else {
-            header('Location: https://digitalplot.altervista.org/auth');
-        }
-    }
+
 
     /**
      * Method to authenticate the user
@@ -183,7 +183,7 @@ class CUser
     /**
      * Method to check the login credentials and log the user in
      * This method retrieves the username and password from the POST request,
-     * verifies them against the database, and sets the session if successful.
+     * verifies them against the database and sets the session if successful.
      * If the credentials are invalid or an error occurs, it logs the error and redirects to the access page.
      * @return void
      * @throws Exception
@@ -217,7 +217,7 @@ class CUser
     }
 
     /**
-     * Method to redirect to the user profile page
+     * Method to redirect the user to the profile page
      * This method checks if the user is logged in and retrieves the user data.
      * If the user is logged in, it renders the profile view with the user's data.
      * If the user is not logged in, it redirects to the authentication page.
@@ -250,24 +250,24 @@ class CUser
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $image = UHTTPMethods::files('avatar');
             if (!empty($image) && $image['error'] === UPLOAD_ERR_OK && !empty($image['tmp_name'])) {
-                $tmpName = $image['tmp_name'];
+                $temporaryFile = $image['tmp_name']; // tmp_name represents the temporary path of the uploaded file
 
-                // Verifica MIME
-                $mime = mime_content_type($tmpName);
+                // Verify MIME
+                $mime = mime_content_type($temporaryFile);
                 $allowed = ['image/jpeg', 'image/png', 'image/webp'];
                 if (!in_array($mime, $allowed)) {
                     header('Location: https://digitalplot.altervista.org/error/2');
                     exit;
                 }
 
-                // Verifica dimensione (es. max 2MB)
+                // Verify size (max 2MB)
                 if ($image['size'] > 2 * 1024 * 1024) {
                     header('Location: https://digitalplot.altervista.org/error/3');
                     exit;
                 }
 
-                // OK: leggi contenuto binario
-                $blob = file_get_contents($tmpName);
+                // take the binary content
+                $blob = file_get_contents($temporaryFile);
 
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob);
                 ULogSys::toLog("Immagine di profilo updatata");
@@ -283,6 +283,7 @@ class CUser
             exit;
         }
     }
+
     /**
      * Method to show the edit profile page
      * This method checks if the user is logged in and retrieves the user data.
@@ -297,10 +298,11 @@ class CUser
             VProfile::editProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, privilege: $user->getPrivilege());
         }
     }
+
     /**
      * Method to apply modifications to the user profile
      * This method checks if the request method is POST, retrieves the user data,
-     * validates the input, updates the user profile, and redirects accordingly.
+     * validates the input, updates the user profile and redirects accordingly.
      * If the user is not logged in or if the request method is not POST, it redirects to an error page.
      * @return void
      */
@@ -343,6 +345,7 @@ class CUser
             exit;
         }
     }
+
     /**
      * Method to check if a username already exists
      * This method checks if the request method is POST, retrieves the username from the POST data,
