@@ -9,7 +9,6 @@ $smarty = StartSmarty::configuration();
 
 // Option 1: Clear all compiled templates and all cache files
 // This is the most common and comprehensive way to clear everything.
-$smarty->clearAllCache();
 $smarty->clearCompiledTemplate();
 
 // Option 2: Clear cache for a specific template (if you use caching)
