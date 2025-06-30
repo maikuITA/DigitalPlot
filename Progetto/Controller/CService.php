@@ -1,6 +1,7 @@
 <?php
 
-class CService{
+class CService
+{
 
     /**
      * This function checks if any of the entities in the database are empty
@@ -10,12 +11,13 @@ class CService{
      * @param array $allData
      * @return int
      */
-    public static function printCounts(array $allData): int {
+    public static function printCounts(array $allData): int
+    {
         foreach ($allData as $key => $items) {
             $count = count($items);
             if ($count === 0) {
                 return 1;
-            } 
+            }
         }
         return 0;
     }
@@ -27,23 +29,24 @@ class CService{
      * If any entity is empty, it populates the database with initial data.
      * @return void
      */
-    public static function dbInit(): void{
+    public static function dbInit(): void
+    {
         // Check if the database is empty
         InstallerDb::install();
-        $db = FPersistentManager::getInstance();
+        $persistentManager = FPersistentManager::getInstance();
         $allData = [
-            'articles' => $db->retrieveAll(EArticle::class),
-            'cards' => $db->retrieveAll(ECreditCard::class),
-            'follow' => $db->retrieveAll(EFollow::class),
-            'plotcards' => $db->retrieveAll(EPlotCard::class),
-            'purchases' => $db->retrieveAll(EPurchase::class),
-            'readings' => $db->retrieveAll(EReading::class),
-            'reviews' => $db->retrieveAll(EReview::class),
-            'subscriptions' => $db->retrieveAll(ESubscription::class),
-            'users' => $db->retrieveAll(EUser::class)
+            'articles' => $persistentManager->retrieveAll(EArticle::class),
+            'cards' => $persistentManager->retrieveAll(ECreditCard::class),
+            'follow' => $persistentManager->retrieveAll(EFollow::class),
+            'plotcards' => $persistentManager->retrieveAll(EPlotCard::class),
+            'purchases' => $persistentManager->retrieveAll(EPurchase::class),
+            'readings' => $persistentManager->retrieveAll(EReading::class),
+            'reviews' => $persistentManager->retrieveAll(EReview::class),
+            'subscriptions' => $persistentManager->retrieveAll(ESubscription::class),
+            'users' => $persistentManager->retrieveAll(EUser::class)
         ];
         $zero = self::printCounts($allData);
-        if ($zero === 0){
+        if ($zero === 0) {
             ULogSys::toLog("Database has been populated successfully.");
             header('Location: https://digitalplot.altervista.org/home');
         } else {
@@ -52,7 +55,7 @@ class CService{
             ULogSys::toLog("Database has been populated successfully.");
         }
     }
-    
+
 
     /**
      * This function displays the logs
@@ -61,16 +64,17 @@ class CService{
      * If the user is not logged in or is not an admin, it redirects to the home page.
      * @return void
      */
-    public static function logs(): void {
-        if(CUser::isLogged() && CUser::isAdmin()){
+    public static function logs(): void
+    {
+        if (CUser::isLogged() && CUser::isAdmin()) {
             // chiama la view per la home page
-            if(file_exists(__DIR__ . '/../View/VLogs.php')) {
+            if (file_exists(__DIR__ . '/../View/VLogs.php')) {
                 $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
                 VLogs::render(ADMIN, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());
             } else {
                 ULogSys::toLog("VLogs file not found", true);
             }
-        }else{
+        } else {
             header('Location: https://digitalplot.altervista.org/home');
             exit;
         }
@@ -82,10 +86,10 @@ class CService{
      * After clearing the cache, it logs a message and redirects to the home page.
      * @return void
      */
-    public static function clearCache(): void {
-        require_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "clearcache.php";   
+    public static function clearCache(): void
+    {
+        require_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "clearcache.php";
         ULogSys::toLog("Cache pulita correttamente.");
-        header('Location: https://digitalplot.altervista.org/home'); 
+        header('Location: https://digitalplot.altervista.org/home');
     }
-
 }
