@@ -48,12 +48,12 @@ class CArticle
      * Method to add an article to the list of read articles
      * This method checks if the user is logged in and retrieves the article by its ID.
      * If the article exists and the user has not already read it, it creates a new reading entry,
-     * adds points to the user's plot card, and saves the reading in the database.
+     * adds points to the user's plot card and saves the reading in the database.
      * If the user is not logged in or if the article does not exist, it redirects to an error page.
      * @param ?int $idArticolo
      * @return void
      */
-    public static function addListReadArticles(?int $idArticolo)
+    public static function addListReadArticles(?int $idArticolo): void
     {
         if ($idArticolo === null || $idArticolo <= 0) {
             header('Location: https://digitalplot.altervista.org/error/404');
@@ -91,7 +91,7 @@ class CArticle
     }
 
     /**
-     * Method to display the new article page
+     * Method to display the new article page.
      * This method checks if the user is logged in and has the privilege to write articles.
      * If the user is authorized, it displays the new article page; otherwise, it redirects to the home page.
      * @return void
@@ -113,7 +113,7 @@ class CArticle
     }
 
     /**
-     * allow you to drop an article from the profile view
+     * Allow you to drop an article from the profile view.
      * @param $idArticle
      * @return void
      */
@@ -130,13 +130,16 @@ class CArticle
                 if ($article->getWriter()->getId() === $user->getId() || $user->getPrivilege() === ADMIN) {
                     $drop_result = FPersistentManager::getInstance()->delete($article);
                     if ($drop_result) {
-                        ULogSys::toLog("Articolo eliminato");
+                        ULogSys::toLog("Articolo eliminato correttamente");
                         ULogSys::toLog("");
                         header('Location: https://digitalplot.altervista.org/confirm/1');
                         exit();
+                    } else {
+                        ULogSys::toLog("L'articolo non è stato eliminato correttamente");
+                        ULogSys::toLog("");
+                        header('Location: https://digitalplot.altervista.org/error/1');
+                        exit();
                     }
-                    header('Location: https://digitalplot.altervista.org/error/1');
-                    exit();
                 } else {
                     header('Location: https://digitalplot.altervista.org/error/1');
                     exit();
@@ -159,7 +162,7 @@ class CArticle
      * If the user is not logged in or does not have the required privilege, it redirects to the appropriate page.
      * @return void
      */
-    public static function saveArticle()
+    public static function saveArticle(): void
     {
         if (UServer::getRequestMethod() === 'POST') {
             if (CUser::isLogged()) {
@@ -202,6 +205,7 @@ class CArticle
             exit();
         }
     }
+
     /**
      * Method to check the uploaded file
      * This method checks if the uploaded file is valid, verifies its MIME type,
@@ -255,7 +259,7 @@ class CArticle
                     exit();
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/subscribe');
+                header('Location: https://digitalplot.altervista.org/home');
                 exit();
             }
         } else {
@@ -263,8 +267,9 @@ class CArticle
             exit();
         }
     }
+
     /**
-     * Method to save the updated article
+     * Method to save the updated article.
      * This method checks if the user is logged in and retrieves the article by its ID.
      * If the request method is POST, it retrieves the updated article data from the POST request,
      * deletes the initial article, creates a new article object with the updated data,
@@ -273,7 +278,7 @@ class CArticle
      * @param int $idArticle
      * @return void
      */
-    public static function saveUpdateArticle(int $idArticle)
+    public static function saveUpdateArticle(int $idArticle): void
     {
         if (CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
@@ -309,6 +314,8 @@ class CArticle
             exit();
         }
     }
+
+
     /**
      * Method to create a new review for an article
      * This method checks if the user is logged in and has the privilege to write reviews.
@@ -324,11 +331,11 @@ class CArticle
             if (CUser::isLogged()) {
                 if (CUser::isSubbed() || CUser::isAdmin()) {
                     $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-                    $commento = UHTTPMethods::post('review');
+                    $comment = UHTTPMethods::post('review');
                     $evaluation = UHTTPMethods::post('score');
                     $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $articleId);
                     if (isset($article)) {
-                        $review = new EReview($evaluation, $commento, date('Y-m-d'), $user, $article);
+                        $review = new EReview($evaluation, $comment, date('Y-m-d'), $user, $article);
                         $user->addReview($review);
                         $article->addReview($review);
                         FPersistentManager::getInstance()->saveInDb($review);
@@ -349,8 +356,10 @@ class CArticle
             header('Location: https://digitalplot.altervista.org/error/404');
         }
     }
+
+
     /**
-     * Method to drop a review
+     * Method to drop a review.
      * This method checks if the user is logged in and retrieves the review by its ID.
      * If the review exists and the user is either the subscriber of the review or an admin,
      * it removes the review from both the user and the article, deletes it from the database,
@@ -359,7 +368,7 @@ class CArticle
      * @param int $reviewId
      * @return void
      */
-    public static function dropReview(int $reviewId = -1)
+    public static function dropReview(int $reviewId = -1): void
     {
         if ($reviewId > 0) {
             if (CUser::isLogged()) {
