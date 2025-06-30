@@ -423,7 +423,8 @@ class EUser
         }
     }
 
-    // following methods
+    // following 
+
     public function addFollowing(EFollow $following): void
     {
         $this->following->add($following);
@@ -452,7 +453,9 @@ class EUser
             $this->following->removeElement($follower);
         }
     }
-    //reviews methods
+
+    //reviews 
+
     public function addReview(EReview $review): void
     {
         $this->reviews->add($review);
@@ -483,7 +486,8 @@ class EUser
 
     //-----------------WRITER-----------------
 
-    // articles methods
+    // articles
+
     public function addArticle(EArticle $article): void
     {
         $this->articles->add($article);
