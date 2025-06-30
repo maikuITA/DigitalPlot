@@ -73,12 +73,12 @@ class CFrontController
                     exit;
                 }*/
             } else {
-                ULogSys::toLog("Controller o metodo non trovato: " . $controller . " -> " . $method);
+                ULogSys::toLog("Controller or method not found: " . $controller . " -> " . $method, true);
                 header('Location: https://digitalplot.altervista.org/error/404');
                 exit;
             }
         } else {
-            ULogSys::toLog("Errore, display pagina errore 404");
+            ULogSys::toLog("Error 404");
             header('Location: https://digitalplot.altervista.org/error/404');
             exit;
         }
