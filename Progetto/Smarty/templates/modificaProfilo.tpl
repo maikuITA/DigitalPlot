@@ -94,8 +94,7 @@
                 <div class="field">
                     <a class="subtitle is-6 has-text-link">Username</a>
                     <p class="control has-icons-left alr">
-                        <input class="input" type="text" name="username" id="username" value="{$user->getUsername()}"
-                            required />
+                        <input class="input" type="text" name="username" id="username" value="{$user->getUsername()}" />
                         <span class="icon is-small is-left has-link">
                             <i class="fa fa-user-circle"></i>
                         </span>
@@ -111,8 +110,7 @@
                 <div class="field">
                     <a class="subtitle is-6 has-text-link">Old password</a>
                     <p class="control has-icons-left alr">
-                        <input class="input" type="password" placeholder="Vecchia password" name="old-password"
-                            required />
+                        <input class="input" type="password" placeholder="Vecchia password" name="old-password" />
                         <span class="icon is-small is-left has-link">
                             <i class="fas fa-key"></i>
                         </span>
@@ -121,8 +119,7 @@
                 <div class="field">
                     <a class="subtitle is-6 has-text-link">New password</a>
                     <p class="control has-icons-left alr">
-                        <input class="input" type="password" placeholder="Nuova password" name="new-password"
-                            required />
+                        <input class="input" type="password" placeholder="Nuova password" name="new-password" />
                         <span class="icon is-small is-left has-link">
                             <i class="fas fa-key"></i>
                         </span>
@@ -132,7 +129,7 @@
                     <a class="subtitle is-6 has-text-link">Confirm new password</a>
                     <p class="control has-icons-left">
                         <input class="input" type="password" placeholder="Conferma password" name="new-password2"
-                            id="password2" required />
+                            id="password2" />
                         <span class="icon is-small is-left has-link">
                             <i class="fas fa-key"></i>
                         </span>

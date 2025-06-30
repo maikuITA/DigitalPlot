@@ -270,7 +270,7 @@ class CUser
                 $blob = file_get_contents($temporaryFile);
 
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob);
-                ULogSys::toLog("Immagine di profilo updatata");
+                ULogSys::toLog("Immagine di profilo updatetata");
                 ULogSys::toLog("");
                 header("Location: https://digitalplot.altervista.org/profile");
                 exit;
