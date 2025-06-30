@@ -245,7 +245,7 @@ class CArticle
      * @param int $idArticle
      * @return void
      */
-    public static function modifyArticle(int $idArticle): void
+    public static function editArticle(int $idArticle): void
     {
         if (CUser::isLogged()) {
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
