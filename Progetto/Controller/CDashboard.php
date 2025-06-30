@@ -24,7 +24,7 @@ class CDashboard
     /**
      * Approve an article based on its ID.
      * This function updates the state of the article to either APPROVED or REFUSED.
-     * @param ?int $idArticle The ID of the article to be approved or refused.
+     * @param ?int $idArticle The ID of the article to be approved.
      * @return void
      */
     public static function approve(?int $idArticle)
@@ -53,7 +53,6 @@ class CDashboard
     }
 
     /**
-     * Retrives all the information for the dashboard
      * This function checks if the user is logged in and is an admin.
      * If the user is logged in and is an admin, it retrieves the number of articles
      * and purchases made in the last day, week, month, and total.
