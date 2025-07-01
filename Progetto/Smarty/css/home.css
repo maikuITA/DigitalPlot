@@ -7,11 +7,16 @@
     position: initial;
 }
 
+.card-header-title {
+    text-align: center;
+    display: block;
+}
+
 .container {
     /* background-color: aliceblue; */
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-template-columns: repeat(auto-fill, 5fr);
     align-items: center;
 }
 
@@ -41,12 +46,17 @@
 }
 
 .card {
-    flex: 1 1 300px; /* Card larga almeno 300px, ma flessibile */
     display: flex;
     flex-direction: column;
     height: 100%;
-    max-width: 350px;
-    min-height: 350px;
+    width: 200px;
+    min-height: 250px;
+}
+
+.card,
+.card-header,
+.card-footer {
+    border: none;
 }
 
 .card-content {

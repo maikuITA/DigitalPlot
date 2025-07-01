@@ -156,10 +156,10 @@
             {if isset($articles)} {foreach from=$articles item=article}
             <div class="card">
                 <div class="card-header">
-                    <p class="title">{$article->getTitle()}</p>
+                    <p class="card-header-title">{$article->getTitle()}</p>
                 </div>
                 <div class="card-content">
-                    <p class="subtitle">{$article->getDescription()}</p>
+                    <p>{$article->getDescription()}</p>
                 </div>
                 <footer class="card-footer">
                     <p class="card-footer-item">
