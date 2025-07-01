@@ -8,7 +8,7 @@ async function upgradeDashboard() {
     const data = await response.json();
     console.log('Dati ricevuti:', data);
 
-    // Qui puoi aggiungere il codice per aggiornare il DOM o gestire i dati
+    // It takes the objects and updates their content
     document.getElementById("last24A").textContent = data.lastGA;
     document.getElementById("lastSA").textContent = data.lastSA;
     document.getElementById("lastMA").textContent = data.lastMA;
