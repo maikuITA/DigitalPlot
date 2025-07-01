@@ -1,31 +1,36 @@
 console.log("textEditor loaded");
 //creazione dell'oggetto quill, che mi permette di avere il text editor
 const quill = new Quill('#editor-container', {
-    theme: 'snow',
-    placeholder: 'Scrivi il tuo articolo qui...',
-    modules: {
-      toolbar: [
-        [{ header: [1, 2, false] }],
-        ['bold', 'italic', 'underline'],
-        ['link', 'blockquote', 'code-block'],
-        [{ list: 'ordered' }, { list: 'bullet' }],
-        ['clean']
-      ]
-    }
-  });
-  //rendo l'oggetto quill reperibile globalmente  
-  window.quill = quill;
+  theme: 'snow',
+  placeholder: 'Scrivi il tuo articolo qui...',
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['link', 'blockquote', 'code-block'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['clean']
+    ]
+  }
+});
 
-  //faccio in modo che, quando faccio submit, il contenuto del text editor viene ripreso e inviato correttamente
-  document.getElementById('form-articolo').addEventListener('submit', function (e) {
+// in this way I can access the quill object globally (for example, when you are in the 'editArticle' screen)
+window.quill = quill;
+
+
+// what happenend when the user submits the form
+document.getElementById('form-articolo').addEventListener('submit', function (e) {
+  // it represents the variable in which quill inserts the content typed by the user in HTML format
   const contenutoHTML = quill.root.innerHTML;
+  // it represents the variable in which quill inserts the content typed by the user in plain text format
   const contenutoTesto = quill.getText().trim();
 
+  // the content of the text editor is saved in a hidden input field, in this way you can send it to the server
   const campoHidden = document.getElementById('contenuto-articolo');
 
-  // Se il testo è vuoto (quindi non è stato scritto nulla di utile)
+  // if the user has not written anything, the hidden input field is set to an empty string, otherwise it is set to the HTML content
   if (contenutoTesto.length === 0) {
-    campoHidden.value = ""; 
+    campoHidden.value = "";
   } else {
     campoHidden.value = contenutoHTML;
   }
