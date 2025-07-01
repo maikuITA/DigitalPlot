@@ -31,15 +31,15 @@ class CFollow
                         echo json_encode(['success' => true, 'message' => 'follow successful']);
                         exit;
                     } else {
-                        echo json_encode(['success' => false, 'message' => 'writer non caricato']);
+                        echo json_encode(['success' => false, 'message' => 'writer not found']);
                         exit;
                     }
                 } else {
-                    echo json_encode(['success' => false, 'message' => 'non iscritto']);
+                    echo json_encode(['success' => false, 'message' => 'user not subbed']);
                     exit;
                 }
             } else {
-                echo json_encode(['success' => false, 'message' => 'non loggato']);
+                echo json_encode(['success' => false, 'message' => 'user not logged']);
                 exit;
             }
         }
@@ -77,11 +77,11 @@ class CFollow
                         exit;
                     }
                 } else {
-                    echo json_encode(['success' => false, 'message' => 'writer missing']);
+                    echo json_encode(['success' => false, 'message' => 'user not subbed']);
                     exit;
                 }
             } else {
-                echo json_encode(['success' => false, 'message' => 'writer missing']);
+                echo json_encode(['success' => false, 'message' => 'user not logged']);
                 exit;
             }
         }

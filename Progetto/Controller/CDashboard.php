@@ -27,7 +27,7 @@ class CDashboard
      * @param ?int $idArticle The ID of the article to be approved.
      * @return void
      */
-    public static function approve(?int $idArticle)
+    public static function approve(?int $idArticle): void
     {
         $approvedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', APPROVED);
         if ($approvedArticle) {
@@ -42,7 +42,7 @@ class CDashboard
      * @param ?int $idArticle The ID of the article to be refused.
      * @return void
      */
-    public static function refuse(?int $idArticle)
+    public static function refuse(?int $idArticle): void
     {
         $refusedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', REFUSED);
         if ($refusedArticle) {
