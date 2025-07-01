@@ -2,13 +2,14 @@ console.log('log loaded');
 
 function buildText(text) {
     let testo = '';
-    text = text.split('\n');
+    text = text.split('\n'); // Split the text into lines and remove \n
     text.forEach((riga) => {
         testo += riga + '<br>';
     });
     return testo;
 }
 
+// it reads the file errors.log and inserts the content into the div with id 'contenuto-file-errori'
 async function aggiornaErrori() {
     fetch('Progetto/Utility/Logs/errors.log')
         .then((res) => res.text())
@@ -18,7 +19,7 @@ async function aggiornaErrori() {
         })
         .catch((e) => console.error(e));
 }
-
+// it reads the file events.log and inserts the content into the div with id 'contenuto-file-eventi'
 async function aggiornaEventi() {
     fetch('Progetto/Utility/Logs/events.log')
         .then((res) => res.text())
@@ -29,14 +30,13 @@ async function aggiornaEventi() {
         .catch((e) => console.error(e));
 }
 
-// Prima esecuzione
+// first exeecution
 aggiornaErrori();
 aggiornaEventi();
 
-// Ogni 5 secondi (meglio di 1 secondo, più sostenibile)
-// 5*60*1000 SONO 5 MINUTI
-setInterval(aggiornaErrori, 10 * 1000); // 10 secondi
-setInterval(aggiornaEventi, 10 * 1000); // 10 secondi
+// set Interval to update the files every 2 minutes
+setInterval(aggiornaErrori, 2 * 60 * 1000); // 2 min
+setInterval(aggiornaEventi, 2 * 60 * 1000); // 2 min
 
 document.getElementById('errori-bottom').addEventListener('click', () => {
     const contenutoErrori = document.getElementById('contenuto-file-errori');
@@ -45,5 +45,5 @@ document.getElementById('errori-bottom').addEventListener('click', () => {
 
 document.getElementById('eventi-bottom').addEventListener('click', () => {
     const contenutoEventi = document.getElementById('contenuto-file-eventi');
-    contenutoEventi.scrollTop = contenutoEventi.scrollHeight;
+    contenutoEventi.scrollTop = contenutoEventi.scrollHeight;  // moves the pointer to the end of the content
 });
