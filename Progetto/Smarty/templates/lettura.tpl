@@ -135,11 +135,7 @@
                         <div class="content">
                             <div class="is-gapped">
                                 <a class="is-5 s has-text-weight-bold">Biografia</a><br /><a
-                                    class="is-5">{$writer->getBiography()} Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing
-                                    elit. Nullam sagittis augue in nibh
-                                    porta interdum. Sed eu ex et felis
-                                    sollicitudin pulvinar.</a>
+                                    class="is-5">{$writer->getBiography()}</a>
                             </div>
                         </div>
                     </div>
@@ -147,18 +143,25 @@
                 <div class="column is-full">
                     <div class="card pager">
                         <div class="content is-centered">
-                            <p class="title">{$article->getTitle()}</p>
-                            <p class="subtitle has-text-weight-bold">
+                            <div class="subtitle is-flex is-justify-content-space-between  ">
+                                <p class="title">{$article->getTitle()}</p>
+
+                                <p class="subtitle has-text-weight-bold">Valutazione
+                                    {$article->getAvgEvaluate()}
+                                </p>
+
+                            </div>
+                            <p class="subtitle has-text-weight-bold">Descrizione</p>
+                            <p class="content">
                                 {$article->getDescription()}
                             </p>
-                            <p class="subtitle has-text-weight-bold">
-                                Valutazione: {$article->getAvgEvaluate()}
+                            <p class="subtitle has-text-weight-bold">Categoria</p>
+                            <p class="content">
+                                {$article->getCategory()}
                             </p>
-                            <p class="subtitle has-text-weight-bold">
-                                Categoria: {$article->getCategory()}
-                            </p>
-                            <p class="subtitle has-text-weight-bold">
-                                Genere: {$article->getGenre()}
+                            <p class="subtitle has-text-weight-bold">Genere</p>
+                            <p class="content">
+                                {$article->getGenre()}
                             </p>
                         </div>
                         <div class="content" id="ArticleBody">
