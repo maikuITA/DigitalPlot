@@ -366,9 +366,10 @@
 {if $modify === true}
 
 <script>
+    // allow you to edit the article's content with the text editor
     const initialContent = "{$content|escape:'js'}"; // retrieves the content of the article and gives it to js
 
-    window.quill.root.innerHTML = initialContent; // quill is a glbal variable so you can access it and assign the content to the editor
+    window.quill.root.innerHTML = initialContent; // quill is a global variable so you can access it and assign the content to the editor
 </script>
 
 {/if}
