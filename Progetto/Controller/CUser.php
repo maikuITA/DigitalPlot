@@ -125,7 +125,7 @@ class CUser
     public static function user(): void
     {
         $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-        $articles = FPersistentManager::getInstance()->getCasualArticles(10);
+        $articles = FPersistentManager::getInstance()->getCasualArticles(8);
         if (self::isSubbed()) {
             VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged: true, privilege: $user->getPrivilege(),);
         } else {
