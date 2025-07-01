@@ -1,6 +1,7 @@
 <?php
 
-class VArticle{
+class VArticle
+{
 
     /**
      * Method to display an article.
@@ -15,7 +16,8 @@ class VArticle{
      * @param EUser $writer The writer of the article.
      * @return void
      */
-    public static function showArticle(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC, EArticle $article, EUser $writer): void {
+    public static function showArticle(bool $isLogged = false, int $plotPoints = 0, mixed $proPic = null, int $privilege = BASIC, EArticle $article, EUser $writer): void
+    {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> lettura.tpl");
         $smarty->assign('isLogged', $isLogged);
@@ -41,7 +43,8 @@ class VArticle{
      * @param EArticle $article The article to be modified
      * @return void
      */
-    public static function newArticle(bool $isLogged = false, int $plotPoints = 0 , $proPic = null , int $privilege = BASIC, bool $modify = false, ?Earticle $article = null): void {
+    public static function newArticle(bool $isLogged = false, int $plotPoints = 0, mixed $proPic = null, int $privilege = BASIC, bool $modify = false, ?Earticle $article = null): void
+    {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> nuovo.tpl");
         $smarty->assign('isLogged', $isLogged);
@@ -50,11 +53,10 @@ class VArticle{
         $smarty->assign('proPic', $proPic);
         $smarty->assign('article', $article);
         $smarty->assign('modify', $modify);
-        if(isset($article)){
+        if (isset($article)) {
             $smarty->assign('content', $article->getHtmlContent());
         }
-        
+
         $smarty->display('nuovo.tpl');
     }
-
 }

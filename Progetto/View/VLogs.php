@@ -1,6 +1,7 @@
 <?php
 
-class VLogs {
+class VLogs
+{
 
     /**
      * Method to render the log view.
@@ -10,9 +11,9 @@ class VLogs {
      * @param mixed $proPic The user's profile picture data (default is null).
      * @param bool $isLogged Indicates if the user is logged in (default is false).
      * @return void
-     * @throws Exception
      */
-    public static function render(int $privilege = ADMIN,int  $plotPoints = 0 , $proPic = null , bool $isLogged = false): void {
+    public static function render(int $privilege = ADMIN, int  $plotPoints = 0, mixed $proPic = null, bool $isLogged = false): void
+    {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> log.tpl");
         $smarty->assign('isLogged', $isLogged);

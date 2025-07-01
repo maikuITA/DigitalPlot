@@ -1,7 +1,8 @@
 <?php
 
 
-class VConfirm {
+class VConfirm
+{
 
     /**
      * Method to render the confirm page
@@ -11,10 +12,11 @@ class VConfirm {
      * @param mixed $proPic The user's profile picture data (default is null)   
      * @param int $privilege  Indicates if the user is a subscriber 
      * @param bool $isLogged Indicates if the user is logged in (default is false)
+     * @param int $type The type of confirmation (e.g., 0 for error, 1 for success)
      * @return void
-     * @throws Exception
      */
-    public static function render($confirmMessage, $plotPoints = 0 , $proPic = null , int $privilege = BASIC, bool $isLogged = false, int $type): void {
+    public static function render(string $confirmMessage, int $plotPoints = 0, mixed $proPic = null, int $privilege = BASIC, bool $isLogged = false, int $type): void
+    {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> conferma.tpl");
         $smarty->assign('confirmMessage', $confirmMessage);
@@ -25,5 +27,4 @@ class VConfirm {
         $smarty->assign('proPic', $proPic);
         $smarty->display('conferma.tpl');
     }
-
 }
