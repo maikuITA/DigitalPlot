@@ -35,6 +35,8 @@ function showLogin() {
             log.classList.add("is-active");
             reg.classList.remove("is-active");
         }
+
+        // Adjusts the width of the content based on the window size
         if (content) {
             if (window.innerWidth > 768) {
                 content.style.width = '30%';
@@ -134,6 +136,7 @@ const regisInputs = [
     password2Input
 ];
 
+// it enables or disables the button 'submit' according to the event
 if (submitBtn) {
     regisInputs.forEach(function (input) {
         if (input) {
@@ -157,13 +160,7 @@ document.getElementById("usernameR").addEventListener("blur", function () {
     const submitBtn = document.getElementById("submit-regis");
     const inputField = this;
 
-    if (username === "") {
-        errorSpan.textContent = "";
-        inputField.classList.remove("is-danger");
-        submitBtn.disabled = false;
-        return;
-    }
-
+    // the content type tells to the server that the body contains value in the 'query string' format
     fetch("/checkUsername", {
         method: "POST",
         headers: {
@@ -171,8 +168,8 @@ document.getElementById("usernameR").addEventListener("blur", function () {
         },
         body: "username=" + encodeURIComponent(username)
     })
-        .then(res => res.json())
-        .then(data => {
+        .then(res => res.json()) // converts the response to JSON
+        .then(data => { // data refers to the JSON object returned by the server
             if (data.exists === true) {
                 inputField.classList.add("is-danger");
                 submitBtn.disabled = true;
@@ -183,7 +180,6 @@ document.getElementById("usernameR").addEventListener("blur", function () {
         })
         .catch(error => {
             console.error("Errore nella verifica username:", error);
-            errorSpan.textContent = "Errore nel controllo. Riprova.";
             inputField.classList.add("is-danger");
             submitBtn.disabled = true;
         });
