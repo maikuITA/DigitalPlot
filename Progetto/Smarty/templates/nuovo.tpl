@@ -366,9 +366,9 @@
 {if $modify === true}
 
 <script>
-    const initialContent = "{$content|escape:'js'}";
+    const initialContent = "{$content|escape:'js'}"; // retrieves the content of the article and gives it to js
 
-    window.quill.root.innerHTML = initialContent;
+    window.quill.root.innerHTML = initialContent; // quill is a glbal variable so you can access it and assign the content to the editor
 </script>
 
 {/if}
