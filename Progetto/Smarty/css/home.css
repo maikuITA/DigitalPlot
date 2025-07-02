@@ -1,0 +1,146 @@
+.card-header {
+    position: initial;
+}
+
+.card-header-title {
+    text-align: center;
+    display: block;
+}
+
+.container {
+    /* background-color: aliceblue; */
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
+    align-items: center;
+    gap: 20px;
+}
+
+.left {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    width: 200px;
+}
+
+.center {
+    margin-right: 60px;
+}
+
+.subtitle {
+    margin-top: 20px;
+    text-align: justify;
+    width: 100%;
+}
+
+.card {
+    display: 1 1 flex;
+    flex-direction: column;
+    width: 290px;
+    min-height: 260px;
+    max-height: 260px;
+}
+
+.card,
+.card-header {
+    border: none;
+}
+
+.card-content {
+    min-height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+}
+
+.card-content > .subtitle {
+    flex-grow: 1;
+    max-height: 190px;
+}
+
+.card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-content,
+.description {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+.description {
+    overflow-y: scroll;
+    padding: 5px;
+    width: 100%;
+    text-align: justify;
+}
+
+.card-footer {
+    min-height: fit-content;
+    max-height: fit-content;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .center {
+        margin-right: 0;
+    }
+
+    .navbar-item.has-text-link.transfer {
+        display: inherit;
+    }
+
+    .card {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 300px;
+        max-height: 300px;
+    }
+
+    .card-footer {
+        min-height: 80px;
+        max-height: 80px;
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .card-header > .title {
+        text-align: center;
+        display: block;
+    }
+
+    .title {
+        font-size: x-large;
+        text-align: center;
+    }
+
+    .columns.is-centered.labels {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

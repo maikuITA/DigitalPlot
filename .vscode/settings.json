@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "*.tpl": "html"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "prettier.useTabs": true,
+  "prettier.configPath": ".vscode/prettierrc.json"
+}

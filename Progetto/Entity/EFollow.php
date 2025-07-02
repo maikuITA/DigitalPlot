@@ -8,26 +8,30 @@ use Doctrine\ORM\Mapping as ORM;
 class EFollow{
     
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "followers")]
-    #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
-    private $follower;
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "followers", cascade: ["persist"])]
+    #[ORM\JoinColumn(name: "fk_follower", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    private EUser $follower;
     
 
     #[ORM\Id]
-    #[ORM\ManyToOne(targetEntity: "ESubscriber", inversedBy: "following")]
-    #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "user_id", nullable: false)] // definizione chiave esterna
-    private $following;
+    #[ORM\ManyToOne(targetEntity: "EUser", inversedBy: "following", cascade: ["persist"])]
+    #[ORM\JoinColumn(name: "fk_following", referencedColumnName: "user_id", nullable: false, onDelete: "cascade")] // definizione chiave esterna
+    private EUser $following;
 
 
-    public function __construct(ESubscriber $follower, ESubscriber $following) {
+    /**
+     * @param EUser $follower colui che guadagna un follower
+     * @param EUser $followed colui che guadagna un following    
+     */
+    public function __construct(EUser $follower, EUser $followed) {
         $this->follower = $follower;
-        $this->following = $following;
+        $this->following = $followed;
     }
 
-    public function getFollower(): ESubscriber{
+    public function getFollower(): EUser{
         return $this->follower;
     }
-    public function getFollowing(): ESubscriber{
+    public function getFollowing(): EUser{
         return $this->following;
     }
 }

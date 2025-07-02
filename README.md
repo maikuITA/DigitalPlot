@@ -30,12 +30,11 @@ Edit the database settings in the following file:
 ```
 DIGITALPLOT/Progetto/Utility/config.php
 ```
-
-Be sure to set your host, database name, username, and password.
+Be sure to set your host, database name, username, and password.<br>
 
 ### 3. Enjoy our application
 
-Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx), and access the application via your browser.
+Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx) and access the application via your browser by typing the URL hostname/DigitalPlot/dbInit in order to populate properly your db (at the end, you will be redirected to the home).
 
 ---
 

@@ -1,372 +1,384 @@
 <?php
 
-class CUser{
+require_once(__DIR__ . "/../Utility/config.php");
+
+
+class CUser
+{
 
     /**
-     * check if the user is logged (using session)
+     * Method to register a new user
+     * This method retrieves user data from the POST request,
+     * creates a new user and plot card,
+     * and saves them in the database.
+     * @return void
+     */
+    public static function register(): void
+    {
+        // Check if the request method is POST
+        $method = UServer::getRequestMethod();
+        if ($method === 'POST') {
+            $username = UHTTPMethods::post('usernameR');
+            $password = UHTTPMethods::post('password');
+            $password2 = UHTTPMethods::post('password2');
+            $name = UHTTPMethods::post('name');
+            $surname = UHTTPMethods::post('surname');
+            $birthdate = UHTTPMethods::post('birthdate');
+            $country = UHTTPMethods::post('country');
+            $birthplace = UHTTPMethods::post('birthplace');
+            $province = UHTTPMethods::post('province');
+            $zipCode = UHTTPMethods::post('zipCode');
+            $streetAddress = UHTTPMethods::post('streetAddress');
+            $streetNumber = UHTTPMethods::post('streetNumber');
+            $email = UHTTPMethods::post('email');
+            $telephone = UHTTPMethods::post('telephone');
+            if ($password !== $password2) {
+                ULogSys::toLog('Passwords do not match', true);
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit;
+            }
+            $user = new EUser(privilege: BASIC, username: $username, password: $password, name: $name, surname: $surname, birthdate: $birthdate, country: $country, birthplace: $birthplace, province: $province, zipCode: $zipCode, streetAddress: $streetAddress, streetNumber: $streetNumber, email: $email, telephone: $telephone);
+            $plotCard = new EPlotCard(0, $user);
+            $user->addPlotCard($plotCard);
+            try {
+                FPersistentManager::getInstance()->saveInDb($user);
+                FPersistentManager::getInstance()->saveInDb($plotCard);
+                USession::getInstance();
+                USession::setSessionElement('user', $user->getId());
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during registration: ' . $e->getMessage(), true);
+                header('Location: https://digitalplot.altervista.org/auth');
+            }
+            header('Location: https://digitalplot.altervista.org/home');
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+        }
+    }
+
+    /**
+     * Method to check if the user is logged in
+     * This method checks if the session is set and if the user session element exists.
      * @return boolean
      */
-    public static function isLogged() : bool {
-        $logged = false;
-
-        if(UCookie::isSet('PHPSESSID')){
-            if(session_status() == PHP_SESSION_NONE){
+    public static function isLogged(): bool
+    {
+        if (UCookie::isSet('PHPSESSID')) {
+            if (session_status() == PHP_SESSION_NONE) {
                 USession::getInstance();
             }
         }
-        if(USession::isSetSessionElement('user')){
-            $logged = true;
+        if (USession::isSetSessionElement('user')) {
+            return true;
         }
-        if(!$logged){
-            header('Location: /DigitalPlot/User/login');
-            exit;
-        }
-        return true;
-    }
-
-    public static function login(){
-        if(UCookie::isSet('PHPSESSID')){
-            if(session_status() == PHP_SESSION_NONE){
-                USession::getInstance();
-            }
-        }
-        if(USession::isSetSessionElement('user')){
-            header('Location: /DigitalPlot/User/home');
-            exit;
-        }
-        $view = new VUser();
-        $view->showLoginForm();
+        return false;
     }
 
     /**
-     * verify if the choosen username and email already exist, create the User Obj and set a default profile image 
+     * Method to check if the user is subscribed
+     * This method retrieves the user from the persistent manager using the session element 'user',
+     * and checks if the user is subscribed.
+     * It returns true if the user is subscribed, otherwise false.
+     * @return boolean
+     */
+    public static function isSubbed(): bool
+    {
+        return FPersistentManager::getInstance()->isSubbed(USession::getSessionElement('user'));
+    }
+
+    /**
+     * Method to check if the user is an admin
+     * This method retrieves the user from the persistent manager using the session element 'user',
+     * and checks if the user has admin privileges.
+     * It returns true if the user is an admin, otherwise false.
+     * @return boolean
+     */
+    public static function isAdmin(): bool
+    {
+        $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+        if ($user->getPrivilege() === ADMIN) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Method to home the user for the first time
+     * This method checks if the user is logged in and redirects accordingly.
+     * If the user is logged in, it redirects to the user home page.
+     * If the user is not logged in, it redirects to the guest home page.
      * @return void
      */
-    public static function registration()
+    public static function home(): void
     {
-        $view = new VUser();
-        if(FPersistentManager::getInstance()->verifyUserEmail(UHTTPMethods::post('email')) == false && FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username')) == false){
-                $user = new EUser(UHTTPMethods::post('name'), UHTTPMethods::post('surname'),UHTTPMethods::post('age'), UHTTPMethods::post('email'),UHTTPMethods::post('password'),UHTTPMethods::post('username'));
-                $check = FPersistentManager::getInstance()->uploadObj($user);
-                if($check){
-                    $view->showLoginForm();
-                }
-        }else{
-                $view->registrationError();
-            }
+        if (self::isLogged()) {
+            self::user();
+        } else {
+            self::guest();
+        }
     }
 
     /**
-     * check if exist the Username inserted, and for this username check the password. If is everything correct the session is created and
-     * the User is redirected in the homepage
+     * Method to redirect to the home page of a logged user
+     * This method retrieves the user data and casual articles,
+     * and displays the home page for logged-in users.
+     * @return void
      */
-    public static function checkLogin(){
-        $view = new VUser();
-        $username = FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username'));                                            
-        if($username){
-            $user = FPersistentManager::getInstance()->retriveUserOnUsername(UHTTPMethods::post('username'));
-            if(password_verify(UHTTPMethods::post('password'), $user->getPassword())){
-                if($user->isBanned()){
-                    $view->loginBan();
+    public static function user(): void
+    {
+        $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+        $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+        if (self::isSubbed()) {
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged: true, privilege: $user->getPrivilege(),);
+        } else {
+            $remaningReadings = MAXREADINGS - $user->countReadings();
+            VUser::home(username: $user->getUsername(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), articles: $articles, isLogged: true, privilege: $user->getPrivilege(), remaningReadings: $remaningReadings);
+        }
+    }
 
-                }elseif(USession::getSessionStatus() == PHP_SESSION_NONE){
+    /**
+     * Method to redirect to the home page of a guest user
+     * This method retrieves casual articles and displays the home page for guests.
+     * It does not require any user session.
+     * @return void
+     */
+    public static function guest(): void
+    {
+        $articles = FPersistentManager::getInstance()->getCasualArticles(8);
+        VUser::home(articles: $articles, privilege: -1);
+    }
+
+    /**
+     * Method to log out the user
+     * This method destroys the user session and redirects to the home page.
+     */
+    public static function logout()
+    {
+        if (CUser::isLogged() === true) {
+            USession::unsetSession();
+            USession::destroySession();
+            header('Location: https://digitalplot.altervista.org/confirm/5');
+        } else {
+            header('Location: https://digitalplot.altervista.org/home');
+        }
+    }
+
+
+
+    /**
+     * Method to authenticate the user
+     * This method checks if the VUser view exists and calls its auth method.
+     * If the VUser view does not exist, it logs an error message.
+     * This method is used to display the authentication page for users.
+     * @return void
+     */
+    public static function auth(): void
+    {
+        if (self::isLogged()) {
+            header('Location: https://digitalplot.altervista.org/home');
+            return;
+        } else {
+            VUser::auth();
+        }
+    }
+
+    /**
+     * Method to check the login credentials and log the user in
+     * This method retrieves the username and password from the POST request,
+     * verifies them against the database and sets the session if successful.
+     * If the credentials are invalid or an error occurs, it logs the error and redirects to the access page.
+     * @return void
+     * @throws Exception
+     */
+    public static function checklogin(): void
+    {
+        if (UServer::getRequestMethod() === 'POST') {
+            $username = UHTTPMethods::post('username');
+            $password = UHTTPMethods::post('password');
+            try {
+                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
+                if (isset($user) && password_verify($password, $user->getPassword())) {
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());
-                    header('Location: /DigitalPlot/User/home');
+                    ULogSys::toLog("Nuovo login");
+                    ULogSys::toLog("");
+                    header('Location: https://digitalplot.altervista.org/home');
+                } else {
+                    ULogSys::toLog('Invalid username or password', true);
+                    header('Location: https://digitalplot.altervista.org/auth');
+                    exit;
                 }
-            }else{
-                $view->loginError();
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during login: ' . $e->getMessage(), true);
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit;
             }
-        }else{
-            $view->loginError();
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
         }
     }
 
     /**
-     * this method can logout the User, unsetting all the session element and destroing the session. Return the user to the Login Page
+     * Method to redirect the user to the profile page
+     * This method checks if the user is logged in and retrieves the user data.
+     * If the user is logged in, it renders the profile view with the user's data.
+     * If the user is not logged in, it redirects to the authentication page.
      * @return void
      */
-    public static function logout(){
-        USession::getInstance();
-        USession::unsetSession();
-        USession::destroySession();
-        header('Location: /DigitalPlot/User/login');
-    }
-
-    /**
-     * load all the Posts in homepage (Posts of the Users that the logged User are following). Also are loaded Information about vip User and
-     * about profile Images of all the involved User
-     */
-    public static function home(){
-        if(CUser::isLogged()){
-            $view = new VUser();
-
-            $userId = USession::getInstance()->getSessionElement('user');
-            $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-
-            //load all the posts of the users who you follow(post have user attribute) and the profile pic of the author of teh post
-            $postInHome = FPersistentManager::getInstance()->loadHomePage($userId);
-            
-            //load the VIP Users, their profile Images and the foillower number
-            $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip();
-
-            //var_dump($userAndPropic[0][1]->getImageData());
-
-            //var_dump($userAndPropic[0][0]->getUsername());
-            $view->home($userAndPropic, $postInHome,$arrayVipUserPropicFollowNumb);
-        }  
-    }
-
-    /**
-     * load Posts belonged to the logged User and his Bio information
-     */
-    public static function personalProfile(){
-        if(CUser::isLogged()){ 
-            $view = new VUser();
-
-            $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-            $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-                
-            //load all the Posts belonged to a User that are not Banned
-            $postProfileAndLikes = FPersistentManager::getInstance()->loadUserPage($user);
-
-            //load the number of followed and following users
-            $followerNumb = FPersistentManager::getInstance()->getFollowerNumb($userId);
-            $followedNumb = FPersistentManager::getInstance()->getFollowedNumb($userId);
-
-            $view->uploadPersonalUserInfo($userAndPropic, $postProfileAndLikes, $followerNumb, $followedNumb);
-        }
-    }
-
-    /**
-     * load post belonged to the visited User and his informations
-     * @param String $username Refers to the username of a user
-     */
-    public static function profile($username)
+    public static function goToProfile(): void
     {
-        if(CUser::isLogged()){
-            $personalUserId =  USession::getInstance()->getSessionElement('user');
-            $personalUserAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($personalUserId);
-            if($personalUserAndPropic[0][0]->getUsername() != $username){
-                if(FPersistentManager::getInstance()->verifyUserUsername($username)){
-                    $user = FPersistentManager::getInstance()->retriveUserOnUsername($username);
-                    $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($user->getId());
+        if (CUser::isLogged()) {
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            $articles = $user->getArticles();
+            $readdenArticles = $user->getReaddenArticles();
+            $comments = $user->getReviews();
+            VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles, reviews: $comments);
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+        }
+    }
 
-                    $postUser = FPersistentManager::getInstance()->loadUserPage($user);
-                    $follow = FPersistentManager::getInstance()->retriveFollow($personalUserId, $user->getId());
+    /**
+     * Method to upload the user's avatar
+     * This method checks if the user is logged in, retrieves the uploaded file,
+     * validates its MIME type and size, and updates the user's profile picture in the database.
+     * If any validation fails, it redirects to an error page.
+     * @return void
+     */
+    public static function uploadAvatar(): void
+    {
+        // the input of files is the value of "name", attribute in <input type = "file" ...
+        if (CUser::isLogged() === true) {
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            $image = UHTTPMethods::files('avatar');
+            if (!empty($image) && $image['error'] === UPLOAD_ERR_OK && !empty($image['tmp_name'])) {
+                $temporaryFile = $image['tmp_name']; // tmp_name represents the temporary path of the uploaded file
 
-                    $followerNumb = FPersistentManager::getInstance()->getFollowerNumb($user->getId());
-                    $followedNumb = FPersistentManager::getInstance()->getFollowedNumb($user->getId());
-                    $view = new VUser();
-                        
-
-                    $view->uploadUserInfo($userAndPropic, $personalUserAndPropic, $postUser,  $follow, $followerNumb, $followedNumb);
-                }else{
-                    header('Location: /DigitalPlot/User/home');
+                // Verify MIME
+                $mime = mime_content_type($temporaryFile);
+                $allowed = ['image/jpeg', 'image/png', 'image/webp'];
+                if (!in_array($mime, $allowed)) {
+                    header('Location: https://digitalplot.altervista.org/error/2');
+                    exit;
                 }
-            }else{
-                header('Location: /DigitalPlot/User/personalProfile');
-            }    
-        }
-    }
 
-    /**
-     * load the settings page compiled with the user data
-     */
-    public static function settings(){
-        if(CUser::isLogged()){
-            $view = new VUser();
-
-            $userId = USession::getInstance()->getSessionElement('user');
-            $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);    
-            $view->settings($userAndPropic);
-        }
-    }
-
-    /**
-     * Take the compiled form and use the data for update the user info (Biography, Working, StudeiedAt, Hobby)
-     */
-    public static function setUserInfo(){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-
-            $user->setBio(UHTTPMethods::post('Bio'));
-            $user->setWorking(UHTTPMethods::post('Working'));                                               
-            $user->setStudiedAt(UHTTPMethods::post('StudiedAt'));
-            $user->setHobby(UHTTPMethods::post('Hobby'));
-            FPersistentManager::getInstance()->uploadObj($user);
-
-            header('Location: /DigitalPlot/User/personalProfile');
-        }
-    }
-
-    /**
-     * Take the compiled form, use teh data to cjheck if the username alredy exist and if not update the user Username
-     */
-    public static function setUsername(){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-
-            if($user->getUsername() == UHTTPMethods::post('username')){
-                header('Location: /DigitalPlot/User/personalProfile');
-            }else{
-                if(FPersistentManager::getInstance()->verifyUserUsername(UHTTPMethods::post('username')) == false)
-                {
-                    $user->setUsername(UHTTPMethods::post('username'));
-                    FPersistentManager::getInstance()->uploadObj($user);
-                    header('Location: /DigitalPlot/User/personalProfile');
-                }else{
-                    $view = new VUser();
-                    $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-                    $view->usernameError($userAndPropic , true);
+                // Verify size (max 2MB)
+                if ($image['size'] > 2 * 1024 * 1024) {
+                    header('Location: https://digitalplot.altervista.org/error/3');
+                    exit;
                 }
+
+                // take the binary content
+                $blob = file_get_contents($temporaryFile);
+
+                FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob);
+                ULogSys::toLog("Immagine di profilo updatetata");
+                ULogSys::toLog("");
+                header("Location: https://digitalplot.altervista.org/profile");
+                exit;
+            } else {
+                header('Location: https://digitalplot.altervista.org/error/5');
+                exit;
             }
+        } else {
+            header('Location: https://digitalplot.altervista.org/auth');
+            exit;
         }
     }
 
     /**
-     * Take the compiled form and update the user password
+     * Method to show the edit profile page
+     * This method checks if the user is logged in and retrieves the user data.
+     * If the user is logged in, it renders the edit profile view with the user's data.
+     * If the user is not logged in, it redirects to the authentication page.
+     * @return void
      */
-    public static function setPassword(){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);$newPass = UHTTPMethods::post('password');
-            $user->setPassword($newPass);
-            FPersistentManager::getInstance()->uploadObj($user);
-
-            header('Location: /DigitalPlot/User/personalProfile');
+    public static function editProfile()
+    {
+        if (CUser::isLogged()) {
+            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            VProfile::editProfile(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, privilege: $user->getPrivilege());
         }
     }
 
     /**
-     * Take the file, check if there is an upload error, if not update the user image and delete the old one 
+     * Method to apply modifications to the user profile
+     * This method checks if the request method is POST, retrieves the user data,
+     * validates the input, updates the user profile and redirects accordingly.
+     * If the user is not logged in or if the request method is not POST, it redirects to an error page.
+     * @return void
      */
-    public static function setProPic(){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-            $user = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $userId);
-            
-            if(UHTTPMethods::files('imageFile','size') > 0){
-                $uploadedImage = UHTTPMethods::files('imageFile');
-                $check = FPersistentManager::getInstance()->manageImageProfile($uploadedImage, $user);
-                if(!$check){
-                    $view = new VUser();
-                    $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-
-                    $view->FileError($userAndPropic);
-                }else{
-                    header('Location: /DigitalPlot/User/personalProfile');
+    public static function applyModify()
+    {
+        if (UServer::getRequestMethod() === 'POST') {
+            if (CUser::isLogged()) {
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                if (UHTTPMethods::post('username') === "") {
+                    $username = $user->getUsername();
+                } else {
+                    $username = UHTTPMethods::post('username');
                 }
-                
-            }else{
-                header('Location: /DigitalPlot/User/settings');
+                if (UHTTPMethods::post('biography') === "") {
+                    $biography = $user->getBiography();
+                } else {
+                    $biography = UHTTPMethods::post('biography');
+                }
+                if (UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'), $user->getPassword())) {
+                    $user->setUsername($username);
+                    $user->setPassword(UHTTPMethods::post('new-password'));
+                    $user->setBiography($biography);
+                    FPersistentManager::getInstance()->saveInDb($user);
+                    header('Location: https://digitalplot.altervista.org/confirm/8');
+                } elseif (UHTTPMethods::post('old-password') === '') {
+                    $user->setUsername($username);
+                    $user->setBiography($biography);
+                    FPersistentManager::getInstance()->saveInDb($user);
+                    header('Location: https://digitalplot.altervista.org/confirm/8');
+                } else {
+                    header('Location: https://digitalplot.altervista.org/editProfile');
+                    exit;
+                }
+            } else {
+                header('Location: https://digitalplot.altervista.org/auth');
+                exit;
             }
+        } else {
+            header('Location: https://digitalplot.altervista.org/error/404');
+            exit;
         }
     }
 
     /**
-     * load all the post finded by a specifyc category
-     * @param String $category Refers to a name of a category
+     * Method to check if a username already exists
+     * This method checks if the request method is POST, retrieves the username from the POST data,
+     * and checks if the username exists in the database.
+     * It returns a JSON response indicating whether the username exists or not.
+     * @return void
      */
-    public static function category($category)
+    public static function checkUsername(): void
     {
-        if(CUser::isLogged()){
-            $view = new VUser();
-        
-            $userId = USession::getInstance()->getSessionElement('user');
-            $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-
-            //load the VIP Users, their profile Images and the foillower number
-            $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip();
-
-            $postCategory = FPersistentManager::getInstance()->loadPostPerCategory($category);
-
-            $view->category($userAndPropic, $postCategory, $arrayVipUserPropicFollowNumb);
+        if (UServer::getRequestMethod() === 'POST') {
+            header('Content-Type: application/json');
+            $username = UHTTPMethods::post('username');
+            try {
+                $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
+                if (isset($user)) {
+                    if (CUser::isLogged()) {
+                        $currentUser = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                        if ($user && $user->getId() === $currentUser->getId()) {
+                            echo json_encode(['exists' => false]);
+                            return;
+                        }
+                    }
+                    echo json_encode(['exists' => true]);
+                } else {
+                    echo json_encode(['exists' => false]);
+                }
+            } catch (Exception $e) {
+                ULogSys::toLog('Error during username check: ' . $e->getMessage(), true);
+                echo json_encode(['error' => 'An error occurred while checking the username.']);
+            }
+        } else {
+            header('Location: https://digitalplot.altervista.org/error/404');
         }
     }
-
-    /**
-     * load a limit number of posts that are not belonged to the logged user, so this page is for discover new Users
-     */
-    public static function explore()
-    {
-        if(CUser::isLogged()){
-            $view = new VUser();
-                
-            $userId = USession::getInstance()->getSessionElement('user');
-            $userAndPropic = FPersistentManager::getInstance()->loadUsersAndImage($userId);
-
-            ///load the VIP Users, their profile Images and the foillower number
-            $arrayVipUserPropicFollowNumb = FPersistentManager::getInstance()->loadVip();
-
-            $postExplore = FPersistentManager::getInstance()->loadPostInExplore($userId);
-
-                
-            $view->explore($userAndPropic, $postExplore, $arrayVipUserPropicFollowNumb);
-        }
-    }
-
-    /**
-     * return a page with a list of Users who are followed by the User logged 
-     * @param int $idUser Refers to the id of a user
-     */
-    public static function followers($idUser)
-    {
-        if(CUser::isLogged()){
-            $idUserCurrent = USession::getInstance()->getSessionElement('user');
-            $usersListAndPropic = FPersistentManager::getInstance()->getFollowedList($idUser);
-                
-            $view = new VManagePost();
-            $view->showUsersList($usersListAndPropic, $idUserCurrent, 'followers');
-        }       
-    }
-
-    /**
-     * return a page with a list of Users who are following the User logged 
-     * @param int $idUser Refers to the id of a user
-     */
-    public static function followed($idUser)
-    {
-        if(CUser::isLogged()){
-            $idUserCurrent = USession::getInstance()->getSessionElement('user');
-            $usersListAndPropic = FPersistentManager::getInstance()->getFollowerList($idUser);
-                
-            $view = new VManagePost();
-            $view->showUsersList($usersListAndPropic, $idUserCurrent, 'followed');
-        }
-    }
-
-    /**
-     * method to follow a user, the check is in the profile() method
-     * @param int $followerId Refers to the id of a user
-     */
-    public static function follow($followedId){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-
-            //new Follow Object
-            $follow = new EUserFollow($userId, $followedId);
-            FPersistentManager::getInstance()->uploadObj($follow);
-            $visitedUser = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $followedId);
-            header('Location: /DigitalPlot/User/profile/' . $visitedUser->getUsername());
-        }       
-    }
-
-    /**
-     * method to unfollow a user, the check is in the profile() method
-     * @param int $followedId Refers to the id of a user
-     */
-    public static function unfollow($followedId){
-        if(CUser::isLogged()){
-            $userId = USession::getInstance()->getSessionElement('user');
-
-            FPersistentManager::getInstance()->deleteFollow($userId, $followedId);
-            $visitedUser = FPersistentManager::getInstance()->retriveObj(EUser::getEntity(), $followedId);
-            header('Location: /DigitalPlot/User/profile/' . $visitedUser->getUsername());
-        } 
-    }
-
 }

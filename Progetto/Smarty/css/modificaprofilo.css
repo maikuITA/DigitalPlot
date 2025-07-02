@@ -1,0 +1,53 @@
+.body-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.body-container > .card {
+  width: 100%;
+  max-width: 650px;
+  height: 100%;
+  max-height: inherit;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.card {
+  padding: 10px;
+}
+
+.control {
+  width: 200px;
+}
+
+.field {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.field > .subtitle {
+  width: 200px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 5px;
+  text-align: justify;
+}
+
+.form {
+  width: 100%;
+  height: min-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

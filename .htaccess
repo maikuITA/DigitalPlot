@@ -3,7 +3,18 @@
 # line 4: start the rewrite engine
 RewriteEngine on 
 
+# Escludi favicon.ico dal reindirizzamento (-), se va applicata questa direttiva viene applicata per ultima (L)
+RewriteRule ^favicon.ico$ - [L]
+
 # the rewrite rule at line 9 is subject to the following condition: 
-# if the requested file does not exist, redirects to the script "index.php"
+# if the requested file does not exist (!-f), redirects every URL (.*) to the script "index.php"
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule .* index.php
+
+# redirect permanently (301) from http to https. NC means "no case" (case insensitive) so http = HTTP exc. 
+# ^(.*)$ matches any URL, "." means any character, "*" means zero or more times, ^ means start of the string, and $ means end of the string.
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# every php file must be readden by the PHP 8.4 handler
+AddHandler av-php84 .php

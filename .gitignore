@@ -1,4 +1,7 @@
 Progetto/Utility/.DS_Store
 Progetto/.DS_Store
+vendor
+composer.lock
 .DS_Store
 prova.php
+desktop.ini

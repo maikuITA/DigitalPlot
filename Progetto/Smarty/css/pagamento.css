@@ -1,0 +1,243 @@
+.absolute-right {
+    position: absolute;
+    right: 0;
+    margin-right: 30px;
+}
+
+.body-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.body-container > .body-left > .card {
+    width: 100%;
+    max-width: 700px;
+    height: fit-content;
+    max-height: 500px;
+}
+
+.body-container > .body-left > .card.cart {
+    width: 100%;
+    height: min-content;
+    max-height: 300px;
+}
+
+.body-container > .body-left > .card.cart > .card-content {
+    width: inherit;
+    height: inherit;
+}
+
+.body-container > .body-left > .card > .section > .control > .button {
+    margin-top: 20px;
+}
+
+.body-left {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-header {
+    width: inherit;
+    height: inherit;
+}
+
+.confirm {
+    width: 40%;
+}
+
+.confirm > .button {
+    width: 100%;
+    max-width: 250px;
+}
+
+.fatturazione {
+    margin-top: 10px;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    transition: transform 2s, display 1.5s linear;
+}
+
+.card.gruppo {
+    width: 100%;
+    height: fit-content;
+    max-height: 500px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.field {
+    width: 70%;
+}
+
+.field > .civico {
+    width: 100%;
+    max-width: 120px;
+}
+
+.large {
+    font-size: large;
+}
+
+.subtitle {
+    width: 100%;
+    text-align: justify;
+}
+
+span {
+    margin-right: 5px;
+}
+
+.control.has-icons-left.indirizzo,
+.control.has-icons-left.carta {
+    width: 100%;
+    max-width: 300px;
+}
+
+.span-error {
+    margin-top: 5px;
+}
+
+/* In pagamento.css o in un blocco <style> */
+.expiration-input-container {
+    max-width: 250px;
+    /* O qualsiasi larghezza desiderata */
+    /* Puoi usare anche width, ma max-width è spesso più flessibile */
+}
+
+.field,
+.field.is-grouped,
+.field.has-addons.has-addons-centered {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.field.col {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.field.is-grouped.col {
+    flex-direction: row;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        width: 100%;
+        max-height: 1000px;
+        height: 100%;
+    }
+
+    .absolute-right {
+        position: inherit;
+        margin-right: 0;
+        margin-top: 20px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .absolute-right > .card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .body-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        max-height: 1000px;
+        height: 100%;
+    }
+
+    .body-left {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        height: 1000px;
+        height: 100%;
+    }
+
+    .body-left > .card {
+        position: relative;
+        width: 100%;
+    }
+
+    .card.gruppo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 600px;
+        padding: 20px;
+    }
+
+    .card.cart {
+        width: 100%;
+        height: min-content;
+    }
+
+    .control {
+        max-width: 170px;
+        margin: 0;
+        height: max-content;
+    }
+
+    .confirm,
+    .delete {
+        max-width: 160px;
+        width: 100%;
+        max-height: 50px;
+        height: 100%;
+    }
+
+    .fatturazione {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 600px;
+        height: 100%;
+    }
+
+    .fatturazione > .card {
+        width: 100%;
+    }
+
+    .field,
+    .field.is-grouped,
+    .field.has-addons.has-addons-centered {
+        width: 100%;
+    }
+
+    .field.has-addons.has-addons-centered {
+        align-items: left;
+        justify-content: left;
+    }
+
+    .control.has-icons-left.tel {
+        width: 100%;
+        max-width: 225px;
+    }
+
+    .control.has-icons-left.intestatario {
+        width: 100%;
+        max-width: 350px;
+    }
+}
