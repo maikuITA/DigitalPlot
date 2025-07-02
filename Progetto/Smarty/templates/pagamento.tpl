@@ -106,7 +106,7 @@
                     </p>
                 </header>
                 <section class="section">
-                    <div class="field">
+                    <div class="field col">
                         <div class="control">
                             <label class="radio large">
                                 <input type="radio" name="payment" id="paypal" value="paypal"
@@ -128,7 +128,7 @@
                     </div>
                 </section>
             </div>
-            <div class=" fatturazione" id="fatturazione">
+            <div class="fatturazione" id="fatturazione">
                 <form action="/purchase/{$subscription->getCod()}" method="post" class="form">
                     <div class="card gruppo">
                         <div class="field is-grouped">
@@ -199,7 +199,7 @@
                         <div class="field has-addons has-addons-centered">
                             <p class="control">
                                 <span class="select is-rounded">
-                                    <select>
+                                    <select disabled>
                                         <option>+39</option>
                                         <option>+1</option>
                                         <option>+7</option>
