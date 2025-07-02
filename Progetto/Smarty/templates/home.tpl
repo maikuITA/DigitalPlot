@@ -159,13 +159,13 @@
                     <p class="card-header-title">{$article->getTitle()}</p>
                 </div>
                 <div class="card-content">
-                    <p>{$article->getDescription()}</p>
+                    <p class="description">{$article->getDescription()}</p>
                 </div>
                 <footer class="card-footer">
                     <p class="card-footer-item">
                         <a
                             href="/article/{$article->getId()}"
-                            class="button is-warning"
+                            class="button is-primary"
                             >Leggi di più</a
                         >
                     </p>
