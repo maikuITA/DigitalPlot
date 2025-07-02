@@ -45,7 +45,7 @@
   align-items: center;
 }
 
-.container > a {
+.container>a {
   display: block;
   text-align: center;
 }
@@ -69,4 +69,12 @@ section,
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .body-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
 }
