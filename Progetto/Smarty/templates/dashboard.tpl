@@ -150,7 +150,7 @@
         <div class="body-right">
             <div class="card">
                 <section class="section">
-                    <a class="title">
+                    <a class="title mb-4">
                         <span class="icon is-medium is-left">
                             <i class="fa fa-asterisk" aria-hidden="true"></i>
                         </span>
@@ -194,7 +194,7 @@
             </div>
             <div class="card">
                 <section class="section">
-                    <a class="title">
+                    <a class="title mb-4">
                         <span class="icon is-medium is-left">
                             <i class="fa fa-file-text" aria-hidden="true"></i>
                         </span>
@@ -237,7 +237,7 @@
             </div>
             <div class="card">
                 <section class="section">
-                    <a class="title">
+                    <a class="title mb-4">
                         <span class="icon is-medium is-left">
                             <i class="fa fa-list-ul" aria-hidden="true"></i>
                         </span>
