@@ -83,6 +83,7 @@ section,
   }
 
   .body-right {
+    margin-top: 50px;
     width: 100%;
     align-items: center;
   }
@@ -93,8 +94,13 @@ section,
   }
 
   .section {
-    width: fit-content;
-
+    width: 80%;
   }
 
+  .table {
+    width: 100%;
+    max-width: 100%;
+    contain: content;
+    overflow-x: auto;
+  }
 }

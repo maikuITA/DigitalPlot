@@ -160,36 +160,39 @@
                         Qui trovi la lista di tutti gli articoli che stanno aspettando l'approvazione per poter essere
                         pubblicati ufficialmente
                     </h2>
-                    <table class="table is-striped is-hoverable">
-                        <thead>
-                            <tr>
-                                <th>Nome articolo</th>
-                                <th>Autore</th>
-                                <th>Data pubblicazione</th>
-                                <th>Tipo</th>
-                                <th>Genere</th>
-                                <th>Leggi</th>
-                                <th>Approva</th>
-                                <th>Scarta</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {if isset($articoliDaRevisionare)}
-                            {foreach from=$articoliDaRevisionare item=article}
-                            <tr>
-                                <td>{$article->getTitle()}</td>
-                                <td>{$article->getWriter()->getUsername()}</td>
-                                <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
-                                <td>{$article->getCategory()}</td>
-                                <td>{$article->getGenre()}</td>
-                                <td><a class="has-text-link" href="/article/{$article->getId()}">Leggi</a></td>
-                                <td><a class="has-text-success" href="/approve/{$article->getId()}"> Approva</a></td>
-                                <td><a class="has-text-danger" href="/refuse/{$article->getId()}"> Scarta </a></td>
-                            </tr>
-                            {/foreach}
-                            {/if}
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="table is-striped is-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>Nome articolo</th>
+                                    <th>Autore</th>
+                                    <th>Data pubblicazione</th>
+                                    <th>Tipo</th>
+                                    <th>Genere</th>
+                                    <th>Leggi</th>
+                                    <th>Approva</th>
+                                    <th>Scarta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {if isset($articoliDaRevisionare)}
+                                {foreach from=$articoliDaRevisionare item=article}
+                                <tr>
+                                    <td>{$article->getTitle()}</td>
+                                    <td>{$article->getWriter()->getUsername()}</td>
+                                    <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
+                                    <td>{$article->getCategory()}</td>
+                                    <td>{$article->getGenre()}</td>
+                                    <td><a class="has-text-link" href="/article/{$article->getId()}">Leggi</a></td>
+                                    <td><a class="has-text-success" href="/approve/{$article->getId()}"> Approva</a>
+                                    </td>
+                                    <td><a class="has-text-danger" href="/refuse/{$article->getId()}"> Scarta </a></td>
+                                </tr>
+                                {/foreach}
+                                {/if}
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </div>
             <div class="card">
@@ -203,36 +206,39 @@
                     <h2 class="subtitle">
                         Qui trovi gli ultimi 10 articoli pubblicati sul sito che sono stati approvati
                     </h2>
-                    <table class="table is-striped is-hoverable">
-                        <thead>
-                            <tr>
-                                <th>Nome articolo</th>
-                                <th>Autore</th>
-                                <th>Stato</th>
-                                <th>Data pubblicazione</th>
-                                <th>Tipo</th>
-                                <th>Genere</th>
-                                <th>Leggi</th>
-                                <th>Elimina</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {if isset($articoliPubblicati)}
-                            {foreach from=$articoliPubblicati item=article}
-                            <tr>
-                                <td>{$article->getTitle()}</td>
-                                <td>{$article->getWriter()->getUsername()}</td>
-                                <td>{$article->getState()}</td>
-                                <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
-                                <td>{$article->getCategory()}</td>
-                                <td>{$article->getGenre()}</td>
-                                <td><a class="has-text-link" href="/article/{$article->getId()}">Leggi</a></td>
-                                <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
-                            </tr>
-                            {/foreach}
-                            {/if}
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="table is-striped is-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>Nome articolo</th>
+                                    <th>Autore</th>
+                                    <th>Stato</th>
+                                    <th>Data pubblicazione</th>
+                                    <th>Tipo</th>
+                                    <th>Genere</th>
+                                    <th>Leggi</th>
+                                    <th>Elimina</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {if isset($articoliPubblicati)}
+                                {foreach from=$articoliPubblicati item=article}
+                                <tr>
+                                    <td>{$article->getTitle()}</td>
+                                    <td>{$article->getWriter()->getUsername()}</td>
+                                    <td>{$article->getState()}</td>
+                                    <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
+                                    <td>{$article->getCategory()}</td>
+                                    <td>{$article->getGenre()}</td>
+                                    <td><a class="has-text-link" href="/article/{$article->getId()}">Leggi</a></td>
+                                    <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a>
+                                    </td>
+                                </tr>
+                                {/foreach}
+                                {/if}
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </div>
             <div class="card">
@@ -246,34 +252,37 @@
                     <h2 class="subtitle">
                         Qui trovi tutti i commenti raggruppati per data e articolo
                     </h2>
-                    <table class="table is-striped is-hoverable">
-                        <thead>
-                            <tr>
-                                <th>Autore</th>
-                                <th>Data pubblicazione</th>
-                                <th>Articolo</th>
-                                <th>Valutazione</th>
-                                <th>Leggi</th>
-                                <th>Elimina</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {if isset($commenti)}
-                            {foreach from=$commenti item=commento}
-                            <tr>
-                                <td>{$commento->getSubscriber()->getUsername()}</td>
-                                <td>{$commento->getReleaseDate()->format('Y-m-d')}</td>
-                                <td>{$commento->getArticle()->getTitle()}</td>
-                                <td>{$commento->getEvaluate()}</td>
-                                <td><a class="has-text-link"
-                                        href="/article/{$commento->getArticle()->getId()}">Leggi</a></td>
-                                <td><a class="has-text-danger" href="/dropReview/{$commento->getCod()}"> Elimina</a>
-                                </td>
-                            </tr>
-                            {/foreach}
-                            {/if}
-                        </tbody>
-                    </table>
+                    <div class="table-container">
+                        <table class="table is-striped is-hoverable">
+                            <thead>
+                                <tr>
+                                    <th>Autore</th>
+                                    <th>Data pubblicazione</th>
+                                    <th>Articolo</th>
+                                    <th>Valutazione</th>
+                                    <th>Leggi</th>
+                                    <th>Elimina</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {if isset($commenti)}
+                                {foreach from=$commenti item=commento}
+                                <tr>
+                                    <td>{$commento->getSubscriber()->getUsername()}</td>
+                                    <td>{$commento->getReleaseDate()->format('Y-m-d')}</td>
+                                    <td>{$commento->getArticle()->getTitle()}</td>
+                                    <td>{$commento->getEvaluate()}</td>
+                                    <td><a class="has-text-link"
+                                            href="/article/{$commento->getArticle()->getId()}">Leggi</a></td>
+                                    <td><a class="has-text-danger" href="/dropReview/{$commento->getCod()}"> Elimina</a>
+                                    </td>
+                                </tr>
+                                {/foreach}
+                                {/if}
+                            </tbody>
+                        </table>
+
+                    </div>
                 </section>
             </div>
         </div>
