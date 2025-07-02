@@ -77,4 +77,30 @@ section,
     align-items: center;
   }
 
+  .body-left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .body-right {
+    margin-top: 50px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .body-right .card {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .section {
+    width: 80%;
+  }
+
+  .table {
+    width: 100%;
+    max-width: 100%;
+    contain: content;
+    overflow-x: auto;
+  }
 }
