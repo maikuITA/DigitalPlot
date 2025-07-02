@@ -87,21 +87,32 @@ class BasicEntry
         $u10->addFollower($fo2);
 
         //EArticle
-        $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', 'Nel bel mezzo del cazzo', APPROVED, 'Classico', 'Romazo', '1400-01-01', $u4);
+        $content = '
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel neque luctus nisl venenatis ullamcorper ac bibendum nibh. Nullam mattis, ante id aliquam vestibulum, diam metus varius augue, ac scelerisque velit justo quis ligula. Pellentesque vulputate tortor quis lorem vulputate facilisis. Donec sagittis sem eu eros luctus sodales. Nulla condimentum, massa a lobortis sagittis, libero sapien finibus nisl, ac vulputate nisl nunc gravida augue. Quisque pretium diam in nibh blandit posuere. Phasellus ullamcorper enim blandit, blandit nulla congue, faucibus ipsum. Duis felis sapien, ornare sit amet vehicula id, mollis ut velit. Vestibulum bibendum fringilla sem, quis interdum arcu maximus semper. Suspendisse eu metus turpis.
+
+            Ut a feugiat libero. Fusce sem nunc, bibendum nec arcu quis, semper fermentum dui. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam vehicula nisi metus, at posuere libero mollis id. Curabitur et dignissim risus. Phasellus vestibulum accumsan tellus, vel vulputate odio varius non. Duis vel tortor vel nulla tristique aliquet. Cras et luctus lacus, ut bibendum libero. Sed bibendum malesuada nulla eu fringilla. Pellentesque tempor dapibus efficitur.
+
+            Fusce gravida at elit sed rhoncus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean euismod urna mi, nec efficitur erat sodales eu. Nam a est eu mi placerat sollicitudin. Praesent auctor neque malesuada est semper vehicula. Aenean vitae malesuada odio. Nam non pretium nibh. Nam egestas augue leo. Nulla id mattis orci. Proin mollis, eros nec faucibus commodo, mi risus blandit tortor, quis maximus ante quam id lacus. Vestibulum sit amet enim sed sapien volutpat mattis id eget nibh. Etiam luctus ac leo accumsan mattis. Nullam ultricies, felis quis suscipit sollicitudin, quam enim egestas dolor, sit amet fermentum neque tortor sed nulla. Aenean diam eros, elementum imperdiet tempor sed, dignissim a nibh.
+
+            Mauris finibus ac lacus consectetur egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris nec lorem mattis, sagittis mauris posuere, pulvinar nunc. Aliquam placerat, enim a bibendum ultrices, orci orci aliquet augue, ut sollicitudin massa velit quis nulla. Vestibulum non ligula ac purus pulvinar accumsan. Vivamus vel euismod eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam venenatis lorem vel ligula viverra, a finibus lacus sodales. Fusce euismod nulla non orci scelerisque consectetur.
+
+            Suspendisse ultrices massa sit amet ipsum tincidunt, eu malesuada est ultrices. Etiam hendrerit dui sed congue sodales. Vivamus tristique nisl felis, vestibulum vestibulum dui tempus et. Duis sollicitudin laoreet ex vitae eleifend. Curabitur dignissim libero sit amet molestie pellentesque. Quisque pellentesque, enim a vehicula porttitor, massa risus vulputate enim, non ullamcorper justo justo et ipsum. Fusce cursus vestibulum eros, luctus ornare erat mattis ut. Proin commodo venenatis porttitor. Donec nec suscipit dolor, id vehicula dui. Cras blandit vestibulum dolor, eget auctor orci faucibus id. ';
+
+        $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', $content . ' Nel bel mezzo del cazzo' . $content, APPROVED, 'Classico', 'Romazo', '1400-01-01', $u4);
         $u4->addArticle($art1);
-        $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', 'Una storia di trasformazioni e immobilismo', APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
+        $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', $content, APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
         $u4->addArticle($art2);
-        $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', 'Distopia totalitaria tra controllo e censura', APPROVED, 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
+        $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', $content, APPROVED, 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
         $u4->addArticle($art3);
-        $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', 'Una danza tra amore e convenzioni sociali', APPROVED, 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
+        $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', $content, APPROVED, 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
         $u4->addArticle($art4);
-        $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', 'Un’indagine tra libri, simboli e inquisitori', APPROVED, 'Giallo', 'Romanzo', '1980-10-01', $u7);
+        $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', $content, APPROVED, 'Giallo', 'Romanzo', '1980-10-01', $u7);
         $u7->addArticle($art5);
-        $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', 'Un cammino tra ascetismo, ricchezza e consapevolezza', APPROVED, 'Spirituale', 'Romanzo', '1922-01-01', $u7);
+        $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', $content, APPROVED, 'Spirituale', 'Romanzo', '1922-01-01', $u7);
         $u7->addArticle($art6);
-        $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', 'Un mostro umano più degli umani stessi', APPROVED,  'Horror', 'Romanzo', '1818-03-11', $u7);
+        $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', $content, APPROVED,  'Horror', 'Romanzo', '1818-03-11', $u7);
         $u7->addArticle($art7);
-        $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', 'Vivere tra i rami per vedere il mondo meglio', APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
+        $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
         $u7->addArticle($art8);
 
 
@@ -320,14 +331,5 @@ class BasicEntry
         FPersistentManager::getInstance()->saveInDb($read9);
         FPersistentManager::getInstance()->saveInDb($read10);
         FPersistentManager::getInstance()->saveInDb($read11);
-    }
-
-    /**
-     * Method to drop all tables in the database.
-     * @return bool True if tables were dropped successfully, false otherwise.
-     */
-    public static function dropDates(): void
-    {
-        FPersistentManager::getInstance()->clearAll();
     }
 }
