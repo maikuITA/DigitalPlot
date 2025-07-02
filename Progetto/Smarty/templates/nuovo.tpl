@@ -338,14 +338,14 @@
                         <div id="fileStatus"></div>
                     </div>
                     <div class="field is-grouped is-centered">
-                        <p class="control has-icons-left confirm">
+                        <p class="control has-icons-left confirm resize mt-5">
                             <button class="button is-link is-rounded is-fullwidth is-outlined"
                                 type="submit">Conferma</button>
                             <span class="icon is-small is-left has-text-link">
                                 <i class="fa fa-check-circle" aria-hidden="true"></i>
                             </span>
                         </p>
-                        <p class="control has-icons-left confirm">
+                        <p class="control has-icons-left confirm resize mt-5">
                             <button class="button is-danger is-rounded is-fullwidth is-outlined"
                                 type="reset">Annulla</button>
                             <span class="icon is-small is-left has-text-danger">

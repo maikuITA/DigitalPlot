@@ -19,7 +19,7 @@
   margin-right: 100px;
 }
 
-.body-container > .card {
+.body-container>.card {
   width: 100%;
   max-width: 900px;
   height: 100%;
@@ -43,12 +43,12 @@
   margin-top: 10px;
 }
 
-.field > .control,
-.field > .control > .input {
+.field>.control,
+.field>.control>.input {
   width: 100%;
 }
 
-.card > .title {
+.card>.title {
   display: block;
   padding: 20px;
   margin-top: 15px;
@@ -65,14 +65,17 @@ textarea {
 }
 
 .small-bold-text {
-  font-size: 0.9rem; /* oppure 12px */
+  font-size: 0.9rem;
+  /* oppure 12px */
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
-  color: #000; /* colore nero base */
+  color: #000;
+  /* colore nero base */
 }
 
 input[type="file"] {
-  display: none; /* nasconde il file input */
+  display: none;
+  /* nasconde il file input */
 }
 
 .select-container {
@@ -82,7 +85,8 @@ input[type="file"] {
 
 .flex-container {
   display: flex;
-  align-items: center; /* allinea verticalmente */
+  align-items: center;
+  /* allinea verticalmente */
   gap: 0.7px;
 }
 
@@ -100,7 +104,8 @@ input[type="file"] {
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
-  gap: 8px; /* spazio tra icona e testo */
+  gap: 8px;
+  /* spazio tra icona e testo */
 }
 
 .gruppo {
@@ -121,7 +126,7 @@ input[type="file"] {
     max-height: 1000px;
   }
 
-  .body-container > .card {
+  .body-container>.card {
     width: 100%;
     max-width: 450px;
     height: 100%;
@@ -145,4 +150,12 @@ input[type="file"] {
     align-items: center;
     justify-content: center;
   }
+}
+
+.resize {
+  width: 100%;
+  max-width: 50%;
+  gap: 20px;
+  height: 100%;
+  max-height: fit-content;
 }
