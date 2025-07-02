@@ -77,4 +77,24 @@ section,
     align-items: center;
   }
 
+  .body-left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .body-right {
+    width: 100%;
+    align-items: center;
+  }
+
+  .body-right .card {
+    width: 80%;
+    padding: 20px;
+  }
+
+  .section {
+    width: fit-content;
+
+  }
+
 }
