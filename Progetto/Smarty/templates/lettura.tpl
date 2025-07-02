@@ -143,11 +143,33 @@
                 <div class="column is-full">
                     <div class="card pager">
                         <div class="content is-centered">
-                            <div class="subtitle is-flex is-justify-content-space-between  ">
-                                <p class="title">{$article->getTitle()}</p>
+                            <div class="subtitle is-flex is-align-content-space-between" id="eval">
+                                <p class="title">{$article->getTitle()}
+                                <div class=" is-centered mt-2">
+                                    {if $article->getAvgEvaluate() == 0}
 
-                                <p class="subtitle has-text-weight-bold">Valutazione
-                                    {$article->getAvgEvaluate()}
+                                    {elseif $article->getAvgEvaluate() == 1}
+                                    <i class='fas fa-star ml-3'></i>
+                                    {elseif $article->getAvgEvaluate() == 2}
+                                    <i class='fas fa-star ml-3'></i>
+                                    <i class='fas fa-star'></i>
+                                    {elseif $article->getAvgEvaluate() == 3}
+                                    <i class='fas fa-star ml-3'></i>
+                                    <i class='fas fa-star'></i>
+                                    <i class='fas fa-star'></i>
+                                    {elseif $article->getAvgEvaluate() == 4}
+                                    <i class='fas fa-star ml-3'></i>
+                                    <i class='fas fa-star'></i>
+                                    <i class='fas fa-star'></i>
+                                    <i class='fas fa-star'></i>
+                                    {else}
+                                    <i class='fas fa-star ml-3'></i>
+                                    <i class='fas fa-star'></i>
+                                    <i class='fas fa-star'></i>
+                                    <i class='fas fa-star'></i>
+                                    <i class='fas fa-star'></i>
+                                    {/if}
+                                </div>
                                 </p>
 
                             </div>

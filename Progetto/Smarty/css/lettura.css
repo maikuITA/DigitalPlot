@@ -130,4 +130,10 @@
   .media-center {
     width: 100%;
   }
+
+  #eval {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
