@@ -1,27 +1,27 @@
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
 }
 
 .card {
-  flex: 1 1 calc(33.333% - 2rem);
-  /* 3 per riga, considerando il gap */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 350px;
+    flex: 1 1 calc(33.333% - 2rem);
+    /* 3 per riga, considerando il gap */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 350px;
 }
 
 .card-content {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 @media (max-width: 768px) {
-  .card {
-    flex: 1 1 100%;
-    /* una per riga */
-    max-width: 100%;
-  }
+    .card {
+        flex: 1 1 100%;
+        /* una per riga */
+        max-width: 100%;
+    }
 }

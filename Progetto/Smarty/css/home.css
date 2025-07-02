@@ -112,11 +112,13 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-height: 300px;
+        max-height: 300px;
     }
 
     .card-footer {
-        min-height: fit-content;
-        max-height: fit-content;
+        min-height: 80px;
+        max-height: 80px;
     }
 
     .card-header {
@@ -129,5 +131,16 @@
     .card-header > .title {
         text-align: center;
         display: block;
+    }
+
+    .title {
+        font-size: x-large;
+        text-align: center;
+    }
+
+    .columns.is-centered.labels {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
