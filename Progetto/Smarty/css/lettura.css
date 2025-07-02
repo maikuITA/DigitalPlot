@@ -107,6 +107,10 @@
   align-items: center;
 }
 
+.pager .card {
+  width: 80%;
+}
+
 @media screen and (max-width: 768px) {
   .columns {
     margin: 10px;
