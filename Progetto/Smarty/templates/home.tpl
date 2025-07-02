@@ -165,7 +165,7 @@
                     <p class="card-footer-item">
                         <a
                             href="/article/{$article->getId()}"
-                            class="button is-warning"
+                            class="button is-primary"
                             >Leggi di più</a
                         >
                     </p>

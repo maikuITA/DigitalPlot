@@ -1,8 +1,3 @@
-.card {
-    width: 250px;
-    min-height: auto;
-}
-
 .card-header {
     position: initial;
 }
@@ -18,6 +13,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
     align-items: center;
+    gap: 20px;
 }
 
 .left {
@@ -42,8 +38,8 @@
     display: 1 1 flex;
     flex-direction: column;
     width: 290px;
-    min-height: 300px;
-    max-height: 300px;
+    min-height: 260px;
+    max-height: 260px;
 }
 
 .card,
@@ -52,8 +48,9 @@
 }
 
 .card-content {
-    min-height: 180px;
-    max-height: 180px;
+    min-height: 150px;
+    max-height: 150px;
+    overflow: hidden;
 }
 
 .card-content > .subtitle {
@@ -70,6 +67,24 @@
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-content,
+.description {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+.description {
+    overflow-y: scroll;
+    padding: 5px;
+    width: 100%;
+    text-align: justify;
+}
+
+.card-footer {
+    min-height: fit-content;
+    max-height: fit-content;
 }
 
 @media screen and (max-width: 768px) {
@@ -90,17 +105,6 @@
 
     .navbar-item.has-text-link.transfer {
         display: inherit;
-    }
-
-    .card-content,
-    .description {
-        min-height: 180px;
-        max-height: 180px;
-    }
-
-    .description {
-        overflow-y: scroll;
-        padding: 20px;
     }
 
     .card {
