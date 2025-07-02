@@ -155,9 +155,9 @@
                 </span>
             </button>
         </div>
-        <div class="card articles" id="articles">
-            <a class="title">Articoli caricati</a>
-            <table class="table is-striped is-hoverable">
+        <div class="card articles">
+            <table class="table is-striped is-hoverable" id="readings">
+                <caption class="title">Articoli caricati</caption>
                 <thead>
                     <tr>
                         <th>Nome articolo</th>
