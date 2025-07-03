@@ -188,7 +188,7 @@ class BasicEntry
         $u7->addArticle($art7);
         $art8 = new EArticle('Pizza empatica si ordina da sola quando sei triste', "Un'app innovativa capta la tua voce depressa e manda subito una margherita d’emergenza. L’unica AI che sa che ti manca l’amore. E il formaggio.", $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
         $u7->addArticle($art8);
-        $art9 = new EArticle('La Bibbia: Un Viaggio tra Parole Eterne e Verità senza Tempo', "La Bibbia non è solo un libro antico, ma un cammino spirituale che attraversa i secoli, parlando al cuore di ogni generazione.", $bodyBibbia, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
+        $art9 = new EArticle('La Bibbia: Un Viaggio tra Parole Eterne e Verità senza Tempo', "La Bibbia non è solo un libro antico, ma un cammino spirituale che attraversa i secoli, parlando al cuore di ogni generazione.", $testo_biblico, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
         $u1->addArticle($art9);
 
 
