@@ -100,35 +100,40 @@ class BasicEntry
 
         $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', $content . ' Nel bel mezzo del cazzo' . $content, APPROVED, 'Classico', 'Romazo', '1400-01-01', $u4);
         $u4->addArticle($art1);
-        $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', $content, APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
+        $art2 = new EArticle('Sindaco a quattro zampe: Marcellino rieletto', 'Nel borgo di Miciopoli, il gatto Marcellino ha vinto di nuovo le elezioni locali. Nessun avversario ha avuto il coraggio di sfidarlo. Dicono che le sue fusa risolvano più problemi di mille riunioni.', $content, APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
         $u4->addArticle($art2);
-        $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', $content, APPROVED, 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
+        $art3 = new EArticle('Cuscino smart ti sgrida se vai a dormire tardi', 'Dotato di AI e tono materno, ti sussurra: “Di nuovo su TikTok alle 2 di notte, eh?” Un successo tra le nonne digitali.', $content, APPROVED, 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
         $u4->addArticle($art3);
-        $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', $content, APPROVED, 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
+        $art4 = new EArticle('Errore in videoconferenza diventa promozione', 'Doveva presentare il report trimestrale, ma ha condiviso per sbaglio un karaoke di Beyoncé. La performance è stata talmente grintosa che l’hanno promossa sul posto.', $content, APPROVED, 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
         $u4->addArticle($art4);
-        $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', $content, APPROVED, 'Giallo', 'Romanzo', '1980-10-01', $u7);
+        $art5 = new EArticle('Cane regista gira film con GoPro rubata', ' Un labrador curioso ha “preso in prestito” una videocamera e girato scene da Oscar: inseguimenti, abbai e paesaggi da croccantini. Festival in arrivo.', $content, APPROVED, 'Giallo', 'Romanzo', '1980-10-01', $u7);
         $u7->addArticle($art5);
-        $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', $content, APPROVED, 'Spirituale', 'Romanzo', '1922-01-01', $u7);
+        $art6 = new EArticle('La stampante capisce solo le buone maniere', 'Dopo anni di urla, una scoperta rivoluzionaria: se le parli con gentilezza, la stampante funziona. Confermato: è passivo-aggressiva.', $content, APPROVED, 'Spirituale', 'Romanzo', '1922-01-01', $u7);
         $u7->addArticle($art6);
-        $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', $content, APPROVED,  'Horror', 'Romanzo', '1818-03-11', $u7);
+        $art7 = new EArticle('Parla solo in citazioni di film e nessuno ci fa caso', ' Da “Io sono tuo padre” a “Houston, abbiamo un problema”, Davide comunica solo con frasi da film. In ufficio ormai tutti rispondono “con la stessa moneta”.', $content, APPROVED,  'Horror', 'Romanzo', '1818-03-11', $u7);
         $u7->addArticle($art7);
-        $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
+        $art8 = new EArticle('Pizza empatica si ordina da sola quando sei triste', "Un'app innovativa capta la tua voce depressa e manda subito una margherita d’emergenza. L’unica AI che sa che ti manca l’amore. E il formaggio.", $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
         $u7->addArticle($art8);
 
 
         //EReview
 
-        $rev1 = new EReview(5, 'PRIMO', '2012-12-12', $u7, $art1);
+        $rev1 = new EReview(5, 'Davvero interessante, lascia spazio a tante riflessioni.', '2012-12-12', $u7, $art1);
         $art1->addReview($rev1);
         $u7->addReview($rev1);
 
-        $rev2 = new EReview(4, 'Bellissimo romanzo storico', '2020-01-15', $u7, $art2);
+        $rev2 = new EReview(4, 'Non me lo aspettavo, ma mi ha sorpreso in positivo!', '2020-01-15', $u7, $art2);
         $art2->addReview($rev2);
         $u7->addReview($rev2);
 
-        $rev23 = new EReview(3, 'Interessante ma complesso', '2023-01-10', $u3, $art1);
+        $rev23 = new EReview(3, 'Un mix ben riuscito tra leggerezza e contenuto. Complimenti!', '2023-01-10', $u3, $art1);
         $art1->addReview($rev23);
         $u3->addReview($rev23);
+
+        $rev41 = new EReview(3, 'Interessante ma complesso', '2023-01-10', $u3, $art1);
+        $art1->addReview($rev23);
+        $u3->addReview($rev23);
+
 
         $rev24 = new EReview(5, 'Capolavoro assoluto', '2023-01-15', $u4, $art2);
         $art2->addReview($rev24);
