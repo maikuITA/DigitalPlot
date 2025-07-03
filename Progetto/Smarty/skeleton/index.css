@@ -1,158 +1,76 @@
-* {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 450;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+*,
+*::before,
+*::after {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    box-sizing: border-box;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
 }
 
-body {
-    height: auto;
-    max-height: max-content;
-}
-
-header {
+.nav {
+    --bs-nav-link-padding-x: 1rem;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight: ;
+    --bs-nav-link-color: var(--bs-link-color);
+    --bs-nav-link-hover-color: var(--bs-link-hover-color);
+    --bs-nav-link-disabled-color: #6c757d;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-height: min-content;
-    height: 100%;
-    padding: 5px 20px;
-    border: 1px solid rgb(0, 0, 0, 0.1);
-    color: black;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1001;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
 }
 
-nav {
-    display: flex;
-    gap: 20px;
+.ubuntu-light {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
-.card {
-    max-width: 300px;
+.ubuntu-regular {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.card-header {
-    position: initial;
+.ubuntu-medium {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
-.container {
-    /* background-color: aliceblue; */
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-    align-items: center;
+.ubuntu-bold {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
-.left {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    width: 200px;
+.ubuntu-light-italic {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+    font-style: italic;
 }
 
-.center {
-    margin-right: 60px;
+.ubuntu-regular-italic {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    font-style: italic;
 }
 
-.subtitle {
-    margin-top: 10px;
-    text-align: justify;
-    width: 100%;
+.ubuntu-medium-italic {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-style: italic;
 }
 
-.column {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.column.is-one-quarter.left {
-    justify-content: left;
-    align-items: left;
-    gap: 10px;
-}
-
-.column.is-one-quarter.right {
-    justify-content: right;
-    align-items: right;
-}
-
-.card-content > .title {
-    width: 100%;
-    text-align: center;
-}
-
-.navbar-item:hover, .navbar-item.has-text-link.transfer:hover {
-    background-color: rgb(0, 0, 0, 0.1);
-    color:hsl(var(--bulma-warning-h), var(--bulma-warning-s), var(--bulma-warning-l))
-}
-
-.navbar-item.has-text-link.transfer {
-    display: none;
-}
-
-@media screen and (max-width: 768px) {
-    
-    header {
-        flex-direction: row;
-        align-items: row;
-        max-height: max-content;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .header.columns {
-        max-height: 100px;
-    }
-
-    .column.is-one-quarter.left {
-        max-width: fit-content;
-        margin-left: 20px;
-        z-index: 1001;
-    }
-    .column {
-        max-width: fit-content;
-    }
-
-    .navbar-menu {
-        position: absolute;
-        z-index: 1100;
-        top: 75%;
-        left: 5%;
-        background-color: white;
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .center {
-        margin-right: 0;
-    }
-
-    .button.is-warning.ok {
-        display: none;
-    }
-
-    .navbar-item.has-text-link.transfer {
-        display: inherit;
-    }
+.ubuntu-bold-italic {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-style: italic;
 }

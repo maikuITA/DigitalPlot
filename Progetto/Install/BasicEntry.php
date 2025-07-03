@@ -11,16 +11,16 @@ class BasicEntry
     {
 
         // User
-        $u1 = new EUser(ADMIN, 'admin', 'admin123', 'Admin', 'Admin', '2003-04-18', 'Italy', 'Pescara', 'PE', '65125', 'Via Monte Saraceno', '11', 'admin@admin.com', '0000000000');
-        $u2 = new EUser(BASIC, 'mario.rossi', 'passMario1', 'Mario', 'Rossi', '1995-06-12', 'Italy', 'Roma', 'RM', '00100', 'Via Appia Nuova', '45', 'mario.rossi@example.com', '3201234567');
-        $u3 = new EUser(READER, 'lisa.romano', 'lisaRead@24', 'Lisa', 'Romano', '1991-08-14', 'Italy', 'Trieste', 'TS', '34100', 'Via San Nicolò', '9', 'lisa.romano@example.com', '3275566888');
-        $u4 = new EUser(WRITER, 'matteo.riva', 'writerMatteo$', 'Matteo', 'Riva', '1989-02-11', 'Italy', 'Parma', 'PR', '43100', 'Viale Piacenza', '23', 'matteo.riva@example.com', '3289988776');
-        $u5 = new EUser(BASIC, 'francesca.neri', 'fraNeri2024', 'Francesca', 'Neri', '2000-05-05', 'Italy', 'Bologna', 'BO', '40100', 'Via dell\'Indipendenza', '34', 'francesca.neri@example.com', '3295566778');
+        $u1 = new EUser(ADMIN, 'admin', 'admin123', 'Admin', 'Admin', '2003-04-18', 'Italy', 'Pescara', 'PE', '65125', 'Via Monte Saraceno', '11', 'admin@admin.com', '0000000000', 'Admin appassionato di tecnologia e gestione sistemi, sempre pronto a intervenire.');
+        $u2 = new EUser(BASIC, 'mario.rossi', 'passMario1', 'Mario', 'Rossi', '1995-06-12', 'Italy', 'Roma', 'RM', '00100', 'Via Appia Nuova', '45', 'mario.rossi@example.com', '3201234567', "Mario Rossi, utente base di Roma, ama la musica e le passeggiate nei parchi.");
+        $u3 = new EUser(READER, 'lisa.romano', 'lisaRead@24', 'Lisa', 'Romano', '1991-08-14', 'Italy', 'Trieste', 'TS', '34100', 'Via San Nicolò', '9', 'lisa.romano@example.com', '3275566888', "Lisa Romano, lettrice curiosa di Trieste, appassionata di libri e caffè.");
+        $u4 = new EUser(WRITER, 'matteo.riva', 'writerMatteo$', 'Matteo', 'Riva', '1989-02-11', 'Italy', 'Parma', 'PR', '43100', 'Viale Piacenza', '23', 'matteo.riva@example.com', '3289988776', "Matteo Riva, scrittore di Parma, creativo e amante della scrittura narrativa.");
+        $u5 = new EUser(BASIC, 'francesca.neri', 'fraNeri2024', 'Francesca', 'Neri', '2000-05-05', 'Italy', 'Bologna', 'BO', '40100', 'Via dell\'Indipendenza', '34', 'francesca.neri@example.com', '3295566778', "Francesca Neri, utente base di Bologna, solare e amante dei viaggi culturali.");
         $u6 = new EUser(ADMIN, 'ezio.auditore', 'BestAssassin1', 'Ezio', 'Auditore', '1459-06-24', 'Italy', 'Firenze', 'FI', '50100', 'Viale dei Mille', '8', 'ezio.auditore@example.com', '3214455667', "Bella vita la nostra, eh Fratello? La migliore, possa non cambiare mai e possa non cambiare noi.");
-        $u7 = new EUser(WRITER, 'chiara.fontana', 'chiaraW_2024', 'Chiara', 'Fontana', '1994-04-04', 'Italy', 'Ancona', 'AN', '60100', 'Via XXV Aprile', '5', 'chiara.fontana@example.com', '3229988775');
-        $u8 = new EUser(BASIC, 'carlo.bruni', 'adminCarlo!', 'Carlo', 'Bruni', '1985-07-17', 'Italy', 'Genova', 'GE', '16100', 'Via XX Settembre', '55', 'carlo.bruni@example.com', '3242233445');
-        $u9 = new EUser(BASIC, 'sara.galli', 'saraBasic99', 'Sara', 'Galli', '1996-11-03', 'Italy', 'Verona', 'VR', '37100', 'Piazza Bra', '3', 'sara.galli@example.com', '3267788990');
-        $u10 = new EUser(READER, 'giorgio.conti', 'giorgioRead99', 'Giorgio', 'Conti', '1993-12-21', 'Italy', 'Lecce', 'LE', '73100', 'Via Leuca', '17', 'giorgio.conti@example.com', '3254433221');
+        $u7 = new EUser(WRITER, 'chiara.fontana', 'chiaraW_2024', 'Chiara', 'Fontana', '1994-04-04', 'Italy', 'Ancona', 'AN', '60100', 'Via XXV Aprile', '5', 'chiara.fontana@example.com', '3229988775', "Chiara Fontana, scrittrice di Ancona, appassionata di arte e parole.");
+        $u8 = new EUser(BASIC, 'carlo.bruni', 'adminCarlo!', 'Carlo', 'Bruni', '1985-07-17', 'Italy', 'Genova', 'GE', '16100', 'Via XX Settembre', '55', 'carlo.bruni@example.com', '3242233445', "Carlo Bruni, utente base di Genova, pratico, diretto e amante del mare.");
+        $u9 = new EUser(BASIC, 'sara.galli', 'saraBasic99', 'Sara', 'Galli', '1996-11-03', 'Italy', 'Verona', 'VR', '37100', 'Piazza Bra', '3', 'sara.galli@example.com', '3267788990', "Sara Galli, utente base di Verona, sempre sorridente e appassionata di teatro.");
+        $u10 = new EUser(READER, 'giorgio.conti', 'giorgioRead99', 'Giorgio', 'Conti', '1993-12-21', 'Italy', 'Lecce', 'LE', '73100', 'Via Leuca', '17', 'giorgio.conti@example.com', '3254433221', "Giorgio Conti, lettore di Lecce, appassionato di storia e passeggiate sotto il sole.");
 
         //PlotCard
         $p1 = new EPlotCard(10000, $u1);
@@ -98,37 +98,118 @@ class BasicEntry
 
             Suspendisse ultrices massa sit amet ipsum tincidunt, eu malesuada est ultrices. Etiam hendrerit dui sed congue sodales. Vivamus tristique nisl felis, vestibulum vestibulum dui tempus et. Duis sollicitudin laoreet ex vitae eleifend. Curabitur dignissim libero sit amet molestie pellentesque. Quisque pellentesque, enim a vehicula porttitor, massa risus vulputate enim, non ullamcorper justo justo et ipsum. Fusce cursus vestibulum eros, luctus ornare erat mattis ut. Proin commodo venenatis porttitor. Donec nec suscipit dolor, id vehicula dui. Cras blandit vestibulum dolor, eget auctor orci faucibus id. ';
 
+        $testo_biblico = "BIBBIA
+        Il Signore è il mio pastore: nulla mi mancherà.
+        Egli mi fa riposare in pascoli di verde erba,
+        mi guida lungo le acque calme.
+        Egli mi ristora l'anima,
+        mi conduce per sentieri di giustizia per amore del suo nome.
+        Quando anche camminassi nella valle dell'ombra della morte,
+        non temerei alcun male, perché tu sei con me;
+        il tuo bastone e la tua verga mi danno sicurezza.
+
+        Tu apparecchi davanti a me una mensa in presenza dei miei nemici;
+        cospargi di olio il mio capo; la mia coppa trabocca.
+        Certo, beni e bontà m'accompagneranno tutti i giorni della mia vita,
+        e abiterò nella casa del Signore per lunghi giorni.
+
+        Chi abita al riparo dell'Altissimo riposa all'ombra dell'Onnipotente.
+        Io dico al Signore: «Tu sei il mio rifugio e la mia fortezza,
+        il mio Dio in cui confido!»
+        Egli ti libererà dal laccio dell’uccellatore e dalla peste distruttiva.
+        Ti coprirà con le sue penne e sotto le sue ali troverai rifugio;
+        la sua fedeltà ti sarà scudo e corazza.
+
+        Tu non temerai il terrore della notte né la freccia che vola di giorno,
+        la peste che vaga nelle tenebre, lo sterminio che devasta in pieno mezzogiorno.
+        Mille cadranno al tuo fianco e diecimila alla tua destra,
+        ma a te non si accosterà.
+
+        Poiché tu hai detto: «Tu, Signore, sei il mio rifugio»,
+        e hai fatto dell'Altissimo il tuo riparo,
+        nessun male potrà colpirti, né piaga alcuna si accosterà alla tua tenda.
+        Egli ordinerà ai suoi angeli di proteggerti in tutte le tue vie.
+
+        Essi ti porteranno sulle mani perché il tuo piede non inciampi in alcuna pietra.
+        Tu camminerai sul leone e sull’aspide,
+        schiaccerai il leoncello e il serpente.
+
+        «Poiché egli mi ama, io lo salverò;
+        lo proteggerò perché conosce il mio nome.
+        Quando mi invocherà, io gli risponderò;
+        sarò con lui nei momenti difficili,
+        lo libererò e lo glorificherò.
+        Lo sazierò di lunga vita e gli farò vedere la mia salvezza.»
+
+        Alzo gli occhi verso i monti: da dove mi verrà l’aiuto?
+        Il mio aiuto viene dal Signore, che ha fatto il cielo e la terra.
+        Egli non permetterà che il tuo piede vacilli,
+        colui che ti protegge non sonnecchierà.
+
+        Ecco, colui che protegge Israele non sonnecchia e non dorme.
+        Il Signore è colui che ti protegge,
+        il Signore è la tua ombra, egli sta alla tua destra.
+        Di giorno il sole non ti colpirà, né la luna di notte.
+        Il Signore ti proteggerà da ogni male; egli proteggerà la tua vita.
+        Il Signore ti proteggerà quando esci e quando entri,
+        da ora e per sempre.
+
+        «Io sono la luce del mondo; chi mi segue non camminerà nelle tenebre, ma avrà la luce della vita.» (Giovanni 8:12)
+
+        «Venite a me, voi tutti che siete affaticati e oppressi, e io vi darò riposo.» (Matteo 11:28)
+
+        «Non temere, perché io sono con te; non smarrirti, perché io sono il tuo Dio.» (Isaia 41:10)
+
+        «Il Signore è vicino a quelli che hanno il cuore affranto; egli salva gli spiriti contriti.» (Salmo 34:18)
+
+        «In principio Dio creò il cielo e la terra.» (Genesi 1:1)
+
+        «Siate forti e coraggiosi, non temete e non vi spaventate, perché il Signore, il vostro Dio, è con voi in ogni luogo dove andrete.» (Giosuè 1:9)
+
+        «Il cielo e la terra passeranno, ma le mie parole non passeranno.» (Matteo 24:35)
+
+        «Il Signore è il mio aiuto, non temerò: che cosa potrà farmi l’uomo?» (Ebrei 13:6)
+
+        BIBBIA;";
+
         $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', $content . ' Nel bel mezzo del cazzo' . $content, APPROVED, 'Classico', 'Romazo', '1400-01-01', $u4);
         $u4->addArticle($art1);
-        $art2 = new EArticle('Il Gattopardo', 'Declino di una famiglia siciliana', $content, APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
+        $art2 = new EArticle('Sindaco a quattro zampe: Marcellino rieletto', 'Nel borgo di Miciopoli, il gatto Marcellino ha vinto di nuovo le elezioni locali. Nessun avversario ha avuto il coraggio di sfidarlo. Dicono che le sue fusa risolvano più problemi di mille riunioni.', $content, APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
         $u4->addArticle($art2);
-        $art3 = new EArticle('1984', 'Il Grande Fratello ti osserva', $content, APPROVED, 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
+        $art3 = new EArticle('Cuscino smart ti sgrida se vai a dormire tardi', 'Dotato di AI e tono materno, ti sussurra: “Di nuovo su TikTok alle 2 di notte, eh?” Un successo tra le nonne digitali.', $content, APPROVED, 'Fantascienza', 'Romanzo', '1949-06-08', $u4);
         $u4->addArticle($art3);
-        $art4 = new EArticle('Orgoglio e Pregiudizio', 'Elizabeth Bennet è troppo sveglia per il suo tempo', $content, APPROVED, 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
+        $art4 = new EArticle('Errore in videoconferenza diventa promozione', 'Doveva presentare il report trimestrale, ma ha condiviso per sbaglio un karaoke di Beyoncé. La performance è stata talmente grintosa che l’hanno promossa sul posto.', $content, APPROVED, 'Sentimentale', 'Romanzo', '1813-01-28', $u4);
         $u4->addArticle($art4);
-        $art5 = new EArticle('Il Nome della Rosa', 'Omicidi misteriosi in un’abbazia medievale', $content, APPROVED, 'Giallo', 'Romanzo', '1980-10-01', $u7);
+        $art5 = new EArticle('Cane regista gira film con GoPro rubata', ' Un labrador curioso ha “preso in prestito” una videocamera e girato scene da Oscar: inseguimenti, abbai e paesaggi da croccantini. Festival in arrivo.', $content, APPROVED, 'Giallo', 'Romanzo', '1980-10-01', $u7);
         $u7->addArticle($art5);
-        $art6 = new EArticle('Siddhartha', 'La ricerca spirituale di un giovane indiano', $content, APPROVED, 'Spirituale', 'Romanzo', '1922-01-01', $u7);
+        $art6 = new EArticle('La stampante capisce solo le buone maniere', 'Dopo anni di urla, una scoperta rivoluzionaria: se le parli con gentilezza, la stampante funziona. Confermato: è passivo-aggressiva.', $content, APPROVED, 'Spirituale', 'Romanzo', '1922-01-01', $u7);
         $u7->addArticle($art6);
-        $art7 = new EArticle('Frankenstein', 'La tragedia dell’ambizione scientifica', $content, APPROVED,  'Horror', 'Romanzo', '1818-03-11', $u7);
+        $art7 = new EArticle('Parla solo in citazioni di film e nessuno ci fa caso', ' Da “Io sono tuo padre” a “Houston, abbiamo un problema”, Davide comunica solo con frasi da film. In ufficio ormai tutti rispondono “con la stessa moneta”.', $content, APPROVED,  'Horror', 'Romanzo', '1818-03-11', $u7);
         $u7->addArticle($art7);
-        $art8 = new EArticle('Il barone rampante', 'Un ragazzo sale su un albero… e ci resta', $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
+        $art8 = new EArticle('Pizza empatica si ordina da sola quando sei triste', "Un'app innovativa capta la tua voce depressa e manda subito una margherita d’emergenza. L’unica AI che sa che ti manca l’amore. E il formaggio.", $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
         $u7->addArticle($art8);
+        $art9 = new EArticle('La Bibbia: Un Viaggio tra Parole Eterne e Verità senza Tempo', "La Bibbia non è solo un libro antico, ma un cammino spirituale che attraversa i secoli, parlando al cuore di ogni generazione.", $testo_biblico, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
+        $u1->addArticle($art9);
 
 
         //EReview
 
-        $rev1 = new EReview(5, 'PRIMO', '2012-12-12', $u7, $art1);
+        $rev1 = new EReview(5, 'Davvero interessante, lascia spazio a tante riflessioni.', '2012-12-12', $u7, $art1);
         $art1->addReview($rev1);
         $u7->addReview($rev1);
 
-        $rev2 = new EReview(4, 'Bellissimo romanzo storico', '2020-01-15', $u7, $art2);
+        $rev2 = new EReview(4, 'Non me lo aspettavo, ma mi ha sorpreso in positivo!', '2020-01-15', $u7, $art2);
         $art2->addReview($rev2);
         $u7->addReview($rev2);
 
-        $rev23 = new EReview(3, 'Interessante ma complesso', '2023-01-10', $u3, $art1);
+        $rev23 = new EReview(3, 'Un mix ben riuscito tra leggerezza e contenuto. Complimenti!', '2023-01-10', $u3, $art1);
         $art1->addReview($rev23);
         $u3->addReview($rev23);
+
+        $rev41 = new EReview(3, 'Interessante ma complesso', '2023-01-10', $u3, $art1);
+        $art1->addReview($rev23);
+        $u3->addReview($rev23);
+
 
         $rev24 = new EReview(5, 'Capolavoro assoluto', '2023-01-15', $u4, $art2);
         $art2->addReview($rev24);
@@ -197,6 +278,14 @@ class BasicEntry
         $rev40 = new EReview(5, 'Meraviglioso', '2023-08-15', $u4, $art5);
         $art5->addReview($rev40);
         $u4->addReview($rev40);
+
+        $rev41 = new EReview(5, 'Riflessivo. Pregherò più spesso', '2023-08-15', $u4, $art5);
+        $art9->addReview($rev41);
+        $u4->addReview($rev41);
+
+        $rev42 = new EReview(5, 'La fede che ci guida', '2023-08-15', $u4, $art5);
+        $art9->addReview($rev42);
+        $u4->addReview($rev42);
 
 
         //EReading

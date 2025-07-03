@@ -36,8 +36,7 @@ class CArticle
                 }
             }
             CArticle::addListReadArticles($idArticolo);
-            // $remaningReadings = MAXREADINGS - $user->countReadings();
-            VArticle::showArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), article: $article, writer: $article->getWriter());
+            VArticle::showArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), article: $article, writer: $article->getWriter(), writerProPic: $article->getWriter()->getEncodedData());
         } else {
             header('Location: https://digitalplot.altervista.org/auth');
             exit();
