@@ -28,7 +28,6 @@ class VArticle
         $smarty->assign('article', $article);
         $smarty->assign('reviews', $article->getReviews());
         $smarty->assign('writer', $writer);
-        $smarty->assign('writerProPic', $writerProPic);
         $smarty->display('lettura.tpl');
     }
 
