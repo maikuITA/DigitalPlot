@@ -98,6 +98,80 @@ class BasicEntry
 
             Suspendisse ultrices massa sit amet ipsum tincidunt, eu malesuada est ultrices. Etiam hendrerit dui sed congue sodales. Vivamus tristique nisl felis, vestibulum vestibulum dui tempus et. Duis sollicitudin laoreet ex vitae eleifend. Curabitur dignissim libero sit amet molestie pellentesque. Quisque pellentesque, enim a vehicula porttitor, massa risus vulputate enim, non ullamcorper justo justo et ipsum. Fusce cursus vestibulum eros, luctus ornare erat mattis ut. Proin commodo venenatis porttitor. Donec nec suscipit dolor, id vehicula dui. Cras blandit vestibulum dolor, eget auctor orci faucibus id. ';
 
+        $testo_biblico = "BIBBIA
+        Il Signore è il mio pastore: nulla mi mancherà.
+        Egli mi fa riposare in pascoli di verde erba,
+        mi guida lungo le acque calme.
+        Egli mi ristora l'anima,
+        mi conduce per sentieri di giustizia per amore del suo nome.
+        Quando anche camminassi nella valle dell'ombra della morte,
+        non temerei alcun male, perché tu sei con me;
+        il tuo bastone e la tua verga mi danno sicurezza.
+
+        Tu apparecchi davanti a me una mensa in presenza dei miei nemici;
+        cospargi di olio il mio capo; la mia coppa trabocca.
+        Certo, beni e bontà m'accompagneranno tutti i giorni della mia vita,
+        e abiterò nella casa del Signore per lunghi giorni.
+
+        Chi abita al riparo dell'Altissimo riposa all'ombra dell'Onnipotente.
+        Io dico al Signore: «Tu sei il mio rifugio e la mia fortezza,
+        il mio Dio in cui confido!»
+        Egli ti libererà dal laccio dell’uccellatore e dalla peste distruttiva.
+        Ti coprirà con le sue penne e sotto le sue ali troverai rifugio;
+        la sua fedeltà ti sarà scudo e corazza.
+
+        Tu non temerai il terrore della notte né la freccia che vola di giorno,
+        la peste che vaga nelle tenebre, lo sterminio che devasta in pieno mezzogiorno.
+        Mille cadranno al tuo fianco e diecimila alla tua destra,
+        ma a te non si accosterà.
+
+        Poiché tu hai detto: «Tu, Signore, sei il mio rifugio»,
+        e hai fatto dell'Altissimo il tuo riparo,
+        nessun male potrà colpirti, né piaga alcuna si accosterà alla tua tenda.
+        Egli ordinerà ai suoi angeli di proteggerti in tutte le tue vie.
+
+        Essi ti porteranno sulle mani perché il tuo piede non inciampi in alcuna pietra.
+        Tu camminerai sul leone e sull’aspide,
+        schiaccerai il leoncello e il serpente.
+
+        «Poiché egli mi ama, io lo salverò;
+        lo proteggerò perché conosce il mio nome.
+        Quando mi invocherà, io gli risponderò;
+        sarò con lui nei momenti difficili,
+        lo libererò e lo glorificherò.
+        Lo sazierò di lunga vita e gli farò vedere la mia salvezza.»
+
+        Alzo gli occhi verso i monti: da dove mi verrà l’aiuto?
+        Il mio aiuto viene dal Signore, che ha fatto il cielo e la terra.
+        Egli non permetterà che il tuo piede vacilli,
+        colui che ti protegge non sonnecchierà.
+
+        Ecco, colui che protegge Israele non sonnecchia e non dorme.
+        Il Signore è colui che ti protegge,
+        il Signore è la tua ombra, egli sta alla tua destra.
+        Di giorno il sole non ti colpirà, né la luna di notte.
+        Il Signore ti proteggerà da ogni male; egli proteggerà la tua vita.
+        Il Signore ti proteggerà quando esci e quando entri,
+        da ora e per sempre.
+
+        «Io sono la luce del mondo; chi mi segue non camminerà nelle tenebre, ma avrà la luce della vita.» (Giovanni 8:12)
+
+        «Venite a me, voi tutti che siete affaticati e oppressi, e io vi darò riposo.» (Matteo 11:28)
+
+        «Non temere, perché io sono con te; non smarrirti, perché io sono il tuo Dio.» (Isaia 41:10)
+
+        «Il Signore è vicino a quelli che hanno il cuore affranto; egli salva gli spiriti contriti.» (Salmo 34:18)
+
+        «In principio Dio creò il cielo e la terra.» (Genesi 1:1)
+
+        «Siate forti e coraggiosi, non temete e non vi spaventate, perché il Signore, il vostro Dio, è con voi in ogni luogo dove andrete.» (Giosuè 1:9)
+
+        «Il cielo e la terra passeranno, ma le mie parole non passeranno.» (Matteo 24:35)
+
+        «Il Signore è il mio aiuto, non temerò: che cosa potrà farmi l’uomo?» (Ebrei 13:6)
+
+        BIBBIA;";
+
         $art1 = new EArticle('La Divina Commedia', 'Dante si è perso :(', $content . ' Nel bel mezzo del cazzo' . $content, APPROVED, 'Classico', 'Romazo', '1400-01-01', $u4);
         $u4->addArticle($art1);
         $art2 = new EArticle('Sindaco a quattro zampe: Marcellino rieletto', 'Nel borgo di Miciopoli, il gatto Marcellino ha vinto di nuovo le elezioni locali. Nessun avversario ha avuto il coraggio di sfidarlo. Dicono che le sue fusa risolvano più problemi di mille riunioni.', $content, APPROVED, 'Storico', 'Romanzo', '1958-05-01', $u4);
@@ -114,6 +188,8 @@ class BasicEntry
         $u7->addArticle($art7);
         $art8 = new EArticle('Pizza empatica si ordina da sola quando sei triste', "Un'app innovativa capta la tua voce depressa e manda subito una margherita d’emergenza. L’unica AI che sa che ti manca l’amore. E il formaggio.", $content, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
         $u7->addArticle($art8);
+        $art9 = new EArticle('La Bibbia: Un Viaggio tra Parole Eterne e Verità senza Tempo', "La Bibbia non è solo un libro antico, ma un cammino spirituale che attraversa i secoli, parlando al cuore di ogni generazione.", $bodyBibbia, APPROVED, 'Fiabesco', 'Romanzo', '1957-11-25', $u7);
+        $u1->addArticle($art9);
 
 
         //EReview
@@ -202,6 +278,14 @@ class BasicEntry
         $rev40 = new EReview(5, 'Meraviglioso', '2023-08-15', $u4, $art5);
         $art5->addReview($rev40);
         $u4->addReview($rev40);
+
+        $rev41 = new EReview(5, 'Riflessivo. Pregherò più spesso', '2023-08-15', $u4, $art5);
+        $art9->addReview($rev41);
+        $u4->addReview($rev41);
+
+        $rev42 = new EReview(5, 'La fede che ci guida', '2023-08-15', $u4, $art5);
+        $art9->addReview($rev42);
+        $u4->addReview($rev42);
 
 
         //EReading
