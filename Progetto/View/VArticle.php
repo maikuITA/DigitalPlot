@@ -14,9 +14,10 @@ class VArticle
      * @param int $privilege The user's privilege level (default is BASIC).
      * @param EArticle $article The article to be displayed.
      * @param EUser $writer The writer of the article.
+     * @param mixed $writerProPic The writer's profile picture data.
      * @return void
      */
-    public static function showArticle(bool $isLogged = false, int $plotPoints = 0, mixed $proPic = null, int $privilege = BASIC, EArticle $article, EUser $writer): void
+    public static function showArticle(bool $isLogged = false, int $plotPoints = 0, mixed $proPic = null, int $privilege = BASIC, EArticle $article, EUser $writer, mixed $writerProPic): void
     {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> lettura.tpl");
@@ -27,7 +28,7 @@ class VArticle
         $smarty->assign('article', $article);
         $smarty->assign('reviews', $article->getReviews());
         $smarty->assign('writer', $writer);
-        $smarty->assign('writerProPic', $writer->getEncodedData());
+        $smarty->assign('writerProPic', $writerProPic);
         $smarty->display('lettura.tpl');
     }
 
