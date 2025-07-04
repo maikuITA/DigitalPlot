@@ -97,10 +97,10 @@
                             <div class="media-center">
                                 <div class="media-left">
                                     <figure class="image is-48x48">
-                                        {if isset($writerProPic) && $writerProPic !== ""}
-                                        <p>writerProPic: {$writerProPic}</p>
+                                        {if isset($writerProPic) && $writerProPic != ""}
                                         <img class="is-rounded" src="data:image/jpeg;base64,{$writer->getEncodedData()}"/>
                                         {else}
+                                        <p>writerProPic: {$writerProPic}</p>
                                          <img class="is-rounded" src="/Progetto/Smarty/img/propic.png" />
                                         {/if}
                                     </figure>
