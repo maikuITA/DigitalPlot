@@ -1,83 +1,87 @@
 .body-container {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
 .body-container > .card {
-  width: 100%;
-  max-width: 1000px;
-  height: fit-content;
-  max-height: 600px;
+    width: 100%;
+    max-width: 1000px;
+    height: fit-content;
+    max-height: 600px;
+}
+
+.container {
+    margin-top: 30px;
 }
 
 .body-container > .body-left > .card > .section > .control > .button {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .control {
-  max-width: 450px;
+    max-width: 450px;
 }
 
 .control > button {
-  width: 100%;
-  max-width: 450px;
+    width: 100%;
+    max-width: 450px;
 }
 
 .control > input {
-  max-width: 200px;
+    max-width: 200px;
 }
 
 .subtitle {
-  width: 100%;
-  text-align: justify;
+    width: 100%;
+    text-align: justify;
 }
 
 span {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 @media screen and (max-width: 768px) {
-  .body-container {
-    flex-direction: column;
-    align-items: center;
-  }
+    .body-container {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .body-container > .card {
-    width: 100%;
-    max-width: 90%;
-  }
+    .body-container > .card {
+        width: 100%;
+        max-width: 90%;
+    }
 
-  .field.is-grouped {
-    flex-direction: column;
-    align-items: center;
-  }
+    .field.is-grouped {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .card {
-  flex: 1 1 300px; /* Card larga almeno 300px, ma flessibile */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 350px;
-  min-height: 350px;
+    flex: 1 1 300px; /* Card larga almeno 300px, ma flessibile */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-width: 350px;
+    min-height: 350px;
 }
 
 .card-content {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .card {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem; /* Spaziatura tra le card */
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem; /* Spaziatura tra le card */
+    justify-content: center;
 }
