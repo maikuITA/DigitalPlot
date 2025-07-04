@@ -121,7 +121,7 @@ window.addEventListener('resize', function () {
 /**
  * Checks if the username is unique.
  */
-document.getElementById("usernameR").addEventListener("blur", function () {
+document.getElementById("usernameR").addEventListener("blur", function () { // blur means that the field is not focused anymore
     const username = this.value.trim();
     const submitBtn = document.getElementById("submit-regis");
     const inputField = this;
