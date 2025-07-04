@@ -3,7 +3,9 @@
 # line 4: start the rewrite engine
 RewriteEngine on 
 
-# Escludi favicon.ico dal reindirizzamento (-), se va applicata questa direttiva viene applicata per ultima (L)
+# In this way, the URL for a favicon request is not overidden;
+# L means "last rule", it means that the favicon requests is forwarded to the server as is, without any further processing by the PHP application
+# for this reason, it must be esecuted as the last rule
 RewriteRule ^favicon.ico$ - [L]
 
 # the rewrite rule at line 9 is subject to the following condition: 
