@@ -71,10 +71,15 @@ span {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.card-content,
-.description {
+.card-content {
     min-height: 150px;
     max-height: 150px;
+    overflow: hidden;
+}
+
+.description {
+    min-height: 120px;
+    max-height: 120px;
 }
 
 .description {
