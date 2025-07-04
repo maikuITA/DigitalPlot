@@ -118,7 +118,7 @@
                             <div class="media-center">
                                 <div class="is-gapped top-right">
                                     <div class="to-center">
-                                        <a class="is-5 s has-text-weight-bold">Numero articoli: </a><a
+                                        <a class="is-5 s has-text-weight-bold">Articoli: </a><a
                                             class="is-5">{$writer->getNumArticles()}</a>
                                     </div>
                                     <div class="to-center">
