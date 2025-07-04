@@ -38,8 +38,8 @@
     display: 1 1 flex;
     flex-direction: column;
     width: 290px;
-    min-height: 260px;
-    max-height: 260px;
+    min-height: 280px;
+    max-height: 280px;
 }
 
 .card,
@@ -85,6 +85,9 @@
 .card-footer {
     min-height: fit-content;
     max-height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media screen and (max-width: 768px) {
