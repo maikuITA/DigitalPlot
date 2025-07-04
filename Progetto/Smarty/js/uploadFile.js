@@ -1,6 +1,7 @@
 const fileInput = document.getElementById('upload');
 const fileStatus = document.getElementById('fileStatus');
 
+// when the file input changes, check the file type
 fileInput.addEventListener('change', function () {
   const file = fileInput.files[0];
 

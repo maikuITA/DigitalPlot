@@ -1,5 +1,7 @@
 console.log('validate-expirationDate loaded');
 
+// This code runs when the DOM is fully loaded
+// It ensures that the expiration date input is validated against the current date
 document.addEventListener('DOMContentLoaded', function () {
     const expirationDateInput = document.getElementById('expirationDate');
     const feedbackExpiry = document.getElementById('feedback-expiry');

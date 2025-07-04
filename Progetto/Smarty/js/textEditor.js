@@ -20,7 +20,7 @@ const quill = new Quill('#editor-container', {
 window.quill = quill;
 
 
-// what happenend when the user submits the form
+// what happens when the user submits the form
 document.getElementById('form-articolo').addEventListener('submit', function (e) {
   // it represents the variable in which quill inserts the content typed by the user in HTML format
   const contenutoHTML = quill.root.innerHTML;
