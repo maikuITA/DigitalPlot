@@ -1,5 +1,7 @@
 console.log("textEditor loaded");
-//creazione dell'oggetto quill, che mi permette di avere il text editor
+
+// This code initializes a Quill text editor in the HTML element with id 'editor-container'
+// Quill is a rich text editor that allows users to write and format text, add links
 const quill = new Quill('#editor-container', {
   theme: 'snow',
   placeholder: 'Scrivi il tuo articolo qui...',

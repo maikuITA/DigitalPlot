@@ -1,5 +1,5 @@
 /**
-* Checks if the username is unique.
+* Checks if the username is unique in the edit profile form.
 */
 document.getElementById("username").addEventListener("blur", function () {
     const username = this.value.trim();
@@ -7,7 +7,6 @@ document.getElementById("username").addEventListener("blur", function () {
     const inputField = this;
 
     if (username === "") {
-        errorSpan.textContent = "";
         inputField.classList.remove("is-danger");
         submitBtn.disabled = false;
         return;
@@ -32,7 +31,6 @@ document.getElementById("username").addEventListener("blur", function () {
         })
         .catch(error => {
             console.error("Errore nella verifica username:", error);
-            errorSpan.textContent = "Errore nel controllo. Riprova.";
             inputField.classList.add("is-danger");
             submitBtn.disabled = true;
         });

@@ -19,6 +19,7 @@ async function aggiornaErrori() {
         })
         .catch((e) => console.error(e));
 }
+
 // it reads the file events.log and inserts the content into the div with id 'contenuto-file-eventi'
 async function aggiornaEventi() {
     fetch('Progetto/Utility/Logs/events.log')
@@ -30,7 +31,7 @@ async function aggiornaEventi() {
         .catch((e) => console.error(e));
 }
 
-// first exeecution
+// first execution
 aggiornaErrori();
 aggiornaEventi();
 
@@ -38,7 +39,7 @@ aggiornaEventi();
 setInterval(aggiornaErrori, 2 * 60 * 1000); // 2 min
 setInterval(aggiornaEventi, 2 * 60 * 1000); // 2 min
 
-document.getElementById('errori-bottom').addEventListener('click', () => {
+document.getElementById('errori-bottom').addEventListener('click', () => { // button to reach the end of the errors log
     const contenutoErrori = document.getElementById('contenuto-file-errori');
     contenutoErrori.scrollTop = contenutoErrori.scrollHeight;
 });
