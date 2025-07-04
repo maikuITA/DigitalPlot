@@ -61,27 +61,39 @@ span {
 }
 
 .card {
-    flex: 1 1 300px; /* Card larga almeno 300px, ma flessibile */
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-width: 350px;
-    min-height: 350px;
-}
-
-.card-content {
-    flex-grow: 1;
-}
-
-.card {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 16px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#container {
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-content,
+.description {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+.description {
+    overflow-y: scroll;
+    padding: 5px;
+    width: 100%;
+    text-align: justify;
+}
+
+.card-footer {
+    min-height: fit-content;
+    max-height: fit-content;
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem; /* Spaziatura tra le card */
     justify-content: center;
+    align-items: center;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
+    gap: 30px;
 }
