@@ -379,11 +379,9 @@
                     <p class="description">{$article->getDescription()}</p>
                 </div>
                 <footer class="card-footer">
-                    <a
-                        href="/article/{$article->getId()}"
-                        class="card-footer-item"
-                        >Leggi di più</a
-                    >
+                    <a. href="/article/{$article->getId()}"
+                        class="card-footer-item">
+                        Leggi di più</a>
                 </footer>
             </div>
             {/foreach} {/if}
