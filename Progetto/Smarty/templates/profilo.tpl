@@ -98,7 +98,7 @@
         <div class="card">
             <div class="columns">
                 <div class="column is-one-fifth">
-                    <figure class="image is-128x128">
+                    <figure class="image is-100x100">
                         <form id="avatarForm" action="/uploadAvatar" method="POST" enctype="multipart/form-data">
                             <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
                             {if $proPic === null}
