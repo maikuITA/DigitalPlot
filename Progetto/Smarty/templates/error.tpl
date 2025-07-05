@@ -96,22 +96,19 @@
                 <a href="/newArticle" class="is-ok">
                     <span class="icon is-large is-ok">
                         <i
-                            class="fa fa-plus-square"
-                            style="font-size: 24px"
+                            class="bi bi-file-plus-fill"
+                            style="font-size: 2rem"
                         ></i>
                     </span>
                 </a>
                 {/if}
                 <a href="/find" class="is-ok">
                     <span class="icon is-large is-ok">
-                        <i
-                            class="fa fa-search lens is-ok"
-                            aria-hidden="true"
-                        ></i>
+                        <i class="bi bi-search" style="font-size: 1.3rem"></i>
                     </span>
                 </a>
-                <a href="/profile"
-                    ><figure class="image is-48x48">
+                <a href="/profile">
+                    <figure class="image is-48x48">
                         {if $proPic === null}
                         <img
                             class="is-rounded"
@@ -123,11 +120,14 @@
                             src="data:image/jpeg;base64,{$proPic}"
                         />
                         {/if}
-                    </figure></a
-                >
+                    </figure>
+                </a>
                 <a href="/logout" class="is-ok">
                     <span class="icon is-large is-ok">
-                        <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
+                        <i
+                            class="bi bi-box-arrow-right"
+                            style="font-size: 1.3rem"
+                        ></i>
                     </span>
                 </a>
                 {else}
