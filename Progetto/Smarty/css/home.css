@@ -97,48 +97,17 @@
         align-items: center;
     }
 
+    .card {
+        width: 230px;
+    }
+
     .left {
         width: 100%;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .center {
         margin-right: 0;
-    }
-
-    .navbar-item.has-text-link.transfer {
-        display: inherit;
-    }
-
-    .card {
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 300px;
-        max-height: 300px;
-    }
-
-    .card-footer {
-        min-height: 80px;
-        max-height: 80px;
-    }
-
-    .card-header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .card-header > .title {
-        text-align: center;
-        display: block;
-    }
-
-    .title {
-        font-size: x-large;
-        text-align: center;
     }
 
     .columns.is-centered.labels {
