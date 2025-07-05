@@ -241,8 +241,9 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Inserisci la tua password"
-                                    name="password" id="password" required />
+                                <input class="input" type="password" placeholder="Inserisci la tua password" {literal}
+                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" {/literal} name="password"
+                                    id="password" required />
                                 <span class="icon is-small is-left has-link">
                                     <i class="fas fa-key"></i>
                                 </span>
@@ -250,8 +251,9 @@
                         </div>
                         <div class="field">
                             <p class="control has-icons-left">
-                                <input class="input" type="password" placeholder="Conferma la tua password"
-                                    name="password2" id="password2" required />
+                                <input class="input" type="password" placeholder="Conferma la tua password" {literal}
+                                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$" {/literal} name="password2"
+                                    id="password2" required />
                                 <span class="icon is-small is-left has-link">
                                     <i class="fas fa-key"></i>
                                 </span>
