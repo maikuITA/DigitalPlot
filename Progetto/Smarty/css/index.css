@@ -40,11 +40,9 @@ body::before {
 }
 
 span:hover {
-    color: hsl(
-        var(--bulma-warning-h),
-        var(--bulma-warning-s),
-        var(--bulma-warning-l)
-    );
+    color: hsl(var(--bulma-warning-h),
+            var(--bulma-warning-s),
+            var(--bulma-warning-l));
 }
 
 figure:hover,
@@ -61,11 +59,9 @@ span:hover {
 .navbar-item:hover,
 .navbar-item.has-text-link.transfer:hover {
     background-color: rgb(0, 0, 0, 0.1);
-    color: hsl(
-        var(--bulma-warning-h),
-        var(--bulma-warning-s),
-        var(--bulma-warning-l)
-    );
+    color: hsl(var(--bulma-warning-h),
+            var(--bulma-warning-s),
+            var(--bulma-warning-l));
 }
 
 .header.columns {
@@ -96,7 +92,7 @@ nav {
     align-items: right;
 }
 
-.card-content > .title {
+.card-content>.title {
     width: 100%;
     text-align: center;
 }
@@ -145,12 +141,9 @@ header {
 }
 
 .image.is-48x48 {
-    border: 1px solid
-        hsl(
-            var(--bulma-warning-h),
+    border: 1px solid hsl(var(--bulma-warning-h),
             var(--bulma-warning-s),
-            var(--bulma-warning-l)
-        );
+            var(--bulma-warning-l));
 }
 
 @media screen and (max-width: 768px) {
@@ -171,6 +164,7 @@ header {
         margin-left: 20px;
         z-index: 1001;
     }
+
     .column {
         max-width: fit-content;
     }
@@ -188,11 +182,9 @@ header {
         height: 0.5px;
         margin-top: 1px;
         margin-bottom: 1px;
-        color: hsl(
-            var(--bulma-warning-h),
-            var(--bulma-warning-s),
-            var(--bulma-warning-l)
-        );
+        color: hsl(var(--bulma-warning-h),
+                var(--bulma-warning-s),
+                var(--bulma-warning-l));
         border: 1px solid rgb(0, 0, 0, 0.1);
     }
 
@@ -219,5 +211,13 @@ header {
     #new_find,
     #new_logout {
         display: block;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+
+    /* Disabilita background fixed su touch screen/mobile */
+    body::before {
+        background-attachment: scroll;
     }
 }
