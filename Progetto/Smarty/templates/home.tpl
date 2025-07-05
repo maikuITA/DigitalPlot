@@ -20,11 +20,8 @@
             href="/Progetto/Smarty/css/home.css"
         />
         <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
             rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -98,18 +95,15 @@
                 <a href="/newArticle" class="is-ok">
                     <span class="icon is-large is-ok">
                         <i
-                            class="fa fa-plus-square"
-                            style="font-size: 24px"
+                            class="bi bi-file-plus-fill"
+                            style="font-size: 2rem"
                         ></i>
                     </span>
                 </a>
                 {/if}
                 <a href="/find" class="is-ok">
                     <span class="icon is-large is-ok">
-                        <i
-                            class="fa fa-search lens is-ok"
-                            aria-hidden="true"
-                        ></i>
+                        <i class="bi bi-search" style="font-size: 1.3rem"></i>
                     </span>
                 </a>
                 <a href="/profile">
@@ -129,7 +123,10 @@
                 </a>
                 <a href="/logout" class="is-ok">
                     <span class="icon is-large is-ok">
-                        <i class="fa fa-sign-out is-ok" aria-hidden="true"></i>
+                        <i
+                            class="bi bi-box-arrow-right"
+                            style="font-size: 1.3rem"
+                        ></i>
                     </span>
                 </a>
                 {else}
@@ -168,7 +165,8 @@
                     <a
                         href="/article/{$article->getId()}"
                         class="card-footer-item"
-                        >Leggi di più</a
+                        ><i class="bi bi-book" style="font-size: 1rem"></i>
+                        Leggi di più</a
                     >
                 </footer>
             </div>
