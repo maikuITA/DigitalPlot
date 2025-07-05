@@ -98,9 +98,10 @@
                                 <div class="media-left">
                                     <figure class="image is-48x48">
                                         {if isset($writerProPic) && $writerProPic != ""}
-                                        <img class="is-rounded" src="data:image/jpeg;base64,{$writer->getEncodedData()}"/>
+                                        <img class="is-rounded"
+                                            src="data:image/jpeg;base64,{$writer->getEncodedData()}" />
                                         {else}
-                                         <img class="is-rounded" src="/Progetto/Smarty/img/propic.png" />
+                                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png" />
                                         {/if}
                                     </figure>
                                 </div>
@@ -116,7 +117,7 @@
                             <div class="media-center">
                                 <div class="is-gapped top-right">
                                     <div class="to-center">
-                                        <a class="is-5 s has-text-weight-bold">Numero articoli: </a><a
+                                        <a class="is-5 s has-text-weight-bold">Articoli: </a><a
                                             class="is-5">{$writer->getNumArticles()}</a>
                                     </div>
                                     <div class="to-center">
