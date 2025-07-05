@@ -20,11 +20,8 @@
             href="/Progetto/Smarty/css/ricerca.css"
         />
         <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
             rel="stylesheet"
-            href="../fontawesome-free-6.7.2-web/css/fontawesome.css"
-            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -139,12 +136,12 @@
         <div class="body-container">
             <div class="card">
                 <header class="card-header">
-                    <p class="card-header-title title">
-                        <span class="icon is-medium is-left">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </span>
-                        Ricerca
-                    </p>
+                    <i
+                        class="bi bi-envelope-paper"
+                        style="font-size: 1.2rem"
+                        aria-hidden="true"
+                    ></i>
+                    <p class="card-header-title title">Ricerca</p>
                 </header>
                 <section class="section">
                     <p class="subtitle">
@@ -166,7 +163,7 @@
                                 name="title"
                             />
                             <span class="icon is-small is-left has-link">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="bi bi-at" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="select is-rounded">

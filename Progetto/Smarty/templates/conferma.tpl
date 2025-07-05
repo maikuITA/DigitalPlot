@@ -7,8 +7,10 @@
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css">
     <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/confermapagamento.css">
-    <link href="webfonts/uicons-bold-rounded.css" rel="stylesheet">
-    <link href="webfonts/uicons-thin-straight.css" rel="stylesheet">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+            rel="stylesheet"
+        />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
