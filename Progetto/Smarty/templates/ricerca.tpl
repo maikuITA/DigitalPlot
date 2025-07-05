@@ -371,19 +371,19 @@
             {if isset($articles)} {foreach from=$articles item=article}
             <div class="card">
                 <div class="card-header">
-                    <p class="card-header-title">{$article->getTitle()}</p>
+                    <p class="card-header-title is-centered">
+                        {$article->getTitle()}
+                    </p>
                 </div>
                 <div class="card-content">
                     <p class="description">{$article->getDescription()}</p>
                 </div>
                 <footer class="card-footer">
-                    <p class="card-footer-item">
-                        <a
-                            href="/article/{$article->getId()}"
-                            class="button is-primary"
-                            >Leggi di più</a
-                        >
-                    </p>
+                    <a
+                        href="/article/{$article->getId()}"
+                        class="card-footer-item"
+                        >Leggi di più</a
+                    >
                 </footer>
             </div>
             {/foreach} {/if}

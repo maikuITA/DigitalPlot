@@ -100,7 +100,6 @@
                                         {if isset($writerProPic) && $writerProPic != ""}
                                         <img class="is-rounded" src="data:image/jpeg;base64,{$writer->getEncodedData()}"/>
                                         {else}
-                                        <p>writerProPic: {$writerProPic}</p>
                                          <img class="is-rounded" src="/Progetto/Smarty/img/propic.png" />
                                         {/if}
                                     </figure>

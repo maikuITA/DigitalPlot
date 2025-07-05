@@ -165,6 +165,19 @@ table,
     border-radius: 50%;
 }
 
+#avatarForm,
+figure {
+    width: 100px;
+    height: 100px;
+}
+
+.column.is-one-fifth {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 768px) {
     .body-container {
         flex-direction: column;
