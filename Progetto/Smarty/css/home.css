@@ -45,7 +45,6 @@
 }
 
 .card-header {
-    --bulma-card-radius: 0.5rem;
     background-color: hsl(
         var(--bulma-warning-h),
         var(--bulma-warning-s),
