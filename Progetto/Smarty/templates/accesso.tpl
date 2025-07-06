@@ -129,13 +129,13 @@
                     <ul>
                         <li id="log" class="is-active">
                             <a onclick="showLogin()"
-                                ><i class="fa fa-key fa-fw"></i>Login</a
+                                ><i class="bi bi-key-fill"></i>Login</a
                             >
                         </li>
                         <li id="reg">
                             <a onclick="showRegis()"
                                 ><i
-                                    class="fa fa-book fa-fw"
+                                    class="bi bi-person-plus-fill"
                                     aria-hidden="true"
                                 ></i
                                 >Registrazione</a
@@ -159,12 +159,12 @@
                                     class="input"
                                     type="text"
                                     placeholder="Username"
-                                    name="username"
+                                    name="usernameL"
                                     id="username"
                                     required
                                 />
                                 <span class="icon is-small is-left has-link">
-                                    <i class="fa fa-user-circle"></i>
+                                    <i class="bi bi-person-fill"></i>
                                 </span>
                             </p>
                         </div>
@@ -174,11 +174,11 @@
                                     class="input"
                                     type="password"
                                     placeholder="Inserisci la tua password"
-                                    name="password"
+                                    name="passwordL"
                                     required
                                 />
                                 <span class="icon is-small is-left has-link">
-                                    <i class="fas fa-lock"></i>
+                                    <i class="bi bi-key-fill"></i>
                                 </span>
                             </p>
                         </div>
@@ -217,7 +217,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-address-card"
+                                            class="bi bi-person-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -237,7 +237,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-address-card"
+                                            class="bi bi-person-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -253,7 +253,7 @@
                                         required
                                     />
                                     <span class="icon is-small is-left">
-                                        <i class="fas fa-calendar"></i>
+                                        <i class="bi bi-calendar-date-fill"></i>
                                     </span>
                                 </div>
                             </div>
@@ -271,7 +271,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-globe"
+                                            class="bi bi-globe"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -291,7 +291,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-map-marker"
+                                            class="bi bi-geo-alt-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -311,7 +311,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-map-marker"
+                                            class="bi bi-geo-alt-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -327,7 +327,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-map-marker"
+                                            class="bi bi-geo-alt-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -347,7 +347,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fas fa-map-pin"
+                                            class="bi bi-geo-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -365,7 +365,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fas fa-map-pin"
+                                            class="bi bi-geo-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -382,7 +382,7 @@
                                         class="icon is-small is-left has-link"
                                     >
                                         <i
-                                            class="fa fa-phone"
+                                            class="bi bi-telephone-fill"
                                             aria-hidden="true"
                                         ></i>
                                     </span>
@@ -402,7 +402,7 @@
                                         class="icon is-small is-left has-link"
                                         id="usernameError"
                                     >
-                                        <i class="fa fa-user-circle"></i>
+                                        <i class="bi bi-person-fill"></i>
                                     </span>
                                 </p>
                             </div>
@@ -419,7 +419,7 @@
                                     <span
                                         class="icon is-small is-left has-link"
                                     >
-                                        <i class="fas fa-envelope"></i>
+                                        <i class="bi bi-envelope-fill"></i>
                                     </span>
                                 </p>
                             </div>
@@ -434,7 +434,7 @@
                                     <span
                                         class="icon is-small is-left has-link"
                                     >
-                                        <i class="fas fa-key"></i>
+                                        <i class="bi bi-key-fill"></i>
                                     </span>
                                 </p>
                             </div>
@@ -449,7 +449,7 @@
                                     <span
                                         class="icon is-small is-left has-link"
                                     >
-                                        <i class="fas fa-key"></i>
+                                        <i class="bi bi-key-fill"></i>
                                     </span>
                                 </p>
                             </div>

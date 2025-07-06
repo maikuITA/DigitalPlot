@@ -192,8 +192,8 @@ class CUser
     public static function checklogin(): void
     {
         if (UServer::getRequestMethod() === 'POST') {
-            $username = UHTTPMethods::post('username');
-            $password = UHTTPMethods::post('password');
+            $username = trim(UHTTPMethods::post('usernameL'));
+            $password = trim(UHTTPMethods::post('passwordL'));
             try {
                 $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
                 if (isset($user) && password_verify($password, $user->getPassword())) {

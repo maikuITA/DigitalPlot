@@ -134,7 +134,7 @@
                     {/if}
                     <p class="title">
                         <span class="icon is-small is-left">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <i class="bi bi-pencil-fill" aria-hidden="true"></i>
                         </span>
                         Aggiungi un nuovo articolo
                     </p>
@@ -143,10 +143,10 @@
                         <p class="control has-icons-left has-icons-right">
                             <input class="input" type="text" name="title" placeholder="Titolo dell'articolo" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                         </p>
                         {else}
@@ -154,10 +154,10 @@
                             <input class="input" type="text" name="title"
                                 value="{$article->getTitle()|escape:'htmlall':'UTF-8'}" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                         </p>
                         {/if}
@@ -168,19 +168,19 @@
                             <input class="input" type="text" name="description" placeholder="Descrizione dell'articolo"
                                 required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             {else}
                             <input class="input" type="text" name="description"
                                 value="{$article->getDescription()|escape:'htmlall':'UTF-8'}" required>
                             <span class="icon is-small is-left">
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             {/if}
                         </p>
@@ -360,7 +360,7 @@
                     <div class="flex-container">
                         <p>Carica/Inserisci <span> (in formato .txt)</span> </p>
                         <label for="upload" class="custom-file-label">
-                            <i class="fa fa-file-upload" aria-hidden="true"></i>
+                            <i class="bi bi-file-earmark-arrow-up-fill" aria-hidden="true"></i>
                             <p> Carica il tuo file </p>
                         </label>
                         <input type="file" id="upload" name="articleFile" style="display:none;">
@@ -371,14 +371,14 @@
                             <button class="button is-link is-rounded is-fullwidth is-outlined"
                                 type="submit">Conferma</button>
                             <span class="icon is-small is-left has-text-link">
-                                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                                <i class="bi bi-check-circle-fill" aria-hidden="true"></i>
                             </span>
                         </p>
                         <p class="control has-icons-left confirm resize mt-5">
                             <button class="button is-danger is-rounded is-fullwidth is-outlined"
                                 type="reset">Annulla</button>
                             <span class="icon is-small is-left has-text-danger">
-                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
                             </span>
                         </p>
                     </div>

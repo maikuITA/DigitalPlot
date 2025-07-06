@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DigitalPlot-Lettura</title>
-    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/bulma/bulma.css" />
-    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/index.css" />
-    <link rel="stylesheet" type="text/css" href="/Progetto/Smarty/css/lettura.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet" />
-    <link
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>DigitalPlot-Lettura</title>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/Progetto/Smarty/css/bulma/bulma.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/Progetto/Smarty/css/index.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="/Progetto/Smarty/css/lettura.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
             rel="stylesheet"
         />
-</head>
+    </head>
 
-<body>
-    <header class="header columns">
+    <body>
+        <header class="header columns">
             <div class="column is-one-quarter left">
                 <a
                     role="button"
@@ -122,191 +134,234 @@
                 {/if}
             </div>
         </header>
-    <div class="columns is-multiline">
-        <div class="column is-three-quarters" id="mario">
-            <div class="columns is-multiline" id="franco">
-                <div class="column is-full">
-                    <div class="card pager author">
-                        <div class="media">
-                            <div class="media-center">
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        {if isset($writerProPic) && $writerProPic != ""}
-                                        <img class="is-rounded"
-                                            src="data:image/jpeg;base64,{$writer->getEncodedData()}" />
-                                        {else}
-                                        <img class="is-rounded" src="/Progetto/Smarty/img/propic.png" />
-                                        {/if}
-                                    </figure>
-                                </div>
-                                <div class="media-content">
-                                    <p class="title is-4">
-                                        {$writer->getName()}
-                                    </p>
-                                    <p id="username" class="subtitle is-6">
-                                        {$writer->getUsername()}
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-center">
-                                <div class="is-gapped top-right">
-                                    <div class="to-center">
-                                        <a class="is-5 s has-text-weight-bold">Articoli: </a><a
-                                            class="is-5">{$writer->getNumArticles()}</a>
+        <div class="columns is-multiline">
+            <div class="column is-three-quarters" id="mario">
+                <div class="columns is-multiline" id="franco">
+                    <div class="column is-full">
+                        <div class="card pager author">
+                            <div class="media">
+                                <div class="media-center">
+                                    <div class="media-left">
+                                        <figure class="image is-48x48">
+                                            {if isset($writerProPic) &&
+                                            $writerProPic != ""}
+                                            <img
+                                                class="is-rounded"
+                                                src="data:image/jpeg;base64,{$writer->getEncodedData()}"
+                                            />
+                                            {else}
+                                            <img
+                                                class="is-rounded"
+                                                src="/Progetto/Smarty/img/propic.png"
+                                            />
+                                            {/if}
+                                        </figure>
                                     </div>
-                                    <div class="to-center">
-                                        <a class="is-5 s has-text-weight-bold">Follower: </a><a class="is-5"
-                                            id="numFollowers">{$writer->getNumFollowers()}</a>
-                                    </div>
-                                    <div>
-                                        <p class="card-footer-item follow-buttons">
-                                            <a class="button is-outlined is-link" id="follow">follow</a>
-                                            <a class="button is-outlined is-link" id="unfollow">unfollow</a>
+                                    <div class="media-content">
+                                        <p class="title is-4">
+                                            {$writer->getName()}
+                                        </p>
+                                        <p id="username" class="subtitle is-6">
+                                            {$writer->getUsername()}
                                         </p>
                                     </div>
                                 </div>
+                                <div class="media-center">
+                                    <div class="is-gapped top-right">
+                                        <div class="to-center">
+                                            <a
+                                                class="is-5 s has-text-weight-bold"
+                                                >Articoli: </a
+                                            ><a class="is-5"
+                                                >{$writer->getNumArticles()}</a
+                                            >
+                                        </div>
+                                        <div class="to-center">
+                                            <a
+                                                class="is-5 s has-text-weight-bold"
+                                                >Follower: </a
+                                            ><a class="is-5" id="numFollowers"
+                                                >{$writer->getNumFollowers()}</a
+                                            >
+                                        </div>
+                                        <div>
+                                            <p
+                                                class="card-footer-item follow-buttons"
+                                            >
+                                                <a
+                                                    class="button is-outlined is-link"
+                                                    id="follow"
+                                                    >follow</a
+                                                >
+                                                <a
+                                                    class="button is-outlined is-link"
+                                                    id="unfollow"
+                                                    >unfollow</a
+                                                >
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="content">
-                            <div class="is-gapped">
-                                <a class="is-5 s has-text-weight-bold">Biografia</a><br /><a
-                                    class="is-5">{$writer->getBiography()}</a>
+                            <div class="content">
+                                <div class="is-gapped">
+                                    <a class="is-5 s has-text-weight-bold"
+                                        >Biografia</a
+                                    ><br /><a class="is-5"
+                                        >{$writer->getBiography()}</a
+                                    >
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="column is-full">
-                    <div class="card pager">
-                        <div class="content is-centered">
-                            <div class="subtitle is-flex is-align-content-space-between" id="eval">
-                                <p class="title">{$article->getTitle()}
-                                <div class=" is-centered mt-2">
-                                    {if $article->getAvgEvaluate() == 0}
-
-                                    {elseif $article->getAvgEvaluate() == 1}
-                                    <i class='fas fa-star ml-3'></i>
-                                    {elseif $article->getAvgEvaluate() == 2}
-                                    <i class='fas fa-star ml-3'></i>
-                                    <i class='fas fa-star'></i>
-                                    {elseif $article->getAvgEvaluate() == 3}
-                                    <i class='fas fa-star ml-3'></i>
-                                    <i class='fas fa-star'></i>
-                                    <i class='fas fa-star'></i>
-                                    {elseif $article->getAvgEvaluate() == 4}
-                                    <i class='fas fa-star ml-3'></i>
-                                    <i class='fas fa-star'></i>
-                                    <i class='fas fa-star'></i>
-                                    <i class='fas fa-star'></i>
-                                    {else}
-                                    <i class='fas fa-star ml-3'></i>
-                                    <i class='fas fa-star'></i>
-                                    <i class='fas fa-star'></i>
-                                    <i class='fas fa-star'></i>
-                                    <i class='fas fa-star'></i>
-                                    {/if}
+                    <div class="column is-full">
+                        <div class="card pager">
+                            <div class="content is-centered">
+                                <div class="titlebox" id="eval">
+                                    <p class="title" style="margin: 0">
+                                        {$article->getTitle()}
+                                    </p>
+                                    <span class="stars">
+                                        {if $article->getAvgEvaluate() == 0}
+                                        {elseif $article->getAvgEvaluate() == 1}
+                                        <i class="bi bi-star-fill"></i>
+                                        {elseif $article->getAvgEvaluate() == 2}
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        {elseif $article->getAvgEvaluate() == 3}
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        {elseif $article->getAvgEvaluate() == 4}
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        {else}
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        {/if}
+                                    </span>
                                 </div>
+                                <p class="subtitle has-text-weight-bold">
+                                    Descrizione
                                 </p>
-
+                                <p class="content">
+                                    {$article->getDescription()}
+                                </p>
+                                <p class="subtitle has-text-weight-bold">
+                                    Categoria
+                                </p>
+                                <p class="content">{$article->getCategory()}</p>
+                                <p class="subtitle has-text-weight-bold">
+                                    Genere
+                                </p>
+                                <p class="content">{$article->getGenre()}</p>
                             </div>
-                            <p class="subtitle has-text-weight-bold">Descrizione</p>
-                            <p class="content">
-                                {$article->getDescription()}
-                            </p>
-                            <p class="subtitle has-text-weight-bold">Categoria</p>
-                            <p class="content">
-                                {$article->getCategory()}
-                            </p>
-                            <p class="subtitle has-text-weight-bold">Genere</p>
-                            <p class="content">
-                                {$article->getGenre()}
-                            </p>
-                        </div>
-                        <div class="content" id="ArticleBody">
-                            {$article->getHtmlContent()}
+                            <div class="content" id="ArticleBody">
+                                {$article->getHtmlContent()}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="column is-one-quarter" id="pasquale">
-            <div class="card pager">
-                <div class="content" id="luca">
-                    <p class="title">Commenti</p>
-                    <div class="card">
-                        <div class="card-header">
-                            <p class="card-header-title">
-                                Lascia un commento
-                            </p>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <form class="form" action="/newReview/{$article->getId()}" method="POST">
-                                    <div class="control">
-                                        <div class="field">
-                                            <textarea class="textarea" name="review" id="c_body"
-                                                placeholder="Testo"></textarea>
-                                        </div>
-                                        <div class="field is-grouped">
-                                            <div class="field select is-rounded">
-                                                <select name="score" id="c_score">
-                                                    <option value="1">
-                                                        &#9733;
-                                                    </option>
-                                                    <option value="2">
-                                                        &#9733;&#9733;
-                                                    </option>
-                                                    <option value="3">
-                                                        &#9733;&#9733;&#9733;
-                                                    </option>
-                                                    <option value="4">
-                                                        &#9733;&#9733;&#9733;&#9733;
-                                                    </option>
-                                                    <option value="5">
-                                                        &#9733;&#9733;&#9733;&#9733;&#9733;
-                                                    </option>
-                                                </select>
-                                            </div>
+            <div class="column is-one-quarter" id="pasquale">
+                <div class="card pager">
+                    <div class="content" id="luca">
+                        <p class="title">Commenti</p>
+                        <div class="card">
+                            <div class="card-header">
+                                <p class="card-header-title">
+                                    Lascia un commento
+                                </p>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <form
+                                        class="form"
+                                        action="/newReview/{$article->getId()}"
+                                        method="POST"
+                                    >
+                                        <div class="control">
                                             <div class="field">
-                                                <div class="control">
-                                                    <button class="button is-link" action="submit">
-                                                        Invia
-                                                    </button>
+                                                <textarea
+                                                    class="textarea"
+                                                    name="review"
+                                                    id="c_body"
+                                                    placeholder="Testo"
+                                                ></textarea>
+                                            </div>
+                                            <div class="field is-grouped">
+                                                <div
+                                                    class="field select is-rounded"
+                                                >
+                                                    <select
+                                                        name="score"
+                                                        id="c_score"
+                                                    >
+                                                        <option value="1">
+                                                            &#9733;
+                                                        </option>
+                                                        <option value="2">
+                                                            &#9733;&#9733;
+                                                        </option>
+                                                        <option value="3">
+                                                            &#9733;&#9733;&#9733;
+                                                        </option>
+                                                        <option value="4">
+                                                            &#9733;&#9733;&#9733;&#9733;
+                                                        </option>
+                                                        <option value="5">
+                                                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="field">
+                                                    <div class="control">
+                                                        <button
+                                                            class="button is-link"
+                                                            action="submit"
+                                                        >
+                                                            Invia
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    {if isset($reviews)} {foreach from=$reviews item=review}
-                    <div class="card">
-                        <div class="card-header">
-                            <p class="card-header-title">
-                                {$review->getSubscriber()->getUsername()}
-                            </p>
-                        </div>
-                        <div class="card-content">
-                            <div class="content">
-                                <p class="subtitle is-6">
-                                    {$review->getComment()}
+                        {if isset($reviews)} {foreach from=$reviews item=review}
+                        <div class="card">
+                            <div class="card-header">
+                                <p class="card-header-title">
+                                    {$review->getSubscriber()->getUsername()}
+                                </p>
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    <p class="subtitle is-6">
+                                        {$review->getComment()}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-footer-item">
+                                    {for $i=1 to $review->getEvaluate()} &#9733;
+                                    {/for}
                                 </p>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <p class="card-footer-item">
-                                {for $i=1 to $review->getEvaluate()} &#9733;
-                                {/for}
-                            </p>
-                        </div>
+                        {/foreach} {/if}
                     </div>
-                    {/foreach} {/if}
                 </div>
             </div>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>
 <script src="/Progetto/Smarty/js/navburger.js"></script>
 <script src="/Progetto/Smarty/js/follow.js"></script>

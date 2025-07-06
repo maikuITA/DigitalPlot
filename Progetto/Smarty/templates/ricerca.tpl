@@ -163,7 +163,7 @@
                                 name="title"
                             />
                             <span class="icon is-small is-left has-link">
-                                <i class="bi bi-at" aria-hidden="true"></i>
+                                <i class="bi bi-search" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="select is-rounded">
@@ -379,7 +379,8 @@
                     <a
                         href="/article/{$article->getId()}"
                         class="card-footer-item"
-                        >Leggi di più</a
+                        ><i class="bi bi-book" style="font-size: 1rem"></i>
+                        Leggi di più</a
                     >
                 </footer>
             </div>

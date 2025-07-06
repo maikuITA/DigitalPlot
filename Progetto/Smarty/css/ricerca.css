@@ -1,3 +1,7 @@
+select {
+    box-sizing: border-box !important;
+}
+
 .body-container {
     margin-top: 50px;
     display: flex;
@@ -41,6 +45,10 @@
 
 span {
     margin-right: 10px;
+}
+
+.card-footer-item i {
+    margin-right: 5px;
 }
 
 @media screen and (max-width: 768px) {
@@ -124,4 +132,8 @@ span {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
     gap: 30px;
+}
+
+.body-container > .card > .card-header {
+    background-color: white;
 }
