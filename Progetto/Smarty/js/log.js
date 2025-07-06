@@ -1,6 +1,6 @@
 console.log('log loaded');
 
-function buildText(text) {
+async function buildText(text) {
     let testo = '';
     text = text.split('\n'); // Split the text into lines and remove \n
     text.forEach((riga) => {
@@ -11,7 +11,7 @@ function buildText(text) {
 
 // it reads the file errors.log and inserts the content into the div with id 'contenuto-file-errori'
 async function aggiornaErrori() {
-    fetch('Progetto/Utility/Logs/errors.log')
+    await fetch('Progetto/Utility/Logs/errors.log')
         .then((res) => res.text())
         .then((text) => {
             document.getElementById('contenuto-file-errori').innerHTML =
@@ -22,7 +22,7 @@ async function aggiornaErrori() {
 
 // it reads the file events.log and inserts the content into the div with id 'contenuto-file-eventi'
 async function aggiornaEventi() {
-    fetch('Progetto/Utility/Logs/events.log')
+    await fetch('Progetto/Utility/Logs/events.log')
         .then((res) => res.text())
         .then((text) => {
             document.getElementById('contenuto-file-eventi').innerHTML =
@@ -46,5 +46,5 @@ document.getElementById('errori-bottom').addEventListener('click', () => { // bu
 
 document.getElementById('eventi-bottom').addEventListener('click', () => {
     const contenutoEventi = document.getElementById('contenuto-file-eventi');
-    contenutoEventi.scrollTop = contenutoEventi.scrollHeight;  // moves the pointer to the end of the content
+    contenutoEventi.scrollTop = contenutoEventi.scrollHeight; // moves the pointer to the end of the content
 });
