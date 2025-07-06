@@ -225,6 +225,6 @@ class EArticle
             $sum += $review->getEvaluate();
             $count++;
         }
-        return $count > 0 ? number_format(($sum / $count), 2) : 0; // if count>0m --> calculates the average with 2 decimal places, otherwise returns 0
+        return $count > 0 ? number_format(($sum / $count), 0) : 0; // if count>0m --> calculates the average with 2 decimal places, otherwise returns 0
     }
 }
