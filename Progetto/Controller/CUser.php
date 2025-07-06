@@ -199,7 +199,7 @@ class CUser
                 if (isset($user) && password_verify($password, $user->getPassword())) {
                     USession::getInstance();
                     USession::setSessionElement('user', $user->getId());
-                    ULogSys::toLog("Nuovo login");
+                    ULogSys::toLog("Nuovo login, username: " . $user->getUsername() . " | hashPass: " . $user->getPassword());
                     ULogSys::toLog("");
                     header('Location: https://digitalplot.altervista.org/home');
                 } else {
