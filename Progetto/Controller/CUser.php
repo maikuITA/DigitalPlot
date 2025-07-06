@@ -322,7 +322,7 @@ class CUser
                 } else {
                     $biography = UHTTPMethods::post('biography');
                 }
-                if (UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'), $user->getPassword())) {
+                if (UHTTPMethods::post('new-password') === UHTTPMethods::post('new-password2') && password_verify(UHTTPMethods::post('old-password'), $user->getPassword()) && UHTTPMethods::post('new-password') !== '') {
                     $user->setUsername($username);
                     $user->setPassword(UHTTPMethods::post('new-password'));
                     $user->setBiography($biography);
