@@ -328,7 +328,7 @@ class CUser
                     $user->setBiography($biography);
                     FPersistentManager::getInstance()->saveInDb($user);
                     header('Location: https://digitalplot.altervista.org/confirm/8');
-                } elseif (UHTTPMethods::post('old-password') === '') {
+                } elseif (UHTTPMethods::post('old-password') === '' || UHTTPMethods::post('new-password') === '' || UHTTPMethods::post('new-password2') === '') {
                     $user->setUsername($username);
                     $user->setBiography($biography);
                     FPersistentManager::getInstance()->saveInDb($user);
