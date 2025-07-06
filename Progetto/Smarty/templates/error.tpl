@@ -138,7 +138,11 @@
         <div class="body-container">
             <div class="card">
                 <span class="icon is-centered has-text-danger">
-                    <i class="fa fa-window-close fa-10x" aria-hidden="true"></i>
+                    <i
+                        class="bi bi-x-circle-fill"
+                        style="font-size: 10rem"
+                        aria-hidden="true"
+                    ></i>
                 </span>
                 <p class="title">
                     Errore <br />

@@ -122,7 +122,7 @@
     <div class="body-container">
         <div class="card">
             <span class="icon is-centered has-text-success">
-                <i class="fa fa-check-circle fa-10x" aria-hidden="true"></i>
+                <i class="bi bi-check-circle-fill" style="font-size: 10rem" aria-hidden="true"></i>
             </span> 
             <p class="title">
                 {$confirmMessage}

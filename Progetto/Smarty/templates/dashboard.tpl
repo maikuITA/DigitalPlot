@@ -129,7 +129,7 @@
                 <header class="card-header">
                     <p class="card-header-title">
                         <span class="icon is-small is-left">
-                            <i class="fa fa-line-chart" aria-hidden="true"></i>
+                            <i class="bi bi-graph-up" style="font-size: 1rem;" aria-hidden="true"></i>
                         </span>
                         Utenti
                     </p>
@@ -145,7 +145,8 @@
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title"><span class="icon is-small is-left">
-                            <i class="fa fa-line-chart" aria-hidden="true"></i></span>Abbonamenti</p>
+                            <i class="bi bi-graph-up" style="font-size: 1rem;" aria-hidden="true"></i>
+                        </span>Abbonamenti</p>
                 </header>
                 <div class="card-content">
                     <div class="content">
@@ -160,7 +161,8 @@
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title"><span class="icon is-small is-left">
-                            <i class="fa fa-line-chart" aria-hidden="true"></i></span>Articoli</p>
+                            <i class="bi bi-graph-up" style="font-size: 1rem;" aria-hidden="true"></i>
+                        </span>Articoli</p>
                 </header>
                 <div class="card-content">
                     <div class="content">
@@ -181,7 +183,7 @@
                 <section class="section">
                     <a class="title mb-4">
                         <span class="icon is-medium is-left">
-                            <i class="fa fa-asterisk" aria-hidden="true"></i>
+                            <i class="bi bi-asterisk" aria-hidden="true"></i>
                         </span>
                         Articoli in attesa di revisione
                     </a>
@@ -228,7 +230,7 @@
                 <section class="section">
                     <a class="title mb-4">
                         <span class="icon is-medium is-left">
-                            <i class="fa fa-file-text" aria-hidden="true"></i>
+                            <i class="bi bi-file-earmark-font-fill" aria-hidden="true"></i>
                         </span>
                         Nuovi articoli pubblicati
                     </a>
@@ -274,7 +276,7 @@
                 <section class="section">
                     <a class="title mb-4">
                         <span class="icon is-medium is-left">
-                            <i class="fa fa-list-ul" aria-hidden="true"></i>
+                            <i class="bi bi-list-ul" aria-hidden="true"></i>
                         </span>
                         Commenti in attesa di moderazione
                     </a>

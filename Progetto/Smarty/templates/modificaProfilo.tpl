@@ -149,7 +149,7 @@
                                 value="{$user->getUsername()}"
                             />
                             <span class="icon is-small is-left has-link">
-                                <i class="fa fa-user-circle"></i>
+                                <i class="bi bi-person-fill"></i>
                             </span>
                         </p>
                     </div>
@@ -175,21 +175,20 @@
                                 name="old-password"
                             />
                             <span class="icon is-small is-left has-link">
-                                <i class="fas fa-key"></i>
+                                <i class="bi bi-key-fill"></i>
                             </span>
                         </p>
                     </div>
                     <div class="field">
                         <a class="subtitle is-6 has-text-link">New password</a>
                         <p class="control has-icons-left alr">
-                            <input
-                                class="input"
-                                type="password"
-                                placeholder="Nuova password"
-                                name="new-password"
-                            />
+                            <input class="input" type="password"
+                            placeholder="Nuova password" name="new-password"
+                            {literal}
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+                            {/literal} />
                             <span class="icon is-small is-left has-link">
-                                <i class="fas fa-key"></i>
+                                <i class="bi bi-key-fill"></i>
                             </span>
                         </p>
                     </div>
@@ -206,7 +205,7 @@
                                 id="password2"
                             />
                             <span class="icon is-small is-left has-link">
-                                <i class="fas fa-key"></i>
+                                <i class="bi bi-key-fill"></i>
                             </span>
                         </p>
                     </div>
@@ -218,7 +217,7 @@
                                 id="submit-modify"
                             >
                                 <span>
-                                    <i class="fas fa-pen"></i>
+                                    <i class="bi bi-pencil-fill"></i>
                                     <a>Modifica profilo</a>
                                 </span>
                             </button>

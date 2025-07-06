@@ -2,7 +2,7 @@
     padding: 10px;
     width: 100%;
     height: auto;
-    padding: 40px;
+    padding: 20px;
 }
 
 .card.pager.author {
@@ -89,6 +89,10 @@
     margin-left: 5px;
 }
 
+#mario {
+    padding-top: 0px;
+}
+
 #mario,
 #pasquale {
     display: flex;
@@ -107,10 +111,30 @@
 
 #luca {
     align-items: center;
+    width: 100%;
 }
 
 .pager .card {
     width: 80%;
+}
+
+.titlebox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.titlebox > .title {
+    text-align: center;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
