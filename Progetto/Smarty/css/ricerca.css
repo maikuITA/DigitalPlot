@@ -133,3 +133,7 @@ span {
     grid-template-columns: repeat(auto-fill, minmax(300px, 4fr));
     gap: 30px;
 }
+
+.body-container > .card > .card-header {
+    background-color: white;
+}
