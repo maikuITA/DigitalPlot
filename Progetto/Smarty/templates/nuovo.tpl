@@ -143,10 +143,10 @@
                         <p class="control has-icons-left has-icons-right">
                             <input class="input" type="text" name="title" placeholder="Titolo dell'articolo" required>
                             <span class="icon is-small is-left">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                         </p>
                         {else}
@@ -154,10 +154,10 @@
                             <input class="input" type="text" name="title"
                                 value="{$article->getTitle()|escape:'htmlall':'UTF-8'}" required>
                             <span class="icon is-small is-left">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-fonts" aria-hidden="true"></i>
                             </span>
                         </p>
                         {/if}
@@ -168,19 +168,19 @@
                             <input class="input" type="text" name="description" placeholder="Descrizione dell'articolo"
                                 required>
                             <span class="icon is-small is-left">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             {else}
                             <input class="input" type="text" name="description"
                                 value="{$article->getDescription()|escape:'htmlall':'UTF-8'}" required>
                             <span class="icon is-small is-left">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             <span class="icon is-small is-right">
-                                <i class="bi bi-quote" aria-hidden="true"></i>
+                                <i class="bi bi-hash" aria-hidden="true"></i>
                             </span>
                             {/if}
                         </p>
