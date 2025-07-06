@@ -17,6 +17,7 @@ class USession
 
     private function __construct()
     {
+        ini_set('session.gc_maxlifetime', COOKIE_EXP_TIME); //set the session garbage collection max lifetime
         session_set_cookie_params(lifetime_or_options: COOKIE_EXP_TIME); //set the duration of the session cookie
         session_start(); //start the session
     }
