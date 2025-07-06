@@ -139,9 +139,10 @@ table,
     right: 8px;
     font-size: 20px;
     color: white;
-    background: rgba(0, 0, 0, 0.6);
+    background: none;
     padding: 6px;
     border-radius: 50%;
+    color: black;
 }
 
 .avatar-wrapper {
@@ -153,9 +154,11 @@ table,
 }
 
 .avatar-wrapper:hover .camera-icon {
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffd700;
-    /* oro */
+    color: hsl(
+        var(--bulma-warning-h),
+        var(--bulma-warning-s),
+        var(--bulma-warning-l)
+    );
 }
 
 #avatarPreview {

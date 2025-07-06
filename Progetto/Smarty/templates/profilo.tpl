@@ -134,7 +134,7 @@
                             <label for="avatarInput" class="avatar-wrapper">
                                 <img src="/Progetto/Smarty/img/propic.png" alt="Foto profilo" id="avatarPreview"
                                     class="profilePictureU">
-                                <i class="bi bi-camera-fill"></i>
+                                <i class="bi bi-camera-fill camera-icon"></i>
                             </label>
                             {else}
                             <label for="avatarInput" class="avatar-wrapper">
