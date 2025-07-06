@@ -22,7 +22,7 @@ class EUser
     #[ORM\Column(type: "string", nullable: false, unique: true)]
     private string $username;
 
-    #[ORM\Column(type: "string", nullable: false)]
+    #[ORM\Column(type: "string", length: 255, nullable: false)]
     private string $password;
 
     //-----------------REGISTRY-----------------

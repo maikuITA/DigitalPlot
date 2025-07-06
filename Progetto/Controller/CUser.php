@@ -192,8 +192,8 @@ class CUser
     public static function checklogin(): void
     {
         if (UServer::getRequestMethod() === 'POST') {
-            $username = UHTTPMethods::post('username');
-            $password = UHTTPMethods::post('password');
+            $username = trim(UHTTPMethods::post('usernameL'));
+            $password = trim(UHTTPMethods::post('passwordL'));
             try {
                 $user = FPersistentManager::getInstance()->retrieveUserOnUsername($username);
                 if (isset($user) && password_verify($password, $user->getPassword())) {
@@ -203,6 +203,8 @@ class CUser
                     ULogSys::toLog("");
                     header('Location: https://digitalplot.altervista.org/home');
                 } else {
+                    $x = password_verify($password, $user->getPassword());
+                    ULogSys::toLog('username: ' . $user->getUsername() . " pass: " . $x, true);
                     ULogSys::toLog('Invalid username or password', true);
                     header('Location: https://digitalplot.altervista.org/auth');
                     exit;

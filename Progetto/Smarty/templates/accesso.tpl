@@ -159,7 +159,7 @@
                                     class="input"
                                     type="text"
                                     placeholder="Username"
-                                    name="username"
+                                    name="usernameL"
                                     id="username"
                                     required
                                 />
@@ -174,7 +174,7 @@
                                     class="input"
                                     type="password"
                                     placeholder="Inserisci la tua password"
-                                    name="password"
+                                    name="passwordL"
                                     required
                                 />
                                 <span class="icon is-small is-left has-link">
