@@ -203,8 +203,6 @@ class CUser
                     ULogSys::toLog("");
                     header('Location: https://digitalplot.altervista.org/home');
                 } else {
-                    $x = password_verify($password, $user->getPassword());
-                    ULogSys::toLog('username: ' . $user->getUsername() . " pass: " . $x, true);
                     ULogSys::toLog('Invalid username or password', true);
                     header('Location: https://digitalplot.altervista.org/auth');
                     exit;
