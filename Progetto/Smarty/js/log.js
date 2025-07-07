@@ -13,9 +13,9 @@ async function buildText(text) {
 async function aggiornaErrori() {
     await fetch('Progetto/Utility/Logs/errors.log')
         .then((res) => res.text())
-        .then((text) => {
+        .then(async (text) => {
             document.getElementById('contenuto-file-errori').innerHTML =
-                buildText(text);
+                await buildText(text);
         })
         .catch((e) => console.error(e));
 }
@@ -24,9 +24,10 @@ async function aggiornaErrori() {
 async function aggiornaEventi() {
     await fetch('Progetto/Utility/Logs/events.log')
         .then((res) => res.text())
-        .then((text) => {
+        // text need to wait for the responce before update the page
+        .then(async (text) => {
             document.getElementById('contenuto-file-eventi').innerHTML =
-                buildText(text);
+                await buildText(text);
         })
         .catch((e) => console.error(e));
 }
