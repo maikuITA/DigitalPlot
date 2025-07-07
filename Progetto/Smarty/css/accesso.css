@@ -95,8 +95,22 @@ ul {
     max-width: inherit;
 }
 
-li > a > i {
+li>a>i {
     margin-right: 10px;
+}
+
+.pass {
+    white-space: normal;
+    word-break: break-word;
+}
+
+.span-all-columns {
+    grid-column: 1 / -1;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
