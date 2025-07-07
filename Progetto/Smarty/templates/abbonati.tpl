@@ -63,13 +63,13 @@
         <div class="column is-one-quarter right">
             {if $isLogged === true} {if $privilege >= 2}
             <a href="/newArticle" class="is-ok">
-                <span class="icon is-large is-ok">
+                <span class="icon is-large is-ok prova">
                     <i class="bi bi-file-plus-fill" style="font-size: 2rem"></i>
                 </span>
             </a>
             {/if}
             <a href="/find" class="is-ok">
-                <span class="icon is-large is-ok">
+                <span class="icon is-large is-ok prova">
                     <i class="bi bi-search" style="font-size: 1.3rem"></i>
                 </span>
             </a>
@@ -83,7 +83,7 @@
                 </figure>
             </a>
             <a href="/logout" class="is-ok">
-                <span class="icon is-large is-ok">
+                <span class="icon is-large is-ok prova">
                     <i class="bi bi-box-arrow-right" style="font-size: 1.3rem"></i>
                 </span>
             </a>
