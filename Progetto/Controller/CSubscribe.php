@@ -15,13 +15,13 @@ class CSubscribe
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             $subs = FPersistentManager::getInstance()->retrieveAllSubscriptions();
             if (CUser::isSubbed()) {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
                 exit;
             } else {
                 VSubscribe::render(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $subs);
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit;
         }
     }

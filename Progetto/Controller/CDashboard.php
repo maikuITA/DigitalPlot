@@ -16,7 +16,7 @@ class CDashboard
             $commenti = FPersistentManager::getInstance()->retrieveAllReview();
             VDashboard::render(privilege: $user->getPrivilege(), plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, articoliDaRevisionare: $articoliDaRevisionare, articoliPubblicati: $articoliPubblicati, commenti: $commenti);
         } else {
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
             exit;
         }
     }
@@ -31,9 +31,9 @@ class CDashboard
     {
         $approvedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', APPROVED);
         if ($approvedArticle) {
-            header('Location: https://digitalplot.altervista.org/confirm/6');
+            header('Location: /confirm/6');
         } else {
-            header('Location: https://digitalplot.altervista.org/error/6');
+            header('Location: /errors/6');
         }
     }
     /**
@@ -46,9 +46,9 @@ class CDashboard
     {
         $refusedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', REFUSED);
         if ($refusedArticle) {
-            header('Location: https://digitalplot.altervista.org/confirm/7');
+            header('Location: /confirm/7');
         } else {
-            header('Location: https://digitalplot.altervista.org/error/7');
+            header('Location: /errors/7');
         }
     }
 

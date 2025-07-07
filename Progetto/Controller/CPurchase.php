@@ -11,12 +11,12 @@ class CPurchase
     public static function startPurchase(int $subscriptionCod = -1): void
     {
         if ($subscriptionCod === null || $subscriptionCod <= 0) {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit();
         }
         $subscription = FPersistentManager::getInstance()->retrieveObjById(ESubscription::class, $subscriptionCod);
         if (!isset($subscription)) {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit();
         }
         if (CUser::isLogged()) {
@@ -25,11 +25,11 @@ class CPurchase
                 $points = EPurchase::calculateDiscount($subscription, $user->getPlotCard()->getPoints());
                 VPurchase::startPurchase($user, true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege(), $subscription, $points);
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
                 exit();
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -42,11 +42,11 @@ class CPurchase
     public static function purchase(int $subscriptionCod = -1): void
     {
         if ($subscriptionCod === null || $subscriptionCod <= 0) {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit();
         }
         if (!CUser::isLogged()) {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
         if (!CUser::isSubbed()) {
@@ -79,10 +79,10 @@ class CPurchase
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'privilege', READER);
             }
             //showing the view
-            header('Location: https://digitalplot.altervista.org/confirm/4');
+            header('Location: /confirm/4');
             exit;
         } else {
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
             exit();
         }
     }

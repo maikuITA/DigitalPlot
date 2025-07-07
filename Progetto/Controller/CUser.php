@@ -34,7 +34,7 @@ class CUser
             $telephone = UHTTPMethods::post('telephone');
             if ($password !== $password2) {
                 ULogSys::toLog('Passwords do not match', true);
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
                 exit;
             }
             $user = new EUser(privilege: BASIC, username: $username, password: $password, name: $name, surname: $surname, birthdate: $birthdate, country: $country, birthplace: $birthplace, province: $province, zipCode: $zipCode, streetAddress: $streetAddress, streetNumber: $streetNumber, email: $email, telephone: $telephone);
@@ -47,11 +47,11 @@ class CUser
                 USession::setSessionElement('user', $user->getId());
             } catch (Exception $e) {
                 ULogSys::toLog('Error during registration: ' . $e->getMessage(), true);
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
             }
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
         }
     }
 
@@ -156,9 +156,9 @@ class CUser
         if (CUser::isLogged() === true) {
             USession::unsetSession();
             USession::destroySession();
-            header('Location: https://digitalplot.altervista.org/confirm/5');
+            header('Location: /confirm/5');
         } else {
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
         }
     }
 
@@ -174,7 +174,7 @@ class CUser
     public static function auth(): void
     {
         if (self::isLogged()) {
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
             return;
         } else {
             VUser::auth();
@@ -201,19 +201,19 @@ class CUser
                     USession::setSessionElement('user', $user->getId());
                     ULogSys::toLog("Nuovo login, username: " . $user->getUsername() . " | hashPass: " . $user->getPassword());
                     ULogSys::toLog("");
-                    header('Location: https://digitalplot.altervista.org/home');
+                    header('Location: /home');
                 } else {
                     ULogSys::toLog('Invalid username or password', true);
-                    header('Location: https://digitalplot.altervista.org/auth');
+                    header('Location: /auth');
                     exit;
                 }
             } catch (Exception $e) {
                 ULogSys::toLog('Error during login: ' . $e->getMessage(), true);
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
                 exit;
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
         }
     }
 
@@ -233,7 +233,7 @@ class CUser
             $comments = $user->getReviews();
             VProfile::render(user: $user, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), isLogged: true, privilege: $user->getPrivilege(), articles: $articles, readdenArticles: $readdenArticles, reviews: $comments);
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
         }
     }
 
@@ -257,13 +257,13 @@ class CUser
                 $mime = mime_content_type($temporaryFile);
                 $allowed = ['image/jpeg', 'image/png', 'image/webp'];
                 if (!in_array($mime, $allowed)) {
-                    header('Location: https://digitalplot.altervista.org/error/2');
+                    header('Location: /errors/2');
                     exit;
                 }
 
                 // Verify size (max 2MB)
                 if ($image['size'] > 2 * 1024 * 1024) {
-                    header('Location: https://digitalplot.altervista.org/error/3');
+                    header('Location: /errors/3');
                     exit;
                 }
 
@@ -273,14 +273,14 @@ class CUser
                 FPersistentManager::getInstance()->updateObject(EUser::class, $user->getId(), 'profilePicture', $blob);
                 ULogSys::toLog("Immagine di profilo updatetata");
                 ULogSys::toLog("");
-                header("Location: https://digitalplot.altervista.org/profile");
+                header("Location: /profile");
                 exit;
             } else {
-                header('Location: https://digitalplot.altervista.org/error/5');
+                header('Location: /errors/5');
                 exit;
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit;
         }
     }
@@ -327,22 +327,22 @@ class CUser
                     $user->setPassword(UHTTPMethods::post('new-password'));
                     $user->setBiography($biography);
                     FPersistentManager::getInstance()->saveInDb($user);
-                    header('Location: https://digitalplot.altervista.org/confirm/8');
+                    header('Location: /confirm/8');
                 } elseif (UHTTPMethods::post('old-password') === '' || UHTTPMethods::post('new-password') === '' || UHTTPMethods::post('new-password2') === '') {
                     $user->setUsername($username);
                     $user->setBiography($biography);
                     FPersistentManager::getInstance()->saveInDb($user);
-                    header('Location: https://digitalplot.altervista.org/confirm/8');
+                    header('Location: /confirm/8');
                 } else {
-                    header('Location: https://digitalplot.altervista.org/editProfile');
+                    header('Location: /editProfile');
                     exit;
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
                 exit;
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit;
         }
     }
@@ -378,7 +378,7 @@ class CUser
                 echo json_encode(['error' => 'An error occurred while checking the username.']);
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
         }
     }
 }

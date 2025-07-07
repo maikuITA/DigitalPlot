@@ -17,11 +17,11 @@ class CSearch
                 $releaseDate = UHTTPMethods::post('releaseDate');
                 CSearch::emptyValues($title, $category, $genre, $releaseDate);
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
             }
         } else {
             // If the user is not logged in, redirect to the authentication page
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
         }
     }
 
@@ -55,10 +55,10 @@ class CSearch
             if (CUser::isSubbed()) {
                 VSearch::find(true, $user->getPlotCard()->getPoints(), $user->getEncodedData(), $user->getPrivilege());
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
         }
     }
 }

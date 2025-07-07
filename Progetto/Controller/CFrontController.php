@@ -16,7 +16,7 @@ class CFrontController
         'subscribe' => ['CSubscribe', 'subscribe'],
         'startPurchase' => ['CPurchase', 'startPurchase'],
         'purchase' => ['CPurchase', 'purchase'],
-        'error' => ['CError', 'error'],
+        'errors' => ['CError', 'error'],
         'confirm' => ['CConfirm', 'confirm'],
         'checkLogin' => ['CUser', 'checklogin'],
         'registrazione' => ['CUser', 'register'],
@@ -69,17 +69,17 @@ class CFrontController
                 call_user_func_array([$controller, $method], $params);
                 /*}catch(Exception $e){
                     ULogSys::toLog("Error front controller: ". $e->getMessage());
-                    header('Location: https://digitalplot.altervista.org/error/404');
+                    header('Location: /errors/404');
                     exit;
                 }*/
             } else {
                 ULogSys::toLog("Controller or method not found: " . $controller . " -> " . $method, true);
-                header('Location: https://digitalplot.altervista.org/error/404');
+                header('Location: /errors/404');
                 exit;
             }
         } else {
             ULogSys::toLog("Error 404");
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit;
         }
     }

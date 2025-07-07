@@ -48,7 +48,7 @@ class CService
         $zero = self::printCounts($allData);
         if ($zero === 0) {
             ULogSys::toLog("Database has been populated successfully.");
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
         } else {
             ULogSys::toLog("Waiting for the database to be populated...");
             BasicEntry::populateDb();
@@ -75,7 +75,7 @@ class CService
                 ULogSys::toLog("VLogs file not found", true);
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
             exit;
         }
     }
@@ -90,6 +90,6 @@ class CService
     {
         require_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "clearcache.php";
         ULogSys::toLog("Cache pulita correttamente.");
-        header('Location: https://digitalplot.altervista.org/home');
+        header('Location: /home');
     }
 }

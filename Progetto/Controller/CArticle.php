@@ -18,27 +18,27 @@ class CArticle
     public static function showArticle(?int $idArticolo = -1): void
     {
         if ($idArticolo === null || $idArticolo <= 0) {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit();
         }
         if (CUser::isLogged()) {
             $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
             if (!isset($article)) {
-                header('Location: https://digitalplot.altervista.org/error/404');
+                header('Location: /errors/404');
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if (!CUser::isSubbed()) {
                 $numLetture = $user->countReadings();
                 if ($numLetture >= MAXREADINGS) {
-                    header('Location: https://digitalplot.altervista.org/subscribe');
+                    header('Location: /subscribe');
                     exit;
                 }
             }
             CArticle::addListReadArticles($idArticolo);
             VArticle::showArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), article: $article, writer: $article->getWriter(), writerProPic: $article->getWriter()->getEncodedData());
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -55,13 +55,13 @@ class CArticle
     public static function addListReadArticles(?int $idArticolo): void
     {
         if ($idArticolo === null || $idArticolo <= 0) {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit();
         }
         if (CUser::isLogged()) {
             $article = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticolo);
             if (!isset($article)) {
-                header('Location: https://digitalplot.altervista.org/error/404');
+                header('Location: /errors/404');
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
@@ -84,7 +84,7 @@ class CArticle
                 FPersistentManager::getInstance()->updateObject(EPlotcard::class, $idPlotCard, 'points', $newPoints);
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -102,11 +102,11 @@ class CArticle
             if ($user->getPrivilege() === WRITER || $user->getPrivilege() === ADMIN) {
                 VArticle::newArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege());
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
                 exit();
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -119,7 +119,7 @@ class CArticle
     public static function dropArticle(?int $idArticle = -1): void
     {
         if ($idArticle === null || $idArticle <= 0) {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
             exit();
         }
         if (CUser::isLogged()) {
@@ -131,24 +131,24 @@ class CArticle
                     if ($drop_result) {
                         ULogSys::toLog("Articolo eliminato correttamente");
                         ULogSys::toLog("");
-                        header('Location: https://digitalplot.altervista.org/confirm/1');
+                        header('Location: /confirm/1');
                         exit();
                     } else {
                         ULogSys::toLog("L'articolo non è stato eliminato correttamente");
                         ULogSys::toLog("");
-                        header('Location: https://digitalplot.altervista.org/error/1');
+                        header('Location: /errors/1');
                         exit();
                     }
                 } else {
-                    header('Location: https://digitalplot.altervista.org/error/1');
+                    header('Location: /errors/1');
                     exit();
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
                 exit();
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -185,22 +185,22 @@ class CArticle
                         FPersistentManager::getInstance()->saveInDb($user);
                         ULogSys::toLog('Nuovo articolo salvato');
                         ULogSys::toLog("");
-                        header('Location: https://digitalplot.altervista.org/confirm/2');
+                        header('Location: /confirm/2');
                         exit;
                     } else {
-                        header('Location: https://digitalplot.altervista.org/home');
+                        header('Location: /home');
                         exit();
                     }
                 } else {
-                    header('Location: https://digitalplot.altervista.org/subscribe');
+                    header('Location: /subscribe');
                     exit();
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
                 exit();
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/home');
+            header('Location: /home');
             exit();
         }
     }
@@ -222,7 +222,7 @@ class CArticle
             $mime = mime_content_type($tmpName);
             $allowed = ['text/plain'];
             if (!in_array($mime, $allowed)) {
-                header('Location: https://digitalplot.altervista.org/error/2');
+                header('Location: /errors/2');
                 exit;
             }
 
@@ -231,7 +231,7 @@ class CArticle
 
             return $html;
         } else {
-            header('Location: https://digitalplot.altervista.org/error/4');
+            header('Location: /errors/4');
             exit();
         }
     }
@@ -254,15 +254,15 @@ class CArticle
                     VArticle::newArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), modify: true, article: $article);
                     CArticle::saveUpdateArticle($idArticle);
                 } else {
-                    header('Location: https://digitalplot.altervista.org/subscribe');
+                    header('Location: /subscribe');
                     exit();
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
                 exit();
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -298,18 +298,18 @@ class CArticle
                 $article = new EArticle($title, $description, $content, PENDING, $genre, $tipo, $date, $user);
                 if ($dropResult) {
                     FPersistentManager::getInstance()->saveInDb($article);
-                    header('Location: https://digitalplot.altervista.org/confirm/2');
+                    header('Location: /confirm/2');
                     exit();
                 } else {
-                    header('Location: https://digitalplot.altervista.org/error/404');
+                    header('Location: /errors/404');
                     exit();
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/home');
+                header('Location: /home');
                 exit();
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/auth');
+            header('Location: /auth');
             exit();
         }
     }
@@ -340,19 +340,19 @@ class CArticle
                         FPersistentManager::getInstance()->saveInDb($review);
                         FPersistentManager::getInstance()->saveInDb($user);
                         FPersistentManager::getInstance()->saveInDb($article);
-                        header('Location: https://digitalplot.altervista.org/article/' . $articleId);
+                        header('Location: /article/' . $articleId);
                         exit;
                     } else {
-                        header('Location: https://digitalplot.altervista.org/error/404');
+                        header('Location: /errors/404');
                     }
                 } else {
-                    header('Location: https://digitalplot.altervista.org/subscribe');
+                    header('Location: /subscribe');
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
         }
     }
 
@@ -380,15 +380,15 @@ class CArticle
                     FPersistentManager::getInstance()->delete($review);
                     FPersistentManager::getInstance()->saveInDb($user);
                     FPersistentManager::getInstance()->saveInDb($article);
-                    header('Location: https://digitalplot.altervista.org/confirm/3');
+                    header('Location: /confirm/3');
                 } else {
-                    header('Location: https://digitalplot.altervista.org/error/404');
+                    header('Location: /errors/404');
                 }
             } else {
-                header('Location: https://digitalplot.altervista.org/auth');
+                header('Location: /auth');
             }
         } else {
-            header('Location: https://digitalplot.altervista.org/error/404');
+            header('Location: /errors/404');
         }
     }
 }
