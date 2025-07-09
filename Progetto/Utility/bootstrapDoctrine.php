@@ -25,7 +25,8 @@ function getEntityManager(): EntityManager
         // Creation of the configuration for the Doctrine ORM
         // The paths parameter specifies where the entity classes and the attributes PHP 8 (e.g. [ORM\Entity]) are located
         // The isDevMode parameter indicates whether the application is in development mode or not
-        $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/../Entity/"], isDevMode: true);
+        $proxy = __DIR__ . "/proxy";
+        $config = ORMSetup::createAttributeMetadataConfiguration(paths: [__DIR__ . "/../Entity/"], isDevMode: true, proxyDir: $proxy);
 
         // the connection to the database is established using the DriverManager class
         // which takes the connection parameters and configuration as arguments
