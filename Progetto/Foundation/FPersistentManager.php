@@ -21,7 +21,6 @@ class FPersistentManager
      * Save an object in the database or update it if it already exists
      * @param object $object
      * @return bool
-     * @throws Exception
      */
     public function saveInDb(object $object): bool
     {
@@ -35,7 +34,6 @@ class FPersistentManager
      * @param string $fieldName
      * @param mixed $value
      * @return bool
-     * @throws Exception
      */
     public function updateObject(string $className, $id, string $fieldName, $value): bool
     {
@@ -47,7 +45,6 @@ class FPersistentManager
      * Delete an object in the database
      * @param object $object
      * @return bool
-     * @throws Exception
      */
     public function delete(?object $object): bool
     {
@@ -61,7 +58,6 @@ class FPersistentManager
      * @param string $className
      * @param mixed $id
      * @return object|null
-     * @throws Exception
      */
     public function retrieveObjById(string $className, $id): ?object
     {
