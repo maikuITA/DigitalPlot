@@ -10,8 +10,8 @@ class StartSmarty
     static function configuration()
     {
         $smarty = new Smarty();  // create a new Smarty object
-        $smarty->setTemplateDir('../Smarty/templates/'); // set the directory for the templates
-        $smarty->setCompileDir('../Smarty/templates_c/'); // set the directory for the compiled templates
+        $smarty->setTemplateDir('..' . DIRECTORY_SEPARATOR . 'Smarty' . DIRECTORY_SEPARATOR . 'templates/'); // set the directory for the templates
+        $smarty->setCompileDir('..' . DIRECTORY_SEPARATOR . 'Smarty' . DIRECTORY_SEPARATOR . 'templates_c/'); // set the directory for the compiled templates
         //$smarty->setCacheDir('/membri/digitalplot/Progetto/Smarty/cache/'); // set the directory for the cache
 
         //$smarty->caching = Smarty::CACHING_LIFETIME_CURRENT;  // it turns on caching
