@@ -5,10 +5,10 @@
 **DigitalPlot** is a web application developed for a university project. It allows users to write and read articles published by other users in a simple and accessible way.
 
 In our application, there are four main types of users:
-- BASIC: This user can read up to eight articles, earn points for each article read, and purchase a subscription.
-- READER: This user can read all articles on the website. Additionally, he can write reviews, follow specific writers, and search for specific articles on the website.
-- WRITER: This user has the same features as the Reader, with an additional privilege: he can post, modify, and delete his own articles.
-- ADMIN: The Admin is the all-mighty user. He can manage every article on the website, and every article must be approved by him. He can also view log files and delete comments.
+- **BASIC**: This user can read up to eight articles, earn points for each article read, and purchase a subscription.
+- **READER**: This user can read all articles on the website. Additionally, he can write reviews, follow specific writers, and search for specific articles on the website.
+- **WRITER**: This user has the same features as the Reader, with an additional privilege: he can post, modify, and delete his own articles.
+- **ADMIN**: The Admin is the all-mighty user. He can manage every article on the website, and every article must be approved by him. He can also view log files and delete comments.
 
 ---
 
@@ -58,7 +58,7 @@ Contributions and feedback are welcome.
 
 ---
 
-## 👨‍💻 Author
+## 👨🏻‍💻 Author
 
 Andrea – Engineering student <br>
 Ludovica – Engineering student <br>
