@@ -6,9 +6,9 @@
 
 In our application, there are four main types of users:
 - BASIC: This user can read up to eight articles, earn points for each article read, and purchase a subscription.
-- READER: This user can read all articles on the website. Additionally, they can write reviews, follow specific writers, and search for specific articles on the website.
-- WRITER: This user has the same features as the Reader, with an additional privilege: they can post, modify, and delete their own articles.
-- ADMIN: The Admin is the all-mighty user. They can manage every article on the website, and every article must be approved by them. They can also view log files and delete comments.
+- READER: This user can read all articles on the website. Additionally, he can write reviews, follow specific writers, and search for specific articles on the website.
+- WRITER: This user has the same features as the Reader, with an additional privilege: he can post, modify, and delete his own articles.
+- ADMIN: The Admin is the all-mighty user. He can manage every article on the website, and every article must be approved by him. He can also view log files and delete comments.
 
 ---
 
@@ -30,13 +30,14 @@ Open your terminal in the `DIGITALPLOT` folder and run:
 ```bash
 composer install
 ```
+
 ### 2. Configure database
 
 Edit the database settings in the following file:
 ```
 DIGITALPLOT/Progetto/Utility/config.php
 ```
-Be sure to set your host, database name, username, and password.<br>
+Be sure to set your host, database name, username, and password properly.<br>
 
 ### 3. Enjoy our application
 
@@ -44,7 +45,8 @@ Start your local server (e.g. with php artisan serve if using Laravel, or config
 
 Some advertisements:
 - If you see an error message after browsing to dbInit, don’t worry—this is normal. The database is working correctly.
-- If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly. Moreover, the redirect to https do not work with every browser because of the missing certificate. To solve this problem comment the line 18-19-20 of the file .htaccess
+- If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly.In addition, the automatic redirect to HTTPS may not work in all browsers because the certificate is missing. However, if you click 'Proceed anyway', the redirect will still occur. Otherwise, to solve this problem comment the line 18-19-20 of the file 
+'.htaccess'.
 
 ---
 
