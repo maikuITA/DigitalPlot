@@ -7,6 +7,7 @@ class CArticle
      * Method to display an article
      * This method checks if the user is logged in and retrieves the article by its ID.
      * If the article exists, it checks if the user has enough readings left.
+     * If the article is pending and the user is not a writer or admin, it redirects to the home page.
      * If the user has enough readings, it adds the article to the list of read articles
      * and displays the article view with the user's data, article details, and remaining readings.
      * If the user is not logged in, it redirects to the authentication page.
@@ -28,6 +29,10 @@ class CArticle
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+            if ($article->getStatus() === PENDING && $user->getPrivilege() < WRITER) {
+                header('Location: /home');
+                exit();
+            }
             if (!CUser::isSubbed()) {
                 $numLetture = $user->countReadings();
                 if ($numLetture >= MAXREADINGS) {
@@ -46,6 +51,8 @@ class CArticle
     /**
      * Method to add an article to the list of read articles
      * This method checks if the user is logged in and retrieves the article by its ID.
+     * If the article exists, it checks if the user has enough readings left.
+     * If the article exists, it checks if the user has not already read it.
      * If the article exists and the user has not already read it, it creates a new reading entry,
      * adds points to the user's plot card and saves the reading in the database.
      * If the user is not logged in or if the article does not exist, it redirects to an error page.
@@ -65,10 +72,6 @@ class CArticle
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            if ($article->getStatus() === PENDING && $user->getPrivilege() < WRITER) {
-                header('Location: /home');
-                exit();
-            }
             $readings = $user->getReaddenArticles();
             $count = 0;
             foreach ($readings as $article) {
