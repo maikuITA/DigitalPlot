@@ -5,14 +5,13 @@ class CFollow
 
     /**
      * This method adds a follower to a user
-     * @param int $idWriter the id of the writer to follow
-     * @return bool
+     * @param string|null $usernameWriter the username of the writer to follow
      */
-    public static function follow(?string $usernameWriter = null): bool
+    public static function follow(?string $usernameWriter = null)
     {
         header('Content-Type: application/json');
         if ($usernameWriter === null) {
-            echo json_encode(['success' => false, 'message' => 'manca username']);
+            echo json_encode(['success' => false, 'message' => 'username is missing']);
             exit;
         } else {
             if (CUser::isLogged()) {
@@ -47,8 +46,7 @@ class CFollow
 
     /**
      * This method removes a follower to a user
-     * @param int $idWriter the id of the writer to follow
-     * @return bool
+     * @param string|null $usernameWriter the username of the writer to follow
      */
     public static function unfollow(?string $usernameWriter = null)
     {

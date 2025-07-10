@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 console.log('follow loaded');
 // writer's information
 const username = document.getElementById("username")
