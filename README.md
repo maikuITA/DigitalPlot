@@ -44,7 +44,7 @@ Start your local server (e.g. with php artisan serve if using Laravel, or config
 
 Some advertisements:
 - If you see an error message after browsing to dbInit, don’t worry—this is normal. The database is working correctly.
-- If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly. Moreover, the redirect to https do not work with every browser because of the missing certificate. 
+- If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly. Moreover, the redirect to https do not work with every browser because of the missing certificate. To solve this problem comment the line 18-19-20 of the file .htaccess
 
 ---
 
