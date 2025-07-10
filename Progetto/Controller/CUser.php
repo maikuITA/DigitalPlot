@@ -12,6 +12,7 @@ class CUser
      * creates a new user and plot card,
      * and saves them in the database.
      * @return void
+     * @throws Exception
      */
     public static function register(): void
     {
@@ -353,6 +354,7 @@ class CUser
      * and checks if the username exists in the database.
      * It returns a JSON response indicating whether the username exists or not.
      * @return void
+     * @throws Exception
      */
     public static function checkUsername(): void
     {
