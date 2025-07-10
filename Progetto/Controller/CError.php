@@ -34,7 +34,7 @@ class CError
                 VError::render(errore: "Errore sconosciuto", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), isLogged: true, type: 404);
             }
         } else {
-            VError::render(errore: "Utente non loggato", isLogged: false, type: $type);
+            VError::render(errore: "Utente non loggato", plotPoints: 0, proPic: null, privilege: -1, isLogged: false, type: $type);
         }
     }
 }

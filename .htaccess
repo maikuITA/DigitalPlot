@@ -15,10 +15,12 @@ RewriteRule .* index.php
 
 # redirect permanently (301) from http to https. NC means "no case" (case insensitive) so http = HTTP exc. 
 # ^(.*)$ matches any URL, "." means any character, "*" means zero or more times, ^ means start of the string, and $ means end of the string.
+# the first rule is used when the web app is executed in local.
+# the second rewrite condition is used when there is a proxy which forwards the request to the server and adds the X-Forwarded-Proto header.
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 #RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# every php file must be readden by the PHP 8.4 handler
+# every php file must be readden by the PHP 8.4 handler (required by the web server)
 AddHandler av-php84 .php
