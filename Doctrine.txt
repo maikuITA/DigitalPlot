@@ -1,6 +1,5 @@
 Doctrine
 
-14 Apr 2025
 
 * Aggiungere un campo id ad ogni entità (numerico autoincrementale tranne che per codiceSconto) e rinominarlo id_nomeClasse
 
