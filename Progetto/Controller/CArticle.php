@@ -300,16 +300,15 @@ class CArticle
                     $content = self::checkFile($content);
                 }
                 $initialArticle = FPersistentManager::getInstance()->retrieveObjById(EArticle::class, $idArticle);
-                $dropResult = FPersistentManager::getInstance()->delete($initialArticle);
-                $article = new EArticle($title, $description, $content, PENDING, $genre, $tipo, $date, $user);
-                if ($dropResult) {
-                    FPersistentManager::getInstance()->saveInDb($article);
-                    header('Location: /confirm/2');
-                    exit();
-                } else {
-                    header('Location: /errors/404');
-                    exit();
-                }
+                $initialArticle->setTitle($title);
+                $initialArticle->setDescription($description);
+                $initialArticle->setGenre($genre);
+                $initialArticle->setCategory($tipo);
+                $initialArticle->setReleaseDate($date);
+                $initialArticle->setState(PENDING);
+                $initialArticle->setContents($content);
+                FPersistentManager::getInstance()->saveInDb($initialArticle);
+                header('Location: /confirm/2');
             } else {
                 header('Location: /home');
                 exit();
