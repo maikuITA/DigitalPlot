@@ -10,7 +10,12 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Utili
  */
 class InstallerDb
 {
-
+    /**
+     * Install the database if it does not exist or is empty
+     *
+     * @return void
+     * @throws PDOException
+     */
     public static function install()
     {
         try {
