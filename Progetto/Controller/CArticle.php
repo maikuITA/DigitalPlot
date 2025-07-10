@@ -29,7 +29,7 @@ class CArticle
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-            if ($article->getStatus() === PENDING && $user->getPrivilege() < WRITER) {
+            if ($article->getState() === PENDING && $user->getPrivilege() < WRITER) {
                 header('Location: /home');
                 exit();
             }
