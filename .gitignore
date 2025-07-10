@@ -6,3 +6,6 @@ composer.lock
 prova.php
 desktop.ini
 node_modules
+package.json
+package-lock.json
+yarn.lock
