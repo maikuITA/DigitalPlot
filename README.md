@@ -47,7 +47,7 @@ Some advertisements:
 - If you see an error message after browsing to dbInit, don’t worry—this is normal. The database is working correctly;
 - If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly.In addition, the automatic redirect to HTTPS may not work in all browsers because the certificate is missing. However, if you click 'Proceed anyway', the redirect will still occur. Otherwise, to solve this problem comment the line 18-19-20 of the file 
 '.htaccess';
-- Comment the line 22 of the file '.htaccess' if you are running the application locally.
+- Comment the line 22 of the file '.htaccess', if you are running the application locally.
 
 ---
 
