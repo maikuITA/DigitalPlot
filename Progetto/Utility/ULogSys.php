@@ -9,6 +9,7 @@ class ULogSys
      *  Writes a log message to the log file.
      *  If the message is empty, it writes only a new line without a timestamp.
      *   @param string $message The message to log.
+     *   @param bool $error If true, logs to the error log; otherwise, logs to the event log.
      *   @return void
      */
     public static function toLog(string $message, bool $error = false): void
