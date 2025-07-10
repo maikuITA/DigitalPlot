@@ -65,7 +65,10 @@ class CArticle
                 exit();
             }
             $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
-
+            if ($article->getStatus() === PENDING && $user->getPrivilege() < WRITER) {
+                header('Location: /home');
+                exit();
+            }
             $readings = $user->getReaddenArticles();
             $count = 0;
             foreach ($readings as $article) {
