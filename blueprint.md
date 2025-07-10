@@ -1,12 +1,6 @@
+# DigitalPlot
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#digitalplot)
-
-# ➤ DigitalPlot
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#the-perfect-site-for-every-reader)
-
-## ➤ The perfect site for every reader
+## The perfect site for every reader
 
 **DigitalPlot** is a web application developed for a university project. It allows users to write and read articles published by other users in a simple and accessible way.
 
@@ -18,10 +12,7 @@ In our application, there are four main types of users:
 
 ---
 
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#-installation-guide)
-
-## ➤ 🚀 Installation Guide
+## 🚀 Installation Guide
 
 Before starting, make sure you have the following installed:
 
@@ -60,20 +51,14 @@ Some advertisements:
 
 ---
 
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#-notes)
-
-## ➤ 📝 Notes
+## 📝 Notes
 
 This project is for academic purposes and not intended for production use.
 Contributions and feedback are welcome.
 
 ---
 
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#-author)
-
-## ➤ 👨🏻‍💻 Author
+## 👨🏻‍💻 Author
 
 Andrea – Engineering student <br>
 Ludovica – Engineering student <br>
