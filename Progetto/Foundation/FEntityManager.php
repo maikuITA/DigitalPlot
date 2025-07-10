@@ -265,6 +265,7 @@ class FEntityManager
      * @param string $numericField  The name of the numeric field to compare (must exist in the entity).
      * @param string $value         The threshold value to compare against (as string, will be passed as a parameter).
      * @return int The number of matching records.
+     * @throws Exception If there is an error during query execution or if the field does not exist.
      */
     public static function countRecordWithDate(string $className, string $numericField, string $value): int
     {
@@ -295,6 +296,7 @@ class FEntityManager
             return 0;
         }
     }
+
     /**
      * This method counts the number of the subscriber, except admin 
      * @return int|null number of the subscriber
@@ -362,7 +364,7 @@ class FEntityManager
     /**
      * Save an object in the db or update it
      * @param object $obj
-     * @return boolean
+     * @return bool
      * @throws Exception
      */
     public static function saveObj(object $obj): bool
@@ -383,7 +385,7 @@ class FEntityManager
     /**
      * Delete an object from the db
      * @param object $obj
-     * @return boolean
+     * @return bool
      * @throws Exception
      */
     public static function deleteObj(object $obj): bool
