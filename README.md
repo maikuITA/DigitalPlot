@@ -58,7 +58,7 @@ Contributions and feedback are welcome.
 
 ---
 
-## 👨‍💻 Author
+## 👨🏻‍💻 Author
 
 Andrea – Engineering student <br>
 Ludovica – Engineering student <br>
