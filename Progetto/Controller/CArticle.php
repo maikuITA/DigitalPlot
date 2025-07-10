@@ -286,7 +286,6 @@ class CArticle
     public static function saveUpdateArticle(int $idArticle): void
     {
         if (CUser::isLogged()) {
-            $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
             if (UServer::getRequestMethod() === "POST") {
                 $title = UHTTPMethods::post('title');
                 $description = UHTTPMethods::post('description');
@@ -329,7 +328,7 @@ class CArticle
      * @param ?int $articleId
      * @return void
      */
-    public static function newRewiew(?int $articleId = -1): void
+    public static function newReview(?int $articleId = -1): void
     {
         if (UServer::getRequestMethod() === 'POST' && $articleId !== NULL && $articleId > 0) {
             if (CUser::isLogged()) {

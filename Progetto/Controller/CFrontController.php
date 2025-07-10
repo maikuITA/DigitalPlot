@@ -38,7 +38,7 @@ class CFrontController
         'dropArticle' => ['CArticle', 'dropArticle'],
         'editArticle' => ['CArticle', 'editArticle'],
         'saveUpdate' => ['CArticle', 'saveUpdateArticle'],
-        'newReview' => ['CArticle', 'newRewiew'],
+        'newReview' => ['CArticle', 'newReview'],
         'dropReview' => ['CArticle', 'dropReview'],
         'follow' => ['CFollow', 'follow'],
         'unfollow' => ['CFollow', 'unfollow'],
