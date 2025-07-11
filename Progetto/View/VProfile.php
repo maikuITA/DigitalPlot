@@ -5,7 +5,6 @@ class VProfile
 
     /**
      * This method is used to render the user profile view.
-     * It assigns the user data, plot points, profile picture, and login status to the Smarty template.
      * @param EUser $user 
      * @param int $plotPoints The number of plot points the user has.
      * @param mixed $proPic The encoded data for the user's profile picture.
@@ -33,7 +32,6 @@ class VProfile
 
     /**
      * This method is used to render the user profile view.
-     * It assigns the user data, plot points, profile picture, and login status to the Smarty template.
      * @param EUser $user 
      * @param int $plotPoints The number of plot points the user has.
      * @param mixed $proPic The encoded data for the user's profile picture.
