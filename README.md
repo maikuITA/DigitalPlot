@@ -3,7 +3,6 @@
 
 # ➤ DigitalPlot
 
-
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#the-perfect-site-for-every-reader)
 
 ## ➤ The perfect site for every reader
@@ -16,7 +15,6 @@ In our application, there are four main types of users:
 - **WRITER**: This user has the same features as the Reader, with an additional privilege: he can post, modify, and delete his own articles.
 - **ADMIN**: The Admin is the all-mighty user. He can manage every article on the website, and every article must be approved by him. He can also view log files and delete comments.
 
----
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#-installation-guide)
@@ -58,7 +56,6 @@ Some advertisements:
 '.htaccess';
 - Comment the line 22 of the file '.htaccess', if you are running the application locally.
 
----
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#-notes)
@@ -68,7 +65,7 @@ Some advertisements:
 This project is for academic purposes and not intended for production use.
 Contributions and feedback are welcome.
 
----
+
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#-author)

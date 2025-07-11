@@ -11,7 +11,7 @@ class CArticle
      * If the user has enough readings, it adds the article to the list of read articles
      * and displays the article view with the user's data, article details, and remaining readings.
      * If the user is not logged in, it redirects to the authentication page.
-     * If the article does not exist or the user does not have enough readings, it redirects
+     * If the article does not exist or the user does not have enough readings, it redirects to the error page.
      * @param ?int $idArticolo
      * @return void
      * @throws Exception
