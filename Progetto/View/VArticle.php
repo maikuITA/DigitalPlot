@@ -27,8 +27,10 @@ class VArticle
         $smarty->assign('reviews', $article->getReviews());
         $smarty->assign('writer', $writer);
         if ($user->getId() === $writer->getId()) {
+            $smarty->assign('same', true);
             $smarty->assign('writerPropic', $proPic);
         } else {
+            $smarty->assign('same', false);
             $smarty->assign('writerPropic', $writerProPic);
         }
         $smarty->display('lettura.tpl');
