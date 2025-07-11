@@ -36,6 +36,10 @@ class CPurchase
 
     /**
      * This method is used to purchase a subscription
+     * It retrieves the subscription and user information, validates the credit card,
+     * calculates the discount, updates the user's plot card points, and saves the purchase in the database.
+     * If the purchase is successful, it redirects to a confirmation page.
+     * If the user is not logged in or already subscribed, it redirects to the appropriate page
      * @param int $subscriptionCod The code of the subscription to purchase
      * @return void
      */

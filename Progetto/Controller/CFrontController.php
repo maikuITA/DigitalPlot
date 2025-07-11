@@ -65,13 +65,13 @@ class CFrontController
             ULogSys::toLog("Controller -> " . $controller);
             ULogSys::toLog("Metodo -> " . $method);
             if (class_exists($controller) && method_exists($controller, $method)) {
-                //try{
-                call_user_func_array([$controller, $method], $params);
-                /*}catch(Exception $e){
-                    ULogSys::toLog("Error front controller: ". $e->getMessage());
+                try {
+                    call_user_func_array([$controller, $method], $params);
+                } catch (Exception $e) {
+                    ULogSys::toLog("Error front controller: " . $e->getMessage());
                     header('Location: /errors/404');
                     exit;
-                }*/
+                }
             } else {
                 ULogSys::toLog("Controller or method not found: " . $controller . " -> " . $method, true);
                 header('Location: /errors/404');
