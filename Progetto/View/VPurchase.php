@@ -5,8 +5,6 @@ class VPurchase
 
     /**
      * Method to start the purchase process.
-     * This method uses Smarty to render the 'pagamento.tpl' template with the provided parameters.
-     *
      * @param EUser $user The user who is making the purchase.
      * @param bool $isLogged Indicates if the user is logged in.
      * @param int $plotPoints The number of plot points the user has.
@@ -32,7 +30,6 @@ class VPurchase
 
     /**
      * Method to display the payment page.
-     * This method uses Smarty to render the 'pagamento.tpl' template with the provided parameters.
      * @param bool $isLogged Indicates if the user is logged in.
      * @param int $plotPoints The number of plot points the user has.
      * @param mixed $proPic The user's profile picture data.

@@ -30,23 +30,26 @@ Before starting, make sure you have the following installed:
 
 After downloading the repository to your device, follow these steps:
 
-### 1. Install dependencies
+### 1. Extract the folder
+Extract all the folder files into the document root of your server (e.g.: xampp/htdocs if you are using xampp)
 
-Open your terminal in the `DIGITALPLOT` folder and run:
+### 2. Install dependencies
+
+Open your terminal in the `DigitalPlot-main` folder and run:
 
 ```bash
 composer install
 ```
 
-### 2. Configure database
+### 3. Configure database
 
 Edit the database settings in the following file:
 ```
-DIGITALPLOT/Progetto/Utility/config.php
+DigitalPlot-main/Progetto/Utility/config.php
 ```
 Be sure to set your host, database name, username, and password properly.<br>
 
-### 3. Enjoy our application
+### 4. Enjoy our application
 
 Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx) and access the application via your browser by typing the URL hostname/DigitalPlot/dbInit in order to populate properly your db (at the end, you will be redirected to the home). <br>
 

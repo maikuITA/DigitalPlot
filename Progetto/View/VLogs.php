@@ -5,7 +5,6 @@ class VLogs
 
     /**
      * Method to render the log view.
-     * This method uses Smarty to render the 'log.tpl' template with the provided user information.
      * @param int $privilege The user's privilege level (default is BASIC).
      * @param int $plotPoints The number of plot points the user has (default is 0).
      * @param mixed $proPic The user's profile picture data (default is null).
