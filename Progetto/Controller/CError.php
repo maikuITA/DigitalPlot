@@ -5,7 +5,20 @@ class CError
 
     /**
      * Method to handle 404 errors
-     * This method will redirect the user to a custom 404 error page.
+     * this method checks if the user is logged in and retrieves their information to render an error page.
+     * Depending on the type of error, it renders the appropriate error message.
+     * The types are:
+     * 404 - Not Found
+     * 1 - Article not deleted correctly
+     * 2 - Invalid format
+     * 3 - Invalid file size
+     * 4 - Empty article
+     * 5 - Image not uploaded correctly
+     * 6 - Article not approved correctly
+     * 7 - Article not rejected correctly
+     * 8 - Profile not modified correctly
+     * If the user is not logged in, it renders a generic error message.
+     * @param int $type Error type identifier
      * @return void
      */
     public static function error(int $type = 0): void
