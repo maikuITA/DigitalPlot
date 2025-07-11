@@ -59,6 +59,8 @@ After that, start your local server (e.g. with php artisan serve if using Larave
 
 N.B. 
 - If you see an error message after browsing to dbInit, don’t worry—this is normal. The database is working correctly, just reload the page and you will be redirected to the home page;
+- If you see an error about 'RuntimeReflectionService.php', go to the file 'vendor/doctrine/persistence/src/Persistence/Mapping/RuntimeReflectionService.php' and edit the line 36 as following:
+'public function getParentClasses(string $class): array';
 - The automatic redirect to HTTPS may not work in all browsers because the certificate is missing. However, if you click 'Proceed anyway', the redirect will still occur. Otherwise, to solve this problem comment the line 20-21-22 of the file 
 '.htaccess'.
 
