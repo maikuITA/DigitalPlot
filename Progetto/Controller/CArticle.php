@@ -234,6 +234,7 @@ class CArticle
 
             $txt = file_get_contents($tmpName);
             $html = nl2br(htmlspecialchars($txt));
+            $html = "<p>" . $html . "</p>";
 
             return $html;
         } else {
