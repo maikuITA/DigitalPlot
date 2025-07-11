@@ -35,7 +35,7 @@ Extract all the folder files into the document root of your server (e.g.: xampp/
 
 ### 2. Install dependencies
 
-Open your terminal in the `DigitalPlot-main` folder and run:
+Open your terminal in the document root folder and run:
 
 ```bash
 composer install
@@ -45,19 +45,19 @@ composer install
 
 Edit the database settings in the following file:
 ```
-DigitalPlot-main/Progetto/Utility/config.php
+/Progetto/Utility/config.php
 ```
 Be sure to set your host, database name, username, and password properly.<br>
 
 ### 4. Enjoy our application
 
-Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx) and access the application via your browser by typing the URL hostname/DigitalPlot/dbInit in order to populate properly your db (at the end, you will be redirected to the home). <br>
+Start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx) and access the application via your browser by typing the URL hostname/dbInit in order to populate properly your db (at the end, you will be redirected to the home). <br>
 
 Some advertisements:
-- If you see an error message after browsing to dbInit, don’t worry—this is normal. The database is working correctly;
-- If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly.In addition, the automatic redirect to HTTPS may not work in all browsers because the certificate is missing. However, if you click 'Proceed anyway', the redirect will still occur. Otherwise, to solve this problem comment the line 18-19-20 of the file 
+- If you see an error message after browsing to dbInit, don’t worry—this is normal. The database is working correctly, just reload the page and you will be redirected to the home page.;
+- If you are running the application locally, make sure to grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly.In addition, the automatic redirect to HTTPS may not work in all browsers because the certificate is missing. However, if you click 'Proceed anyway', the redirect will still occur. Otherwise, to solve this problem comment the line 20-21-22 of the file 
 '.htaccess';
-- Comment the line 22 of the file '.htaccess', if you are running the application locally.
+- Comment the line 26 of the file '.htaccess', if you are running the application locally.
 
 
 
