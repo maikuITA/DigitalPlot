@@ -11,6 +11,9 @@ class CUser
      * This method retrieves user data from the POST request,
      * creates a new user and plot card,
      * and saves them in the database.
+     * If the registration is successful, it sets the user session and redirects to the home page.
+     * If the request method is not POST, it redirects to the authentication page.
+     * If the passwords do not match, it logs an error and redirects to the authentication page
      * @return void
      * @throws Exception
      */
@@ -166,10 +169,10 @@ class CUser
 
 
     /**
-     * Method to authenticate the user
-     * This method checks if the VUser view exists and calls its auth method.
-     * If the VUser view does not exist, it logs an error message.
-     * This method is used to display the authentication page for users.
+     * Method to redirect to the authentication page
+     * This method checks if the user is logged in.
+     * If the user is logged in, it redirects to the home page.
+     * If the user is not logged in, it renders the authentication view.
      * @return void
      */
     public static function auth(): void
