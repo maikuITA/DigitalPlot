@@ -33,7 +33,7 @@ Before starting, make sure you have the following installed:
 After downloading the repository to your device, follow these steps:
 
 ### 1. Extract the folder
-Extract all the folder files into xampp/htdocs folder
+Extract all the folder files into the root of your server (e.g.: xampp/htdocs if you are using xampp)
 
 ### 2. Install dependencies
 
