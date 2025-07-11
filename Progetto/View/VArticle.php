@@ -5,12 +5,14 @@ class VArticle
 
     /**
      * Method to display an article.
+     * @param EUser $user The user viewing the article.
      * @param bool $isLogged Indicates if the user is logged in (default is false).
      * @param int $plotPoints The number of plot points the user has (default is 0).
      * @param mixed $proPic The user's profile picture data (default is null).
      * @param int $privilege The user's privilege level (default is BASIC).
      * @param EArticle $article The article to be displayed.
      * @param EUser $writer The writer of the article.
+     * @param mixed $writerProPic The writer's profile picture data.
      * @return void
      */
     public static function showArticle(EUser $user, bool $isLogged = false, int $plotPoints = 0, mixed $proPic = null, int $privilege = BASIC, EArticle $article, EUser $writer, mixed $writerProPic): void
