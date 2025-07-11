@@ -14,6 +14,9 @@ class CService
     public static function printCounts(array $allData): int
     {
         foreach ($allData as $key => $items) {
+            if ($items == null) {
+                return 1;
+            }
             $count = count($items);
             if ($count === 0) {
                 return 1;
