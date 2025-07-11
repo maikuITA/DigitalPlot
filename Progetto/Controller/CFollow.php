@@ -5,6 +5,12 @@ class CFollow
 
     /**
      * This method adds a follower to a user
+     * It checks if the user is logged in and subscribed.
+     * If the username of the writer is provided, it retrieves the user and writer objects.
+     * If the writer exists, it creates a new EFollow object, adds it to both the user and writer,
+     * and saves the follow relationship in the database.
+     * If the user is not logged in or not subscribed, it returns an error message.
+     * If the username is not provided, it returns an error message indicating that the username is
      * @param string|null $usernameWriter the username of the writer to follow
      */
     public static function follow(?string $usernameWriter = null)
@@ -46,6 +52,12 @@ class CFollow
 
     /**
      * This method removes a follower to a user
+     * It checks if the user is logged in and subscribed.
+     * If the username of the writer is provided, it retrieves the user and writer objects.
+     * If the writer exists and the follow relationship is found, it removes the follow relationship
+     * from both the user and writer, deletes it from the database, and saves the changes.
+     * If the user is not logged in or not subscribed, it returns an error message.
+     * If the username is not provided, it returns an error message indicating that the writer is
      * @param string|null $usernameWriter the username of the writer to follow
      */
     public static function unfollow(?string $usernameWriter = null)
@@ -87,6 +99,7 @@ class CFollow
 
     /**
      * Check if the user is a follower of the writer
+     * This method checks if the user is logged in and subscribed.
      * @param string|null $usernameWriter username of the writer
      */
     public static function isFollow(?string $usernameWriter)
