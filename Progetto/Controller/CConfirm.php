@@ -36,11 +36,11 @@ class CConfirm
             } elseif ($type === 5) {
                 VConfirm::render(confirmMessage: "Arrivederci!", plotPoints: 0, proPic: null, privilege: 0, isLogged: false, type: $type);
             } elseif ($type === 6) {
-                VConfirm::render(confirmMessage: "L'articolo è stato approvato!", plotPoints: 0, proPic: null, privilege: ADMIN, isLogged: true, type: $type);
+                VConfirm::render(confirmMessage: "L'articolo è stato approvato!", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), isLogged: true, type: $type);
             } elseif ($type === 7) {
-                VConfirm::render(confirmMessage: "L'articolo è stato scartato!", plotPoints: 0, proPic: null, privilege: ADMIN, isLogged: true, type: $type);
+                VConfirm::render(confirmMessage: "L'articolo è stato scartato!", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), isLogged: true, type: $type);
             } elseif ($type === 8) {
-                VConfirm::render(confirmMessage: "Il profilo è stato modificato con successo!", plotPoints: 0, proPic: null, privilege: 0, isLogged: true, type: $type);
+                VConfirm::render(confirmMessage: "Il profilo è stato modificato con successo!", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), isLogged: true, type: $type);
             } else {
                 VConfirm::render(confirmMessage: "Operazione completata con successo!", plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), isLogged: true, type: 4);
             }
