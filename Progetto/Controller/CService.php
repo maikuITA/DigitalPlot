@@ -56,6 +56,7 @@ class CService
             ULogSys::toLog("Waiting for the database to be populated...");
             BasicEntry::populateDb();
             ULogSys::toLog("Database has been populated successfully.");
+            header('Location: /home');
         }
     }
 
