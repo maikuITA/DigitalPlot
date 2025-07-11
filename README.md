@@ -53,7 +53,7 @@ Be sure to set your host, database name, username, and password properly.<br>
 
 If you are using a local server be sure to:
 - Comment the line 26 of the file '.htaccess';
-- Grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly.
+- For linux/unix OS: grant Apache permission to read and write in the following directories: proxy, template_c, and Logs. Otherwise, the application will not function correctly.
 
 After that, start your local server (e.g. with php artisan serve if using Laravel, or configure Apache/Nginx) and access the application via your browser by typing the URL hostname/dbInit in order to populate properly your db (at the end, you will be redirected to the home). <br>
 
