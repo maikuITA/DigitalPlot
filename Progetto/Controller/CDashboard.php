@@ -29,11 +29,16 @@ class CDashboard
      */
     public static function approve(?int $idArticle): void
     {
-        $approvedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', APPROVED);
-        if ($approvedArticle) {
-            header('Location: /confirm/6');
+        if (CUser::isLogged() && CUser::isAdmin()) {
+            $approvedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', APPROVED);
+            if ($approvedArticle) {
+                header('Location: /confirm/6');
+            } else {
+                header('Location: /errors/6');
+            }
         } else {
-            header('Location: /errors/6');
+            header('Location: /home');
+            exit;
         }
     }
     /**
@@ -44,15 +49,21 @@ class CDashboard
      */
     public static function refuse(?int $idArticle): void
     {
-        $refusedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', REFUSED);
-        if ($refusedArticle) {
-            header('Location: /confirm/7');
+        if (CUser::isLogged() && CUser::isAdmin()) {
+            $refusedArticle = FPersistentManager::getInstance()->updateObject(EArticle::class, $idArticle, 'state', REFUSED);
+            if ($refusedArticle) {
+                header('Location: /confirm/7');
+            } else {
+                header('Location: /errors/7');
+            }
         } else {
-            header('Location: /errors/7');
+            header('Location: /home');
+            exit;
         }
     }
 
     /**
+     * Method to update the dashboard data.
      * This function checks if the user is logged in and is an admin.
      * If the user is logged in and is an admin, it retrieves the number of articles
      * and purchases made in the last day, week, month, and total.

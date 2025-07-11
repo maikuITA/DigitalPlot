@@ -7,7 +7,18 @@ class CConfirm
 
     /**
      * Method to handle confirmation
-     * This method will redirect the user to a custom 404 error page.
+     * This method checks if the user is logged in and retrieves the user data.
+     * Depending on the type of confirmation, it renders the appropriate confirmation message.
+     * The types are:
+     * 1 - Article deleted
+     * 2 - Article saved
+     * 3 - Comment removed
+     * 4 - User subscribed
+     * 5 - User logged out
+     * 6 - Article approved
+     * 7 - Article rejected
+     * 8 - Profile modified
+     * If the user is not logged in, it renders a generic confirmation message.
      * @return void
      */
     public static function confirm(int $type = 0): void

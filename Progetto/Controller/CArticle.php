@@ -243,7 +243,7 @@ class CArticle
     }
 
     /**
-     * Method to modify an article
+     * Method to modify an article.
      * This method checks if the user is logged in and has the privilege to modify articles.
      * If the user is authorized, it retrieves the article by its ID and displays the new article page for modification.
      * If the user is not logged in or does not have the required privilege, it redirects to the subscription page.
@@ -320,7 +320,7 @@ class CArticle
 
 
     /**
-     * Method to create a new review for an article
+     * Method to create a new review for an article.
      * This method checks if the user is logged in and has the privilege to write reviews.
      * If the user is authorized, it retrieves the article by its ID, creates a new review object,
      * associates it with the user and the article, and saves it in the database.

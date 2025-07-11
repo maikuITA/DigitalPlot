@@ -4,7 +4,6 @@
 require_once(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "Utility" . DIRECTORY_SEPARATOR . "bootstrapDoctrine.php");
 
 use Doctrine\ORM\Tools\SchemaTool;
-use Exception;
 
 class FEntityManager
 {
