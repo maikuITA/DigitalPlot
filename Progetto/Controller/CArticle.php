@@ -41,7 +41,7 @@ class CArticle
                 }
             }
             CArticle::addListReadArticles($idArticolo);
-            VArticle::showArticle(isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), article: $article, writer: $article->getWriter(), writerProPic: $article->getWriter()->getEncodedData());
+            VArticle::showArticle(user: $user, isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), article: $article, writer: $article->getWriter(), writerProPic: $article->getWriter()->getEncodedData());
         } else {
             header('Location: /auth');
             exit();
