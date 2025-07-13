@@ -139,7 +139,7 @@ class CFollow
     /**
      * This method shows the followers  and the following of a user;
      * It checks if the user is logged in and subscribed.
-     * If the user is logged in, it retrieves the user object and its followers/following.
+     * If the user is logged in, it retrieves the user object and his followers/following.
      * @return void
      */
     public static function showFollowers(): void
