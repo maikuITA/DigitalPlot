@@ -136,7 +136,13 @@ class CFollow
         }
     }
 
-    public static function showFollowers()
+    /**
+     * This method shows the followers  and the following of a user;
+     * It checks if the user is logged in and subscribed.
+     * If the user is logged in, it retrieves the user object and its followers/following.
+     * @return void
+     */
+    public static function showFollowers(): void
     {
         if (CUser::isLogged()) {
             if (CUser::isSubbed()) {
