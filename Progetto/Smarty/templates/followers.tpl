@@ -127,12 +127,10 @@
                 </div>
                 <div class="column is-two-fifth cs">
                     <div class="is-gapped">
-                        <a class="is-5 s" href="/showFollowers">Follower</a><a
-                            class="is-5">{$user->getNumFollowers()}</a>
+                        <a class="is-5 s">Follower</a><a class="is-5">{$user->getNumFollowers()}</a>
                     </div>
                     <div class="is-gapped">
-                        <a class="is-5 s" href="/showFollowers">Seguiti</a><a
-                            class="is-5">{$user->getNumFollowing()}</a>
+                        <a class="is-5 s">Seguiti</a><a class="is-5">{$user->getNumFollowing()}</a>
                     </div>
                     <div class="is-gapped">
                         <a class="is-5 s">Articoli scritti</a><a class="is-5">{$user->getNumArticles()}</a>
@@ -145,36 +143,29 @@
             <div>
                 <p class="is-5 s"> Biografia </p>{$user->getBiography()}
             </div>
-            <button class="button is-link is-rounded is-outlined mt-5">
-                <span>
-                    <i class='bi bi-pencil-fill'></i>
-                    <a href="/editProfile"> Modifica profilo </a>
-                </span>
-            </button>
+
         </div>
         <div class="card articles">
             <table class="table is-striped is-hoverable" id="readings">
-                <caption class="title">Articoli caricati</caption>
+                <caption class="title">Followers</caption>
                 <thead>
                     <tr>
-                        <th>Nome articolo</th>
-                        <th>Stato</th>
-                        <th>Data pubblicazione</th>
-                        <th>Genere</th>
-                        <th>Modifica</th>
-                        <th>Elimina</th>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Paese</th>
+                        <th>Data di Nascita</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {if isset($articles)}
-                    {foreach from=$articles item=article}
+                    {if isset($followers)}
+                    {foreach from=$followers item=follow}
                     <tr>
-                        <td>{$article->getTitle()}</td>
-                        <td>{$article->getState()}</td>
-                        <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
-                        <td>{$article->getGenre()}</td>
-                        <td><a class="has-text-link" href="/editArticle/{$article->getId()}">Modifica</a></td>
-                        <td><a class="has-text-danger" href="/dropArticle/{$article->getId()}"> Elimina</a></td>
+                        <td>{$follow->getFollowing()->getUsername()}</td>
+                        <td>{$follow->getFollowing()->getName()}</td>
+                        <td>{$follow->getFollowing()->getSurname()}</td>
+                        <td>{$follow->getFollowing()->getCountry()}</td>
+                        <td>{$follow->getFollowing()->getBirthDate()->format('Y-m-d')}</td>
                     </tr>
                     {/foreach}
                     {/if}
@@ -183,58 +174,32 @@
         </div>
         <div class="card articles">
             <table class="table is-striped is-hoverable" id="readings">
-                <caption class="title">Articoli letti</caption>
+                <caption class="title">Following</caption>
                 <thead>
                     <tr>
-                        <th>Nome articolo</th>
-                        <th>Data pubblicazione</th>
-                        <th>Categoria</th>
-                        <th>Genere</th>
-                        <th>Leggi</th>
+                        <th>Username</th>
+                        <th>Nome</th>
+                        <th>Cognome</th>
+                        <th>Paese</th>
+                        <th>Data di Nascita</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {if isset($readdenArticles)}
-                    {foreach from=$readdenArticles item=article}
+                    {if isset($following)}
+                    {foreach from=$following item=follow}
                     <tr>
-                        <td>{$article->getTitle()}</td>
-                        <td>{$article->getReleaseDate()->format('Y-m-d')}</td>
-                        <td>{$article->getCategory()}</td>
-                        <td>{$article->getGenre()}</td>
-                        <td><a class="has-text-link" href="/article/{$article->getId()}">Leggi</a></td>
+                        <td>{$follow->getFollower()->getUsername()}</td>
+                        <td>{$follow->getFollower()->getName()}</td>
+                        <td>{$follow->getFollower()->getSurname()}</td>
+                        <td>{$follow->getFollower()->getCountry()}</td>
+                        <td>{$follow->getFollower()->getBirthDate()->format('Y-m-d')}</td>
                     </tr>
                     {/foreach}
                     {/if}
                 </tbody>
             </table>
         </div>
-        <div class="card articles">
-            <table class="table is-striped is-hoverable" id="reviews">
-                <caption class="title">Commenti</caption>
-                <thead>
-                    <tr>
-                        <th>Autore</th>
-                        <th>Data pubblicazione</th>
-                        <th>Articolo</th>
-                        <th>Valutazione</th>
-                        <th>Elimina</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {if isset($reviews)}
-                    {foreach from=$reviews item=comment}
-                    <tr>
-                        <td>{$comment->getSubscriber()->getUsername()}</td>
-                        <td>{$comment->getReleaseDate()->format('Y-m-d')}</td>
-                        <td>{$comment->getArticle()->getTitle()}</td>
-                        <td>{$comment->getEvaluate()}</td>
-                        <td><a class="has-text-link" href="/dropReview/{$comment->getCod()}">Elimina</a></td>
-                    </tr>
-                    {/foreach}
-                    {/if}
-                </tbody>
-            </table>
-        </div>
+
     </div>
 
 </body>

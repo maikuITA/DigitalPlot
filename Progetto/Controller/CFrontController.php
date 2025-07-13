@@ -43,6 +43,7 @@ class CFrontController
         'follow' => ['CFollow', 'follow'],
         'unfollow' => ['CFollow', 'unfollow'],
         'isFollow' => ['CFollow', 'isFollow'],
+        'showFollowers' => ['CFollow', 'showFollowers'],
         'clearcache' => ['CService', 'clearCache'],
     ];
 

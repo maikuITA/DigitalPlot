@@ -135,4 +135,21 @@ class CFollow
             }
         }
     }
+
+    public static function showFollowers()
+    {
+        if (CUser::isLogged()) {
+            if (CUser::isSubbed()) {
+                $user = FPersistentManager::getInstance()->retrieveObjById(EUser::class, USession::getSessionElement('user'));
+                $followers = $user->getFollowers();
+                VFollowers::showFollowers(user: $user, isLogged: true, plotPoints: $user->getPlotCard()->getPoints(), proPic: $user->getEncodedData(), privilege: $user->getPrivilege(), followers: $followers);
+            } else {
+                header('Location: /subscribe');
+                exit;
+            }
+        } else {
+            header('Location: /subscribe');
+            exit;
+        }
+    }
 }
