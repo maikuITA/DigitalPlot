@@ -8,10 +8,11 @@
  * @param string|null $proPic The profile picture of the user, if available.
  * @param int $privilege The privilege level of the user.
  * @param $followers The list of followers for the user.
+ * @return void
  */
 class VFollowers
 {
-    public static function showFollowers(EUser $user, bool $isLogged, int $plotPoints = 0, ?string $proPic = null, int $privilege = 0, $followers)
+    public static function showFollowers(EUser $user, bool $isLogged, int $plotPoints = 0, ?string $proPic = null, int $privilege = 0, $followers): void
     {
         $smarty = StartSmarty::configuration();
         ULogSys::toLog("Display -> followers.tpl");
